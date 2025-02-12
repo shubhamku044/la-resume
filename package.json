@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier ."
+    "format": "prettier --write ."
   },
   "dependencies": {
     "clsx": "^2.1.1",
