@@ -8,15 +8,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Load Node.js version from .nvmrc
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
 
-      - name: Setup Node.js & pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8 # Use the latest version of pnpm
+          version: 10.3.0 # Ensure it matches your local version
           run_install: false
 
       - name: Setup Node.js
@@ -25,7 +25,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Debug File Structure
+        run: ls -la
+
+      - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run ESLint
