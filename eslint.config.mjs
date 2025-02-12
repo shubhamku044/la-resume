@@ -10,7 +10,12 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
+  ...compat.extends(
+    'next/core-web-vitals',
+    'next/typescript',
+    'prettier',
+    'plugin:tailwindcss/recommended'
+  ),
   {
     rules: {
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
