@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -36,9 +37,9 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix .",
-      "prettier --write ."
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --max-warnings 0 ."
     ]
   }
 }
