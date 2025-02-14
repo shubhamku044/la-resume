@@ -13,6 +13,29 @@ import { UserDetails } from '@/types/userDetails'
 
 // Helper function to retrieve user details from localStorage
 const getUserDetailsFromLocalStorage = (): UserDetails => {
+  if (typeof window === 'undefined') {
+    return {
+      personalInfo: {
+        fullName: '',
+        email: '',
+        phone: '',
+        dob: '',
+        address: '',
+        summary: '',
+        linkedin: '',
+        github: '',
+        portfolio: '',
+        twitter: '',
+        languages: [],
+      },
+      skills: [],
+      education: [],
+      experience: [],
+      accomplishments: [],
+      certifications: [],
+      projects: [],
+    }
+  }
   const storedData = localStorage.getItem('userDetails')
   return storedData
     ? JSON.parse(storedData)
