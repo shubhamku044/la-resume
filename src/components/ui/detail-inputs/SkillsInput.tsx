@@ -1,0 +1,52 @@
+import { useState } from 'react'
+import { Plus, X } from 'lucide-react'
+
+interface SkillsInputProps {
+  skills: string[]
+  onChange: (skills: string[]) => void
+}
+
+export default function SkillsInput({ skills, onChange }: SkillsInputProps) {
+  const [newSkill, setNewSkill] = useState('')
+
+  const addSkill = () => {
+    if (newSkill.trim() && !skills.includes(newSkill.trim())) {
+      onChange([...skills, newSkill.trim()])
+      setNewSkill('')
+    }
+  }
+
+  const removeSkill = (index: number) => {
+    const updatedSkills = skills.filter((_, i) => i !== index)
+    onChange(updatedSkills)
+  }
+
+  return (
+    <div>
+      <label className="block text-sm font-medium">Skills</label>
+      <div className="flex gap-2 mt-1">
+        <input
+          type="text"
+          value={newSkill}
+          onChange={(e) => setNewSkill(e.target.value)}
+          placeholder="Add a skill"
+          className="border p-2 rounded w-full"
+          onKeyDown={(e) => e.key === 'Enter' && addSkill()}
+        />
+        <button onClick={addSkill} className="bg-blue-500 text-white px-3 py-2 rounded">
+          <Plus size={16} />
+        </button>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {skills.map((skill, index) => (
+          <span key={index} className="bg-gray-200 px-3 py-1 rounded flex items-center gap-1">
+            {skill}
+            <button onClick={() => removeSkill(index)} className="text-red-500">
+              <X size={12} />
+            </button>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
