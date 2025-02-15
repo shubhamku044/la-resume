@@ -33,7 +33,7 @@ const initialResumeData: UserDetails = {
   projects: [],
 };
 
-export const sampleResumeData: ResumeData = {
+const sampleResumeData: ResumeData = {
   name: 'John Doe',
   email: 'johndoe@example.com',
   phone: '+1 (555) 123-4567',

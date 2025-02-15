@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       });
     });
 
-    const pdfBuffer = await fs.readFileSync(pdfPath);
+    const pdfBuffer = fs.readFileSync(pdfPath);
 
     return new NextResponse(pdfBuffer, {
       headers: {
