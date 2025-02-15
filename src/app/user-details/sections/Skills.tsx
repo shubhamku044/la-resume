@@ -1,9 +1,9 @@
-import SkillsInput from '@/components/ui/detail-inputs/SkillsInput'
-import { UserDetails } from '@/types/userDetails'
+import SkillsInput from '@/components/ui/detail-inputs/SkillsInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface SkillsSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function SkillsSection({ userDetails, setUserDetails }: SkillsSectionProps) {
@@ -15,5 +15,5 @@ export default function SkillsSection({ userDetails, setUserDetails }: SkillsSec
         onChange={(value) => setUserDetails({ ...userDetails, skills: value })}
       />
     </div>
-  )
+  );
 }

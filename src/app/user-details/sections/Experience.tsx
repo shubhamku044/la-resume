@@ -1,9 +1,9 @@
-import ExperienceInput from '@/components/ui/detail-inputs/ExperienceInput'
-import { UserDetails } from '@/types/userDetails'
+import ExperienceInput from '@/components/ui/detail-inputs/ExperienceInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface ExperienceSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function ExperienceSection({ userDetails, setUserDetails }: ExperienceSectionProps) {
@@ -15,5 +15,5 @@ export default function ExperienceSection({ userDetails, setUserDetails }: Exper
         onChange={(value) => setUserDetails({ ...userDetails, experience: value })}
       />
     </div>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import EducationInput from '@/components/ui/detail-inputs/EducationInput'
-import ExperienceInput from '@/components/ui/detail-inputs/ExperienceInput'
-import SkillsInput from '@/components/ui/detail-inputs/SkillsInput'
-import PersonalInfoInput from '@/components/ui/detail-inputs/PersonalInfoInput'
-import AccomplishmentsInput from '@/components/ui/detail-inputs/AccomplishmentsInput'
-import ProjectsInput from '@/components/ui/detail-inputs/ProjectsInput'
-import { UserDetails } from '@/types/userDetails'
+import EducationInput from '@/components/ui/detail-inputs/EducationInput';
+import ExperienceInput from '@/components/ui/detail-inputs/ExperienceInput';
+import SkillsInput from '@/components/ui/detail-inputs/SkillsInput';
+import PersonalInfoInput from '@/components/ui/detail-inputs/PersonalInfoInput';
+import AccomplishmentsInput from '@/components/ui/detail-inputs/AccomplishmentsInput';
+import ProjectsInput from '@/components/ui/detail-inputs/ProjectsInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface DetailSectionProps {
-  title: string
-  sectionKey: keyof UserDetails
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  title: string;
+  sectionKey: keyof UserDetails;
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function DetailSection({
@@ -20,8 +20,8 @@ export default function DetailSection({
   setUserDetails,
 }: DetailSectionProps) {
   const handleUpdate = <K extends keyof UserDetails>(key: K, value: UserDetails[K]) => {
-    setUserDetails({ ...userDetails, [key]: value })
-  }
+    setUserDetails({ ...userDetails, [key]: value });
+  };
 
   return (
     <div className="w-full p-6">
@@ -73,5 +73,5 @@ export default function DetailSection({
         />
       )}
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { Plus, X } from 'lucide-react'
-import { Experience } from '@/types/userDetails'
+import { useState } from 'react';
+import { Plus, X } from 'lucide-react';
+import { Experience } from '@/types/userDetails';
 
 interface ExperienceInputProps {
-  experience: Experience[]
-  onChange: (experience: Experience[]) => void
+  experience: Experience[];
+  onChange: (experience: Experience[]) => void;
 }
 
 export default function ExperienceInput({ experience, onChange }: ExperienceInputProps) {
@@ -12,8 +12,8 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
     onChange([
       ...experience,
       { company: '', role: '', startDate: '', endDate: '', responsibilities: [], location: '' },
-    ])
-  }
+    ]);
+  };
 
   const updateExperience = <K extends keyof Experience>(
     index: number,
@@ -22,19 +22,19 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
   ) => {
     const updatedExperience = experience.map((exp, i) =>
       i === index ? { ...exp, [key]: value } : exp
-    )
-    onChange(updatedExperience)
-  }
+    );
+    onChange(updatedExperience);
+  };
 
   const removeExperience = (index: number) => {
-    onChange(experience.filter((_, i) => i !== index))
-  }
+    onChange(experience.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      ;(e.target as HTMLInputElement).blur()
+      (e.target as HTMLInputElement).blur();
     }
-  }
+  };
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -106,9 +106,9 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
           <ResponsibilitiesInput
             responsibilities={exp.responsibilities}
             onChange={(newResponsibilities) => {
-              const updatedExperience = [...experience]
-              updatedExperience[index].responsibilities = newResponsibilities
-              onChange(updatedExperience)
+              const updatedExperience = [...experience];
+              updatedExperience[index].responsibilities = newResponsibilities;
+              onChange(updatedExperience);
             }}
           />
         </div>
@@ -118,7 +118,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
         <Plus size={16} className="mr-2 inline" /> Add Experience
       </button>
     </div>
-  )
+  );
 }
 
 // Responsibilities Input Component
@@ -126,27 +126,27 @@ function ResponsibilitiesInput({
   responsibilities,
   onChange,
 }: {
-  responsibilities: string[]
-  onChange: (responsibilities: string[]) => void
+  responsibilities: string[];
+  onChange: (responsibilities: string[]) => void;
 }) {
-  const [newResponsibility, setNewResponsibility] = useState('')
+  const [newResponsibility, setNewResponsibility] = useState('');
 
   const addResponsibility = () => {
     if (newResponsibility.trim() && !responsibilities.includes(newResponsibility.trim())) {
-      onChange([...responsibilities, newResponsibility.trim()])
-      setNewResponsibility('')
+      onChange([...responsibilities, newResponsibility.trim()]);
+      setNewResponsibility('');
     }
-  }
+  };
 
   const removeResponsibility = (index: number) => {
-    onChange(responsibilities.filter((_, i) => i !== index))
-  }
+    onChange(responsibilities.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      addResponsibility()
+      addResponsibility();
     }
-  }
+  };
 
   return (
     <div>
@@ -175,5 +175,5 @@ function ResponsibilitiesInput({
         ))}
       </div>
     </div>
-  )
+  );
 }

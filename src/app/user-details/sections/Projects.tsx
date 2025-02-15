@@ -1,9 +1,9 @@
-import ProjectsInput from '@/components/ui/detail-inputs/ProjectsInput'
-import { UserDetails } from '@/types/userDetails'
+import ProjectsInput from '@/components/ui/detail-inputs/ProjectsInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface ProjectsSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function ProjectsSection({ userDetails, setUserDetails }: ProjectsSectionProps) {
@@ -15,5 +15,5 @@ export default function ProjectsSection({ userDetails, setUserDetails }: Project
         onChange={(value) => setUserDetails({ ...userDetails, projects: value })}
       />
     </div>
-  )
+  );
 }

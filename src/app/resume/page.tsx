@@ -1,11 +1,12 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Card } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
-import type { UserDetails, Experience } from '@/types/userDetails'
+'use client';
+import React, { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import type { UserDetails, Experience } from '@/types/userDetails';
+import { X } from 'lucide-react';
 
 const initialResumeData: UserDetails = {
   personalInfo: {
@@ -29,11 +30,11 @@ const initialResumeData: UserDetails = {
   accomplishments: [],
   certifications: [],
   projects: [],
-}
+};
 
 const ResumePage = () => {
-  const [resumeData, setResumeData] = useState<UserDetails>(initialResumeData)
-  const [activeSection, setActiveSection] = useState('personalInfo')
+  const [resumeData, setResumeData] = useState<UserDetails>(initialResumeData);
+  const [activeSection, setActiveSection] = useState('personalInfo');
   const [currentExperience, setCurrentExperience] = useState<Experience>({
     company: '',
     role: '',
@@ -41,15 +42,16 @@ const ResumePage = () => {
     endDate: '',
     responsibilities: [],
     location: '',
-  })
+  });
 
   useEffect(() => {
-    const mydata: string | null = localStorage.getItem('userDetails')
+    const mydata: string | null = localStorage.getItem('userDetails');
 
     if (mydata) {
-      setResumeData(JSON.parse(mydata))
+      setResumeData(JSON.parse(mydata));
+      console.log('mydata', JSON.parse(mydata));
     }
-  }, [])
+  }, []);
 
   const updatePersonalInfo = (field: keyof UserDetails['personalInfo'], value: string) => {
     setResumeData((prev) => ({
@@ -58,15 +60,15 @@ const ResumePage = () => {
         ...prev.personalInfo,
         [field]: value,
       },
-    }))
-  }
+    }));
+  };
 
   const addExperience = () => {
     if (currentExperience.company && currentExperience.role) {
       setResumeData((prev) => ({
         ...prev,
         experience: [...(prev.experience || []), currentExperience],
-      }))
+      }));
       setCurrentExperience({
         company: '',
         role: '',
@@ -74,9 +76,9 @@ const ResumePage = () => {
         endDate: '',
         responsibilities: [],
         location: '',
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -104,7 +106,7 @@ const ResumePage = () => {
 
               <div className="space-y-4">
                 {Object.keys(resumeData.personalInfo).map((field) => {
-                  console.log('field', field)
+                  console.log('field', field);
                   return (
                     <div key={field}>
                       <Label className="capitalize">
@@ -124,7 +126,7 @@ const ResumePage = () => {
                         className="mt-1"
                       />
                     </div>
-                  )
+                  );
                 })}
               </div>
             </Card>
@@ -223,12 +225,38 @@ const ResumePage = () => {
                 <h3 className="mb-3 text-lg font-semibold">Added Experiences</h3>
                 <div className="space-y-3">
                   {resumeData.experience?.map((exp, index) => (
-                    <Card key={index} className="p-4">
-                      <h4 className="font-bold">{exp.company}</h4>
-                      <p className="text-sm text-gray-600">{exp.company}</p>
-                      <p className="text-xs text-gray-500">
-                        {exp.startDate} - {exp.endDate}
-                      </p>
+                    <Card key={index} className="relative p-4">
+                      <div
+                        className="absolute right-0 top-0 flex size-6 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-red-600"
+                        onClick={() => {
+                          setResumeData((prev) => ({
+                            ...prev,
+                            experience: prev.experience?.filter((_, i) => i !== index),
+                          }));
+                        }}
+                      >
+                        <X className="text-white" size={18} />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-bold">{exp.company}</h4>
+                        <p className="text-sm text-gray-600">{exp.location}</p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p>{exp.role}</p>
+                        <p className="text-end text-xs text-gray-500">
+                          {exp.startDate} - {exp.endDate}
+                        </p>
+                      </div>
+                      <ul className="ml-6 mt-4 list-disc">
+                        {typeof exp.responsibilities === 'object' &&
+                          exp.responsibilities.map((res) => {
+                            return (
+                              <li key={res} className="text-xs">
+                                {res}
+                              </li>
+                            );
+                          })}
+                      </ul>
                     </Card>
                   ))}
                 </div>
@@ -398,7 +426,7 @@ const ResumePage = () => {
         </Card>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ResumePage
+export default ResumePage;

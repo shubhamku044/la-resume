@@ -1,9 +1,9 @@
-import { Plus, X } from 'lucide-react'
-import { Education } from '@/types/userDetails'
+import { Plus, X } from 'lucide-react';
+import { Education } from '@/types/userDetails';
 
 interface EducationInputProps {
-  education: Education[]
-  onChange: (education: Education[]) => void
+  education: Education[];
+  onChange: (education: Education[]) => void;
 }
 
 export default function EducationInput({ education, onChange }: EducationInputProps) {
@@ -18,8 +18,8 @@ export default function EducationInput({ education, onChange }: EducationInputPr
         endYear: new Date().getFullYear(),
         location: '',
       } as Education,
-    ])
-  }
+    ]);
+  };
 
   const updateEducation = <K extends keyof Education>(
     index: number,
@@ -28,19 +28,19 @@ export default function EducationInput({ education, onChange }: EducationInputPr
   ) => {
     const updatedEducation = education.map((edu, i) =>
       i === index ? { ...edu, [key]: value } : edu
-    )
-    onChange(updatedEducation)
-  }
+    );
+    onChange(updatedEducation);
+  };
 
   const removeEducation = (index: number) => {
-    onChange(education.filter((_, i) => i !== index))
-  }
+    onChange(education.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      ;(e.target as HTMLInputElement).blur()
+      (e.target as HTMLInputElement).blur();
     }
-  }
+  };
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -127,9 +127,9 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                 type="number"
                 value={edu.gpa ?? ''}
                 onChange={(e) => {
-                  const value = e.target.value ? Number(e.target.value) : undefined
-                  updateEducation(index, 'gpa', value)
-                  if (value !== undefined) updateEducation(index, 'percentage', undefined)
+                  const value = e.target.value ? Number(e.target.value) : undefined;
+                  updateEducation(index, 'gpa', value);
+                  if (value !== undefined) updateEducation(index, 'percentage', undefined);
                 }}
                 onKeyDown={handleKeyPress}
                 className="w-full rounded border p-2"
@@ -142,9 +142,9 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                 type="number"
                 value={edu.percentage ?? ''}
                 onChange={(e) => {
-                  const value = e.target.value ? Number(e.target.value) : undefined
-                  updateEducation(index, 'percentage', value)
-                  if (value !== undefined) updateEducation(index, 'gpa', undefined)
+                  const value = e.target.value ? Number(e.target.value) : undefined;
+                  updateEducation(index, 'percentage', value);
+                  if (value !== undefined) updateEducation(index, 'gpa', undefined);
                 }}
                 onKeyDown={handleKeyPress}
                 className="w-full rounded border p-2"
@@ -158,5 +158,5 @@ export default function EducationInput({ education, onChange }: EducationInputPr
         <Plus size={16} className="mr-2 inline" /> Add Education
       </button>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Briefcase, Book, Award, Code, User, Layers } from 'lucide-react'
+import { Briefcase, Book, Award, Code, User, Layers } from 'lucide-react';
 
 export const userDetailSections = [
   { key: 'personal', label: 'Personal Info', icon: User }, // ✅ Includes Contact, Summary, Languages, Interests, Social Links
@@ -7,7 +7,7 @@ export const userDetailSections = [
   { key: 'experience', label: 'Experience', icon: Briefcase },
   { key: 'accomplishments', label: 'Accomplishments & Certifications', icon: Award },
   { key: 'projects', label: 'Projects', icon: Layers },
-]
+];
 
 export const userDetailLabels: Record<string, string> = {
   personal:
@@ -17,4 +17,4 @@ export const userDetailLabels: Record<string, string> = {
   experience: 'Work history & responsibilities',
   accomplishments: 'Key achievements & certifications',
   projects: 'Notable projects & links',
-}
+};

@@ -1,37 +1,37 @@
-import { useState } from 'react'
-import { Plus, X } from 'lucide-react'
-import { Project } from '@/types/userDetails'
+import { useState } from 'react';
+import { Plus, X } from 'lucide-react';
+import { Project } from '@/types/userDetails';
 
 interface ProjectsInputProps {
-  projects: Project[]
-  onChange: (projects: Project[]) => void
+  projects: Project[];
+  onChange: (projects: Project[]) => void;
 }
 
 // ✅ Heading Component (Separated for Clarity)
 export function ProjectsSectionHeading() {
-  return <h2 className="mb-3 text-lg font-semibold">Projects</h2>
+  return <h2 className="mb-3 text-lg font-semibold">Projects</h2>;
 }
 
 export default function ProjectsInput({ projects, onChange }: ProjectsInputProps) {
   const addProject = () => {
-    onChange([...projects, { title: '', description: '', technologies: [], link: '' }])
-  }
+    onChange([...projects, { title: '', description: '', technologies: [], link: '' }]);
+  };
 
   const updateProject = <K extends keyof Project>(index: number, key: K, value: Project[K]) => {
-    const updatedProjects = [...projects]
-    updatedProjects[index] = { ...updatedProjects[index], [key]: value }
-    onChange(updatedProjects)
-  }
+    const updatedProjects = [...projects];
+    updatedProjects[index] = { ...updatedProjects[index], [key]: value };
+    onChange(updatedProjects);
+  };
 
   const removeProject = (index: number) => {
-    onChange(projects.filter((_, i) => i !== index))
-  }
+    onChange(projects.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      ;(e.target as HTMLInputElement).blur()
+      (e.target as HTMLInputElement).blur();
     }
-  }
+  };
 
   return (
     <div>
@@ -87,7 +87,7 @@ export default function ProjectsInput({ projects, onChange }: ProjectsInputProps
         <Plus size={16} className="mr-2 inline" /> Add Project
       </button>
     </div>
-  )
+  );
 }
 
 // ✅ Reusable String List Input for Technologies
@@ -96,28 +96,28 @@ function StringListInput({
   placeholder,
   onChange,
 }: {
-  items: string[]
-  placeholder: string
-  onChange: (items: string[]) => void
+  items: string[];
+  placeholder: string;
+  onChange: (items: string[]) => void;
 }) {
-  const [newItem, setNewItem] = useState('')
+  const [newItem, setNewItem] = useState('');
 
   const addItem = () => {
     if (newItem.trim() && !items.includes(newItem.trim())) {
-      onChange([...items, newItem.trim()])
-      setNewItem('')
+      onChange([...items, newItem.trim()]);
+      setNewItem('');
     }
-  }
+  };
 
   const removeItem = (index: number) => {
-    onChange(items.filter((_, i) => i !== index))
-  }
+    onChange(items.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      addItem()
+      addItem();
     }
-  }
+  };
 
   return (
     <div>
@@ -146,5 +146,5 @@ function StringListInput({
         ))}
       </div>
     </div>
-  )
+  );
 }

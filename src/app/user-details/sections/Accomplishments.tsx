@@ -1,9 +1,9 @@
-import AccomplishmentsInput from '@/components/ui/detail-inputs/AccomplishmentsInput'
-import { UserDetails } from '@/types/userDetails'
+import AccomplishmentsInput from '@/components/ui/detail-inputs/AccomplishmentsInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface AccomplishmentsSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function AccomplishmentsSection({
@@ -24,5 +24,5 @@ export default function AccomplishmentsSection({
         }
       />
     </div>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import EducationInput from '@/components/ui/detail-inputs/EducationInput'
-import { UserDetails } from '@/types/userDetails'
+import EducationInput from '@/components/ui/detail-inputs/EducationInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface EducationSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function EducationSection({ userDetails, setUserDetails }: EducationSectionProps) {
@@ -15,5 +15,5 @@ export default function EducationSection({ userDetails, setUserDetails }: Educat
         onChange={(value) => setUserDetails({ ...userDetails, education: value })}
       />
     </div>
-  )
+  );
 }

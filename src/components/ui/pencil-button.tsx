@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { Pencil } from 'lucide-react'
+import { Pencil } from 'lucide-react';
 
 type PencilButtonProps = {
-  onClick: () => void
-}
+  onClick: () => void;
+};
 
 export default function PencilButton({ onClick }: PencilButtonProps) {
   return (
@@ -13,5 +13,5 @@ export default function PencilButton({ onClick }: PencilButtonProps) {
       className="cursor-pointer text-gray-500 hover:text-gray-700"
       onClick={onClick}
     />
-  )
+  );
 }

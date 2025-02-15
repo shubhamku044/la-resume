@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import { Plus, X } from 'lucide-react'
+import { useState } from 'react';
+import { Plus, X } from 'lucide-react';
 
 interface SkillsInputProps {
-  skills: string[]
-  onChange: (skills: string[]) => void
+  skills: string[];
+  onChange: (skills: string[]) => void;
 }
 
 export default function SkillsInput({ skills, onChange }: SkillsInputProps) {
-  const [newSkill, setNewSkill] = useState('')
+  const [newSkill, setNewSkill] = useState('');
 
   const addSkill = () => {
     if (newSkill.trim() && !skills.includes(newSkill.trim())) {
-      onChange([...skills, newSkill.trim()])
-      setNewSkill('')
+      onChange([...skills, newSkill.trim()]);
+      setNewSkill('');
     }
-  }
+  };
 
   const removeSkill = (index: number) => {
-    const updatedSkills = skills.filter((_, i) => i !== index)
-    onChange(updatedSkills)
-  }
+    const updatedSkills = skills.filter((_, i) => i !== index);
+    onChange(updatedSkills);
+  };
 
   return (
     <div>
@@ -48,5 +48,5 @@ export default function SkillsInput({ skills, onChange }: SkillsInputProps) {
         ))}
       </div>
     </div>
-  )
+  );
 }

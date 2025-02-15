@@ -1,10 +1,10 @@
-import clsx from 'clsx'
-import { userDetailSections } from '@/lib/sections'
+import clsx from 'clsx';
+import { userDetailSections } from '@/lib/sections';
 
 interface SidebarProps {
-  selected: string
-  onSelect: (key: string) => void
-  isOpen: boolean
+  selected: string;
+  onSelect: (key: string) => void;
+  isOpen: boolean;
 }
 
 export function AppSidebar({ selected, onSelect, isOpen }: SidebarProps) {
@@ -27,5 +27,5 @@ export function AppSidebar({ selected, onSelect, isOpen }: SidebarProps) {
         ))}
       </nav>
     </aside>
-  )
+  );
 }

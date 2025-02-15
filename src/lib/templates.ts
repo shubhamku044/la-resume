@@ -17,4 +17,4 @@ export const templates = [
     description: 'A creative resume template with a unique layout.',
     image: '/templates/creative.jpeg',
   },
-]
+];
