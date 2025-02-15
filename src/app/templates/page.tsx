@@ -26,22 +26,22 @@ export default function TemplatesPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {templates.slice(0, 6).map((template) => (
-          <div
-            key={template.id}
-            className="border p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center"
-          >
-            <div className="w-full aspect-[210/297] overflow-hidden rounded-lg bg-gray-100">
-              <Image
-                src={template.image}
-                alt={template.name}
-                width={210}
-                height={297}
-                className="w-full h-full object-cover rounded-lg"
-              />
+          <Link href={`/resume/`} key={template.id}>
+            <div className="border p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+              <div className="w-full aspect-[210/297] overflow-hidden rounded-lg bg-gray-100">
+                <Image
+                  src={template.image}
+                  alt={template.name}
+                  width={210}
+                  height={297}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+
+              <h2 className="text-md font-semibold mt-2 text-center">{template.name}</h2>
+              <p className="text-gray-600 text-sm text-center">{template.description}</p>
             </div>
-            <h2 className="text-md font-semibold mt-2 text-center">{template.name}</h2>
-            <p className="text-gray-600 text-sm text-center">{template.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
