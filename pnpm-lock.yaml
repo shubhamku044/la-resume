@@ -14,6 +14,9 @@ importers:
       '@radix-ui/react-dialog':
         specifier: ^1.1.6
         version: 1.1.6(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@radix-ui/react-label':
+        specifier: ^2.1.2
+        version: 2.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-separator':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -69,6 +72,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
+      '@next/eslint-plugin-next':
+        specifier: ^15.1.7
+        version: 15.1.7
       '@types/node':
         specifier: ^20
         version: 20.17.17
@@ -87,6 +93,9 @@ importers:
       eslint-config-prettier:
         specifier: ^10.0.1
         version: 10.0.1(eslint@9.20.1(jiti@2.4.2))
+      eslint-plugin-react-hooks:
+        specifier: ^5.1.0
+        version: 5.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-tailwindcss:
         specifier: ^3.18.0
         version: 3.18.0(tailwindcss@3.4.17)
@@ -563,6 +572,19 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
       '@types/react':
+        optional: true
+
+  '@radix-ui/react-label@2.1.2':
+    resolution: {integrity: sha512-zo1uGMTaNlHehDyFQcDZXRJhUPDuukcnHz0/jnrup0JA6qL+AFpAnty+7VKa9esuU5xTblAZzTGYJKSKaBxBhw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
         optional: true
 
   '@radix-ui/react-popper@1.2.2':
@@ -3019,6 +3041,15 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@types/react': 19.0.8
+
+  '@radix-ui/react-label@2.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@radix-ui/react-primitive': 2.0.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    optionalDependencies:
+      '@types/react': 19.0.8
+      '@types/react-dom': 19.0.3(@types/react@19.0.8)
 
   '@radix-ui/react-popper@1.2.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:

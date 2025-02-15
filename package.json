@@ -12,6 +12,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.2",
     "@hookform/resolvers": "^4.0.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-separator": "^1.1.2",
@@ -34,12 +36,14 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.1.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
