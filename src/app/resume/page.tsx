@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import type { UserDetails, Experience } from '@/types/userDetails';
 import { X } from 'lucide-react';
+import { ResumeData } from '@/types/resume';
 
 const initialResumeData: UserDetails = {
   personalInfo: {
@@ -30,6 +31,45 @@ const initialResumeData: UserDetails = {
   accomplishments: [],
   certifications: [],
   projects: [],
+};
+
+export const sampleResumeData: ResumeData = {
+  name: 'John Doe',
+  email: 'johndoe@example.com',
+  phone: '+1 (555) 123-4567',
+  experience: [
+    {
+      position: 'Software Engineer',
+      company: 'TechCorp Inc.',
+      duration: 'Jan 2020 - Present',
+    },
+    {
+      position: 'Frontend Developer',
+      company: 'Web Solutions Ltd.',
+      duration: 'Jul 2018 - Dec 2019',
+    },
+  ],
+  education: [
+    {
+      degree: 'Bachelor of Science in Computer Science',
+      institution: 'University of California, Berkeley',
+      year: '2018',
+    },
+  ],
+  skills: [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'Node.js',
+    'Go',
+    'Blockchain Development',
+    'Solidity',
+    'Foundry',
+    'Tailwind CSS',
+    'AWS',
+    'Docker',
+  ],
 };
 
 const ResumePage = () => {
@@ -80,6 +120,52 @@ const ResumePage = () => {
     }
   };
 
+  const handleDownloadLatex = async () => {
+    try {
+      const response = await fetch('/api/export-latex', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sampleResumeData),
+      });
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'resume.tex';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    } catch (error) {
+      console.error('Failed to download latex', error);
+    }
+  };
+
+  const handleDownloadPdf = async () => {
+    try {
+      const response = await fetch('/api/export-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sampleResumeData),
+      });
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    } catch (error) {
+      console.error('Failed to download pdf', error);
+    }
+  };
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left Panel - Form */}
@@ -97,6 +183,8 @@ const ResumePage = () => {
                 {section.replace(/([A-Z])/g, ' $1').trim()}
               </Button>
             ))}
+            <Button onClick={handleDownloadLatex}>Download latex</Button>
+            <Button onClick={handleDownloadPdf}>Download pdf</Button>
           </div>
 
           {/* Personal Info Form */}
