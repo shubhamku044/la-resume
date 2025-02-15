@@ -9,7 +9,7 @@ interface ProjectsSectionProps {
 export default function ProjectsSection({ userDetails, setUserDetails }: ProjectsSectionProps) {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Projects</h2>
+      <h2 className="mb-4 text-xl font-bold">Projects</h2>
       <ProjectsInput
         projects={userDetails.projects || []}
         onChange={(value) => setUserDetails({ ...userDetails, projects: value })}

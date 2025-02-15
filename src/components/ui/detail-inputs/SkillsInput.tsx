@@ -24,22 +24,22 @@ export default function SkillsInput({ skills, onChange }: SkillsInputProps) {
   return (
     <div>
       <label className="block text-sm font-medium">Skills</label>
-      <div className="flex gap-2 mt-1">
+      <div className="mt-1 flex gap-2">
         <input
           type="text"
           value={newSkill}
           onChange={(e) => setNewSkill(e.target.value)}
           placeholder="Add a skill"
-          className="border p-2 rounded w-full"
+          className="w-full rounded border p-2"
           onKeyDown={(e) => e.key === 'Enter' && addSkill()}
         />
-        <button onClick={addSkill} className="bg-blue-500 text-white px-3 py-2 rounded">
+        <button onClick={addSkill} className="rounded bg-blue-500 px-3 py-2 text-white">
           <Plus size={16} />
         </button>
       </div>
       <div className="mt-2 flex flex-wrap gap-2">
         {skills.map((skill, index) => (
-          <span key={index} className="bg-gray-200 px-3 py-1 rounded flex items-center gap-1">
+          <span key={index} className="flex items-center gap-1 rounded bg-gray-200 px-3 py-1">
             {skill}
             <button onClick={() => removeSkill(index)} className="text-red-500">
               <X size={12} />

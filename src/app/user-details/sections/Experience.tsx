@@ -9,7 +9,7 @@ interface ExperienceSectionProps {
 export default function ExperienceSection({ userDetails, setUserDetails }: ExperienceSectionProps) {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Work Experience</h2>
+      <h2 className="mb-4 text-xl font-bold">Work Experience</h2>
       <ExperienceInput
         experience={userDetails.experience || []}
         onChange={(value) => setUserDetails({ ...userDetails, experience: value })}

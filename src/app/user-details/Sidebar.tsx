@@ -18,14 +18,14 @@ export default function Sidebar() {
   const currentPath = pathname.split('/').pop()
 
   return (
-    <aside className="w-64 min-h-screen bg-gray-100 p-4 border-r">
+    <aside className="min-h-screen w-64 border-r bg-gray-100 p-4">
       <nav className="space-y-2">
         {sections.map(({ key, label }) => (
           <Link key={key} href={`/user-details/${key}`} className="block">
             <span
               className={clsx(
-                'block p-2 rounded text-gray-700 hover:bg-gray-200 transition',
-                currentPath === key && 'bg-blue-500 text-white font-semibold'
+                'block rounded p-2 text-gray-700 transition hover:bg-gray-200',
+                currentPath === key && 'bg-blue-500 font-semibold text-white'
               )}
             >
               {label}

@@ -26,7 +26,7 @@ export default function AccomplishmentsInput({
       />
 
       {/* Certifications Section */}
-      <label className="block text-sm font-medium mt-4">Certifications</label>
+      <label className="mt-4 block text-sm font-medium">Certifications</label>
       <CertificationInput
         certifications={certifications}
         onCertificationsChange={onCertificationsChange}
@@ -75,15 +75,15 @@ function StringListInput({
           onChange={(e) => setNewItem(e.target.value)}
           onKeyDown={handleKeyPress}
           placeholder={placeholder}
-          className="border p-2 rounded w-full"
+          className="w-full rounded border p-2"
         />
-        <button onClick={addItem} className="bg-gray-500 text-white px-3 py-2 rounded">
+        <button onClick={addItem} className="rounded bg-gray-500 px-3 py-2 text-white">
           <Plus size={16} />
         </button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.map((item, index) => (
-          <span key={index} className="bg-gray-200 px-3 py-1 rounded flex items-center gap-1">
+          <span key={index} className="flex items-center gap-1 rounded bg-gray-200 px-3 py-1">
             {item}
             <button onClick={() => removeItem(index)} className="text-red-500">
               <X size={12} />
@@ -131,10 +131,10 @@ function CertificationInput({
   return (
     <div>
       {certifications.map((cert, index) => (
-        <div key={index} className="border p-4 rounded mb-3 relative">
+        <div key={index} className="relative mb-3 rounded border p-4">
           <button
             onClick={() => removeCertification(index)}
-            className="absolute top-2 right-2 text-red-500"
+            className="absolute right-2 top-2 text-red-500"
           >
             <X size={16} />
           </button>
@@ -147,7 +147,7 @@ function CertificationInput({
             onChange={(e) => updateCertification(index, 'title', e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter certification title"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
 
           <label className="text-sm font-medium">Provider</label>
@@ -157,7 +157,7 @@ function CertificationInput({
             onChange={(e) => updateCertification(index, 'provider', e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter provider name"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
 
           <label className="text-sm font-medium">Date</label>
@@ -165,7 +165,7 @@ function CertificationInput({
             type="date"
             value={cert.date}
             onChange={(e) => updateCertification(index, 'date', e.target.value)}
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
 
           <label className="text-sm font-medium">Credential URL (Optional)</label>
@@ -175,11 +175,11 @@ function CertificationInput({
             onChange={(e) => updateCertification(index, 'credentialUrl', e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter credential URL"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
         </div>
       ))}
-      <button onClick={addCertification} className="bg-blue-500 text-white px-3 py-2 rounded mt-2">
+      <button onClick={addCertification} className="mt-2 rounded bg-blue-500 px-3 py-2 text-white">
         <Plus size={16} className="mr-2 inline" /> Add Certification
       </button>
     </div>

@@ -19,7 +19,7 @@ export default function PersonalInfoSection({
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Personal Info</h2>
+      <h2 className="mb-4 text-xl font-bold">Personal Info</h2>
       <PersonalInfoInput
         userDetails={userDetails.personalInfo} // ✅ Pass only personalInfo
         onChange={handlePersonalInfoChange} // ✅ Update only personalInfo

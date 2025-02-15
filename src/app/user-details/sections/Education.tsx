@@ -9,7 +9,7 @@ interface EducationSectionProps {
 export default function EducationSection({ userDetails, setUserDetails }: EducationSectionProps) {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Education</h2>
+      <h2 className="mb-4 text-xl font-bold">Education</h2>
       <EducationInput
         education={userDetails.education || []}
         onChange={(value) => setUserDetails({ ...userDetails, education: value })}
