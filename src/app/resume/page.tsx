@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import type { UserDetails } from '@/types/userDetails'
+import type { UserDetails, Experience } from '@/types/userDetails'
 
 const initialResumeData: UserDetails = {
   personalInfo: {
@@ -13,6 +13,7 @@ const initialResumeData: UserDetails = {
     email: '',
     phone: '',
     dob: '',
+    title: '',
     address: '',
     summary: '',
     linkedin: '',
@@ -33,12 +34,13 @@ const initialResumeData: UserDetails = {
 const ResumePage = () => {
   const [resumeData, setResumeData] = useState<UserDetails>(initialResumeData)
   const [activeSection, setActiveSection] = useState('personalInfo')
-  const [currentExperience, setCurrentExperience] = useState({
+  const [currentExperience, setCurrentExperience] = useState<Experience>({
     company: '',
-    position: '',
+    role: '',
     startDate: '',
     endDate: '',
-    description: '',
+    responsibilities: [],
+    location: '',
   })
 
   useEffect(() => {
@@ -49,11 +51,7 @@ const ResumePage = () => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log('Resume data', resumeData)
-  }, [resumeData])
-
-  const updatePersonalInfo = (field, value) => {
+  const updatePersonalInfo = (field: keyof UserDetails['personalInfo'], value: string) => {
     setResumeData((prev) => ({
       ...prev,
       personalInfo: {
@@ -64,17 +62,18 @@ const ResumePage = () => {
   }
 
   const addExperience = () => {
-    if (currentExperience.company && currentExperience.position) {
+    if (currentExperience.company && currentExperience.role) {
       setResumeData((prev) => ({
         ...prev,
-        experience: [...prev.experience, currentExperience],
+        experience: [...(prev.experience || []), currentExperience],
       }))
       setCurrentExperience({
         company: '',
-        position: '',
+        role: '',
         startDate: '',
         endDate: '',
-        description: '',
+        responsibilities: [],
+        location: '',
       })
     }
   }
@@ -104,17 +103,29 @@ const ResumePage = () => {
               <h2 className="mb-4 text-xl font-bold">Personal Information</h2>
 
               <div className="space-y-4">
-                {Object.keys(resumeData.personalInfo).map((field) => (
-                  <div key={field}>
-                    <Label className="capitalize">{field.replace(/([A-Z])/g, ' $1').trim()}</Label>
-                    <Input
-                      value={resumeData.personalInfo[field]}
-                      onChange={(e) => updatePersonalInfo(field, e.target.value)}
-                      placeholder={`Enter your ${field.toLowerCase()}`}
-                      className="mt-1"
-                    />
-                  </div>
-                ))}
+                {Object.keys(resumeData.personalInfo).map((field) => {
+                  console.log('field', field)
+                  return (
+                    <div key={field}>
+                      <Label className="capitalize">
+                        {field.replace(/([A-Z])/g, ' $1').trim()}
+                      </Label>
+                      <Input
+                        value={
+                          resumeData.personalInfo[field as keyof typeof resumeData.personalInfo]
+                        }
+                        onChange={(e) =>
+                          updatePersonalInfo(
+                            field as keyof UserDetails['personalInfo'],
+                            e.target.value
+                          )
+                        }
+                        placeholder={`Enter your ${field.toLowerCase()}`}
+                        className="mt-1"
+                      />
+                    </div>
+                  )
+                })}
               </div>
             </Card>
           )}
@@ -143,7 +154,7 @@ const ResumePage = () => {
                 <div>
                   <Label>Position</Label>
                   <Input
-                    value={currentExperience.position}
+                    value={currentExperience.role}
                     onChange={(e) =>
                       setCurrentExperience((prev) => ({
                         ...prev,
@@ -189,7 +200,7 @@ const ResumePage = () => {
                 <div>
                   <Label>Description</Label>
                   <Textarea
-                    value={currentExperience.description}
+                    value={currentExperience.responsibilities}
                     onChange={(e) =>
                       setCurrentExperience((prev) => ({
                         ...prev,
@@ -211,10 +222,10 @@ const ResumePage = () => {
               <div className="mt-6">
                 <h3 className="mb-3 text-lg font-semibold">Added Experiences</h3>
                 <div className="space-y-3">
-                  {resumeData.experience.map((exp, index) => (
+                  {resumeData.experience?.map((exp, index) => (
                     <Card key={index} className="p-4">
                       <h4 className="font-bold">{exp.company}</h4>
-                      <p className="text-sm text-gray-600">{exp.position}</p>
+                      <p className="text-sm text-gray-600">{exp.company}</p>
                       <p className="text-xs text-gray-500">
                         {exp.startDate} - {exp.endDate}
                       </p>
@@ -249,7 +260,7 @@ const ResumePage = () => {
                 <div>
                   <Label>Position</Label>
                   <Input
-                    value={currentExperience.position}
+                    value={currentExperience.role}
                     onChange={(e) =>
                       setCurrentExperience((prev) => ({
                         ...prev,
@@ -295,7 +306,7 @@ const ResumePage = () => {
                 <div>
                   <Label>Description</Label>
                   <Textarea
-                    value={currentExperience.description}
+                    value={currentExperience.responsibilities}
                     onChange={(e) =>
                       setCurrentExperience((prev) => ({
                         ...prev,
@@ -317,10 +328,10 @@ const ResumePage = () => {
               <div className="mt-6">
                 <h3 className="mb-3 text-lg font-semibold">Added Experiences</h3>
                 <div className="space-y-3">
-                  {resumeData.experience.map((exp, index) => (
+                  {resumeData.experience?.map((exp, index) => (
                     <Card key={index} className="p-4">
                       <h4 className="font-bold">{exp.company}</h4>
-                      <p className="text-sm text-gray-600">{exp.position}</p>
+                      <p className="text-sm text-gray-600">{exp.company}</p>
                       <p className="text-xs text-gray-500">
                         {exp.startDate} - {exp.endDate}
                       </p>
@@ -336,37 +347,39 @@ const ResumePage = () => {
       {/* Right Panel - Preview */}
       <div className="w-1/2 bg-white p-6">
         <Card className="h-full p-6">
-          <h1 className="mb-2 text-2xl font-bold">{resumeData.personalInfo.name || 'Your Name'}</h1>
+          <h1 className="mb-2 text-2xl font-bold">
+            {resumeData.personalInfo.fullName || 'Your Name'}
+          </h1>
           <p className="mb-4 text-gray-600">{resumeData.personalInfo.title || 'Your Title'}</p>
 
           <div className="mb-6 space-y-2 text-sm text-gray-600">
             {resumeData.personalInfo.email && <p>📧 {resumeData.personalInfo.email}</p>}
             {resumeData.personalInfo.phone && <p>📱 {resumeData.personalInfo.phone}</p>}
-            {resumeData.personalInfo.location && <p>📍 {resumeData.personalInfo.location}</p>}
+            {resumeData.personalInfo.address && <p>📍 {resumeData.personalInfo.address}</p>}
             {resumeData.personalInfo.linkedin && (
               <p>🔗 LinkedIn: {resumeData.personalInfo.linkedin}</p>
             )}
             {resumeData.personalInfo.github && <p>💻 GitHub: {resumeData.personalInfo.github}</p>}
           </div>
 
-          {resumeData.experience.length > 0 && (
+          {resumeData.experience?.length && (
             <div className="mb-6">
               <h2 className="mb-3 text-xl font-bold">Experience</h2>
               <div className="space-y-4">
                 {resumeData.experience.map((exp, index) => (
                   <div key={index} className="border-b pb-4">
                     <h3 className="font-bold">{exp.company}</h3>
-                    <p className="text-gray-600">{exp.position}</p>
+                    <p className="text-gray-600">{exp.responsibilities}</p>
                     <p className="text-sm text-gray-500">
                       {exp.startDate} - {exp.endDate}
                     </p>
-                    <p className="mt-2 text-sm">{exp.description}</p>
+                    <p className="mt-2 text-sm">{exp.responsibilities}</p>
                   </div>
                 ))}
               </div>
             </div>
           )}
-          {resumeData.education.length > 0 && (
+          {resumeData.education?.length && (
             <div className="mt-2">
               <h2 className="mb-3 text-xl font-bold">Education</h2>
               <div className="space-y-4">
@@ -375,7 +388,7 @@ const ResumePage = () => {
                     <h3 className="font-bold">{edu.school}</h3>
                     <p className="text-gray-600">{edu.degree}</p>
                     <p className="text-sm text-gray-500">
-                      {edu.startDate} - {edu.endDate}
+                      {edu.startYear} - {edu.endYear}
                     </p>
                   </div>
                 ))}

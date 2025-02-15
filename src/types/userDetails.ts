@@ -11,6 +11,7 @@ export type UserDetails = {
 // ✅ New Type for Personal Info
 export type PersonalInfo = {
   fullName: string
+  title?: string
   email: string
   phone: string
   dob?: string
