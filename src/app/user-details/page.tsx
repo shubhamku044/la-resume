@@ -69,6 +69,7 @@ const setUserDetailsToLocalStorage = (userDetails: UserDetails): void => {
 
 export default function UserDetailsPage() {
   const [selectedSection, setSelectedSection] = useState<string>('personal')
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
 
   // State to hold the user details
   const [userDetails, setUserDetails] = useState<UserDetails>(() =>
@@ -84,11 +85,15 @@ export default function UserDetailsPage() {
     <SidebarProvider defaultOpen={true}>
       <div className="flex h-screen">
         {/* Sidebar */}
-        <AppSidebar selected={selectedSection} onSelect={setSelectedSection} />
+        <AppSidebar isOpen={sidebarOpen} selected={selectedSection} onSelect={setSelectedSection} />
 
         {/* Main Content */}
         <main className="flex-1 p-6">
-          <SidebarTrigger />
+          <SidebarTrigger
+            onClick={() => {
+              setSidebarOpen((sidebar) => !sidebar)
+            }}
+          />
 
           {/* Render Section Dynamically */}
           {selectedSection === 'personal' && (
