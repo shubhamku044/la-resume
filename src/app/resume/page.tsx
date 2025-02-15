@@ -1,28 +1,37 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
+import type { UserDetails } from '@/types/userDetails'
 
-const initialResumeData = {
+const initialResumeData: UserDetails = {
   personalInfo: {
-    name: '',
-    title: '',
+    fullName: '',
     email: '',
     phone: '',
-    location: '',
+    dob: '',
+    address: '',
+    summary: '',
     linkedin: '',
     github: '',
+    portfolio: '',
+    twitter: '',
+    languages: [],
+    interests: [],
   },
-  experience: [],
-  education: [],
   skills: [],
+  education: [],
+  experience: [],
+  accomplishments: [],
+  certifications: [],
+  projects: [],
 }
 
 const ResumePage = () => {
-  const [resumeData, setResumeData] = useState(initialResumeData)
+  const [resumeData, setResumeData] = useState<UserDetails>(initialResumeData)
   const [activeSection, setActiveSection] = useState('personalInfo')
   const [currentExperience, setCurrentExperience] = useState({
     company: '',
@@ -31,6 +40,18 @@ const ResumePage = () => {
     endDate: '',
     description: '',
   })
+
+  useEffect(() => {
+    const mydata: string | null = localStorage.getItem('userDetails')
+
+    if (mydata) {
+      setResumeData(JSON.parse(mydata))
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log('Resume data', resumeData)
+  }, [resumeData])
 
   const updatePersonalInfo = (field, value) => {
     setResumeData((prev) => ({
