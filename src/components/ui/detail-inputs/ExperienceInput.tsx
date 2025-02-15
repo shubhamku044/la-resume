@@ -37,12 +37,12 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="mx-auto max-w-3xl">
       {experience.map((exp, index) => (
-        <div key={index} className="border p-6 rounded mb-4 relative w-full max-w-3xl">
+        <div key={index} className="relative mb-4 w-full max-w-3xl rounded border p-6">
           <button
             onClick={() => removeExperience(index)}
-            className="absolute top-2 right-2 text-red-500"
+            className="absolute right-2 top-2 text-red-500"
           >
             <X size={16} />
           </button>
@@ -54,7 +54,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
               value={exp.company}
               onChange={(e) => updateExperience(index, 'company', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -65,7 +65,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
               value={exp.role}
               onChange={(e) => updateExperience(index, 'role', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -77,7 +77,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
                 value={exp.startDate}
                 onChange={(e) => updateExperience(index, 'startDate', e.target.value)}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
             <div className="flex-1">
@@ -87,7 +87,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
                 value={exp.endDate || ''}
                 onChange={(e) => updateExperience(index, 'endDate', e.target.value)}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
               value={exp.location}
               onChange={(e) => updateExperience(index, 'location', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function ExperienceInput({ experience, onChange }: ExperienceInpu
         </div>
       ))}
 
-      <button onClick={addExperience} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+      <button onClick={addExperience} className="mt-4 rounded bg-blue-500 px-4 py-2 text-white">
         <Plus size={16} className="mr-2 inline" /> Add Experience
       </button>
     </div>
@@ -150,7 +150,7 @@ function ResponsibilitiesInput({
 
   return (
     <div>
-      <label className="block font-medium mt-2">Responsibilities</label>
+      <label className="mt-2 block font-medium">Responsibilities</label>
       <div className="flex gap-2">
         <input
           type="text"
@@ -158,15 +158,15 @@ function ResponsibilitiesInput({
           onChange={(e) => setNewResponsibility(e.target.value)}
           onKeyDown={handleKeyPress}
           placeholder="Add a responsibility"
-          className="border p-2 rounded w-full"
+          className="w-full rounded border p-2"
         />
-        <button onClick={addResponsibility} className="bg-gray-500 text-white px-3 py-2 rounded">
+        <button onClick={addResponsibility} className="rounded bg-gray-500 px-3 py-2 text-white">
           <Plus size={16} />
         </button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {responsibilities.map((res, index) => (
-          <span key={index} className="bg-gray-200 px-3 py-1 rounded flex items-center gap-1">
+          <span key={index} className="flex items-center gap-1 rounded bg-gray-200 px-3 py-1">
             {res}
             <button onClick={() => removeResponsibility(index)} className="text-red-500">
               <X size={12} />

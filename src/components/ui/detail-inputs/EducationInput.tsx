@@ -43,12 +43,12 @@ export default function EducationInput({ education, onChange }: EducationInputPr
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="mx-auto max-w-3xl">
       {education.map((edu, index) => (
-        <div key={index} className="border p-6 rounded mb-4 relative w-full max-w-3xl">
+        <div key={index} className="relative mb-4 w-full max-w-3xl rounded border p-6">
           <button
             onClick={() => removeEducation(index)}
-            className="absolute top-2 right-2 text-red-500"
+            className="absolute right-2 top-2 text-red-500"
           >
             <X size={16} />
           </button>
@@ -60,7 +60,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
               value={edu.school}
               onChange={(e) => updateEducation(index, 'school', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -71,7 +71,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
               value={edu.degree}
               onChange={(e) => updateEducation(index, 'degree', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -82,7 +82,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
               value={edu.fieldOfStudy}
               onChange={(e) => updateEducation(index, 'fieldOfStudy', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -94,7 +94,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                 value={edu.startYear || ''}
                 onChange={(e) => updateEducation(index, 'startYear', Number(e.target.value))}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
             <div className="flex-1">
@@ -104,7 +104,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                 value={edu.endYear || ''}
                 onChange={(e) => updateEducation(index, 'endYear', Number(e.target.value))}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
               value={edu.location}
               onChange={(e) => updateEducation(index, 'location', e.target.value)}
               onKeyDown={handleKeyPress}
-              className="border p-2 rounded w-full"
+              className="w-full rounded border p-2"
             />
           </div>
 
@@ -132,7 +132,7 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                   if (value !== undefined) updateEducation(index, 'percentage', undefined)
                 }}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
 
@@ -147,14 +147,14 @@ export default function EducationInput({ education, onChange }: EducationInputPr
                   if (value !== undefined) updateEducation(index, 'gpa', undefined)
                 }}
                 onKeyDown={handleKeyPress}
-                className="border p-2 rounded w-full"
+                className="w-full rounded border p-2"
               />
             </div>
           </div>
         </div>
       ))}
 
-      <button onClick={addEducation} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+      <button onClick={addEducation} className="mt-4 rounded bg-blue-500 px-4 py-2 text-white">
         <Plus size={16} className="mr-2 inline" /> Add Education
       </button>
     </div>

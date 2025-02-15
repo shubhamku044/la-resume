@@ -24,8 +24,8 @@ export default function DetailSection({
   }
 
   return (
-    <div className="p-6 w-full">
-      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+    <div className="w-full p-6">
+      <h2 className="mb-4 text-2xl font-semibold">{title}</h2>
 
       {sectionKey === 'personalInfo' && (
         <PersonalInfoInput

@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center px-6 py-4 border-b bg-white">
+    <header className="flex items-center justify-between border-b bg-white px-6 py-4">
       {/* Clickable Logo */}
-      <Link href="/" className="text-lg font-semibold hover:opacity-80 transition">
+      <Link href="/" className="text-lg font-semibold transition hover:opacity-80">
         Logo
       </Link>
 

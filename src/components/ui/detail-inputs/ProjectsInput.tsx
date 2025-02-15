@@ -9,7 +9,7 @@ interface ProjectsInputProps {
 
 // ✅ Heading Component (Separated for Clarity)
 export function ProjectsSectionHeading() {
-  return <h2 className="text-lg font-semibold mb-3">Projects</h2>
+  return <h2 className="mb-3 text-lg font-semibold">Projects</h2>
 }
 
 export default function ProjectsInput({ projects, onChange }: ProjectsInputProps) {
@@ -36,10 +36,10 @@ export default function ProjectsInput({ projects, onChange }: ProjectsInputProps
   return (
     <div>
       {projects.map((project, index) => (
-        <div key={index} className="border p-4 rounded mb-3 relative">
+        <div key={index} className="relative mb-3 rounded border p-4">
           <button
             onClick={() => removeProject(index)}
-            className="absolute top-2 right-2 text-red-500"
+            className="absolute right-2 top-2 text-red-500"
           >
             <X size={16} />
           </button>
@@ -52,7 +52,7 @@ export default function ProjectsInput({ projects, onChange }: ProjectsInputProps
             onChange={(e) => updateProject(index, 'title', e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter project title"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
 
           <label className="text-sm font-medium">Project Description</label>
@@ -60,7 +60,7 @@ export default function ProjectsInput({ projects, onChange }: ProjectsInputProps
             value={project.description}
             onChange={(e) => updateProject(index, 'description', e.target.value)}
             placeholder="Enter project description"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
             rows={3}
           />
 
@@ -78,12 +78,12 @@ export default function ProjectsInput({ projects, onChange }: ProjectsInputProps
             onChange={(e) => updateProject(index, 'link', e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Enter project link"
-            className="border p-2 rounded w-full mb-2"
+            className="mb-2 w-full rounded border p-2"
           />
         </div>
       ))}
 
-      <button onClick={addProject} className="bg-blue-500 text-white px-3 py-2 rounded mt-2">
+      <button onClick={addProject} className="mt-2 rounded bg-blue-500 px-3 py-2 text-white">
         <Plus size={16} className="mr-2 inline" /> Add Project
       </button>
     </div>
@@ -128,16 +128,16 @@ function StringListInput({
           onChange={(e) => setNewItem(e.target.value)}
           onKeyDown={handleKeyPress}
           placeholder={placeholder}
-          className="border p-2 rounded w-full"
+          className="w-full rounded border p-2"
         />
-        <button onClick={addItem} className="bg-gray-500 text-white px-3 py-2 rounded">
+        <button onClick={addItem} className="rounded bg-gray-500 px-3 py-2 text-white">
           <Plus size={16} />
         </button>
       </div>
 
       <div className="mt-3 flex flex-wrap gap-2">
         {items.map((item, index) => (
-          <span key={index} className="bg-gray-200 px-3 py-1 rounded flex items-center gap-1">
+          <span key={index} className="flex items-center gap-1 rounded bg-gray-200 px-3 py-1">
             {item}
             <button onClick={() => removeItem(index)} className="text-red-500">
               <X size={12} />
