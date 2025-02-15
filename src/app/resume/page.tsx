@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import type { UserDetails, Experience } from '@/types/userDetails'
+import { X } from 'lucide-react'
 
 const initialResumeData: UserDetails = {
   personalInfo: {
@@ -48,6 +49,7 @@ const ResumePage = () => {
 
     if (mydata) {
       setResumeData(JSON.parse(mydata))
+      console.log('mydata', JSON.parse(mydata))
     }
   }, [])
 
@@ -223,12 +225,38 @@ const ResumePage = () => {
                 <h3 className="mb-3 text-lg font-semibold">Added Experiences</h3>
                 <div className="space-y-3">
                   {resumeData.experience?.map((exp, index) => (
-                    <Card key={index} className="p-4">
-                      <h4 className="font-bold">{exp.company}</h4>
-                      <p className="text-sm text-gray-600">{exp.company}</p>
-                      <p className="text-xs text-gray-500">
-                        {exp.startDate} - {exp.endDate}
-                      </p>
+                    <Card key={index} className="relative p-4">
+                      <div
+                        className="absolute right-0 top-0 flex size-6 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-red-600"
+                        onClick={() => {
+                          setResumeData((prev) => ({
+                            ...prev,
+                            experience: prev.experience?.filter((_, i) => i !== index),
+                          }))
+                        }}
+                      >
+                        <X className="text-white" size={18} />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-bold">{exp.company}</h4>
+                        <p className="text-sm text-gray-600">{exp.location}</p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p>{exp.role}</p>
+                        <p className="text-end text-xs text-gray-500">
+                          {exp.startDate} - {exp.endDate}
+                        </p>
+                      </div>
+                      <ul className="ml-6 mt-4 list-disc">
+                        {typeof exp.responsibilities === 'object' &&
+                          exp.responsibilities.map((res) => {
+                            return (
+                              <li key={res} className="text-xs">
+                                {res}
+                              </li>
+                            )
+                          })}
+                      </ul>
                     </Card>
                   ))}
                 </div>
