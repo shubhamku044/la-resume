@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import clsx from 'clsx'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
 
 const sections = [
   { key: 'personal-info', label: 'Personal Info' },
@@ -11,11 +11,11 @@ const sections = [
   { key: 'experience', label: 'Experience' },
   { key: 'accomplishments-certifications', label: 'Accomplishments & Certifications' },
   { key: 'projects', label: 'Projects' },
-]
+];
 
 export default function Sidebar() {
-  const pathname = usePathname()
-  const currentPath = pathname.split('/').pop()
+  const pathname = usePathname();
+  const currentPath = pathname.split('/').pop();
 
   return (
     <aside className="min-h-screen w-64 border-r bg-gray-100 p-4">
@@ -34,5 +34,5 @@ export default function Sidebar() {
         ))}
       </nav>
     </aside>
-  )
+  );
 }

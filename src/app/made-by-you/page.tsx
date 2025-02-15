@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import Link from 'next/link';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function MadeByYouPage() {
   return (
@@ -23,5 +23,5 @@ export default function MadeByYouPage() {
       <h1 className="mb-4 text-center text-2xl font-bold">Your Created Resumes</h1>
       <p className="text-center text-gray-500">You haven&apos;t created any resumes yet.</p>
     </div>
-  )
+  );
 }

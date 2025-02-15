@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { Plus, X } from 'lucide-react'
-import { Certification } from '@/types/userDetails'
+import { useState } from 'react';
+import { Plus, X } from 'lucide-react';
+import { Certification } from '@/types/userDetails';
 
 interface AccomplishmentsInputProps {
-  accomplishments: string[]
-  certifications: Certification[]
-  onAccomplishmentsChange: (accomplishments: string[]) => void
-  onCertificationsChange: (certifications: Certification[]) => void
+  accomplishments: string[];
+  certifications: Certification[];
+  onAccomplishmentsChange: (accomplishments: string[]) => void;
+  onCertificationsChange: (certifications: Certification[]) => void;
 }
 
 export default function AccomplishmentsInput({
@@ -32,7 +32,7 @@ export default function AccomplishmentsInput({
         onCertificationsChange={onCertificationsChange}
       />
     </div>
-  )
+  );
 }
 
 // ✅ Reusable String List Input (for Accomplishments)
@@ -41,30 +41,30 @@ function StringListInput({
   placeholder,
   onChange,
 }: {
-  items: string[]
-  placeholder: string
-  onChange: (items: string[]) => void
+  items: string[];
+  placeholder: string;
+  onChange: (items: string[]) => void;
 }) {
-  const [newItem, setNewItem] = useState('')
+  const [newItem, setNewItem] = useState('');
 
   const addItem = () => {
-    const trimmedItem = newItem.trim()
+    const trimmedItem = newItem.trim();
     if (trimmedItem && !items.includes(trimmedItem)) {
-      onChange([...items, trimmedItem])
-      setNewItem('')
+      onChange([...items, trimmedItem]);
+      setNewItem('');
     }
-  }
+  };
 
   const removeItem = (index: number) => {
-    onChange(items.filter((_, i) => i !== index))
-  }
+    onChange(items.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault()
-      addItem()
+      e.preventDefault();
+      addItem();
     }
-  }
+  };
 
   return (
     <div>
@@ -92,7 +92,7 @@ function StringListInput({
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 // ✅ Certification Input Component
@@ -100,33 +100,33 @@ function CertificationInput({
   certifications,
   onCertificationsChange,
 }: {
-  certifications: Certification[]
-  onCertificationsChange: (certifications: Certification[]) => void
+  certifications: Certification[];
+  onCertificationsChange: (certifications: Certification[]) => void;
 }) {
   const addCertification = () => {
     onCertificationsChange([
       ...certifications,
       { title: '', provider: '', date: '', credentialUrl: '' },
-    ])
-  }
+    ]);
+  };
 
   const updateCertification = (index: number, key: keyof Certification, value: string) => {
     const updatedCertifications = certifications.map((cert, i) =>
       i === index ? { ...cert, [key]: value } : cert
-    )
-    onCertificationsChange(updatedCertifications)
-  }
+    );
+    onCertificationsChange(updatedCertifications);
+  };
 
   const removeCertification = (index: number) => {
-    onCertificationsChange(certifications.filter((_, i) => i !== index))
-  }
+    onCertificationsChange(certifications.filter((_, i) => i !== index));
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault()
-      ;(e.target as HTMLInputElement).blur()
+      e.preventDefault();
+      (e.target as HTMLInputElement).blur();
     }
-  }
+  };
 
   return (
     <div>
@@ -183,5 +183,5 @@ function CertificationInput({
         <Plus size={16} className="mr-2 inline" /> Add Certification
       </button>
     </div>
-  )
+  );
 }

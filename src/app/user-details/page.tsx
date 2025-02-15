@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { AppSidebar } from '@/components/ui/AppSidebar'
-import PersonalInfoSection from './sections/PersonalInfo'
-import SkillsSection from './sections/Skills'
-import EducationSection from './sections/Education'
-import ExperienceSection from './sections/Experience'
-import AccomplishmentsSection from './sections/Accomplishments'
-import ProjectsSection from './sections/Projects'
-import { UserDetails } from '@/types/userDetails'
+import { useState, useEffect } from 'react';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/ui/AppSidebar';
+import PersonalInfoSection from './sections/PersonalInfo';
+import SkillsSection from './sections/Skills';
+import EducationSection from './sections/Education';
+import ExperienceSection from './sections/Experience';
+import AccomplishmentsSection from './sections/Accomplishments';
+import ProjectsSection from './sections/Projects';
+import { UserDetails } from '@/types/userDetails';
 
 // Helper function to retrieve user details from localStorage
 const getUserDetailsFromLocalStorage = (): UserDetails => {
@@ -34,9 +34,9 @@ const getUserDetailsFromLocalStorage = (): UserDetails => {
       accomplishments: [],
       certifications: [],
       projects: [],
-    }
+    };
   }
-  const storedData = localStorage.getItem('userDetails')
+  const storedData = localStorage.getItem('userDetails');
   return storedData
     ? JSON.parse(storedData)
     : {
@@ -59,27 +59,27 @@ const getUserDetailsFromLocalStorage = (): UserDetails => {
         accomplishments: [],
         certifications: [],
         projects: [],
-      }
-}
+      };
+};
 
 // Helper function to store user details in localStorage
 const setUserDetailsToLocalStorage = (userDetails: UserDetails): void => {
-  localStorage.setItem('userDetails', JSON.stringify(userDetails))
-}
+  localStorage.setItem('userDetails', JSON.stringify(userDetails));
+};
 
 export default function UserDetailsPage() {
-  const [selectedSection, setSelectedSection] = useState<string>('personal')
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
+  const [selectedSection, setSelectedSection] = useState<string>('personal');
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   // State to hold the user details
   const [userDetails, setUserDetails] = useState<UserDetails>(() =>
     getUserDetailsFromLocalStorage()
-  )
+  );
 
   // Whenever userDetails is updated, save it to localStorage
   useEffect(() => {
-    setUserDetailsToLocalStorage(userDetails)
-  }, [userDetails])
+    setUserDetailsToLocalStorage(userDetails);
+  }, [userDetails]);
 
   return (
     <SidebarProvider defaultOpen={true}>
@@ -91,7 +91,7 @@ export default function UserDetailsPage() {
         <main className="flex-1 p-6">
           <SidebarTrigger
             onClick={() => {
-              setSidebarOpen((sidebar) => !sidebar)
+              setSidebarOpen((sidebar) => !sidebar);
             }}
           />
 
@@ -117,5 +117,5 @@ export default function UserDetailsPage() {
         </main>
       </div>
     </SidebarProvider>
-  )
+  );
 }

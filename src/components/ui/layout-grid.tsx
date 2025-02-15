@@ -1,28 +1,28 @@
-'use client'
-import React, { JSX, useState } from 'react'
-import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
+'use client';
+import React, { JSX, useState } from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 type Card = {
-  id: number
-  content: JSX.Element | React.ReactNode | string
-  className: string
-  thumbnail: string
-}
+  id: number;
+  content: JSX.Element | React.ReactNode | string;
+  className: string;
+  thumbnail: string;
+};
 
 export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
-  const [selected, setSelected] = useState<Card | null>(null)
-  const [lastSelected, setLastSelected] = useState<Card | null>(null)
+  const [selected, setSelected] = useState<Card | null>(null);
+  const [lastSelected, setLastSelected] = useState<Card | null>(null);
 
   const handleClick = (card: Card) => {
-    setLastSelected(selected)
-    setSelected(card)
-  }
+    setLastSelected(selected);
+    setSelected(card);
+  };
 
   const handleOutsideClick = () => {
-    setLastSelected(selected)
-    setSelected(null)
-  }
+    setLastSelected(selected);
+    setSelected(null);
+  };
 
   return (
     <div className="relative mx-auto grid size-full max-w-7xl grid-cols-1  gap-4 p-10 md:grid-cols-3">
@@ -55,8 +55,8 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
         animate={{ opacity: selected?.id ? 0.3 : 0 }}
       />
     </div>
-  )
-}
+  );
+};
 
 const ImageComponent = ({ card }: { card: Card }) => {
   return (
@@ -70,8 +70,8 @@ const ImageComponent = ({ card }: { card: Card }) => {
       )}
       alt="thumbnail"
     />
-  )
-}
+  );
+};
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
@@ -108,5 +108,5 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         {selected?.content}
       </motion.div>
     </div>
-  )
-}
+  );
+};

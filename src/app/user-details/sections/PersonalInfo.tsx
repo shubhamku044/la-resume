@@ -1,9 +1,9 @@
-import PersonalInfoInput from '@/components/ui/detail-inputs/PersonalInfoInput'
-import { UserDetails } from '@/types/userDetails'
+import PersonalInfoInput from '@/components/ui/detail-inputs/PersonalInfoInput';
+import { UserDetails } from '@/types/userDetails';
 
 interface PersonalInfoSectionProps {
-  userDetails: UserDetails
-  setUserDetails: (details: UserDetails) => void
+  userDetails: UserDetails;
+  setUserDetails: (details: UserDetails) => void;
 }
 
 export default function PersonalInfoSection({
@@ -14,8 +14,8 @@ export default function PersonalInfoSection({
     setUserDetails({
       ...userDetails,
       personalInfo: { ...userDetails.personalInfo, ...updatedPersonalInfo },
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -25,5 +25,5 @@ export default function PersonalInfoSection({
         onChange={handlePersonalInfoChange} // ✅ Update only personalInfo
       />
     </div>
-  )
+  );
 }

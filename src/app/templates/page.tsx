@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { templates } from '@/lib/templates'
-import Image from 'next/image'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import Link from 'next/link';
+import { templates } from '@/lib/templates';
+import Image from 'next/image';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 export default function TemplatesPage() {
   return (
@@ -45,5 +45,5 @@ export default function TemplatesPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }

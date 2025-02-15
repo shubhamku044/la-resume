@@ -1,37 +1,37 @@
-import { useState } from 'react'
-import { PersonalInfo } from '@/types/userDetails'
-import { Plus, X } from 'lucide-react'
+import { useState } from 'react';
+import { PersonalInfo } from '@/types/userDetails';
+import { Plus, X } from 'lucide-react';
 
 interface PersonalInfoInputProps {
-  userDetails: Partial<PersonalInfo>
-  onChange: (details: Partial<PersonalInfo>) => void
+  userDetails: Partial<PersonalInfo>;
+  onChange: (details: Partial<PersonalInfo>) => void;
 }
 
 export default function PersonalInfoInput({ userDetails, onChange }: PersonalInfoInputProps) {
   const handleChange = <K extends keyof PersonalInfo>(key: K, value: PersonalInfo[K]) => {
-    onChange({ ...userDetails, [key]: value })
-  }
+    onChange({ ...userDetails, [key]: value });
+  };
 
   const handleArrayChange = (key: keyof PersonalInfo, values: string[]) => {
-    onChange({ ...userDetails, [key]: values })
-  }
+    onChange({ ...userDetails, [key]: values });
+  };
 
   // Input field for array values (Languages & Interests)
   const ArrayInput = ({ label, keyName }: { label: string; keyName: keyof PersonalInfo }) => {
-    const [inputValue, setInputValue] = useState('')
-    const values: string[] = (userDetails[keyName] as string[]) ?? []
+    const [inputValue, setInputValue] = useState('');
+    const values: string[] = (userDetails[keyName] as string[]) ?? [];
 
     const addValue = () => {
       if (inputValue.trim() && !values.includes(inputValue.trim())) {
-        handleArrayChange(keyName, [...values, inputValue.trim()])
-        setInputValue('')
+        handleArrayChange(keyName, [...values, inputValue.trim()]);
+        setInputValue('');
       }
-    }
+    };
 
     const removeValue = (index: number) => {
-      const updatedValues = values.filter((_, i) => i !== index)
-      handleArrayChange(keyName, updatedValues)
-    }
+      const updatedValues = values.filter((_, i) => i !== index);
+      handleArrayChange(keyName, updatedValues);
+    };
 
     return (
       <div>
@@ -64,8 +64,8 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
           ))}
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="space-y-6">
@@ -145,5 +145,5 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
         </div>
       </div>
     </div>
-  )
+  );
 }
