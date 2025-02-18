@@ -1,18 +1,18 @@
 export const templates = [
   {
-    id: 'template-1',
+    id: 'classic',
     name: 'Classic Resume',
     description: 'A simple and elegant resume template.',
     image: '/templates/classic.jpeg',
   },
   {
-    id: 'template-2',
+    id: 'modern',
     name: 'Modern Resume',
     description: 'A sleek, modern-looking resume template.',
     image: '/templates/modern.jpeg',
   },
   {
-    id: 'template-3',
+    id: 'creative',
     name: 'Creative Resume',
     description: 'A creative resume template with a unique layout.',
     image: '/templates/creative.jpeg',

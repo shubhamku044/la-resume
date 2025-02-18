@@ -26,7 +26,7 @@ export default function TemplatesPage() {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {templates.slice(0, 6).map((template) => (
-          <Link href={`/resume/`} key={template.id}>
+          <Link href={`/resume/${template.id}`} key={template.id}>
             <div className="flex flex-col items-center rounded-lg border p-4 shadow-md transition hover:shadow-lg">
               <div className="aspect-[210/297] w-full overflow-hidden rounded-lg bg-gray-100">
                 <Image
