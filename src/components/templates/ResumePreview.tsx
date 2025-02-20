@@ -15,7 +15,7 @@ const ResumePreview = ({ imageUrl, latexData }: IProps) => {
       const formData = new FormData();
       formData.append('latex', latexBlob, 'resume.tex');
 
-      const response = await fetch('http://3.107.202.62:8080/generate-pdf', {
+      const response = await fetch('/api/generate', {
         method: 'POST',
         body: formData,
       });
