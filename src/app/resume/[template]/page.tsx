@@ -1,20 +1,27 @@
-import { resumes } from '@/data/resumes'
-import { notFound } from 'next/navigation'
-import ResumeForm from '@/components/templates/ResumeForm'
-import ResumePreview from '@/components/templates/ResumePreview'
+'use client';
 
-export default function ResumeTemplatePage({ params }: { params: { template: string } }) {
-  const templateData = resumes[params.template as keyof typeof resumes]
+import { use, useState } from 'react';
+import { resumes } from '@/data/resumes';
+import { notFound } from 'next/navigation';
+import ResumeForm from '@/components/templates/ResumeForm';
+import ResumePreview from '@/components/templates/ResumePreview';
 
-  if (!templateData) return notFound() // If template doesn't exist, return 404
+export default function ResumeTemplatePage({ params }: { params: Promise<{ template: string }> }) {
+  const { template } = use(params); // ✅ Unwrap the params promise
+
+  const templateData = resumes[template as keyof typeof resumes];
+
+  const [imageUrl, setImageUrl] = useState<string | null>(null); // ✅ Hook at top level
+
+  if (!templateData) return notFound(); // 🔥 This comes AFTER hooks
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4">
-      {/* Render the Resume Form */}
-      <ResumeForm sections={templateData.sections} />
+      {/* Left: Resume Form */}
+      <ResumeForm onUpdate={setImageUrl} />
 
-      {/* Render the Resume Preview */}
-      <ResumePreview template={params.template} />
+      {/* Right: Resume Preview */}
+      <ResumePreview imageUrl={imageUrl} />
     </div>
-  )
+  );
 }

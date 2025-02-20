@@ -1,0 +1,199 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-10pt} % Adjust the value as needed
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-1pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Priyabrata Mondal} \\
+    \vspace{1pt}
+    \small +91 6297559892 $|$ \href{mailto:priyabrata8558@gmail.com}{\textbf{priyabrata8558@gmail.com}} $|$ 
+    \href{https://priyabratamondal.com}{\textbf{Portfolio}} $|$ 
+    \href{https://github.com/PriyabrataMo}{\textbf{Github}} $|$ 
+    \href{https://www.linkedin.com/in/priyabrata-mondal/}{\textbf{LinkedIn}} $|$
+    \href{https://leetcode.com/prybruhta/}{\textbf{LeetCode}} $|$
+    \href{https://codeforces.com/profile/priyabrata8558}{\textbf{Codeforces}} \\
+    Kolkata, West Bengal, India
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Techno Main Salt Lake}{Kolkata, West Bengal, India}
+      {Bachelor of Technology in Computer Science and Business Systems; CGPA: 8.55}{Oct. 2021 -- May 2025}
+    \resumeSubheading
+      {Guru Tegh Bahadur Public School}{Durgapur, West Bengal, India}
+      {Senior Secondary (XII); Percentage: 90.8\%}{2020 - 2021}
+    \resumeSubheading
+      {Guru Tegh Bahadur Public School}{Durgapur, West Bengal, India}
+      {Higher Secondary (X); Percentage: 93.6\%}{2018 - 2019}
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+\resumeSubHeadingListStart
+    \resumeItemListStart
+        \resumeItem{\textbf{Programming Languages}: C, C++, Python, JavaScript, Typescript, Go}
+        \resumeItem{\textbf{Databases}: MySQL, SQLPlus, MongoDB}
+        \resumeItem{\textbf{Frameworks}: NLTK, Scikit-learn, Pandas, Numpy, Express.js, Node.js, Next.js, Rest APIs}
+        \resumeItem{\textbf{Developer Tools}: Git, VS Code, Postman, Docker, AWS, GCP}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Experience / Open-Source}
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+    {\textbf{SCALE AI (Outlier) - C++ AI Trainer (Freelance)}}{Oct 2024}
+    \resumeItemListStart
+        \resumeItem{Conducted A/B testing on 50+ AI model responses, optimizing performance using C++.}
+        \resumeItem{Created 10+ complex prompts to improve model training and achieve higher accuracy.}
+        \resumeItem{Evaluated over 200 AI responses for accuracy, relevance, and quality across predefined categories.}
+        \resumeItem{Provided targeted feedback that led to improvement in AI decision-making and output quality.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+    {\textbf{Pyccel}}{Jan 2024}
+    \resumeItemListStart
+        \resumeItem{Added support for \texttt{numpy.max} and \texttt{numpy.min} in the C printer, including macro definitions, AST updates, and Fortran support for complex numbers.}
+        \resumeItem{Resolved issue \#1645 by replacing deprecated AST classes with \texttt{Constant} (Python 3.8+), ensuring compatibility with newer Python versions.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Personal Portfolio}}{\href{https://priyabratamondal.com}{Link}}
+    \resumeItemListStart
+        \resumeItem{Developed a responsive portfolio website using Next.js, TypeScript, and Tailwind CSS to showcase projects and skills.}
+        \resumeItem{Designed a clean and modern UI with optimized performance and SEO best practices.}
+        \resumeItem{Deployed the website on Vercel for seamless hosting and continuous deployment.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+            {\textbf{Predicting Stack Overflow Tags}}{\href{https://github.com/PriyabrataMo/predicting-stackoverflow-tags}{Github Link}}
+            \resumeItemListStart
+                \resumeItem{Trained a machine learning model to autonomously tag Stack Overflow posts, eliminating the need for manual tagging.}
+                \resumeItem{Utilized natural language processing (NLP) techniques to analyze and process the content of the posts.}
+                \resumeItem{Achieved an F1 score of 0.61, indicating the model's accuracy and effectiveness in predicting tags.}
+                \resumeItem{Created an API using FastAPI to deploy the machine learning model, enabling seamless integration and usage in various applications.}
+            \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+%-----------HONORS & AWARDS-----------
+\section{Honors \& Awards}
+\resumeSubHeadingListStart
+\resumeItem{Achieved a \texttt{2123 rating} (\texttt{Knight}) and ranked in the top 1.5\% of Leetcode users.}
+\resumeItem{Solved 2000+ DSA problems across all platforms.}  
+\resumeItem{Selected for \texttt{Amazon Machine Learning Summer School 2024}.}  
+\resumeItem{Qualified for Round 2 in the \texttt{Meta Hacker Cup 2024}.}  
+
+\resumeSubHeadingListEnd
+
+\end{document}
+
