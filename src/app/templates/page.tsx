@@ -38,7 +38,7 @@ export default function TemplatesPage() {
                 />
               </div>
 
-              <h2 className="text-md mt-2 text-center font-semibold">{template.name}</h2>
+              <h2 className="mt-2 text-center text-lg font-semibold">{template.name}</h2>
               <p className="text-center text-sm text-gray-600">{template.description}</p>
             </div>
           </Link>
