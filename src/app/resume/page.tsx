@@ -89,7 +89,6 @@ const ResumePage = () => {
 
     if (mydata) {
       setResumeData(JSON.parse(mydata));
-      console.log('mydata', JSON.parse(mydata));
     }
   }, []);
 
@@ -194,7 +193,6 @@ const ResumePage = () => {
 
               <div className="space-y-4">
                 {Object.keys(resumeData.personalInfo).map((field) => {
-                  console.log('field', field);
                   return (
                     <div key={field}>
                       <Label className="capitalize">
