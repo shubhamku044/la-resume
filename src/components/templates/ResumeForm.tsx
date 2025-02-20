@@ -152,7 +152,7 @@ const ResumeForm = ({ onUpdate, setLatexData }: IProps) => {
       const formData = new FormData();
       formData.append('latex', latexBlob, 'resume.tex');
 
-      const response = await fetch('http://3.107.202.62:8080/compile', {
+      const response = await fetch('/api/compile', {
         method: 'POST',
         body: formData,
       });
