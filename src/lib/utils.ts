@@ -1,9 +1,14 @@
 import { ResumeData } from '@/types/resume';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const escapeLatex = (text: string) => {
+  return text.replace(/%/g, '\\%').replace(/#/g, '\\#').replace(/\$/g, '\\$').replace(/&/g, '\\&');
+};
 
 export const generateLatex = (data: ResumeData): string => {
   return `

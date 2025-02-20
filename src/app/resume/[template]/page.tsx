@@ -12,16 +12,17 @@ export default function ResumeTemplatePage({ params }: { params: Promise<{ templ
   const templateData = resumes[template as keyof typeof resumes];
 
   const [imageUrl, setImageUrl] = useState<string | null>(null); // ✅ Hook at top level
+  const [latexData, setLatexData] = useState<string | null>(null);
 
   if (!templateData) return notFound(); // 🔥 This comes AFTER hooks
 
   return (
     <div className="grid grid-cols-2 gap-4 p-4">
       {/* Left: Resume Form */}
-      <ResumeForm onUpdate={setImageUrl} />
+      <ResumeForm onUpdate={setImageUrl} setLatexData={setLatexData} />
 
       {/* Right: Resume Preview */}
-      <ResumePreview imageUrl={imageUrl} />
+      <ResumePreview imageUrl={imageUrl} latexData={latexData} />
     </div>
   );
 }
