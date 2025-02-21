@@ -1,3 +1,4 @@
+import { heroui } from '@heroui/theme';
 /* eslint-disable */
 import type { Config } from 'tailwindcss';
 
@@ -8,6 +9,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@heroui/theme/dist/components/progress.js',
   ],
   theme: {
     extend: {
@@ -71,13 +73,15 @@ export default {
     },
   },
   darkMode: ['class', 'class'],
-  plugins: [addVariablesForColors, require('tailwindcss-animate')],
+  plugins: [addVariablesForColors, require('tailwindcss-animate'), heroui()],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme('colors'));
   let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+    Object.entries(allColors)
+      .filter(([_, val]) => typeof val === 'string' && !val.includes('var(')) // Exclude CSS variables
+      .map(([key, val]) => [`--${key}`, val])
   );
 
   addBase({
