@@ -1,13 +1,26 @@
 'use client';
+
+import { useState } from 'react';
+import { CircularProgress } from '@heroui/progress';
 import Image from 'next/image';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
+  loading: boolean;
 }
 
-const ResumePreview = ({ imageUrl, latexData }: IProps) => {
-  const handleDownload = async () => {
+const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
+  const [exportFormat, setExportFormat] = useState<string>('pdf'); // ✅ Default to "pdf"
+
+  const handleDownloadPDF = async () => {
     if (!latexData) return;
 
     try {
@@ -38,14 +51,60 @@ const ResumePreview = ({ imageUrl, latexData }: IProps) => {
     }
   };
 
+  const handleDownloadLaTeX = () => {
+    if (!latexData) return;
+
+    const latexBlob = new Blob([latexData], { type: 'text/plain' });
+    const latexUrl = URL.createObjectURL(latexBlob);
+
+    const link = document.createElement('a');
+    link.href = latexUrl;
+    link.download = `resume-${Date.now()}.tex`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(latexUrl);
+  };
+
+  const handleExport = () => {
+    if (!exportFormat) {
+      setExportFormat('pdf'); // ✅ Default to PDF if nothing is selected
+      handleDownloadPDF();
+    } else if (exportFormat === 'pdf') {
+      handleDownloadPDF();
+    } else if (exportFormat === 'tex') {
+      handleDownloadLaTeX();
+    }
+  };
+
   return (
     <div className="w-full rounded-md border p-4">
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Resume Preview</h2>
-        <button onClick={handleDownload}>Download</button>
+
+        {/* ✅ Export Format Selector & Download Button */}
+        <div className="flex items-center gap-4">
+          <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Export As" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="pdf">PDF</SelectItem>
+              <SelectItem value="tex">LaTeX</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <button onClick={handleExport} className="rounded-md bg-black px-4 py-2 text-white">
+            Download
+          </button>
+        </div>
       </div>
-      <div className="relative mt-2 aspect-[1/1.414] w-full overflow-hidden rounded-md border">
-        {imageUrl ? (
+
+      <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
+        {loading ? (
+          <CircularProgress aria-label="Loading..." />
+        ) : imageUrl ? (
           <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
         ) : (
           <p className="absolute inset-0 flex items-center justify-center text-gray-500">
