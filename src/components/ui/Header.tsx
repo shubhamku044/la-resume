@@ -3,9 +3,8 @@ import { FaGithub } from 'react-icons/fa';
 const Header = () => {
   return (
     <header className="flex items-center justify-between border-b bg-white px-6 py-4">
-      {/* Clickable Logo */}
       <Link href="/" className="text-lg font-semibold transition hover:opacity-80">
-        Logo
+        La Resume
       </Link>
 
       {/* Navigation Links */}
