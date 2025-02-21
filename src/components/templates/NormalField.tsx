@@ -1,44 +1,43 @@
-interface NormalFieldProps {
-  section: string;
-  data: any;
-  handleChange: (
-    section: string,
-    index: number | null,
-    field: string,
-    value: string
-  ) => void;
+interface NormalFieldProps<T extends Record<string, unknown>> {
+  section: keyof T;
+  data: string | Record<string, string>;
+  handleChange: (section: keyof T, index: null, field: string, value: string) => void;
 }
 
-const NormalField: React.FC<NormalFieldProps> = ({
+const NormalField = <T extends Record<string, unknown>>({
   section,
   data,
   handleChange,
-}) => {
-  return typeof data === "object" ? (
-    Object.keys(data).map((field) => (
-      <div key={field} className="mt-4">
-        <label className="block text-sm font-medium text-gray-700 capitalize">
-          {field}
-        </label>
-        <input
-          type="text"
-          value={data[field]}
-          onChange={(e) => handleChange(section, null, field, e.target.value)}
-          placeholder={`Enter ${field}`}
-          className="w-full rounded-md border p-2"
-        />
-      </div>
-    ))
-  ) : (
+}: NormalFieldProps<T>) => {
+  if (typeof data === 'object' && data !== null) {
+    return (
+      <>
+        {Object.keys(data).map((field) => (
+          <div key={field} className="mt-4">
+            <label className="block text-sm font-medium capitalize text-gray-700">{field}</label>
+            <input
+              type="text"
+              value={data[field as keyof typeof data]}
+              onChange={(e) => handleChange(section, null, field, e.target.value)}
+              placeholder={`Enter ${field}`}
+              className="w-full rounded-md border p-2"
+            />
+          </div>
+        ))}
+      </>
+    );
+  }
+
+  return (
     <div className="mt-4">
-      <label className="block text-sm font-medium text-gray-700 capitalize">
-        {section}
+      <label className="block text-sm font-medium capitalize text-gray-700">
+        {String(section)}
       </label>
       <input
         type="text"
         value={data}
-        onChange={(e) => handleChange(section, null, "", e.target.value)}
-        placeholder={`Enter ${section}`}
+        onChange={(e) => handleChange(section, null, '', e.target.value)}
+        placeholder={`Enter ${String(section)}`}
         className="w-full rounded-md border p-2"
       />
     </div>

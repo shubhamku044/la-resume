@@ -1,147 +1,141 @@
-"use client";
-import { useState, useEffect, useCallback } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ArrayField from "./ArrayField";
-import NormalField from "./NormalField";
-interface IProps<T> {
+'use client';
+import { useState, useEffect, useCallback } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ArrayField from './ArrayField';
+import NormalField from './NormalField';
+
+interface IProps<T extends Record<string, unknown>> {
   setLatexData: React.Dispatch<React.SetStateAction<string | null>>;
   onUpdate: (imageUrl: string) => void;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  templateSampleData: T; // ✅ Now dynamic!
-  templateFunction: (data: T) => string; // ✅ Ensures correct function signature
+  templateSampleData: T;
+  templateFunction: (data: T) => string;
 }
-const ResumeForm = <T,>({
+
+const ResumeForm = <T extends Record<string, unknown>>({
   setLatexData,
   onUpdate,
   setLoading,
   templateSampleData,
   templateFunction,
 }: IProps<T>) => {
-  const [formData, setFormData] = useState<T>(templateSampleData ?? ({} as T)); // ✅ Strongly typed
-  const [tempData, setTempData] = useState<T>(templateSampleData ?? ({} as T)); // ✅ Strongly typed
+  const [formData, setFormData] = useState<T>(templateSampleData);
+  const [tempData, setTempData] = useState<T>(templateSampleData);
 
-  // Function to handle field updates
-  const handleChange = (
-    section: string,
-    index: number | null,
-    field: string,
-    value: string
-  ) => {
-    setTempData((prev: any) => {
+  const handleChange = (section: keyof T, index: number | null, field: string, value: string) => {
+    setTempData((prev) => {
       const updatedData = { ...prev };
+      const sectionValue = updatedData[section];
 
-      if (Array.isArray(updatedData[section])) {
-        updatedData[section][index!] = {
-          ...updatedData[section][index!],
-          [field]: value,
-        };
-      } else if (typeof updatedData[section] === "object") {
-        updatedData[section][field] = value;
-      } else {
-        updatedData[section] = value;
+      if (index !== null && Array.isArray(sectionValue)) {
+        const newArray = [...sectionValue] as Array<Record<string, string>>;
+        newArray[index] = { ...newArray[index], [field]: value };
+        return { ...updatedData, [section]: newArray as T[keyof T] };
       }
 
-      return updatedData;
+      if (typeof sectionValue === 'object' && sectionValue !== null) {
+        return {
+          ...updatedData,
+          [section]: { ...sectionValue, [field]: value } as T[keyof T],
+        };
+      }
+
+      return { ...updatedData, [section]: value as T[keyof T] };
     });
   };
 
-  // Function to generate LaTeX preview
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
       const latexText = templateFunction(formData);
       setLatexData(latexText);
 
-      const latexBlob = new Blob([latexText], { type: "text/plain" });
+      const latexBlob = new Blob([latexText], { type: 'text/plain' });
       const formDataUpload = new FormData();
-      formDataUpload.append("latex", latexBlob, "resume.tex");
+      formDataUpload.append('latex', latexBlob, 'resume.tex');
 
-      const response = await fetch("/api/compile", {
-        method: "POST",
+      const response = await fetch('/api/compile', {
+        method: 'POST',
         body: formDataUpload,
       });
 
-      if (!response.ok) throw new Error("Failed to generate resume preview");
+      if (!response.ok) throw new Error('Failed to generate resume preview');
 
       const blob = await response.blob();
       const imageUrl = URL.createObjectURL(blob);
       onUpdate(imageUrl);
     } catch (error) {
-      console.error("Error generating resume preview:", error);
+      console.error('Error generating resume preview:', error);
     } finally {
       setLoading(false);
     }
-  }, [onUpdate, setLatexData, formData]);
-  const handleAddEntry = (
-    section: string,
-    emptyEntry: Record<string, string>
-  ) => {
-    setTempData((prevData) => ({
-      ...prevData,
-      [section]: [...prevData[section], emptyEntry], // Append new empty object
+  }, [formData, templateFunction, setLoading, onUpdate, setLatexData]);
+
+  const handleAddEntry = (section: keyof T) => {
+    setTempData((prev) => {
+      const current = prev[section] as Array<Record<string, string>>;
+      const emptyEntry =
+        current.length > 0 ? Object.fromEntries(Object.keys(current[0]).map((k) => [k, ''])) : {};
+      return { ...prev, [section]: [...current, emptyEntry] };
+    });
+  };
+
+  const handleRemoveEntry = (section: keyof T, index: number) => {
+    setTempData((prev) => ({
+      ...prev,
+      [section]: (prev[section] as Array<unknown>).filter((_, i) => i !== index),
     }));
   };
 
-  const handleRemoveEntry = (section: string, index: number) => {
-    setTempData((prevData) => ({
-      ...prevData,
-      [section]: prevData[section].filter((_, i) => i !== index), // Remove entry at index
-    }));
-  };
-
-  // Throttle: Update `formData` from `tempData` every 500ms
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setFormData(tempData);
-    }, 500); // ✅ Adjust throttle delay if needed
-
+    const timeout = setTimeout(() => setFormData(tempData), 500);
     return () => clearTimeout(timeout);
   }, [tempData]);
 
-  // Automatically generate preview when `formData` updates
   useEffect(() => {
-    if (Object.keys(formData).length > 0) {
-      generateResumePreview();
-    }
-  }, [formData]); // ✅ Triggers only when `formData` changes
+    if (Object.keys(formData).length > 0) generateResumePreview();
+  }, [formData, generateResumePreview]);
+
+  const sections = Object.keys(formData) as Array<keyof T>;
 
   return (
-    <Tabs
-      defaultValue={Object.keys(tempData)[0] || "section1"}
-      className="p-6 border rounded-md space-y-6"
-    >
+    <Tabs defaultValue={String(sections[0])} className="space-y-6 rounded-md border p-6">
       <TabsList className="flex flex-wrap gap-2">
-        {Object.keys(tempData).map((section) => (
-          <TabsTrigger key={section} value={section} className="capitalize">
-            {section}
+        {sections.map((section) => (
+          <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
+            {String(section)}
           </TabsTrigger>
         ))}
       </TabsList>
 
-      {Object.keys(tempData).map((section) => (
-        <TabsContent
-          key={section}
-          value={section}
-          className="rounded-md border p-4"
-        >
-          {Array.isArray(tempData[section]) &&
-          typeof tempData[section][0] === "object" ? (
-            <ArrayField
-              section={section}
-              data={tempData[section]}
-              handleChange={handleChange}
-              handleAddEntry={handleAddEntry}
-              handleRemoveEntry={handleRemoveEntry}
-            />
-          ) : (
-            <NormalField
-              section={section}
-              data={tempData[section]}
-              handleChange={handleChange}
-            />
-          )}
-        </TabsContent>
-      ))}
+      {sections.map((section) => {
+        const sectionData = tempData[section];
+        const isArray = Array.isArray(sectionData);
+
+        return (
+          <TabsContent
+            key={String(section)}
+            value={String(section)}
+            className="rounded-md border p-4"
+          >
+            {isArray ? (
+              <ArrayField
+                section={section}
+                data={sectionData as Array<Record<string, string>>}
+                handleChange={handleChange}
+                handleAddEntry={handleAddEntry}
+                handleRemoveEntry={handleRemoveEntry}
+              />
+            ) : (
+              <NormalField
+                section={section}
+                data={sectionData as Record<string, string> | string}
+                handleChange={handleChange}
+              />
+            )}
+          </TabsContent>
+        );
+      })}
     </Tabs>
   );
 };

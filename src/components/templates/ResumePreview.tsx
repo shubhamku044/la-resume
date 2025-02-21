@@ -1,15 +1,15 @@
 'use client';
 
-import { useState } from "react";
-import {CircularProgress} from "@heroui/progress";
-import Image from "next/image";
+import { useState } from 'react';
+import { CircularProgress } from '@heroui/progress';
+import Image from 'next/image';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
 interface IProps {
   imageUrl: string | null;
@@ -18,27 +18,27 @@ interface IProps {
 }
 
 const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
-  const [exportFormat, setExportFormat] = useState<string>("pdf"); // ✅ Default to "pdf"
+  const [exportFormat, setExportFormat] = useState<string>('pdf'); // ✅ Default to "pdf"
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
 
     try {
-      const latexBlob = new Blob([latexData], { type: "text/plain" });
+      const latexBlob = new Blob([latexData], { type: 'text/plain' });
       const formData = new FormData();
-      formData.append("latex", latexBlob, "resume.tex");
+      formData.append('latex', latexBlob, 'resume.tex');
 
-      const response = await fetch("/api/generate", {
-        method: "POST",
+      const response = await fetch('/api/generate', {
+        method: 'POST',
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Failed to generate PDF");
+      if (!response.ok) throw new Error('Failed to generate PDF');
 
       const pdfBlob = await response.blob();
       const pdfUrl = URL.createObjectURL(pdfBlob);
 
-      const link = document.createElement("a");
+      const link = document.createElement('a');
       link.href = pdfUrl;
       link.download = `resume-${Date.now()}.pdf`;
       document.body.appendChild(link);
@@ -47,17 +47,17 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
 
       URL.revokeObjectURL(pdfUrl);
     } catch (error) {
-      console.error("Error downloading PDF:", error);
+      console.error('Error downloading PDF:', error);
     }
   };
 
   const handleDownloadLaTeX = () => {
     if (!latexData) return;
 
-    const latexBlob = new Blob([latexData], { type: "text/plain" });
+    const latexBlob = new Blob([latexData], { type: 'text/plain' });
     const latexUrl = URL.createObjectURL(latexBlob);
 
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = latexUrl;
     link.download = `resume-${Date.now()}.tex`;
     document.body.appendChild(link);
@@ -69,18 +69,18 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
 
   const handleExport = () => {
     if (!exportFormat) {
-      setExportFormat("pdf"); // ✅ Default to PDF if nothing is selected
+      setExportFormat('pdf'); // ✅ Default to PDF if nothing is selected
       handleDownloadPDF();
-    } else if (exportFormat === "pdf") {
+    } else if (exportFormat === 'pdf') {
       handleDownloadPDF();
-    } else if (exportFormat === "tex") {
+    } else if (exportFormat === 'tex') {
       handleDownloadLaTeX();
     }
   };
 
   return (
     <div className="w-full rounded-md border p-4">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Resume Preview</h2>
 
         {/* ✅ Export Format Selector & Download Button */}
@@ -95,14 +95,13 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
             </SelectContent>
           </Select>
 
-          <button onClick={handleExport} className="px-4 py-2 bg-black text-white rounded-md">
-  Download
-</button>
-
+          <button onClick={handleExport} className="rounded-md bg-black px-4 py-2 text-white">
+            Download
+          </button>
         </div>
       </div>
 
-      <div className="relative mt-2 aspect-[1/1.414] w-full overflow-hidden rounded-md border flex items-center justify-center">
+      <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
         {loading ? (
           <CircularProgress aria-label="Loading..." />
         ) : imageUrl ? (

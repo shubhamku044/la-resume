@@ -1,31 +1,26 @@
-import { Plus, Trash } from "lucide-react";
+import { Plus, Trash } from 'lucide-react';
 
-interface ArrayFieldProps {
-  section: string;
-  data: any[];
-  handleChange: (
-    section: string,
-    index: number,
-    field: string,
-    value: string
-  ) => void;
-  handleAddEntry: (section: string) => void;
-  handleRemoveEntry: (section: string, index: number) => void;
+interface ArrayFieldProps<T extends Record<string, unknown>> {
+  section: keyof T;
+  data: Array<Record<string, string>>;
+  handleChange: (section: keyof T, index: number, field: string, value: string) => void;
+  handleAddEntry: (section: keyof T) => void;
+  handleRemoveEntry: (section: keyof T, index: number) => void;
 }
 
-const ArrayField: React.FC<ArrayFieldProps> = ({
+const ArrayField = <T extends Record<string, unknown>>({
   section,
   data,
   handleChange,
   handleAddEntry,
   handleRemoveEntry,
-}) => {
+}: ArrayFieldProps<T>) => {
   return (
     <div>
-      <h3 className="text-lg font-semibold capitalize flex justify-between items-center">
-        {section}
+      <h3 className="flex items-center justify-between text-lg font-semibold capitalize">
+        {String(section)}
         <button
-          className="flex items-center gap-2 bg-green-600 text-white px-3 py-1 rounded-md text-sm"
+          className="flex items-center gap-2 rounded-md bg-green-600 px-3 py-1 text-sm text-white"
           onClick={() => handleAddEntry(section)}
         >
           <Plus size={16} />
@@ -35,11 +30,8 @@ const ArrayField: React.FC<ArrayFieldProps> = ({
 
       <div className="space-y-6">
         {data.map((item, index) => (
-          <div
-            key={index}
-            className="p-4 border rounded-lg shadow-sm bg-gray-50 relative"
-          >
-            <h4 className="text-md font-semibold text-gray-800 flex justify-between items-center">
+          <div key={index} className="relative rounded-lg border bg-gray-50 p-4 shadow-sm">
+            <h4 className="flex items-center justify-between text-lg font-semibold text-gray-800">
               Entry {index + 1}
               <button
                 className="text-red-600 hover:text-red-800"
@@ -51,15 +43,13 @@ const ArrayField: React.FC<ArrayFieldProps> = ({
             <div className="mt-2 space-y-2">
               {Object.keys(item).map((field) => (
                 <div key={field}>
-                  <label className="block text-sm font-medium text-gray-700 capitalize">
+                  <label className="block text-sm font-medium capitalize text-gray-700">
                     {field}
                   </label>
                   <input
                     type="text"
                     value={item[field]}
-                    onChange={(e) =>
-                      handleChange(section, index, field, e.target.value)
-                    }
+                    onChange={(e) => handleChange(section, index, field, e.target.value)}
                     placeholder={`Enter ${field}`}
                     className="w-full rounded-md border p-2"
                   />
