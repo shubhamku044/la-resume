@@ -7,7 +7,7 @@ import PersonalInfoSection from './sections/personal-info';
 import SkillsSection from './sections/skills';
 import EducationSection from './sections/education';
 import ExperienceSection from './sections/experience';
-import AccomplishmentsSection from './sections/Accomplishments';
+import AccomplishmentsSection from './sections/accomplishments';
 import ProjectsSection from './sections/projects';
 import { SelectedSection, UserDetails } from '@/types/userDetails';
 

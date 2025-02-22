@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plus, X } from 'lucide-react';
 import { Certification } from '@/types/userDetails';
+import { Button } from '@/components/ui/button';
 
 interface AccomplishmentsInputProps {
   accomplishments: string[];
@@ -77,9 +78,9 @@ function StringListInput({
           placeholder={placeholder}
           className="w-full rounded border p-2"
         />
-        <button onClick={addItem} className="rounded bg-gray-500 px-3 py-2 text-white">
+        <Button onClick={addItem}>
           <Plus size={16} />
-        </button>
+        </Button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.map((item, index) => (
@@ -179,9 +180,9 @@ function CertificationInput({
           />
         </div>
       ))}
-      <button onClick={addCertification} className="mt-2 rounded bg-blue-500 px-3 py-2 text-white">
+      <Button onClick={addCertification}>
         <Plus size={16} className="mr-2 inline" /> Add Certification
-      </button>
+      </Button>
     </div>
   );
 }

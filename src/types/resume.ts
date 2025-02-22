@@ -47,8 +47,9 @@ export type ResumeData2 = {
     position: string;
     company: string;
     location: string;
-    duration: string;
     details: string[];
+    startDate: string;
+    endDate: string;
   }[];
 
   projects: {
