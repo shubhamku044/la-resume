@@ -8,6 +8,7 @@ interface IProps<T extends Record<string, unknown>> {
   setLatexData: React.Dispatch<React.SetStateAction<string | null>>;
   onUpdate: (imageUrl: string) => void;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  templateType: T;
   templateSampleData: T;
   templateFunction: (data: T) => string;
 }
@@ -28,9 +29,17 @@ const ResumeForm = <T extends Record<string, unknown>>({
       const sectionValue = updatedData[section];
 
       if (index !== null && Array.isArray(sectionValue)) {
-        const newArray = [...sectionValue] as Array<Record<string, string>>;
-        newArray[index] = { ...newArray[index], [field]: value };
-        return { ...updatedData, [section]: newArray as T[keyof T] };
+        if (typeof sectionValue[0] === 'string') {
+          // ✅ Handle string array
+          const newArray = [...(sectionValue as string[])];
+          newArray[index] = value;
+          return { ...updatedData, [section]: newArray as T[keyof T] };
+        } else {
+          // ✅ Handle array of objects
+          const newArray = [...(sectionValue as Array<Record<string, string>>)];
+          newArray[index] = { ...newArray[index], [field]: value };
+          return { ...updatedData, [section]: newArray as T[keyof T] };
+        }
       }
 
       if (typeof sectionValue === 'object' && sectionValue !== null) {
@@ -71,20 +80,35 @@ const ResumeForm = <T extends Record<string, unknown>>({
     }
   }, [formData, templateFunction, setLoading, onUpdate, setLatexData]);
 
-  const handleAddEntry = (section: keyof T) => {
+  const handleAddEntry = (section: keyof T, newEntry: Record<string, string> | string) => {
     setTempData((prev) => {
-      const current = prev[section] as Array<Record<string, string>>;
-      const emptyEntry =
-        current.length > 0 ? Object.fromEntries(Object.keys(current[0]).map((k) => [k, ''])) : {};
-      return { ...prev, [section]: [...current, emptyEntry] };
+      const current = prev[section];
+
+      if (Array.isArray(current)) {
+        if (typeof current[0] === 'string') {
+          // ✅ Handle string array
+          return { ...prev, [section]: [...(current as string[]), ''] };
+        } else {
+          // ✅ Handle array of objects
+          return { ...prev, [section]: [...(current as Array<Record<string, string>>), newEntry] };
+        }
+      }
+
+      return prev;
     });
   };
 
   const handleRemoveEntry = (section: keyof T, index: number) => {
-    setTempData((prev) => ({
-      ...prev,
-      [section]: (prev[section] as Array<unknown>).filter((_, i) => i !== index),
-    }));
+    setTempData((prev) => {
+      const current = prev[section];
+
+      if (Array.isArray(current)) {
+        // ✅ Works for both string[] and object arrays
+        return { ...prev, [section]: current.filter((_, i) => i !== index) };
+      }
+
+      return prev;
+    });
   };
 
   useEffect(() => {
