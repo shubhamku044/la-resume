@@ -47,6 +47,7 @@ export type Education = {
 } & ({ gpa: number; percentage?: never } | { percentage: number; gpa?: never });
 
 export type Experience = {
+  id: string;
   company: string;
   role: string;
   startDate: string;
@@ -63,8 +64,9 @@ export type Certification = {
 };
 
 export type Project = {
+  id: string;
   title: string;
-  description: string;
+  description: string[];
   technologies: string[];
   link?: string;
 };
