@@ -76,6 +76,7 @@ const ResumePage = () => {
   const [resumeData, setResumeData] = useState<UserDetails>(initialResumeData);
   const [activeSection, setActiveSection] = useState('personalInfo');
   const [currentExperience, setCurrentExperience] = useState<Experience>({
+    id: '',
     company: '',
     role: '',
     startDate: '',
@@ -109,6 +110,7 @@ const ResumePage = () => {
         experience: [...(prev.experience || []), currentExperience],
       }));
       setCurrentExperience({
+        id: '',
         company: '',
         role: '',
         startDate: '',

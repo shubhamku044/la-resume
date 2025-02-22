@@ -25,7 +25,7 @@ type ProjectModalProps = {
 
 export default function ProjectModal({ open, onClose, initialData }: ProjectModalProps) {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState<Project & { id: string }>({
+  const [formData, setFormData] = useState<Project>({
     id: '',
     title: '',
     description: [''],

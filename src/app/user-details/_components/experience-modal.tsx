@@ -30,7 +30,7 @@ type ExperienceModalProps = {
 
 export default function ExperienceModal({ open, onClose, initialData }: ExperienceModalProps) {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState<Experience & { id: string }>({
+  const [formData, setFormData] = useState<Experience>({
     id: '',
     company: '',
     role: '',
