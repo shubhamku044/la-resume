@@ -1,14 +1,13 @@
 export type UserDetails = {
-  personalInfo: PersonalInfo; // ✅ Grouped personal info
-  skills?: string[]; // ✅ Array of skills
-  education?: Education[]; // ✅ Array of education records
-  experience?: Experience[]; // ✅ Array of work experiences
+  personalInfo: PersonalInfo;
+  skills?: string[];
+  education?: Education[];
+  experience?: Experience[];
   accomplishments?: string[];
-  certifications?: Certification[]; // ✅ List of certifications
-  projects?: Project[]; // ✅ List of projects
+  certifications?: Certification[];
+  projects?: Project[];
 };
 
-// ✅ New Type for Personal Info
 export type PersonalInfo = {
   fullName: string;
   title?: string;
@@ -19,10 +18,11 @@ export type PersonalInfo = {
   summary?: string;
   linkedin?: string;
   github?: string;
-  portfolio?: string; // ✅ Personal portfolio website
-  twitter?: string; // ✅ Twitter handle
-  languages?: string[]; // ✅ Array of languages
-  interests?: string[]; // ✅ Array of interests
+  portfolio?: string;
+  twitter?: string;
+  languages?: string[];
+  interests?: string[];
+  jobTitle?: string;
 };
 
 // ✅ Education Type

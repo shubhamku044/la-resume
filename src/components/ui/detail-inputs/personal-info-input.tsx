@@ -1,25 +1,26 @@
 import { useState } from 'react';
-import { PersonalInfo } from '@/types/userDetails';
+import { PersonalInfo } from '@/types';
 import { Plus, X } from 'lucide-react';
+import { useAppSelector } from '@/store/hooks';
 
 interface PersonalInfoInputProps {
-  userDetails: Partial<PersonalInfo>;
   onChange: (details: Partial<PersonalInfo>) => void;
 }
 
-export default function PersonalInfoInput({ userDetails, onChange }: PersonalInfoInputProps) {
+export default function PersonalInfoInput({ onChange }: PersonalInfoInputProps) {
+  const personalInfo = useAppSelector((state) => state.personalInfo);
+
   const handleChange = <K extends keyof PersonalInfo>(key: K, value: PersonalInfo[K]) => {
-    onChange({ ...userDetails, [key]: value });
+    onChange({ ...personalInfo, [key]: value });
   };
 
   const handleArrayChange = (key: keyof PersonalInfo, values: string[]) => {
-    onChange({ ...userDetails, [key]: values });
+    onChange({ ...personalInfo, [key]: values });
   };
 
-  // Input field for array values (Languages & Interests)
   const ArrayInput = ({ label, keyName }: { label: string; keyName: keyof PersonalInfo }) => {
     const [inputValue, setInputValue] = useState('');
-    const values: string[] = (userDetails[keyName] as string[]) ?? [];
+    const values: string[] = (personalInfo[keyName] as string[]) ?? [];
 
     const addValue = () => {
       if (inputValue.trim() && !values.includes(inputValue.trim())) {
@@ -69,7 +70,6 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
 
   return (
     <div className="space-y-6">
-      {/* Basic Information */}
       <div>
         <h3 className="mb-2 text-lg font-semibold">Basic Information</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -90,7 +90,7 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
               <span className="text-sm font-medium">{label}</span>
               <input
                 type={type}
-                value={(userDetails[key as keyof PersonalInfo] as string) || ''}
+                value={(personalInfo[key as keyof PersonalInfo] as string) || ''}
                 onChange={(e) => handleChange(key as keyof PersonalInfo, e.target.value)}
                 className="w-full rounded border p-2"
                 placeholder={placeholder}
@@ -100,7 +100,6 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
         </div>
       </div>
 
-      {/* Professional Profiles */}
       <div>
         <h3 className="mb-2 text-lg font-semibold">Professional Profiles</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -114,7 +113,7 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
               <span className="text-sm font-medium">{label}</span>
               <input
                 type="url"
-                value={(userDetails[key as keyof PersonalInfo] as string) || ''}
+                value={(personalInfo[key as keyof PersonalInfo] as string) || ''}
                 onChange={(e) => handleChange(key as keyof PersonalInfo, e.target.value)}
                 className="w-full rounded border p-2"
                 placeholder={placeholder}
@@ -124,13 +123,12 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
         </div>
       </div>
 
-      {/* Additional Details */}
       <div>
         <h3 className="mb-2 text-lg font-semibold">Additional Details</h3>
         <label className="block">
           <span className="text-sm font-medium">Summary</span>
           <textarea
-            value={userDetails.summary || ''}
+            value={personalInfo.summary || ''}
             onChange={(e) => handleChange('summary', e.target.value)}
             className="w-full rounded border p-2"
             placeholder="Write a short summary about yourself"
@@ -138,7 +136,6 @@ export default function PersonalInfoInput({ userDetails, onChange }: PersonalInf
           />
         </label>
 
-        {/* Languages & Interests using reusable array input */}
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <ArrayInput label="Languages" keyName="languages" />
           <ArrayInput label="Interests" keyName="interests" />

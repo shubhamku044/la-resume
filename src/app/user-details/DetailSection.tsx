@@ -1,7 +1,7 @@
 import EducationInput from '@/components/ui/detail-inputs/EducationInput';
 import ExperienceInput from '@/components/ui/detail-inputs/ExperienceInput';
 import SkillsInput from '@/components/ui/detail-inputs/SkillsInput';
-import PersonalInfoInput from '@/components/ui/detail-inputs/PersonalInfoInput';
+import PersonalInfoInput from '@/components/ui/detail-inputs/personal-info-input';
 import AccomplishmentsInput from '@/components/ui/detail-inputs/AccomplishmentsInput';
 import ProjectsInput from '@/components/ui/detail-inputs/ProjectsInput';
 import { UserDetails } from '@/types/userDetails';

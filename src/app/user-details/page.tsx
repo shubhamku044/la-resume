@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/AppSidebar';
-import PersonalInfoSection from './sections/PersonalInfo';
+import PersonalInfoSection from './sections/personal-info';
 import SkillsSection from './sections/Skills';
 import EducationSection from './sections/Education';
 import ExperienceSection from './sections/Experience';
@@ -11,7 +11,6 @@ import AccomplishmentsSection from './sections/Accomplishments';
 import ProjectsSection from './sections/Projects';
 import { UserDetails } from '@/types/userDetails';
 
-// Helper function to retrieve user details from localStorage
 const getUserDetailsFromLocalStorage = (): UserDetails => {
   if (typeof window === 'undefined') {
     return {
@@ -95,10 +94,7 @@ export default function UserDetailsPage() {
             }}
           />
 
-          {/* Render Section Dynamically */}
-          {selectedSection === 'personal' && (
-            <PersonalInfoSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
+          {selectedSection === 'personal' && <PersonalInfoSection />}
           {selectedSection === 'skills' && (
             <SkillsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
