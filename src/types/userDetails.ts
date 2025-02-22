@@ -1,12 +1,14 @@
 export type UserDetails = {
   personalInfo: PersonalInfo;
-  skills?: string[];
+  skills?: Skills;
   education?: Education[];
   experience?: Experience[];
   accomplishments?: string[];
   certifications?: Certification[];
   projects?: Project[];
 };
+
+export type Skills = string[];
 
 export type PersonalInfo = {
   fullName: string;
