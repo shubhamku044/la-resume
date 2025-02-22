@@ -69,7 +69,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
 
   const handleExport = () => {
     if (!exportFormat) {
-      setExportFormat('pdf'); // ✅ Default to PDF if nothing is selected
+      setExportFormat('pdf');
       handleDownloadPDF();
     } else if (exportFormat === 'pdf') {
       handleDownloadPDF();
@@ -81,7 +81,20 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   return (
     <div className="w-full rounded-md border p-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">Resume Preview</h2>
+        <div>
+          <h2 className="text-lg font-semibold">Resume Preview</h2>
+          {loading && (
+            <div className="flex items-center text-sm">
+              <CircularProgress
+                className="scale-50 text-sm"
+                strokeWidth={2}
+                size="sm"
+                aria-label="Loading..."
+              />
+              Compiling
+            </div>
+          )}
+        </div>
 
         {/* ✅ Export Format Selector & Download Button */}
         <div className="flex items-center gap-4">
@@ -102,9 +115,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
       </div>
 
       <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
-        {loading ? (
-          <CircularProgress aria-label="Loading..." />
-        ) : imageUrl ? (
+        {imageUrl ? (
           <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
         ) : (
           <p className="absolute inset-0 flex items-center justify-center text-gray-500">
