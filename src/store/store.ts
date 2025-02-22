@@ -10,7 +10,13 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { educationReducer, personalInfoReducer, skillsReducer } from './slices';
+import {
+  educationReducer,
+  personalInfoReducer,
+  skillsReducer,
+  projectReducer,
+  experienceReducer,
+} from './slices';
 
 const persistConfig = {
   key: 'root',
@@ -21,6 +27,8 @@ const rootReducers = combineReducers({
   personalInfo: personalInfoReducer,
   skills: skillsReducer,
   education: educationReducer,
+  project: projectReducer,
+  experience: experienceReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

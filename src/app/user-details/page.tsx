@@ -6,9 +6,9 @@ import { AppSidebar } from '@/components/ui/AppSidebar';
 import PersonalInfoSection from './sections/personal-info';
 import SkillsSection from './sections/skills';
 import EducationSection from './sections/education';
-import ExperienceSection from './sections/Experience';
+import ExperienceSection from './sections/experience';
 import AccomplishmentsSection from './sections/Accomplishments';
-import ProjectsSection from './sections/Projects';
+import ProjectsSection from './sections/projects';
 import { SelectedSection, UserDetails } from '@/types/userDetails';
 
 const getUserDetailsFromLocalStorage = (): UserDetails => {
@@ -91,15 +91,11 @@ export default function UserDetailsPage() {
           {selectedSection === SelectedSection.PERSONAL && <PersonalInfoSection />}
           {selectedSection === SelectedSection.SKILLS && <SkillsSection />}
           {selectedSection === SelectedSection.EDUCATION && <EducationSection />}
-          {selectedSection === SelectedSection.EXPERIENCE && (
-            <ExperienceSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
+          {selectedSection === SelectedSection.EXPERIENCE && <ExperienceSection />}
           {selectedSection === SelectedSection.ACCOMPLISHMENTS && (
             <AccomplishmentsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
-          {selectedSection === SelectedSection.PROJECTS && (
-            <ProjectsSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
+          {selectedSection === SelectedSection.PROJECTS && <ProjectsSection />}
         </main>
       </div>
     </SidebarProvider>

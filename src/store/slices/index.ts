@@ -13,3 +13,15 @@ export {
   removeEducation,
   selectEducations,
 } from './education';
+
+export { default as experienceReducer } from './experience';
+export {
+  addExperience,
+  setExperiences,
+  updateExperience,
+  removeExperience,
+  selectExperiences,
+} from './experience';
+
+export { default as projectReducer } from './project';
+export { addProject, setProjects, updateProject, removeProject, selectProjects } from './project';
