@@ -1,1 +1,2 @@
-export type { PersonalInfo, Skills } from './userDetails';
+export type { PersonalInfo, Skills, Education } from './userDetails';
+export { SelectedSection } from './userDetails';

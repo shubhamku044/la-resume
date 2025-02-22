@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PersonalInfo } from '@/types';
 import { Plus, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/store/hooks';
 
 interface PersonalInfoInputProps {
@@ -46,13 +47,9 @@ export default function PersonalInfoInput({ onChange }: PersonalInfoInputProps) 
             className="w-full rounded border p-2"
             onKeyDown={(e) => e.key === 'Enter' && addValue()}
           />
-          <button
-            type="button"
-            onClick={addValue}
-            className="rounded bg-blue-500 px-3 py-2 text-white"
-          >
+          <Button onClick={addValue}>
             <Plus size={16} />
-          </button>
+          </Button>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {values.map((value, index) => (

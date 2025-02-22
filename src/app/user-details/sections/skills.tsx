@@ -5,7 +5,7 @@ import { addSkill, removeSkill } from '@/store/slices';
 
 export default function SkillsSection() {
   const dispatch = useAppDispatch();
-  const skills = useAppSelector((state) => state.skills.value);
+  const skills = useAppSelector((state) => state.skills);
   const [newSkill, setNewSkill] = useState('');
 
   const handleAddSkill = () => {

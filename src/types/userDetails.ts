@@ -27,41 +27,44 @@ export type PersonalInfo = {
   jobTitle?: string;
 };
 
-// ✅ Education Type
-export type Education = {
-  school: string;
-  degree: string; // ✅ Degree or course name
-  fieldOfStudy: string; // ✅ Major or specialization
-  startYear: number;
-  endYear: number;
-  location: string;
-} & (
-  | { gpa: number; percentage?: never } // If GPA is provided, percentage must not exist
-  | { percentage: number; gpa?: never } // If percentage is provided, GPA must not exist
-);
+export enum SelectedSection {
+  PERSONAL,
+  SKILLS,
+  EDUCATION,
+  EXPERIENCE,
+  PROJECTS,
+  ACCOMPLISHMENTS,
+}
 
-// ✅ Experience Type
+export type Education = {
+  id: string;
+  school: string;
+  degree: string;
+  fieldOfStudy: string;
+  startYear: string;
+  endYear: string;
+  location: string;
+} & ({ gpa: number; percentage?: never } | { percentage: number; gpa?: never });
+
 export type Experience = {
   company: string;
   role: string;
   startDate: string;
-  endDate?: string; // Nullable for current jobs
+  endDate?: string;
   responsibilities: string[];
   location: string;
 };
 
-// ✅ Certification Type
 export type Certification = {
   title: string;
   provider: string;
-  date: string; // Date of completion
-  credentialUrl?: string; // URL to verify certification
+  date: string;
+  credentialUrl?: string;
 };
 
-// ✅ Project Type
 export type Project = {
   title: string;
   description: string;
   technologies: string[];
-  link?: string; // Optional project link
+  link?: string;
 };

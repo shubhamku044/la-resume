@@ -1,12 +1,13 @@
+import { SelectedSection } from '@/types';
 import { Briefcase, Book, Award, Code, User, Layers } from 'lucide-react';
 
 export const userDetailSections = [
-  { key: 'personal', label: 'Personal Info', icon: User }, // ✅ Includes Contact, Summary, Languages, Interests, Social Links
-  { key: 'skills', label: 'Skills', icon: Code },
-  { key: 'education', label: 'Education', icon: Book },
-  { key: 'experience', label: 'Experience', icon: Briefcase },
-  { key: 'accomplishments', label: 'Accomplishments & Certifications', icon: Award },
-  { key: 'projects', label: 'Projects', icon: Layers },
+  { key: SelectedSection.PERSONAL, label: 'Personal Info', icon: User }, // ✅ Includes Contact, Summary, Languages, Interests, Social Links
+  { key: SelectedSection.SKILLS, label: 'Skills', icon: Code },
+  { key: SelectedSection.EDUCATION, label: 'Education', icon: Book },
+  { key: SelectedSection.EXPERIENCE, label: 'Experience', icon: Briefcase },
+  { key: SelectedSection.ACCOMPLISHMENTS, label: 'Accomplishments & Certifications', icon: Award },
+  { key: SelectedSection.PROJECTS, label: 'Projects', icon: Layers },
 ];
 
 export const userDetailLabels: Record<string, string> = {

@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import { userDetailSections } from '@/lib/sections';
+import { SelectedSection } from '@/types';
 
 interface SidebarProps {
-  selected: string;
-  onSelect: (key: string) => void;
+  selected: SelectedSection;
+  onSelect: (key: SelectedSection) => void;
   isOpen: boolean;
 }
 

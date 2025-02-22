@@ -5,11 +5,11 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/AppSidebar';
 import PersonalInfoSection from './sections/personal-info';
 import SkillsSection from './sections/skills';
-import EducationSection from './sections/Education';
+import EducationSection from './sections/education';
 import ExperienceSection from './sections/Experience';
 import AccomplishmentsSection from './sections/Accomplishments';
 import ProjectsSection from './sections/Projects';
-import { UserDetails } from '@/types/userDetails';
+import { SelectedSection, UserDetails } from '@/types/userDetails';
 
 const getUserDetailsFromLocalStorage = (): UserDetails => {
   if (typeof window === 'undefined') {
@@ -66,7 +66,7 @@ const setUserDetailsToLocalStorage = (userDetails: UserDetails): void => {
 };
 
 export default function UserDetailsPage() {
-  const [selectedSection, setSelectedSection] = useState<string>('personal');
+  const [selectedSection, setSelectedSection] = useState<SelectedSection>(SelectedSection.PERSONAL);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   const [userDetails, setUserDetails] = useState<UserDetails>(() =>
@@ -88,18 +88,16 @@ export default function UserDetailsPage() {
               setSidebarOpen((sidebar) => !sidebar);
             }}
           />
-          {selectedSection === 'personal' && <PersonalInfoSection />}
-          {selectedSection === 'skills' && <SkillsSection />}
-          {selectedSection === 'education' && (
-            <EducationSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
-          {selectedSection === 'experience' && (
+          {selectedSection === SelectedSection.PERSONAL && <PersonalInfoSection />}
+          {selectedSection === SelectedSection.SKILLS && <SkillsSection />}
+          {selectedSection === SelectedSection.EDUCATION && <EducationSection />}
+          {selectedSection === SelectedSection.EXPERIENCE && (
             <ExperienceSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
-          {selectedSection === 'accomplishments' && (
+          {selectedSection === SelectedSection.ACCOMPLISHMENTS && (
             <AccomplishmentsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
-          {selectedSection === 'projects' && (
+          {selectedSection === SelectedSection.PROJECTS && (
             <ProjectsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
         </main>
