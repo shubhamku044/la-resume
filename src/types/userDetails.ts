@@ -1,14 +1,15 @@
 export type UserDetails = {
-  personalInfo: PersonalInfo; // ✅ Grouped personal info
-  skills?: string[]; // ✅ Array of skills
-  education?: Education[]; // ✅ Array of education records
-  experience?: Experience[]; // ✅ Array of work experiences
+  personalInfo: PersonalInfo;
+  skills?: Skills;
+  education?: Education[];
+  experience?: Experience[];
   accomplishments?: string[];
-  certifications?: Certification[]; // ✅ List of certifications
-  projects?: Project[]; // ✅ List of projects
+  certifications?: Certification[];
+  projects?: Project[];
 };
 
-// ✅ New Type for Personal Info
+export type Skills = string[];
+
 export type PersonalInfo = {
   fullName: string;
   title?: string;
@@ -19,47 +20,51 @@ export type PersonalInfo = {
   summary?: string;
   linkedin?: string;
   github?: string;
-  portfolio?: string; // ✅ Personal portfolio website
-  twitter?: string; // ✅ Twitter handle
-  languages?: string[]; // ✅ Array of languages
-  interests?: string[]; // ✅ Array of interests
+  portfolio?: string;
+  twitter?: string;
+  languages?: string[];
+  interests?: string[];
+  jobTitle?: string;
 };
 
-// ✅ Education Type
-export type Education = {
-  school: string;
-  degree: string; // ✅ Degree or course name
-  fieldOfStudy: string; // ✅ Major or specialization
-  startYear: number;
-  endYear: number;
-  location: string;
-} & (
-  | { gpa: number; percentage?: never } // If GPA is provided, percentage must not exist
-  | { percentage: number; gpa?: never } // If percentage is provided, GPA must not exist
-);
+export enum SelectedSection {
+  PERSONAL,
+  SKILLS,
+  EDUCATION,
+  EXPERIENCE,
+  PROJECTS,
+  ACCOMPLISHMENTS,
+}
 
-// ✅ Experience Type
+export type Education = {
+  id: string;
+  school: string;
+  degree: string;
+  fieldOfStudy: string;
+  startYear: string;
+  endYear: string;
+  location: string;
+} & ({ gpa: number; percentage?: never } | { percentage: number; gpa?: never });
+
 export type Experience = {
   company: string;
   role: string;
   startDate: string;
-  endDate?: string; // Nullable for current jobs
+  endDate?: string;
   responsibilities: string[];
   location: string;
 };
 
-// ✅ Certification Type
 export type Certification = {
   title: string;
   provider: string;
-  date: string; // Date of completion
-  credentialUrl?: string; // URL to verify certification
+  date: string;
+  credentialUrl?: string;
 };
 
-// ✅ Project Type
 export type Project = {
   title: string;
   description: string;
   technologies: string[];
-  link?: string; // Optional project link
+  link?: string;
 };

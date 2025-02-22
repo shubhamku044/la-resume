@@ -3,15 +3,14 @@
 import { useState, useEffect } from 'react';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/AppSidebar';
-import PersonalInfoSection from './sections/PersonalInfo';
-import SkillsSection from './sections/Skills';
-import EducationSection from './sections/Education';
+import PersonalInfoSection from './sections/personal-info';
+import SkillsSection from './sections/skills';
+import EducationSection from './sections/education';
 import ExperienceSection from './sections/Experience';
 import AccomplishmentsSection from './sections/Accomplishments';
 import ProjectsSection from './sections/Projects';
-import { UserDetails } from '@/types/userDetails';
+import { SelectedSection, UserDetails } from '@/types/userDetails';
 
-// Helper function to retrieve user details from localStorage
 const getUserDetailsFromLocalStorage = (): UserDetails => {
   if (typeof window === 'undefined') {
     return {
@@ -62,21 +61,18 @@ const getUserDetailsFromLocalStorage = (): UserDetails => {
       };
 };
 
-// Helper function to store user details in localStorage
 const setUserDetailsToLocalStorage = (userDetails: UserDetails): void => {
   localStorage.setItem('userDetails', JSON.stringify(userDetails));
 };
 
 export default function UserDetailsPage() {
-  const [selectedSection, setSelectedSection] = useState<string>('personal');
+  const [selectedSection, setSelectedSection] = useState<SelectedSection>(SelectedSection.PERSONAL);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
-  // State to hold the user details
   const [userDetails, setUserDetails] = useState<UserDetails>(() =>
     getUserDetailsFromLocalStorage()
   );
 
-  // Whenever userDetails is updated, save it to localStorage
   useEffect(() => {
     setUserDetailsToLocalStorage(userDetails);
   }, [userDetails]);
@@ -84,34 +80,24 @@ export default function UserDetailsPage() {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex h-screen">
-        {/* Sidebar */}
         <AppSidebar isOpen={sidebarOpen} selected={selectedSection} onSelect={setSelectedSection} />
 
-        {/* Main Content */}
         <main className="flex-1 p-6">
           <SidebarTrigger
             onClick={() => {
               setSidebarOpen((sidebar) => !sidebar);
             }}
           />
-
-          {/* Render Section Dynamically */}
-          {selectedSection === 'personal' && (
-            <PersonalInfoSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
-          {selectedSection === 'skills' && (
-            <SkillsSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
-          {selectedSection === 'education' && (
-            <EducationSection userDetails={userDetails} setUserDetails={setUserDetails} />
-          )}
-          {selectedSection === 'experience' && (
+          {selectedSection === SelectedSection.PERSONAL && <PersonalInfoSection />}
+          {selectedSection === SelectedSection.SKILLS && <SkillsSection />}
+          {selectedSection === SelectedSection.EDUCATION && <EducationSection />}
+          {selectedSection === SelectedSection.EXPERIENCE && (
             <ExperienceSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
-          {selectedSection === 'accomplishments' && (
+          {selectedSection === SelectedSection.ACCOMPLISHMENTS && (
             <AccomplishmentsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
-          {selectedSection === 'projects' && (
+          {selectedSection === SelectedSection.PROJECTS && (
             <ProjectsSection userDetails={userDetails} setUserDetails={setUserDetails} />
           )}
         </main>

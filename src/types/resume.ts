@@ -14,6 +14,7 @@ export type ResumeData = {
   }[];
   skills: string[];
 };
+
 export type ResumeData2 = {
   name: string;
   email: string;

@@ -9,8 +9,8 @@ import {
   PAUSE,
   REHYDRATE,
 } from 'redux-persist';
-import counter from './slices/counter';
 import storage from 'redux-persist/lib/storage';
+import { educationReducer, personalInfoReducer, skillsReducer } from './slices';
 
 const persistConfig = {
   key: 'root',
@@ -18,7 +18,9 @@ const persistConfig = {
 };
 
 const rootReducers = combineReducers({
-  counter: counter,
+  personalInfo: personalInfoReducer,
+  skills: skillsReducer,
+  education: educationReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
