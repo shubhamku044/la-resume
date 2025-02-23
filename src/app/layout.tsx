@@ -5,6 +5,7 @@ import Header from '@/components/ui/Header';
 import { Provider } from '@/store';
 import { Toaster } from '@/components/ui/sonner';
 import { Analytics } from '@vercel/analytics/react';
+import type { Viewport } from 'next';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -66,6 +67,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://la-resume.vercel.app',
   },
+};
+
+export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
 
