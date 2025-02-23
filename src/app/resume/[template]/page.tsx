@@ -3,6 +3,7 @@ import { resumes } from '@/lib/templates/index';
 import { use, useState } from 'react';
 import ResumeForm from '@/components/templates/ResumeForm';
 import ResumePreview from '@/components/templates/resume-preview';
+import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
 
 export default function ResumeTemplatePage({ params }: { params: Promise<{ template: string }> }) {
   const { template } = use(params);
@@ -18,7 +19,7 @@ export default function ResumeTemplatePage({ params }: { params: Promise<{ templ
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4">
+    <ResizablePanelGroup direction="horizontal" className="grid grid-cols-2 gap-0 p-4">
       <ResumeForm
         onUpdate={setImageUrl}
         setLoading={setLoading}
@@ -27,8 +28,8 @@ export default function ResumeTemplatePage({ params }: { params: Promise<{ templ
         templateSampleData={resumeSampleData}
         templateFunction={resumeFunc}
       />
-
+      <ResizableHandle className="w-4 opacity-0" />
       <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
-    </div>
+    </ResizablePanelGroup>
   );
 }
