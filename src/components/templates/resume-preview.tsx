@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { ResizablePanel } from '@/components/ui/resizable';
 
 interface IProps {
   imageUrl: string | null;
@@ -79,7 +80,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   };
 
   return (
-    <div className="w-full rounded-md border p-4">
+    <ResizablePanel className="w-full rounded-md border p-4">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold">Resume Preview</h2>
@@ -123,7 +124,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
           </p>
         )}
       </div>
-    </div>
+    </ResizablePanel>
   );
 };
 

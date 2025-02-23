@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ArrayField from './ArrayField';
 import NormalField from './NormalField';
+import { ResizablePanel } from '@/components/ui/resizable';
 
 interface IProps<T extends Record<string, unknown>> {
   setLatexData: React.Dispatch<React.SetStateAction<string | null>>;
@@ -30,12 +31,10 @@ const ResumeForm = <T extends Record<string, unknown>>({
 
       if (index !== null && Array.isArray(sectionValue)) {
         if (typeof sectionValue[0] === 'string') {
-          // ✅ Handle string array
           const newArray = [...(sectionValue as string[])];
           newArray[index] = value;
           return { ...updatedData, [section]: newArray as T[keyof T] };
         } else {
-          // ✅ Handle array of objects
           const newArray = [...(sectionValue as Array<Record<string, string>>)];
           newArray[index] = { ...newArray[index], [field]: value };
           return { ...updatedData, [section]: newArray as T[keyof T] };
@@ -86,10 +85,8 @@ const ResumeForm = <T extends Record<string, unknown>>({
 
       if (Array.isArray(current)) {
         if (typeof current[0] === 'string') {
-          // ✅ Handle string array
           return { ...prev, [section]: [...(current as string[]), ''] };
         } else {
-          // ✅ Handle array of objects
           return { ...prev, [section]: [...(current as Array<Record<string, string>>), newEntry] };
         }
       }
@@ -103,7 +100,6 @@ const ResumeForm = <T extends Record<string, unknown>>({
       const current = prev[section];
 
       if (Array.isArray(current)) {
-        // ✅ Works for both string[] and object arrays
         return { ...prev, [section]: current.filter((_, i) => i !== index) };
       }
 
@@ -122,45 +118,52 @@ const ResumeForm = <T extends Record<string, unknown>>({
 
   const sections = Object.keys(formData) as Array<keyof T>;
 
+  const handleReorder = (section: keyof T, newOrder: Array<Record<string, string>>) => {
+    setTempData((prev) => ({ ...prev, [section]: newOrder }));
+  };
+
   return (
-    <Tabs defaultValue={String(sections[0])} className="space-y-6 rounded-md border p-6">
-      <TabsList className="flex flex-wrap gap-2">
-        {sections.map((section) => (
-          <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
-            {String(section)}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <ResizablePanel>
+      <Tabs defaultValue={String(sections[0])} className="space-y-6 rounded-md border p-6">
+        <TabsList className="flex flex-wrap gap-2">
+          {sections.map((section) => (
+            <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
+              {String(section)}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      {sections.map((section) => {
-        const sectionData = tempData[section];
-        const isArray = Array.isArray(sectionData);
+        {sections.map((section) => {
+          const sectionData = tempData[section];
+          const isArray = Array.isArray(sectionData);
 
-        return (
-          <TabsContent
-            key={String(section)}
-            value={String(section)}
-            className="rounded-md border p-4"
-          >
-            {isArray ? (
-              <ArrayField
-                section={section}
-                data={sectionData as Array<Record<string, string>>}
-                handleChange={handleChange}
-                handleAddEntry={handleAddEntry}
-                handleRemoveEntry={handleRemoveEntry}
-              />
-            ) : (
-              <NormalField
-                section={section}
-                data={sectionData as Record<string, string> | string}
-                handleChange={handleChange}
-              />
-            )}
-          </TabsContent>
-        );
-      })}
-    </Tabs>
+          return (
+            <TabsContent
+              key={String(section)}
+              value={String(section)}
+              className="rounded-md border p-4"
+            >
+              {isArray ? (
+                <ArrayField
+                  section={section}
+                  data={sectionData as Array<Record<string, string>>}
+                  handleChange={handleChange}
+                  handleAddEntry={handleAddEntry}
+                  handleRemoveEntry={handleRemoveEntry}
+                  handleReorder={handleReorder}
+                />
+              ) : (
+                <NormalField
+                  section={section}
+                  data={sectionData as Record<string, string> | string}
+                  handleChange={handleChange}
+                />
+              )}
+            </TabsContent>
+          );
+        })}
+      </Tabs>
+    </ResizablePanel>
   );
 };
 

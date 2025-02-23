@@ -13,6 +13,7 @@ export type Sb2novResumeData = {
     location?: string;
   };
   education: {
+    id: string;
     institution: string;
     location: string;
     degree: string;
@@ -23,17 +24,20 @@ export type Sb2novResumeData = {
   }[];
   skills: Record<string, string[]>;
   experience: {
+    id: string;
     title: string;
     date: string;
     accomplishments: string[];
   }[];
   projects: {
+    id: string;
     title: string;
     url: string;
     urlLabel: string;
     accomplishments: string[];
   }[];
   honorsAndAwards: {
+    id: string;
     description: string;
     url?: string;
     urlLabel?: string;
@@ -54,6 +58,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
   },
   education: [
     {
+      id: 'a5092564-55f6-45a8-8866-5ab0ae54a079',
       institution: 'Massachusetts Institute of Technology',
       location: 'Cambridge, MA, USA',
       degree: 'Bachelor of Science in Computer Science',
@@ -62,6 +67,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       cgpa: '3.8/4.0',
     },
     {
+      id: 'ecf2eab2-1f61-4020-983d-d57b55a6c51f',
       institution: 'Central High School',
       location: 'Springfield, IL, USA',
       degree: 'High School Diploma',
@@ -70,6 +76,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       percentage: '92.5',
     },
     {
+      id: '1c4640b7-5524-4cd1-b642-bbaa08669efc',
       institution: 'Stanford University',
       location: 'Stanford, CA, USA',
       degree: 'Master of Science in Artificial Intelligence',
@@ -86,6 +93,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
   },
   experience: [
     {
+      id: 'eb8aefd0-2fad-4a75-a533-6d67b50baf7b',
       title: 'SCALE AI (Outlier) - C++ AI Trainer (Freelance)',
       date: 'Oct 2024',
       accomplishments: [
@@ -96,6 +104,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       ],
     },
     {
+      id: 'ebf8b5e5-e8b7-4f8c-8910-95f4f50e1df0',
       title: 'Pyccel',
       date: 'Jan 2024',
       accomplishments: [
@@ -104,6 +113,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       ],
     },
     {
+      id: '1f67dfe1-e985-4b7a-8a4c-4af35b8c1491',
       title: 'TechCorp - Software Engineer Intern',
       date: 'May 2023 -- Aug 2023',
       accomplishments: [
@@ -115,6 +125,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
   ],
   projects: [
     {
+      id: '9fef2c38-5026-4fa8-806d-22e95580c3f5',
       title: 'Personal Portfolio',
       url: 'https://johndoe.com',
       urlLabel: 'Link',
@@ -125,6 +136,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       ],
     },
     {
+      id: 'cc288be9-b998-4614-bc5c-225c5efaaf46',
       title: 'E-Commerce Platform',
       url: 'https://github.com/johndoe/ecommerce',
       urlLabel: 'Github Link',
@@ -137,24 +149,29 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
   ],
   honorsAndAwards: [
     {
+      id: '943f583a-18f9-44d4-bb5e-82860cfd2e5a',
       description: 'Achieved a 2123 rating (Knight) and ranked in the top 1.5% of LeetCode users',
       url: 'https://leetcode.com/johndoe',
       urlLabel: 'Profile',
     },
     {
+      id: '37cbaf94-8cdd-48ab-a208-7ee5a730176d',
       description: 'Solved 2000+ DSA problems across all platforms',
     },
     {
+      id: '2ecd25a7-51c5-4311-b1b7-0cc4dc851b1f',
       description:
         'Selected for Amazon Machine Learning Summer School 2024 among top 5% of applicants',
       url: 'https://aws.amazon.com/education/ml-summer-school',
       urlLabel: 'Certificate',
     },
     {
+      id: '711b2674-c0c4-4e13-93e8-9f331b347495',
       description: 'Qualified for Round 2 in Meta Hacker Cup 2024, placing in top 10%',
       url: 'https://www.facebook.com/codingcompetitions/hacker-cup/2024',
     },
     {
+      id: '093ee050-a57a-4454-ba91-d62f235195db',
       description: 'Won regional coding competition, beating 95% of participants',
     },
   ],

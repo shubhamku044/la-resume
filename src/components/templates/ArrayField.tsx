@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import ArrayFieldCard from './arrayfield-card';
 import ArrayFieldModal from './arrayfield-modal';
+import { Reorder } from 'framer-motion';
 
 interface ArrayFieldProps<T extends Record<string, unknown>> {
   section: keyof T;
@@ -9,6 +10,7 @@ interface ArrayFieldProps<T extends Record<string, unknown>> {
   handleChange: (section: keyof T, index: number, field: string, value: string) => void;
   handleAddEntry: (section: keyof T, newEntry: Record<string, string>) => void;
   handleRemoveEntry: (section: keyof T, index: number) => void;
+  handleReorder: (section: string, newOrder: Array<Record<string, string>>) => void;
 }
 
 export default function ArrayField<T extends Record<string, unknown>>({
@@ -17,12 +19,14 @@ export default function ArrayField<T extends Record<string, unknown>>({
   handleChange,
   handleAddEntry,
   handleRemoveEntry,
+  handleReorder,
 }: ArrayFieldProps<T>) {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [formData, setFormData] = useState<Record<string, string | string[]>>({});
+  const [dataState, setDataState] = useState(data);
 
-  const fields = data.length > 0 ? Object.keys(data[0]) : ['title', 'description']; // Default fields
+  const fields = data.length > 0 ? Object.keys(data[0]) : ['title', 'description'];
 
   const openModal = (index?: number) => {
     if (index !== undefined) {
@@ -30,7 +34,6 @@ export default function ArrayField<T extends Record<string, unknown>>({
       setFormData(data[index]);
     } else {
       setEditingIndex(null);
-      // Ensure formData has fields initialized with empty values
       setFormData(Object.fromEntries(fields.map((f) => [f, ''])));
     }
     setModalOpen(true);
@@ -57,7 +60,7 @@ export default function ArrayField<T extends Record<string, unknown>>({
       const sanitizedData = Object.fromEntries(
         Object.entries(formData).map(([key, value]) => [
           key,
-          typeof value === 'string' ? value : value.join(', '), // Convert arrays to comma-separated strings
+          typeof value === 'string' ? value : value.join(', '),
         ])
       );
 
@@ -69,16 +72,32 @@ export default function ArrayField<T extends Record<string, unknown>>({
     }, 100);
   };
 
+  useEffect(() => {
+    setDataState(data);
+  }, [data]);
+
   return (
     <div className="space-y-4">
-      {data.map((entry, index) => (
-        <ArrayFieldCard
-          key={index}
-          entry={entry}
-          onEdit={() => openModal(index)}
-          onDelete={() => handleRemoveEntry(section, index)}
-        />
-      ))}
+      <Reorder.Group
+        onReorder={(newOrder) => {
+          setDataState(newOrder);
+          handleReorder(String(section), newOrder);
+        }}
+        values={dataState}
+        as="div"
+        className="space-y-4"
+        axis="y"
+      >
+        {dataState.map((entry, index) => (
+          <Reorder.Item as="div" key={entry.id} value={entry}>
+            <ArrayFieldCard
+              entry={entry}
+              onEdit={() => openModal(index)}
+              onDelete={() => handleRemoveEntry(section, index)}
+            />
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
 
       <Button onClick={() => openModal()}>Add Entry</Button>
 

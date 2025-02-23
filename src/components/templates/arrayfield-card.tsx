@@ -14,7 +14,7 @@ export default function ArrayFieldCard({ entry, onEdit, onDelete }: ArrayFieldCa
   return (
     <Card className="shadow-md">
       <CardHeader>
-        <CardTitle>{entry[fields[0]] || 'Untitled Entry'}</CardTitle>
+        <CardTitle>{entry[fields[1]] || 'Untitled Entry'}</CardTitle>
       </CardHeader>
       <CardContent className="flex items-center justify-between">
         <div>
