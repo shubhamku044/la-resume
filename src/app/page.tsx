@@ -95,7 +95,7 @@ export default function LaResumeLanding() {
             className="shadow-lg shadow-purple-300"
             width={1024}
             height={800}
-            src="/la-resume-mockup.png"
+            src="/la-resume-mockup.webp"
           />
         </motion.div>
       </section>
