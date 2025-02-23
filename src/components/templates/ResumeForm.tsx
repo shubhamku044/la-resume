@@ -3,11 +3,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ArrayField from './ArrayField';
 import NormalField from './NormalField';
+import { ResizablePanel } from '@/components/ui/resizable';
 
 interface IProps<T extends Record<string, unknown>> {
   setLatexData: React.Dispatch<React.SetStateAction<string | null>>;
   onUpdate: (imageUrl: string) => void;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  templateType: T;
   templateSampleData: T;
   templateFunction: (data: T) => string;
 }
@@ -28,9 +30,15 @@ const ResumeForm = <T extends Record<string, unknown>>({
       const sectionValue = updatedData[section];
 
       if (index !== null && Array.isArray(sectionValue)) {
-        const newArray = [...sectionValue] as Array<Record<string, string>>;
-        newArray[index] = { ...newArray[index], [field]: value };
-        return { ...updatedData, [section]: newArray as T[keyof T] };
+        if (typeof sectionValue[0] === 'string') {
+          const newArray = [...(sectionValue as string[])];
+          newArray[index] = value;
+          return { ...updatedData, [section]: newArray as T[keyof T] };
+        } else {
+          const newArray = [...(sectionValue as Array<Record<string, string>>)];
+          newArray[index] = { ...newArray[index], [field]: value };
+          return { ...updatedData, [section]: newArray as T[keyof T] };
+        }
       }
 
       if (typeof sectionValue === 'object' && sectionValue !== null) {
@@ -71,20 +79,32 @@ const ResumeForm = <T extends Record<string, unknown>>({
     }
   }, [formData, templateFunction, setLoading, onUpdate, setLatexData]);
 
-  const handleAddEntry = (section: keyof T) => {
+  const handleAddEntry = (section: keyof T, newEntry: Record<string, string> | string) => {
     setTempData((prev) => {
-      const current = prev[section] as Array<Record<string, string>>;
-      const emptyEntry =
-        current.length > 0 ? Object.fromEntries(Object.keys(current[0]).map((k) => [k, ''])) : {};
-      return { ...prev, [section]: [...current, emptyEntry] };
+      const current = prev[section];
+
+      if (Array.isArray(current)) {
+        if (typeof current[0] === 'string') {
+          return { ...prev, [section]: [...(current as string[]), ''] };
+        } else {
+          return { ...prev, [section]: [...(current as Array<Record<string, string>>), newEntry] };
+        }
+      }
+
+      return prev;
     });
   };
 
   const handleRemoveEntry = (section: keyof T, index: number) => {
-    setTempData((prev) => ({
-      ...prev,
-      [section]: (prev[section] as Array<unknown>).filter((_, i) => i !== index),
-    }));
+    setTempData((prev) => {
+      const current = prev[section];
+
+      if (Array.isArray(current)) {
+        return { ...prev, [section]: current.filter((_, i) => i !== index) };
+      }
+
+      return prev;
+    });
   };
 
   useEffect(() => {
@@ -98,45 +118,52 @@ const ResumeForm = <T extends Record<string, unknown>>({
 
   const sections = Object.keys(formData) as Array<keyof T>;
 
+  const handleReorder = (section: keyof T, newOrder: Array<Record<string, string>>) => {
+    setTempData((prev) => ({ ...prev, [section]: newOrder }));
+  };
+
   return (
-    <Tabs defaultValue={String(sections[0])} className="space-y-6 rounded-md border p-6">
-      <TabsList className="flex flex-wrap gap-2">
-        {sections.map((section) => (
-          <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
-            {String(section)}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <ResizablePanel>
+      <Tabs defaultValue={String(sections[0])} className="space-y-6 rounded-md border p-6">
+        <TabsList className="flex flex-wrap gap-2">
+          {sections.map((section) => (
+            <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
+              {String(section)}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      {sections.map((section) => {
-        const sectionData = tempData[section];
-        const isArray = Array.isArray(sectionData);
+        {sections.map((section) => {
+          const sectionData = tempData[section];
+          const isArray = Array.isArray(sectionData);
 
-        return (
-          <TabsContent
-            key={String(section)}
-            value={String(section)}
-            className="rounded-md border p-4"
-          >
-            {isArray ? (
-              <ArrayField
-                section={section}
-                data={sectionData as Array<Record<string, string>>}
-                handleChange={handleChange}
-                handleAddEntry={handleAddEntry}
-                handleRemoveEntry={handleRemoveEntry}
-              />
-            ) : (
-              <NormalField
-                section={section}
-                data={sectionData as Record<string, string> | string}
-                handleChange={handleChange}
-              />
-            )}
-          </TabsContent>
-        );
-      })}
-    </Tabs>
+          return (
+            <TabsContent
+              key={String(section)}
+              value={String(section)}
+              className="rounded-md border p-4"
+            >
+              {isArray ? (
+                <ArrayField
+                  section={section}
+                  data={sectionData as Array<Record<string, string>>}
+                  handleChange={handleChange}
+                  handleAddEntry={handleAddEntry}
+                  handleRemoveEntry={handleRemoveEntry}
+                  handleReorder={handleReorder}
+                />
+              ) : (
+                <NormalField
+                  section={section}
+                  data={sectionData as Record<string, string> | string}
+                  handleChange={handleChange}
+                />
+              )}
+            </TabsContent>
+          );
+        })}
+      </Tabs>
+    </ResizablePanel>
   );
 };
 
