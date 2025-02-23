@@ -48,13 +48,13 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
   heading: {
     name: 'John Doe',
     phone: '+1 (123) 456 7890',
-    email: 'jhonny@sins.com',
+    email: 'john@doe.com',
     portfolio: 'https://johndoe.com',
     github: 'github.com/shubhamku044/la-resume',
     linkedin: 'linkedin.com/in/johndoe',
     leetcode: 'leetcode.com/johndoe',
     codeforces: 'codeforces.com/johndoe',
-    location: 'Sonagachi, Kolkata, India',
+    location: 'Kolkata, India',
   },
   education: [
     {
