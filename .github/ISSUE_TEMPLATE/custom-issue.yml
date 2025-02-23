@@ -1,0 +1,26 @@
+name: ❓ Custom Issue
+description: Other types of issues/questions
+title: '[QUESTION] '
+labels: ['question']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Support Guidelines
+        - For coding help: Use Discussions
+        - For urgent issues: Contact [email@protected]
+        - For general questions: Join our [Discord](https://discord.gg/your-link)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Details
+      description: Please describe your issue in detail
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any relevant screenshots, logs, or references

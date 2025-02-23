@@ -1,0 +1,43 @@
+name: 🚀 Feature Request
+description: Suggest an enhancement or new feature
+title: '[FEATURE] '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Before suggesting
+        - [ ] I've checked existing features
+        - [ ] I've read the roadmap
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: What problem does this feature solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-needed
+    attributes:
+      label: Why is this needed?
+      description: Explain the value this would bring to users
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: How would you implement this feature?
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Other ways to achieve the same goal
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information about the feature
