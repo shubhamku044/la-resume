@@ -19,7 +19,7 @@ interface IProps {
 }
 
 const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
-  const [exportFormat, setExportFormat] = useState<string>('pdf'); // ✅ Default to "pdf"
+  const [exportFormat, setExportFormat] = useState<string>('pdf');
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
@@ -69,35 +69,24 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   };
 
   const handleExport = () => {
-    if (!exportFormat) {
-      setExportFormat('pdf');
+    if (exportFormat === 'pdf') {
       handleDownloadPDF();
-    } else if (exportFormat === 'pdf') {
-      handleDownloadPDF();
-    } else if (exportFormat === 'tex') {
+    } else {
       handleDownloadLaTeX();
     }
   };
 
   return (
     <ResizablePanel className="w-full rounded-md border p-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-semibold">Resume Preview</h2>
-          {loading && (
-            <div className="flex items-center text-sm">
-              <CircularProgress
-                className="scale-50 text-sm"
-                strokeWidth={2}
-                size="sm"
-                aria-label="Loading..."
-              />
-              Compiling
-            </div>
-          )}
+      <h2 className="text-lg font-semibold">Resume Preview</h2>
+      {/* Export Controls */}
+      <div className="mt-4 flex items-center justify-between">
+        {/* Left Side: Loading Indicator (only shown when loading) */}
+        <div className="flex-1">
+          {loading && <CircularProgress className="scale-75 text-sm" strokeWidth={3} size="lg" />}
         </div>
 
-        {/* ✅ Export Format Selector & Download Button */}
+        {/* Right Side: Export Options + Download Button (Always Visible) */}
         <div className="flex items-center gap-4">
           <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
             <SelectTrigger className="w-[140px]">
