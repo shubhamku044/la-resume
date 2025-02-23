@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'La-Resume',
     images: [
       {
-        url: 'https://la-resume.vercel.app/la-resume-mockup.png',
+        url: 'https://la-resume.vercel.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'La-Resume Interface Preview',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'La-Resume: Professional ATS-Optimized Resume Builder',
     description: 'Free ATS-friendly resume builder with LaTeX export',
-    images: ['https://la-resume.vercel.app/la-resume-mockup.png'],
+    images: ['https://la-resume.vercel.app/og-image.png'],
   },
   robots: {
     index: true,
