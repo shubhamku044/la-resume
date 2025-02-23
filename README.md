@@ -2,14 +2,14 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shubhamku044/la-resume/pulls)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/la-resume.svg)](https://github.com/shubhamku044/la-resume/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/shubhamku044/la-resume.svg)](https://github.com/shubhamku044/la-resume/stargazers)
 
 A modern, open-source resume builder with ATS optimization and LaTeX export capabilities. Create professional resumes effortlessly, completely free!
 
 👉 [Live Demo](https://la-resume.vercel.app/)
 
-![La-Resume Interface](https://la-resume.app/og-image.png)
-![La-Resume Interface](https://la-resume.app/la-resume-mockup.png)
+![La-Resume Interface](https://la-resume.vercel.app/og-image.png)
+![La-Resume Interface](https://la-resume.vercel.app/la-resume-mockup.png)
 
 ## Features ✨
 
