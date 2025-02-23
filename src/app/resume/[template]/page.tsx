@@ -7,7 +7,11 @@ import ResumePreview from '@/components/templates/resume-preview';
 export default function ResumeTemplatePage({ params }: { params: Promise<{ template: string }> }) {
   const { template } = use(params);
   const templatePackage = resumes[template as keyof typeof resumes];
-  const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
+  const {
+    templateType: resumeType,
+    templateFunction: resumeFunc,
+    templateSampleData: resumeSampleData,
+  } = templatePackage;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);
@@ -19,6 +23,7 @@ export default function ResumeTemplatePage({ params }: { params: Promise<{ templ
         onUpdate={setImageUrl}
         setLoading={setLoading}
         setLatexData={setLatexData}
+        templateType={resumeType}
         templateSampleData={resumeSampleData}
         templateFunction={resumeFunc}
       />

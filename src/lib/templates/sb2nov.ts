@@ -16,10 +16,8 @@ export type Sb2novResumeData = {
     institution: string;
     location: string;
     degree: string;
-    duration: {
-      from: string;
-      to: string;
-    };
+    startDate: string;
+    endDate: string;
     cgpa?: string;
     percentage?: string;
   }[];
@@ -59,30 +57,24 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       institution: 'Massachusetts Institute of Technology',
       location: 'Cambridge, MA, USA',
       degree: 'Bachelor of Science in Computer Science',
-      duration: {
-        from: 'Sep. 2018',
-        to: 'May 2022',
-      },
+      startDate: 'Sep. 2018',
+      endDate: 'June 2022',
       cgpa: '3.8/4.0',
     },
     {
       institution: 'Central High School',
       location: 'Springfield, IL, USA',
       degree: 'High School Diploma',
-      duration: {
-        from: 'Aug. 2014',
-        to: 'May 2018',
-      },
+      startDate: 'Sep. 2014',
+      endDate: 'June 2018',
       percentage: '92.5',
     },
     {
       institution: 'Stanford University',
       location: 'Stanford, CA, USA',
       degree: 'Master of Science in Artificial Intelligence',
-      duration: {
-        from: 'Sep. 2022',
-        to: 'June 2024',
-      },
+      startDate: 'Sep. 2022',
+      endDate: 'June 2024',
       cgpa: '3.9/4.0',
     },
   ],
@@ -298,11 +290,11 @@ export const sb2nov = (data: Sb2novResumeData) => {
 \\section{Education}
   \\resumeSubHeadingListStart
 ${data.education
-  .map(({ institution, location, degree, duration, ...others }) => {
+  .map(({ institution, location, degree, startDate, endDate, ...others }) => {
     return `
     \\resumeSubheading
       {${institution}}{${location}}
-      {${degree}; ${others.cgpa ? `CGPA: ${others.cgpa}` : `Percentage: ${others.percentage}\\%`}}{${duration.from} -- ${duration.to}}
+      {${degree}; ${others.cgpa ? `CGPA: ${others.cgpa}` : `Percentage: ${others.percentage}\\%`}}{${startDate} -- ${endDate}}
 `;
   })
   .join('')}
