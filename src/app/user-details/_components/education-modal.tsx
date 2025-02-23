@@ -94,20 +94,37 @@ export default function EducationModal({ open, onClose, initialData }: Education
       );
       toast('✅Education added successfully');
     }
-    setFormData(defaultEducation);
     onClose();
   };
 
   useEffect(() => {
-    if (initialData) {
+    if (!open) {
+      setFormData(defaultEducation);
+      setStartDate(undefined);
+      setEndDate(undefined);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (initialData && open) {
       setFormData(initialData);
       setStartDate(new Date(initialData.startYear));
       setEndDate(new Date(initialData.endYear));
     }
-  }, [initialData]);
+  }, [initialData, open]);
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        if (!open) {
+          setFormData(defaultEducation);
+          setStartDate(undefined);
+          setEndDate(undefined);
+        }
+        onClose();
+      }}
+    >
       <DialogContent aria-describedby="Eduction add">
         <DialogHeader>
           <DialogTitle>Add Education</DialogTitle>
