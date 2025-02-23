@@ -39,3 +39,11 @@ pnpm install
 # Start development server
 pnpm dev
 ```
+
+## Contributors ✨
+
+<a href="https://github.com/shubhamku044/la-resume/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=shubhamku044/la-resume" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
