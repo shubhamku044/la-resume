@@ -222,8 +222,10 @@ export default function LaResumeLanding() {
             </p>
             <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
               <Button
+                variant="outline"
                 size="lg"
-                className="flex-1 bg-white px-6 py-3 text-blue-600 hover:bg-gray-100 hover:text-blue-700 sm:flex-none"
+                className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
+                onClick={() => router.push('/templates')}
               >
                 Create Your Resume Now
               </Button>
