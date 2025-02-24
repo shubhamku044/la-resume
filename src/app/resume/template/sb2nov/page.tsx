@@ -1,18 +1,13 @@
 'use client';
 import { resumes } from '@/lib/templates/index';
-import { use, useState } from 'react';
-import ResumeForm from '@/components/templates/ResumeForm';
-import ResumePreview from '@/components/templates/resume-preview';
+import { useState } from 'react';
+import ResumeForm from './_components/resumeForm';
+import ResumePreview from './_components/resumepreview';
 import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
 
-export default function ResumeTemplatePage({ params }: { params: Promise<{ template: string }> }) {
-  const { template } = use(params);
-  const templatePackage = resumes[template as keyof typeof resumes];
-  const {
-    templateType: resumeType,
-    templateFunction: resumeFunc,
-    templateSampleData: resumeSampleData,
-  } = templatePackage;
+export default function ResumeTemplatePage() {
+  const templatePackage = resumes['sb2nov']; // Change 'modern' to the default template you want to use
+  const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);
@@ -24,7 +19,6 @@ export default function ResumeTemplatePage({ params }: { params: Promise<{ templ
         onUpdate={setImageUrl}
         setLoading={setLoading}
         setLatexData={setLatexData}
-        templateType={resumeType}
         templateSampleData={resumeSampleData}
         templateFunction={resumeFunc}
       />

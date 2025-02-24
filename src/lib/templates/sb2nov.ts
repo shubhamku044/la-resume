@@ -19,8 +19,7 @@ export type Sb2novResumeData = {
     degree: string;
     startDate: string;
     endDate: string;
-    cgpa?: string;
-    percentage?: string;
+    marks: string;
   }[];
   skills: Record<string, string[]>;
   experience: {
@@ -64,7 +63,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'Bachelor of Science in Computer Science',
       startDate: 'Sep. 2018',
       endDate: 'June 2022',
-      cgpa: '3.8/4.0',
+      marks: 'CGPA: 3.8/4.0',
     },
     {
       id: 'ecf2eab2-1f61-4020-983d-d57b55a6c51f',
@@ -73,7 +72,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'High School Diploma',
       startDate: 'Sep. 2014',
       endDate: 'June 2018',
-      percentage: '92.5',
+      marks: 'Percentage: 92.5%',
     },
     {
       id: '1c4640b7-5524-4cd1-b642-bbaa08669efc',
@@ -82,7 +81,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'Master of Science in Artificial Intelligence',
       startDate: 'Sep. 2022',
       endDate: 'June 2024',
-      cgpa: '3.9/4.0',
+      marks: 'CGPA: 3.9/4.0',
     },
   ],
   skills: {
@@ -307,15 +306,16 @@ export const sb2nov = (data: Sb2novResumeData) => {
 \\section{Education}
   \\resumeSubHeadingListStart
 ${data.education
-  .map(({ institution, location, degree, startDate, endDate, ...others }) => {
+  .map(({ institution, location, degree, startDate, endDate, marks }) => {
     return `
     \\resumeSubheading
       {${institution}}{${location}}
-      {${degree}; ${others.cgpa ? `CGPA: ${others.cgpa}` : `Percentage: ${others.percentage}\\%`}}{${startDate} -- ${endDate}}
+      {${degree}; ${marks ? `${marks.replace('%', '\\%')}` : ''}}{${startDate} -- ${endDate}}
 `;
   })
   .join('')}
   \\resumeSubHeadingListEnd
+
 
 %-----------SKILLS-----------
 \\section{Technical Skills}
@@ -362,7 +362,7 @@ ${data.projects
   .join('\n')}
 
 %-----------HONORS & AWARDS-----------
-\\section{Honors & Awards}
+\\section{Honors \\& Awards}
 \\resumeSubHeadingListStart
 ${data.honorsAndAwards
   .map(({ description, url, urlLabel }) => {
