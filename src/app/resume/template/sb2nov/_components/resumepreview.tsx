@@ -93,7 +93,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
       {/* Export Controls */}
       <div className="mt-4 flex items-center justify-between">
         {/* Left Side: Loading Indicator (only shown when loading) */}
-        <div className="flex-1">
+        <div className="h-10 flex-1">
           {loading && <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />}
         </div>
 

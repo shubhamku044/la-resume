@@ -3,23 +3,23 @@
 import Link from 'next/link';
 import { templates } from '@/lib/templates';
 import Image from 'next/image';
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import { Button } from '@/components/ui/button';
 
 export default function TemplatesPage() {
   return (
     <div className="container mx-auto p-6">
       {/* Navigation Bar */}
       <div className="mb-6 flex justify-center gap-4">
-        <HoverBorderGradient containerClassName="p-1">
+        <Button>
           <Link href="/templates" className="block px-4 py-1 text-white">
             Resume Templates
           </Link>
-        </HoverBorderGradient>
-        <HoverBorderGradient containerClassName="p-1">
+        </Button>
+        <Button>
           <Link href="/made-by-you" className="block px-4 py-1 text-white">
             Resumes Made by You
           </Link>
-        </HoverBorderGradient>
+        </Button>
       </div>
 
       <h1 className="mb-4 text-center text-2xl font-bold">Choose a Resume Template</h1>
