@@ -24,7 +24,7 @@ const Header = () => {
             <Link href="/user-details" className="text-gray-700 hover:text-black">
               User Details
             </Link>
-            <UserButton afterSwitchSessionUrl="/templates" />
+            <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
           </SignedIn>
           <SignedOut>
             <div className="flex gap-2">
