@@ -106,9 +106,7 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
       {/* Add Honors & Awards Button */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogTrigger asChild>
-          <Button onClick={() => handleOpenModal(null)} className="bg-blue-500 text-white">
-            Add Honor / Award
-          </Button>
+          <Button onClick={() => handleOpenModal(null)}>Add Honor / Award</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

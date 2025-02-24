@@ -136,7 +136,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
               });
               setModalOpen(true);
             }}
-            className="bg-blue-500 text-white"
           >
             Add Project
           </Button>

@@ -127,7 +127,6 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
               });
               setModalOpen(true);
             }}
-            className="bg-blue-500 text-white"
           >
             Add Education
           </Button>
