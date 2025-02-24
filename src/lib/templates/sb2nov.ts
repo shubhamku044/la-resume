@@ -25,7 +25,7 @@ export type Sb2novResumeData = {
   experience: {
     id: string;
     title: string;
-    date: string;
+    date: string | '';
     accomplishments: string[];
   }[];
   projects: {
@@ -333,7 +333,10 @@ ${
     \\resumeItemListStart
 ${Object.entries(data.skills)
   .map(([category, items]) => {
-    return `\\resumeItem{\\textbf{${category.charAt(0).toUpperCase() + category.slice(1)}}: ${items.join(', ')}}`;
+    const formattedCategory = `\\textbf{${category.charAt(0).toUpperCase() + category.slice(1)}}`;
+    return items.length > 0
+      ? `\\resumeItem{${formattedCategory}: ${items.join(', ')}}`
+      : `\\resumeItem{${formattedCategory}}`;
   })
   .join('\n        ')}
     \\resumeItemListEnd
