@@ -7,7 +7,6 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Viewport } from 'next';
-import { ConvexClientProvider } from '@/components/ConvexClientProvider';
 import Header from '@/components/ui/Header';
 
 const geistSans = Geist({
@@ -85,13 +84,11 @@ export default function RootLayout({
     <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ConvexClientProvider>
-            <Provider>
-              <Header />
-              <main>{children}</main>
-              <Toaster />
-            </Provider>
-          </ConvexClientProvider>
+          <Provider>
+            <Header />
+            <main>{children}</main>
+            <Toaster />
+          </Provider>
           <Analytics />
           <SpeedInsights />
         </body>
