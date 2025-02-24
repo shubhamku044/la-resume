@@ -63,6 +63,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     setModalOpen(false);
     setEditingIndex(null);
     setTempEntry({ id: '', title: '', date: '', accomplishments: [] });
+    setNewAccomplishment('');
   };
 
   // Remove an experience entry
@@ -132,7 +133,22 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       </Reorder.Group>
 
       {/* Add Experience Button */}
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <Dialog
+        open={modalOpen}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setEditingIndex(null);
+            setTempEntry({
+              id: '',
+              title: '',
+              date: '',
+              accomplishments: [],
+            });
+            setNewAccomplishment('');
+          }
+          setModalOpen(isOpen);
+        }}
+      >
         <DialogTrigger asChild>
           <Button
             onClick={() => {
