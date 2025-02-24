@@ -44,12 +44,26 @@ export default function ExperienceModal({ open, onClose, initialData }: Experien
   const [endDate, setEndDate] = useState<Date>();
 
   useEffect(() => {
-    if (initialData) {
-      setFormData({ ...initialData, id: initialData.id });
-      setStartDate(new Date(initialData.startDate));
-      setEndDate(initialData.endDate ? new Date(initialData.endDate) : undefined);
+    if (open) {
+      if (initialData) {
+        setFormData({ ...initialData, id: initialData.id });
+        setStartDate(new Date(initialData.startDate));
+        setEndDate(initialData.endDate ? new Date(initialData.endDate) : undefined);
+      } else {
+        setFormData({
+          id: '',
+          company: '',
+          role: '',
+          startDate: '',
+          endDate: '',
+          responsibilities: [''],
+          location: '',
+        });
+        setStartDate(undefined);
+        setEndDate(undefined);
+      }
     }
-  }, [initialData]);
+  }, [open, initialData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

@@ -41,7 +41,14 @@ export default function ProjectsSection() {
         );
       })}
 
-      <ProjectModal initialData={editingProject} open={isOpen} onClose={() => setIsOpen(false)} />
+      <ProjectModal
+        initialData={editingProject}
+        open={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          setEditingProject(undefined);
+        }}
+      />
     </div>
   );
 }
