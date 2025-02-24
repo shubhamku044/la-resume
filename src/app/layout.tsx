@@ -5,6 +5,7 @@ import Header from '@/components/ui/Header';
 import { Provider } from '@/store';
 import { Toaster } from '@/components/ui/sonner';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Viewport } from 'next';
 
 const geistSans = Geist({
@@ -87,6 +88,7 @@ export default function RootLayout({
           <Toaster />
         </Provider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
