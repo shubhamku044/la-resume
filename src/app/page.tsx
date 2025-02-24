@@ -14,6 +14,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
 import { useRouter } from 'next/navigation';
+import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 
 export default function LaResumeLanding() {
@@ -32,7 +33,9 @@ export default function LaResumeLanding() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <LuGithub className="size-4" />
-            <span>Loved by {stars} developers</span>
+            <span>
+              Loved by <CountUp delay={1} start={0} end={stars} /> developers
+            </span>
           </div>
           <Link
             href="https://github.com/shubhamku044/la-resume"
