@@ -43,7 +43,10 @@ export default function ExperienceSection() {
       <ExperienceModal
         initialData={editingExperience}
         open={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+          setEditingExperience(undefined);
+        }}
       />
     </div>
   );
