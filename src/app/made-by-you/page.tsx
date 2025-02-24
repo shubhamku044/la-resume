@@ -6,7 +6,6 @@ import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 export default function MadeByYouPage() {
   return (
     <div className="container mx-auto p-6">
-      {/* Navigation Bar */}
       <div className="mb-6 flex justify-center gap-4">
         <HoverBorderGradient containerClassName="p-1">
           <Link href="/templates" className="block px-4 py-1 text-white">
