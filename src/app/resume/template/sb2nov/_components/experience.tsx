@@ -63,6 +63,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     setModalOpen(false);
     setEditingIndex(null);
     setTempEntry({ id: '', title: '', date: '', accomplishments: [] });
+    setNewAccomplishment('');
   };
 
   // Remove an experience entry
