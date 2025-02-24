@@ -3,30 +3,30 @@
 import Link from 'next/link';
 import { templates } from '@/lib/templates';
 import Image from 'next/image';
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import { Button } from '@/components/ui/button';
 
 export default function TemplatesPage() {
   return (
     <div className="container mx-auto p-6">
       {/* Navigation Bar */}
       <div className="mb-6 flex justify-center gap-4">
-        <HoverBorderGradient containerClassName="p-1">
+        <Button>
           <Link href="/templates" className="block px-4 py-1 text-white">
             Resume Templates
           </Link>
-        </HoverBorderGradient>
-        <HoverBorderGradient containerClassName="p-1">
+        </Button>
+        <Button>
           <Link href="/made-by-you" className="block px-4 py-1 text-white">
             Resumes Made by You
           </Link>
-        </HoverBorderGradient>
+        </Button>
       </div>
 
       <h1 className="mb-4 text-center text-2xl font-bold">Choose a Resume Template</h1>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {templates.slice(0, 6).map((template) => (
-          <Link href={`/resume/${template.id}`} key={template.id}>
+          <Link href={`/resume/template/${template.id}`} key={template.id}>
             <div className="flex flex-col items-center rounded-lg border p-4 shadow-md transition hover:shadow-lg">
               <div className="aspect-[210/297] w-full overflow-hidden rounded-lg bg-gray-100">
                 <Image

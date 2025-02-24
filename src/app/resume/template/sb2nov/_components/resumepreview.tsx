@@ -11,6 +11,17 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ResizablePanel } from '@/components/ui/resizable';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 interface IProps {
   imageUrl: string | null;
@@ -19,7 +30,7 @@ interface IProps {
 }
 
 const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
-  const [exportFormat, setExportFormat] = useState<string>('pdf'); // ✅ Default to "pdf"
+  const [exportFormat, setExportFormat] = useState<string>('pdf');
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
@@ -69,35 +80,24 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   };
 
   const handleExport = () => {
-    if (!exportFormat) {
-      setExportFormat('pdf');
+    if (exportFormat === 'pdf') {
       handleDownloadPDF();
-    } else if (exportFormat === 'pdf') {
-      handleDownloadPDF();
-    } else if (exportFormat === 'tex') {
+    } else {
       handleDownloadLaTeX();
     }
   };
 
   return (
-    <ResizablePanel className="w-full rounded-md border p-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-semibold">Resume Preview</h2>
-          {loading && (
-            <div className="flex items-center text-sm">
-              <CircularProgress
-                className="scale-50 text-sm"
-                strokeWidth={2}
-                size="sm"
-                aria-label="Loading..."
-              />
-              Compiling
-            </div>
-          )}
+    <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
+      <h2 className="text-lg font-semibold">Resume Preview</h2>
+      {/* Export Controls */}
+      <div className="mt-4 flex items-center justify-between">
+        {/* Left Side: Loading Indicator (only shown when loading) */}
+        <div className="h-10 flex-1">
+          {loading && <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />}
         </div>
 
-        {/* ✅ Export Format Selector & Download Button */}
+        {/* Right Side: Export Options + Download Button */}
         <div className="flex items-center gap-4">
           <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
             <SelectTrigger className="w-[140px]">
@@ -109,9 +109,24 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
             </SelectContent>
           </Select>
 
-          <button onClick={handleExport} className="rounded-md bg-black px-4 py-2 text-white">
-            Download
-          </button>
+          <AlertDialog>
+            <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
+              Download
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to download the resume in{' '}
+                  <strong>{exportFormat.toUpperCase()}</strong> format?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
 

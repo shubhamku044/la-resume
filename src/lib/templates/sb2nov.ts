@@ -19,14 +19,13 @@ export type Sb2novResumeData = {
     degree: string;
     startDate: string;
     endDate: string;
-    cgpa?: string;
-    percentage?: string;
+    marks: string;
   }[];
   skills: Record<string, string[]>;
   experience: {
     id: string;
     title: string;
-    date: string;
+    date: string | '';
     accomplishments: string[];
   }[];
   projects: {
@@ -64,7 +63,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'Bachelor of Science in Computer Science',
       startDate: 'Sep. 2018',
       endDate: 'June 2022',
-      cgpa: '3.8/4.0',
+      marks: 'CGPA: 3.8/4.0',
     },
     {
       id: 'ecf2eab2-1f61-4020-983d-d57b55a6c51f',
@@ -73,7 +72,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'High School Diploma',
       startDate: 'Sep. 2014',
       endDate: 'June 2018',
-      percentage: '92.5',
+      marks: 'Percentage: 92.5%',
     },
     {
       id: '1c4640b7-5524-4cd1-b642-bbaa08669efc',
@@ -82,7 +81,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       degree: 'Master of Science in Artificial Intelligence',
       startDate: 'Sep. 2022',
       endDate: 'June 2024',
-      cgpa: '3.9/4.0',
+      marks: 'CGPA: 3.9/4.0',
     },
   ],
   skills: {
@@ -304,31 +303,54 @@ export const sb2nov = (data: Sb2novResumeData) => {
 \\end{center}
 
 %-----------EDUCATION-----------
+${
+  data.education.length > 0
+    ? `
+%-----------EDUCATION-----------
 \\section{Education}
   \\resumeSubHeadingListStart
 ${data.education
-  .map(({ institution, location, degree, startDate, endDate, ...others }) => {
+  .map(({ institution, location, degree, startDate, endDate, marks }) => {
     return `
     \\resumeSubheading
-      {${institution}}{${location}}
-      {${degree}; ${others.cgpa ? `CGPA: ${others.cgpa}` : `Percentage: ${others.percentage}\\%`}}{${startDate} -- ${endDate}}
+      {${escapeLatex(institution)}}{${escapeLatex(location)}}
+      {${escapeLatex(degree)}${marks ? `; ${escapeLatex(marks)}` : ''}}{${escapeLatex(startDate)} -- ${escapeLatex(endDate)}}
 `;
   })
   .join('')}
   \\resumeSubHeadingListEnd
+`
+    : ''
+}
 
+
+
+${
+  Object.keys(data.skills).length > 0
+    ? `
 %-----------SKILLS-----------
 \\section{Technical Skills}
 \\resumeSubHeadingListStart
     \\resumeItemListStart
 ${Object.entries(data.skills)
   .map(([category, items]) => {
-    return `\\resumeItem{\\textbf{${category.charAt(0).toUpperCase() + category.slice(1)}}: ${items.join(', ')}}`;
+    const formattedCategory = `\\textbf{${escapeLatex(
+      category.charAt(0).toUpperCase() + category.slice(1)
+    )}}`;
+    return items.length > 0
+      ? `\\resumeItem{${formattedCategory}: ${items.map(escapeLatex).join(', ')}}`
+      : `\\resumeItem{${formattedCategory}}`;
   })
   .join('\n        ')}
     \\resumeItemListEnd
 \\resumeSubHeadingListEnd
+`
+    : ''
+}
 
+${
+  data.experience.length > 0
+    ? `
 %-----------EXPERIENCE-----------
 \\section{Experience}
 ${data.experience
@@ -336,7 +358,7 @@ ${data.experience
     ({ title, date, accomplishments }) => `
 \\resumeSubHeadingListStart
     \\resumeProjectHeading
-    {\\textbf{${title}}}{${date}}
+    {\\textbf{${escapeLatex(title)}}}{${escapeLatex(date)}}
     \\resumeItemListStart
         ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
     \\resumeItemListEnd
@@ -344,7 +366,14 @@ ${data.experience
 `
   )
   .join('\n')}
+`
+    : ''
+}
 
+
+${
+  data.projects.length > 0
+    ? `
 %-----------PROJECTS-----------
 \\section{Projects}
 ${data.projects
@@ -352,17 +381,23 @@ ${data.projects
     ({ title, url, urlLabel, accomplishments }) => `
 \\resumeSubHeadingListStart
     \\resumeProjectHeading
-        {\\textbf{${escapeLatex(title)}}}{\\href{${escapeLatex(url)}}{${escapeLatex(urlLabel)}}}
+        {\\textbf{${escapeLatex(title)}}}${url ? `{\\href{${escapeLatex(url)}}{${escapeLatex(urlLabel)}}}` : ''}
     \\resumeItemListStart
-        ${accomplishments.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
+        ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
     \\resumeItemListEnd
 \\resumeSubHeadingListEnd
 `
   )
   .join('\n')}
+`
+    : ''
+}
 
+${
+  data.honorsAndAwards.length > 0
+    ? `
 %-----------HONORS & AWARDS-----------
-\\section{Honors & Awards}
+\\section{Honors \\& Awards}
 \\resumeSubHeadingListStart
 ${data.honorsAndAwards
   .map(({ description, url, urlLabel }) => {
@@ -374,6 +409,9 @@ ${data.honorsAndAwards
   })
   .join('\n    ')}
 \\resumeSubHeadingListEnd
+`
+    : ''
+}
 
 \\end{document}
 `;

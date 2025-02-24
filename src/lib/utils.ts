@@ -7,7 +7,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const escapeLatex = (text: string) => {
-  return text.replace(/%/g, '\\%').replace(/#/g, '\\#').replace(/\$/g, '\\$').replace(/&/g, '\\&');
+  return text
+    .replace(/\\/g, '\\textbackslash{}')
+    .replace(/_/g, '\\_')
+    .replace(/{/g, '\\{')
+    .replace(/}/g, '\\}')
+    .replace(/\$/g, '\\$')
+    .replace(/%/g, '\\%')
+    .replace(/#/g, '\\#')
+    .replace(/&/g, '\\&');
 };
 
 export const generateLatex = (data: ResumeData): string => {

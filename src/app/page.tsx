@@ -14,9 +14,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
 import { useRouter } from 'next/navigation';
+import CountUp from 'react-countup';
+import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 
 export default function LaResumeLanding() {
-  const [stars, setStars] = useState(69);
+  const [stars, setStars] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,7 +33,9 @@ export default function LaResumeLanding() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <LuGithub className="size-4" />
-            <span>Loved by {stars} developers</span>
+            <span>
+              Loved by <CountUp delay={1} start={0} end={stars} /> developers
+            </span>
           </div>
           <Link
             href="https://github.com/shubhamku044/la-resume"
@@ -63,16 +67,29 @@ export default function LaResumeLanding() {
             to PDF or LaTeX in seconds.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button
-              size="lg"
-              className="w-full shadow-lg sm:w-auto"
-              onClick={() => {
-                router.push('/templates');
-              }}
-              variant="default"
-            >
-              Start Building <ChevronRight />
-            </Button>
+            <SignedIn>
+              <Button
+                size="lg"
+                className="w-full shadow-lg sm:w-auto"
+                onClick={() => {
+                  router.push('/templates');
+                }}
+                variant="default"
+              >
+                Start Building <ChevronRight />
+              </Button>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton
+                fallbackRedirectUrl="/templates"
+                signUpFallbackRedirectUrl="/"
+                mode="modal"
+              >
+                <Button size="lg" className="w-full shadow-lg sm:w-auto" variant="default">
+                  Start Building <ChevronRight />
+                </Button>
+              </SignInButton>
+            </SignedOut>
             <Button
               variant="secondary"
               size="lg"
@@ -95,7 +112,7 @@ export default function LaResumeLanding() {
             className="shadow-lg shadow-purple-300"
             width={1024}
             height={800}
-            src="/la-resume-mockup.png"
+            src="/la-resume-mockup.webp"
           />
         </motion.div>
       </section>
@@ -221,12 +238,31 @@ export default function LaResumeLanding() {
               Join thousands of professionals who&apos;ve transformed their job search
             </p>
             <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
-              <Button
-                size="lg"
-                className="flex-1 bg-white px-6 py-3 text-blue-600 hover:bg-gray-100 hover:text-blue-700 sm:flex-none"
-              >
-                Create Your Resume Now
-              </Button>
+              <SignedIn>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
+                  onClick={() => router.push('/templates')}
+                >
+                  Create Your Resume Now
+                </Button>
+              </SignedIn>
+              <SignedOut>
+                <SignInButton
+                  fallbackRedirectUrl="/templates"
+                  signUpFallbackRedirectUrl="/"
+                  mode="modal"
+                >
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
+                  >
+                    Create Your Resume Now
+                  </Button>
+                </SignInButton>
+              </SignedOut>
               <Button
                 variant="outline"
                 size="lg"
