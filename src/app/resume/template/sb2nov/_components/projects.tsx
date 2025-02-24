@@ -70,6 +70,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       urlLabel: '',
       accomplishments: [],
     });
+    setNewAccomplishment('');
   };
 
   // Remove a project entry
@@ -151,7 +152,24 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       </Reorder.Group>
 
       {/* Add Project Button */}
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <Dialog
+        open={modalOpen}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            // Reset state when closing
+            setEditingIndex(null);
+            setTempEntry({
+              id: '',
+              title: '',
+              url: '',
+              urlLabel: '',
+              accomplishments: [],
+            });
+            setNewAccomplishment('');
+          }
+          setModalOpen(isOpen);
+        }}
+      >
         <DialogTrigger asChild>
           <Button
             onClick={() => {
