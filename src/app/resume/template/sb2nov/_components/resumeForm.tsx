@@ -69,7 +69,7 @@ const ResumeForm = ({
 
   return (
     <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
-      <Tabs defaultValue={String(sections[0])} className="space-y-6">
+      <Tabs defaultValue={String(sections[0])} className="w-full">
         <TabsList className="flex flex-wrap gap-2">
           {sections.map((section) => (
             <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
