@@ -16,7 +16,7 @@ export const skillsSlice = createSlice({
       state.push(action.payload);
     },
     removeSkill: (state, action: PayloadAction<string>) => {
-      state = state.filter((skill) => skill !== action.payload);
+      return state.filter((skill) => skill !== action.payload);
     },
   },
 });
