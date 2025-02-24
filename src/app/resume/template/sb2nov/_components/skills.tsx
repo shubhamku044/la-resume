@@ -116,7 +116,16 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       </Reorder.Group>
 
       {/* Add Category Button */}
-      <Dialog open={addModalOpen} onOpenChange={setAddModalOpen}>
+      {/* Add Category Modal */}
+      <Dialog
+        open={addModalOpen}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setNewCategoryName('');
+          }
+          setAddModalOpen(isOpen);
+        }}
+      >
         <DialogTrigger asChild>
           <Button>Add New Category</Button>
         </DialogTrigger>
@@ -137,7 +146,17 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       </Dialog>
 
       {/* Edit Category Modal */}
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <Dialog
+        open={modalOpen}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setEditingCategory(null);
+            setTempCategory('');
+            setTempSkills('');
+          }
+          setModalOpen(isOpen);
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edit Category</DialogTitle>
