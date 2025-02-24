@@ -303,6 +303,10 @@ export const sb2nov = (data: Sb2novResumeData) => {
 \\end{center}
 
 %-----------EDUCATION-----------
+${
+  data.education.length > 0
+    ? `
+%-----------EDUCATION-----------
 \\section{Education}
   \\resumeSubHeadingListStart
 ${data.education
@@ -310,13 +314,19 @@ ${data.education
     return `
     \\resumeSubheading
       {${institution}}{${location}}
-      {${degree}; ${marks ? `${marks.replace('%', '\\%')}` : ''}}{${startDate} -- ${endDate}}
+      {${degree}${marks ? `; ${marks.replace('%', '\\%')}` : ''}}{${startDate} -- ${endDate}}
 `;
   })
   .join('')}
   \\resumeSubHeadingListEnd
+`
+    : ''
+}
 
 
+${
+  Object.keys(data.skills).length > 0
+    ? `
 %-----------SKILLS-----------
 \\section{Technical Skills}
 \\resumeSubHeadingListStart
@@ -328,7 +338,13 @@ ${Object.entries(data.skills)
   .join('\n        ')}
     \\resumeItemListEnd
 \\resumeSubHeadingListEnd
+`
+    : ''
+}
 
+${
+  data.experience.length > 0
+    ? `
 %-----------EXPERIENCE-----------
 \\section{Experience}
 ${data.experience
@@ -344,7 +360,13 @@ ${data.experience
 `
   )
   .join('\n')}
+`
+    : ''
+}
 
+${
+  data.projects.length > 0
+    ? `
 %-----------PROJECTS-----------
 \\section{Projects}
 ${data.projects
@@ -352,15 +374,22 @@ ${data.projects
     ({ title, url, urlLabel, accomplishments }) => `
 \\resumeSubHeadingListStart
     \\resumeProjectHeading
-        {\\textbf{${escapeLatex(title)}}}{\\href{${escapeLatex(url)}}{${escapeLatex(urlLabel)}}}
+        {\\textbf{${escapeLatex(title)}}}${url ? `{\\href{${escapeLatex(url)}}{${escapeLatex(urlLabel)}}}` : ''}
     \\resumeItemListStart
-        ${accomplishments.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
+        ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
     \\resumeItemListEnd
 \\resumeSubHeadingListEnd
 `
   )
   .join('\n')}
+`
+    : ''
+}
 
+
+${
+  data.honorsAndAwards.length > 0
+    ? `
 %-----------HONORS & AWARDS-----------
 \\section{Honors \\& Awards}
 \\resumeSubHeadingListStart
@@ -374,7 +403,9 @@ ${data.honorsAndAwards
   })
   .join('\n    ')}
 \\resumeSubHeadingListEnd
-
+`
+    : ''
+}
 \\end{document}
 `;
 };
