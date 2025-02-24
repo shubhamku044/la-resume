@@ -68,7 +68,7 @@ const ResumeForm = ({
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
 
   return (
-    <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
+    <ResizablePanel className="min-h-[500px] w-full min-w-[700px] rounded-md border p-4">
       <Tabs defaultValue={String(sections[0])} className="w-full">
         <TabsList className="flex flex-wrap gap-2">
           {sections.map((section) => (
