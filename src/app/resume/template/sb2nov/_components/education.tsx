@@ -56,13 +56,19 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     setTempData((prev) => {
       const updatedEducation = [...prev.education];
       if (editingIndex !== null) {
-        updatedEducation[editingIndex] = tempEntry;
+        updatedEducation[editingIndex] = {
+          ...tempEntry,
+          endDate: tempEntry.endDate.trim() === '' ? 'Present' : tempEntry.endDate,
+        };
       } else {
-        updatedEducation.push({ ...tempEntry, id: Date.now().toString() });
+        updatedEducation.push({
+          ...tempEntry,
+          id: Date.now().toString(),
+          endDate: tempEntry.endDate.trim() === '' ? 'Present' : tempEntry.endDate,
+        });
       }
       return { ...prev, education: updatedEducation };
     });
-
     setModalOpen(false);
     setEditingIndex(null);
     setTempEntry({

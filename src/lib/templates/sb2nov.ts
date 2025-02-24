@@ -313,8 +313,8 @@ ${data.education
   .map(({ institution, location, degree, startDate, endDate, marks }) => {
     return `
     \\resumeSubheading
-      {${institution}}{${location}}
-      {${degree}${marks ? `; ${marks.replace('%', '\\%')}` : ''}}{${startDate} -- ${endDate}}
+      {${escapeLatex(institution)}}{${escapeLatex(location)}}
+      {${escapeLatex(degree)}${marks ? `; ${escapeLatex(marks)}` : ''}}{${escapeLatex(startDate)} -- ${escapeLatex(endDate)}}
 `;
   })
   .join('')}
@@ -322,6 +322,7 @@ ${data.education
 `
     : ''
 }
+
 
 
 ${
@@ -333,9 +334,11 @@ ${
     \\resumeItemListStart
 ${Object.entries(data.skills)
   .map(([category, items]) => {
-    const formattedCategory = `\\textbf{${category.charAt(0).toUpperCase() + category.slice(1)}}`;
+    const formattedCategory = `\\textbf{${escapeLatex(
+      category.charAt(0).toUpperCase() + category.slice(1)
+    )}}`;
     return items.length > 0
-      ? `\\resumeItem{${formattedCategory}: ${items.join(', ')}}`
+      ? `\\resumeItem{${formattedCategory}: ${items.map(escapeLatex).join(', ')}}`
       : `\\resumeItem{${formattedCategory}}`;
   })
   .join('\n        ')}
@@ -355,7 +358,7 @@ ${data.experience
     ({ title, date, accomplishments }) => `
 \\resumeSubHeadingListStart
     \\resumeProjectHeading
-    {\\textbf{${title}}}{${date}}
+    {\\textbf{${escapeLatex(title)}}}{${escapeLatex(date)}}
     \\resumeItemListStart
         ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
     \\resumeItemListEnd
@@ -366,6 +369,7 @@ ${data.experience
 `
     : ''
 }
+
 
 ${
   data.projects.length > 0
@@ -389,7 +393,6 @@ ${data.projects
     : ''
 }
 
-
 ${
   data.honorsAndAwards.length > 0
     ? `
@@ -409,6 +412,7 @@ ${data.honorsAndAwards
 `
     : ''
 }
+
 \\end{document}
 `;
 };
