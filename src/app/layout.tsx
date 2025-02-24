@@ -4,9 +4,11 @@ import './globals.css';
 import Header from '@/components/ui/Header';
 import { Provider } from '@/store';
 import { Toaster } from '@/components/ui/sonner';
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Viewport } from 'next';
+import { ConvexClientProvider } from '@/components/ConvexClientProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -80,16 +82,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Provider>
-          <Header />
-          <main>{children}</main>
-          <Toaster />
-        </Provider>
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <ConvexClientProvider>
+            <Provider>
+              <Header />
+              <main>{children}</main>
+              <Toaster />
+            </Provider>
+          </ConvexClientProvider>
+          <Analytics />
+          <SpeedInsights />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -4,8 +4,13 @@ import Link from 'next/link';
 import { templates } from '@/lib/templates';
 import Image from 'next/image';
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import { useQuery } from 'convex/react';
+import { api } from '../../../convex/_generated/api';
 
 export default function TemplatesPage() {
+  const tasks = useQuery(api.tasks.get);
+
+  console.log('Tasks', tasks);
   return (
     <div className="container mx-auto p-6">
       {/* Navigation Bar */}
