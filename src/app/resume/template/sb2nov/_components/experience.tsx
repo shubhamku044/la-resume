@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { X } from 'lucide-react';
+import { Pencil, Trash } from 'lucide-react';
 
 interface ExperienceProps {
   data: Sb2novResumeData['experience'];
@@ -96,18 +97,34 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="font-semibold">{entry.title || 'Untitled Experience'}</h3>
-                <p className="text-sm text-gray-500">{entry.date || 'No Date Provided'}</p>
-              </div>
-              <div className="flex space-x-2">
-                <Button size="sm" variant="outline" onClick={() => handleOpenModal(index)}>
-                  Edit
-                </Button>
-                <Button size="sm" variant="destructive" onClick={() => handleRemove(index)}>
-                  Delete
-                </Button>
+            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
+              <div className="flex items-start justify-between">
+                {/* Left Section: Title & Accomplishments */}
+                <div className="w-full space-y-2">
+                  <h3 className="text-lg font-semibold">
+                    {entry.title || 'Untitled Accomplishment'}
+                  </h3>
+                  <p className="text-lg text-gray-500">{entry.date || 'No Date Provided'}</p>
+
+                  {/* Display all accomplishment points nicely */}
+                  {entry.accomplishments && entry.accomplishments.length > 0 && (
+                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+                      {entry.accomplishments.map((point, idx) => (
+                        <li key={idx}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                {/* Right Section: Edit & Delete Buttons */}
+                <div className="flex space-x-3">
+                  <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                    <Pencil size={18} />
+                  </Button>
+                  <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                    <Trash size={18} />
+                  </Button>
+                </div>
               </div>
             </Card>
           </Reorder.Item>

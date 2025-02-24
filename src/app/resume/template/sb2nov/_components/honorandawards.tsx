@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -10,6 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Reorder } from 'framer-motion';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface HonorsAwardsProps {
   data: Sb2novResumeData['honorsAndAwards'];
@@ -81,24 +83,35 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <div className="flex items-center justify-between rounded-lg border bg-white p-4 shadow-md">
-              <div>
-                <p className="font-semibold">{entry.description || 'No Description'}</p>
+            <Card className="flex items-start justify-between rounded-lg border border-gray-300 p-5 shadow-sm">
+              {/* Left Section: Description & URL */}
+              <div className="w-full space-y-2">
+                {/* Description */}
+                <p className="text-lg text-gray-800">{entry.description || 'No Description'}</p>
+
+                {/* Clickable URL if available */}
                 {entry.url && (
-                  <a href={entry.url} target="_blank" className="text-blue-500 underline">
-                    {entry.urlLabel || 'View More'}
+                  <a
+                    href={entry.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    {entry.urlLabel || 'Link'}
                   </a>
                 )}
               </div>
-              <div className="flex space-x-2">
-                <Button size="sm" variant="outline" onClick={() => handleOpenModal(index)}>
-                  Edit
+
+              {/* Right Section: Edit & Delete Buttons */}
+              <div className="flex space-x-3">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
                 </Button>
-                <Button size="sm" variant="destructive" onClick={() => handleRemoveEntry(index)}>
-                  Delete
+                <Button size="icon" variant="destructive" onClick={() => handleRemoveEntry(index)}>
+                  <Trash size={18} />
                 </Button>
               </div>
-            </div>
+            </Card>
           </Reorder.Item>
         ))}
       </Reorder.Group>

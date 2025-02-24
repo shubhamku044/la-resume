@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface EducationProps {
   data: Sb2novResumeData['education'];
@@ -90,19 +91,22 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
             <Card className="flex items-center justify-between p-4">
+              {' '}
+              {/* Reduced bottom padding */}
               <div>
-                <h3 className="font-semibold">{entry.degree || 'Untitled Degree'}</h3>
-                <p className="text-sm text-gray-500">
-                  {entry.institution || 'No Institution'} | {entry.startDate} -{' '}
-                  {entry.endDate || 'Present'}
+                <h3 className="text-xl font-bold">{entry.institution || 'Untitled Degree'}</h3>
+                <p className="text-lg text-gray-600">{entry.degree || 'No Institution'}</p>
+                <p className="text-lg text-gray-500">
+                  {entry.startDate} - {entry.endDate || 'Present'}
                 </p>
+                {entry.marks && <p className="text-lg text-gray-700">{entry.marks}</p>}
               </div>
-              <div className="flex space-x-2">
-                <Button size="sm" variant="outline" onClick={() => handleOpenModal(index)}>
-                  Edit
+              <div className="flex space-x-3">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={16} />
                 </Button>
-                <Button size="sm" variant="destructive" onClick={() => handleRemove(index)}>
-                  Delete
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={16} />
                 </Button>
               </div>
             </Card>

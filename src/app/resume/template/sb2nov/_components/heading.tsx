@@ -33,7 +33,7 @@ const HeadingSection = ({ data, setTempData }: HeadingProps) => {
     <div className="space-y-4">
       {Object.keys(data).map((field) => (
         <div key={field} className="flex flex-col">
-          <label className="text-sm font-medium capitalize">{field}</label>
+          <label className="text-lg font-semibold capitalize">{field}</label>
           <div className="relative flex items-center">
             <input
               type="text"

@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface SkillsProps {
   data: Sb2novResumeData['skills'];
@@ -94,19 +95,19 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
           <Reorder.Item key={category} value={category}>
             <Card className="flex items-center justify-between p-4">
               <div>
-                <h3 className="font-semibold">{category}</h3>
-                <p className="text-sm text-gray-500">{data[category].join(', ')}</p>
+                <h3 className="text-xl font-semibold">{category}</h3>
+                <p className="text-lg text-gray-500">{data[category].join(', ')}</p>
               </div>
               <div className="flex space-x-2">
-                <Button size="sm" variant="outline" onClick={() => handleOpenModal(category)}>
-                  Edit
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(category)}>
+                  <Pencil size={16} />
                 </Button>
                 <Button
-                  size="sm"
+                  size="icon"
                   variant="destructive"
                   onClick={() => handleRemoveCategory(category)}
                 >
-                  Delete
+                  <Trash size={16} />
                 </Button>
               </div>
             </Card>
