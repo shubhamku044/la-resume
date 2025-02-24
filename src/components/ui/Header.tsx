@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { LuGithub } from 'react-icons/lu';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import { Button } from './button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,12 +17,29 @@ const Header = () => {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm md:flex">
-          <Link href="/templates" className="text-gray-700 hover:text-black">
-            Templates
-          </Link>
-          <Link href="/user-details" className="text-gray-700 hover:text-black">
-            User Details
-          </Link>
+          <SignedIn>
+            <Link href="/templates" className="text-gray-700 hover:text-black">
+              Templates
+            </Link>
+            <Link href="/user-details" className="text-gray-700 hover:text-black">
+              User Details
+            </Link>
+            <UserButton afterSwitchSessionUrl="/templates" />
+          </SignedIn>
+          <SignedOut>
+            <div className="flex gap-2">
+              <SignInButton
+                fallbackRedirectUrl="/templates"
+                signUpFallbackRedirectUrl="/"
+                mode="modal"
+              >
+                <Button variant="outline">Sign In</Button>
+              </SignInButton>
+              <SignUpButton fallbackRedirectUrl="/" mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </div>
+          </SignedOut>
           <Link
             className="rounded-full border border-gray-300 p-2"
             href="https://github.com/shubhamku044/la-resume"

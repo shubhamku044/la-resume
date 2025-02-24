@@ -14,9 +14,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
 import { useRouter } from 'next/navigation';
+import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 
 export default function LaResumeLanding() {
-  const [stars, setStars] = useState(69);
+  const [stars, setStars] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -63,16 +64,29 @@ export default function LaResumeLanding() {
             to PDF or LaTeX in seconds.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button
-              size="lg"
-              className="w-full shadow-lg sm:w-auto"
-              onClick={() => {
-                router.push('/templates');
-              }}
-              variant="default"
-            >
-              Start Building <ChevronRight />
-            </Button>
+            <SignedIn>
+              <Button
+                size="lg"
+                className="w-full shadow-lg sm:w-auto"
+                onClick={() => {
+                  router.push('/templates');
+                }}
+                variant="default"
+              >
+                Start Building <ChevronRight />
+              </Button>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton
+                fallbackRedirectUrl="/templates"
+                signUpFallbackRedirectUrl="/"
+                mode="modal"
+              >
+                <Button size="lg" className="w-full shadow-lg sm:w-auto" variant="default">
+                  Start Building <ChevronRight />
+                </Button>
+              </SignInButton>
+            </SignedOut>
             <Button
               variant="secondary"
               size="lg"
@@ -221,14 +235,31 @@ export default function LaResumeLanding() {
               Join thousands of professionals who&apos;ve transformed their job search
             </p>
             <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
-              <Button
-                variant="outline"
-                size="lg"
-                className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
-                onClick={() => router.push('/templates')}
-              >
-                Create Your Resume Now
-              </Button>
+              <SignedIn>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
+                  onClick={() => router.push('/templates')}
+                >
+                  Create Your Resume Now
+                </Button>
+              </SignedIn>
+              <SignedOut>
+                <SignInButton
+                  fallbackRedirectUrl="/templates"
+                  signUpFallbackRedirectUrl="/"
+                  mode="modal"
+                >
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
+                  >
+                    Create Your Resume Now
+                  </Button>
+                </SignInButton>
+              </SignedOut>
               <Button
                 variant="outline"
                 size="lg"

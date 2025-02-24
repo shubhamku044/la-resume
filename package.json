@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.12.0",
     "@heroui/progress": "^2.2.10",
     "@heroui/system": "^2.4.10",
     "@heroui/theme": "^2.4.9",
@@ -31,6 +32,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "convex": "^1.19.2",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.4.2",
     "lucide-react": "^0.475.0",
