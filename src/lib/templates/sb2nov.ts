@@ -107,8 +107,8 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       title: 'Pyccel',
       date: 'Jan 2024',
       accomplishments: [
-        'Added support for \\texttt{numpy.max} and \\texttt{numpy.min} in the C printer, including macro definitions, AST updates, and Fortran support for complex numbers.',
-        'Resolved issue \\#1645 by replacing deprecated AST classes with \\texttt{Constant} (Python 3.8+), ensuring compatibility with newer Python versions.',
+        'Added support for numpy.max and numpy.min in the C printer, including macro definitions, AST updates, and Fortran support for complex numbers.',
+        'Resolved issue #1645 by replacing deprecated AST classes with Constant (Python 3.8+), ensuring compatibility with newer Python versions.',
       ],
     },
     {
