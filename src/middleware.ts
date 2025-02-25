@@ -7,6 +7,7 @@ const isProtectedRoute = createRouteMatcher([
   '/resume/(.*)',
 ]);
 
+// public routes
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect();
 });
