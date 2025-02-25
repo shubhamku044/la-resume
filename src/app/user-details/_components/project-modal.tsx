@@ -34,10 +34,20 @@ export default function ProjectModal({ open, onClose, initialData }: ProjectModa
   });
 
   useEffect(() => {
-    if (initialData) {
-      setFormData({ ...initialData, id: initialData.id });
+    if (open) {
+      if (initialData) {
+        setFormData({ ...initialData, id: initialData.id });
+      } else {
+        setFormData({
+          id: '',
+          title: '',
+          description: [''],
+          technologies: [''],
+          link: '',
+        });
+      }
     }
-  }, [initialData]);
+  }, [open, initialData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
