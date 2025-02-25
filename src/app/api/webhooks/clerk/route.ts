@@ -58,18 +58,17 @@ export async function POST(req: Request) {
       create: userData,
       update: {
         email: primaryEmail,
-        first_name: first_name, // Changed from firstName
-        last_name: last_name, // Changed from lastName
+        first_name: first_name,
+        last_name: last_name,
         avatar_url: image_url,
         updated_at: new Date().toISOString(),
       },
     });
 
-    console.log('console log', resp);
-
-    console.log('Upserting user:', userData);
-
-    console.log('Resp', resp);
+    if (!resp) {
+      console.error(`Failed to upsert user with clerk_id: ${id}`);
+      return NextResponse.json({ success: false });
+    }
 
     return NextResponse.json({ success: true });
   }
@@ -77,11 +76,24 @@ export async function POST(req: Request) {
   if (eventType === 'user.deleted') {
     const { id } = evt.data;
 
-    await prisma.user.delete({
+    const user = await prisma.user.findUnique({
       where: { clerk_id: id },
     });
 
-    console.log(`Successfully deleted user with clerk_id: ${id}`);
+    if (!user) {
+      console.log(`User with clerk_id: ${id} not found`);
+      return NextResponse.json({ success: true });
+    }
+
+    const { count } = await prisma.user.deleteMany({
+      where: { clerk_id: id },
+    });
+
+    if (count === 0) {
+      console.error(`Failed to delete user with clerk_id: ${id}`);
+      return NextResponse.json({ success: false });
+    }
+
     return NextResponse.json({ success: true });
   }
 
