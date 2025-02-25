@@ -6,10 +6,10 @@
 
 A modern, open-source resume builder with ATS optimization and LaTeX export capabilities. Create professional resumes effortlessly, completely free!
 
-👉 [Live Demo](https://la-resume.vercel.app/)
+👉 [Live Demo](https://la-resume.tech/)
 
-![La-Resume Interface](https://la-resume.vercel.app/og-image.png)
-![La-Resume Interface](https://la-resume.vercel.app/la-resume-mockup.png)
+![La-Resume Interface](https://la-resume.tech/og-image.png)
+![La-Resume Interface](https://la-resume.tech/la-resume-mockup.png)
 
 ## Features ✨
 
