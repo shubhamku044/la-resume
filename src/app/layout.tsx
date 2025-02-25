@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Viewport } from 'next';
 import Header from '@/components/ui/Header';
 
@@ -91,6 +92,7 @@ export default function RootLayout({
           </Provider>
           <Analytics />
           <SpeedInsights />
+          <GoogleAnalytics gaId="G-DQR3LS5N69" />
         </body>
       </html>
     </ClerkProvider>
