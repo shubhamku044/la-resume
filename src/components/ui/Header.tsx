@@ -61,20 +61,35 @@ const Header = () => {
       {isMenuOpen && (
         <div className="absolute z-10 w-full bg-white md:hidden">
           <nav className="flex flex-col items-center gap-4 border-b py-4">
-            <Link
-              href="/templates"
-              className="text-gray-700 hover:text-black"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Templates
-            </Link>
-            <Link
-              href="/user-details"
-              className="text-gray-700 hover:text-black"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              User Details
-            </Link>
+            <SignedIn>
+              <Link
+                href="/templates"
+                className="text-gray-700 hover:text-black"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Templates
+              </Link>
+              <Link
+                href="/user-details"
+                className="text-gray-700 hover:text-black"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                User Details
+              </Link>
+              <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton
+                fallbackRedirectUrl="/templates"
+                signUpFallbackRedirectUrl="/"
+                mode="modal"
+              >
+                <Button variant="outline">Sign In</Button>
+              </SignInButton>
+              <SignUpButton fallbackRedirectUrl="/" mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </SignedOut>
             <Link
               className="mt-2 rounded-full border border-gray-300 p-2"
               href="https://github.com/shubhamku044/la-resume"
