@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Pencil, Save } from 'lucide-react'; // Using Lucide Icons
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 
@@ -10,6 +10,7 @@ interface HeadingProps {
 const HeadingSection = ({ data, setTempData }: HeadingProps) => {
   const [editField, setEditField] = useState<string | null>(null);
   const [tempValues, setTempValues] = useState(data);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (field: keyof Sb2novResumeData['heading'], value: string) => {
     setTempValues((prev) => ({
@@ -29,6 +30,19 @@ const HeadingSection = ({ data, setTempData }: HeadingProps) => {
     setEditField(null);
   };
 
+  const handleBlur = (field: keyof Sb2novResumeData['heading']) => {
+    if (editField === field) {
+      setTempData((prev) => ({
+        ...prev,
+        heading: {
+          ...prev.heading,
+          [field]: tempValues[field] ?? '', // Save value on blur
+        },
+      }));
+      setEditField(null);
+    }
+  };
+
   return (
     <div className="space-y-4">
       {Object.keys(data).map((field) => (
@@ -36,11 +50,13 @@ const HeadingSection = ({ data, setTempData }: HeadingProps) => {
           <label className="text-lg font-semibold capitalize">{field}</label>
           <div className="relative flex items-center">
             <input
+              ref={inputRef}
               type="text"
               value={tempValues[field as keyof Sb2novResumeData['heading']] ?? ''} // Ensure a default value
               onChange={(e) =>
                 handleChange(field as keyof Sb2novResumeData['heading'], e.target.value)
               }
+              onBlur={() => handleBlur(field as keyof Sb2novResumeData['heading'])}
               disabled={editField !== field}
               className={`w-full rounded-md border p-2 pr-10 transition ${
                 editField !== field ? 'cursor-not-allowed bg-gray-100 text-gray-500' : ''

@@ -68,49 +68,54 @@ const ResumeForm = ({
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
 
   return (
-    <ResizablePanel className="min-h-[500px] w-full min-w-[700px] rounded-md border p-4">
-      <Tabs defaultValue={String(sections[0])} className="w-full">
-        <TabsList className="flex flex-wrap gap-2">
+    <div className="flex overflow-y-auto">
+      {/* Resume Form */}
+      <ResizablePanel className="min-h-[500px] w-full min-w-[320px] rounded-md border p-3 md:p-4">
+        <Tabs defaultValue={String(sections[0])} className="w-full">
+          <div className="overflow-x-auto">
+            <TabsList className="flex w-max gap-2">
+              {sections.map((section) => (
+                <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
+                  {String(section)}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+
           {sections.map((section) => (
-            <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
-              {String(section)}
-            </TabsTrigger>
+            <TabsContent
+              key={String(section)}
+              value={String(section)}
+              className="rounded-md border p-3 md:p-4"
+            >
+              {section === 'heading' && (
+                <HeadingSection data={tempData.heading} setTempData={setTempData} />
+              )}
+
+              {section === 'education' && (
+                <EducationSection data={tempData.education} setTempData={setTempData} />
+              )}
+
+              {section === 'skills' && (
+                <SkillsSection data={tempData.skills} setTempData={setTempData} />
+              )}
+
+              {section === 'experience' && (
+                <ExperienceSection data={tempData.experience} setTempData={setTempData} />
+              )}
+
+              {section === 'projects' && (
+                <ProjectsSection data={tempData.projects} setTempData={setTempData} />
+              )}
+
+              {section === 'honorsAndAwards' && (
+                <HonorsAndRewards data={tempData.honorsAndAwards} setTempData={setTempData} />
+              )}
+            </TabsContent>
           ))}
-        </TabsList>
-
-        {sections.map((section) => (
-          <TabsContent
-            key={String(section)}
-            value={String(section)}
-            className="rounded-md border p-4"
-          >
-            {section === 'heading' && (
-              <HeadingSection data={tempData.heading} setTempData={setTempData} />
-            )}
-
-            {section === 'education' && (
-              <EducationSection data={tempData.education} setTempData={setTempData} />
-            )}
-
-            {section === 'skills' && (
-              <SkillsSection data={tempData.skills} setTempData={setTempData} />
-            )}
-
-            {section === 'experience' && (
-              <ExperienceSection data={tempData.experience} setTempData={setTempData} />
-            )}
-
-            {section === 'projects' && (
-              <ProjectsSection data={tempData.projects} setTempData={setTempData} />
-            )}
-
-            {section === 'honorsAndAwards' && (
-              <HonorsAndRewards data={tempData.honorsAndAwards} setTempData={setTempData} />
-            )}
-          </TabsContent>
-        ))}
-      </Tabs>
-    </ResizablePanel>
+        </Tabs>
+      </ResizablePanel>
+    </div>
   );
 };
 
