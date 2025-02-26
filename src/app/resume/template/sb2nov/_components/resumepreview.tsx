@@ -22,7 +22,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-
+import { useIsMobile } from '@/hooks/use-mobile';
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
@@ -31,6 +31,7 @@ interface IProps {
 
 const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
+  const isMobile = useIsMobile();
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
@@ -86,60 +87,118 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
       handleDownloadLaTeX();
     }
   };
-
   return (
-    <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
-      <h2 className="text-lg font-semibold">Resume Preview</h2>
-      {/* Export Controls */}
-      <div className="mt-4 flex items-center justify-between">
-        {/* Left Side: Loading Indicator (only shown when loading) */}
-        <div className="h-10 flex-1">
-          {loading && <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />}
-        </div>
+    <div className="flex w-full justify-center">
+      <ResizablePanel className="w-full max-w-[500px] rounded-md border p-4">
+        <h2 className="text-center text-lg font-semibold">Resume Preview</h2>
 
-        {/* Right Side: Export Options + Download Button */}
-        <div className="flex items-center gap-4">
-          <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
-            <SelectTrigger className="w-[140px]">
-              <SelectValue placeholder="Export As" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="pdf">PDF</SelectItem>
-              <SelectItem value="tex">LaTeX</SelectItem>
-            </SelectContent>
-          </Select>
+        {/* Conditional Rendering Based on Mobile or Desktop */}
+        {isMobile ? (
+          // MOBILE: Export Options at the Top + Loading Inside the Image
+          <>
+            {/* Export Controls (Moved to Top) */}
+            <div className="mt-4 flex w-full items-center justify-center gap-2 sm:justify-end">
+              <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Export As" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="pdf">PDF</SelectItem>
+                  <SelectItem value="tex">LaTeX</SelectItem>
+                </SelectContent>
+              </Select>
 
-          <AlertDialog>
-            <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
-              Download
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Confirm Download</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Are you sure you want to download the resume in{' '}
-                  <strong>{exportFormat.toUpperCase()}</strong> format?
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
-      </div>
+              <AlertDialog>
+                <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
+                  Download
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Are you sure you want to download the resume in{' '}
+                      <strong>{exportFormat.toUpperCase()}</strong> format?
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
 
-      <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
-        {imageUrl ? (
-          <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
+            {/* Resume Preview with Loading */}
+            <div className="relative mt-4 flex aspect-[1/1.414] w-full max-w-full items-center justify-center overflow-hidden rounded-md border">
+              {loading && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/70">
+                  <CircularProgress className="scale-75 text-sm" strokeWidth={3} size="lg" />
+                </div>
+              )}
+              {imageUrl ? (
+                <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
+              ) : (
+                <p className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
+                  Preview will appear here...
+                </p>
+              )}
+            </div>
+          </>
         ) : (
-          <p className="absolute inset-0 flex items-center justify-center text-gray-500">
-            Preview will appear here...
-          </p>
+          // DESKTOP: Loading Above Export Controls
+          <>
+            <div className="mt-4 flex flex-col items-center justify-between gap-4 sm:flex-row">
+              <div className="h-10 flex-1">
+                {loading && (
+                  <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+                )}
+              </div>
+              <div className="flex w-full items-center justify-center gap-2 sm:justify-end">
+                <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder="Export As" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="pdf">PDF</SelectItem>
+                    <SelectItem value="tex">LaTeX</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                <AlertDialog>
+                  <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
+                    Download
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to download the resume in{' '}
+                        <strong>{exportFormat.toUpperCase()}</strong> format?
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
+            </div>
+
+            {/* Resume Preview Below Export Controls */}
+            <div className="relative mt-4 flex aspect-[1/1.414] w-full max-w-full items-center justify-center overflow-hidden rounded-md border">
+              {imageUrl ? (
+                <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
+              ) : (
+                <p className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
+                  Preview will appear here...
+                </p>
+              )}
+            </div>
+          </>
         )}
-      </div>
-    </ResizablePanel>
+      </ResizablePanel>
+    </div>
   );
 };
 
