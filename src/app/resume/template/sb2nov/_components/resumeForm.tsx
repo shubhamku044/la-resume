@@ -86,7 +86,6 @@ const ResumeForm = ({
               key={String(section)}
               value={String(section)}
               className="rounded-md border p-4"
-
             >
               {section === 'heading' && (
                 <HeadingSection data={tempData.heading} setTempData={setTempData} />
@@ -167,7 +166,6 @@ const ResumeForm = ({
       </div>
     );
   }
-
 };
 
 export default ResumeForm;
