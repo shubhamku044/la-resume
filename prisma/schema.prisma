@@ -1,27 +1,103 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id         String   @id @default(cuid())
-  clerk_id   String   @unique
-  email      String   @unique
-  first_name String?
-  last_name  String?
-  avatar_url String?
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  clerkId   String   @unique
+  email     String
+  firstName String?
+  lastName  String?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@map("users")
+  personalInfo    PersonalInfo?    @relation(fields: [personalInfoId], references: [id])
+  education       Education[]
+  experience      Experience[]
+  skills          String[]
+  projects        Project[]
+  certifications  Certification[]
+  accomplishments Accomplishment[]
+  personalInfoId  String?
+}
+
+model PersonalInfo {
+  id        String    @id @default(uuid()) @map("_id")
+  email     String
+  phone     String?
+  dob       DateTime?
+  address   String?
+  summary   String?
+  linkedin  String?
+  github    String?
+  portfolio String?
+  twitter   String?
+  languages String[]
+  interests String[]
+  fullName  String
+  title     String?
+  User      User[]
+}
+
+model Education {
+  id           String  @id @default(uuid()) @map("_id")
+  school       String
+  degree       String
+  fieldOfStudy String
+  startYear    String
+  endYear      String
+  location     String
+  gpa          Float?
+  percentage   Float?
+  User         User?   @relation(fields: [userId], references: [id])
+  userId       String? @db.ObjectId
+
+  @@map("education")
+}
+
+model Experience {
+  id               String   @id @default(uuid()) @map("_id")
+  company          String
+  role             String
+  startDate        String
+  endDate          String?
+  responsibilities String[]
+  location         String
+  User             User?    @relation(fields: [userId], references: [id])
+  userId           String?  @db.ObjectId
+
+  @@map("experience")
+}
+
+model Accomplishment {
+  id     String  @id @default(uuid()) @map("_id")
+  title  String
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String? @db.ObjectId
+}
+
+model Certification {
+  id            String  @id @default(uuid()) @map("_id")
+  title         String
+  provider      String
+  date          String
+  credentialUrl String?
+  User          User?   @relation(fields: [userId], references: [id])
+  userId        String? @db.ObjectId
+}
+
+model Project {
+  id           String   @id @default(uuid()) @map("_id")
+  title        String
+  description  String[]
+  technologies String[]
+  link         String?
+  User         User?    @relation(fields: [userId], references: [id])
+  userId       String?  @db.ObjectId
 }

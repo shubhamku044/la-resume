@@ -16,11 +16,14 @@ import {
   skillsReducer,
   projectReducer,
   experienceReducer,
+  userDetailsReducer,
 } from './slices';
+import { personalInfoApi, userDetailsApi } from './services';
 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['userDetails'],
 };
 
 const rootReducers = combineReducers({
@@ -29,6 +32,9 @@ const rootReducers = combineReducers({
   education: educationReducer,
   project: projectReducer,
   experience: experienceReducer,
+  userDetails: userDetailsReducer,
+  [userDetailsApi.reducerPath]: userDetailsApi.reducer,
+  [personalInfoApi.reducerPath]: personalInfoApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -40,7 +46,9 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
+    })
+      .concat(userDetailsApi.middleware)
+      .concat(personalInfoApi.middleware);
   },
 });
 

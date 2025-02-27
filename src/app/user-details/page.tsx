@@ -10,6 +10,8 @@ import ExperienceSection from './sections/experience';
 import AccomplishmentsSection from './sections/accomplishment';
 import ProjectsSection from './sections/projects';
 import { SelectedSection, UserDetails } from '@/types/userDetails';
+import { useGetUserDetailsQuery } from '@/store/services/userDetailsApi';
+import { useUser } from '@clerk/nextjs';
 
 const getUserDetailsFromLocalStorage = (): UserDetails => {
   if (typeof window === 'undefined') {
@@ -66,6 +68,13 @@ const setUserDetailsToLocalStorage = (userDetails: UserDetails): void => {
 };
 
 export default function UserDetailsPage() {
+  const { user, isLoaded: isClerkLoaded } = useUser();
+  const clerkId = user?.id;
+
+  const { data, isLoading } = useGetUserDetailsQuery(clerkId || '', {
+    skip: !clerkId, // Skip the query if clerkId is not available yet
+  });
+
   const [selectedSection, setSelectedSection] = useState<SelectedSection>(SelectedSection.PERSONAL);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
@@ -76,6 +85,13 @@ export default function UserDetailsPage() {
   useEffect(() => {
     setUserDetailsToLocalStorage(userDetails);
   }, [userDetails]);
+
+  if (!isClerkLoaded || (clerkId && isLoading)) {
+    return <div>Loading...</div>;
+  }
+  if (!clerkId) {
+    return <div>Error: User not authenticated</div>;
+  }
 
   return (
     <SidebarProvider defaultOpen={true}>
@@ -88,7 +104,9 @@ export default function UserDetailsPage() {
               setSidebarOpen((sidebar) => !sidebar);
             }}
           />
-          {selectedSection === SelectedSection.PERSONAL && <PersonalInfoSection />}
+          {selectedSection === SelectedSection.PERSONAL && (
+            <PersonalInfoSection userId={clerkId as string} />
+          )}
           {selectedSection === SelectedSection.SKILLS && <SkillsSection />}
           {selectedSection === SelectedSection.EDUCATION && <EducationSection />}
           {selectedSection === SelectedSection.EXPERIENCE && <ExperienceSection />}
