@@ -16,39 +16,43 @@ export default function ResumeTemplatePage() {
   const isMobile = useIsMobile(); // Use your existing hook
 
   return (
-    <div className="p-4">
-      <ResizablePanelGroup
-        direction={isMobile ? 'vertical' : 'horizontal'}
-        className={isMobile ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-0'}
-      >
-        {isMobile ? (
-          // Mobile layout - Preview on top, Form below
-          <>
-            <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
-            <ResizableHandle className="h-4 w-full opacity-0" />
-            <ResumeForm
-              onUpdate={setImageUrl}
-              setLoading={setLoading}
-              setLatexData={setLatexData}
-              templateSampleData={resumeSampleData}
-              templateFunction={resumeFunc}
-            />
-          </>
-        ) : (
-          // Desktop layout - Form and Preview side by side
-          <>
-            <ResumeForm
-              onUpdate={setImageUrl}
-              setLoading={setLoading}
-              setLatexData={setLatexData}
-              templateSampleData={resumeSampleData}
-              templateFunction={resumeFunc}
-            />
-            <ResizableHandle className="w-4 opacity-0" />
-            <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
-          </>
-        )}
-      </ResizablePanelGroup>
+    <div className="flex justify-center p-4">
+      <div className="container mx-auto px-4 sm:px-6">
+        {' '}
+        {/* Ensures central alignment and max width */}
+        <ResizablePanelGroup
+          direction={isMobile ? 'vertical' : 'horizontal'}
+          className={isMobile ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-0'}
+        >
+          {isMobile ? (
+            // Mobile layout - Preview on top, Form below
+            <>
+              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResizableHandle className="h-4 w-full opacity-0" />
+              <ResumeForm
+                onUpdate={setImageUrl}
+                setLoading={setLoading}
+                setLatexData={setLatexData}
+                templateSampleData={resumeSampleData}
+                templateFunction={resumeFunc}
+              />
+            </>
+          ) : (
+            // Desktop layout - Form and Preview side by side
+            <>
+              <ResumeForm
+                onUpdate={setImageUrl}
+                setLoading={setLoading}
+                setLatexData={setLatexData}
+                templateSampleData={resumeSampleData}
+                templateFunction={resumeFunc}
+              />
+              <ResizableHandle className="w-4 opacity-0" />
+              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+            </>
+          )}
+        </ResizablePanelGroup>
+      </div>
     </div>
   );
 }
