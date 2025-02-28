@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
+  console.log('req:', req);
   const webhookSecret = process.env.CLERK_WEBHOOK_SECRET!;
   if (!webhookSecret) {
     return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
@@ -16,6 +17,7 @@ export async function POST(req: Request) {
   if (!svix_id || !svix_timestamp || !svix_signature) {
     return NextResponse.json({ error: 'Missing svix headers' }, { status: 400 });
   }
+  console.log('svix_id:', svix_id);
 
   const payload = await req.json();
   const body = JSON.stringify(payload);
@@ -44,26 +46,29 @@ export async function POST(req: Request) {
     const primaryEmail = email_addresses && email_addresses[0]?.email_address;
 
     const userData = {
-      clerk_id: id,
+      clerkId: id,
       email: primaryEmail,
-      first_name: first_name, // Changed from firstName
-      last_name: last_name, // Changed from lastName
-      avatar_url: image_url,
-      created_at: new Date(created_at).toISOString(),
-      updated_at: new Date(updated_at).toISOString(),
+      firstName: first_name, // Changed from firstName
+      lastName: last_name, // Changed from lastName
+      avatarUrl: image_url,
+      createdAt: new Date(created_at).toISOString(),
+      updatedAt: new Date(updated_at).toISOString(),
     };
+    console.log('userData:', userData);
 
     const resp = await prisma.user.upsert({
-      where: { clerk_id: id },
+      where: { clerkId: id },
       create: userData,
       update: {
         email: primaryEmail,
-        first_name: first_name,
-        last_name: last_name,
-        avatar_url: image_url,
-        updated_at: new Date().toISOString(),
+        firstName: first_name,
+        lastName: last_name,
+        avatarUrl: image_url,
+        updatedAt: new Date().toISOString(),
       },
     });
+
+    console.log('resp:', resp);
 
     if (!resp) {
       console.error(`Failed to upsert user with clerk_id: ${id}`);
@@ -77,7 +82,7 @@ export async function POST(req: Request) {
     const { id } = evt.data;
 
     const user = await prisma.user.findUnique({
-      where: { clerk_id: id },
+      where: { clerkId: id },
     });
 
     if (!user) {
@@ -86,7 +91,7 @@ export async function POST(req: Request) {
     }
 
     const { count } = await prisma.user.deleteMany({
-      where: { clerk_id: id },
+      where: { clerkId: id },
     });
 
     if (count === 0) {

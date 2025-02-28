@@ -25,3 +25,6 @@ export {
 
 export { default as projectReducer } from './project';
 export { addProject, setProjects, updateProject, removeProject, selectProjects } from './project';
+
+export { default as userDetailsReducer } from './user-details';
+export { setUserDetails, setLoading, setError } from './user-details';

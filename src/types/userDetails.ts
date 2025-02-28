@@ -1,3 +1,23 @@
+export interface UserDetailsPrisma {
+  fullName: string;
+  email: string;
+  phone: string;
+  dob?: string;
+  address?: string;
+  summary?: string;
+  linkedin?: string;
+  github?: string;
+  portfolio?: string;
+  twitter?: string;
+  languages: string[];
+  skills: string[];
+  education: Education[];
+  experience: Experience[];
+  accomplishments: string[];
+  certifications: Certification[];
+  projects: Project[];
+}
+
 export type UserDetails = {
   personalInfo: PersonalInfo;
   skills?: Skills;
@@ -25,6 +45,7 @@ export type PersonalInfo = {
   languages?: string[];
   interests?: string[];
   jobTitle?: string;
+  skills?: string[];
 };
 
 export enum SelectedSection {
