@@ -21,28 +21,29 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  console.log('req', req);
   const data = await req.json();
 
   console.log('data', data);
 
-  const { clerk_id, personalInfo } = data;
+  const { clerk_id, ...personalInfo } = data;
 
   try {
     const updatedPersonalInfo = await prisma.personalInfo.upsert({
       where: { id: clerk_id },
       update: {
         ...personalInfo,
-        dob: new Date(personalInfo.dob),
+        dob: new Date(personalInfo?.dob),
       },
       create: {
         id: clerk_id,
         ...personalInfo,
-        dob: new Date(personalInfo.dob),
+        dob: new Date(personalInfo?.dob),
       },
     });
+    console.log('updatedPersonalInfo', updatedPersonalInfo);
     return NextResponse.json(updatedPersonalInfo, { status: 200 });
   } catch (error) {
+    console.log('error', error);
     return NextResponse.json({ error: 'Internal Server Error', details: error }, { status: 500 });
   }
 }
