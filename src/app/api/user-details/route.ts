@@ -9,10 +9,9 @@ export async function GET(req: NextRequest) {
     }
 
     const userDetails = await prisma.user.findUnique({
-      where: { clerk_id: clerkId },
+      where: { clerkId: clerkId },
       include: {
-        PersonalInfo: true,
-        skills: true,
+        personalInfo: true,
         education: true,
         experience: true,
         accomplishments: true,
@@ -37,17 +36,17 @@ export async function POST(req: Request) {
     const { clerk_id, email, first_name, last_name, avatar_url, personalInfo } = await req.json();
 
     let user = await prisma.user.findUnique({
-      where: { clerk_id },
+      where: { clerkId: clerk_id },
     });
 
     if (!user) {
       user = await prisma.user.create({
         data: {
-          clerk_id,
+          clerkId: clerk_id,
           email,
-          first_name,
-          last_name,
-          avatar_url,
+          firstName: first_name,
+          lastName: last_name,
+          avatarUrl: avatar_url,
         },
       });
       return NextResponse.json({ error: 'Missing clerk_id' }, { status: 400 });
@@ -59,12 +58,13 @@ export async function POST(req: Request) {
       const { skills, ...personalInfoData } = personalInfo;
 
       const personalInfoEntry = await prisma.personalInfo.upsert({
-        where: { userId: user.id },
+        where: { id: user.id },
         update: personalInfoData,
         create: { ...personalInfoData, userId: user.id },
       });
 
       console.log('Skills', skills);
+      /*
 
       if (skills && skills.length > 0) {
         for (const skillName of skills) {
@@ -93,6 +93,7 @@ export async function POST(req: Request) {
           });
         }
       }
+      */
 
       /*
       if (skills && skills.length > 0) {

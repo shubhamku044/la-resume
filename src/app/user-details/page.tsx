@@ -72,8 +72,10 @@ export default function UserDetailsPage() {
   const clerkId = user?.id;
 
   const { data, isLoading } = useGetUserDetailsQuery(clerkId || '', {
-    skip: !clerkId, // Skip the query if clerkId is not available yet
+    skip: !clerkId,
   });
+
+  console.log('Data', data);
 
   const [selectedSection, setSelectedSection] = useState<SelectedSection>(SelectedSection.PERSONAL);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);

@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const personalInfo = await prisma.personalInfo.findUnique({
-      where: { userId: clerk_id },
+      where: { id: clerk_id },
     });
     console.log('personalInfo', personalInfo);
     return NextResponse.json(personalInfo, { status: 200 });
@@ -21,19 +21,25 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const clerk_id = searchParams.get('clerk_id');
+  console.log('req', req);
   const data = await req.json();
 
-  if (!clerk_id) {
-    return NextResponse.json({ error: 'Invalid clerk_id' }, { status: 400 });
-  }
+  console.log('data', data);
+
+  const { clerk_id, personalInfo } = data;
 
   try {
     const updatedPersonalInfo = await prisma.personalInfo.upsert({
-      where: { userId: clerk_id },
-      update: data,
-      create: { userId: clerk_id, ...data },
+      where: { id: clerk_id },
+      update: {
+        ...personalInfo,
+        dob: new Date(personalInfo.dob),
+      },
+      create: {
+        id: clerk_id,
+        ...personalInfo,
+        dob: new Date(personalInfo.dob),
+      },
     });
     return NextResponse.json(updatedPersonalInfo, { status: 200 });
   } catch (error) {

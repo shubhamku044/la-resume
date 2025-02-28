@@ -45,6 +45,7 @@ export type PersonalInfo = {
   languages?: string[];
   interests?: string[];
   jobTitle?: string;
+  skills?: string[];
 };
 
 export enum SelectedSection {

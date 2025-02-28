@@ -17,8 +17,10 @@ import {
 import { Input } from '@/components/ui/input';
 import { PhoneInput } from '@/components/ui/phone-input';
 import { TagsInput } from '@/components/ui/tags-input';
-import { useUpdateUserDetailsMutation } from '@/store/services/userDetailsApi';
-import { useGetPersonalInfoQuery } from '@/store/services/personalInfoApi';
+import {
+  useGetPersonalInfoQuery,
+  useUpdatePersonalInfoMutation,
+} from '@/store/services/personalInfoApi';
 
 interface IProps {
   userId: string;
@@ -39,8 +41,8 @@ const formSchema = z.object({
 
 export default function PersonalInfoSection({ userId }: IProps) {
   const [formInitialized, setFormInitialized] = useState(false);
-  const [updatePersonalInfo] = useUpdateUserDetailsMutation();
-  const { data: userData, isLoading, error, isSuccess } = useGetPersonalInfoQuery(userId);
+  const [updatePersonalInfo] = useUpdatePersonalInfoMutation();
+  const { data: userData, isSuccess } = useGetPersonalInfoQuery(userId);
 
   console.log('userData', userData);
 
@@ -57,8 +59,8 @@ export default function PersonalInfoSection({ userId }: IProps) {
     }
   }, [userData]);
   useEffect(() => {
-    if (isSuccess && userData && userData.personalInfo && !formInitialized) {
-      const personalInfo = userData.personalInfo;
+    if (isSuccess && userData && userData && !formInitialized) {
+      const personalInfo = userData;
       console.log('Setting form values with:', personalInfo);
 
       // Make sure we have default arrays if data is missing
@@ -93,7 +95,7 @@ export default function PersonalInfoSection({ userId }: IProps) {
       console.log(values);
       await updatePersonalInfo({
         clerk_id: userId,
-        personalInfo: values,
+        ...values,
       });
     } catch (error) {
       console.error('Form submission error', error);
@@ -262,7 +264,7 @@ export default function PersonalInfoSection({ userId }: IProps) {
                   <FormLabel>Skills</FormLabel>
                   <FormControl>
                     <TagsInput
-                      value={field.value}
+                      value={field.value as string[]}
                       onValueChange={field.onChange}
                       placeholder="Enter your tags"
                     />
@@ -281,7 +283,7 @@ export default function PersonalInfoSection({ userId }: IProps) {
                   <FormLabel>Languages know</FormLabel>
                   <FormControl>
                     <TagsInput
-                      value={field.value}
+                      value={field.value as string[]}
                       onValueChange={field.onChange}
                       placeholder="Enter your tags"
                     />

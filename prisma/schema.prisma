@@ -20,7 +20,6 @@ model User {
   personalInfo    PersonalInfo?    @relation(fields: [personalInfoId], references: [id])
   education       Education[]
   experience      Experience[]
-  skills          String[]
   projects        Project[]
   certifications  Certification[]
   accomplishments Accomplishment[]
@@ -40,6 +39,7 @@ model PersonalInfo {
   twitter   String?
   languages String[]
   interests String[]
+  skills    String[]
   fullName  String
   title     String?
   User      User[]
