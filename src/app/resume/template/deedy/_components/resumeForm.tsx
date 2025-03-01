@@ -3,21 +3,23 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ResizablePanel } from '@/components/ui/resizable';
-import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { deedyResumeData } from '@/lib/templates/deedy';
 import HeadingSection from './heading';
 import EducationSection from './education';
 import SkillsSection from './skills';
 import ExperienceSection from './experience';
 import ProjectsSection from './projects';
-import HonorsAndRewards from './honorandawards';
+import CertificationsSection from './certifications';
+import AchievementsSection from './achievements';
+import PositionsOfResponsibilitySection from './positionOfResponsibility';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
   setLoading: (loading: boolean) => void;
   setLatexData: (latexData: string | null) => void;
-  templateSampleData: Sb2novResumeData;
-  templateFunction: (data: Sb2novResumeData) => string;
+  templateSampleData: deedyResumeData;
+  templateFunction: (data: deedyResumeData) => string;
 }
 
 const ResumeForm = ({
@@ -67,11 +69,11 @@ const ResumeForm = ({
     if (Object.keys(formData).length > 0) generateResumePreview();
   }, [formData, generateResumePreview]);
 
-  const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
+  const sections = Object.keys(formData) as Array<keyof deedyResumeData>;
 
   if (!isMobile) {
     return (
-      <ResizablePanel className="min-h-[500px] w-full min-w-[700px] rounded-md border p-4">
+      <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
         <Tabs defaultValue={String(sections[0])} className="w-full">
           <div className="overflow-x-auto">
             <TabsList className="flex w-max gap-2">
@@ -89,28 +91,32 @@ const ResumeForm = ({
               value={String(section)}
               className="rounded-md border p-4"
             >
-              {section === 'heading' && (
-                <HeadingSection data={tempData.heading} setTempData={setTempData} />
+              {section === 'personalInfo' && (
+                <HeadingSection data={tempData.personalInfo} setTempData={setTempData} />
               )}
-
               {section === 'education' && (
                 <EducationSection data={tempData.education} setTempData={setTempData} />
               )}
-
-              {section === 'skills' && (
-                <SkillsSection data={tempData.skills} setTempData={setTempData} />
-              )}
-
               {section === 'experience' && (
                 <ExperienceSection data={tempData.experience} setTempData={setTempData} />
               )}
-
               {section === 'projects' && (
                 <ProjectsSection data={tempData.projects} setTempData={setTempData} />
               )}
-
-              {section === 'honorsAndAwards' && (
-                <HonorsAndRewards data={tempData.honorsAndAwards} setTempData={setTempData} />
+              {section === 'skills' && (
+                <SkillsSection data={tempData.skills} setTempData={setTempData} />
+              )}
+              {section === 'certifications' && (
+                <CertificationsSection data={tempData.certifications} setTempData={setTempData} />
+              )}
+              {section === 'achievements' && (
+                <AchievementsSection data={tempData.achievements} setTempData={setTempData} />
+              )}
+              {section === 'positionsOfResponsibility' && (
+                <PositionsOfResponsibilitySection
+                  data={tempData.positionsOfResponsibility}
+                  setTempData={setTempData}
+                />
               )}
             </TabsContent>
           ))}
@@ -138,28 +144,32 @@ const ResumeForm = ({
                 value={String(section)}
                 className="rounded-md border p-3 md:p-4"
               >
-                {section === 'heading' && (
-                  <HeadingSection data={tempData.heading} setTempData={setTempData} />
+                {section === 'personalInfo' && (
+                  <HeadingSection data={tempData.personalInfo} setTempData={setTempData} />
                 )}
-
                 {section === 'education' && (
                   <EducationSection data={tempData.education} setTempData={setTempData} />
                 )}
-
-                {section === 'skills' && (
-                  <SkillsSection data={tempData.skills} setTempData={setTempData} />
-                )}
-
                 {section === 'experience' && (
                   <ExperienceSection data={tempData.experience} setTempData={setTempData} />
                 )}
-
                 {section === 'projects' && (
                   <ProjectsSection data={tempData.projects} setTempData={setTempData} />
                 )}
-
-                {section === 'honorsAndAwards' && (
-                  <HonorsAndRewards data={tempData.honorsAndAwards} setTempData={setTempData} />
+                {section === 'skills' && (
+                  <SkillsSection data={tempData.skills} setTempData={setTempData} />
+                )}
+                {section === 'certifications' && (
+                  <CertificationsSection data={tempData.certifications} setTempData={setTempData} />
+                )}
+                {section === 'achievements' && (
+                  <AchievementsSection data={tempData.achievements} setTempData={setTempData} />
+                )}
+                {section === 'positionsOfResponsibility' && (
+                  <PositionsOfResponsibilitySection
+                    data={tempData.positionsOfResponsibility}
+                    setTempData={setTempData}
+                  />
                 )}
               </TabsContent>
             ))}
