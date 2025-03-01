@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const hideHeader = pathname.startsWith('/user-details') || pathname.startsWith('/templates');
+  const hideHeader = pathname !== '/';
 
   if (hideHeader) return null;
 

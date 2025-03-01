@@ -17,11 +17,11 @@ import {
   ChevronRight,
   GraduationCap,
   LayoutTemplate,
-  LibraryBig,
   Trophy,
   User,
   UserCircle,
 } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -30,11 +30,6 @@ const userDetailItems = [
     title: 'Personal Info',
     url: '/user-details/personal-info',
     icon: UserCircle,
-  },
-  {
-    title: 'Skills',
-    url: '/user-details/skills',
-    icon: LibraryBig,
   },
   {
     title: 'Experience',
@@ -59,7 +54,9 @@ export default function AppSidebar() {
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader className="mb-2 border-b pb-2">
-        <span className="text-xl font-bold">La Resume</span>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.png" alt="La-Resume Logo" width={120} height={40} />
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
