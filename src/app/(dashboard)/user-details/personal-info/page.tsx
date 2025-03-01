@@ -49,7 +49,9 @@ export default function PersonalInfo() {
     data: userData,
     isSuccess,
     isLoading: isQueryLoading,
-  } = useGetPersonalInfoQuery(userId!, { skip: !userId });
+    error: queryError,
+    isError: isQueryError,
+  } = useGetPersonalInfoQuery(userId!, { skip: !userId, refetchOnMountOrArgChange: true });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,7 +65,7 @@ export default function PersonalInfo() {
       github: '',
       twitter: '',
       portfolio: '',
-      skills: ['reacjs', 'golang'],
+      skills: ['reactjs', 'golang'],
       languages: ['english', 'spanish'],
     },
   });
@@ -101,6 +103,21 @@ export default function PersonalInfo() {
     console.log('userData', userData);
     console.log('id', userId);
   }, [userId, userData]);
+
+  useEffect(() => {
+    if (isQueryError) {
+      console.error('Query error:', queryError);
+      toast.error('Failed to load personal information');
+    }
+  }, [isQueryError, queryError]);
+  useEffect(() => {
+    console.log('Initialization check:', { isSuccess, userId, userData, formInitialized });
+
+    if (isSuccess && userId && userData && !formInitialized) {
+      console.log('Initializing form with data:', userData);
+      // ... rest of your initialization logic
+    }
+  }, [userData, isSuccess, form, formInitialized, userId]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
