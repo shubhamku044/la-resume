@@ -17,13 +17,16 @@ import {
   ChevronRight,
   GraduationCap,
   LayoutTemplate,
+  Star,
   Trophy,
   User,
   UserCircle,
 } from 'lucide-react';
+import { LuGithub } from 'react-icons/lu';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useGitHubStars } from '@/hooks';
 
 const userDetailItems = [
   {
@@ -50,6 +53,7 @@ const userDetailItems = [
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const stars = useGitHubStars();
 
   return (
     <Sidebar variant="floating" collapsible="icon">
@@ -121,7 +125,38 @@ export default function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         )}
+
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Support Us
+          </SidebarGroupLabel>
+          <SidebarGroupContent className="mt-1">
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  className="group bg-gradient-to-r from-primary/10 to-blue-100/50 hover:from-primary/20 dark:from-primary/5 dark:to-blue-900/20"
+                >
+                  <Link
+                    href="https://github.com/shubhamku044/la-resume"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative"
+                  >
+                    <div className="absolute right-2 top-2 flex items-center gap-1">
+                      <Star className="size-4 animate-star-pulse fill-yellow-500 text-yellow-500" />
+                      <span className="text-xs">{stars}</span>
+                    </div>
+                    <LuGithub className="size-4" />
+                    <span>Star on GitHub</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter>
         <SignedIn>
           <UserButton
