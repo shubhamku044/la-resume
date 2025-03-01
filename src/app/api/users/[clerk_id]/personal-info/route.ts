@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-export async function GET(req: NextRequest, { params }: { params: { clerk_id: string } }) {
-  const clerk_id = params.clerk_id;
+export async function GET(req: NextRequest, { params }: { params: Promise<{ clerk_id: string }> }) {
+  const { clerk_id } = await params;
 
   if (!clerk_id) {
     return NextResponse.json({ error: 'Invalid clerk_id' }, { status: 400 });
@@ -18,8 +18,11 @@ export async function GET(req: NextRequest, { params }: { params: { clerk_id: st
   }
 }
 
-export async function POST(req: NextRequest, { params }: { params: { clerk_id: string } }) {
-  const { clerk_id } = params;
+export async function POST(
+  req: NextRequest,
+  { params }: { params: Promise<{ clerk_id: string }> }
+) {
+  const { clerk_id } = await params;
 
   const data = await req.json();
 
