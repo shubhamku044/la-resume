@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
@@ -12,8 +13,8 @@ const Header = () => {
   return (
     <header className="bg-white">
       <div className="mx-auto flex max-w-5xl items-center justify-between border-b p-4 md:px-6">
-        <Link href="/" className="text-lg font-semibold transition hover:opacity-80">
-          La Resume
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.png" alt="La-Resume Logo" width={120} height={40} />
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm md:flex">

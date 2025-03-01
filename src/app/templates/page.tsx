@@ -48,16 +48,19 @@ export default function TemplatesPage() {
       <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">Choose a Resume Template</h1>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {templates.slice(0, 6).map((template) => (
+        {templates.map((template) => (
           <Link href={`/resume/template/${template.id}`} key={template.id} className="block">
             <div className="flex flex-col items-center rounded-lg border p-3 shadow-md transition hover:shadow-lg">
-              <div className="w-full overflow-hidden rounded-lg bg-gray-100">
+              <div
+                className="w-full overflow-hidden rounded-lg bg-gray-100"
+                style={{ aspectRatio: '210/297', width: '100%' }}
+              >
                 <Image
                   src={template.image}
                   alt={template.name}
                   width={210}
                   height={297}
-                  className="h-auto w-full rounded-lg object-cover"
+                  className="size-full object-cover"
                 />
               </div>
 
