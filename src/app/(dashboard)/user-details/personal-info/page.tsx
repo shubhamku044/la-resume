@@ -1,6 +1,7 @@
 'use client';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import { format, parseISO, parse } from 'date-fns';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -21,10 +22,9 @@ import {
   useGetPersonalInfoQuery,
   useUpdatePersonalInfoMutation,
 } from '@/store/services/personalInfoApi';
+import { useUser } from '@clerk/nextjs';
+import { Skeleton } from '@/components/ui/skeleton';
 
-interface IProps {
-  userId: string;
-}
 const formSchema = z.object({
   fullName: z.string().min(1),
   email: z.string(),
@@ -39,31 +39,39 @@ const formSchema = z.object({
   languages: z.array(z.string()).nonempty('Please at least one item').optional(),
 });
 
-export default function PersonalInfoSection({ userId }: IProps) {
+export default function PersonalInfo() {
+  const { user, isLoaded: isClerkLoaded } = useUser();
+  const userId = user?.id;
   const [formInitialized, setFormInitialized] = useState(false);
-  const [updatePersonalInfo] = useUpdatePersonalInfoMutation();
-  const { data: userData, isSuccess } = useGetPersonalInfoQuery(userId);
 
-  console.log('userData', userData);
+  const [updatePersonalInfo] = useUpdatePersonalInfoMutation();
+  const {
+    data: userData,
+    isSuccess,
+    isLoading: isQueryLoading,
+  } = useGetPersonalInfoQuery(userId!, { skip: !userId, refetchOnMountOrArgChange: true });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      skills: ['reacjs', 'golang'],
+      fullName: '',
+      email: '',
+      phone: '',
+      dob: '',
+      address: '',
+      linkedin: '',
+      github: '',
+      twitter: '',
+      portfolio: '',
+      skills: ['reactjs', 'golang'],
       languages: ['english', 'spanish'],
     },
   });
-  useEffect(() => {
-    if (userData) {
-      console.log('User data received:', userData);
-    }
-  }, [userData]);
+
   useEffect(() => {
     if (isSuccess && userData && userData && !formInitialized) {
       const personalInfo = userData;
-      console.log('Setting form values with:', personalInfo);
 
-      // Make sure we have default arrays if data is missing
       const skills = Array.isArray(personalInfo.skills)
         ? personalInfo.skills
         : ['reactjs', 'golang'];
@@ -75,7 +83,7 @@ export default function PersonalInfoSection({ userId }: IProps) {
         fullName: personalInfo.fullName || '',
         email: personalInfo.email || '',
         phone: personalInfo.phone || '',
-        dob: personalInfo.dob || '',
+        dob: userData.dob ? format(parseISO(userData.dob), 'dd/MM/yyyy') : '',
         address: personalInfo.address || '',
         linkedin: personalInfo.linkedin || '',
         github: personalInfo.github || '',
@@ -91,16 +99,33 @@ export default function PersonalInfoSection({ userId }: IProps) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log('userId', userId);
-      console.log(values);
-      await updatePersonalInfo({
-        clerk_id: userId,
-        ...values,
-      });
+      const formattedDob = values.dob
+        ? parse(values.dob, 'dd/MM/yyyy', new Date()).toISOString()
+        : undefined;
+
+      if (userId)
+        await updatePersonalInfo({
+          clerk_id: userId,
+          ...values,
+          dob: formattedDob,
+        });
     } catch (error) {
-      console.error('Form submission error', error);
       toast.error('Failed to submit the form. Please try again.');
+      console.error('Error in submitting the form', error);
     }
+  }
+
+  const isLoading = !isClerkLoaded || !userId || isQueryLoading || !formInitialized;
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2 className="mb-4 text-xl font-bold">Personal Info</h2>
+        <div className="mx-auto max-w-3xl space-y-2">
+          <FormSkeleton />
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -296,6 +321,39 @@ export default function PersonalInfoSection({ userId }: IProps) {
             <Button type="submit">Submit</Button>
           </form>
         </Form>
+      </div>
+    </div>
+  );
+}
+
+function FormSkeleton() {
+  return (
+    <div className="space-y-6">
+      <Skeleton className="h-10 w-[200px]" />
+      <div className="space-y-8">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="space-y-2">
+            <Skeleton className="h-4 w-[100px]" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+        ))}
+        <div className="grid grid-cols-2 gap-4">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="space-y-2">
+              <Skeleton className="h-4 w-[100px]" />
+              <Skeleton className="h-10 w-full" />
+            </div>
+          ))}
+        </div>
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[100px]" />
+          <div className="flex flex-wrap gap-2">
+            {[...Array(3)].map((_, i) => (
+              <Skeleton key={i} className="h-8 w-20 rounded-full" />
+            ))}
+          </div>
+        </div>
+        <Skeleton className="h-10 w-24" />
       </div>
     </div>
   );

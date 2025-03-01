@@ -4,6 +4,7 @@ import ExperienceModal from './experience-modal';
 import ProjectCard from './project-card';
 import ProjectModal from './project-modal';
 import ExperienceCard from './experience-card';
+import AppSidebar from './app-sidebar';
 
 export {
   EducationModal,
@@ -12,4 +13,5 @@ export {
   ExperienceModal,
   ProjectModal,
   ProjectCard,
+  AppSidebar,
 };
