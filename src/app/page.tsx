@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
+import { RiTwitterXFill } from 'react-icons/ri';
 import { useRouter } from 'next/navigation';
 import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
@@ -273,6 +274,97 @@ export default function LaResumeLanding() {
                 Star on GitHub
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-12 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
+            Built with ❤️ by
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+            <motion.div whileHover={{ y: -5 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <Card className="h-full transition-all hover:border-purple-100 hover:shadow-xl">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col items-center text-center">
+                    <Image
+                      src="https://avatars.githubusercontent.com/u/77788249?v=4"
+                      alt="Shubham Kumar"
+                      width={120}
+                      height={120}
+                      className="mb-4 rounded-full border-4 border-purple-100"
+                    />
+                    <h3 className="mb-2 text-2xl font-bold text-gray-900">Shubham Kumar</h3>
+                    <p className="mb-4 text-gray-600">Full Stack Developer</p>
+                    <div className="mb-6 flex gap-4">
+                      <Link
+                        href="https://github.com/shubhamku044"
+                        target="_blank"
+                        className="text-gray-600 transition-colors hover:text-gray-900"
+                      >
+                        <LuGithub className="size-6" />
+                      </Link>
+                      <Link
+                        href="https://x.com/shubhamku044"
+                        target="_blank"
+                        className="text-gray-600 transition-colors hover:text-gray-900"
+                      >
+                        <RiTwitterXFill className="size-6" />
+                      </Link>
+                    </div>
+                    <Button
+                      asChild
+                      variant="default"
+                      className="w-full bg-purple-600 hover:bg-purple-700"
+                    >
+                      <a href="mailto:shubhamku044@gmail.com">Hire Me →</a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -5 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <Card className="h-full transition-all hover:border-blue-100 hover:shadow-xl">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col items-center text-center">
+                    <Image
+                      src="https://avatars.githubusercontent.com/u/95865224?v=4"
+                      alt="Friend Name"
+                      width={120}
+                      height={120}
+                      className="mb-4 rounded-full border-4 border-blue-100"
+                    />
+                    <h3 className="mb-2 text-2xl font-bold text-gray-900">Priyabrata Mondal</h3>
+                    <p className="mb-4 text-gray-600">Full Stack Developer</p>
+                    <div className="mb-6 flex gap-4">
+                      <Link
+                        href="https://www.github.com/PriyabrataMo"
+                        target="_blank"
+                        className="text-gray-600 transition-colors hover:text-gray-900"
+                      >
+                        <LuGithub className="size-6" />
+                      </Link>
+                      <Link
+                        href="https://x.com/prybruhta"
+                        target="_blank"
+                        className="text-gray-600 transition-colors hover:text-gray-900"
+                      >
+                        <RiTwitterXFill className="size-6" />
+                      </Link>
+                    </div>
+                    <Button
+                      asChild
+                      variant="default"
+                      className="w-full bg-blue-600 hover:bg-blue-700"
+                    >
+                      <a href="mailto:priyabrata8558@gmail.com">Hire Me →</a>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
