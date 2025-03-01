@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
-  console.log('req:', req);
   const webhookSecret = process.env.CLERK_WEBHOOK_SECRET!;
   if (!webhookSecret) {
     return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
@@ -17,7 +16,6 @@ export async function POST(req: Request) {
   if (!svix_id || !svix_timestamp || !svix_signature) {
     return NextResponse.json({ error: 'Missing svix headers' }, { status: 400 });
   }
-  console.log('svix_id:', svix_id);
 
   const payload = await req.json();
   const body = JSON.stringify(payload);
@@ -34,7 +32,7 @@ export async function POST(req: Request) {
     }) as WebhookEvent;
   } catch (err) {
     console.error('Error verifying webhook:', err);
-    return NextResponse.json({ error: 'Error verifying webhook' }, { status: 400 });
+    return NextResponse.json({ error: 'Error verifying webhook', message: err }, { status: 400 });
   }
 
   const eventType = evt.type;
@@ -48,13 +46,12 @@ export async function POST(req: Request) {
     const userData = {
       clerkId: id,
       email: primaryEmail,
-      firstName: first_name, // Changed from firstName
-      lastName: last_name, // Changed from lastName
+      firstName: first_name,
+      lastName: last_name,
       avatarUrl: image_url,
       createdAt: new Date(created_at).toISOString(),
       updatedAt: new Date(updated_at).toISOString(),
     };
-    console.log('userData:', userData);
 
     const resp = await prisma.user.upsert({
       where: { clerkId: id },
@@ -67,8 +64,6 @@ export async function POST(req: Request) {
         updatedAt: new Date().toISOString(),
       },
     });
-
-    console.log('resp:', resp);
 
     if (!resp) {
       console.error(`Failed to upsert user with clerk_id: ${id}`);
@@ -86,7 +81,6 @@ export async function POST(req: Request) {
     });
 
     if (!user) {
-      console.log(`User with clerk_id: ${id} not found`);
       return NextResponse.json({ success: true });
     }
 

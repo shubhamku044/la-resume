@@ -1,7 +1,7 @@
 'use client';
 import { resumes } from '@/lib/templates/index';
 import { useState } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile'; // Import your existing hook
+import { useIsMobile } from '@/hooks/use-mobile';
 import ResumeForm from './_components/resumeForm';
 import ResumePreview from './_components/resumepreview';
 import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
@@ -13,19 +13,16 @@ export default function ResumeTemplatePage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const isMobile = useIsMobile(); // Use your existing hook
+  const isMobile = useIsMobile();
 
   return (
     <div className="flex justify-center p-4">
-      <div className="container mx-auto px-4 sm:px-6">
-        {' '}
-        {/* Ensures central alignment and max width */}
+      <div className="container mx-auto">
         <ResizablePanelGroup
           direction={isMobile ? 'vertical' : 'horizontal'}
           className={isMobile ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-0'}
         >
           {isMobile ? (
-            // Mobile layout - Preview on top, Form below
             <>
               <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
               <ResizableHandle className="h-4 w-full opacity-0" />
@@ -38,7 +35,6 @@ export default function ResumeTemplatePage() {
               />
             </>
           ) : (
-            // Desktop layout - Form and Preview side by side
             <>
               <ResumeForm
                 onUpdate={setImageUrl}

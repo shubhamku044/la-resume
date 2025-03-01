@@ -48,7 +48,11 @@ export const store = configureStore({
       },
     })
       .concat(userDetailsApi.middleware)
-      .concat(personalInfoApi.middleware);
+      .concat(personalInfoApi.middleware)
+      .concat(() => (next) => (action) => {
+        console.log('RTK Query action: ', action);
+        return next(action);
+      });
   },
 });
 

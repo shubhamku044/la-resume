@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/accordion';
 import { FileText, Rocket, Star, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LuGithub } from 'react-icons/lu';
@@ -17,16 +16,11 @@ import { RiTwitterXFill } from 'react-icons/ri';
 import { useRouter } from 'next/navigation';
 import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import { useGitHubStars } from '@/hooks';
 
 export default function LaResumeLanding() {
-  const [stars, setStars] = useState(0);
+  const stars = useGitHubStars();
   const router = useRouter();
-
-  useEffect(() => {
-    fetch('https://api.github.com/repos/shubhamku044/la-resume')
-      .then((res) => res.json())
-      .then((data) => setStars(data.stargazers_count));
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -45,7 +39,7 @@ export default function LaResumeLanding() {
             className="flex items-center gap-1 rounded-full bg-white px-3 py-1 text-black hover:bg-gray-100"
           >
             <span>Star on GitHub</span>
-            <Star className="size-4" />
+            <Star className="size-4 animate-star-pulse fill-yellow-500 text-yellow-600" />
           </Link>
         </div>
       </div>

@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { EducationCard, EducationModal } from '../_components';
 import { useState } from 'react';
