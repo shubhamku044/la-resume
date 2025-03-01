@@ -23,7 +23,7 @@ import { personalInfoApi, userDetailsApi } from './services';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['userDetails'],
+  blacklist: ['userDetails', 'personalInfo'],
 };
 
 const rootReducers = combineReducers({
@@ -48,11 +48,13 @@ export const store = configureStore({
       },
     })
       .concat(userDetailsApi.middleware)
-      .concat(personalInfoApi.middleware)
-      .concat(() => (next) => (action) => {
-        console.log('RTK Query action: ', action);
-        return next(action);
-      });
+      .concat(personalInfoApi.middleware);
+    /*
+    .concat(() => (next) => (action) => {
+      console.log('RTK Query action: ', action);
+      return next(action);
+    });
+  */
   },
 });
 

@@ -178,7 +178,7 @@ export default function AppSidebar() {
               },
             }}
             showName
-            afterSignOutUrl="/"
+            afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
             afterSwitchSessionUrl="/templates"
           />
         </SignedIn>
