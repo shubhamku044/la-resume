@@ -69,33 +69,48 @@ export default function PersonalInfo() {
   });
 
   useEffect(() => {
-    if (isSuccess && userData && userData && !formInitialized) {
-      const personalInfo = userData;
+    if (isSuccess && userId && !formInitialized) {
+      const defaultValues = {
+        fullName: user?.fullName || '',
+        email: user?.primaryEmailAddress?.emailAddress || '',
+        phone: '',
+        dob: '',
+        address: '',
+        linkedin: '',
+        github: '',
+        twitter: '',
+        portfolio: '',
+        skills: ['reactjs', 'golang'],
+        languages: ['english', 'spanish'],
+      };
 
-      const skills = Array.isArray(personalInfo.skills)
-        ? personalInfo.skills
-        : ['reactjs', 'golang'];
-      const languages = Array.isArray(personalInfo.languages)
-        ? personalInfo.languages
-        : ['english', 'spanish'];
+      if (userData) {
+        const skills = Array.isArray(userData.skills) ? userData.skills : ['reactjs', 'golang'];
+        const languages = Array.isArray(userData.languages)
+          ? userData.languages
+          : ['english', 'spanish'];
 
-      form.reset({
-        fullName: personalInfo.fullName || '',
-        email: personalInfo.email || '',
-        phone: personalInfo.phone || '',
-        dob: userData.dob ? format(parseISO(userData.dob), 'dd/MM/yyyy') : '',
-        address: personalInfo.address || '',
-        linkedin: personalInfo.linkedin || '',
-        github: personalInfo.github || '',
-        twitter: personalInfo.twitter || '',
-        portfolio: personalInfo.portfolio || '',
-        skills,
-        languages,
-      });
+        form.reset({
+          ...defaultValues,
+          fullName: userData.fullName || '',
+          email: userData.email || '',
+          phone: userData.phone || '',
+          dob: userData.dob ? format(parseISO(userData.dob), 'dd/MM/yyyy') : '',
+          address: userData.address || '',
+          linkedin: userData.linkedin || '',
+          github: userData.github || '',
+          twitter: userData.twitter || '',
+          portfolio: userData.portfolio || '',
+          skills,
+          languages,
+        });
+      } else {
+        form.reset(defaultValues);
+      }
 
       setFormInitialized(true);
     }
-  }, [userData, isSuccess, form, formInitialized]);
+  }, [userData, isSuccess, form, formInitialized, userId, user]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
