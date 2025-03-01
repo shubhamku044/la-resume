@@ -71,7 +71,7 @@ const ResumeForm = ({
 
   if (!isMobile) {
     return (
-      <ResizablePanel className="min-h-[500px] w-full min-w-[700px] rounded-md border p-4">
+      <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
         <Tabs defaultValue={String(sections[0])} className="w-full">
           <div className="overflow-x-auto">
             <TabsList className="flex w-max gap-2">

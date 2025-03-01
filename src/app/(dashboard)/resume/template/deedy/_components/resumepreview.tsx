@@ -89,7 +89,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   };
   if (!isMobile) {
     return (
-      <ResizablePanel className="min-h-[500px] w-full min-w-[300px] rounded-md border p-4">
+      <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
         <h2 className="text-lg font-semibold">Resume Preview</h2>
         <div className="mt-4 flex items-center justify-between">
           <div className="h-10 flex-1">
