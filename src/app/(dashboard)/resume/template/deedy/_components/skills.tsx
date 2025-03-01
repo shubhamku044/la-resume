@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -10,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Card } from '@/components/ui/card';
 import { deedyResumeData } from '@/lib/templates/deedy';
 import { Pencil, Trash } from 'lucide-react'; // Import icons
 
@@ -22,8 +22,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<string | null>(null);
   const [tempCategory, setTempCategory] = useState('');
-  const [tempSkills, setTempSkills] = useState<string[]>([]);
-  const [newSkill, setNewSkill] = useState('');
+  const [tempSkills, setTempSkills] = useState('');
 
   // Update skill categories and values
   const updateSkills = (updatedSkills: Record<string, string[]>) => {
@@ -46,7 +45,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
   const handleOpenModal = (category: string) => {
     setEditingCategory(category);
     setTempCategory(category);
-    setTempSkills(data[category]);
+    setTempSkills(data[category].join(', '));
     setModalOpen(true);
   };
 
@@ -59,7 +58,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
         updatedSkills[tempCategory] = updatedSkills[editingCategory!];
         delete updatedSkills[editingCategory!];
       }
-      updatedSkills[tempCategory] = tempSkills;
+      updatedSkills[tempCategory] = tempSkills.split(', ').filter(Boolean);
       return { ...prev, skills: updatedSkills };
     });
     setModalOpen(false);
@@ -72,18 +71,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       delete updatedSkills[category];
       return { ...prev, skills: updatedSkills };
     });
-  };
-
-  // Add a new skill to the current category
-  const handleAddSkill = () => {
-    if (!newSkill.trim()) return;
-    setTempSkills((prev) => [...prev, newSkill]);
-    setNewSkill('');
-  };
-
-  // Remove a skill from the current category
-  const handleRemoveSkill = (skillIndex: number) => {
-    setTempSkills((prev) => prev.filter((_, i) => i !== skillIndex));
   };
 
   // Add a new category
@@ -129,6 +116,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       </Reorder.Group>
 
       {/* Add Category Button */}
+      {/* Add Category Modal */}
       <Dialog
         open={addModalOpen}
         onOpenChange={(isOpen) => {
@@ -164,7 +152,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
           if (!isOpen) {
             setEditingCategory(null);
             setTempCategory('');
-            setTempSkills([]);
+            setTempSkills('');
           }
           setModalOpen(isOpen);
         }}
@@ -179,33 +167,12 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
             onChange={(e) => setTempCategory(e.target.value)}
             placeholder="Category Name"
           />
-
-          {/* Skills List */}
-          <div className="space-y-2">
-            <p className="font-semibold">Skills</p>
-            <div className="flex flex-wrap gap-2">
-              {tempSkills.map((skill, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {skill}
-                  <button onClick={() => handleRemoveSkill(i)} className="ml-2 text-red-500">
-                    <Trash size={14} />
-                  </button>
-                </span>
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
-              <Input
-                type="text"
-                value={newSkill}
-                onChange={(e) => setNewSkill(e.target.value)}
-                placeholder="Add a skill"
-              />
-              <Button onClick={handleAddSkill} className="bg-green-500 text-white">
-                Add
-              </Button>
-            </div>
-          </div>
-
+          <Input
+            type="text"
+            value={tempSkills}
+            onChange={(e) => setTempSkills(e.target.value)}
+            placeholder="Skills (comma-separated)"
+          />
           <Button onClick={handleSaveCategory} className="bg-blue-500 text-white">
             Save
           </Button>
