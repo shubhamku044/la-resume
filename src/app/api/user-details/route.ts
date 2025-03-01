@@ -52,73 +52,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing clerk_id' }, { status: 400 });
     }
 
-    console.log('personalInfo', personalInfo);
-
     if (personalInfo) {
-      const { skills, ...personalInfoData } = personalInfo;
+      const { ...personalInfoData } = personalInfo;
 
       const personalInfoEntry = await prisma.personalInfo.upsert({
         where: { id: user.id },
         update: personalInfoData,
         create: { ...personalInfoData, userId: user.id },
       });
-
-      console.log('Skills', skills);
-      /*
-
-      if (skills && skills.length > 0) {
-        for (const skillName of skills) {
-          let skill = await prisma.skills.findUnique({
-            where: {
-              name: skillName,
-            },
-          });
-
-          if (!skill) {
-            skill = await prisma.skills.create({ data: { name: skillName } });
-          }
-
-          await prisma.userSkills.upsert({
-            where: {
-              userId_skillId: {
-                userId: user.id,
-                skillId: skill.id,
-              },
-            },
-            update: {},
-            create: {
-              userId: user.id,
-              skillId: skill.id,
-            },
-          });
-        }
-      }
-      */
-
-      /*
-      if (skills && skills.length > 0) {
-        for (const skillName of skills) {
-          // let skill = await prisma.skills.findUnique({ where: { name: skillName } });
-          if (!skill) {
-            skill = await prisma.skills.create({ data: { name: skillName } });
-          }
-
-          await prisma.userSkills.upsert({
-            where: {
-              userId_skillId: {
-                userId: user.id,
-                skillId: skill.id,
-              },
-            },
-            update: {},
-            create: {
-              userId: user.id,
-              skillId: skill.id,
-            },
-          });
-        }
-      }
-      */
 
       return NextResponse.json(personalInfoEntry, { status: 201 });
     }

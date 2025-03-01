@@ -1,6 +1,7 @@
 'use client';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import { format, parseISO, parse } from 'date-fns';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -44,26 +45,26 @@ export default function PersonalInfoSection({ userId }: IProps) {
   const [updatePersonalInfo] = useUpdatePersonalInfoMutation();
   const { data: userData, isSuccess } = useGetPersonalInfoQuery(userId);
 
-  console.log('userData', userData);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      dob: '',
+      address: '',
+      linkedin: '',
+      github: '',
+      twitter: '',
+      portfolio: '',
       skills: ['reacjs', 'golang'],
       languages: ['english', 'spanish'],
     },
   });
   useEffect(() => {
-    if (userData) {
-      console.log('User data received:', userData);
-    }
-  }, [userData]);
-  useEffect(() => {
     if (isSuccess && userData && userData && !formInitialized) {
       const personalInfo = userData;
-      console.log('Setting form values with:', personalInfo);
 
-      // Make sure we have default arrays if data is missing
       const skills = Array.isArray(personalInfo.skills)
         ? personalInfo.skills
         : ['reactjs', 'golang'];
@@ -75,7 +76,7 @@ export default function PersonalInfoSection({ userId }: IProps) {
         fullName: personalInfo.fullName || '',
         email: personalInfo.email || '',
         phone: personalInfo.phone || '',
-        dob: personalInfo.dob || '',
+        dob: userData.dob ? format(parseISO(userData.dob), 'dd/MM/yyyy') : '',
         address: personalInfo.address || '',
         linkedin: personalInfo.linkedin || '',
         github: personalInfo.github || '',
@@ -91,15 +92,18 @@ export default function PersonalInfoSection({ userId }: IProps) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log('userId', userId);
-      console.log(values);
+      const formattedDob = values.dob
+        ? parse(values.dob, 'dd/MM/yyyy', new Date()).toISOString()
+        : undefined;
+
       await updatePersonalInfo({
         clerk_id: userId,
         ...values,
+        dob: formattedDob,
       });
     } catch (error) {
-      console.error('Form submission error', error);
       toast.error('Failed to submit the form. Please try again.');
+      console.error('Error in submitting the form', error);
     }
   }
 

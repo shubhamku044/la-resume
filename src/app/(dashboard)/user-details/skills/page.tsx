@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { Plus, X } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';

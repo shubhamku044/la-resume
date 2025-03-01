@@ -13,7 +13,6 @@ export async function GET(req: NextRequest) {
     const personalInfo = await prisma.personalInfo.findUnique({
       where: { id: clerk_id },
     });
-    console.log('personalInfo', personalInfo);
     return NextResponse.json(personalInfo, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Internal Server Error', details: error }, { status: 500 });
@@ -22,8 +21,6 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
-
-  console.log('data', data);
 
   const { clerk_id, ...personalInfo } = data;
 
@@ -40,10 +37,8 @@ export async function POST(req: NextRequest) {
         dob: new Date(personalInfo?.dob),
       },
     });
-    console.log('updatedPersonalInfo', updatedPersonalInfo);
     return NextResponse.json(updatedPersonalInfo, { status: 200 });
   } catch (error) {
-    console.log('error', error);
     return NextResponse.json({ error: 'Internal Server Error', details: error }, { status: 500 });
   }
 }

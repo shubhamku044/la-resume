@@ -5,9 +5,14 @@ import { LuGithub } from 'react-icons/lu';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 import { Button } from './button';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const hideHeader = pathname.startsWith('/user-details') || pathname.startsWith('/templates');
+
+  if (hideHeader) return null;
 
   return (
     <header className="bg-white">
