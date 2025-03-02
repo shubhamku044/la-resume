@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'La-Resume: Professional ATS-Optimized Resume Builder',
+  title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
   description:
     'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly. No signup required.',
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'prybruhta',
   ],
   openGraph: {
-    title: 'La-Resume: Professional ATS-Optimized Resume Builder',
+    title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
     description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
     url: 'https://la-resume.tech',
     siteName: 'La-Resume',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'La-Resume: Professional ATS-Optimized Resume Builder',
+    title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
     description: 'Free ATS-friendly resume builder with LaTeX export',
     images: ['https://la-resume.tech/og-image.png'],
   },

@@ -19,7 +19,7 @@ export default function Favicon() {
       }
     };
 
-    updateFavicon(); // Set favicon on page load
+    updateFavicon();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
 
     return () => {
@@ -29,5 +29,5 @@ export default function Favicon() {
     };
   }, []);
 
-  return null; // This component does not render anything
+  return null;
 }
