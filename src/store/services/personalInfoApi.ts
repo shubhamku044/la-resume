@@ -12,13 +12,13 @@ export const personalInfoApi = createApi({
     }),
     updatePersonalInfo: builder.mutation<
       PersonalInfo,
-      Partial<PersonalInfo> & { clerk_id: string }
+      { clerk_id: string; data: Partial<PersonalInfo> }
     >({
       query: (personalInfo) => ({
         url: `${personalInfo.clerk_id}/personal-info`,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(personalInfo),
+        body: personalInfo.data,
       }),
       invalidatesTags: (result) => (result ? [{ type: 'PersonalInfo', id: result.email }] : []),
     }),
