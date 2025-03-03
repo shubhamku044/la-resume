@@ -17,7 +17,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ clerk_id
       where: { userId: clerk_id },
       select: { id: true, slug: true, title: true, type: true, createdAt: true },
     });
-
+    console.log('Fetched resumes:', resumes);
     // Return an empty array instead of a 404 if no resumes exist
     return NextResponse.json(resumes);
   } catch (error) {
