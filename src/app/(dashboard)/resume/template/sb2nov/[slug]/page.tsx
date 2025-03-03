@@ -1,5 +1,5 @@
 'use client';
-import { resumes } from '@/lib/templates/index';
+import { resumesMap } from '@/lib/templates/index';
 import { useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ResumeForm from './_components/resumeForm';
@@ -7,7 +7,7 @@ import ResumePreview from './_components/resumepreview';
 import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
 
 export default function ResumeTemplatePage() {
-  const templatePackage = resumes['sb2nov'];
+  const templatePackage = resumesMap['sb2nov'];
   const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);

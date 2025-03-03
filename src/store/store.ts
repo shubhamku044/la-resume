@@ -19,11 +19,11 @@ import {
   userDetailsReducer,
 } from './slices';
 import { personalInfoApi, userDetailsApi } from './services';
-
+import { templateApi } from './services';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['userDetails'],
+  blacklist: ['userDetails', 'personalInfo'],
 };
 
 const rootReducers = combineReducers({
@@ -35,6 +35,7 @@ const rootReducers = combineReducers({
   userDetails: userDetailsReducer,
   [userDetailsApi.reducerPath]: userDetailsApi.reducer,
   [personalInfoApi.reducerPath]: personalInfoApi.reducer,
+  [templateApi.reducerPath]: templateApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -48,7 +49,8 @@ export const store = configureStore({
       },
     })
       .concat(userDetailsApi.middleware)
-      .concat(personalInfoApi.middleware);
+      .concat(personalInfoApi.middleware)
+      .concat(templateApi.middleware);
     /*
     .concat(() => (next) => (action) => {
       console.log('RTK Query action: ', action);

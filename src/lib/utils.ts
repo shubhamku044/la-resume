@@ -48,3 +48,9 @@ export const generateLatex = (data: ResumeData): string => {
   \\end{document}
   `;
 };
+
+export const generateSlug = (title: string): string => {
+  const randomString = Math.random().toString(36).substring(2, 8); // Random string
+  const timestamp = Date.now(); // Timestamp
+  return `${title.toLowerCase().replace(/\s+/g, '-')}-${timestamp}-${randomString}`;
+};
