@@ -24,6 +24,7 @@ export const resumesMap = {
     templateFunction: deedy,
   },
 };
+
 export const getResumeTemplateType = (resumeName: keyof typeof resumesMap) => {
   return resumesMap[resumeName]?.templateType || null;
 };

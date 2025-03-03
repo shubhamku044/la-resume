@@ -1,44 +1,28 @@
 'use client';
-import { deedyResumeData, resumesMap } from '@/lib/templates/index';
-import { useState } from 'react';
+import { useResumeData } from '@/hooks/resumeData';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ResumeForm from './_components/resumeForm';
 import ResumePreview from './_components/resumepreview';
 import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
-import { useGetResumeBySlugQuery } from '@/store/services/templateApi';
-import { useUser } from '@clerk/nextjs';
-import { useParams } from 'next/navigation';
+import { deedyResumeData, deedy } from '@/lib/templates/deedy';
 
 export default function ResumeTemplatePage() {
-  const templatePackage = resumesMap['deedy'];
-  const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
-
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [latexData, setLatexData] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const isMobile = useIsMobile();
-
-  const { user } = useUser();
-  const clerkId = user?.id;
-  const params = useParams();
-  const { slug } = params;
-
-  // Fetch existing resume data
   const {
-    data: existingResume,
-    isLoading: isFetching,
+    resumeFunc,
+    initialData,
+    existingResume,
+    isFetching,
     isError,
-  } = useGetResumeBySlugQuery(
-    { clerk_id: clerkId!, slug: slug as string },
-    { skip: !clerkId, refetchOnMountOrArgChange: true }
-  );
-
-  // Use existing resume data if available, otherwise use sample data
-  const initialData = existingResume?.data
-    ? (existingResume.data as deedyResumeData)
-    : resumeSampleData;
-
-  // If data is still being fetched, show a loading state
+    imageUrl,
+    latexData,
+    loading,
+    setImageUrl,
+    setLatexData,
+    setLoading,
+    slug,
+  } = useResumeData('deedy');
+  console.log('📄 Initial Title:', existingResume);
+  const isMobile = useIsMobile();
 
   if (isFetching) {
     return (
@@ -48,11 +32,18 @@ export default function ResumeTemplatePage() {
     );
   }
 
-  // If there's an error fetching the data, show an error state
   if (isError) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
         <div className="text-lg font-semibold">Error loading resume. Please try again.</div>
+      </div>
+    );
+  }
+
+  if (!existingResume) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+        <div className="text-lg font-semibold">Loading.</div>
       </div>
     );
   }
@@ -65,7 +56,6 @@ export default function ResumeTemplatePage() {
           className={isMobile ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-0'}
         >
           {isMobile ? (
-            // Mobile layout - Preview on top, Form below
             <>
               <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
               <ResizableHandle className="h-4 w-full opacity-0" />
@@ -73,21 +63,20 @@ export default function ResumeTemplatePage() {
                 onUpdate={setImageUrl}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
-                templateSampleData={initialData}
-                templateFunction={resumeFunc}
+                templateSampleData={initialData as deedyResumeData}
+                templateFunction={resumeFunc as typeof deedy}
                 slug={slug as string}
                 title={existingResume?.title || ''}
               />
             </>
           ) : (
-            // Desktop layout - Form and Preview side by side
             <>
               <ResumeForm
                 onUpdate={setImageUrl}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
-                templateSampleData={initialData}
-                templateFunction={resumeFunc}
+                templateSampleData={initialData as deedyResumeData}
+                templateFunction={resumeFunc as typeof deedy}
                 slug={slug as string}
                 title={existingResume?.title || ''}
               />
