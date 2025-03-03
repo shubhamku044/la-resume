@@ -12,7 +12,7 @@ export { deedy };
 export { deedySampleResumeData };
 export type { deedyResumeData };
 
-export const resumes = {
+export const resumesMap = {
   sb2nov: {
     templateType: {} as Sb2novResumeData,
     templateSampleData: sb2novResumeSampleData,
@@ -23,4 +23,11 @@ export const resumes = {
     templateSampleData: deedySampleResumeData,
     templateFunction: deedy,
   },
+};
+
+export const getResumeTemplateType = (resumeName: keyof typeof resumesMap) => {
+  return resumesMap[resumeName]?.templateType || null;
+};
+export const getResumeTemplateSampleData = (resumeName: keyof typeof resumesMap) => {
+  return resumesMap[resumeName]?.templateSampleData || null;
 };

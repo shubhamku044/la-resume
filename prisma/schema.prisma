@@ -24,6 +24,9 @@ model User {
   certifications  Certification[]
   accomplishments Accomplishment[]
   personalInfoId  String?
+
+  resumes        Resume[]
+  folders        Folder[]
 }
 
 model PersonalInfo {
@@ -100,4 +103,27 @@ model Project {
   link         String?
   User         User?    @relation(fields: [userId], references: [id])
   userId       String?  @db.ObjectId
+}
+
+model Folder {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumes   Resume[]
+  createdAt DateTime @default(now())
+}
+
+model Resume {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String   @unique 
+  title     String
+  userId    String
+  user      User     @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
+  folderId  String?  @db.ObjectId
+  folder    Folder?  @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  data      Json
+  type     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
