@@ -121,8 +121,10 @@ export default function PersonalInfo() {
       if (userId)
         await updatePersonalInfo({
           clerk_id: userId,
-          ...values,
-          dob: formattedDob,
+          data: {
+            ...values,
+            dob: formattedDob,
+          },
         });
     } catch (error) {
       toast.error('Failed to submit the form. Please try again.');
