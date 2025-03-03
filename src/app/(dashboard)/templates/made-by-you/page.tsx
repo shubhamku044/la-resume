@@ -22,7 +22,10 @@ export default function MadeByYouPage() {
     error,
     isLoading,
     refetch, // ✅ Get refetch function
-  } = useGetResumesQuery({ clerk_id: clerkId ?? '' }, { skip: !clerkId });
+  } = useGetResumesQuery(
+    { clerk_id: clerkId ?? '' },
+    { skip: !clerkId, refetchOnMountOrArgChange: true }
+  );
 
   // ✅ Force refetch when component mounts
   useEffect(() => {
