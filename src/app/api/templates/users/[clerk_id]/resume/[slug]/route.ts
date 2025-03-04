@@ -57,7 +57,6 @@ export async function DELETE(
       );
     }
 
-    console.log('Deleting resume:', clerk_id, slug);
     const deletedResume = await prisma.resume.delete({
       where: { userId: clerk_id, slug },
     });
