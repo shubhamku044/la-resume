@@ -14,7 +14,9 @@ import {
 import { SignedIn, UserButton } from '@clerk/nextjs';
 import {
   Briefcase,
+  Brush,
   ChevronRight,
+  FileText,
   GraduationCap,
   LayoutTemplate,
   Star,
@@ -51,6 +53,19 @@ const userDetailItems = [
   },
 ];
 
+const templateItems = [
+  {
+    title: 'Resume Templates',
+    url: '/templates/resume-templates',
+    icon: FileText,
+  },
+  {
+    title: 'Made by You',
+    url: '/templates/made-by-you',
+    icon: Brush,
+  },
+];
+
 export default function AppSidebar() {
   const pathname = usePathname();
   const stars = useGitHubStars();
@@ -75,7 +90,7 @@ export default function AppSidebar() {
                   data-active={pathname.startsWith('/templates')}
                   className="group hover:bg-accent/50"
                 >
-                  <Link href="/templates">
+                  <Link href="/templates/resume-templates">
                     <LayoutTemplate className="size-4 text-primary" />
                     <span>Templates</span>
                     <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
@@ -99,6 +114,32 @@ export default function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {pathname.startsWith('/templates') && (
+          <SidebarGroup className="mt-4">
+            <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Categories
+            </SidebarGroupLabel>
+            <SidebarGroupContent className="ml-2 mt-1 border-l-2 border-muted pl-2">
+              <SidebarMenu>
+                {templateItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      data-active={pathname === item.url}
+                      className="hover:bg-accent/50"
+                    >
+                      <Link href={item.url}>
+                        <item.icon className="size-4" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
 
         {pathname.startsWith('/user-details') && (
           <SidebarGroup className="mt-4">
@@ -178,7 +219,6 @@ export default function AppSidebar() {
               },
             }}
             showName
-            afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
             afterSwitchSessionUrl="/templates"
           />
         </SignedIn>
