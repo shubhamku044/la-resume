@@ -1,6 +1,15 @@
 'use client';
-
-import { useEffect } from 'react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useUser } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -17,6 +26,7 @@ interface Resume {
 export default function MadeByYouPage() {
   const { user } = useUser();
   const clerkId = user?.id;
+  const [selectedResume, setSelectedResume] = useState<Resume | null>(null);
 
   const {
     data: resumes = [],
@@ -61,6 +71,12 @@ export default function MadeByYouPage() {
   return (
     <div className="mx-auto max-w-3xl p-6">
       <h1 className="mb-4 text-2xl font-semibold">Resumes Made by You</h1>
+      <DeleteConfirmationDialog
+        open={!!selectedResume}
+        onOpenChange={(open) => !open && setSelectedResume(null)}
+        onConfirm={() => handleDelete}
+        resumeTitle={selectedResume?.title || ''}
+      />
       {resumes.length > 0 ? (
         <ul className="space-y-3">
           {resumes.map((resume: Resume) => (
@@ -74,7 +90,7 @@ export default function MadeByYouPage() {
               >
                 {resume.title}
               </Link>
-              <Button onClick={() => handleDelete(resume.slug)} variant="destructive" size="sm">
+              <Button variant="destructive" onClick={() => setSelectedResume(resume)}>
                 Delete
               </Button>
             </li>
@@ -86,3 +102,35 @@ export default function MadeByYouPage() {
     </div>
   );
 }
+
+const DeleteConfirmationDialog = ({
+  open,
+  onOpenChange,
+  onConfirm,
+  resumeTitle,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onConfirm: () => void;
+  resumeTitle: string;
+}) => (
+  <AlertDialog open={open} onOpenChange={onOpenChange}>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
+        <AlertDialogDescription>
+          Are you sure you want to delete <strong>&apos;{resumeTitle}&apos;</strong>? This action
+          cannot be undone.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction asChild>
+          <Button variant="destructive" onClick={onConfirm}>
+            Delete
+          </Button>
+        </AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+);

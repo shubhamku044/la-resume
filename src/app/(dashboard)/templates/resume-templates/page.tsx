@@ -1,10 +1,7 @@
 'use client';
-
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { templates } from '@/lib/templates';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -77,26 +74,6 @@ export default function ResumeTemplatesPage() {
             <SelectItem value="/templates/made-by-you">Resumes Made by You</SelectItem>
           </SelectContent>
         </Select>
-      </div>
-
-      {/* Desktop Navigation Buttons */}
-      <div className="mb-6 hidden justify-center gap-3 sm:flex">
-        <Button asChild className="max-w-xs flex-1">
-          <Link
-            href="/templates/resume-templates"
-            className="block w-full px-4 py-2 text-center text-white"
-          >
-            Resume Templates
-          </Link>
-        </Button>
-        <Button asChild className="max-w-xs flex-1">
-          <Link
-            href="/templates/made-by-you"
-            className="block w-full px-4 py-2 text-center text-white"
-          >
-            Resumes Made by You
-          </Link>
-        </Button>
       </div>
 
       <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">Choose a Resume Template</h1>
