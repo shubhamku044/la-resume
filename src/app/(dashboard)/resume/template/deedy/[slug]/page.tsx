@@ -21,7 +21,6 @@ export default function ResumeTemplatePage() {
     setLoading,
     slug,
   } = useResumeData('deedy');
-  console.log('📄 Initial Title:', existingResume);
   const isMobile = useIsMobile();
 
   if (isFetching) {
