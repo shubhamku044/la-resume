@@ -22,6 +22,8 @@ interface Resume {
   title: string;
   type: string;
   slug: string;
+  data: object;
+  updatedAt: Date;
 }
 
 export default function MadeByYouPage() {
