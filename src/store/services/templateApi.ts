@@ -60,7 +60,19 @@ export const templateApi = createApi({
       invalidatesTags: (result, error, { clerk_id, slug }) =>
         result ? [{ type: 'Resume', id: `${clerk_id}-${slug}` }] : [],
     }),
+    deleteResume: builder.mutation<void, { clerk_id: string; slug: string }>({
+      query: ({ clerk_id, slug }) => ({
+        url: `/${clerk_id}/resume/${slug}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: (result, error, { clerk_id }) => [{ type: 'Resume', id: clerk_id }],
+    }),
   }),
 });
 
-export const { useGetResumesQuery, useGetResumeBySlugQuery, useSaveResumeMutation } = templateApi;
+export const {
+  useGetResumesQuery,
+  useGetResumeBySlugQuery,
+  useSaveResumeMutation,
+  useDeleteResumeMutation,
+} = templateApi;

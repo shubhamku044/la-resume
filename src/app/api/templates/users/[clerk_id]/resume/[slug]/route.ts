@@ -27,6 +27,35 @@ export async function GET(req: Request, { params }: { params: Promise<{ slug: st
     );
   }
 }
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ clerk_id: string; slug: string }> }
+) {
+  try {
+    const { clerk_id, slug } = await params;
+
+    if (!clerk_id || !slug) {
+      return NextResponse.json({ error: 'Missing clerk_id or slug' }, { status: 400 });
+    }
+    // Delete the resume
+    console.log('Deleting resume:', clerk_id, slug);
+    const deletedResume = await prisma.resume.delete({
+      where: { userId: clerk_id, slug },
+    });
+
+    if (!deletedResume) {
+      return NextResponse.json({ error: 'Resume not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Resume deleted successfully' }, { status: 200 });
+  } catch (error) {
+    console.error('❌ DELETE Resume Error:', error);
+    return NextResponse.json(
+      { error: 'Internal Server Error', details: (error as Error).message },
+      { status: 500 }
+    );
+  }
+}
 
 export async function PUT(
   req: Request,
