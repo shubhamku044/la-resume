@@ -134,9 +134,6 @@ importers:
       redux-persist:
         specifier: ^6.0.0
         version: 6.0.0(react@19.0.0)(redux@5.0.1)
-      root:
-        specifier: github:tanstack/react-query
-        version: git+https://git@github.com:tanstack/react-query.git#3ccfa6e256161b3dbad6882eb3e26119af434032
       sonner:
         specifier: ^2.0.1
         version: 2.0.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3379,10 +3376,6 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
-
-  root@git+https://git@github.com:tanstack/react-query.git#3ccfa6e256161b3dbad6882eb3e26119af434032:
-    resolution: {commit: 3ccfa6e256161b3dbad6882eb3e26119af434032, repo: git@github.com:tanstack/react-query.git, type: git}
-    version: 0.0.0
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -7099,8 +7092,6 @@ snapshots:
   rimraf@3.0.2:
     dependencies:
       glob: 7.2.3
-
-  root@git+https://git@github.com:tanstack/react-query.git#3ccfa6e256161b3dbad6882eb3e26119af434032: {}
 
   run-parallel@1.2.0:
     dependencies:
