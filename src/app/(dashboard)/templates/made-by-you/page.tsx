@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { useUser } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useGetResumesQuery } from '@/store/services/templateApi';
+import { useGetResumesQuery, useDeleteResumeMutation } from '@/store/services/templateApi';
+import { Button } from '@/components/ui/button';
 
 interface Resume {
   id: string;
@@ -21,26 +22,33 @@ export default function MadeByYouPage() {
     data: resumes = [],
     error,
     isLoading,
-    refetch, // ✅ Get refetch function
+    refetch,
   } = useGetResumesQuery(
     { clerk_id: clerkId ?? '' },
     { skip: !clerkId, refetchOnMountOrArgChange: true }
   );
 
-  // ✅ Force refetch when component mounts
+  const [deleteResume] = useDeleteResumeMutation();
+
   useEffect(() => {
     if (clerkId) {
       refetch();
     }
   }, [clerkId, refetch]);
 
-  if (!clerkId) {
-    return (
-      <div className="flex h-screen flex-col items-center justify-center">
-        <p className="text-xl text-gray-600">Please log in to view your resumes.</p>
-      </div>
-    );
-  }
+  const handleDelete = async (slug: string) => {
+    if (!clerkId) {
+      console.error('User is not logged in.');
+      return;
+    }
+
+    try {
+      await deleteResume({ clerk_id: clerkId, slug }).unwrap();
+      refetch();
+    } catch (error) {
+      console.error('Failed to delete resume:', error);
+    }
+  };
 
   if (isLoading) {
     return <Skeleton className="h-20 w-full" />;
@@ -56,13 +64,19 @@ export default function MadeByYouPage() {
       {resumes.length > 0 ? (
         <ul className="space-y-3">
           {resumes.map((resume: Resume) => (
-            <li key={resume.id} className="rounded-lg bg-gray-100 p-4">
+            <li
+              key={resume.id}
+              className="flex items-center justify-between rounded-lg bg-gray-100 p-4"
+            >
               <Link
                 href={`/resume/template/${resume.type}/${resume.slug}`}
                 className="text-blue-600 hover:underline"
               >
                 {resume.title}
               </Link>
+              <Button onClick={() => handleDelete(resume.slug)} variant="destructive" size="sm">
+                Delete
+              </Button>
             </li>
           ))}
         </ul>
