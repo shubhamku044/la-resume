@@ -101,7 +101,7 @@ const ResumeForm = ({
       const response = await saveResume({
         clerk_id: clerkId,
         title: filename,
-        type: 'deedy',
+        type: 'sb2nov',
         data: formData,
         slug,
       }).unwrap();
