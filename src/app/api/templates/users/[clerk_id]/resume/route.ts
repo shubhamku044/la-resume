@@ -19,10 +19,26 @@ export async function GET(req: Request, { params }: { params: Promise<{ clerk_id
     });
     console.log('Fetched resumes:', resumes);
     // Return an empty array instead of a 404 if no resumes exist
-    return NextResponse.json(resumes);
+    return new Response(JSON.stringify(resumes), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
     console.error('Error fetching resumes:', error);
 
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   }
 }

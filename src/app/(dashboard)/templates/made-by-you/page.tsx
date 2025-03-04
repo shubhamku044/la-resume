@@ -44,7 +44,7 @@ export default function MadeByYouPage() {
 
     try {
       await deleteResume({ clerk_id: clerkId, slug }).unwrap();
-      refetch(); // Refresh resumes after deletion
+      refetch();
     } catch (error) {
       console.error('Failed to delete resume:', error);
     }
