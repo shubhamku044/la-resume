@@ -10,11 +10,12 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useUser } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetResumesQuery, useDeleteResumeMutation } from '@/store/services/templateApi';
 import { Button } from '@/components/ui/button';
+import { ResumeCard } from '../_components/resume-card';
+import { deedyResumeData, resumesMap, Sb2novResumeData } from '@/lib/templates/index';
 
 interface Resume {
   id: string;
@@ -29,6 +30,7 @@ export default function MadeByYouPage() {
   const { user } = useUser();
   const clerkId = user?.id;
   const [selectedResume, setSelectedResume] = useState<Resume | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const {
     data: resumes = [],
@@ -55,10 +57,13 @@ export default function MadeByYouPage() {
     }
 
     try {
+      setIsDeleting(true);
       await deleteResume({ clerk_id: clerkId, slug }).unwrap();
       refetch();
     } catch (error) {
       console.error('Failed to delete resume:', error);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -76,30 +81,35 @@ export default function MadeByYouPage() {
       <DeleteConfirmationDialog
         open={!!selectedResume}
         onOpenChange={(open) => !open && setSelectedResume(null)}
-        onConfirm={() => handleDelete}
+        onConfirm={() => {
+          if (selectedResume) {
+            handleDelete(selectedResume.slug);
+          }
+        }}
         resumeTitle={selectedResume?.title || ''}
       />
       {resumes.length > 0 ? (
-        <ul className="space-y-3">
-          {resumes.map((resume: Resume) => (
-            <li
-              key={resume.id}
-              className="flex items-center justify-between rounded-lg bg-gray-100 p-4"
-            >
-              <Link
-                href={`/resume/template/${resume.type}/${resume.slug}`}
-                className="text-blue-600 hover:underline"
-              >
-                {resume.title}
-              </Link>
-              <Button variant="destructive" onClick={() => setSelectedResume(resume)}>
-                Delete
-              </Button>
-            </li>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {resumes.map((resume) => (
+            <div key={resume.id} className="aspect-[1/1.4] w-full">
+              <ResumeCard
+                key={resume.id}
+                id={resume.id}
+                title={resume.title}
+                slug={resume.slug}
+                type={resume.type as keyof typeof resumesMap}
+                onDelete={() => setSelectedResume(resume)}
+                isDeleting={isDeleting && selectedResume?.id === resume.id}
+                lastUpdated={resume.updatedAt}
+                data={resume.data as Sb2novResumeData | deedyResumeData}
+              />
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p className="text-gray-600">No resumes found.</p>
+        <div className="flex h-64 items-center justify-center rounded-lg border-2 border-dashed bg-muted">
+          <p className="text-muted-foreground">No resumes found. Start by creating one!</p>
+        </div>
       )}
     </div>
   );
@@ -113,7 +123,7 @@ const DeleteConfirmationDialog = ({
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onConfirm: () => void;
+  onConfirm: () => void | Promise<void>;
   resumeTitle: string;
 }) => (
   <AlertDialog open={open} onOpenChange={onOpenChange}>
