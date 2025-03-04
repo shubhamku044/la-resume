@@ -92,16 +92,16 @@ export default function MadeByYouPage() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {resumes.map((resume) => (
             <div key={resume.id} className="aspect-[1/1.5] w-full">
-              <ResumeCard
-                key={resume.id}
-                id={resume.id}
-                title={resume.title}
-                slug={resume.slug}
-                type={resume.type as keyof typeof resumesMap}
-                onDelete={() => setSelectedResume(resume)}
-                isDeleting={isDeleting && selectedResume?.id === resume.id}
-                lastUpdated={resume.updatedAt}
-              />
+              {/* <ResumeCard */}
+              {/*   key={resume.id} */}
+              {/*   id={resume.id} */}
+              {/*   title={resume.title} */}
+              {/*   slug={resume.slug} */}
+              {/*   type={resume.type as keyof typeof resumesMap} */}
+              {/*   onDelete={() => setSelectedResume(resume)} */}
+              {/*   isDeleting={isDeleting && selectedResume?.id === resume.id} */}
+              {/*   lastUpdated={resume.updatedAt} */}
+              {/* /> */}
             </div>
           ))}
         </div>

@@ -33,7 +33,7 @@ export function ResumeCard({
   const templatePackage = resumesMap[type];
   const { templateFunction } = templatePackage;
 
-  const generateResumePreview = useCallback(async () => {
+  const generaresumesMapteResumePreview = useCallback(async () => {
     setLoading(true);
     try {
       const latexText = templateFunction(formData);
@@ -51,13 +51,12 @@ export function ResumeCard({
       const blob = await response.blob();
       const newImageUrl = URL.createObjectURL(blob);
       setImageUrl(newImageUrl);
-      onUpdate(newImageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
     } finally {
       setLoading(false);
     }
-  }, [formData, templateFunction, onUpdate]);
+  }, [formData, templateFunction]);
 
   return (
     <Card className="group relative flex h-full flex-col overflow-hidden shadow-lg transition-all hover:shadow-xl">
