@@ -15,7 +15,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useGetResumesQuery, useDeleteResumeMutation } from '@/store/services/templateApi';
 import { Button } from '@/components/ui/button';
 import { ResumeCard } from '../_components/resume-card';
-import { resumesMap } from '@/lib/templates/index';
+import { deedyResumeData, resumesMap, Sb2novResumeData } from '@/lib/templates/index';
 
 interface Resume {
   id: string;
@@ -89,19 +89,20 @@ export default function MadeByYouPage() {
         resumeTitle={selectedResume?.title || ''}
       />
       {resumes.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {resumes.map((resume) => (
-            <div key={resume.id} className="aspect-[1/1.5] w-full">
-              {/* <ResumeCard */}
-              {/*   key={resume.id} */}
-              {/*   id={resume.id} */}
-              {/*   title={resume.title} */}
-              {/*   slug={resume.slug} */}
-              {/*   type={resume.type as keyof typeof resumesMap} */}
-              {/*   onDelete={() => setSelectedResume(resume)} */}
-              {/*   isDeleting={isDeleting && selectedResume?.id === resume.id} */}
-              {/*   lastUpdated={resume.updatedAt} */}
-              {/* /> */}
+            <div key={resume.id} className="aspect-[1/1.4] w-full">
+              <ResumeCard
+                key={resume.id}
+                id={resume.id}
+                title={resume.title}
+                slug={resume.slug}
+                type={resume.type as keyof typeof resumesMap}
+                onDelete={() => setSelectedResume(resume)}
+                isDeleting={isDeleting && selectedResume?.id === resume.id}
+                lastUpdated={resume.updatedAt}
+                data={resume.data as Sb2novResumeData | deedyResumeData}
+              />
             </div>
           ))}
         </div>
