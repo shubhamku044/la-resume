@@ -29,7 +29,7 @@ interface Resume {
 }
 
 export default function MadeByYouPage() {
-  const { user } = useUser();
+  const { isLoaded, user } = useUser();
   const clerkId = user?.id;
   const router = useRouter();
 
@@ -51,11 +51,8 @@ export default function MadeByYouPage() {
   useEffect(() => {
     if (clerkId) {
       refetch();
-    } else {
-      console.error('User is not logged in.');
-      router.push('/');
     }
-  }, [clerkId, refetch, router]);
+  }, [clerkId, refetch]);
 
   const handleDelete = async (slug: string) => {
     if (!clerkId) {
@@ -72,6 +69,15 @@ export default function MadeByYouPage() {
       setIsDeleting(false);
     }
   };
+
+  if (!clerkId) {
+    router.push('/');
+    return null;
+  }
+
+  if (!isLoaded) {
+    return <Skeleton className="h-20 w-full" />;
+  }
 
   if (isLoading) {
     return <Skeleton className="h-20 w-full" />;
