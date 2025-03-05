@@ -24,11 +24,13 @@ interface Resume {
   slug: string;
   data: object;
   updatedAt: Date;
+  previewUrl: string;
 }
 
 export default function MadeByYouPage() {
   const { user } = useUser();
   const clerkId = user?.id;
+
   const [selectedResume, setSelectedResume] = useState<Resume | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -39,7 +41,7 @@ export default function MadeByYouPage() {
     refetch,
   } = useGetResumesQuery(
     { clerk_id: clerkId ?? '' },
-    { skip: !clerkId, refetchOnMountOrArgChange: true }
+    { skip: !clerkId, refetchOnMountOrArgChange: true, refetchOnFocus: true }
   );
 
   const [deleteResume] = useDeleteResumeMutation();
@@ -102,6 +104,7 @@ export default function MadeByYouPage() {
                 isDeleting={isDeleting && selectedResume?.id === resume.id}
                 lastUpdated={resume.updatedAt}
                 data={resume.data as Sb2novResumeData | deedyResumeData}
+                imageUrl={resume.previewUrl}
               />
             </div>
           ))}

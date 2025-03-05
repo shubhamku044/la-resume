@@ -21,6 +21,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ clerk_id
         createdAt: true,
         updatedAt: true,
         data: true,
+        previewUrl: true,
       },
       orderBy: { updatedAt: 'desc' },
     });

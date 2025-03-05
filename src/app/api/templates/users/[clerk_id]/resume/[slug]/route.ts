@@ -83,11 +83,12 @@ export async function DELETE(
 
 export async function PUT(
   req: Request,
-  { params }: { params: Promise<{ clerk_id: string; slug: string }> }
+  { params }: { params: { clerk_id: string; slug: string } }
 ) {
   try {
     const { clerk_id, slug } = await params;
 
+    // Validate clerk_id and slug
     if (!clerk_id || !slug) {
       return NextResponse.json(
         { error: 'Missing clerk_id or slug' },
@@ -95,9 +96,11 @@ export async function PUT(
       );
     }
 
+    // Parse the request body
     const body = await req.json();
-    const { title, type, data } = body;
+    const { title, type, data, previewUrl } = body;
 
+    // Validate required fields
     if (!title || !type || !data) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -105,16 +108,18 @@ export async function PUT(
       );
     }
 
+    // Upsert the resume in the database
     const updatedResume = await prisma.resume.upsert({
       where: { slug, userId: clerk_id },
-      update: { title, type, data },
-      create: { slug, userId: clerk_id, title, type, data },
+      update: { title, type, data, previewUrl }, // Update previewUrl
+      create: { slug, userId: clerk_id, title, type, data, previewUrl }, // Include previewUrl
     });
 
-    return new Response(JSON.stringify({ message: 'Resume saved successfully', updatedResume }), {
-      status: 200,
-      headers: NO_CACHE_HEADERS,
-    });
+    // Return success response
+    return NextResponse.json(
+      { message: 'Resume saved successfully', updatedResume },
+      { status: 200, headers: NO_CACHE_HEADERS }
+    );
   } catch (error) {
     console.error('❌ PUT Resume Error:', error);
     return NextResponse.json(

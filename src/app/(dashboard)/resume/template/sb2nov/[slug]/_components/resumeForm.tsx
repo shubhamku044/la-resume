@@ -12,7 +12,7 @@ import ProjectsSection from './projects';
 import HonorsAndRewards from './honorandawards';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
-import { useSaveResumeMutation } from '@/store/services/templateApi';
+import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
 import { PencilIcon, CheckIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -42,6 +42,8 @@ const ResumeForm = ({
   const [filename, setFilename] = useState(title);
   const [editingFilename, setEditingFilename] = useState(false);
   const [saveResume] = useSaveResumeMutation();
+  const [uploadImage] = useUploadImageMutation();
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
@@ -60,7 +62,16 @@ const ResumeForm = ({
       if (!response.ok) throw new Error('Failed to generate resume preview');
 
       const blob = await response.blob();
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        setPreviewImage(base64); // Save the Base64 string
+        onUpdate(base64); // Update the preview
+      };
       const imageUrl = URL.createObjectURL(blob);
+      console.log('🖼️ Generated Resume Preview:', imageUrl);
       onUpdate(imageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
@@ -98,12 +109,28 @@ const ResumeForm = ({
     console.log('📄 Saving Resume:', filename, formData);
 
     try {
+      let imageUrl = null;
+
+      // Upload the preview image to ImageKit if it exists
+      if (previewImage) {
+        const { url } = await uploadImage({
+          file: previewImage,
+          fileName: slug, // Use the slug as the unique file name
+        }).unwrap();
+        imageUrl = url;
+        console.log('🖼️ Uploaded Image URL:', imageUrl);
+      }
+      if (!imageUrl) {
+        toast.error('Error uploading image');
+        return;
+      }
       const response = await saveResume({
         clerk_id: clerkId,
         title: filename,
         type: 'sb2nov',
         data: formData,
         slug,
+        previewUrl: imageUrl,
       }).unwrap();
 
       toast.success('Resume saved successfully!');
