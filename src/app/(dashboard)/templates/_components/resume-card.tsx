@@ -65,7 +65,7 @@ export function ResumeCard({
                 className="border-white/20 bg-white/10 hover:bg-white/20"
                 asChild
               >
-                <Link href={imageLink} target="_blank">
+                <Link href={imageLink ?? ''} target="_blank">
                   Preview
                 </Link>
               </Button>
