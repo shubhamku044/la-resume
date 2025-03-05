@@ -16,6 +16,7 @@ import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/
 import { PencilIcon, CheckIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { CircularProgress } from '@heroui/progress';
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
   setLoading: (loading: boolean) => void;
@@ -44,6 +45,7 @@ const ResumeForm = ({
   const [saveResume] = useSaveResumeMutation();
   const [uploadImage] = useUploadImageMutation();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
@@ -92,21 +94,24 @@ const ResumeForm = ({
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
 
   const handleSave = async () => {
+    setIsSaving(true);
     if (!filename.trim()) {
       toast.error('Please enter a filename');
+      setIsSaving(false);
       return;
     }
 
     if (!clerkId) {
       toast.error('User ID is missing. Please try again.');
+      setIsSaving(false);
       return;
     }
 
     if (!formData || typeof formData !== 'object') {
       toast.error('Resume data is invalid.');
+      setIsSaving(false);
       return;
     }
-    console.log('📄 Saving Resume:', filename, formData);
 
     try {
       let imageUrl = null;
@@ -121,6 +126,7 @@ const ResumeForm = ({
         console.log('🖼️ Uploaded Image URL:', imageUrl);
       }
       if (!imageUrl) {
+        setIsSaving(false);
         toast.error('Error uploading image');
         return;
       }
@@ -135,9 +141,11 @@ const ResumeForm = ({
 
       toast.success('Resume saved successfully!');
       console.log('✅ Saved Resume:', response);
+      setIsSaving(false);
     } catch (error) {
       console.error('❌ Save Resume Error:', error);
       toast.error('Error saving resume');
+      setIsSaving(false);
     }
   };
 
@@ -163,13 +171,14 @@ const ResumeForm = ({
             {editingFilename ? <CheckIcon /> : <PencilIcon />}
           </Button>
         </div>
-
-        <Button
-          onClick={handleSave}
-          className="rounded-md bg-blue-500 px-4 py-2 text-white transition-colors"
-        >
-          Save
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="h-10">
+            {isSaving && (
+              <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+            )}
+          </div>
+          <Button onClick={handleSave}>Save</Button>
+        </div>
       </div>
 
       <Tabs defaultValue={String(sections[0])} className="w-full">
