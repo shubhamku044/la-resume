@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetResumesQuery, useDeleteResumeMutation } from '@/store/services/templateApi';
 import { Button } from '@/components/ui/button';
@@ -30,6 +31,7 @@ interface Resume {
 export default function MadeByYouPage() {
   const { user } = useUser();
   const clerkId = user?.id;
+  const router = useRouter();
 
   const [selectedResume, setSelectedResume] = useState<Resume | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -49,12 +51,14 @@ export default function MadeByYouPage() {
   useEffect(() => {
     if (clerkId) {
       refetch();
+    } else {
+      console.error('User is not logged in.');
+      router.push('/');
     }
-  }, [clerkId, refetch]);
+  }, [clerkId, refetch, router]);
 
   const handleDelete = async (slug: string) => {
     if (!clerkId) {
-      console.error('User is not logged in.');
       return;
     }
 

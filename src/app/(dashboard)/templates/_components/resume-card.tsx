@@ -25,9 +25,8 @@ export function ResumeCard({
   onDelete,
   isDeleting,
   lastUpdated,
-  imageUrl: imageLink, // Use the imageLink prop directly
+  imageUrl: imageLink,
 }: ResumeCardProps) {
-  console.log('Image Link:', imageLink);
   return (
     <Card className="group relative flex h-full flex-col overflow-hidden shadow-lg transition-all hover:shadow-xl">
       <div className="relative aspect-[1/1.414] h-full">
