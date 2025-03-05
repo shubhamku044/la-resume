@@ -107,7 +107,7 @@ export default function LaResumeLanding() {
             className="shadow-lg shadow-purple-300"
             width={1024}
             height={800}
-            src="/la-resume-mockup.webp"
+            src="https://ik.imagekit.io/laresume/public/la-resume-mockup.webp?updatedAt=1741200085904"
           />
         </motion.div>
       </section>
