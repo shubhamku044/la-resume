@@ -99,7 +99,6 @@ export async function deleteImagekitFile(fileId: string): Promise<boolean> {
       return false;
     }
 
-    console.log('✅ Image deleted successfully!');
     return true;
   } catch (error) {
     console.error('❌ Error deleting ImageKit file:', error);
