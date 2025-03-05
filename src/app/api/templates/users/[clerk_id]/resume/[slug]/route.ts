@@ -83,7 +83,7 @@ export async function DELETE(
 
 export async function PUT(
   req: Request,
-  { params }: { params: { clerk_id: string; slug: string } }
+  { params }: { params: Promise<{ clerk_id: string; slug: string }> }
 ) {
   try {
     const { clerk_id, slug } = await params;
