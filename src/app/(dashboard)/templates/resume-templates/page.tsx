@@ -13,13 +13,16 @@ import { useUser } from '@clerk/nextjs';
 import { useSaveResumeMutation } from '@/store/services/templateApi';
 import { toast } from 'sonner';
 import { v4 as uuid } from 'uuid';
+import { useState } from 'react';
+
 export default function ResumeTemplatesPage() {
   const router = useRouter();
   const { user } = useUser();
   const clerkId = user?.id;
   const [saveResume] = useSaveResumeMutation();
-
+  const [iscreating, setIsCreating] = useState(false);
   const handleTemplateClick = async (templateId: string) => {
+    setIsCreating(true);
     if (!clerkId) {
       toast.error('User ID is missing. Please try again.');
       return;
@@ -56,10 +59,20 @@ export default function ResumeTemplatesPage() {
       console.error('❌ Save Resume Error:', error);
       toast.error('Error creating resume');
     }
+    setIsCreating(false);
   };
 
   return (
     <div className="container mx-auto px-4 py-6">
+      {/* Blurred Background Overlay When Creating */}
+      {iscreating && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-md">
+          <div className="rounded-lg bg-white p-6 shadow-lg">
+            <h2 className="text-center text-lg font-semibold">Creating Resume...</h2>
+          </div>
+        </div>
+      )}
+
       {/* Mobile Select Dropdown */}
       <div className="mb-6 sm:hidden">
         <Select
@@ -95,6 +108,7 @@ export default function ResumeTemplatesPage() {
                   alt={template.name} // Add alt text for accessibility
                   width={210}
                   height={297}
+                  quality={100}
                   className="size-full object-cover"
                 />
               </div>
