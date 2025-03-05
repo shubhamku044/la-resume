@@ -54,3 +54,55 @@ export const generateSlug = (title: string): string => {
   const timestamp = Date.now(); // Timestamp
   return `${title.toLowerCase().replace(/\s+/g, '-')}-${timestamp}-${randomString}`;
 };
+
+export async function getImagekitFileId(fileId: string): Promise<string | null> {
+  try {
+    const response = await fetch(`https://api.imagekit.io/v1/files/${fileId}/details`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Basic ${Buffer.from(`${process.env.IMAGEKIT_PRIVATE_KEY}:`).toString('base64')}`,
+      },
+    });
+
+    if (!response.ok) {
+      console.error(`Failed to fetch ImageKit file details. Status: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    return data.fileId; // Returns the file details
+  } catch (error) {
+    console.error('Error fetching ImageKit file details:', error);
+    return null;
+  }
+}
+
+export async function deleteImagekitFile(fileId: string): Promise<boolean> {
+  const privateKey = process.env.IMAGEKIT_PRIVATE_KEY;
+  if (!privateKey) {
+    console.error('❌ IMAGEKIT_PRIVATE_KEY is missing');
+    return false;
+  }
+
+  const encodedAuth = Buffer.from(`${privateKey}:`).toString('base64');
+
+  try {
+    const response = await fetch(`https://api.imagekit.io/v1/files/${fileId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Basic ${encodedAuth}`,
+      },
+    });
+
+    if (!response.ok) {
+      console.error('❌ Failed to delete ImageKit file:', response.statusText);
+      return false;
+    }
+
+    console.log('✅ Image deleted successfully!');
+    return true;
+  } catch (error) {
+    console.error('❌ Error deleting ImageKit file:', error);
+    return false;
+  }
+}

@@ -12,6 +12,7 @@ interface Resume {
   updatedAt: Date;
   userId: string;
   folderId: string | null;
+  previewUrl: string; // ✅ Optional preview URL
 }
 
 // ResumeType now accepts string for type
@@ -49,13 +50,14 @@ export const templateApi = createApi({
         type: string; // ✅ Now explicitly a string
         data: object; // ✅ Made generic for flexibility
         slug: string;
+        previewUrl?: string; // ✅ Optional preview URL
       }
     >({
-      query: ({ clerk_id, title, type, data, slug }) => ({
+      query: ({ clerk_id, title, type, data, slug, previewUrl }) => ({
         url: `/${clerk_id}/resume/${slug}`,
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: { title, type, data },
+        body: { title, type, data, previewUrl },
       }),
       invalidatesTags: (result, error, { clerk_id, slug }) =>
         result ? [{ type: 'Resume', id: `${clerk_id}-${slug}` }] : [],
@@ -67,6 +69,17 @@ export const templateApi = createApi({
       }),
       invalidatesTags: (result, error, { clerk_id }) => [{ type: 'Resume', id: clerk_id }],
     }),
+    uploadImage: builder.mutation<
+      { url: string }, // Response type (ImageKit URL)
+      { file: string; fileName: string } // Request payload (Base64 file and fileName)
+    >({
+      query: ({ file, fileName }) => ({
+        url: '', // API route for uploading images
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: { file, fileName },
+      }),
+    }),
   }),
 });
 
@@ -75,4 +88,5 @@ export const {
   useGetResumeBySlugQuery,
   useSaveResumeMutation,
   useDeleteResumeMutation,
+  useUploadImageMutation,
 } = templateApi;

@@ -39,6 +39,7 @@
     "date-fns": "^4.1.0",
     "dotenv-cli": "^8.0.0",
     "framer-motion": "^12.4.2",
+    "imagekit": "^6.0.0",
     "lucide-react": "^0.475.0",
     "motion": "^12.4.2",
     "next": "15.1.7",

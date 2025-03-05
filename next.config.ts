@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
       {
         hostname: 'avatars.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io', // Add ImageKit domain
+      },
     ],
   },
   async headers() {
