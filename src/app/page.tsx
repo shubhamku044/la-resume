@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { FileText, Rocket, Star, ChevronRight } from 'lucide-react';
+import { FileText, Rocket, Star, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -58,8 +58,8 @@ export default function LaResumeLanding() {
             Resumes
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 sm:text-xl">
-            Professional resume builder powered by LaTeX. Free forever. No signups required. Export
-            to PDF or LaTeX in seconds.
+            Professional resume builder powered by LaTeX. Free. No signups required. Export to PDF
+            or LaTeX in seconds.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <SignedIn>
@@ -222,6 +222,94 @@ export default function LaResumeLanding() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="py-12 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
+            Transparent Pricing
+          </h2>
+          <p className="text-center text-lg text-gray-600">
+            Everything you need to create professional resumes - completely free
+          </p>
+
+          <div className="mx-auto mt-8 max-w-4xl">
+            <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-blue-50 to-purple-50">
+              <CardContent className="p-6 sm:p-12">
+                <div className="text-center">
+                  <div className="mb-8">
+                    <span className="text-5xl font-bold text-gray-900">Free</span>
+                    <p className="mt-2 text-gray-600">No credit card required</p>
+                  </div>
+
+                  <div className="grid gap-6 text-left md:grid-cols-2">
+                    <div className="space-y-4">
+                      {[
+                        'Unlimited Resumes',
+                        'ATS-Optimized Templates',
+                        'PDF Export',
+                        'LaTeX Source Download',
+                      ].map((feature) => (
+                        <div key={feature} className="flex items-center gap-3">
+                          <CheckCircle2 className="size-5 text-green-600" />
+                          <span className="text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="space-y-4">
+                      {['No Ads', 'Open Source', 'Cloud Storage', 'Priority Support'].map(
+                        (feature) => (
+                          <div key={feature} className="flex items-center gap-3">
+                            <CheckCircle2 className="size-5 text-green-600" />
+                            <span className="text-gray-700">{feature}</span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                    <SignedIn>
+                      <Button
+                        size="lg"
+                        className="w-full shadow-lg sm:w-auto"
+                        onClick={() => router.push('/templates')}
+                        variant="default"
+                      >
+                        Start Building Free
+                      </Button>
+                    </SignedIn>
+                    <SignedOut>
+                      <SignInButton
+                        fallbackRedirectUrl="/templates"
+                        signUpFallbackRedirectUrl="/"
+                        mode="modal"
+                      >
+                        <Button size="lg" className="w-full shadow-lg sm:w-auto" variant="default">
+                          Start Building Free
+                        </Button>
+                      </SignInButton>
+                    </SignedOut>
+                  </div>
+
+                  <p className="mt-6 text-sm text-gray-600">
+                    Compare with other resume builders: ❌ $15/mo • ❌ Ads • ❌ Limited Templates
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <p className="mt-12 text-center text-gray-600">
+            Proudly open source •{' '}
+            <Link
+              href="https://github.com/shubhamku044/la-resume"
+              target="_blank"
+              className="text-blue-600 hover:underline"
+            >
+              View source on GitHub
+            </Link>
+          </p>
         </div>
       </section>
 
