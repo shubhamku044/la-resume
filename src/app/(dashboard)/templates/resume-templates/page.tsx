@@ -99,7 +99,7 @@ export default function ResumeTemplatesPage() {
           <div
             key={template.id}
             className="block cursor-pointer"
-            onClick={() => handleTemplateClick(template.id)} // Handle click event
+            onClick={() => handleTemplateClick(template.id)}
           >
             <div className="flex flex-col items-center rounded-lg border p-3 shadow-md transition hover:shadow-lg">
               <div
@@ -107,12 +107,14 @@ export default function ResumeTemplatesPage() {
                 style={{ aspectRatio: '210/297', width: '100%' }}
               >
                 <Image
-                  src={template.image}
-                  alt={template.name} // Add alt text for accessibility
+                  src={template.imageUrl ?? ''}
+                  alt={template.name}
                   width={210}
                   height={297}
                   quality={100}
                   className="size-full object-cover"
+                  priority
+                  unoptimized
                 />
               </div>
 
