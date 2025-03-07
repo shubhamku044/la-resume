@@ -17,9 +17,12 @@ import { useRouter } from 'next/navigation';
 import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { useGitHubStars } from '@/hooks';
-import { useState } from 'react';
 import { z } from 'zod';
 import { toast } from 'sonner';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is required').max(50),
@@ -33,9 +36,6 @@ type ContactSchemaType = z.infer<typeof ContactSchema>;
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
 
   const {
     register,
@@ -282,74 +282,47 @@ export default function LaResumeLanding() {
           <div className="mx-auto max-w-2xl">
             <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
               <CardContent className="p-6 sm:p-8">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    // Handle form submission here
-                    alert("Thank you for your message! We'll respond shortly.");
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                  }}
-                  className="space-y-6"
-                >
-                  <div className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="mb-2 block text-sm font-medium text-gray-700"
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="John Doe"
-                        className="w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="mb-2 block text-sm font-medium text-gray-700"
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="john@example.com"
-                        className="w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="mb-2 block text-sm font-medium text-gray-700"
-                      >
-                        Your Message
-                      </label>
-                      <textarea
-                        id="message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="How can we help you?"
-                        className="h-32 w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                        required
-                      />
-                    </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <div>
+                    <Input placeholder="Your Name" {...register('name')} className="w-full" />
+                    {errors.name && (
+                      <p className="mt-1 text-left text-sm text-red-500">{errors.name.message}</p>
+                    )}
                   </div>
 
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" size="lg">
-                    Send Message
+                  <div>
+                    <Input
+                      placeholder="Your Email"
+                      type="email"
+                      {...register('email')}
+                      className="w-full"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-left text-sm text-red-500">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Textarea
+                      placeholder="Your Message (min. 100 characters)"
+                      {...register('message')}
+                      className="min-h-[120px] w-full bg-transparent"
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-left text-sm text-red-500">
+                        {errors.message.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <input type="hidden" id="honeypot" {...register('honeypot')} />
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-black text-white hover:bg-gray-800"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
