@@ -18,6 +18,17 @@ import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { useGitHubStars } from '@/hooks';
 import { useState } from 'react';
+import { z } from 'zod';
+import { toast } from 'sonner';
+
+const ContactSchema = z.object({
+  name: z.string().min(2, 'Name is required').max(50),
+  email: z.string().email(),
+  message: z.string().min(100),
+  honeypot: z.string(),
+});
+
+type ContactSchemaType = z.infer<typeof ContactSchema>;
 
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
@@ -25,6 +36,41 @@ export default function LaResumeLanding() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactSchemaType>({
+    resolver: zodResolver(ContactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+      honeypot: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<ContactSchemaType> = async (data: ContactSchemaType) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        reset();
+      } else {
+        toast.error('An error occurred while sending the message. Please try again later.');
+      }
+    } catch (error) {
+      toast('An error occurred while sending the message. Please try again later.');
+      console.error(error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -179,7 +225,7 @@ export default function LaResumeLanding() {
                   <h3 className="mb-3 text-lg font-semibold sm:text-xl">
                     {
                       ['Input Your Information', 'Customize Templates', 'Download & Apply'][
-                        step - 1
+                      step - 1
                       ]
                     }
                   </h3>
