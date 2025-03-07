@@ -17,10 +17,60 @@ import { useRouter } from 'next/navigation';
 import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { useGitHubStars } from '@/hooks';
+import { z } from 'zod';
+import { toast } from 'sonner';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+
+const ContactSchema = z.object({
+  name: z.string().min(2, 'Name is required').max(50),
+  email: z.string().email(),
+  message: z.string().min(100),
+  honeypot: z.string(),
+});
+
+type ContactSchemaType = z.infer<typeof ContactSchema>;
 
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactSchemaType>({
+    resolver: zodResolver(ContactSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+      honeypot: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<ContactSchemaType> = async (data: ContactSchemaType) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        reset();
+      } else {
+        toast.error('An error occurred while sending the message. Please try again later.');
+      }
+    } catch (error) {
+      toast('An error occurred while sending the message. Please try again later.');
+      console.error(error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -175,7 +225,7 @@ export default function LaResumeLanding() {
                   <h3 className="mb-3 text-lg font-semibold sm:text-xl">
                     {
                       ['Input Your Information', 'Customize Templates', 'Download & Apply'][
-                        step - 1
+                      step - 1
                       ]
                     }
                   </h3>
@@ -221,6 +271,62 @@ export default function LaResumeLanding() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-12 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
+            Get in Touch
+          </h2>
+          <div className="mx-auto max-w-2xl">
+            <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
+              <CardContent className="p-6 sm:p-8">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <div>
+                    <Input placeholder="Your Name" {...register('name')} className="w-full" />
+                    {errors.name && (
+                      <p className="mt-1 text-left text-sm text-red-500">{errors.name.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      placeholder="Your Email"
+                      type="email"
+                      {...register('email')}
+                      className="w-full"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-left text-sm text-red-500">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Textarea
+                      placeholder="Your Message (min. 100 characters)"
+                      {...register('message')}
+                      className="min-h-[120px] w-full bg-transparent"
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-left text-sm text-red-500">
+                        {errors.message.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <input type="hidden" id="honeypot" {...register('honeypot')} />
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-black text-white hover:bg-gray-800"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
