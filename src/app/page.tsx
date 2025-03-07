@@ -17,10 +17,13 @@ import { useRouter } from 'next/navigation';
 import CountUp from 'react-countup';
 import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { useGitHubStars } from '@/hooks';
+import { useState } from 'react';
 
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -221,6 +224,65 @@ export default function LaResumeLanding() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-12 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
+            We Value Your Feedback
+          </h2>
+          <div className="mx-auto max-w-2xl">
+            <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
+              <CardContent className="p-6 sm:p-8">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    // Handle form submission here
+                    alert('Thank you for your feedback!');
+                    setRating(0);
+                    setComment('');
+                  }}
+                  className="space-y-6"
+                >
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="flex gap-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setRating(star)}
+                          className="focus:outline-none"
+                        >
+                          <Star
+                            className={`size-8 transition-colors ${
+                              star <= rating
+                                ? 'fill-yellow-400 text-yellow-500'
+                                : 'text-gray-300 hover:text-yellow-400'
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      {rating ? `You rated us ${rating} stars` : 'Tap to rate'}
+                    </p>
+                  </div>
+
+                  <textarea
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="Your feedback helps us improve..."
+                    className="h-32 w-full rounded-lg border border-gray-200 p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    required
+                  />
+
+                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" size="lg">
+                    Submit Feedback
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
