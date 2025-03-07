@@ -22,8 +22,9 @@ import { useState } from 'react';
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -230,7 +231,7 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
-            We Value Your Feedback
+            Get in Touch
           </h2>
           <div className="mx-auto max-w-2xl">
             <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
@@ -239,46 +240,70 @@ export default function LaResumeLanding() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     // Handle form submission here
-                    alert('Thank you for your feedback!');
-                    setRating(0);
-                    setComment('');
+                    alert("Thank you for your message! We'll respond shortly.");
+                    setName('');
+                    setEmail('');
+                    setMessage('');
                   }}
                   className="space-y-6"
                 >
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="flex gap-2">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <button
-                          key={star}
-                          type="button"
-                          onClick={() => setRating(star)}
-                          className="focus:outline-none"
-                        >
-                          <Star
-                            className={`size-8 transition-colors ${
-                              star <= rating
-                                ? 'fill-yellow-400 text-yellow-500'
-                                : 'text-gray-300 hover:text-yellow-400'
-                            }`}
-                          />
-                        </button>
-                      ))}
+                  <div className="space-y-4">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="mb-2 block text-sm font-medium text-gray-700"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="John Doe"
+                        className="w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                        required
+                      />
                     </div>
-                    <p className="text-sm text-gray-600">
-                      {rating ? `You rated us ${rating} stars` : 'Tap to rate'}
-                    </p>
+
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="mb-2 block text-sm font-medium text-gray-700"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="john@example.com"
+                        className="w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="mb-2 block text-sm font-medium text-gray-700"
+                      >
+                        Your Message
+                      </label>
+                      <textarea
+                        id="message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="How can we help you?"
+                        className="h-32 w-full rounded-lg border border-gray-200 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <textarea
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Your feedback helps us improve..."
-                    className="h-32 w-full rounded-lg border border-gray-200 p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                    required
-                  />
-
                   <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" size="lg">
-                    Submit Feedback
+                    Send Message
                   </Button>
                 </form>
               </CardContent>
