@@ -368,6 +368,9 @@ export const deedy = (data: deedyResumeData) => {
 \\vspace{-2mm}
 %----------EDUCATION-----------------
 
+${
+  data.education.length > 0
+    ? `
 \\section{\\textbf{Education}}
 \\vspace{1mm}
 \\setlength{\\tabcolsep}{5pt}
@@ -384,9 +387,16 @@ export const deedy = (data: deedyResumeData) => {
   
 \\end{tabularx}
 \\vspace{-4mm}
+`
+    : ''
+}
+
 
 %----------EXPERIENCE-----------------
 
+${
+  data.experience.length > 0
+    ? `
 \\section{\\textbf{Experience}}
 \\vspace{-0.4mm}
 \\resumeSubHeadingListStart
@@ -405,10 +415,17 @@ ${data.experience
 
 \\resumeSubHeadingListEnd
 \\vspace{-6mm}
+`
+    : ''
+}
+
 
 %----------PROJECT-----------------
 
 
+${
+  data.projects.length > 0
+    ? `
 \\section{\\textbf{Projects}}
 \\vspace{-0.4mm}
 \\resumeSubHeadingListStart
@@ -430,10 +447,17 @@ ${data.projects
 
 \\resumeSubHeadingListEnd
 \\vspace{-8mm}
+`
+    : ''
+}
+
 
 %----------SKILLS-----------------
 
 
+${
+  Object.keys(data.skills).length > 0
+    ? `
 \\section{\\textbf{Skills}}
 \\vspace{-0.4mm}
 \\resumeHeadingSkillStart
@@ -444,13 +468,18 @@ ${Object.entries(data.skills)
   .join('\n')}
 \\resumeHeadingSkillEnd
 \\vspace{-2mm}
-
+`
+    : ''
+}
 
 
 
 
 %----------CERTIFICATIONS-----------------
 
+${
+  data.certifications.length > 0
+    ? `
 \\section{\\textbf{Certifications}}
 \\vspace{-0.4mm}
 \\resumeSubHeadingListStart
@@ -468,8 +497,15 @@ ${data.certifications
 \\resumeSubHeadingListEnd
 
 \\vspace{-6mm}
+`
+    : ''
+}
+
 
 %-----------ACHIEVEMENTS-----------------
+${
+  data.achievements.length > 0
+    ? `
 \\section{\\textbf{Achievements}}
 \\vspace{-0.2mm}
 \\resumeSubHeadingListStart
@@ -480,9 +516,15 @@ ${data.achievements
   .join('\n')}
 \\resumeSubHeadingListEnd
 \\vspace{-6mm}
+`
+    : ''
+}
 
 %-----------POR-----------------
 
+${
+  data.positionsOfResponsibility.length > 0
+    ? `
 \\section{\\textbf{Positions of Responsibility}}
 \\vspace{-0.4mm}
 \\resumeSubHeadingListStart
@@ -493,9 +535,12 @@ ${data.achievements
       })
       .join('\n')}
 
-
 \\resumeSubHeadingListEnd
 \\vspace{-5mm}
+`
+    : ''
+}
+
 
 
 \\end{document}`;
