@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     'job application',
     'shubhamku044',
     'prybruhta',
+    'la-resume',
+    'la-resume.tech',
+    'laresume',
+    'la resume',
+    'la resume tech',
   ],
   openGraph: {
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
