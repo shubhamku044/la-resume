@@ -97,6 +97,26 @@ export default function AppSidebar() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
+              <SidebarGroup className="">
+                <SidebarGroupContent className="ml-2 mt-1 border-l-2 border-muted pl-2">
+                  <SidebarMenu>
+                    {templateItems.map((item) => (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton
+                          asChild
+                          data-active={pathname === item.url}
+                          className="hover:bg-accent/50"
+                        >
+                          <Link href={item.url}>
+                            <item.icon className="size-4" />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
 
               <SidebarMenuItem>
                 <SidebarMenuButton
@@ -111,61 +131,43 @@ export default function AppSidebar() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
+              <SidebarGroup>
+                <SidebarGroupContent className="ml-2 mt-1 border-l-2 border-muted pl-2">
+                  <SidebarMenu>
+                    {userDetailItems.map((item) => (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton
+                          asChild
+                          data-active={pathname === item.url}
+                          className="hover:bg-accent/50"
+                        >
+                          <Link href={item.url}>
+                            <item.icon className="size-4" />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  data-active={pathname.startsWith('/feedback')}
+                  className="group hover:bg-accent/50"
+                >
+                  <Link href="/feedback">
+                    <User className="size-4 text-primary" />
+                    <span>Feedback</span>
+                    <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
-        {pathname.startsWith('/templates') && (
-          <SidebarGroup className="mt-4">
-            <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Categories
-            </SidebarGroupLabel>
-            <SidebarGroupContent className="ml-2 mt-1 border-l-2 border-muted pl-2">
-              <SidebarMenu>
-                {templateItems.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      data-active={pathname === item.url}
-                      className="hover:bg-accent/50"
-                    >
-                      <Link href={item.url}>
-                        <item.icon className="size-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
-
-        {pathname.startsWith('/user-details') && (
-          <SidebarGroup className="mt-4">
-            <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Sections
-            </SidebarGroupLabel>
-            <SidebarGroupContent className="ml-2 mt-1 border-l-2 border-muted pl-2">
-              <SidebarMenu>
-                {userDetailItems.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      data-active={pathname === item.url}
-                      className="hover:bg-accent/50"
-                    >
-                      <Link href={item.url}>
-                        <item.icon className="size-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
 
         <SidebarGroup className="mt-auto">
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">

@@ -7,3 +7,5 @@ export type {
   Certification,
 } from './userDetails';
 export { SelectedSection } from './userDetails';
+
+export * from './feedback';
