@@ -4,6 +4,9 @@ import type { Sb2novResumeData } from './sb2nov';
 import { deedy } from './deedy';
 import { deedySampleResumeData } from './deedy';
 import type { deedyResumeData } from './deedy';
+import { mteck } from './mteck';
+import { mteckResumeSampleData } from './mteck';
+import type { MTeckResumeData } from './mteck';
 
 export { sb2nov };
 export { sb2novResumeSampleData };
@@ -11,6 +14,9 @@ export type { Sb2novResumeData };
 export { deedy };
 export { deedySampleResumeData };
 export type { deedyResumeData };
+export { mteck };
+export { mteckResumeSampleData };
+export type { MTeckResumeData };
 
 export const resumesMap = {
   sb2nov: {
@@ -22,6 +28,11 @@ export const resumesMap = {
     templateType: {} as deedyResumeData,
     templateSampleData: deedySampleResumeData,
     templateFunction: deedy,
+  },
+  mteck: {
+    templateType: {} as MTeckResumeData,
+    templateSampleData: mteckResumeSampleData,
+    templateFunction: mteck,
   },
 };
 

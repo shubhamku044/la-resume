@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { deedyResumeData, Sb2novResumeData } from '@/lib/templates/index';
+import { deedyResumeData, MTeckResumeData, Sb2novResumeData } from '@/lib/templates/index';
 
 // Define the actual Resume type from the database
 interface Resume {
   id: string;
   title: string;
   slug: string;
-  data: object | deedyResumeData | Sb2novResumeData; // ✅ Now supports any JSON object
+  data: object | deedyResumeData | Sb2novResumeData | MTeckResumeData; // ✅ Now supports any JSON object
   type: string;
   createdAt: Date;
   updatedAt: Date;

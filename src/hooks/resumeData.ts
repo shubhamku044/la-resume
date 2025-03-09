@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { useParams } from 'next/navigation';
 import { useGetResumeBySlugQuery } from '@/store/services/templateApi';
-import { deedyResumeData, resumesMap, Sb2novResumeData } from '@/lib/templates/index';
+import {
+  deedyResumeData,
+  resumesMap,
+  Sb2novResumeData,
+  MTeckResumeData,
+} from '@/lib/templates/index';
 
 export function useResumeData(templateKey: keyof typeof resumesMap) {
   const templatePackage = resumesMap[templateKey];
@@ -29,7 +34,7 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
 
   // Use existing resume data if available, otherwise use sample data
   const initialData = existingResume?.data
-    ? (existingResume.data as deedyResumeData | Sb2novResumeData)
+    ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
     : resumeSampleData;
 
   return {
