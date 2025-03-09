@@ -78,7 +78,7 @@ const ResumeForm = ({
         onUpdate(base64); // Update the preview
       };
       const imageUrl = URL.createObjectURL(blob);
-      console.log('🖼️ Generated Resume Preview:', imageUrl);
+      // console.log('🖼️ Generated Resume Preview:', imageUrl);
       onUpdate(imageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
@@ -135,7 +135,7 @@ const ResumeForm = ({
         toast.error('Error uploading image');
         return;
       }
-      const response = await saveResume({
+      await saveResume({
         clerk_id: clerkId,
         title: filename,
         type: 'sb2nov',
@@ -145,7 +145,7 @@ const ResumeForm = ({
       }).unwrap();
 
       toast.success('Resume saved successfully!');
-      console.log('✅ Saved Resume:', response);
+      // console.log('✅ Saved Resume:', response);
       setIsSaving(false);
     } catch (error) {
       console.error('❌ Save Resume Error:', error);
