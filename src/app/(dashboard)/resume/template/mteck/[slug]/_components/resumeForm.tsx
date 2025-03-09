@@ -61,7 +61,7 @@ const ResumeForm = ({
         body: formDataUpload,
       });
 
-      if (!response.ok) throw new Error('Failed to generate resume preview');
+      if (!response.ok) toast.error('Error generating resume preview');
 
       const blob = await response.blob();
       const reader = new FileReader();
