@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { auth } from '@clerk/nextjs/server';
 
 export async function POST(req: NextRequest) {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const formData = await req.formData();
 
     if (!formData.has('latex')) {
@@ -13,9 +20,15 @@ export async function POST(req: NextRequest) {
     const backendFormData = new FormData();
     backendFormData.append('latex', latexFile, 'resume.tex');
 
+    const clerkAuth = await auth();
+    const accessToken = await clerkAuth.getToken();
+
     const response = await fetch('http://3.107.202.62:8080/compile', {
       method: 'POST',
       body: backendFormData,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
 
     if (!response.ok) {
