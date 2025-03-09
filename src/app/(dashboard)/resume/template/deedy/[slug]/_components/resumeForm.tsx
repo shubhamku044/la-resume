@@ -18,6 +18,7 @@ import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/
 import { PencilIcon, CheckIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { CircularProgress } from '@heroui/progress';
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
   setLoading: (loading: boolean) => void;
@@ -46,6 +47,7 @@ const ResumeForm = ({
   const [saveResume] = useSaveResumeMutation();
   const [uploadImage] = useUploadImageMutation();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
@@ -74,7 +76,7 @@ const ResumeForm = ({
         onUpdate(base64); // Update the preview
       };
       const imageUrl = URL.createObjectURL(blob);
-      console.log('🖼️ Generated Resume Preview:', imageUrl);
+      // console.log('🖼️ Generated Resume Preview:', imageUrl);
       onUpdate(imageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
@@ -95,21 +97,25 @@ const ResumeForm = ({
   const sections = Object.keys(formData) as Array<keyof deedyResumeData>;
 
   const handleSave = async () => {
+    setIsSaving(true);
     if (!filename.trim()) {
       toast.error('Please enter a filename');
+      setIsSaving(false);
       return;
     }
 
     if (!clerkId) {
       toast.error('User ID is missing. Please try again.');
+      setIsSaving(false);
       return;
     }
 
     if (!formData || typeof formData !== 'object') {
       toast.error('Resume data is invalid.');
+      setIsSaving(false);
       return;
     }
-    console.log('📄 Saving Resume:', filename, formData);
+    // console.log('📄 Saving Resume:', filename, formData);
 
     try {
       let imageUrl = null;
@@ -121,13 +127,13 @@ const ResumeForm = ({
           fileName: slug, // Use the slug as the unique file name
         }).unwrap();
         imageUrl = url;
-        console.log('🖼️ Uploaded Image URL:', imageUrl);
       }
       if (!imageUrl) {
         toast.error('Error uploading image');
+        setIsSaving(false);
         return;
       }
-      const response = await saveResume({
+      await saveResume({
         clerk_id: clerkId,
         title: filename,
         type: 'deedy',
@@ -137,10 +143,12 @@ const ResumeForm = ({
       }).unwrap();
 
       toast.success('Resume saved successfully!');
-      console.log('✅ Saved Resume:', response);
+
+      setIsSaving(false);
     } catch (error) {
       console.error('❌ Save Resume Error:', error);
       toast.error('Error saving resume');
+      setIsSaving(false);
     }
   };
 
@@ -167,13 +175,14 @@ const ResumeForm = ({
             {editingFilename ? <CheckIcon /> : <PencilIcon />}
           </Button>
         </div>
-
-        <Button
-          onClick={handleSave}
-          className="rounded-md bg-blue-500 px-4 py-2 text-white transition-colors"
-        >
-          Save
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="h-10">
+            {isSaving && (
+              <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+            )}
+          </div>
+          <Button onClick={handleSave}>Save</Button>
+        </div>
       </div>
 
       <Tabs defaultValue={String(sections[0])} className="w-full">
