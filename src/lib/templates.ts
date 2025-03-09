@@ -1,5 +1,6 @@
 import { sb2novResumeSampleData } from './templates/sb2nov';
 import { deedySampleResumeData } from './templates/deedy';
+import { mteckResumeSampleData } from './templates/mteck';
 export const templates = [
   {
     id: 'sb2nov',
@@ -16,5 +17,13 @@ export const templates = [
     image: '/templates/deedy.webp',
     sampleData: deedySampleResumeData,
     imageUrl: 'https://ik.imagekit.io/laresume/templates/deedy.webp?updatedAt=1741152479844',
+  },
+  {
+    id: 'mteck',
+    name: 'MTeck Resume',
+    description: 'A LaTeX resume template for software engineers.',
+    image: '/templates/mteck.webp',
+    sampleData: mteckResumeSampleData,
+    imageUrl: 'https://ik.imagekit.io/laresume/templates/mteck.webp?updatedAt=1741502621839',
   },
 ];

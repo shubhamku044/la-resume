@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/alert-dialog';
 import { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetResumesQuery, useDeleteResumeMutation } from '@/store/services/templateApi';
 import { Button } from '@/components/ui/button';
@@ -31,7 +30,6 @@ interface Resume {
 export default function MadeByYouPage() {
   const { isLoaded, user } = useUser();
   const clerkId = user?.id;
-  const router = useRouter();
 
   const [selectedResume, setSelectedResume] = useState<Resume | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -71,7 +69,6 @@ export default function MadeByYouPage() {
   };
 
   if (!clerkId) {
-    router.push('/');
     return null;
   }
 
