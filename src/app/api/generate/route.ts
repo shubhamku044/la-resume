@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
+import config from '@/utils/config';
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,7 +23,7 @@ export async function POST(req: NextRequest) {
     const clerkAuth = await auth();
     const accessToken = await clerkAuth.getToken();
 
-    const response = await fetch('http://3.107.202.62:8080/generate-pdf', {
+    const response = await fetch(`${config.API_URL}/generate-pdf`, {
       method: 'POST',
       body: backendFormData,
       headers: {
