@@ -4,7 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { deedyResumeData, resumesMap, Sb2novResumeData } from '@/lib/templates/index';
+import {
+  deedyResumeData,
+  resumesMap,
+  Sb2novResumeData,
+  MTeckResumeData,
+} from '@/lib/templates/index';
 
 interface ResumeCardProps {
   id: string;
@@ -14,7 +19,7 @@ interface ResumeCardProps {
   onDelete: () => void;
   isDeleting: boolean;
   lastUpdated: Date;
-  data: Sb2novResumeData | deedyResumeData;
+  data: Sb2novResumeData | deedyResumeData | MTeckResumeData;
   imageUrl: string;
 }
 
