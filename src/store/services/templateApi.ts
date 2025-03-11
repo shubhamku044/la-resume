@@ -6,7 +6,7 @@ interface Resume {
   id: string;
   title: string;
   slug: string;
-  data: object | deedyResumeData | Sb2novResumeData | MTeckResumeData; // ✅ Now supports any JSON object
+  data: object | deedyResumeData | Sb2novResumeData | MTeckResumeData;
   type: string;
   createdAt: Date;
   updatedAt: Date;
@@ -69,15 +69,20 @@ export const templateApi = createApi({
       }),
       invalidatesTags: (result, error, { clerk_id }) => [{ type: 'Resume', id: clerk_id }],
     }),
-    uploadImage: builder.mutation<
-      { url: string }, // Response type (ImageKit URL)
-      { file: string; fileName: string } // Request payload (Base64 file and fileName)
-    >({
+    uploadImage: builder.mutation<{ url: string }, { file: string; fileName: string }>({
       query: ({ file, fileName }) => ({
-        url: '', // API route for uploading images
+        url: '',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: { file, fileName },
+      }),
+    }),
+    deleteImageKitFile: builder.mutation<{ message: string; url: string }, { slug: string }>({
+      query: ({ slug }) => ({
+        url: `/`,
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: { slug },
       }),
     }),
   }),
@@ -89,4 +94,5 @@ export const {
   useSaveResumeMutation,
   useDeleteResumeMutation,
   useUploadImageMutation,
+  useDeleteImageKitFileMutation,
 } = templateApi;
