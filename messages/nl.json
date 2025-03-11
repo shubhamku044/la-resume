@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Geliefd bij <stars></stars> ontwikkelaars",
+      "starButton": "Ster op GitHub"
+    },
+    "hero": {
+      "title": "Maak perfecte <highlight>ATS-vriendelijke</highlight> cv's",
+      "description": "Professionele CV-bouwer met LaTeX. Gratis. Geen registratie nodig. Exporteer binnen seconden naar PDF of LaTeX.",
+      "startBuilding": "Start nu",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen",
+    "signUp": "Registreren",
+    "templates": "Sjablonen",
+    "userProfile": "Gebruikersprofiel"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

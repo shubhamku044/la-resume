@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Adoré par <stars></stars> développeurs",
+      "starButton": "Étoile sur GitHub"
+    },
+    "hero": {
+      "title": "Créez des CV parfaits <highlight>compatibles ATS</highlight>",
+      "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Aucune inscription requise. Exportez en PDF ou LaTeX en quelques secondes.",
+      "startBuilding": "Commencer",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Connexion",
+    "signOut": "Déconnexion",
+    "signUp": "Inscription",
+    "templates": "Modèles",
+    "userProfile": "Profil utilisateur"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

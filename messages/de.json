@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Von <stars></stars> Entwicklern geschätzt",
+      "starButton": "Auf GitHub sternen"
+    },
+    "hero": {
+      "title": "Erstellen Sie perfekte, <highlight>ATS-optimierte</highlight> Lebensläufe",
+      "description": "Professioneller Lebenslauf-Builder mit LaTeX. Kostenlos. Keine Anmeldung erforderlich. Exportieren Sie in Sekunden als PDF oder LaTeX.",
+      "startBuilding": "Jetzt starten",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "signUp": "Registrieren",
+    "templates": "Vorlagen",
+    "userProfile": "Benutzerprofil"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Loved by <stars></stars> developers",
+      "starButton": "Star on GitHub"
+    },
+    "hero": {
+      "title": "Craft Perfect, <highlight>ATS-Friendly</highlight> Resumes",
+      "description": "Professional resume builder powered by LaTeX. Free. No signups required. Export to PDF or LaTeX in seconds.",
+      "startBuilding": "Start Building",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "templates": "Templates",
+    "userProfile": "User Profile"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

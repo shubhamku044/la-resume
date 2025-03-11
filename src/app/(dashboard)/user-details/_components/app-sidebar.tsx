@@ -29,6 +29,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGitHubStars } from '@/hooks';
+import { LanguageSelectorDropdown } from '@/components';
 
 const userDetailItems = [
   {
@@ -169,6 +170,20 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
+        <SidebarGroup className="mt-4">
+          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Language
+          </SidebarGroupLabel>
+          <SidebarGroupContent className="mt-1">
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton className="hover:bg-accent/50">
+                  <LanguageSelectorDropdown showLabel />
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         <SidebarGroup className="mt-auto">
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Support Us

@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Amado por <stars></stars> desarrolladores",
+      "starButton": "Dar estrella en GitHub"
+    },
+    "hero": {
+      "title": "Crea currículos perfectos y <highlight>compatibles con ATS</highlight>",
+      "description": "Generador de currículos profesional con LaTeX. Gratuito. Sin registro requerido. Exporta a PDF o LaTeX en segundos.",
+      "startBuilding": "Comenzar ahora",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "signUp": "Registrarse",
+    "templates": "Plantillas",
+    "userProfile": "Perfil de usuario"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}
