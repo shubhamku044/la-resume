@@ -23,6 +23,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useTranslations } from 'next-intl';
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is required').max(50),
@@ -36,6 +37,7 @@ type ContactSchemaType = z.infer<typeof ContactSchema>;
 export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
+  const t = useTranslations('HomePage');
 
   const {
     register,
@@ -79,7 +81,9 @@ export default function LaResumeLanding() {
           <div className="flex items-center gap-2">
             <LuGithub className="size-4" />
             <span>
-              Loved by <CountUp delay={1} start={0} end={stars} /> developers
+              {t.rich('github.lovedBy', {
+                stars: () => <CountUp delay={1} start={0} end={stars} />,
+              })}
             </span>
           </div>
           <Link
@@ -88,7 +92,7 @@ export default function LaResumeLanding() {
             rel="noopener noreferrer"
             className="flex items-center gap-1 rounded-full bg-white px-3 py-1 text-black hover:bg-gray-100"
           >
-            <span>Star on GitHub</span>
+            <span>{t('github.starButton')}</span>
             <Star className="size-4 animate-star-pulse fill-yellow-500 text-yellow-600" />
           </Link>
         </div>
@@ -101,15 +105,16 @@ export default function LaResumeLanding() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="mb-4 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl">
-            Craft Perfect,{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              ATS-Friendly
-            </span>{' '}
-            Resumes
+            {t.rich('hero.title', {
+              highlight: (chunks) => (
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  {chunks}
+                </span>
+              ),
+            })}
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 sm:text-xl">
-            Professional resume builder powered by LaTeX. Free. No signups required. Export to PDF
-            or LaTeX in seconds.
+            {t('hero.description')}
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <SignedIn>
@@ -121,7 +126,8 @@ export default function LaResumeLanding() {
                 }}
                 variant="default"
               >
-                Start Building <ChevronRight />
+                {t('hero.startBuilding')}
+                <ChevronRight />
               </Button>
             </SignedIn>
             <SignedOut>
@@ -131,7 +137,8 @@ export default function LaResumeLanding() {
                 mode="modal"
               >
                 <Button size="lg" className="w-full shadow-lg sm:w-auto" variant="default">
-                  Start Building <ChevronRight />
+                  {t('hero.startBuilding')}
+                  <ChevronRight />
                 </Button>
               </SignInButton>
             </SignedOut>
@@ -142,7 +149,7 @@ export default function LaResumeLanding() {
               onClick={() => window.open('https://github.com/shubhamku044/la-resume', '_blank')}
             >
               <LuGithub className="mr-2 size-5" />
-              GitHub
+              {t('hero.githubButton')}
             </Button>
           </div>
         </motion.div>
@@ -225,7 +232,7 @@ export default function LaResumeLanding() {
                   <h3 className="mb-3 text-lg font-semibold sm:text-xl">
                     {
                       ['Input Your Information', 'Customize Templates', 'Download & Apply'][
-                      step - 1
+                        step - 1
                       ]
                     }
                   </h3>

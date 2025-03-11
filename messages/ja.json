@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "開発者<stars></stars>人に愛されています",
+      "starButton": "GitHubでスターを付ける"
+    },
+    "hero": {
+      "title": "完璧な<highlight>ATS対応</highlight>レジュメを作成",
+      "description": "LaTeXを利用したプロフェッショナルなレジュメビルダー。完全無料・登録不要。PDF/LaTeX形式で即時エクスポート",
+      "startBuilding": "作成を開始",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "ログイン",
+    "signOut": "ログアウト",
+    "signUp": "会員登録",
+    "templates": "テンプレート",
+    "userProfile": "ユーザープロフィール"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

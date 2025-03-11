@@ -7,11 +7,14 @@ import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 import { Button } from './button';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import LanguageSelectorDropdown from '../language-selector-dropdown';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const hideHeader = pathname !== '/';
+  const t = useTranslations();
 
   if (hideHeader) return null;
 
@@ -25,10 +28,10 @@ const Header = () => {
         <nav className="hidden items-center gap-6 text-sm md:flex">
           <SignedIn>
             <Link href="/templates" className="text-gray-700 hover:text-black">
-              Templates
+              {t('header.templates')}
             </Link>
             <Link href="/user-details" className="text-gray-700 hover:text-black">
-              User Details
+              {t('header.userProfile')}
             </Link>
             <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
           </SignedIn>
@@ -53,6 +56,7 @@ const Header = () => {
           >
             <LuGithub className="size-4" />
           </Link>
+          <LanguageSelectorDropdown showLabel={false} />
         </nav>
 
         <button
@@ -73,14 +77,14 @@ const Header = () => {
                 className="text-gray-700 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Templates
+                {t('header.templates')}
               </Link>
               <Link
                 href="/user-details"
                 className="text-gray-700 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >
-                User Details
+                {t('header.userProfile')}
               </Link>
               <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
             </SignedIn>

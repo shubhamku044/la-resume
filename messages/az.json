@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "<stars></stars> developer tərəfindən sevilir",
+      "starButton": "GitHub-da Ulduz"
+    },
+    "hero": {
+      "title": "Mükəmməl, <highlight>ATS-ə Uyğun</highlight> Rezyumələr Yaradın",
+      "description": "LaTeX ilə işləyən professional rezyume konstruktoru. Pulsuz. Qeydiyyat tələb olunmur. PDF və ya LaTeX formatında ixrac",
+      "startBuilding": "Yaratmağa Başla",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Daxil ol",
+    "signOut": "Çıxış",
+    "signUp": "Qeydiyyat",
+    "templates": "Şablonlar",
+    "userProfile": "İstifadəçi Profili"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "深受<stars></stars>位开发者喜爱",
+      "starButton": "在GitHub上标星"
+    },
+    "hero": {
+      "title": "打造完美<highlight>ATS优化</highlight>简历",
+      "description": "基于LaTeX的专业简历生成器。完全免费，无需注册。秒级导出PDF或LaTeX文件。",
+      "startBuilding": "立即创建",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "signUp": "注册",
+    "templates": "模板",
+    "userProfile": "用户资料"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}

@@ -7,6 +7,8 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import type { Viewport } from 'next';
 import Header from '@/components/ui/Header';
 import Favicon from '@/components/favicon';
@@ -85,24 +87,29 @@ export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <ClerkProvider
       afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
       afterMultiSessionSingleSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
-      <html lang="en">
+      <html lang={locale}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Favicon />
           <Provider>
-            <Header />
-            <main>{children}</main>
-            <Toaster />
+            <NextIntlClientProvider messages={messages}>
+              <Header />
+              <main>{children}</main>
+              <Toaster />
+            </NextIntlClientProvider>
           </Provider>
           <Analytics />
           <SpeedInsights />

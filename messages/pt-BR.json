@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "github": {
+      "lovedBy": "Amado por <stars></stars> desenvolvedores",
+      "starButton": "Dar Estrela no GitHub"
+    },
+    "hero": {
+      "title": "Crie Currículos <highlight>Otimizados para ATS</highlight> Perfeitos",
+      "description": "Construtor de currículos profissional com LaTeX. Grátis. Sem cadastro necessário. Exporte para PDF ou LaTeX em segundos",
+      "startBuilding": "Começar Agora",
+      "githubButton": "GitHub"
+    }
+  },
+  "header": {
+    "signIn": "Entrar",
+    "signOut": "Sair",
+    "signUp": "Cadastrar",
+    "templates": "Modelos",
+    "userProfile": "Perfil do Usuário"
+  },
+  "common": {},
+  "language": {
+    "en": "🇬🇧 English",
+    "ja": "🇯🇵 日本語",
+    "az": "🇦🇿 Azərbaycan",
+    "pt-PT": "🇵🇹 Português (PT)",
+    "pt-BR": "🇧🇷 Português (BR)",
+    "zh": "🇨🇳 中文",
+    "de": "🇩🇪 Deutsch",
+    "fr": "🇫🇷 Français",
+    "it": "🇮🇹 Italiano",
+    "ru": "🇷🇺 Русский",
+    "es": "🇪🇸 Español",
+    "nl": "🇳🇱 Nederlands"
+  }
+}
