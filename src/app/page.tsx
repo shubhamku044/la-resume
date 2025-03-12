@@ -287,7 +287,11 @@ export default function LaResumeLanding() {
               <CardContent className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div>
-                    <Input placeholder="Your Name" {...register('name')} className="w-full" />
+                    <Input
+                      placeholder={t('feedback.card.name')}
+                      {...register('name')}
+                      className="w-full"
+                    />
                     {errors.name && (
                       <p className="mt-1 text-left text-sm text-red-500">{errors.name.message}</p>
                     )}
@@ -295,7 +299,7 @@ export default function LaResumeLanding() {
 
                   <div>
                     <Input
-                      placeholder="Your Email"
+                      placeholder={t('feedback.card.email')}
                       type="email"
                       {...register('email')}
                       className="w-full"
@@ -307,7 +311,7 @@ export default function LaResumeLanding() {
 
                   <div>
                     <Textarea
-                      placeholder="Your Message (min. 100 characters)"
+                      placeholder={t('feedback.card.message')}
                       {...register('message')}
                       className="min-h-[120px] w-full bg-transparent"
                     />
@@ -325,7 +329,9 @@ export default function LaResumeLanding() {
                     className="w-full bg-black text-white hover:bg-gray-800"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting
+                      ? t('feedback.card.buttonsending')
+                      : t('feedback.card.buttonsend')}
                   </Button>
                 </form>
               </CardContent>

@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Entre em Contacto"
+      "title": "Entre em contacto",
+      "card": {
+        "name": "O seu nome",
+        "email": "O seu e-mail",
+        "message": "A sua mensagem (mín. 100 caracteres)",
+        "buttonsending": "A enviar...",
+        "buttonsend": "Enviar mensagem"
+      }
     },
     "pricing": {
       "title": "Preços Transparentes",

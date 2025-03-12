@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Neem Contact Op"
+      "title": "Neem contact op",
+      "card": {
+        "name": "Jouw naam",
+        "email": "Jouw e-mail",
+        "message": "Jouw bericht (min. 100 tekens)",
+        "buttonsending": "Bezig met verzenden...",
+        "buttonsend": "Stuur bericht"
+      }
     },
     "pricing": {
       "title": "Transparante Prijzen",

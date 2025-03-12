@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Mettiti in Contatto"
+      "title": "Mettiti in contatto",
+      "card": {
+        "name": "Il tuo nome",
+        "email": "La tua email",
+        "message": "Il tuo messaggio (min. 100 caratteri)",
+        "buttonsending": "Invio in corso...",
+        "buttonsend": "Invia messaggio"
+      }
     },
     "pricing": {
       "title": "Prezzi Trasparenti",
