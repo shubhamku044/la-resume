@@ -9,6 +9,110 @@
       "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Aucune inscription requise. Exportez en PDF ou LaTeX en quelques secondes.",
       "startBuilding": "Commencer",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Pourquoi les professionnels choisissent La-Resume",
+      "feature1": {
+        "title": "Optimisé pour ATS",
+        "description": "Modèles de CV conçus pour passer à travers les systèmes de suivi des candidatures (ATS)"
+      },
+      "feature2": {
+        "title": "Précision LaTeX",
+        "description": "Typographie et mise en page professionnelles alimentées par le moteur LaTeX"
+      },
+      "feature3": {
+        "title": "Exportation Instantanée",
+        "description": "Téléchargement PDF en un clic ou exportation du code LaTeX brut"
+      }
+    },
+    "use": {
+      "title": "Processus Simple en 3 Étapes",
+      "step1": {
+        "title": "Entrez Vos Informations",
+        "description": "Remplissez vos informations en utilisant notre formulaire intuitif"
+      },
+      "step2": {
+        "title": "Personnalisez les Modèles",
+        "description": "Sélectionnez parmi des modèles professionnels optimisés pour ATS"
+      },
+      "step3": {
+        "title": "Téléchargez et Postulez",
+        "description": "Exportez en PDF ou LaTeX et commencez à postuler"
+      }
+    },
+    "testimonial": {
+      "title": "Ce que disent les gens",
+      "quote1": {
+        "text": "J'ai pu créer un CV professionnel en quelques minutes. La fonctionnalité d'exportation LaTeX est une véritable révolution.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume est le meilleur créateur de CV que j'ai jamais utilisé. Les modèles sont de première qualité.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Contactez-nous"
+    },
+    "pricing": {
+      "title": "Tarification Transparente",
+      "description": "Tout ce dont vous avez besoin pour créer des CV professionnels - entièrement gratuit",
+      "card": {
+        "title": "Gratuit",
+        "description": "Aucune carte de crédit requise",
+        "points": {
+          "point1": "CV illimités",
+          "point2": "Modèles optimisés pour ATS",
+          "point3": "Exportation PDF",
+          "point4": "Téléchargement du code source LaTeX",
+          "point5": "Pas de publicités",
+          "point6": "Open Source",
+          "point7": "Stockage en Cloud",
+          "point8": "Support 24/7"
+        },
+        "button": "Commencer à construire gratuitement",
+        "sentence": "Comparez avec d'autres créateurs de CV : ❌ 15 $/mois • ❌ Publicités • ❌ Modèles limités"
+      }
+    },
+    "random": {
+      "title": "Fièrement open source",
+      "button": "Voir le code source sur GitHub",
+      "heading": "Prêt à faire avancer votre carrière ?",
+      "description": "Rejoignez des milliers de professionnels qui ont transformé leur recherche d'emploi",
+      "button2": "Créez votre CV maintenant"
+    },
+    "developers": {
+      "title": "Construit avec ❤️ par",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Développeur Full Stack"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Développeur Full Stack"
+        }
+      },
+      "button": "Embauchez-moi"
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "question1": {
+        "question": "La-Resume est-il vraiment complètement gratuit ?",
+        "answer": "Oui ! La-Resume est 100 % gratuit et open source. Nous croyons que la création de CV professionnels devrait être accessible à tous."
+      },
+      "question2": {
+        "question": "Comment fonctionne l'optimisation ATS ?",
+        "answer": "Nos modèles suivent les meilleures pratiques de l'industrie pour la compatibilité ATS, y compris un placement approprié des mots-clés, une mise en forme soignée et une structure sémantique."
+      },
+      "question3": {
+        "question": "Puis-je utiliser mes propres modèles LaTeX ?",
+        "answer": "Actuellement, nous ne supportons que nos modèles sélectionnés, mais nous prévoyons d'ajouter la prise en charge des modèles personnalisés dans les futures mises à jour."
+      }
+    },
+    "footer": {
+      "detail": "Créateur de CV open source",
+      "privacyPolicy": "La-Resume. Licence MIT. Contributions bienvenues!"
     }
   },
   "header": {

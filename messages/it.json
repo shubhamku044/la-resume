@@ -9,6 +9,110 @@
       "description": "Generatore di curriculum professionale basato su LaTeX. Gratuito. Nessuna registrazione richiesta. Esporta in PDF o LaTeX in pochi secondi.",
       "startBuilding": "Inizia ora",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Perché i professionisti scelgono La-Resume",
+      "feature1": {
+        "title": "Ottimizzato per ATS",
+        "description": "Modelli di curriculum progettati per passare attraverso i sistemi di tracciamento delle candidature (ATS)"
+      },
+      "feature2": {
+        "title": "Precisione LaTeX",
+        "description": "Tipografia e layout professionale alimentato dal motore LaTeX"
+      },
+      "feature3": {
+        "title": "Esportazione Istantanea",
+        "description": "Download PDF con un clic o esportazione del codice LaTeX grezzo"
+      }
+    },
+    "use": {
+      "title": "Processo Semplice in 3 Passaggi",
+      "step1": {
+        "title": "Inserisci le Tue Informazioni",
+        "description": "Compila i tuoi dettagli utilizzando il nostro modulo intuitivo"
+      },
+      "step2": {
+        "title": "Personalizza i Modelli",
+        "description": "Scegli tra modelli professionali ottimizzati per ATS"
+      },
+      "step3": {
+        "title": "Scarica e Candidati",
+        "description": "Esporta in PDF o LaTeX e inizia a candidarti"
+      }
+    },
+    "testimonial": {
+      "title": "Cosa Dicono le Persone",
+      "quote1": {
+        "text": "Sono riuscito a creare un curriculum professionale in pochi minuti. La funzionalità di esportazione LaTeX è un cambiamento radicale.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume è il miglior creatore di curriculum che abbia mai usato. I modelli sono eccezionali.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Mettiti in Contatto"
+    },
+    "pricing": {
+      "title": "Prezzi Trasparenti",
+      "description": "Tutto ciò di cui hai bisogno per creare curriculum professionali - completamente gratuito",
+      "card": {
+        "title": "Gratuito",
+        "description": "Nessuna carta di credito richiesta",
+        "points": {
+          "point1": "Curriculum illimitati",
+          "point2": "Modelli ottimizzati per ATS",
+          "point3": "Esportazione PDF",
+          "point4": "Download del codice sorgente LaTeX",
+          "point5": "Senza pubblicità",
+          "point6": "Open Source",
+          "point7": "Archiviazione Cloud",
+          "point8": "Supporto 24/7"
+        },
+        "button": "Inizia a creare gratuitamente",
+        "sentence": "Confronta con altri costruttori di curriculum: ❌ $15/mese • ❌ Pubblicità • ❌ Modelli limitati"
+      }
+    },
+    "random": {
+      "title": "Orgogliosamente open source",
+      "button": "Visualizza il codice su GitHub",
+      "heading": "Pronto a far crescere la tua carriera?",
+      "description": "Unisciti a migliaia di professionisti che hanno trasformato la loro ricerca di lavoro",
+      "button2": "Crea il tuo curriculum ora"
+    },
+    "developers": {
+      "title": "Creato con ❤️ da",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Sviluppatore Full Stack"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Sviluppatore Full Stack"
+        }
+      },
+      "button": "Assumi me"
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "question1": {
+        "question": "La-Resume è davvero completamente gratuito?",
+        "answer": "Sì! La-Resume è 100% gratuito e open source. Crediamo che la creazione di curriculum professionali debba essere accessibile a tutti."
+      },
+      "question2": {
+        "question": "Come funziona l'ottimizzazione per ATS?",
+        "answer": "I nostri modelli seguono le migliori pratiche del settore per la compatibilità con ATS, inclusa una corretta posizione delle parole chiave, un formato pulito e una struttura semantica."
+      },
+      "question3": {
+        "question": "Posso usare i miei modelli LaTeX?",
+        "answer": "Attualmente supportiamo solo i nostri modelli selezionati, ma prevediamo di aggiungere il supporto per modelli personalizzati in futuri aggiornamenti."
+      }
+    },
+    "footer": {
+      "detail": "Creatore di curriculum open source",
+      "privacyPolicy": "La-Resume. Licenza MIT. Contributi benvenuti!"
     }
   },
   "header": {

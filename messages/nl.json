@@ -9,6 +9,110 @@
       "description": "Professionele CV-bouwer met LaTeX. Gratis. Geen registratie nodig. Exporteer binnen seconden naar PDF of LaTeX.",
       "startBuilding": "Start nu",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Waarom professionals kiezen voor La-Resume",
+      "feature1": {
+        "title": "ATS-geoptimaliseerd",
+        "description": "Curriculum vitae sjablonen ontworpen om door Applicant Tracking Systemen (ATS) te komen"
+      },
+      "feature2": {
+        "title": "LaTeX Precisie",
+        "description": "Professionele typografie en lay-out aangedreven door de LaTeX-engine"
+      },
+      "feature3": {
+        "title": "Instant Export",
+        "description": "PDF-download met één klik of export van ruwe LaTeX-code"
+      }
+    },
+    "use": {
+      "title": "Eenvoudig 3-Stappen Proces",
+      "step1": {
+        "title": "Voer je Informatie in",
+        "description": "Vul je gegevens in met ons intuïtieve formulier"
+      },
+      "step2": {
+        "title": "Pas Sjablonen Aan",
+        "description": "Kies uit professionele ATS-geoptimaliseerde sjablonen"
+      },
+      "step3": {
+        "title": "Downloaden & Solliciteren",
+        "description": "Exporteer als PDF of LaTeX en begin met solliciteren"
+      }
+    },
+    "testimonial": {
+      "title": "Wat Mensen Zeggen",
+      "quote1": {
+        "text": "Ik kon in enkele minuten een professioneel cv maken. De LaTeX-exportfunctie is een echte game-changer.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume is de beste cv-bouwer die ik ooit heb gebruikt. De sjablonen zijn van topkwaliteit.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Neem Contact Op"
+    },
+    "pricing": {
+      "title": "Transparante Prijzen",
+      "description": "Alles wat je nodig hebt om professionele cv's te maken - helemaal gratis",
+      "card": {
+        "title": "Gratis",
+        "description": "Geen creditcard vereist",
+        "points": {
+          "point1": "Onbeperkte cv's",
+          "point2": "ATS-geoptimaliseerde sjablonen",
+          "point3": "PDF-export",
+          "point4": "LaTeX broncode downloaden",
+          "point5": "Geen advertenties",
+          "point6": "Open Source",
+          "point7": "Cloudopslag",
+          "point8": "24/7 Ondersteuning"
+        },
+        "button": "Gratis beginnen",
+        "sentence": "Vergelijk met andere cv-bouwers: ❌ $15/maand • ❌ Advertenties • ❌ Beperkte sjablonen"
+      }
+    },
+    "random": {
+      "title": "Trots open source",
+      "button": "Bekijk de bron op GitHub",
+      "heading": "Klaar om je carrière te verbeteren?",
+      "description": "Sluit je aan bij duizenden professionals die hun zoektocht naar werk hebben getransformeerd",
+      "button2": "Maak nu je cv"
+    },
+    "developers": {
+      "title": "Gebouwd met ❤️ door",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Full Stack Ontwikkelaar"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Full Stack Ontwikkelaar"
+        }
+      },
+      "button": "Huur mij in"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen",
+      "question1": {
+        "question": "Is La-Resume echt helemaal gratis?",
+        "answer": "Ja! La-Resume is 100% gratis en open source. Wij geloven dat het maken van professionele cv's voor iedereen toegankelijk moet zijn."
+      },
+      "question2": {
+        "question": "Hoe werkt de ATS-optimalisatie?",
+        "answer": "Onze sjablonen volgen de beste praktijken in de industrie voor ATS-compatibiliteit, inclusief de juiste plaatsing van zoekwoorden, schone opmaak en semantische structuur."
+      },
+      "question3": {
+        "question": "Kan ik mijn eigen LaTeX-sjablonen gebruiken?",
+        "answer": "Momenteel ondersteunen we alleen onze geselecteerde sjablonen, maar we zijn van plan om in toekomstige updates ondersteuning voor aangepaste sjablonen toe te voegen."
+      }
+    },
+    "footer": {
+      "detail": "Open source cv-bouwer",
+      "privacyPolicy": "La-Resume. MIT-licentie. Bijdragen welkom!"
     }
   },
   "header": {

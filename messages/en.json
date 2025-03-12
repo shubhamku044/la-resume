@@ -9,6 +9,110 @@
       "description": "Professional resume builder powered by LaTeX. Free. No signups required. Export to PDF or LaTeX in seconds.",
       "startBuilding": "Start Building",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Why Professionals Choose La-Resume",
+      "feature1": {
+        "title": "ATS Optimized",
+        "description": "Resume templates designed to pass through Applicant Tracking Systems"
+      },
+      "feature2": {
+        "title": "LaTeX Precision",
+        "description": "Professional typography and layout powered by LaTeX engine"
+      },
+      "feature3": {
+        "title": "Instant Export",
+        "description": "One-click PDF download or raw LaTeX code export"
+      }
+    },
+    "use": {
+      "title": "Simple 3-Step Process",
+      "step1": {
+        "title": "Input Your Information",
+        "description": "Fill in your details using our intuitive form"
+      },
+      "step2": {
+        "title": "Customize Templates",
+        "description": "Select from professional ATS-optimized templates"
+      },
+      "step3": {
+        "title": "Download & Apply",
+        "description": "Export as PDF or LaTeX and start applying"
+      }
+    },
+    "testimonial": {
+      "title": "What People Are Saying",
+      "quote1": {
+        "text": "I was able to create a professional resume in minutes. The LaTeX export feature is a game-changer.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume is the best resume builder I've ever used. The templates are top-notch.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Get in Touch"
+    },
+    "pricing": {
+      "title": "Transparent Pricing",
+      "description": "Everything you need to create professional resumes - completely free",
+      "card": {
+        "title": "Free",
+        "description": "No credit card required",
+        "points": {
+          "point1": "Unlimited Resumes",
+          "point2": "ATS-Optimized Templates",
+          "point3": "PDF Export",
+          "point4": "LaTeX Source Download",
+          "point5": "No Ads",
+          "point6": "Open Source",
+          "point7": "Cloud Storage",
+          "point8": "24/7 Support"
+        },
+        "button": "Start Building Free",
+        "sentence": "Compare with other resume builders: ❌ $15/mo • ❌ Ads • ❌ Limited Templates"
+      }
+    },
+    "random": {
+      "title": "Proudly open source",
+      "button": "View source on GitHub",
+      "heading": "Ready to Elevate Your Career?",
+      "description": "Join thousands of professionals who&apos;ve transformed their job search",
+      "button2": "Create Your Resume Now"
+    },
+    "developers": {
+      "title": "Built with ❤️ by",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Full Stack Developer"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Full Stack Developer"
+        }
+      },
+      "button": "Hire Me"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "question1": {
+        "question": "Is La-Resume really completely free?",
+        "answer": "Yes! La-Resume is 100% free and open source. We believe professional resume building should be accessible to everyone."
+      },
+      "question2": {
+        "question": "How does the ATS optimization work?",
+        "answer": "Our templates follow industry best practices for ATS compatibility, including proper keyword placement, clean formatting, and semantic structure."
+      },
+      "question3": {
+        "question": "Can I use my own LaTeX templates?",
+        "answer": "Currently we support our curated templates, but we plan to add custom template support in future updates."
+      }
+    },
+    "footer": {
+      "detail": "Open source resume builder",
+      "privacyPolicy": "La-Resume. MIT Licensed. Contributions welcome!"
     }
   },
   "header": {

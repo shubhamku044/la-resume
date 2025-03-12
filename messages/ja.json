@@ -9,6 +9,110 @@
       "description": "LaTeXを利用したプロフェッショナルなレジュメビルダー。完全無料・登録不要。PDF/LaTeX形式で即時エクスポート",
       "startBuilding": "作成を開始",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "プロフェッショナルがLa-Resumeを選ぶ理由",
+      "feature1": {
+        "title": "ATS最適化",
+        "description": "応募者追跡システム（ATS）を通過するように設計された履歴書テンプレート"
+      },
+      "feature2": {
+        "title": "LaTeX精度",
+        "description": "LaTeXエンジンによるプロフェッショナルなタイポグラフィとレイアウト"
+      },
+      "feature3": {
+        "title": "即時エクスポート",
+        "description": "ワンクリックでPDFダウンロードまたは生のLaTeXコードエクスポート"
+      }
+    },
+    "use": {
+      "title": "シンプルな3ステッププロセス",
+      "step1": {
+        "title": "情報を入力",
+        "description": "直感的なフォームを使って詳細を入力してください"
+      },
+      "step2": {
+        "title": "テンプレートをカスタマイズ",
+        "description": "ATS最適化されたプロフェッショナルなテンプレートから選択"
+      },
+      "step3": {
+        "title": "ダウンロード & 応募",
+        "description": "PDFまたはLaTeXでエクスポートし、応募を開始"
+      }
+    },
+    "testimonial": {
+      "title": "人々の声",
+      "quote1": {
+        "text": "数分でプロフェッショナルな履歴書を作成できました。LaTeXエクスポート機能は画期的です。",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resumeは私が使った中で最高の履歴書作成ツールです。テンプレートは素晴らしいです。",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "お問い合わせ"
+    },
+    "pricing": {
+      "title": "透明な価格設定",
+      "description": "プロフェッショナルな履歴書を作成するために必要なすべて - 完全に無料",
+      "card": {
+        "title": "無料",
+        "description": "クレジットカードは不要",
+        "points": {
+          "point1": "無制限の履歴書",
+          "point2": "ATS最適化されたテンプレート",
+          "point3": "PDFエクスポート",
+          "point4": "LaTeXソースコードのダウンロード",
+          "point5": "広告なし",
+          "point6": "オープンソース",
+          "point7": "クラウドストレージ",
+          "point8": "24/7サポート"
+        },
+        "button": "無料で作成を開始",
+        "sentence": "他の履歴書作成ツールと比較: ❌ $15/月 • ❌ 広告 • ❌ 制限されたテンプレート"
+      }
+    },
+    "random": {
+      "title": "誇りを持ってオープンソース",
+      "button": "GitHubでソースを見る",
+      "heading": "キャリアを向上させる準備はできていますか？",
+      "description": "就職活動を変革した何千人ものプロフェッショナルに参加しましょう",
+      "button2": "今すぐ履歴書を作成"
+    },
+    "developers": {
+      "title": "❤️ で作成された",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "フルスタック開発者"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "フルスタック開発者"
+        }
+      },
+      "button": "採用する"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "question1": {
+        "question": "La-Resumeは本当に完全に無料ですか？",
+        "answer": "はい！La-Resumeは100％無料でオープンソースです。私たちは、プロフェッショナルな履歴書作成が誰にでもアクセスできるべきだと考えています。"
+      },
+      "question2": {
+        "question": "ATS最適化はどのように機能しますか？",
+        "answer": "私たちのテンプレートは、ATSとの互換性に関する業界のベストプラクティスに従っており、適切なキーワード配置、クリーンなフォーマット、セマンティックな構造を含みます。"
+      },
+      "question3": {
+        "question": "自分のLaTeXテンプレートを使用できますか？",
+        "answer": "現在、私たちは厳選したテンプレートのみをサポートしていますが、将来的なアップデートでカスタムテンプレートのサポートを追加する予定です。"
+      }
+    },
+    "footer": {
+      "detail": "オープンソースの履歴書作成ツール",
+      "privacyPolicy": "La-Resume. MITライセンス。貢献者歓迎！"
     }
   },
   "header": {
