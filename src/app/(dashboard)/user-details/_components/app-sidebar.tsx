@@ -177,7 +177,7 @@ export default function AppSidebar() {
           <SidebarGroupContent className="mt-1">
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton className="hover:bg-accent/50">
+                <SidebarMenuButton asChild className="hover:bg-accent/50">
                   <LanguageSelectorDropdown showLabel />
                 </SidebarMenuButton>
               </SidebarMenuItem>
