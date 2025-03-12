@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "联系我们"
+      "title": "联系我们",
+      "card": {
+        "name": "您的姓名",
+        "email": "您的电子邮件",
+        "message": "您的留言（最少100个字符）",
+        "buttonsending": "发送中...",
+        "buttonsend": "发送消息"
+      }
     },
     "pricing": {
       "title": "透明定价",

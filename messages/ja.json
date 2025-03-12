@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "お問い合わせ"
+      "title": "ご連絡ください",
+      "card": {
+        "name": "あなたの名前",
+        "email": "あなたのメール",
+        "message": "あなたのメッセージ（最低100文字）",
+        "buttonsending": "送信中...",
+        "buttonsend": "メッセージを送信"
+      }
     },
     "pricing": {
       "title": "透明な価格設定",

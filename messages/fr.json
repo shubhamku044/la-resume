@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Contactez-nous"
+      "title": "Contactez-nous",
+      "card": {
+        "name": "Votre nom",
+        "email": "Votre e-mail",
+        "message": "Votre message (min. 100 caractères)",
+        "buttonsending": "Envoi en cours...",
+        "buttonsend": "Envoyer le message"
+      }
     },
     "pricing": {
       "title": "Tarification Transparente",

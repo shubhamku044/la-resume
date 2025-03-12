@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Əlaqə Saxlayın"
+      "title": "Əlaqə saxlayın",
+      "card": {
+        "name": "Adınız",
+        "email": "Elektron poçtunuz",
+        "message": "Mesajınız (minimum 100 simvol)",
+        "buttonsending": "Göndərilir...",
+        "buttonsend": "Mesajı Göndər"
+      }
     },
     "pricing": {
       "title": "Şəffaf Qiymət",

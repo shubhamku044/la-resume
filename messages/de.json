@@ -52,7 +52,14 @@
       }
     },
     "feedback": {
-      "title": "Nehmen Sie Kontakt auf"
+      "title": "Nehmen Sie Kontakt auf",
+      "card": {
+        "name": "Ihr Name",
+        "email": "Ihre E-Mail",
+        "message": "Ihre Nachricht (mindestens 100 Zeichen)",
+        "buttonsending": "Wird gesendet...",
+        "buttonsend": "Nachricht senden"
+      }
     },
     "pricing": {
       "title": "Transparente Preise",
