@@ -172,23 +172,23 @@ export default function LaResumeLanding() {
       <section className="bg-white py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            Why Professionals Choose La-Resume
+            {t('features.title')}
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
-                title: 'ATS Optimized',
-                description: 'Resume templates designed to pass through Applicant Tracking Systems',
+                title: t('features.feature1.title'),
+                description: t('features.feature1.description'),
                 icon: <FileText className="size-8 text-blue-600" />,
               },
               {
-                title: 'LaTeX Precision',
-                description: 'Professional typography and layout powered by LaTeX engine',
+                title: t('features.feature2.title'),
+                description: t('features.feature2.description'),
                 icon: <Rocket className="size-8 text-purple-600" />,
               },
               {
-                title: 'Instant Export',
-                description: 'One-click PDF download or raw LaTeX code export',
+                title: t('features.feature3.title'),
+                description: t('features.feature3.description'),
                 icon: <FileText className="size-8 text-green-600" />,
               },
             ].map((feature, index) => (
@@ -215,7 +215,7 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            Simple 3-Step Process
+            {t('use.title')}
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {[1, 2, 3].map((step) => (
@@ -230,18 +230,14 @@ export default function LaResumeLanding() {
                     {step}
                   </div>
                   <h3 className="mb-3 text-lg font-semibold sm:text-xl">
-                    {
-                      ['Input Your Information', 'Customize Templates', 'Download & Apply'][
-                        step - 1
-                      ]
-                    }
+                    {[t('use.step1.title'), t('use.step2.title'), t('use.step3.title')][step - 1]}
                   </h3>
                   <p className="text-gray-600">
                     {
                       [
-                        'Fill in your details using our intuitive form',
-                        'Select from professional ATS-optimized templates',
-                        'Export as PDF or LaTeX and start applying',
+                        t('use.step1.description'),
+                        t('use.step2.description'),
+                        t('use.step3.description'),
                       ][step - 1]
                     }
                   </p>
@@ -255,17 +251,17 @@ export default function LaResumeLanding() {
       <section className="bg-gray-50 py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            Trusted by Professionals
+            {t('testimonial.title')}
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             {[
               {
-                text: 'La-Resume helped me land 3x more interviews. The ATS optimization is truly effective!',
-                author: 'Sarah Johnson, Product Manager',
+                text: t('testimonial.quote1.text'),
+                author: t('testimonial.quote1.author'),
               },
               {
-                text: 'Finally a resume builder that respects typography and professional standards.',
-                author: 'Michael Chen, Senior Developer',
+                text: t('testimonial.quote2.text'),
+                author: t('testimonial.quote2.author'),
               },
             ].map((testimonial, index) => (
               <Card key={index} className="relative overflow-hidden">
@@ -284,7 +280,7 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
-            Get in Touch
+            {t('feedback.title')}
           </h2>
           <div className="mx-auto max-w-2xl">
             <Card className="border-0 bg-gradient-to-br from-blue-50 to-purple-50 shadow-xl">
@@ -340,28 +336,28 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-12">
-            Transparent Pricing
+            {t('pricing.title')}
           </h2>
-          <p className="text-center text-lg text-gray-600">
-            Everything you need to create professional resumes - completely free
-          </p>
+          <p className="text-center text-lg text-gray-600">{t('pricing.description')}</p>
 
           <div className="mx-auto mt-8 max-w-4xl">
             <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-blue-50 to-purple-50">
               <CardContent className="p-6 sm:p-12">
                 <div className="text-center">
                   <div className="mb-8">
-                    <span className="text-5xl font-bold text-gray-900">Free</span>
-                    <p className="mt-2 text-gray-600">No credit card required</p>
+                    <span className="text-5xl font-bold text-gray-900">
+                      {t('pricing.card.title')}
+                    </span>
+                    <p className="mt-2 text-gray-600">{t('pricing.card.description')}</p>
                   </div>
 
                   <div className="grid gap-6 text-left md:grid-cols-2">
                     <div className="space-y-4">
                       {[
-                        'Unlimited Resumes',
-                        'ATS-Optimized Templates',
-                        'PDF Export',
-                        'LaTeX Source Download',
+                        t('pricing.card.points.point1'),
+                        t('pricing.card.points.point2'),
+                        t('pricing.card.points.point3'),
+                        t('pricing.card.points.point4'),
                       ].map((feature) => (
                         <div key={feature} className="flex items-center gap-3">
                           <CheckCircle2 className="size-5 text-green-600" />
@@ -370,14 +366,17 @@ export default function LaResumeLanding() {
                       ))}
                     </div>
                     <div className="space-y-4">
-                      {['No Ads', 'Open Source', 'Cloud Storage', 'Priority Support'].map(
-                        (feature) => (
-                          <div key={feature} className="flex items-center gap-3">
-                            <CheckCircle2 className="size-5 text-green-600" />
-                            <span className="text-gray-700">{feature}</span>
-                          </div>
-                        )
-                      )}
+                      {[
+                        t('pricing.card.points.point1'),
+                        t('pricing.card.points.point2'),
+                        t('pricing.card.points.point3'),
+                        t('pricing.card.points.point4'),
+                      ].map((feature) => (
+                        <div key={feature} className="flex items-center gap-3">
+                          <CheckCircle2 className="size-5 text-green-600" />
+                          <span className="text-gray-700">{feature}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -389,7 +388,7 @@ export default function LaResumeLanding() {
                         onClick={() => router.push('/templates')}
                         variant="default"
                       >
-                        Start Building Free
+                        {t('pricing.card.button')}
                       </Button>
                     </SignedIn>
                     <SignedOut>
@@ -399,28 +398,26 @@ export default function LaResumeLanding() {
                         mode="modal"
                       >
                         <Button size="lg" className="w-full shadow-lg sm:w-auto" variant="default">
-                          Start Building Free
+                          {t('pricing.card.button')}
                         </Button>
                       </SignInButton>
                     </SignedOut>
                   </div>
 
-                  <p className="mt-6 text-sm text-gray-600">
-                    Compare with other resume builders: ❌ $15/mo • ❌ Ads • ❌ Limited Templates
-                  </p>
+                  <p className="mt-6 text-sm text-gray-600">{t('pricing.card.sentence')}</p>
                 </div>
               </CardContent>
             </Card>
           </div>
 
           <p className="mt-12 text-center text-gray-600">
-            Proudly open source •{' '}
+            {t('random.title')} •{' '}
             <Link
               href="https://github.com/shubhamku044/la-resume"
               target="_blank"
               className="text-blue-600 hover:underline"
             >
-              View source on GitHub
+              {t('random.button')}
             </Link>
           </p>
         </div>
@@ -429,10 +426,8 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 text-center sm:px-6">
           <div className="rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 px-6 py-12 text-white shadow-2xl sm:rounded-2xl sm:px-8 sm:py-16">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Ready to Elevate Your Career?</h2>
-            <p className="mb-6 text-sm text-blue-100 sm:text-lg">
-              Join thousands of professionals who&apos;ve transformed their job search
-            </p>
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">{t('random.heading')}</h2>
+            <p className="mb-6 text-sm text-blue-100 sm:text-lg">{t('random.description')}</p>
             <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
               <SignedIn>
                 <Button
@@ -441,7 +436,7 @@ export default function LaResumeLanding() {
                   className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
                   onClick={() => router.push('/templates')}
                 >
-                  Create Your Resume Now
+                  {t('random.button2')}
                 </Button>
               </SignedIn>
               <SignedOut>
@@ -455,7 +450,7 @@ export default function LaResumeLanding() {
                     size="lg"
                     className="flex-1 border border-gray-300 px-6 py-3 text-black hover:bg-white/10 sm:flex-none"
                   >
-                    Create Your Resume Now
+                    {t('random.button2')}
                   </Button>
                 </SignInButton>
               </SignedOut>
@@ -466,7 +461,7 @@ export default function LaResumeLanding() {
                 onClick={() => window.open('https://github.com/shubhamku044/la-resume', '_blank')}
               >
                 <LuGithub className="mr-2 size-5" />
-                Star on GitHub
+                {t('github.starButton')}
               </Button>
             </div>
           </div>
@@ -476,7 +471,7 @@ export default function LaResumeLanding() {
       <section className="bg-white py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            Built with ❤️ by
+            {t('developers.title')}
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             <motion.div whileHover={{ y: -5 }} transition={{ type: 'spring', stiffness: 300 }}>
@@ -490,8 +485,10 @@ export default function LaResumeLanding() {
                       height={120}
                       className="mb-4 rounded-full border-4 border-purple-100"
                     />
-                    <h3 className="mb-2 text-2xl font-bold text-gray-900">Shubham Kumar</h3>
-                    <p className="mb-4 text-gray-600">Full Stack Developer</p>
+                    <h3 className="mb-2 text-2xl font-bold text-gray-900">
+                      {t('developers.details.dev1.name')}
+                    </h3>
+                    <p className="mb-4 text-gray-600">{t('developers.details.dev1.role')}</p>
                     <div className="mb-6 flex gap-4">
                       <Link
                         href="https://github.com/shubhamku044"
@@ -513,7 +510,7 @@ export default function LaResumeLanding() {
                       variant="default"
                       className="w-full bg-purple-600 hover:bg-purple-700"
                     >
-                      <a href="mailto:shubhamku044@gmail.com">Hire Me →</a>
+                      <a href="mailto:shubhamku044@gmail.com">{t('developers.button')} →</a>
                     </Button>
                   </div>
                 </CardContent>
@@ -531,8 +528,10 @@ export default function LaResumeLanding() {
                       height={120}
                       className="mb-4 rounded-full border-4 border-blue-100"
                     />
-                    <h3 className="mb-2 text-2xl font-bold text-gray-900">Priyabrata Mondal</h3>
-                    <p className="mb-4 text-gray-600">Full Stack Developer</p>
+                    <h3 className="mb-2 text-2xl font-bold text-gray-900">
+                      {t('developers.details.dev2.name')}
+                    </h3>
+                    <p className="mb-4 text-gray-600">{t('developers.details.dev2.role')}</p>
                     <div className="mb-6 flex gap-4">
                       <Link
                         href="https://www.github.com/PriyabrataMo"
@@ -554,7 +553,7 @@ export default function LaResumeLanding() {
                       variant="default"
                       className="w-full bg-blue-600 hover:bg-blue-700"
                     >
-                      <a href="mailto:priyabrata8558@gmail.com">Hire Me →</a>
+                      <a href="mailto:priyabrata8558@gmail.com">{t('developers.button')} →</a>
                     </Button>
                   </div>
                 </CardContent>
@@ -567,24 +566,21 @@ export default function LaResumeLanding() {
       <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
           <Accordion type="single" collapsible className="mx-auto max-w-3xl">
             {[
               {
-                question: 'Is La-Resume really completely free?',
-                answer:
-                  'Yes! La-Resume is 100% free and open source. We believe professional resume building should be accessible to everyone.',
+                question: t('faq.question1.question'),
+                answer: t('faq.question1.answer'),
               },
               {
-                question: 'How does the ATS optimization work?',
-                answer:
-                  'Our templates follow industry best practices for ATS compatibility, including proper keyword placement, clean formatting, and semantic structure.',
+                question: t('faq.question2.question'),
+                answer: t('faq.question2.answer'),
               },
               {
-                question: 'Can I use my own LaTeX templates?',
-                answer:
-                  'Currently we support our curated templates, but we plan to add custom template support in future updates.',
+                question: t('faq.question3.question'),
+                answer: t('faq.question3.answer'),
               },
             ].map((faq, index) => (
               <AccordionItem
@@ -607,7 +603,7 @@ export default function LaResumeLanding() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
               <h3 className="mb-2 text-lg font-semibold">La-Resume</h3>
-              <p className="text-gray-600">Open source resume builder</p>
+              <p className="text-gray-600">{t('footer.detail')}</p>
             </div>
             <div className="flex gap-6">
               <Link
@@ -622,7 +618,7 @@ export default function LaResumeLanding() {
             </div>
           </div>
           <div className="mt-6 text-center text-sm text-gray-600 sm:mt-8">
-            © {new Date().getFullYear()} La-Resume. MIT Licensed. Contributions welcome!
+            © {new Date().getFullYear()} {t('footer.privacyPolicy')}
           </div>
         </div>
       </footer>

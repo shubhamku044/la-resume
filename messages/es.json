@@ -9,6 +9,110 @@
       "description": "Generador de currículos profesional con LaTeX. Gratuito. Sin registro requerido. Exporta a PDF o LaTeX en segundos.",
       "startBuilding": "Comenzar ahora",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Por qué los profesionales eligen La-Resume",
+      "feature1": {
+        "title": "Optimizado para ATS",
+        "description": "Plantillas de currículum diseñadas para pasar a través de sistemas de seguimiento de candidatos (ATS)"
+      },
+      "feature2": {
+        "title": "Precisión LaTeX",
+        "description": "Tipografía y diseño profesional impulsados por el motor LaTeX"
+      },
+      "feature3": {
+        "title": "Exportación Instantánea",
+        "description": "Descarga en PDF con un clic o exportación de código LaTeX sin procesar"
+      }
+    },
+    "use": {
+      "title": "Proceso Simple en 3 Pasos",
+      "step1": {
+        "title": "Ingresa Tu Información",
+        "description": "Rellena tus datos utilizando nuestro formulario intuitivo"
+      },
+      "step2": {
+        "title": "Personaliza las Plantillas",
+        "description": "Selecciona entre plantillas profesionales optimizadas para ATS"
+      },
+      "step3": {
+        "title": "Descargar y Aplicar",
+        "description": "Exporta como PDF o LaTeX y comienza a postularte"
+      }
+    },
+    "testimonial": {
+      "title": "Lo que dicen las personas",
+      "quote1": {
+        "text": "Pude crear un currículum profesional en minutos. La función de exportación a LaTeX es un cambio total.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume es el mejor creador de currículums que he usado. Los plantillas son de primera calidad.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Ponte en contacto"
+    },
+    "pricing": {
+      "title": "Precios Transparentes",
+      "description": "Todo lo que necesitas para crear currículums profesionales - completamente gratis",
+      "card": {
+        "title": "Gratis",
+        "description": "No se requiere tarjeta de crédito",
+        "points": {
+          "point1": "Currículums ilimitados",
+          "point2": "Plantillas optimizadas para ATS",
+          "point3": "Exportación en PDF",
+          "point4": "Descarga del código fuente LaTeX",
+          "point5": "Sin anuncios",
+          "point6": "Código abierto",
+          "point7": "Almacenamiento en la nube",
+          "point8": "Soporte 24/7"
+        },
+        "button": "Comienza a construir gratis",
+        "sentence": "Compara con otros creadores de currículums: ❌ $15/mes • ❌ Anuncios • ❌ Plantillas limitadas"
+      }
+    },
+    "random": {
+      "title": "Orgullosamente código abierto",
+      "button": "Ver el código en GitHub",
+      "heading": "¿Listo para elevar tu carrera?",
+      "description": "Únete a miles de profesionales que han transformado su búsqueda de empleo",
+      "button2": "Crea tu currículum ahora"
+    },
+    "developers": {
+      "title": "Construido con ❤️ por",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Desarrollador Full Stack"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Desarrollador Full Stack"
+        }
+      },
+      "button": "Contrátame"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "question1": {
+        "question": "¿Es La-Resume realmente completamente gratis?",
+        "answer": "¡Sí! La-Resume es 100% gratuito y de código abierto. Creemos que la creación de currículums profesionales debería ser accesible para todos."
+      },
+      "question2": {
+        "question": "¿Cómo funciona la optimización para ATS?",
+        "answer": "Nuestras plantillas siguen las mejores prácticas de la industria para la compatibilidad con ATS, incluida la colocación adecuada de palabras clave, un formato limpio y una estructura semántica."
+      },
+      "question3": {
+        "question": "¿Puedo usar mis propias plantillas LaTeX?",
+        "answer": "Actualmente solo admitimos nuestras plantillas seleccionadas, pero planeamos agregar soporte para plantillas personalizadas en futuras actualizaciones."
+      }
+    },
+    "footer": {
+      "detail": "Constructor de currículum de código abierto",
+      "privacyPolicy": "La-Resume. Licencia MIT. ¡Contribuciones bienvenidas!"
     }
   },
   "header": {

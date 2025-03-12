@@ -9,6 +9,110 @@
       "description": "基于LaTeX的专业简历生成器。完全免费，无需注册。秒级导出PDF或LaTeX文件。",
       "startBuilding": "立即创建",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "为什么专业人士选择 La-Resume",
+      "feature1": {
+        "title": "ATS 优化",
+        "description": "设计用于通过申请人跟踪系统 (ATS) 的简历模板"
+      },
+      "feature2": {
+        "title": "LaTeX 精度",
+        "description": "由 LaTeX 引擎支持的专业排版和布局"
+      },
+      "feature3": {
+        "title": "即时导出",
+        "description": "一键下载 PDF 或导出原始 LaTeX 代码"
+      }
+    },
+    "use": {
+      "title": "简单的三步流程",
+      "step1": {
+        "title": "输入您的信息",
+        "description": "使用我们的直观表单填写您的详细信息"
+      },
+      "step2": {
+        "title": "自定义模板",
+        "description": "从专业的 ATS 优化模板中选择"
+      },
+      "step3": {
+        "title": "下载并申请",
+        "description": "以 PDF 或 LaTeX 格式导出并开始申请"
+      }
+    },
+    "testimonial": {
+      "title": "人们怎么说",
+      "quote1": {
+        "text": "我能够在几分钟内创建一个专业的简历。LaTeX导出功能简直是游戏规则改变者。",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume 是我使用过的最好的简历生成器。模板非常棒。",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "联系我们"
+    },
+    "pricing": {
+      "title": "透明定价",
+      "description": "创建专业简历所需的一切 - 完全免费",
+      "card": {
+        "title": "免费",
+        "description": "无需信用卡",
+        "points": {
+          "point1": "无限简历",
+          "point2": "ATS优化模板",
+          "point3": "PDF导出",
+          "point4": "LaTeX源代码下载",
+          "point5": "无广告",
+          "point6": "开源",
+          "point7": "云存储",
+          "point8": "24/7支持"
+        },
+        "button": "开始免费创建",
+        "sentence": "与其他简历构建器比较：❌ $15/月 • ❌ 广告 • ❌ 限制模板"
+      }
+    },
+    "random": {
+      "title": "自豪地开源",
+      "button": "在 GitHub 上查看源代码",
+      "heading": "准备好提升你的职业生涯吗？",
+      "description": "加入成千上万已经改变求职方式的专业人士",
+      "button2": "立即创建简历"
+    },
+    "developers": {
+      "title": "由 ❤️ 创建",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "全栈开发者"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "全栈开发者"
+        }
+      },
+      "button": "雇佣我"
+    },
+    "faq": {
+      "title": "常见问题",
+      "question1": {
+        "question": "La-Resume真的完全免费吗？",
+        "answer": "是的！La-Resume是100%免费和开源的。我们认为，专业简历的制作应该对所有人开放。"
+      },
+      "question2": {
+        "question": "ATS优化是如何工作的？",
+        "answer": "我们的模板遵循行业最佳实践，以确保ATS兼容性，包括正确的关键词放置、清晰的格式和语义结构。"
+      },
+      "question3": {
+        "question": "我可以使用自己的LaTeX模板吗？",
+        "answer": "目前我们仅支持我们精心挑选的模板，但计划在未来的更新中添加对自定义模板的支持。"
+      }
+    },
+    "footer": {
+      "detail": "开源简历生成器",
+      "privacyPolicy": "La-Resume. MIT许可。欢迎贡献！"
     }
   },
   "header": {

@@ -9,6 +9,110 @@
       "description": "Professioneller Lebenslauf-Builder mit LaTeX. Kostenlos. Keine Anmeldung erforderlich. Exportieren Sie in Sekunden als PDF oder LaTeX.",
       "startBuilding": "Jetzt starten",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Warum Profis La-Resume wählen",
+      "feature1": {
+        "title": "ATS-Optimiert",
+        "description": "Lebenslaufvorlagen, die dafür entwickelt wurden, durch Bewerber-Tracking-Systeme (ATS) zu kommen"
+      },
+      "feature2": {
+        "title": "LaTeX-Präzision",
+        "description": "Professionelle Typografie und Layout, unterstützt durch die LaTeX-Engine"
+      },
+      "feature3": {
+        "title": "Sofortiger Export",
+        "description": "Ein-Klick-PDF-Download oder Export des rohen LaTeX-Codes"
+      }
+    },
+    "use": {
+      "title": "Einfacher 3-Schritte-Prozess",
+      "step1": {
+        "title": "Geben Sie Ihre Informationen ein",
+        "description": "Füllen Sie Ihre Daten mit unserem intuitiven Formular aus"
+      },
+      "step2": {
+        "title": "Passen Sie Vorlagen an",
+        "description": "Wählen Sie aus professionellen, ATS-optimierten Vorlagen"
+      },
+      "step3": {
+        "title": "Herunterladen & Bewerben",
+        "description": "Exportieren Sie als PDF oder LaTeX und beginnen Sie mit der Bewerbung"
+      }
+    },
+    "testimonial": {
+      "title": "Was die Leute sagen",
+      "quote1": {
+        "text": "Ich konnte in wenigen Minuten einen professionellen Lebenslauf erstellen. Die LaTeX-Exportfunktion ist ein echter Game-Changer.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume ist der beste Lebenslauf-Builder, den ich je benutzt habe. Die Vorlagen sind erstklassig.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Nehmen Sie Kontakt auf"
+    },
+    "pricing": {
+      "title": "Transparente Preise",
+      "description": "Alles, was Sie brauchen, um professionelle Lebensläufe zu erstellen – völlig kostenlos",
+      "card": {
+        "title": "Kostenlos",
+        "description": "Keine Kreditkarte erforderlich",
+        "points": {
+          "point1": "Unbegrenzte Lebensläufe",
+          "point2": "ATS-optimierte Vorlagen",
+          "point3": "PDF-Export",
+          "point4": "LaTeX-Quellcode-Download",
+          "point5": "Keine Werbung",
+          "point6": "Open Source",
+          "point7": "Cloud-Speicher",
+          "point8": "24/7 Support"
+        },
+        "button": "Kostenlos starten",
+        "sentence": "Vergleichen Sie mit anderen Lebenslauf-Erstellern: ❌ 15 $/Monat • ❌ Werbung • ❌ Begrenzte Vorlagen"
+      }
+    },
+    "random": {
+      "title": "Stolz Open Source",
+      "button": "Quellcode auf GitHub ansehen",
+      "heading": "Bereit, Ihre Karriere zu fördern?",
+      "description": "Schließen Sie sich Tausenden von Fachleuten an, die ihre Jobsuche transformiert haben",
+      "button2": "Erstellen Sie jetzt Ihren Lebenslauf"
+    },
+    "developers": {
+      "title": "Hergestellt mit ❤️ von",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Full Stack Entwickler"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Full Stack Entwickler"
+        }
+      },
+      "button": "Stellen Sie mich ein"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "question1": {
+        "question": "Ist La-Resume wirklich komplett kostenlos?",
+        "answer": "Ja! La-Resume ist zu 100 % kostenlos und Open Source. Wir glauben, dass der Aufbau eines professionellen Lebenslaufs für alle zugänglich sein sollte."
+      },
+      "question2": {
+        "question": "Wie funktioniert die ATS-Optimierung?",
+        "answer": "Unsere Vorlagen folgen den besten Branchenpraktiken für die ATS-Kompatibilität, einschließlich der richtigen Platzierung von Schlüsselwörtern, sauberem Layout und semantischer Struktur."
+      },
+      "question3": {
+        "question": "Kann ich meine eigenen LaTeX-Vorlagen verwenden?",
+        "answer": "Derzeit unterstützen wir nur unsere kuratierten Vorlagen, aber wir planen, in zukünftigen Updates Unterstützung für benutzerdefinierte Vorlagen hinzuzufügen."
+      }
+    },
+    "footer": {
+      "detail": "Open Source Lebenslauf-Ersteller",
+      "privacyPolicy": "La-Resume. MIT-lizenziert. Beiträge sind willkommen!"
     }
   },
   "header": {

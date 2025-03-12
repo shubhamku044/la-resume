@@ -9,6 +9,110 @@
       "description": "LaTeX ilə işləyən professional rezyume konstruktoru. Pulsuz. Qeydiyyat tələb olunmur. PDF və ya LaTeX formatında ixrac",
       "startBuilding": "Yaratmağa Başla",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Peşəkarlar Niyə La-Resume-u Seçir",
+      "feature1": {
+        "title": "ATS üçün Optimallaşdırılmış",
+        "description": "Tətbiqçi İzləmə Sistemlərindən keçmək üçün hazırlanmış CV şablonları"
+      },
+      "feature2": {
+        "title": "LaTeX Dəqiqliyi",
+        "description": "LaTeX mühərriki ilə dəstəklənən peşəkar tipografiya və dizayn"
+      },
+      "feature3": {
+        "title": "Ani İxrac",
+        "description": "Bir kliklə PDF yükləmə və ya xam LaTeX kodunun ixracı"
+      }
+    },
+    "use": {
+      "title": "Sadə 3 Addımlı Proses",
+      "step1": {
+        "title": "Məlumatınızı Daxil Edin",
+        "description": "İntuitiv formamızdan istifadə edərək məlumatlarınızı daxil edin"
+      },
+      "step2": {
+        "title": "Şablonları Fərdiləşdirin",
+        "description": "Peşəkar ATS-ə uyğunlaşdırılmış şablonlardan seçin"
+      },
+      "step3": {
+        "title": "Yükləyin və Müraciət Edin",
+        "description": "PDF və ya LaTeX kimi ixrac edin və müraciət etməyə başlayın"
+      }
+    },
+    "testimonial": {
+      "title": "İnsanlar Nə Deyir",
+      "quote1": {
+        "text": "Peşəkar bir CV-ni bir neçə dəqiqə ərzində yarada bildim. LaTeX ixrac funksiyası tamamilə inqilabi bir xüsusiyyətdir.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume istifadə etdiyim ən yaxşı CV hazırlayıcısıdır. Şablonlar möhtəşəmdir.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Əlaqə Saxlayın"
+    },
+    "pricing": {
+      "title": "Şəffaf Qiymət",
+      "description": "Peşəkar CV-lər yaratmaq üçün lazım olan hər şey - tamamilə pulsuz",
+      "card": {
+        "title": "Pulsuz",
+        "description": "Kredit kartı tələb olunmur",
+        "points": {
+          "point1": "Məhdudiyyətsiz CV-lər",
+          "point2": "ATS-ə uyğunlaşdırılmış şablonlar",
+          "point3": "PDF ixracı",
+          "point4": "LaTeX mənbə kodu yükləməsi",
+          "point5": "Reklamsız",
+          "point6": "Açıq mənbə",
+          "point7": "Bulud saxlama",
+          "point8": "24/7 Dəstək"
+        },
+        "button": "Pulsuz Başlayın",
+        "sentence": "Digər CV hazırlayıcıları ilə müqayisə edin: ❌ $15/a • ❌ Reklamlar • ❌ Məhdud şablonlar"
+      }
+    },
+    "random": {
+      "title": "Fəxrlə açıq mənbə",
+      "button": "Mənbəni GitHub-da baxın",
+      "heading": "Karyeranızı Yüksəltməyə Hazırsınız?",
+      "description": "İş axtarışını dəyişdirən minlərlə peşəkar arasında qoşulun",
+      "button2": "CV-nizi İndi Yaradın"
+    },
+    "developers": {
+      "title": "❤️ ilə quruldu",
+      "details": {
+        "dev1": {
+          "name": "Şubham Kumar",
+          "role": "Full Stack Tərtibatçısı"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Full Stack Tərtibatçısı"
+        }
+      },
+      "button": "Məni işə götürün"
+    },
+    "faq": {
+      "title": "Tez-tez Verilən Suallar",
+      "question1": {
+        "question": "La-Resume həqiqətən tamamilə pulsuzdur?",
+        "answer": "Bəli! La-Resume 100% pulsuz və açıq mənbəlidir. Peşəkar CV qurmağın hər kəsə əlçatan olmalı olduğuna inanırıq."
+      },
+      "question2": {
+        "question": "ATS optimizasiyası necə işləyir?",
+        "answer": "Şablonlarımız ATS uyğunluğu üçün sənaye standartlarına uyğun olaraq hazırlanmışdır, o cümlədən düzgün açar sözlərin yerləşdirilməsi, təmiz formatlama və semantik struktur."
+      },
+      "question3": {
+        "question": "Öz LaTeX şablonlarımı istifadə edə bilərəmmi?",
+        "answer": "Hazırda yalnız öz seçilmiş şablonlarımızı dəstəkləyirik, amma gələcək yeniləmələrdə xüsusi şablon dəstəyini əlavə etməyi planlaşdırırıq."
+      }
+    },
+    "footer": {
+      "detail": "Açıq mənbə CV qurucusu",
+      "privacyPolicy": "La-Resume. MIT Lisenziyalıdır. Töhfələrə xoş gəlmisiniz!"
     }
   },
   "header": {

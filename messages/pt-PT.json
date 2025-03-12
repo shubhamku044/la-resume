@@ -9,6 +9,110 @@
       "description": "Construtor de currículos profissional baseado em LaTeX. Gratuito. Sem registos necessários. Exporte para PDF ou LaTeX em segundos",
       "startBuilding": "Começar Agora",
       "githubButton": "GitHub"
+    },
+    "features": {
+      "title": "Porque é que os profissionais escolhem La-Resume",
+      "feature1": {
+        "title": "Otimizado para ATS",
+        "description": "Modelos de currículos projetados para passar pelos sistemas de rastreamento de candidatos (ATS)"
+      },
+      "feature2": {
+        "title": "Precisão LaTeX",
+        "description": "Tipografia e layout profissionais com o motor LaTeX"
+      },
+      "feature3": {
+        "title": "Exportação Instantânea",
+        "description": "Download em PDF com um clique ou exportação do código LaTeX bruto"
+      }
+    },
+    "use": {
+      "title": "Processo Simples em 3 Passos",
+      "step1": {
+        "title": "Introduza as Suas Informações",
+        "description": "Preencha os seus dados utilizando o nosso formulário intuitivo"
+      },
+      "step2": {
+        "title": "Personalize os Modelos",
+        "description": "Escolha entre modelos profissionais otimizados para ATS"
+      },
+      "step3": {
+        "title": "Descarregar e Candidatar-se",
+        "description": "Exporte como PDF ou LaTeX e comece a candidatar-se"
+      }
+    },
+    "testimonial": {
+      "title": "O Que as Pessoas Estão a Dizer",
+      "quote1": {
+        "text": "Consegui criar um currículo profissional em minutos. A funcionalidade de exportação para LaTeX é inovadora.",
+        "author": "John Doe"
+      },
+      "quote2": {
+        "text": "La-Resume é o melhor construtor de currículos que já utilizei. Os modelos são de topo.",
+        "author": "Jane Doe"
+      }
+    },
+    "feedback": {
+      "title": "Entre em Contacto"
+    },
+    "pricing": {
+      "title": "Preços Transparentes",
+      "description": "Tudo o que precisa para criar currículos profissionais - totalmente gratuito",
+      "card": {
+        "title": "Grátis",
+        "description": "Não é necessário cartão de crédito",
+        "points": {
+          "point1": "Currículos ilimitados",
+          "point2": "Modelos otimizados para ATS",
+          "point3": "Exportação em PDF",
+          "point4": "Descarregar o código fonte LaTeX",
+          "point5": "Sem anúncios",
+          "point6": "Código aberto",
+          "point7": "Armazenamento na nuvem",
+          "point8": "Suporte 24/7"
+        },
+        "button": "Comece a criar gratuitamente",
+        "sentence": "Compare com outros construtores de currículos: ❌ $15/mês • ❌ Anúncios • ❌ Modelos limitados"
+      }
+    },
+    "random": {
+      "title": "Orgulhosamente open source",
+      "button": "Ver código no GitHub",
+      "heading": "Pronto para melhorar a sua carreira?",
+      "description": "Junte-se a milhares de profissionais que transformaram a sua busca de emprego",
+      "button2": "Crie o seu currículo agora"
+    },
+    "developers": {
+      "title": "Construído com ❤️ por",
+      "details": {
+        "dev1": {
+          "name": "Shubham Kumar",
+          "role": "Desenvolvedor Full Stack"
+        },
+        "dev2": {
+          "name": "Priyabrata Mondal",
+          "role": "Desenvolvedor Full Stack"
+        }
+      },
+      "button": "Contrate-me"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "question1": {
+        "question": "O La-Resume é realmente completamente gratuito?",
+        "answer": "Sim! O La-Resume é 100% gratuito e open source. Acreditamos que a criação de currículos profissionais deve ser acessível a todos."
+      },
+      "question2": {
+        "question": "Como funciona a otimização para ATS?",
+        "answer": "Os nossos modelos seguem as melhores práticas da indústria para compatibilidade com ATS, incluindo a colocação adequada de palavras-chave, formatação limpa e estrutura semântica."
+      },
+      "question3": {
+        "question": "Posso usar os meus próprios modelos LaTeX?",
+        "answer": "Atualmente, apenas suportamos os nossos modelos selecionados, mas estamos a planear adicionar suporte para modelos personalizados em futuras atualizações."
+      }
+    },
+    "footer": {
+      "detail": "Construtor de currículos open source",
+      "privacyPolicy": "La-Resume. Licença MIT. Contribuições são bem-vindas!"
     }
   },
   "header": {
