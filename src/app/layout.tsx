@@ -102,6 +102,12 @@ export default async function RootLayout({
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang={locale}>
+        <head>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
+          <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
+          <link rel="shortcut icon" href="/favicon-dark.ico" />
+        </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Favicon />
           <Provider>
