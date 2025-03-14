@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { X } from 'lucide-react';
+import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
 
 interface ProjectsProps {
@@ -37,19 +37,16 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
   });
   const [newAccomplishment, setNewAccomplishment] = useState('');
 
-  // Handle reordering projects
   const handleReorder = (newOrder: Sb2novResumeData['projects']) => {
     setTempData((prev) => ({ ...prev, projects: newOrder }));
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
     setTempEntry(data[index]);
     setModalOpen(true);
   };
 
-  // Save project changes
   const handleSave = () => {
     setTempData((prev) => {
       const updatedProjects = [...prev.projects];
@@ -73,7 +70,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
     setNewAccomplishment('');
   };
 
-  // Remove a project entry
   const handleRemove = (index: number) => {
     setTempData((prev) => ({
       ...prev,
@@ -81,7 +77,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
     }));
   };
 
-  // Add an accomplishment
   const handleAddAccomplishment = () => {
     if (!newAccomplishment.trim()) return;
     setTempEntry((prev) => ({
@@ -91,7 +86,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
     setNewAccomplishment('');
   };
 
-  // Remove an accomplishment
   const handleRemoveAccomplishment = (accIndex: number) => {
     setTempEntry((prev) => ({
       ...prev,
@@ -101,42 +95,42 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Projects List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
+            <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
               <div className="flex items-start justify-between">
-                {/* Left Section: Project Details */}
-                <div className="w-full space-y-2">
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold">{entry.title || 'Untitled Project'}</h3>
-
-                  {/* URL Label with Clickable Link */}
-                  {entry.url ? (
-                    <a
-                      href={entry.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className=" text-blue-600 hover:underline"
-                    >
-                      {entry.urlLabel || 'No URL Label'}
-                    </a>
-                  ) : (
-                    <p className="text-lg text-gray-500">{entry.urlLabel || 'No URL Label'}</p>
-                  )}
-
-                  {/* Display all accomplishment points nicely */}
-                  {entry.accomplishments && entry.accomplishments.length > 0 && (
-                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
-                      {entry.accomplishments.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                  )}
+                <div className="flex gap-2">
+                  <GripVertical size={20} className="cursor-grab opacity-65" />
+                  <div className="w-full space-y-2">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base font-semibold">
+                        {entry.title || 'Untitled Project'}
+                      </h3>
+                      {entry.url ? (
+                        <a
+                          href={entry.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className=" text-sm text-blue-600 hover:underline"
+                        >
+                          {entry.urlLabel || 'No URL Label'}
+                        </a>
+                      ) : (
+                        <p className="text-base text-gray-500">
+                          {entry.urlLabel || 'No URL Label'}
+                        </p>
+                      )}
+                    </div>
+                    {entry.accomplishments && entry.accomplishments.length > 0 && (
+                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700">
+                        {entry.accomplishments.map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
-
-                {/* Right Section: Edit & Delete Buttons */}
                 <div className="flex space-x-3">
                   <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
                     <Pencil size={18} />

@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Reorder } from 'framer-motion';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react';
 
 interface HonorsAwardsProps {
   data: Sb2novResumeData['honorsAndAwards'];
@@ -33,16 +33,14 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
     urlLabel: '',
   });
 
-  // Handle reordering
   const handleReorder = (newOrder: Sb2novResumeData['honorsAndAwards']) => {
     setTempData((prev) => ({ ...prev, honorsAndAwards: newOrder }));
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number | null = null) => {
     setEditingIndex(index);
     if (index !== null) {
-      setTempEntry(data[index]); // Load existing entry
+      setTempEntry(data[index]);
     } else {
       setTempEntry({
         id: Date.now().toString(),
@@ -54,7 +52,6 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
     setModalOpen(true);
   };
 
-  // Save new or updated entry
   const handleSaveEntry = () => {
     setTempData((prev) => {
       const updatedHonors = [...prev.honorsAndAwards];
@@ -69,7 +66,6 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
     setEditingIndex(null);
   };
 
-  // Remove an entry
   const handleRemoveEntry = (index: number) => {
     setTempData((prev) => ({
       ...prev,
@@ -79,30 +75,26 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Honors & Awards List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
             <Card className="flex items-start justify-between rounded-lg border border-gray-300 p-5 shadow-sm">
-              {/* Left Section: Description & URL */}
-              <div className="w-full space-y-2">
-                {/* Description */}
-                <p className="text-lg text-gray-800">{entry.description || 'No Description'}</p>
-
-                {/* Clickable URL if available */}
-                {entry.url && (
-                  <a
-                    href={entry.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    {entry.urlLabel || 'Link'}
-                  </a>
-                )}
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div className="w-full space-y-2">
+                  <p className="text-base text-gray-800">{entry.description || 'No Description'}</p>
+                  {entry.url && (
+                    <a
+                      href={entry.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline"
+                    >
+                      {entry.urlLabel || 'Link'}
+                    </a>
+                  )}
+                </div>
               </div>
-
-              {/* Right Section: Edit & Delete Buttons */}
               <div className="flex space-x-3">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
                   <Pencil size={18} />
@@ -115,8 +107,6 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
           </Reorder.Item>
         ))}
       </Reorder.Group>
-
-      {/* Add Honors & Awards Button */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogTrigger asChild>
           <Button onClick={() => handleOpenModal(null)}>Add Honor / Award</Button>

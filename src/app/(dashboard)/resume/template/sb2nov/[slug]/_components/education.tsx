@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { Pencil, Trash, GripVertical } from 'lucide-react'; // Import icons
 
 interface EducationProps {
   data: Sb2novResumeData['education'];
@@ -39,19 +39,16 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     marks: '',
   });
 
-  // Handle reordering education entries
   const handleReorder = (newOrder: Sb2novResumeData['education']) => {
     setTempData((prev) => ({ ...prev, education: newOrder }));
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
     setTempEntry(data[index]);
     setModalOpen(true);
   };
 
-  // Save education changes
   const handleSave = () => {
     setTempData((prev) => {
       const updatedEducation = [...prev.education];
@@ -82,7 +79,6 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     });
   };
 
-  // Remove an education entry
   const handleRemove = (index: number) => {
     setTempData((prev) => ({
       ...prev,
@@ -92,20 +88,20 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Education List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              {' '}
-              {/* Reduced bottom padding */}
-              <div>
-                <h3 className="text-xl font-bold">{entry.institution || 'Untitled Degree'}</h3>
-                <p className="text-lg text-gray-600">{entry.degree || 'No Institution'}</p>
-                <p className="text-lg text-gray-500">
-                  {entry.startDate} - {entry.endDate || 'Present'}
-                </p>
-                {entry.marks && <p className="text-lg text-gray-700">{entry.marks}</p>}
+            <Card className="flex justify-between p-4">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div>
+                  <h3 className="text-base font-bold">{entry.institution || 'Untitled Degree'}</h3>
+                  <p className="text-sm text-gray-600">{entry.degree || 'No Institution'}</p>
+                  <p className="text-sm text-gray-500">
+                    {entry.startDate} - {entry.endDate || 'Present'}
+                  </p>
+                  {entry.marks && <p className="text-sm text-gray-700">{entry.marks}</p>}
+                </div>
               </div>
               <div className="flex space-x-3">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>

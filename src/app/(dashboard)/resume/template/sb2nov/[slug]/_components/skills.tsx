@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react';
 
 interface SkillsProps {
   data: Sb2novResumeData['skills'];
@@ -24,12 +24,10 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
   const [tempCategory, setTempCategory] = useState('');
   const [tempSkills, setTempSkills] = useState('');
 
-  // Update skill categories and values
   const updateSkills = (updatedSkills: Record<string, string[]>) => {
     setTempData((prev) => ({ ...prev, skills: updatedSkills }));
   };
 
-  // Handle reordering
   const handleReorder = (newOrder: string[]) => {
     const reorderedSkills = newOrder.reduce(
       (acc, key) => {
@@ -41,7 +39,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     updateSkills(reorderedSkills);
   };
 
-  // Open modal for editing
   const handleOpenModal = (category: string) => {
     setEditingCategory(category);
     setTempCategory(category);
@@ -49,7 +46,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     setModalOpen(true);
   };
 
-  // Save edited category
   const handleSaveCategory = () => {
     if (!tempCategory.trim()) return;
     setTempData((prev) => {
@@ -64,7 +60,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     setModalOpen(false);
   };
 
-  // Remove a category
   const handleRemoveCategory = (category: string) => {
     setTempData((prev) => {
       const updatedSkills = { ...prev.skills };
@@ -73,7 +68,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     });
   };
 
-  // Add a new category
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState('');
 
@@ -89,14 +83,16 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Skill Categories with Reordering */}
       <Reorder.Group values={Object.keys(data)} onReorder={handleReorder} className="space-y-3">
         {Object.keys(data).map((category) => (
           <Reorder.Item key={category} value={category}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="text-xl font-semibold">{category}</h3>
-                <p className="text-lg text-gray-500">{data[category].join(', ')}</p>
+            <Card className="flex justify-between p-4">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div>
+                  <h3 className="text-base font-semibold">{category}</h3>
+                  <p className="text-sm text-gray-500">{data[category].join(', ')}</p>
+                </div>
               </div>
               <div className="flex space-x-2">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(category)}>
@@ -115,8 +111,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Category Button */}
-      {/* Add Category Modal */}
       <Dialog
         open={addModalOpen}
         onOpenChange={(isOpen) => {
@@ -145,7 +139,6 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
         </DialogContent>
       </Dialog>
 
-      {/* Edit Category Modal */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {

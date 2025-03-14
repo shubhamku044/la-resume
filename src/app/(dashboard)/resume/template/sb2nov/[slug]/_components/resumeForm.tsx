@@ -74,11 +74,10 @@ const ResumeForm = ({
 
       reader.onload = () => {
         const base64 = reader.result as string;
-        setPreviewImage(base64); // Save the Base64 string
-        onUpdate(base64); // Update the preview
+        setPreviewImage(base64);
+        onUpdate(base64);
       };
       const imageUrl = URL.createObjectURL(blob);
-      // console.log('🖼️ Generated Resume Preview:', imageUrl);
       onUpdate(imageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
