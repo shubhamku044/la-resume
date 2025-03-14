@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { X } from 'lucide-react';
+import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
 
 interface ExperienceProps {
@@ -36,19 +36,16 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
 
   const [newAccomplishment, setNewAccomplishment] = useState('');
 
-  // Handle reordering experiences
   const handleReorder = (newOrder: Sb2novResumeData['experience']) => {
     setTempData((prev) => ({ ...prev, experience: newOrder }));
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
     setTempEntry(data[index]);
     setModalOpen(true);
   };
 
-  // Save experience changes
   const handleSave = () => {
     setTempData((prev) => {
       const updatedExperience = [...prev.experience];
@@ -66,7 +63,6 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     setNewAccomplishment('');
   };
 
-  // Remove an experience entry
   const handleRemove = (index: number) => {
     setTempData((prev) => ({
       ...prev,
@@ -74,7 +70,6 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     }));
   };
 
-  // Add an accomplishment
   const handleAddAccomplishment = () => {
     if (!newAccomplishment.trim()) return;
     setTempEntry((prev) => ({
@@ -84,7 +79,6 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     setNewAccomplishment('');
   };
 
-  // Remove an accomplishment
   const handleRemoveAccomplishment = (accIndex: number) => {
     setTempEntry((prev) => ({
       ...prev,
@@ -94,30 +88,28 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Experience List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
+            <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
               <div className="flex items-start justify-between">
-                {/* Left Section: Title & Accomplishments */}
-                <div className="w-full space-y-2">
-                  <h3 className="text-lg font-semibold">
-                    {entry.title || 'Untitled Accomplishment'}
-                  </h3>
-                  <p className="text-lg text-gray-500">{entry.date || 'No Date Provided'}</p>
+                <div className="flex gap-2">
+                  <GripVertical size={20} className="cursor-grab opacity-65" />
+                  <div className="w-full space-y-2">
+                    <h3 className="text-base font-semibold">
+                      {entry.title || 'Untitled Accomplishment'}
+                    </h3>
+                    <p className="text-sm text-gray-500">{entry.date || 'No Date Provided'}</p>
 
-                  {/* Display all accomplishment points nicely */}
-                  {entry.accomplishments && entry.accomplishments.length > 0 && (
-                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
-                      {entry.accomplishments.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                  )}
+                    {entry.accomplishments && entry.accomplishments.length > 0 && (
+                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700">
+                        {entry.accomplishments.map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
-
-                {/* Right Section: Edit & Delete Buttons */}
                 <div className="flex space-x-3">
                   <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
                     <Pencil size={18} />
@@ -132,7 +124,6 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Experience Button */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {
@@ -179,7 +170,6 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
             placeholder="Date (e.g., 2021-2023)"
           />
 
-          {/* Accomplishments Section */}
           <div className="space-y-2">
             <p className="font-semibold">Accomplishments</p>
             <div className="flex flex-wrap gap-2">
