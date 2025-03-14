@@ -16,9 +16,10 @@ import { GripVertical, Pencil, Trash } from 'lucide-react';
 interface HonorsAwardsProps {
   data: Sb2novResumeData['honorsAndAwards'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
+const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwardsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -35,6 +36,7 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
 
   const handleReorder = (newOrder: Sb2novResumeData['honorsAndAwards']) => {
     setTempData((prev) => ({ ...prev, honorsAndAwards: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number | null = null) => {
@@ -50,6 +52,7 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
       });
     }
     setModalOpen(true);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleSaveEntry = () => {
@@ -64,6 +67,7 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
     });
     setModalOpen(false);
     setEditingIndex(null);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemoveEntry = (index: number) => {
@@ -71,6 +75,7 @@ const HonorsAwardsSection = ({ data, setTempData }: HonorsAwardsProps) => {
       ...prev,
       honorsAndAwards: prev.honorsAndAwards.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (

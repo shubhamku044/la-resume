@@ -11,14 +11,15 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { Pencil, Trash, GripVertical } from 'lucide-react'; // Import icons
+import { Pencil, Trash, GripVertical } from 'lucide-react';
 
 interface EducationProps {
   data: Sb2novResumeData['education'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EducationSection = ({ data, setTempData }: EducationProps) => {
+const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -41,6 +42,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
 
   const handleReorder = (newOrder: Sb2novResumeData['education']) => {
     setTempData((prev) => ({ ...prev, education: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number) => {
@@ -77,6 +79,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
       endDate: '',
       marks: '',
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemove = (index: number) => {
@@ -84,6 +87,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
       ...prev,
       education: prev.education.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
@@ -116,7 +120,6 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Education Button */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogTrigger asChild>
           <Button

@@ -16,9 +16,10 @@ import { GripVertical, Pencil, Trash } from 'lucide-react';
 interface SkillsProps {
   data: Sb2novResumeData['skills'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SkillsSection = ({ data, setTempData }: SkillsProps) => {
+const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<string | null>(null);
   const [tempCategory, setTempCategory] = useState('');
@@ -37,6 +38,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       {} as Record<string, string[]>
     );
     updateSkills(reorderedSkills);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (category: string) => {
@@ -58,6 +60,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       return { ...prev, skills: updatedSkills };
     });
     setModalOpen(false);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemoveCategory = (category: string) => {
@@ -66,6 +69,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       delete updatedSkills[category];
       return { ...prev, skills: updatedSkills };
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const [addModalOpen, setAddModalOpen] = useState(false);
@@ -79,6 +83,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     }));
     setNewCategoryName('');
     setAddModalOpen(false);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (

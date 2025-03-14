@@ -23,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { useIsMobile } from '@/hooks/use-mobile';
+
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
@@ -93,7 +94,12 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
         <h2 className="text-lg font-semibold">Resume Preview</h2>
         <div className="mt-4 flex items-center justify-between">
           <div className="h-10 flex-1">
-            {loading && <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />}
+            {loading && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs">Compiling</span>
+                <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-4">
             <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
