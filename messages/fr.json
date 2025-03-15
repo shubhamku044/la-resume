@@ -6,7 +6,7 @@
     },
     "hero": {
       "title": "Créez des CV parfaits <highlight>compatibles ATS</highlight>",
-      "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Aucune inscription requise. Exportez en PDF ou LaTeX en quelques secondes.",
+      "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Exportez en PDF ou LaTeX en quelques secondes.",
       "startBuilding": "Commencer",
       "githubButton": "GitHub"
     },
