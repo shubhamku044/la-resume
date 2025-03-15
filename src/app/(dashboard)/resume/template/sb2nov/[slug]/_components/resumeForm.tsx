@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Reorder } from 'framer-motion';
 import { ResizablePanel } from '@/components/ui/resizable';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import HeadingSection from './heading';
@@ -13,10 +14,19 @@ import HonorsAndRewards from './honorandawards';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
 import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
-import { PencilIcon } from 'lucide-react';
+import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CircularProgress } from '@heroui/progress';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useResumeData } from '@/hooks/resumeData';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
@@ -39,6 +49,10 @@ const ResumeForm = ({
 }: ResumeFormProps) => {
   const [formData, setFormData] = useState(templateSampleData);
   const [tempData, setTempData] = useState(templateSampleData);
+  const { resumeSampleData } = useResumeData('sb2nov');
+  const [resumeSectionsOrder, setResumeSectionsOrder] = useState(
+    formData?.sectionOrder || (resumeSampleData as Sb2novResumeData).sectionOrder
+  );
   const { user } = useUser();
   const clerkId = user?.id;
   const [filename, setFilename] = useState(title);
@@ -122,6 +136,14 @@ const ResumeForm = ({
   }, [formData, onUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
+    setTempData((prev) => ({
+      ...prev,
+      sectionOrder: resumeSectionsOrder,
+    }));
+    setIsChangesSaved(false);
+  }, [resumeSectionsOrder]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => setFormData(tempData), 500);
     return () => clearTimeout(timeout);
   }, [tempData]);
@@ -131,6 +153,7 @@ const ResumeForm = ({
   }, [formData, generateResumePreview]);
 
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
+  const sectionsOrder = formData?.sectionOrder || templateSampleData.sectionOrder;
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -228,22 +251,60 @@ const ResumeForm = ({
             </div>
           )}
         </div>
-        <div className="flex flex-col items-end">
-          <Button
-            disabled={isSaving || isChangesSaved}
-            className="disabled:cursor-not-allowed"
-            size="sm"
-            onClick={handleSave}
-          >
-            {isSaving ? (
-              <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
-            ) : (
-              <>Save</>
-            )}
-          </Button>
-          <span className="text-xs font-medium text-red-500">
-            {!isChangesSaved && <>*Unsaved changes</>}
-          </span>
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <Button
+              disabled={isSaving || isChangesSaved}
+              className="relative disabled:cursor-not-allowed"
+              size="sm"
+              onClick={handleSave}
+            >
+              {isSaving ? (
+                <CircularProgress
+                  aria-label="CircularProgress"
+                  className="scale-50 text-sm"
+                  strokeWidth={3}
+                  size="lg"
+                />
+              ) : (
+                <>Save</>
+              )}
+              <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
+                {!isChangesSaved && <>*Unsaved changes</>}
+              </span>
+            </Button>
+          </div>
+          {resumeSectionsOrder && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild className="text-sm">
+                <Button variant={'secondary'}>
+                  <span>Reorder sections</span>
+                  <ChevronDown />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent forceMount onCloseAutoFocus={(e) => e.preventDefault()}>
+                <DropdownMenuLabel>Reorder sections</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <Reorder.Group
+                  values={resumeSectionsOrder}
+                  onReorder={(values) => {
+                    setResumeSectionsOrder(values);
+                  }}
+                >
+                  {sectionsOrder?.map((section) => (
+                    <Reorder.Item key={section} value={section}>
+                      <DropdownMenuItem key={section}>
+                        <div className="flex w-full items-center justify-between gap-4">
+                          <p>{section}</p>
+                          <GripVertical size={16} className="cursor-grab opacity-65" />
+                        </div>
+                      </DropdownMenuItem>
+                    </Reorder.Item>
+                  ))}
+                </Reorder.Group>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
         </div>
       </div>
 

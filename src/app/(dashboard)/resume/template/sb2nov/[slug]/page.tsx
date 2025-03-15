@@ -21,6 +21,10 @@ export default function ResumeTemplatePage() {
     setLoading,
     slug,
   } = useResumeData('sb2nov');
+
+  console.log('existingResume', existingResume);
+
+  console.log('initialData', initialData);
   const isMobile = useIsMobile();
 
   if (isFetching) {

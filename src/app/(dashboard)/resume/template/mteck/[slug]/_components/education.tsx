@@ -31,7 +31,6 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     degree: '',
   });
 
-  // Validate form fields
   const validateForm = () => {
     const newErrors: { institution?: string; degree?: string } = {};
     if (!tempEntry.institution) newErrors.institution = 'Institution is required';
@@ -39,19 +38,16 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle reordering education entries
   const handleReorder = (newOrder: MTeckResumeData['education']) => {
     setTempData((prev) => ({ ...prev, education: newOrder }));
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
     setTempEntry(data[index]);
     setModalOpen(true);
   };
 
-  // Save education changes
   const handleSave = () => {
     if (!validateForm()) return;
 
