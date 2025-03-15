@@ -6,7 +6,7 @@
     },
     "hero": {
       "title": "打造完美<highlight>ATS优化</highlight>简历",
-      "description": "基于LaTeX的专业简历生成器。完全免费，无需注册。秒级导出PDF或LaTeX文件。",
+      "description": "基于LaTeX的专业简历生成器。完全免费。秒级导出PDF或LaTeX文件。",
       "startBuilding": "立即创建",
       "githubButton": "GitHub"
     },
