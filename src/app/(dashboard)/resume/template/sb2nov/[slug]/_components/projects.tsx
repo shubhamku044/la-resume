@@ -17,9 +17,10 @@ import { Pencil, Trash } from 'lucide-react';
 interface ProjectsProps {
   data: Sb2novResumeData['projects'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
+const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -39,6 +40,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
 
   const handleReorder = (newOrder: Sb2novResumeData['projects']) => {
     setTempData((prev) => ({ ...prev, projects: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number) => {
@@ -68,6 +70,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       accomplishments: [],
     });
     setNewAccomplishment('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemove = (index: number) => {
@@ -75,6 +78,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       projects: prev.projects.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleAddAccomplishment = () => {
@@ -84,6 +88,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       accomplishments: [...prev.accomplishments, newAccomplishment],
     }));
     setNewAccomplishment('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemoveAccomplishment = (accIndex: number) => {
@@ -91,6 +96,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       accomplishments: prev.accomplishments.filter((_, i) => i !== accIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (

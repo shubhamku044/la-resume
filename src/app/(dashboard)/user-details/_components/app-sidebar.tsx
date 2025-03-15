@@ -72,7 +72,7 @@ export default function AppSidebar() {
   const stars = useGitHubStars();
 
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="sidebar">
       <SidebarHeader className="mb-2 border-b pb-2">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="La-Resume Logo" width={120} height={40} />

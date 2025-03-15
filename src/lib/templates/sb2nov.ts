@@ -41,6 +41,7 @@ export type Sb2novResumeData = {
     url?: string;
     urlLabel?: string;
   }[];
+  sectionOrder?: Array<'education' | 'skills' | 'experience' | 'projects' | 'honorsAndAwards'>;
 };
 
 export const sb2novResumeSampleData: Sb2novResumeData = {
@@ -174,6 +175,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
       description: 'Won regional coding competition, beating 95% of participants',
     },
   ],
+  sectionOrder: ['education', 'skills', 'experience', 'projects', 'honorsAndAwards'],
 };
 
 export const sb2nov = (data: Sb2novResumeData) => {
@@ -195,6 +197,120 @@ export const sb2nov = (data: Sb2novResumeData) => {
     contactItems.push(`\\href{${escapeLatex(data.heading.codeforces)}}{\\textbf{Codeforces}}`);
 
   const contactLine = contactItems.length > 0 ? `\\small ${contactItems.join(' $|$ ')}` : '';
+
+  const generateSection = (sectionKey: string) => {
+    switch (sectionKey) {
+      case 'education':
+        return data.education.length > 0
+          ? `
+          \\section{Education}
+          \\resumeSubHeadingListStart
+          ${data.education
+            .map(
+              (edu) => `
+            \\resumeSubheading
+            {${escapeLatex(edu.institution)}}{${escapeLatex(edu.location)}}
+            {${escapeLatex(edu.degree)}${edu.marks ? `; ${escapeLatex(edu.marks)}` : ''}}
+            {${escapeLatex(edu.startDate)} -- ${escapeLatex(edu.endDate)}}
+          `
+            )
+            .join('')}
+          \\resumeSubHeadingListEnd
+        `
+          : '';
+
+      case 'skills':
+        return Object.keys(data.skills).length > 0
+          ? `
+          \\section{Technical Skills}
+          \\resumeSubHeadingListStart
+          \\resumeItemListStart
+          ${Object.entries(data.skills)
+            .map(
+              ([category, items]) => `
+            \\resumeItem{\\textbf{${escapeLatex(category[0].toUpperCase() + category.slice(1))}}:
+            ${items.map(escapeLatex).join(', ')}}
+          `
+            )
+            .join('\n')}
+          \\resumeItemListEnd
+          \\resumeSubHeadingListEnd
+        `
+          : '';
+
+      case 'experience':
+        return data.experience.length > 0
+          ? `
+          \\section{Experience}
+          ${data.experience
+            .map(
+              (exp) => `
+            \\resumeSubHeadingListStart
+            \\resumeProjectHeading
+            {\\textbf{${escapeLatex(exp.title)}}}{${escapeLatex(exp.date)}}
+            \\resumeItemListStart
+            ${exp.accomplishments.map((a) => `\\resumeItem{${escapeLatex(a)}}`).join('\n')}
+            \\resumeItemListEnd
+            \\resumeSubHeadingListEnd
+          `
+            )
+            .join('\n')}
+        `
+          : '';
+
+      case 'projects':
+        return data.projects.length > 0
+          ? `
+          \\section{Projects}
+          ${data.projects
+            .map(
+              (proj) => `
+            \\resumeSubHeadingListStart
+            \\resumeProjectHeading
+            {\\textbf{${escapeLatex(proj.title)}}}
+            {\\href{${escapeLatex(proj.url)}}{${escapeLatex(proj.urlLabel)}}}
+            \\resumeItemListStart
+            ${proj.accomplishments.map((a) => `\\resumeItem{${escapeLatex(a)}}`).join('\n')}
+            \\resumeItemListEnd
+            \\resumeSubHeadingListEnd
+          `
+            )
+            .join('\n')}
+        `
+          : '';
+
+      case 'honorsAndAwards':
+        return data.honorsAndAwards.length > 0
+          ? `
+\\section{Honors \\& Awards}
+\\resumeSubHeadingListStart
+${data.honorsAndAwards
+  .map(({ description, url, urlLabel }) => {
+    const escapedDescription = escapeLatex(description);
+    const urlText = url
+      ? `\\hfill \\href{${escapeLatex(url)}}{\\underline{${escapeLatex(urlLabel || 'Link')}}}`
+      : '';
+    return `\\resumeItem{${escapedDescription}${urlText}}`;
+  })
+  .join('\n    ')}
+\\resumeSubHeadingListEnd
+        `
+          : '';
+
+      default:
+        return '';
+    }
+  };
+
+  const sections = data.sectionOrder || [
+    'education',
+    'skills',
+    'experience',
+    'projects',
+    'honorsAndAwards',
+  ];
+  const sectionContent = sections.map(generateSection).filter(Boolean).join('\n');
+
   return `
 \\documentclass[letterpaper,11pt]{article}
 
@@ -302,116 +418,7 @@ export const sb2nov = (data: Sb2novResumeData) => {
     }}
 \\end{center}
 
-%-----------EDUCATION-----------
-${
-  data.education.length > 0
-    ? `
-%-----------EDUCATION-----------
-\\section{Education}
-  \\resumeSubHeadingListStart
-${data.education
-  .map(({ institution, location, degree, startDate, endDate, marks }) => {
-    return `
-    \\resumeSubheading
-      {${escapeLatex(institution)}}{${escapeLatex(location)}}
-      {${escapeLatex(degree)}${marks ? `; ${escapeLatex(marks)}` : ''}}{${escapeLatex(startDate)} -- ${escapeLatex(endDate)}}
-`;
-  })
-  .join('')}
-  \\resumeSubHeadingListEnd
-`
-    : ''
-}
-
-
-
-${
-  Object.keys(data.skills).length > 0
-    ? `
-%-----------SKILLS-----------
-\\section{Technical Skills}
-\\resumeSubHeadingListStart
-    \\resumeItemListStart
-${Object.entries(data.skills)
-  .map(([category, items]) => {
-    const formattedCategory = `\\textbf{${escapeLatex(
-      category.charAt(0).toUpperCase() + category.slice(1)
-    )}}`;
-    return items.length > 0
-      ? `\\resumeItem{${formattedCategory}: ${items.map(escapeLatex).join(', ')}}`
-      : `\\resumeItem{${formattedCategory}}`;
-  })
-  .join('\n        ')}
-    \\resumeItemListEnd
-\\resumeSubHeadingListEnd
-`
-    : ''
-}
-
-${
-  data.experience.length > 0
-    ? `
-%-----------EXPERIENCE-----------
-\\section{Experience}
-${data.experience
-  .map(
-    ({ title, date, accomplishments }) => `
-\\resumeSubHeadingListStart
-    \\resumeProjectHeading
-    {\\textbf{${escapeLatex(title)}}}{${escapeLatex(date)}}
-    \\resumeItemListStart
-        ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
-    \\resumeItemListEnd
-\\resumeSubHeadingListEnd
-`
-  )
-  .join('\n')}
-`
-    : ''
-}
-
-
-${
-  data.projects.length > 0
-    ? `
-%-----------PROJECTS-----------
-\\section{Projects}
-${data.projects
-  .map(
-    ({ title, url, urlLabel, accomplishments }) => `
-\\resumeSubHeadingListStart
-    \\resumeProjectHeading
-        {\\textbf{${escapeLatex(title)}}}${url ? `{\\href{${escapeLatex(url)}}{${escapeLatex(urlLabel)}}}` : ''}
-    \\resumeItemListStart
-        ${accomplishments?.map((item) => `\\resumeItem{${escapeLatex(item)}}`).join('\n        ')}
-    \\resumeItemListEnd
-\\resumeSubHeadingListEnd
-`
-  )
-  .join('\n')}
-`
-    : ''
-}
-
-${
-  data.honorsAndAwards.length > 0
-    ? `
-%-----------HONORS & AWARDS-----------
-\\section{Honors \\& Awards}
-\\resumeSubHeadingListStart
-${data.honorsAndAwards
-  .map(({ description, url, urlLabel }) => {
-    const escapedDescription = escapeLatex(description);
-    const urlText = url
-      ? `\\hfill \\href{${escapeLatex(url)}}{\\underline{${escapeLatex(urlLabel || 'Link')}}}`
-      : '';
-    return `\\resumeItem{${escapedDescription}${urlText}}`;
-  })
-  .join('\n    ')}
-\\resumeSubHeadingListEnd
-`
-    : ''
-}
+${sectionContent}
 
 \\end{document}
 `;

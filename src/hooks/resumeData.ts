@@ -22,7 +22,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
   const params = useParams();
   const { slug } = params;
 
-  // Fetch existing resume data
   const {
     data: existingResume,
     isLoading: isFetching,
@@ -32,7 +31,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     { skip: !clerkId, refetchOnMountOrArgChange: true }
   );
 
-  // Use existing resume data if available, otherwise use sample data
   const initialData = existingResume?.data
     ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
     : resumeSampleData;
@@ -50,5 +48,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     setLatexData,
     setLoading,
     slug,
+    resumeSampleData,
   };
 }

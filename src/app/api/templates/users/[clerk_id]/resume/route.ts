@@ -28,12 +28,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ clerk_id
     // Return an empty array instead of a 404 if no resumes exist
     return new Response(JSON.stringify(resumes), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-      },
     });
   } catch (error) {
     console.error(error);

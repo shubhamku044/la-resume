@@ -17,9 +17,10 @@ import { Pencil, Trash } from 'lucide-react';
 interface ExperienceProps {
   data: Sb2novResumeData['experience'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
+const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -38,6 +39,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
 
   const handleReorder = (newOrder: Sb2novResumeData['experience']) => {
     setTempData((prev) => ({ ...prev, experience: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number) => {
@@ -61,6 +63,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
     setEditingIndex(null);
     setTempEntry({ id: '', title: '', date: '', accomplishments: [] });
     setNewAccomplishment('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemove = (index: number) => {
@@ -68,6 +71,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       ...prev,
       experience: prev.experience.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleAddAccomplishment = () => {
@@ -77,6 +81,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       accomplishments: [...(prev.accomplishments as string[]), newAccomplishment],
     }));
     setNewAccomplishment('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleRemoveAccomplishment = (accIndex: number) => {
@@ -84,6 +89,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       ...prev,
       accomplishments: (prev.accomplishments as string[]).filter((_, i) => i !== accIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (

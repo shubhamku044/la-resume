@@ -5,9 +5,10 @@ import { useDebounce } from '@/hooks';
 interface HeadingProps {
   data: Sb2novResumeData['heading'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const HeadingSection = ({ data, setTempData }: HeadingProps) => {
+const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) => {
   const [tempValues, setTempValues] = useState(data);
 
   const debouncedValues = useDebounce(tempValues, 1000);
@@ -23,8 +24,9 @@ const HeadingSection = ({ data, setTempData }: HeadingProps) => {
         ...prev,
         heading: debouncedValues,
       }));
+      if (setIsChangesSaved) setIsChangesSaved(false);
     }
-  }, [debouncedValues, data, setTempData]);
+  }, [debouncedValues, data, setTempData, setIsChangesSaved]);
 
   const handleChange = (field: keyof Sb2novResumeData['heading'], value: string) => {
     setTempValues((prev) => ({

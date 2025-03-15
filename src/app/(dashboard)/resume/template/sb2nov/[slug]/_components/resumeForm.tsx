@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Reorder } from 'framer-motion';
 import { ResizablePanel } from '@/components/ui/resizable';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import HeadingSection from './heading';
@@ -13,10 +14,20 @@ import HonorsAndRewards from './honorandawards';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
 import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
-import { PencilIcon, CheckIcon } from 'lucide-react';
+import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CircularProgress } from '@heroui/progress';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useResumeData } from '@/hooks/resumeData';
+
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
   setLoading: (loading: boolean) => void;
@@ -38,14 +49,52 @@ const ResumeForm = ({
 }: ResumeFormProps) => {
   const [formData, setFormData] = useState(templateSampleData);
   const [tempData, setTempData] = useState(templateSampleData);
+  const { resumeSampleData } = useResumeData('sb2nov');
+  const [resumeSectionsOrder, setResumeSectionsOrder] = useState(
+    formData?.sectionOrder || (resumeSampleData as Sb2novResumeData).sectionOrder
+  );
   const { user } = useUser();
   const clerkId = user?.id;
   const [filename, setFilename] = useState(title);
-  const [editingFilename, setEditingFilename] = useState(false);
   const [saveResume] = useSaveResumeMutation();
   const [uploadImage] = useUploadImageMutation();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [isChangesSaved, setIsChangesSaved] = useState(false);
+  const [isEditingFilename, setIsEditingFilename] = useState(false);
+  const [isHoveringFilename, setIsHoveringFilename] = useState(false);
+  const filenameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isEditingFilename && filenameInputRef.current) {
+      filenameInputRef.current.focus();
+      filenameInputRef.current.select();
+    }
+  }, [isEditingFilename]);
+
+  const handleFilenameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilename(e.target.value);
+  };
+
+  const handleFilenameBlur = () => {
+    if (!filename.trim()) {
+      toast.error('Filename cannot be empty');
+      setFilename(title);
+    }
+    setIsChangesSaved(false);
+    setIsEditingFilename(false);
+  };
+
+  const handleFilenameKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      if (!filename.trim()) {
+        toast.error('Filename cannot be empty');
+        setFilename(title);
+      }
+      setIsEditingFilename(false);
+    }
+  };
+
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
@@ -87,6 +136,14 @@ const ResumeForm = ({
   }, [formData, onUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
+    setTempData((prev) => ({
+      ...prev,
+      sectionOrder: resumeSectionsOrder,
+    }));
+    setIsChangesSaved(false);
+  }, [resumeSectionsOrder]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => setFormData(tempData), 500);
     return () => clearTimeout(timeout);
   }, [tempData]);
@@ -96,6 +153,7 @@ const ResumeForm = ({
   }, [formData, generateResumePreview]);
 
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
+  const sectionsOrder = formData?.sectionOrder || templateSampleData.sectionOrder;
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -120,11 +178,10 @@ const ResumeForm = ({
     try {
       let imageUrl = null;
 
-      // Upload the preview image to ImageKit if it exists
       if (previewImage) {
         const { url } = await uploadImage({
           file: previewImage,
-          fileName: slug, // Use the slug as the unique file name
+          fileName: slug,
         }).unwrap();
         imageUrl = url;
         console.log('🖼️ Uploaded Image URL:', imageUrl);
@@ -144,8 +201,8 @@ const ResumeForm = ({
       }).unwrap();
 
       toast.success('Resume saved successfully!');
-      // console.log('✅ Saved Resume:', response);
       setIsSaving(false);
+      setIsChangesSaved(true);
     } catch (error) {
       console.error('❌ Save Resume Error:', error);
       toast.error('Error saving resume');
@@ -153,35 +210,105 @@ const ResumeForm = ({
     }
   };
 
+  const handleSaveCallback = useCallback(handleSave, [handleSave]);
+
+  useEffect(() => {
+    if (isChangesSaved) {
+      // handleSaveCallback();
+      // setIsChangesSaved(false);
+    }
+  }, [isChangesSaved, handleSaveCallback]);
+
   return (
     <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
       <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {editingFilename ? (
+        <div
+          className="group relative flex items-center gap-2"
+          onMouseEnter={() => setIsHoveringFilename(true)}
+          onMouseLeave={() => setIsHoveringFilename(false)}
+        >
+          {isEditingFilename ? (
             <Input
+              ref={filenameInputRef}
               type="text"
               value={filename}
-              onChange={(e) => setFilename(e.target.value)}
-              className="text-xl font-semibold"
+              onChange={handleFilenameChange}
+              onBlur={handleFilenameBlur}
+              onKeyDown={handleFilenameKeyDown}
+              className="text-lg font-semibold transition-all"
               placeholder="Enter resume title"
             />
           ) : (
-            <div>
-              <h1 className="text-xl font-semibold">{filename}</h1>
+            <div className="relative cursor-text" onClick={() => setIsEditingFilename(true)}>
+              <h1 className="text-base font-semibold transition-all group-hover:opacity-80">
+                {filename}
+              </h1>
+              <PencilIcon
+                className={`absolute -right-6 top-1/2 size-4 -translate-y-1/2 transition-opacity ${
+                  isHoveringFilename ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
             </div>
           )}
-
-          <Button variant="outline" onClick={() => setEditingFilename((prev) => !prev)}>
-            {editingFilename ? <CheckIcon /> : <PencilIcon />}
-          </Button>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-10">
-            {isSaving && (
-              <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
-            )}
+          <div className="relative">
+            <Button
+              disabled={isSaving || isChangesSaved}
+              className="relative disabled:cursor-not-allowed"
+              size="sm"
+              onClick={handleSave}
+            >
+              {isSaving ? (
+                <CircularProgress
+                  aria-label="CircularProgress"
+                  className="scale-50 text-sm"
+                  strokeWidth={3}
+                  size="lg"
+                />
+              ) : (
+                <>Save</>
+              )}
+              <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
+                {!isChangesSaved && <>*Unsaved changes</>}
+              </span>
+            </Button>
           </div>
-          <Button onClick={handleSave}>Save</Button>
+          {resumeSectionsOrder && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild className="text-sm">
+                <Button variant={'secondary'}>
+                  <span>Reorder sections</span>
+                  <ChevronDown />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="min-w-[200px]"
+                forceMount
+                onCloseAutoFocus={(e) => e.preventDefault()}
+              >
+                <DropdownMenuLabel>Reorder sections</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <Reorder.Group
+                  values={resumeSectionsOrder}
+                  onReorder={(values) => {
+                    setResumeSectionsOrder(values);
+                  }}
+                >
+                  {sectionsOrder?.map((section) => (
+                    <Reorder.Item key={section} value={section}>
+                      <DropdownMenuItem key={section}>
+                        <div className="flex w-full items-center justify-between gap-4">
+                          <p>{section}</p>
+                          <GripVertical size={16} className="cursor-grab opacity-65" />
+                        </div>
+                      </DropdownMenuItem>
+                    </Reorder.Item>
+                  ))}
+                </Reorder.Group>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
         </div>
       </div>
 
@@ -203,27 +330,51 @@ const ResumeForm = ({
             className="rounded-md border p-4"
           >
             {section === 'heading' && (
-              <HeadingSection data={tempData.heading} setTempData={setTempData} />
+              <HeadingSection
+                data={tempData.heading}
+                setIsChangesSaved={setIsChangesSaved}
+                setTempData={setTempData}
+              />
             )}
 
             {section === 'education' && (
-              <EducationSection data={tempData.education} setTempData={setTempData} />
+              <EducationSection
+                setIsChangesSaved={setIsChangesSaved}
+                data={tempData.education}
+                setTempData={setTempData}
+              />
             )}
 
             {section === 'skills' && (
-              <SkillsSection data={tempData.skills} setTempData={setTempData} />
+              <SkillsSection
+                setIsChangesSaved={setIsChangesSaved}
+                data={tempData.skills}
+                setTempData={setTempData}
+              />
             )}
 
             {section === 'experience' && (
-              <ExperienceSection data={tempData.experience} setTempData={setTempData} />
+              <ExperienceSection
+                setIsChangesSaved={setIsChangesSaved}
+                data={tempData.experience}
+                setTempData={setTempData}
+              />
             )}
 
             {section === 'projects' && (
-              <ProjectsSection data={tempData.projects} setTempData={setTempData} />
+              <ProjectsSection
+                setIsChangesSaved={setIsChangesSaved}
+                data={tempData.projects}
+                setTempData={setTempData}
+              />
             )}
 
             {section === 'honorsAndAwards' && (
-              <HonorsAndRewards data={tempData.honorsAndAwards} setTempData={setTempData} />
+              <HonorsAndRewards
+                setIsChangesSaved={setIsChangesSaved}
+                data={tempData.honorsAndAwards}
+                setTempData={setTempData}
+              />
             )}
           </TabsContent>
         ))}
