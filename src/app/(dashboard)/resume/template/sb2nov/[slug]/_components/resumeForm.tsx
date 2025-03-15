@@ -282,7 +282,11 @@ const ResumeForm = ({
                   <ChevronDown />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent forceMount onCloseAutoFocus={(e) => e.preventDefault()}>
+              <DropdownMenuContent
+                className="min-w-[200px]"
+                forceMount
+                onCloseAutoFocus={(e) => e.preventDefault()}
+              >
                 <DropdownMenuLabel>Reorder sections</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <Reorder.Group
