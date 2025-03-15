@@ -129,7 +129,19 @@
     "templates": "Modelli",
     "userProfile": "Profilo utente"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Anteprima del Curriculum",
+    "save": "Salva",
+    "reorderSection": "Riordina Sezione",
+    "unsavedChanges": "Modifiche non salvate",
+    "download": "Scarica",
+    "delete": "Elimina",
+    "cancel": "Annulla"
+  },
+  "deleteModal": {
+    "title": "Conferma Eliminazione",
+    "message": "Sei sicuro di voler eliminare <name></name>? Questa azione non può essere annullata."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navigazione",
+    "templates": "Modelli",
+    "resumeTemplates": "Modelli di curriculum",
+    "madeByYou": "Fatto da te",
+    "userDetails": "Dettagli utente",
+    "personalInfo": "Informazioni personali",
+    "experience": "Esperienza",
+    "education": "Istruzione",
+    "accomplishments": "Risultati",
+    "feedback": "Feedback",
+    "language": "Lingua",
+    "supportUs": "Supportaci",
+    "starOnGitHub": "Dai una stella su GitHub"
+  },
+  "templates": {
+    "resTemplate": "Scegli un Modello di Curriculum",
+    "madeByYou": "Curriculum Creati da Te"
   }
 }

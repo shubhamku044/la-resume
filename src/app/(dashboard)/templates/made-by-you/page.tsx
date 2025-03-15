@@ -27,6 +27,7 @@ import {
 } from '@/lib/templates/index';
 import { templates } from '@/lib/templates';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface Resume {
   id: string;
@@ -57,6 +58,7 @@ export default function MadeByYouPage() {
 
   const [deleteResume] = useDeleteResumeMutation();
   const [deleteImageKitFile] = useDeleteImageKitFileMutation();
+  const t = useTranslations();
 
   useEffect(() => {
     if (clerkId) {
@@ -105,7 +107,7 @@ export default function MadeByYouPage() {
 
   return (
     <div className="mx-auto max-w-3xl p-6">
-      <h1 className="mb-4 text-2xl font-semibold">Resumes Made by You</h1>
+      <h1 className="mb-4 text-2xl font-semibold">{t('templates.madeByYou')}</h1>
       <DeleteConfirmationDialog
         open={!!selectedResume}
         onOpenChange={(open) => !open && setSelectedResume(null)}
@@ -154,24 +156,32 @@ const DeleteConfirmationDialog = ({
   onOpenChange: (open: boolean) => void;
   onConfirm: () => void | Promise<void>;
   resumeTitle: string;
-}) => (
-  <AlertDialog open={open} onOpenChange={onOpenChange}>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
-        <AlertDialogDescription>
-          Are you sure you want to delete <strong>&apos;{resumeTitle}&apos;</strong>? This action
-          cannot be undone.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction asChild>
-          <Button variant="destructive" onClick={onConfirm}>
-            Delete
-          </Button>
-        </AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
-);
+}) => {
+  const t = useTranslations();
+  return (
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{t('deleteModal.title')}</AlertDialogTitle>
+          <AlertDialogDescription>
+            {t.rich('deleteModal.message', {
+              name: () => <strong>&apos;{resumeTitle}&apos;</strong>,
+            })}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel asChild>
+            <Button variant="outline" onClick={() => onOpenChange(false)}>
+              {t('common.cancel')}
+            </Button>
+          </AlertDialogCancel>
+          <AlertDialogAction asChild>
+            <Button variant="destructive" className="bg-red-700" onClick={onConfirm}>
+              {t('common.delete')}
+            </Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};

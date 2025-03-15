@@ -12,6 +12,7 @@ import {
   MTeckResumeData,
 } from '@/lib/templates/index';
 import { RotateCw, Trash2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ResumeCardProps {
   id: string;
@@ -34,6 +35,7 @@ export function ResumeCard({
   lastUpdated,
   imageUrl: imageLink,
 }: ResumeCardProps) {
+  const t = useTranslations();
   return (
     <Card className="group relative flex h-full -translate-y-1 flex-col overflow-hidden shadow-lg transition-all">
       <div className="relative size-full bg-white" style={{ aspectRatio: '1 / 1.414' }}>
@@ -105,7 +107,7 @@ export function ResumeCard({
                 ) : (
                   <>
                     <Trash2 className="size-4" />
-                    Delete
+                    {t('common.delete')}
                   </>
                 )}
               </Button>

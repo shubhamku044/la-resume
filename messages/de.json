@@ -129,7 +129,19 @@
     "templates": "Vorlagen",
     "userProfile": "Benutzerprofil"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Lebenslaufvorschau",
+    "save": "Speichern",
+    "reorderSection": "Abschnitt neu anordnen",
+    "unsavedChanges": "Nicht gespeicherte Änderungen",
+    "download": "Herunterladen",
+    "delete": "Löschen",
+    "cancel": "Abbrechen"
+  },
+  "deleteModal": {
+    "title": "Löschen bestätigen",
+    "message": "Sind Sie sicher, dass Sie <name></name> löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navigation",
+    "templates": "Vorlagen",
+    "resumeTemplates": "Lebenslaufvorlagen",
+    "madeByYou": "Von Ihnen erstellt",
+    "userDetails": "Benutzerdetails",
+    "personalInfo": "Persönliche Informationen",
+    "experience": "Erfahrung",
+    "education": "Bildung",
+    "accomplishments": "Errungenschaften",
+    "feedback": "Feedback",
+    "language": "Sprache",
+    "supportUs": "Unterstützen Sie uns",
+    "starOnGitHub": "Auf GitHub mit Stern markieren"
+  },
+  "templates": {
+    "resTemplate": "Wählen Sie eine Lebenslaufvorlage",
+    "madeByYou": "Von Ihnen erstellte Lebensläufe"
   }
 }

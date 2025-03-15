@@ -129,7 +129,19 @@
     "templates": "模板",
     "userProfile": "用户资料"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "简历预览",
+    "save": "保存",
+    "reorderSection": "重新排序部分",
+    "unsavedChanges": "未保存的更改",
+    "download": "下载",
+    "delete": "删除",
+    "cancel": "取消"
+  },
+  "deleteModal": {
+    "title": "确认删除",
+    "message": "您确定要删除 <name></name> 吗？此操作无法撤销。"
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "导航",
+    "templates": "模板",
+    "resumeTemplates": "简历模板",
+    "madeByYou": "你制作的",
+    "userDetails": "用户详情",
+    "personalInfo": "个人信息",
+    "experience": "经验",
+    "education": "教育",
+    "accomplishments": "成就",
+    "feedback": "反馈",
+    "language": "语言",
+    "supportUs": "支持我们",
+    "starOnGitHub": "在GitHub上加星"
+  },
+  "templates": {
+    "resTemplate": "选择简历模板",
+    "madeByYou": "你制作的简历"
   }
 }

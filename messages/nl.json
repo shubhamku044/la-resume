@@ -129,7 +129,19 @@
     "templates": "Sjablonen",
     "userProfile": "Gebruikersprofiel"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Voorbeeld van CV",
+    "save": "Opslaan",
+    "reorderSection": "Sectie herschikken",
+    "unsavedChanges": "Niet-opgeslagen wijzigingen",
+    "download": "Downloaden",
+    "delete": "Verwijderen",
+    "cancel": "Annuleren"
+  },
+  "deleteModal": {
+    "title": "Bevestig Verwijderen",
+    "message": "Weet je zeker dat je <name></name> wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navigatie",
+    "templates": "Sjablonen",
+    "resumeTemplates": "CV-sjablonen",
+    "madeByYou": "Gemaakt door jou",
+    "userDetails": "Gebruikersgegevens",
+    "personalInfo": "Persoonlijke informatie",
+    "experience": "Ervaring",
+    "education": "Onderwijs",
+    "accomplishments": "Prestaties",
+    "feedback": "Feedback",
+    "language": "Taal",
+    "supportUs": "Steun ons",
+    "starOnGitHub": "Geef een ster op GitHub"
+  },
+  "templates": {
+    "resTemplate": "Kies een CV-sjabloon",
+    "madeByYou": "CV's die jij hebt gemaakt"
   }
 }
