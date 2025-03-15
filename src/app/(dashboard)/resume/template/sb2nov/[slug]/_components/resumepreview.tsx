@@ -23,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useTranslations } from 'next-intl';
 
 interface IProps {
   imageUrl: string | null;
@@ -33,6 +34,7 @@ interface IProps {
 const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
+  const t = useTranslations();
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
@@ -91,7 +93,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
   if (!isMobile) {
     return (
       <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
-        <h2 className="text-lg font-semibold">Resume Preview</h2>
+        <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
         <div className="mt-4 flex items-center justify-between">
           <div className="h-10 flex-1">
             {loading && (
@@ -113,7 +115,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
             </Select>
             <AlertDialog>
               <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
-                Download
+                {t('common.download')}
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -146,9 +148,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
     return (
       <div className="flex w-full justify-center">
         <ResizablePanel className="w-full max-w-[500px] rounded-md border p-4">
-          <h2 className="text-center text-lg font-semibold">Resume Preview</h2>
-
-          {/* Export Controls (Centered at Top) */}
+          <h2 className="text-center text-lg font-semibold">{t('common.resumePreview')}</h2>
           <div className="mt-4 flex w-full items-center justify-center gap-2">
             <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
               <SelectTrigger className="w-[140px]">
@@ -162,7 +162,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
 
             <AlertDialog>
               <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
-                Download
+                {t('common.download')}
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>

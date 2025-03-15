@@ -27,6 +27,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useResumeData } from '@/hooks/resumeData';
+import { useTranslations } from 'next-intl';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
@@ -64,6 +65,7 @@ const ResumeForm = ({
   const [isEditingFilename, setIsEditingFilename] = useState(false);
   const [isHoveringFilename, setIsHoveringFilename] = useState(false);
   const filenameInputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations();
 
   useEffect(() => {
     if (isEditingFilename && filenameInputRef.current) {
@@ -267,10 +269,10 @@ const ResumeForm = ({
                   size="lg"
                 />
               ) : (
-                <>Save</>
+                <>{t('common.save')}</>
               )}
               <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
-                {!isChangesSaved && <>*Unsaved changes</>}
+                {!isChangesSaved && <>*{t('common.unsavedChanges')}</>}
               </span>
             </Button>
           </div>
@@ -278,7 +280,7 @@ const ResumeForm = ({
             <DropdownMenu>
               <DropdownMenuTrigger asChild className="text-sm">
                 <Button variant={'secondary'}>
-                  <span>Reorder sections</span>
+                  <span>{t('common.reorderSection')}</span>
                   <ChevronDown />
                 </Button>
               </DropdownMenuTrigger>
@@ -287,7 +289,7 @@ const ResumeForm = ({
                 forceMount
                 onCloseAutoFocus={(e) => e.preventDefault()}
               >
-                <DropdownMenuLabel>Reorder sections</DropdownMenuLabel>
+                <DropdownMenuLabel>{t('common.reorderSection')}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <Reorder.Group
                   values={resumeSectionsOrder}

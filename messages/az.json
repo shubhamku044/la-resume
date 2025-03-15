@@ -129,7 +129,19 @@
     "templates": "Şablonlar",
     "userProfile": "İstifadəçi Profili"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "CV Önizləməsi",
+    "save": "Yadda saxla",
+    "reorderSection": "Bölməni Yenidən Sırala",
+    "unsavedChanges": "Yadda saxlanmayan dəyişikliklər",
+    "download": "Yüklə",
+    "delete": "Sil",
+    "cancel": "Ləğv et"
+  },
+  "deleteModal": {
+    "title": "Silinməni Təsdiqləyin",
+    "message": "Siz <name></name> adlı elementi silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Naviqasiya",
+    "templates": "Şablonlar",
+    "resumeTemplates": "CV Şablonları",
+    "madeByYou": "Sizin yaratdıqlarınız",
+    "userDetails": "İstifadəçi Məlumatları",
+    "personalInfo": "Şəxsi Məlumat",
+    "experience": "Təcrübə",
+    "education": "Təhsil",
+    "accomplishments": "Nailiyyətlər",
+    "feedback": "Rəy",
+    "language": "Dil",
+    "supportUs": "Bizi dəstəkləyin",
+    "starOnGitHub": "GitHub-da ulduz qoyun"
+  },
+  "templates": {
+    "resTemplate": "CV Şablonunu Seçin",
+    "madeByYou": "Sizin Tərəfinizdən Hazırlanan CV-lər"
   }
 }

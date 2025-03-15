@@ -13,6 +13,7 @@ import {
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ProjectsProps {
   data: Sb2novResumeData['projects'];
@@ -37,6 +38,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
     accomplishments: [],
   });
   const [newAccomplishment, setNewAccomplishment] = useState('');
+  const t = useTranslations();
 
   const handleReorder = (newOrder: Sb2novResumeData['projects']) => {
     setTempData((prev) => ({ ...prev, projects: newOrder }));
@@ -240,7 +242,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
           </div>
 
           <Button onClick={handleSave} className="bg-green-500 text-white">
-            Save
+            {t('common.save')}
           </Button>
         </DialogContent>
       </Dialog>

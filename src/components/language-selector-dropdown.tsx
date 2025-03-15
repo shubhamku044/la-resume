@@ -37,7 +37,7 @@ const LanguageSelectorDropdown = ({ showLabel }: IProps) => {
           'flex gap-2'
         )}
       >
-        {showLabel && <span>Language</span>}
+        {showLabel && <span>{t('sidebar.language')}</span>}
         <IoLanguageOutline className="text-xl" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>

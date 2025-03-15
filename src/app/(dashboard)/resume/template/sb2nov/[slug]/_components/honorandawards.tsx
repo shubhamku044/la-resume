@@ -12,6 +12,7 @@ import {
 import { Reorder } from 'framer-motion';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { GripVertical, Pencil, Trash } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface HonorsAwardsProps {
   data: Sb2novResumeData['honorsAndAwards'];
@@ -33,6 +34,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
     url: '',
     urlLabel: '',
   });
+  const t = useTranslations();
 
   const handleReorder = (newOrder: Sb2novResumeData['honorsAndAwards']) => {
     setTempData((prev) => ({ ...prev, honorsAndAwards: newOrder }));
@@ -143,7 +145,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
           />
 
           <Button onClick={handleSaveEntry} className="bg-green-500 text-white">
-            Save
+            {t('common.save')}
           </Button>
         </DialogContent>
       </Dialog>

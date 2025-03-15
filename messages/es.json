@@ -129,7 +129,19 @@
     "templates": "Plantillas",
     "userProfile": "Perfil de usuario"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Vista previa del currículum",
+    "save": "Guardar",
+    "reorderSection": "Reordenar Sección",
+    "unsavedChanges": "Cambios no guardados",
+    "download": "Descargar",
+    "delete": "Eliminar",
+    "cancel": "Cancelar"
+  },
+  "deleteModal": {
+    "title": "Confirmar Eliminación",
+    "message": "¿Estás seguro de que quieres eliminar <name></name>? Esta acción no se puede deshacer."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navegación",
+    "templates": "Plantillas",
+    "resumeTemplates": "Plantillas de currículum",
+    "madeByYou": "Hecho por ti",
+    "userDetails": "Detalles del usuario",
+    "personalInfo": "Información personal",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "accomplishments": "Logros",
+    "feedback": "Retroalimentación",
+    "language": "Idioma",
+    "supportUs": "Apóyanos",
+    "starOnGitHub": "Dale una estrella en GitHub"
+  },
+  "templates": {
+    "resTemplate": "Elige una Plantilla de Currículum",
+    "madeByYou": "Currículums Hechos por Ti"
   }
 }

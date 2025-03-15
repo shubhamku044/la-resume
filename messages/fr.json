@@ -129,7 +129,19 @@
     "templates": "Modèles",
     "userProfile": "Profil utilisateur"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Aperçu du CV",
+    "save": "Enregistrer",
+    "reorderSection": "Réorganiser la section",
+    "unsavedChanges": "Modifications non enregistrées",
+    "download": "Télécharger",
+    "delete": "Supprimer",
+    "cancel": "Annuler"
+  },
+  "deleteModal": {
+    "title": "Confirmer la suppression",
+    "message": "Êtes-vous sûr de vouloir supprimer <name></name> ? Cette action est irréversible."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navigation",
+    "templates": "Modèles",
+    "resumeTemplates": "Modèles de CV",
+    "madeByYou": "Fait par Vous",
+    "userDetails": "Détails de l'utilisateur",
+    "personalInfo": "Informations personnelles",
+    "experience": "Expérience",
+    "education": "Éducation",
+    "accomplishments": "Réalisations",
+    "feedback": "Retour d'information",
+    "language": "Langue",
+    "supportUs": "Soutenez-nous",
+    "starOnGitHub": "Mettre une étoile sur GitHub"
+  },
+  "templates": {
+    "resTemplate": "Choisissez un modèle de CV",
+    "madeByYou": "CV créés par vous"
   }
 }

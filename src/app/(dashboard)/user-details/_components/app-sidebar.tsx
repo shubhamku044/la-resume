@@ -30,46 +30,48 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGitHubStars } from '@/hooks';
 import { LanguageSelectorDropdown } from '@/components';
-
-const userDetailItems = [
-  {
-    title: 'Personal Info',
-    url: '/user-details/personal-info',
-    icon: UserCircle,
-  },
-  {
-    title: 'Experience',
-    url: '/user-details/experience',
-    icon: Briefcase,
-  },
-  {
-    title: 'Education',
-    url: '/user-details/education',
-    icon: GraduationCap,
-  },
-  {
-    title: 'Accomplishment',
-    url: '/user-details/accomplishment',
-    icon: Trophy,
-  },
-];
-
-const templateItems = [
-  {
-    title: 'Resume Templates',
-    url: '/templates/resume-templates',
-    icon: FileText,
-  },
-  {
-    title: 'Made by You',
-    url: '/templates/made-by-you',
-    icon: Brush,
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export default function AppSidebar() {
   const pathname = usePathname();
   const stars = useGitHubStars();
+  const t = useTranslations('sidebar');
+
+  const userDetailItems = [
+    {
+      title: t('personalInfo'),
+      url: '/user-details/personal-info',
+      icon: UserCircle,
+    },
+    {
+      title: t('experience'),
+      url: '/user-details/experience',
+      icon: Briefcase,
+    },
+    {
+      title: t('education'),
+      url: '/user-details/education',
+      icon: GraduationCap,
+    },
+    {
+      title: t('accomplishments'),
+      url: '/user-details/accomplishment',
+      icon: Trophy,
+    },
+  ];
+
+  const templateItems = [
+    {
+      title: t('resumeTemplates'),
+      url: '/templates/resume-templates',
+      icon: FileText,
+    },
+    {
+      title: t('madeByYou'),
+      url: '/templates/made-by-you',
+      icon: Brush,
+    },
+  ];
 
   return (
     <Sidebar variant="sidebar">
@@ -81,7 +83,7 @@ export default function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Navigation
+            {t('navigation')}
           </SidebarGroupLabel>
           <SidebarGroupContent className="mt-1">
             <SidebarMenu>
@@ -93,7 +95,7 @@ export default function AppSidebar() {
                 >
                   <Link href="/templates/resume-templates">
                     <LayoutTemplate className="size-4 text-primary" />
-                    <span>Templates</span>
+                    <span>{t('templates')}</span>
                     <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
                   </Link>
                 </SidebarMenuButton>
@@ -127,7 +129,7 @@ export default function AppSidebar() {
                 >
                   <Link href="/user-details">
                     <User className="size-4 text-primary" />
-                    <span>User Details</span>
+                    <span>{t('userDetails')}</span>
                     <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
                   </Link>
                 </SidebarMenuButton>
@@ -161,7 +163,7 @@ export default function AppSidebar() {
                 >
                   <Link href="/feedback">
                     <User className="size-4 text-primary" />
-                    <span>Feedback</span>
+                    <span>{t('feedback')}</span>
                     <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
                   </Link>
                 </SidebarMenuButton>
@@ -172,7 +174,7 @@ export default function AppSidebar() {
 
         <SidebarGroup className="mt-4">
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Language
+            {t('language')}
           </SidebarGroupLabel>
           <SidebarGroupContent className="mt-1">
             <SidebarMenu>
@@ -186,7 +188,7 @@ export default function AppSidebar() {
         </SidebarGroup>
         <SidebarGroup className="mt-auto">
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Support Us
+            {t('supportUs')}
           </SidebarGroupLabel>
           <SidebarGroupContent className="mt-1">
             <SidebarMenu>
@@ -206,7 +208,7 @@ export default function AppSidebar() {
                       <span className="text-xs">{stars}</span>
                     </div>
                     <LuGithub className="size-4" />
-                    <span>Star on GitHub</span>
+                    <span>{t('starOnGitHub')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

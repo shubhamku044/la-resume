@@ -129,7 +129,19 @@
     "templates": "Templates",
     "userProfile": "User Profile"
   },
-  "common": {},
+  "common": {
+    "resumePreview": "Resume Preview",
+    "save": "Save",
+    "reorderSection": "Reorder Section",
+    "unsavedChanges": "unsaved changes",
+    "download": "Download",
+    "delete": "Delete",
+    "cancel": "Cancel"
+  },
+  "deleteModal": {
+    "title": "Confirm Delete",
+    "message": "Are you sure you want to delete <name></name>? This action cannot be undone."
+  },
   "language": {
     "en": "🇬🇧 English",
     "ja": "🇯🇵 日本語",
@@ -143,5 +155,24 @@
     "ru": "🇷🇺 Русский",
     "es": "🇪🇸 Español",
     "nl": "🇳🇱 Nederlands"
+  },
+  "sidebar": {
+    "navigation": "Navigation",
+    "templates": "Templates",
+    "resumeTemplates": "Resume Templates",
+    "madeByYou": "Made by You",
+    "userDetails": "User Details",
+    "personalInfo": "Personal Info",
+    "experience": "Experience",
+    "education": "Education",
+    "accomplishments": "Accomplishments",
+    "feedback": "Feedback",
+    "language": "Language",
+    "supportUs": "Support Us",
+    "starOnGitHub": "Star on GitHub"
+  },
+  "templates": {
+    "resTemplate": "Choose a Resume Template",
+    "madeByYou": "Resumes Made by You"
   }
 }

@@ -14,12 +14,14 @@ import { useSaveResumeMutation } from '@/store/services/templateApi';
 import { toast } from 'sonner';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 export default function ResumeTemplatesPage() {
   const router = useRouter();
   const { user } = useUser();
   const clerkId = user?.id;
   const [saveResume] = useSaveResumeMutation();
   const [iscreating, setIsCreating] = useState(false);
+  const t = useTranslations();
 
   const handleTemplateClick = async (templateId: string) => {
     setIsCreating(true);
@@ -86,13 +88,17 @@ export default function ResumeTemplatesPage() {
             <SelectValue placeholder="Select Page" defaultValue="/templates/resume-templates" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="/templates/resume-templates">Resume Templates</SelectItem>
-            <SelectItem value="/templates/made-by-you">Resumes Made by You</SelectItem>
+            <SelectItem value="/templates/resume-templates">
+              {t('sidebar.resumeTemplates')}
+            </SelectItem>
+            <SelectItem value="/templates/made-by-you">{t('templates.resTemplate')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">Choose a Resume Template</h1>
+      <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">
+        {t('templates.resTemplate')}
+      </h1>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {templates.map((template) => (
