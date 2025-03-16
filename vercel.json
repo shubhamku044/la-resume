@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/compile/*.ts": {
+    "api/compile": {
       "maxDuration": 60
     }
   }
