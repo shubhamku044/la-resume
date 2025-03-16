@@ -95,11 +95,14 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@clerk/shared",
+      "@heroui/shared-utils",
       "@prisma/client",
       "@prisma/engines",
       "@vercel/speed-insights",
       "esbuild",
-      "prisma"
+      "prisma",
+      "sharp"
     ]
   }
 }
