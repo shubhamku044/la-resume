@@ -83,7 +83,8 @@ export const escapeLatex = (text: string) => {
   });
 
   // Block attempts to use comments for injection
-  escaped = escaped.replace(/\\%\s*(.+)$/gm, '\\% [SANITIZED]');
+  // escaped = escaped.replace(/\\%\s*(.+)$/gm, '\\% [SANITIZED]');
+  escaped = escaped.replace(/\\%\s*(\\[a-zA-Z]+)/gm, '\\% [BLOCKED:$1]');
 
   // Block attempts to use newlines and spaces to obfuscate commands
   escaped = escaped.replace(/\\textbackslash\{\}\s+([a-zA-Z]+)/g, (match, command) => {
