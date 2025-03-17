@@ -6,12 +6,23 @@ import { Experience } from '@/types';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { removeExperience } from '@/store/slices';
 import { ExperienceCard, ExperienceModal } from '../_components';
+import { useGetExperienceQuery } from '@/store/services/experience';
+import { useUser } from '@clerk/nextjs';
 
 export default function ExperienceSection() {
+  const { user, isLoaded: isClerkLoaded } = useUser();
+  const userId = user?.id;
   const experiences = useAppSelector((state) => state.experience);
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [editingExperience, setEditingExperience] = useState<Experience | undefined>();
+
+  const { data: exp } = useGetExperienceQuery(userId!, {
+    skip: !userId || !isClerkLoaded,
+    refetchOnMountOrArgChange: true,
+  });
+
+  console.log('ExperienceSection -> exp', exp);
 
   const handleEdit = (experience: Experience) => {
     setEditingExperience(experience);

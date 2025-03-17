@@ -18,7 +18,7 @@ import {
   experienceReducer,
   userDetailsReducer,
 } from './slices';
-import { personalInfoApi, userDetailsApi } from './services';
+import { experienceApi, personalInfoApi, userDetailsApi } from './services';
 import { templateApi } from './services';
 const persistConfig = {
   key: 'root',
@@ -36,6 +36,7 @@ const rootReducers = combineReducers({
   [userDetailsApi.reducerPath]: userDetailsApi.reducer,
   [personalInfoApi.reducerPath]: personalInfoApi.reducer,
   [templateApi.reducerPath]: templateApi.reducer,
+  [experienceApi.reducerPath]: experienceApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -50,7 +51,8 @@ export const store = configureStore({
     })
       .concat(userDetailsApi.middleware)
       .concat(personalInfoApi.middleware)
-      .concat(templateApi.middleware);
+      .concat(templateApi.middleware)
+      .concat(experienceApi.middleware);
     /*
     .concat(() => (next) => (action) => {
       console.log('RTK Query action: ', action);
