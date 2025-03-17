@@ -7,10 +7,8 @@ export type MTeckResumeData = {
     email: string;
     github: string;
     linkedin: string;
-
     summary: string;
   };
-
   skills: Record<string, string[]>;
   experience: {
     id: string;
@@ -24,22 +22,26 @@ export type MTeckResumeData = {
     institution: string;
     degree: string;
   }[];
-  certificates: string[];
+  certificates: {
+    id: string;
+    name: string;
+  }[];
   projects: {
     id: string;
     title: string;
     duration: string;
     details: string[];
   }[];
+  sectionOrder?: Array<'skills' | 'experience' | 'education' | 'projects'>;
 };
 
-export const mteckResumeSampleData = {
+export const mteckResumeSampleData: MTeckResumeData = {
   personalInfo: {
     name: 'John Doe',
     phone: '123-456-7890',
     email: 'user@domain.tld',
-    linkedin: 'linkedin.com/in/USER',
     github: 'github.com/USER',
+    linkedin: 'linkedin.com/in/USER',
     summary:
       'Simplified version of a monstrosity that I built back in college using current best practices.',
   },
@@ -97,7 +99,16 @@ export const mteckResumeSampleData = {
       degree: 'Bachelor of Science in Computer Information Systems',
     },
   ],
-  certificates: ['Salt - SaltStack Certified Engineer', 'GCP - Professional Cloud Architect'],
+  certificates: [
+    {
+      id: '420a2086-9b8d-4893-b3a6-256723120d32',
+      name: 'GCP - Professional Cloud Architect',
+    },
+    {
+      id: '9f78beb4-9316-482c-ab71-4af1aafc5618',
+      name: 'Salt - SaltStack Certified Engineer',
+    },
+  ],
   projects: [
     {
       id: '1',
@@ -112,7 +123,7 @@ export const mteckResumeSampleData = {
     {
       id: '2',
       title: 'Debian Linux',
-      duration: 'Jan 2001 – Present',
+      duration: 'Jan 2001 - Present',
       details: [
         'Maintained packages in Debian repositories',
         'Reviewed and sponsored packages on behalf of prospective Developers',
@@ -120,8 +131,173 @@ export const mteckResumeSampleData = {
       ],
     },
   ],
+  sectionOrder: ['skills', 'experience', 'education', 'projects'],
 };
 export const mteck = (data: MTeckResumeData) => {
+  const generateLatexHeading = (data: MTeckResumeData['personalInfo']) => {
+    const { name, phone, email, github, linkedin, summary } = data;
+
+    const links = [];
+
+    if (phone)
+      links.push(
+        `\\href{tel:${escapeLatex(phone)}}{\\raisebox{-0.05\\height} \\faPhone\\ ${escapeLatex(phone)}}`
+      );
+    if (email)
+      links.push(
+        `\\href{mailto:${escapeLatex(email)}}{\\raisebox{-0.15\\height} \\faEnvelope\\ ${escapeLatex(email)}}`
+      );
+
+    if (github) {
+      const githubURL = github.startsWith('https://') ? github : `https://${github}`;
+      links.push(
+        `\\href{${escapeLatex(githubURL)}}{\\raisebox{-0.15\\height} \\faGithub\\ ${escapeLatex(github)}}`
+      );
+    }
+
+    if (linkedin) {
+      const linkedinURL = linkedin.startsWith('https://') ? linkedin : `https://${linkedin}`;
+      links.push(
+        `\\href{${escapeLatex(linkedinURL)}}{\\raisebox{-0.15\\height} \\faLinkedin\\ ${escapeLatex(linkedin)}}`
+      );
+    }
+
+    return `\\documentTitle{${escapeLatex(name)}}{${links.join(' ~ | ~ ')}}
+  
+    %---------%
+    % Summary %
+    %---------%
+    ${
+      summary
+        ? `\\tinysection{Summary}
+    ${escapeLatex(summary)}`
+        : ''
+    }`;
+  };
+
+  const generateSection = (sectionKey: string) => {
+    switch (sectionKey) {
+      case 'skills':
+        return Object.keys(data.skills).length > 0
+          ? `
+          %--------%
+          % Skills %
+          %--------%
+          
+          \\section{Skills}
+          
+          \\begin{multicols}{2}
+            \\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
+              ${Object.entries(data.skills)
+                .map(
+                  ([category, items]) => `
+                \\item[\\textbf{${escapeLatex(category)}}] ${escapeLatex(items.join(', '))}`
+                )
+                .join('\n')}
+            \\end{itemize}
+          \\end{multicols}
+          `
+          : '';
+      case 'experience':
+        return data.experience.length > 0
+          ? `
+          %------------%
+          % Experience %
+          %------------%
+          
+          \\section{Experience}
+          
+          ${data.experience
+            .map(
+              (exp) => `
+            \\headingBf{${escapeLatex(exp.company)}}{${escapeLatex(exp.duration)}}
+            \\headingIt{${escapeLatex(exp.role)}}{}
+            \\begin{resume_list}
+              ${exp.achievements
+                .map(
+                  (achievement) => `
+              \\item ${escapeLatex(achievement)}`
+                )
+                .join('\n')}
+            \\end{resume_list}
+          `
+            )
+            .join('\n')}
+          `
+          : '';
+
+      case 'education':
+        return data.education?.length > 0 || data.certificates?.length > 0
+          ? `
+    \\section{Education}
+    \\resumeSubHeadingListStart
+    ${
+      data.education?.length > 0
+        ? data.education
+            .map(
+              (edu) => `
+    \\headingBf{${escapeLatex(edu.institution)}}{}
+    \\headingIt{${escapeLatex(edu.degree)}}{}
+  `
+            )
+            .join('\n')
+        : ''
+    }
+    ${
+      data.certificates?.length > 0
+        ? `
+          \\vspace{5pt}
+          \\headingBf{Certifications}{}
+          \\begin{resume_list}
+          ${data.certificates
+            .map(
+              (cert) => `
+              \\item ${escapeLatex(cert.name)}
+            `
+            )
+            .join('\n')}
+          \\end{resume_list}
+        `
+        : ''
+    }    
+    
+    \\resumeSubHeadingListEnd
+  `
+          : '';
+
+      case 'projects':
+        return data.projects.length > 0
+          ? `
+          %----------------------------%
+          % Extracurricular Activities %
+          %----------------------------%
+          
+          \\section{Projects}
+          
+          ${data.projects
+            .map(
+              (project) => `
+            \\headingBf{${escapeLatex(project.title)}}{${escapeLatex(project.duration)}}
+            \\begin{resume_list}
+              ${project.details
+                .map(
+                  (detail) => `
+              \\item ${escapeLatex(detail)}`
+                )
+                .join('\n')}
+            \\end{resume_list}
+          `
+            )
+            .join('\n')}
+          `
+          : '';
+      default:
+        return ``;
+    }
+  };
+  const sections = data.sectionOrder || ['skills', 'experience', 'education', 'projects'];
+  const sectionContent = sections.map(generateSection).filter(Boolean).join('\n');
+
   return `%%%%
 % MTecknology's Resume
 %%%%
@@ -291,160 +467,7 @@ export const mteck = (data: MTeckResumeData) => {
 %---------%
 % Heading %
 %---------%
-
-\\documentTitle{${escapeLatex(data.personalInfo.name)}}{
-    % Web Version
-    %\\raisebox{-0.05\\height} \\faPhone\\ [redacted - web copy] ~
-    %\\raisebox{-0.15\\height} \\faEnvelope\\ [redacted - web copy] ~
-    %%
-    ${
-      data.personalInfo.phone
-        ? `\\href{tel:${escapeLatex(data.personalInfo.phone)}}{
-          \\raisebox{-0.05\\height} \\faPhone\\ ${escapeLatex(data.personalInfo.phone)}} `
-        : ''
-    }
-    ${
-      data.personalInfo.email
-        ? `\\href{mailto:${escapeLatex(data.personalInfo.email)}}{~ | ~
-          \\raisebox{-0.15\\height} \\faEnvelope\\ ${escapeLatex(data.personalInfo.email)}} `
-        : ''
-    }
-    ${
-      data.personalInfo.github
-        ? `\\href{https://github.com/${escapeLatex(data.personalInfo.github)}}{~ | ~
-          \\raisebox{-0.15\\height} \\faGithub\\ ${escapeLatex(data.personalInfo.github)}}`
-        : ''
-    }
-    ${
-      data.personalInfo.linkedin
-        ? `\\href{https://linkedin.com/in/${escapeLatex(data.personalInfo.linkedin)}}{~ | ~
-          \\raisebox{-0.15\\height} \\faLinkedin\\ ${escapeLatex(data.personalInfo.linkedin)}}`
-        : ''
-    }
-    
-  }
-  %---------%
-% Summary %
-%---------%
-
-\\tinysection{Summary}
-${escapeLatex(data.personalInfo.summary)}
-${
-  Object.keys(data.skills).length > 0
-    ? `
-%--------%
-% Skills %
-%--------%
-
-\\section{Skills}
-
-\\begin{multicols}{2}
-  \\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
-    ${Object.entries(data.skills)
-      .map(
-        ([category, items]) => `
-      \\item[\\textbf{${escapeLatex(category)}}] ${escapeLatex(items.join(', '))}`
-      )
-      .join('\n')}
-  \\end{itemize}
-\\end{multicols}
-`
-    : ''
-}
-
-${
-  data.experience.length > 0
-    ? `
-%------------%
-% Experience %
-%------------%
-
-\\section{Experience}
-
-${data.experience
-  .map(
-    (exp) => `
-  \\headingBf{${escapeLatex(exp.company)}}{${escapeLatex(exp.duration)}}
-  \\headingIt{${escapeLatex(exp.role)}}{}
-  \\begin{resume_list}
-    ${exp.achievements
-      .map(
-        (achievement) => `
-    \\item ${escapeLatex(achievement)}`
-      )
-      .join('\n')}
-  \\end{resume_list}
-`
-  )
-  .join('\n')}
-`
-    : ''
-}
-%-----------%
-% Education %
-%-----------%
-
-%-----------%
-% Education %
-%-----------%
-
-\\section{Education}
-
-${
-  data.education?.length > 0
-    ? data.education
-        .map(
-          (edu) => `
-  \\headingBf{${escapeLatex(edu.institution)}}{}
-  \\headingIt{${escapeLatex(edu.degree)}}{}
-`
-        )
-        .join('\n')
-    : ''
-}
-
-${
-  data.certificates?.length > 0
-    ? `
-\\vspace{5pt}
-\\headingBf{Certifications}{}
-\\begin{resume_list}
-  ${data.certificates
-    .map(
-      (cert) => `
-    \\item ${escapeLatex(cert)}`
-    )
-    .join('\n')}
-\\end{resume_list}
-`
-    : ''
-}
-${
-  data.projects.length > 0
-    ? `
-%----------------------------%
-% Extracurricular Activities %
-%----------------------------%
-
-\\section{Projects}
-
-${data.projects
-  .map(
-    (project) => `
-  \\headingBf{${escapeLatex(project.title)}}{${escapeLatex(project.duration)}}
-  \\begin{resume_list}
-    ${project.details
-      .map(
-        (detail) => `
-    \\item ${escapeLatex(detail)}`
-      )
-      .join('\n')}
-  \\end{resume_list}
-`
-  )
-  .join('\n')}
-`
-    : ''
-}
+${generateLatexHeading(data.personalInfo)}
+${sectionContent}
 \\end{document}`;
 };

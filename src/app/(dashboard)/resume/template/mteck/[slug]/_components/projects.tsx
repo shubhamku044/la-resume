@@ -10,16 +10,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
+import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
 import { MTeckResumeData } from '@/lib/templates/mteck';
 
 interface ProjectsProps {
   data: MTeckResumeData['projects'];
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
+const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -39,6 +40,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
   // Handle reordering projects
   const handleReorder = (newOrder: typeof data) => {
     setTempData((prev) => ({ ...prev, projects: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -69,6 +71,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       details: [],
     });
     setNewDetail('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a project entry
@@ -77,6 +80,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       projects: prev.projects.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Add a detail
@@ -87,6 +91,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       details: [...prev.details, newDetail],
     }));
     setNewDetail('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a detail
@@ -95,6 +100,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       details: prev.details.filter((_, i) => i !== detailIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
@@ -103,37 +109,33 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
-              <div className="flex items-start justify-between">
-                {/* Left Section: Project Details */}
-                <div className="w-full space-y-2">
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold">{entry.title || 'Untitled Project'}</h3>
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div className="space-y-1">
+                  <h3 className="text-base font-bold">{entry.title || 'Untitled Project'}</h3>
 
-                  {/* Duration */}
-                  <p className="text-lg text-gray-500">
+                  <p className="text-sm text-gray-500">
                     {entry.duration || 'No Duration Provided'}
                   </p>
 
-                  {/* Details */}
                   {entry.details.length > 0 && (
-                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700">
                       {entry.details.map((detail, idx) => (
                         <li key={idx}>{detail}</li>
                       ))}
                     </ul>
                   )}
                 </div>
+              </div>
 
-                {/* Right Section: Edit & Delete Buttons */}
-                <div className="flex space-x-3">
-                  <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                    <Pencil size={18} />
-                  </Button>
-                  <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                    <Trash size={18} />
-                  </Button>
-                </div>
+              <div className="flex space-x-2">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
+                </Button>
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={18} />
+                </Button>
               </div>
             </Card>
           </Reorder.Item>

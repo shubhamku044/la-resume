@@ -11,14 +11,15 @@ import {
 } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
 import { MTeckResumeData } from '@/lib/templates/mteck';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface SkillsProps {
   data: MTeckResumeData['skills'];
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SkillsSection = ({ data, setTempData }: SkillsProps) => {
+const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<string | null>(null);
   const [tempCategory, setTempCategory] = useState('');
@@ -27,6 +28,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
   // Update skill categories and values
   const updateSkills = (updatedSkills: Record<string, string[]>) => {
     setTempData((prev) => ({ ...prev, skills: updatedSkills }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Handle reordering
@@ -39,6 +41,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       {} as Record<string, string[]>
     );
     updateSkills(reorderedSkills);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -62,6 +65,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       return { ...prev, skills: updatedSkills };
     });
     setModalOpen(false);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a category
@@ -71,6 +75,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       delete updatedSkills[category];
       return { ...prev, skills: updatedSkills };
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Add a new category
@@ -85,6 +90,7 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
     }));
     setNewCategoryName('');
     setAddModalOpen(false);
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
@@ -93,30 +99,33 @@ const SkillsSection = ({ data, setTempData }: SkillsProps) => {
       <Reorder.Group values={Object.keys(data)} onReorder={handleReorder} className="space-y-3">
         {Object.keys(data).map((category) => (
           <Reorder.Item key={category} value={category}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="text-xl font-semibold">{category}</h3>
-                <p className="text-lg text-gray-500">{data[category].join(', ')}</p>
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div className="space-y-1">
+                  <h3 className="text-base font-bold">{category}</h3>
+                  <p className="text-sm text-gray-600">
+                    {data[category].join(', ') || 'No Skills Added'}
+                  </p>
+                </div>
               </div>
+
               <div className="flex space-x-2">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(category)}>
-                  <Pencil size={16} />
+                  <Pencil size={18} />
                 </Button>
                 <Button
                   size="icon"
                   variant="destructive"
                   onClick={() => handleRemoveCategory(category)}
                 >
-                  <Trash size={16} />
+                  <Trash size={18} />
                 </Button>
               </div>
             </Card>
           </Reorder.Item>
         ))}
       </Reorder.Group>
-
-      {/* Add Category Button */}
-      {/* Add Category Modal */}
       <Dialog
         open={addModalOpen}
         onOpenChange={(isOpen) => {

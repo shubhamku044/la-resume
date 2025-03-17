@@ -317,11 +317,13 @@ const ResumeForm = ({
       <Tabs defaultValue={String(sections[0])} className="w-full">
         <div className="overflow-x-auto">
           <TabsList className="flex w-max gap-2">
-            {sections.map((section) => (
-              <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
-                {String(section)}
-              </TabsTrigger>
-            ))}
+            {sections
+              .filter((section) => section !== 'sectionOrder')
+              .map((section) => (
+                <TabsTrigger key={String(section)} value={String(section)} className="capitalize">
+                  {String(section)}
+                </TabsTrigger>
+              ))}
           </TabsList>
         </div>
 

@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { X, Pencil, Trash } from 'lucide-react';
+import { X, Pencil, Trash, GripVertical } from 'lucide-react';
 import { MTeckResumeData } from '@/lib/templates/mteck';
 
 interface Experience {
@@ -24,9 +24,10 @@ interface Experience {
 interface ExperienceProps {
   data: Experience[];
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
+const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<Experience>({
@@ -42,6 +43,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
   // Handle reordering experiences
   const handleReorder = (newOrder: Experience[]) => {
     setTempData((prev) => ({ ...prev, experience: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -73,6 +75,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       achievements: [],
     });
     setNewAchievement('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove an experience entry
@@ -81,6 +84,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       ...prev,
       experience: prev.experience.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Add an achievement
@@ -91,6 +95,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       achievements: [...prev.achievements, newAchievement],
     }));
     setNewAchievement('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove an achievement
@@ -99,6 +104,7 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       ...prev,
       achievements: prev.achievements.filter((_, i) => i !== achievementIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
@@ -107,33 +113,34 @@ const ExperienceSection = ({ data, setTempData }: ExperienceProps) => {
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
-              <div className="flex items-start justify-between">
-                {/* Left Section: Company, Role, Duration, and Achievements */}
-                <div className="w-full space-y-2">
-                  <h3 className="text-lg font-semibold">{entry.company || 'Untitled Company'}</h3>
-                  <p className="text-lg text-gray-600">{entry.role || 'No Role Specified'}</p>
-                  <p className="text-lg text-gray-500">
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div className="space-y-1">
+                  <h3 className="text-base font-bold">{entry.company || 'Untitled Company'}</h3>
+                  <p className="text-sm text-gray-600">{entry.role || 'No Role Specified'}</p>
+                  <p className="text-sm text-gray-500">
                     {entry.duration || 'No Duration Provided'}
                   </p>
+
                   {entry.achievements.length > 0 && (
-                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700">
                       {entry.achievements.map((achievement, idx) => (
                         <li key={idx}>{achievement}</li>
                       ))}
                     </ul>
                   )}
                 </div>
+              </div>
 
-                {/* Right Section: Edit & Delete Buttons */}
-                <div className="flex space-x-3">
-                  <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                    <Pencil size={18} />
-                  </Button>
-                  <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                    <Trash size={18} />
-                  </Button>
-                </div>
+              {/* Right Section: Edit & Delete Buttons */}
+              <div className="flex space-x-2">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
+                </Button>
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={18} />
+                </Button>
               </div>
             </Card>
           </Reorder.Item>
