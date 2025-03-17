@@ -10,15 +10,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Pencil, Trash } from 'lucide-react';
+import { GripVertical, Pencil, Plus, Trash } from 'lucide-react';
 import { MTeckResumeData } from '@/lib/templates/mteck';
 
 interface EducationProps {
   data: MTeckResumeData['education'];
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EducationSection = ({ data, setTempData }: EducationProps) => {
+const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -40,6 +41,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
 
   const handleReorder = (newOrder: MTeckResumeData['education']) => {
     setTempData((prev) => ({ ...prev, education: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number) => {
@@ -64,6 +66,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
     setModalOpen(false);
     setEditingIndex(null);
     setTempEntry({ id: '', institution: '', degree: '' });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove an education entry
@@ -72,35 +75,30 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
       ...prev,
       education: prev.education.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Education List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="text-xl font-bold">{entry.institution || 'Untitled Institution'}</h3>
-                <p className="text-lg text-gray-600">{entry.degree || 'No Degree'}</p>
+            <Card className="flex justify-between p-4">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div>
+                  <h3 className="text-base font-bold">
+                    {entry.institution || 'Untitled Institution'}
+                  </h3>
+                  <p className="text-sm text-gray-600">{entry.degree || 'No Degree'}</p>
+                </div>
               </div>
               <div className="flex space-x-3">
-                <Button
-                  size="icon"
-                  variant="outline"
-                  onClick={() => handleOpenModal(index)}
-                  aria-label="Edit"
-                >
-                  <Pencil size={16} />
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
                 </Button>
-                <Button
-                  size="icon"
-                  variant="destructive"
-                  onClick={() => handleRemove(index)}
-                  aria-label="Delete"
-                >
-                  <Trash size={16} />
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={18} />
                 </Button>
               </div>
             </Card>
@@ -108,8 +106,16 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Education Button */}
-      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+      <Dialog
+        open={modalOpen}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setEditingIndex(null);
+            setTempEntry({ id: '', institution: '', degree: '' });
+          }
+          setModalOpen(isOpen);
+        }}
+      >
         <DialogTrigger asChild>
           <Button
             onClick={() => {
@@ -118,6 +124,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
               setModalOpen(true);
             }}
           >
+            <Plus size={18} className="mr-2" />
             Add Education
           </Button>
         </DialogTrigger>

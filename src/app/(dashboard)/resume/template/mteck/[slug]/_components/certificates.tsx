@@ -10,28 +10,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Trash, Plus, Pencil } from 'lucide-react';
+import { Trash, Plus, Pencil, GripVertical } from 'lucide-react';
 import { MTeckResumeData } from '@/lib/templates/mteck';
-
 interface CertificatesProps {
   data: MTeckResumeData['certificates'];
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
+console.log('CertificatesSection Rendered');
 
-const CertificatesSection = ({ data, setTempData }: CertificatesProps) => {
+const CertificatesSection = ({ data, setTempData, setIsChangesSaved }: CertificatesProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempCertificate, setTempCertificate] = useState('');
-
-  // Handle reordering certificates
-  const handleReorder = (newOrder: string[]) => {
+  const handleReorder = (newOrder: MTeckResumeData['certificates']) => {
     setTempData((prev) => ({ ...prev, certificates: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
-
+  console.log(data);
   // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
-    setTempCertificate(data[index]);
+    setTempCertificate(data[index].name);
     setModalOpen(true);
   };
 
@@ -42,9 +42,12 @@ const CertificatesSection = ({ data, setTempData }: CertificatesProps) => {
     setTempData((prev) => {
       const updatedCertificates = [...prev.certificates];
       if (editingIndex !== null) {
-        updatedCertificates[editingIndex] = tempCertificate; // Update existing certificate
+        updatedCertificates[editingIndex] = {
+          ...updatedCertificates[editingIndex],
+          name: tempCertificate,
+        };
       } else {
-        updatedCertificates.push(tempCertificate); // Add new certificate
+        updatedCertificates.push({ id: Date.now().toString(), name: tempCertificate }); // Assign a unique ID
       }
       return { ...prev, certificates: updatedCertificates };
     });
@@ -52,6 +55,7 @@ const CertificatesSection = ({ data, setTempData }: CertificatesProps) => {
     setModalOpen(false);
     setEditingIndex(null);
     setTempCertificate('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a certificate
@@ -60,30 +64,30 @@ const CertificatesSection = ({ data, setTempData }: CertificatesProps) => {
       ...prev,
       certificates: prev.certificates.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Certificates List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((certificate, index) => (
-          <Reorder.Item key={index} value={certificate}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
-              <div className="flex items-start justify-between">
-                {/* Left Section: Certificate Details */}
-                <div className="w-full space-y-2">
-                  <h3 className="text-lg font-semibold">{certificate || 'Untitled Certificate'}</h3>
+          <Reorder.Item key={certificate.id} value={certificate}>
+            <Card className="flex justify-between p-4">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+                <div>
+                  <h3 className="text-base font-bold">
+                    {certificate.name || 'Untitled Certificate'}
+                  </h3>
                 </div>
-
-                {/* Right Section: Edit & Delete Buttons */}
-                <div className="flex space-x-3">
-                  <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                    <Pencil size={18} />
-                  </Button>
-                  <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                    <Trash size={18} />
-                  </Button>
-                </div>
+              </div>
+              <div className="flex space-x-3">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
+                </Button>
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={18} />
+                </Button>
               </div>
             </Card>
           </Reorder.Item>
@@ -95,7 +99,6 @@ const CertificatesSection = ({ data, setTempData }: CertificatesProps) => {
         open={modalOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen) {
-            // Reset state when closing
             setEditingIndex(null);
             setTempCertificate('');
           }
