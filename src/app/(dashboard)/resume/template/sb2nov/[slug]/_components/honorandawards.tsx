@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -13,6 +13,7 @@ import { Reorder } from 'framer-motion';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { GripVertical, Pencil, Trash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 interface HonorsAwardsProps {
   data: Sb2novResumeData['honorsAndAwards'];
@@ -36,15 +37,71 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
   });
   const t = useTranslations();
 
-  const handleReorder = (newOrder: Sb2novResumeData['honorsAndAwards']) => {
-    setTempData((prev) => ({ ...prev, honorsAndAwards: newOrder }));
+  const [sectionTitle, setSectionTitle] = useState(data.sectionTitle);
+  const [isEditingSectionTitle, setIsEditingSectionTitle] = useState(false);
+  const [isHoveringSectionTitle, setIsHoveringSectionTitle] = useState(false);
+  const sectionTitleInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isEditingSectionTitle && sectionTitleInputRef.current) {
+      sectionTitleInputRef.current.focus();
+      sectionTitleInputRef.current.select();
+    }
+  }, [isEditingSectionTitle]);
+
+  const handleSectionTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSectionTitle(e.target.value);
+  };
+
+  const handleSectionTitleBlur = () => {
+    if (!sectionTitle.trim()) {
+      toast.error('Section title cannot be empty');
+      setSectionTitle(data.sectionTitle);
+    }
+    setIsEditingSectionTitle(false);
+    setTempData((prev) => ({
+      ...prev,
+      honorsAndAwards: {
+        ...prev.honorsAndAwards,
+        sectionTitle: sectionTitle.trim() || data.sectionTitle,
+      },
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  const handleSectionTitleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      if (!sectionTitle.trim()) {
+        toast.error('Section title cannot be empty');
+        setSectionTitle(data.sectionTitle);
+      }
+      setIsEditingSectionTitle(false);
+      setTempData((prev) => ({
+        ...prev,
+        honorsAndAwards: {
+          ...prev.honorsAndAwards,
+          sectionTitle: sectionTitle.trim() || data.sectionTitle,
+        },
+      }));
+      if (setIsChangesSaved) setIsChangesSaved(false);
+    }
+  };
+
+  const handleReorder = (newOrder: Sb2novResumeData['honorsAndAwards']['entries']) => {
+    setTempData((prev) => ({
+      ...prev,
+      honorsAndAwards: {
+        ...prev.honorsAndAwards,
+        entries: newOrder,
+      },
+    }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number | null = null) => {
     setEditingIndex(index);
     if (index !== null) {
-      setTempEntry(data[index]);
+      setTempEntry(data.entries[index]);
     } else {
       setTempEntry({
         id: Date.now().toString(),
@@ -59,13 +116,19 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
 
   const handleSaveEntry = () => {
     setTempData((prev) => {
-      const updatedHonors = [...prev.honorsAndAwards];
+      const updatedEntries = [...prev.honorsAndAwards.entries];
       if (editingIndex !== null) {
-        updatedHonors[editingIndex] = tempEntry;
+        updatedEntries[editingIndex] = tempEntry;
       } else {
-        updatedHonors.push(tempEntry);
+        updatedEntries.push(tempEntry);
       }
-      return { ...prev, honorsAndAwards: updatedHonors };
+      return {
+        ...prev,
+        honorsAndAwards: {
+          ...prev.honorsAndAwards,
+          entries: updatedEntries,
+        },
+      };
     });
     setModalOpen(false);
     setEditingIndex(null);
@@ -75,15 +138,47 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
   const handleRemoveEntry = (index: number) => {
     setTempData((prev) => ({
       ...prev,
-      honorsAndAwards: prev.honorsAndAwards.filter((_, i) => i !== index),
+      honorsAndAwards: {
+        ...prev.honorsAndAwards,
+        entries: prev.honorsAndAwards.entries.filter((_, i) => i !== index),
+      },
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
-        {data.map((entry, index) => (
+      <div
+        className="group relative flex items-center gap-2"
+        onMouseEnter={() => setIsHoveringSectionTitle(true)}
+        onMouseLeave={() => setIsHoveringSectionTitle(false)}
+      >
+        {isEditingSectionTitle ? (
+          <Input
+            ref={sectionTitleInputRef}
+            type="text"
+            value={sectionTitle}
+            onChange={handleSectionTitleChange}
+            onBlur={handleSectionTitleBlur}
+            onKeyDown={handleSectionTitleKeyDown}
+            className="text-xl font-bold transition-all"
+            placeholder="Section Title"
+          />
+        ) : (
+          <div className="relative cursor-text" onClick={() => setIsEditingSectionTitle(true)}>
+            <h1 className="text-xl font-bold transition-all group-hover:opacity-80">
+              {sectionTitle}
+            </h1>
+            <Pencil
+              className={`absolute -right-6 top-1/2 size-4 -translate-y-1/2 transition-opacity ${
+                isHoveringSectionTitle ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </div>
+        )}
+      </div>
+      <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
+        {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
             <Card className="flex items-start justify-between rounded-lg border border-gray-300 p-5 shadow-sm">
               <div className="flex gap-2">

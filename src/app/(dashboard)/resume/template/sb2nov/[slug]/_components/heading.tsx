@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { useDebounce } from '@/hooks';
-
+import { X, Check } from 'lucide-react';
 interface HeadingProps {
   data: Sb2novResumeData['heading'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
@@ -10,6 +10,8 @@ interface HeadingProps {
 
 const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) => {
   const [tempValues, setTempValues] = useState(data);
+  const [newSocialName, setNewSocialName] = useState('');
+  const [newSocialUrl, setNewSocialUrl] = useState('');
 
   const debouncedValues = useDebounce(tempValues, 1000);
 
@@ -35,23 +37,100 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
     }));
   };
 
+  const handleAddSocial = () => {
+    if (!newSocialName.trim() || !newSocialUrl.trim()) return;
+    setTempValues((prev) => ({
+      ...prev,
+      socials: [...prev.socials, { name: newSocialName, url: newSocialUrl }],
+    }));
+    setNewSocialName('');
+    setNewSocialUrl('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  const handleRemoveSocial = (index: number) => {
+    setTempValues((prev) => ({
+      ...prev,
+      socials: prev.socials.filter((_, i) => i !== index),
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  const handleSocialChange = (index: number, field: 'name' | 'url', value: string) => {
+    setTempValues((prev) => ({
+      ...prev,
+      socials: prev.socials.map((social, i) =>
+        i === index ? { ...social, [field]: value } : social
+      ),
+    }));
+  };
+
   return (
     <div className="space-y-4">
-      {Object.keys(data).map((field) => (
+      {/* Name, Phone, Email, Location */}
+      {(['name', 'phone', 'email', 'location'] as const).map((field) => (
         <div key={field} className="flex flex-col">
           <label className="text-sm font-semibold capitalize">{field}</label>
           <div className="relative flex items-center">
             <input
               type="text"
-              value={tempValues[field as keyof Sb2novResumeData['heading']] ?? ''}
-              onChange={(e) =>
-                handleChange(field as keyof Sb2novResumeData['heading'], e.target.value)
-              }
-              className={`w-full rounded-md border p-2 pr-10 text-sm transition`}
+              value={tempValues[field] ?? ''}
+              onChange={(e) => handleChange(field, e.target.value)}
+              className="w-full rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
             />
           </div>
         </div>
       ))}
+
+      {/* Social Links */}
+      <div className="flex flex-col">
+        <label className="text-sm font-semibold capitalize">Socials</label>
+        <div className="space-y-2">
+          {tempValues.socials?.map((social, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <input
+                type="text"
+                value={social.name}
+                onChange={(e) => handleSocialChange(index, 'name', e.target.value)}
+                placeholder="Social Name"
+                className="w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+              <input
+                type="text"
+                value={social.url}
+                onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
+                placeholder="Social URL"
+                className="w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              />
+              <button
+                onClick={() => handleRemoveSocial(index)}
+                className="text-red-500 hover:text-red-700"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          ))}
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={newSocialName}
+              onChange={(e) => setNewSocialName(e.target.value)}
+              placeholder="New Social Name"
+              className="flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
+            <input
+              type="text"
+              value={newSocialUrl}
+              onChange={(e) => setNewSocialUrl(e.target.value)}
+              placeholder="New Social URL"
+              className="flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+            />
+            <button onClick={handleAddSocial} className="text-green-500 hover:text-green-700">
+              <Check size={16} />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
