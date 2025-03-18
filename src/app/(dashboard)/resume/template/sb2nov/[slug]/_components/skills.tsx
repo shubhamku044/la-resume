@@ -87,15 +87,23 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  const handleOpenModal = (index: number) => {
+  const handleOpenModal = (index: number | null = null) => {
     setEditingIndex(index);
-    setTempCategory(data.entries[index].category);
-    setTempSkills(data.entries[index].items.join(', '));
+    if (index !== null) {
+      setTempCategory(data.entries[index].category);
+      setTempSkills(data.entries[index].items.join(', '));
+    } else {
+      setTempCategory('');
+      setTempSkills('');
+    }
     setModalOpen(true);
   };
 
   const handleSaveCategory = () => {
-    if (!tempCategory.trim()) return;
+    if (!tempCategory.trim()) {
+      toast.error('Category name cannot be empty');
+      return;
+    }
     setTempData((prev) => {
       const updatedEntries = [...prev.skills.entries];
       if (editingIndex !== null) {
@@ -135,25 +143,9 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  const [addModalOpen, setAddModalOpen] = useState(false);
-  const [newCategoryName, setNewCategoryName] = useState('');
-
-  const handleAddCategory = () => {
-    if (!newCategoryName.trim()) return;
-    setTempData((prev) => ({
-      ...prev,
-      skills: {
-        ...prev.skills,
-        entries: [...prev.skills.entries, { category: newCategoryName, items: [] }],
-      },
-    }));
-    setNewCategoryName('');
-    setAddModalOpen(false);
-    if (setIsChangesSaved) setIsChangesSaved(false);
-  };
-
   return (
     <div className="space-y-4">
+      {/* Section Title */}
       <div
         className="group relative flex items-center gap-2"
         onMouseEnter={() => setIsHoveringSectionTitle(true)}
@@ -183,6 +175,8 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
           </div>
         )}
       </div>
+
+      {/* Skills Entries */}
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.category} value={entry}>
@@ -212,34 +206,6 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
       </Reorder.Group>
 
       <Dialog
-        open={addModalOpen}
-        onOpenChange={(isOpen) => {
-          if (!isOpen) {
-            setNewCategoryName('');
-          }
-          setAddModalOpen(isOpen);
-        }}
-      >
-        <DialogTrigger asChild>
-          <Button>Add New Category</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add New Category</DialogTitle>
-          </DialogHeader>
-          <Input
-            type="text"
-            placeholder="Category Name"
-            value={newCategoryName}
-            onChange={(e) => setNewCategoryName(e.target.value)}
-          />
-          <Button onClick={handleAddCategory} className="bg-green-500 text-white">
-            Add
-          </Button>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen) {
@@ -250,6 +216,9 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
           setModalOpen(isOpen);
         }}
       >
+        <DialogTrigger asChild>
+          <Button onClick={() => handleOpenModal(null)}>Add New Category</Button>
+        </DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{editingIndex !== null ? 'Edit Category' : 'Add Category'}</DialogTitle>
@@ -259,6 +228,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
             value={tempCategory}
             onChange={(e) => setTempCategory(e.target.value)}
             placeholder="Category Name"
+            className="mb-4"
           />
           <Input
             type="text"
@@ -266,8 +236,8 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
             onChange={(e) => setTempSkills(e.target.value)}
             placeholder="Skills (comma-separated)"
           />
-          <Button onClick={handleSaveCategory} className="bg-blue-500 text-white">
-            Save
+          <Button onClick={handleSaveCategory}>
+            {editingIndex !== null ? 'Save Changes' : 'Add Category'}
           </Button>
         </DialogContent>
       </Dialog>
