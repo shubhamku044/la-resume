@@ -111,23 +111,23 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     { skip: !clerkId, refetchOnMountOrArgChange: true }
   );
 
-  const initialData = existingResume?.data
+  const currentData = existingResume?.data
     ? (existingResume.data as
         | deedyResumeData
         | Sb2novResumeData
         | MTeckResumeData
         | OldSb2novResumeData)
     : resumeSampleData;
-  let finaldata = initialData;
-  console.log('initialData', initialData);
-  if (templateKey === 'sb2nov' && !isNewSb2novResumeData(initialData)) {
-    finaldata = migrateResumeData(initialData as OldSb2novResumeData);
+  let initialData = currentData;
+  console.log('initialData', currentData);
+  if (templateKey === 'sb2nov' && !isNewSb2novResumeData(currentData)) {
+    initialData = migrateResumeData(currentData as OldSb2novResumeData);
   }
-  console.log('finaldata', finaldata);
+  console.log('initialData', initialData);
 
   return {
     resumeFunc,
-    finaldata,
+    initialData,
     existingResume,
     isFetching,
     isError,

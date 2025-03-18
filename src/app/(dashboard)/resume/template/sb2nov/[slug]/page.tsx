@@ -9,7 +9,7 @@ import { Sb2novResumeData, sb2nov } from '@/lib/templates/sb2nov';
 export default function ResumeTemplatePage() {
   const {
     resumeFunc,
-    finaldata,
+    initialData,
     existingResume,
     isFetching,
     isError,
@@ -62,7 +62,7 @@ export default function ResumeTemplatePage() {
                 onUpdate={setImageUrl}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
-                templateSampleData={finaldata as Sb2novResumeData}
+                templateSampleData={initialData as Sb2novResumeData}
                 templateFunction={resumeFunc as typeof sb2nov}
                 slug={slug as string}
                 title={existingResume?.title || ''}
@@ -74,7 +74,7 @@ export default function ResumeTemplatePage() {
                 onUpdate={setImageUrl}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
-                templateSampleData={finaldata as Sb2novResumeData}
+                templateSampleData={initialData as Sb2novResumeData}
                 templateFunction={resumeFunc as typeof sb2nov}
                 slug={slug as string}
                 title={existingResume?.title || ''}
