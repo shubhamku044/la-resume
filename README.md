@@ -19,26 +19,9 @@ A modern, open-source resume builder with ATS optimization and LaTeX export capa
 - 🔒 No Signups Required
 - 🌐 Progressive Web App (PWA) Support
 
-## Quick Start 🚀
+## Star History
 
-### Prerequisites
-
-- Node.js 20+
-- pnpm 9+
-
-### Installation
-
-```bash
-# Clone repository
-git clone https://github.com/shubhamku044/la-resume.git
-
-# Install dependencies
-cd la-resume
-pnpm install
-
-# Start development server
-pnpm dev
-```
+[![Star History Chart](https://api.star-history.com/svg?repos=shubhamku044/la-resume&type=Date)](https://www.star-history.com/#shubhamku044/la-resume&Date)
 
 ## Contributors ✨
 
