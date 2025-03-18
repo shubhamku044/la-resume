@@ -54,6 +54,15 @@ export type deedyResumeData = {
     organization: string;
     duration: string;
   }[];
+  sectionOrder?: Array<
+    | 'education'
+    | 'experience'
+    | 'projects'
+    | 'skills'
+    | 'certifications'
+    | 'achievements'
+    | 'positionsOfResponsibility'
+  >;
 };
 
 export const deedySampleResumeData: deedyResumeData = {
@@ -180,9 +189,183 @@ export const deedySampleResumeData: deedyResumeData = {
       duration: '2022 - Present',
     },
   ],
+  sectionOrder: [
+    'education',
+    'experience',
+    'projects',
+    'skills',
+    'certifications',
+    'achievements',
+    'positionsOfResponsibility',
+  ],
 };
 
 export const deedy = (data: deedyResumeData) => {
+  const generateSection = (section: string) => {
+    switch (section) {
+      case 'education':
+        return data.education.length > 0
+          ? `
+        %----------EDUCATION-----------------
+        \\section{\\textbf{Education}}
+        \\vspace{1mm}
+        \\setlength{\\tabcolsep}{5pt}
+        \\begin{tabularx}{\\textwidth}{|>{\\centering\\arraybackslash}X|>{\\centering\\arraybackslash}p{8cm}|>{\\centering\\arraybackslash}p{3cm}|>{\\centering\\arraybackslash}p{2.5cm}|}
+          \\hline
+          \\textbf{Degree/Certificate} & \\textbf{Institute/Board} & \\textbf{CGPA/Percentage} & \\textbf{Year} \\\\
+          \\hline
+        
+          ${data.education
+            .map(({ degree, institute, cgpa, year }) => {
+              return `${escapeLatex(degree)} & ${escapeLatex(institute)} & ${escapeLatex(cgpa)} & ${escapeLatex(year)} \\\\ \\hline`;
+            })
+            .join('\n')} 
+          
+        \\end{tabularx}
+        \\vspace{-4mm}
+        `
+          : '';
+      case 'experience':
+        return data.experience.length > 0
+          ? `
+          %----------EXPERIENCE----------------
+          \\section{\\textbf{Experience}}
+          \\vspace{-0.4mm}
+          \\resumeSubHeadingListStart
+          ${data.experience
+            .map(({ company, website, location, role, duration, achievements }) => {
+              return `
+          \\resumeSubheading
+              {${escapeLatex(company)} [\\href{${website}}{\\faIcon{globe}}]}{${escapeLatex(location)}}
+              {${escapeLatex(role)}}{${escapeLatex(duration)}}
+              \\resumeItemListStart
+                ${achievements.map((achievement) => `\\item ${escapeLatex(achievement)}`).join('\n      ')}
+              \\resumeItemListEnd
+          `;
+            })
+            .join('')}
+          
+          \\resumeSubHeadingListEnd
+          \\vspace{-6mm}
+          `
+          : '';
+      case 'projects':
+        return data.projects.length > 0
+          ? `
+    %----------PROJECTS-----------------
+    \\section{\\textbf{Projects}}
+    \\vspace{-0.4mm}
+    \\resumeSubHeadingListStart
+    
+    ${data.projects
+      .map(({ title, tools, duration, link, highlights }) => {
+        return `
+    \\resumeProject
+        {${escapeLatex(title)}}
+        {Tools: ${escapeLatex(tools.join(', '))}}
+        {${escapeLatex(duration)}}
+      {{}[\\href{${link}}{\\textcolor{darkblue}{\\faGithub}}]}
+    \\resumeItemListStart
+        ${highlights.map((highlight) => `\\item ${escapeLatex(highlight)}`).join('\n    ')}
+    \\resumeItemListEnd
+    `;
+      })
+      .join('')}
+    
+    \\resumeSubHeadingListEnd
+    \\vspace{-8mm}
+    `
+          : '';
+      case 'skills':
+        return Object.keys(data.skills).length > 0
+          ? `
+          %----------SKILLS-----------------
+          \\section{\\textbf{Skills}}
+          \\vspace{-0.4mm}
+          \\resumeHeadingSkillStart
+          ${Object.entries(data.skills)
+            .map(([category, items]) => {
+              return `\\resumeSubItem{${escapeLatex(category)}}{: ${items.map(escapeLatex).join(', ')}}`;
+            })
+            .join('\n')}
+          \\resumeHeadingSkillEnd
+          \\vspace{-2mm}
+          `
+          : '';
+      case 'certifications':
+        return data.certifications.length > 0
+          ? `
+          %----------CERTIFICATIONS-----------------
+          \\section{\\textbf{Certifications}}
+          \\vspace{-0.4mm}
+          \\resumeSubHeadingListStart
+          ${data.certifications
+            .map((cert) => {
+              const certName = escapeLatex(cert.name);
+              const issuer = escapeLatex(cert.issuingOrganization);
+              const date = escapeLatex(cert.date);
+              const link = cert.link
+                ? `, \\href{${escapeLatex(cert.link)}}{${certName}}`
+                : `{${certName}}`;
+
+              return `\\resumePOR{${issuer}}{${link}}{${date}}`;
+            })
+            .join('\n')}
+          
+          \\resumeSubHeadingListEnd
+          
+          \\vspace{-6mm}
+          `
+          : '';
+      case 'achievements':
+        return data.achievements.length > 0
+          ? `
+        \\section{\\textbf{Achievements}}
+        \\vspace{-0.2mm}
+        \\resumeSubHeadingListStart
+        ${data.achievements
+          .map(({ title, link }) => {
+            return `\\resumePOR{}{\\href{${link}}{${escapeLatex(title)}}}{}`;
+          })
+          .join('\n')}
+        \\resumeSubHeadingListEnd
+        \\vspace{-6mm}
+        `
+          : '';
+      case 'positionsOfResponsibility':
+        return data.positionsOfResponsibility.length > 0
+          ? `
+        %----------POSITIONS OF RESPONSIBILITY----------------
+        \\section{\\textbf{Positions of Responsibility}}
+        \\vspace{-0.4mm}
+        \\resumeSubHeadingListStart
+        
+        ${data.positionsOfResponsibility
+          .map(({ title, organization, duration }) => {
+            return `\\resumePOR{${escapeLatex(title)}, }{${escapeLatex(organization)}}{${escapeLatex(duration)}}`;
+          })
+          .join('\n')}
+        
+        \\resumeSubHeadingListEnd
+        \\vspace{-5mm}
+        `
+          : '';
+      default:
+        return ``;
+    }
+  };
+
+  const sections = data.sectionOrder || [
+    'education',
+    'experience',
+    'projects',
+    'skills',
+    'certifications',
+    'achievements',
+    'positionsOfResponsibility',
+  ];
+  const sectionContent = sections.map((section) => generateSection(section)).join('\n');
+
   return `% 
 % NIT Patna Resume Template v2.1
 % Author: Pavan Kumar Dubasi
@@ -366,180 +549,6 @@ export const deedy = (data: deedyResumeData) => {
 \\end{tabularx}
 }
 \\vspace{-2mm}
-%----------EDUCATION-----------------
-
-${
-  data.education.length > 0
-    ? `
-\\section{\\textbf{Education}}
-\\vspace{1mm}
-\\setlength{\\tabcolsep}{5pt}
-\\begin{tabularx}{\\textwidth}{|>{\\centering\\arraybackslash}X|>{\\centering\\arraybackslash}p{8cm}|>{\\centering\\arraybackslash}p{3cm}|>{\\centering\\arraybackslash}p{2.5cm}|}
-  \\hline
-  \\textbf{Degree/Certificate} & \\textbf{Institute/Board} & \\textbf{CGPA/Percentage} & \\textbf{Year} \\\\
-  \\hline
-
-  ${data.education
-    .map(({ degree, institute, cgpa, year }) => {
-      return `${escapeLatex(degree)} & ${escapeLatex(institute)} & ${escapeLatex(cgpa)} & ${escapeLatex(year)} \\\\ \\hline`;
-    })
-    .join('\n')} 
-  
-\\end{tabularx}
-\\vspace{-4mm}
-`
-    : ''
-}
-
-
-%----------EXPERIENCE-----------------
-
-${
-  data.experience.length > 0
-    ? `
-\\section{\\textbf{Experience}}
-\\vspace{-0.4mm}
-\\resumeSubHeadingListStart
-${data.experience
-  .map(({ company, website, location, role, duration, achievements }) => {
-    return `
-\\resumeSubheading
-    {${escapeLatex(company)} [\\href{${website}}{\\faIcon{globe}}]}{${escapeLatex(location)}}
-    {${escapeLatex(role)}}{${escapeLatex(duration)}}
-    \\resumeItemListStart
-      ${achievements.map((achievement) => `\\item ${escapeLatex(achievement)}`).join('\n      ')}
-    \\resumeItemListEnd
-`;
-  })
-  .join('')}
-
-\\resumeSubHeadingListEnd
-\\vspace{-6mm}
-`
-    : ''
-}
-
-
-%----------PROJECT-----------------
-
-
-${
-  data.projects.length > 0
-    ? `
-\\section{\\textbf{Projects}}
-\\vspace{-0.4mm}
-\\resumeSubHeadingListStart
-
-${data.projects
-  .map(({ title, tools, duration, link, highlights }) => {
-    return `
-\\resumeProject
-    {${escapeLatex(title)}}
-    {Tools: ${escapeLatex(tools.join(', '))}}
-    {${escapeLatex(duration)}}
-  {{}[\\href{${link}}{\\textcolor{darkblue}{\\faGithub}}]}
-\\resumeItemListStart
-    ${highlights.map((highlight) => `\\item ${escapeLatex(highlight)}`).join('\n    ')}
-\\resumeItemListEnd
-`;
-  })
-  .join('')}
-
-\\resumeSubHeadingListEnd
-\\vspace{-8mm}
-`
-    : ''
-}
-
-
-%----------SKILLS-----------------
-
-
-${
-  Object.keys(data.skills).length > 0
-    ? `
-\\section{\\textbf{Skills}}
-\\vspace{-0.4mm}
-\\resumeHeadingSkillStart
-${Object.entries(data.skills)
-  .map(([category, items]) => {
-    return `\\resumeSubItem{${escapeLatex(category)}}{: ${items.map(escapeLatex).join(', ')}}`;
-  })
-  .join('\n')}
-\\resumeHeadingSkillEnd
-\\vspace{-2mm}
-`
-    : ''
-}
-
-
-
-
-%----------CERTIFICATIONS-----------------
-
-${
-  data.certifications.length > 0
-    ? `
-\\section{\\textbf{Certifications}}
-\\vspace{-0.4mm}
-\\resumeSubHeadingListStart
-${data.certifications
-  .map((cert) => {
-    const certName = escapeLatex(cert.name);
-    const issuer = escapeLatex(cert.issuingOrganization);
-    const date = escapeLatex(cert.date);
-    const link = cert.link ? `, \\href{${escapeLatex(cert.link)}}{${certName}}` : `{${certName}}`;
-
-    return `\\resumePOR{${issuer}}{${link}}{${date}}`;
-  })
-  .join('\n')}
-
-\\resumeSubHeadingListEnd
-
-\\vspace{-6mm}
-`
-    : ''
-}
-
-
-%-----------ACHIEVEMENTS-----------------
-${
-  data.achievements.length > 0
-    ? `
-\\section{\\textbf{Achievements}}
-\\vspace{-0.2mm}
-\\resumeSubHeadingListStart
-${data.achievements
-  .map(({ title, link }) => {
-    return `\\resumePOR{}{\\href{${link}}{${escapeLatex(title)}}}{}`;
-  })
-  .join('\n')}
-\\resumeSubHeadingListEnd
-\\vspace{-6mm}
-`
-    : ''
-}
-
-%-----------POR-----------------
-
-${
-  data.positionsOfResponsibility.length > 0
-    ? `
-\\section{\\textbf{Positions of Responsibility}}
-\\vspace{-0.4mm}
-\\resumeSubHeadingListStart
-
-    ${data.positionsOfResponsibility
-      .map(({ title, organization, duration }) => {
-        return `\\resumePOR{${escapeLatex(title)}, }{${escapeLatex(organization)}}{${escapeLatex(duration)}}`;
-      })
-      .join('\n')}
-
-\\resumeSubHeadingListEnd
-\\vspace{-5mm}
-`
-    : ''
-}
-
+${sectionContent}
 \\end{document}`;
 };
