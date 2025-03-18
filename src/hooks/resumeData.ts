@@ -119,11 +119,11 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
         | OldSb2novResumeData)
     : resumeSampleData;
   let initialData = currentData;
-  console.log('initialData', currentData);
+  // console.log('initialData', currentData);
   if (templateKey === 'sb2nov' && !isNewSb2novResumeData(currentData)) {
     initialData = migrateResumeData(currentData as OldSb2novResumeData);
   }
-  console.log('initialData', initialData);
+  // console.log('initialData', initialData);
 
   return {
     resumeFunc,
