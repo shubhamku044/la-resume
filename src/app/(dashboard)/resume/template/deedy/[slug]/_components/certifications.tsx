@@ -11,14 +11,15 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { deedyResumeData } from '@/lib/templates/deedy';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface CertificationsProps {
   data: deedyResumeData['certifications'];
   setTempData: React.Dispatch<React.SetStateAction<deedyResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CertificationsSection = ({ data, setTempData }: CertificationsProps) => {
+const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: CertificationsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -38,6 +39,7 @@ const CertificationsSection = ({ data, setTempData }: CertificationsProps) => {
   // Handle reordering certifications
   const handleReorder = (newOrder: deedyResumeData['certifications']) => {
     setTempData((prev) => ({ ...prev, certifications: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -68,6 +70,7 @@ const CertificationsSection = ({ data, setTempData }: CertificationsProps) => {
       link: '',
       date: '',
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a certification entry
@@ -76,38 +79,44 @@ const CertificationsSection = ({ data, setTempData }: CertificationsProps) => {
       ...prev,
       certifications: prev.certifications.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Certifications List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="text-xl font-semibold">{entry.name || 'Untitled Certification'}</h3>
-                <p className="text-lg text-gray-600">
-                  {entry.issuingOrganization || 'No Organization'}
-                </p>
-                <p className="text-lg text-gray-500">{entry.date || 'No Date Provided'}</p>
-                {entry.link && (
-                  <a
-                    href={entry.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    View Certification
-                  </a>
-                )}
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex w-full gap-3">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold">{entry.name || 'Untitled Certification'}</h3>
+                  <p className="text-sm text-gray-600">
+                    {entry.issuingOrganization || 'No Organization'}
+                  </p>
+                  <p className="text-sm text-gray-500">{entry.date || 'No Date Provided'}</p>
+
+                  {entry.link && (
+                    <a
+                      href={entry.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline"
+                    >
+                      View Certification
+                    </a>
+                  )}
+                </div>
               </div>
-              <div className="flex space-x-2">
+
+              <div className="flex space-x-3">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                  <Pencil size={16} />
+                  <Pencil size={18} />
                 </Button>
                 <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                  <Trash size={16} />
+                  <Trash size={18} />
                 </Button>
               </div>
             </Card>
@@ -115,7 +124,6 @@ const CertificationsSection = ({ data, setTempData }: CertificationsProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Certification Button */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {

@@ -11,15 +11,16 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { deedyResumeData } from '@/lib/templates/deedy';
-import { X } from 'lucide-react';
+import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
 
 interface ProjectsProps {
   data: deedyResumeData['projects'];
   setTempData: React.Dispatch<React.SetStateAction<deedyResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
+const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -44,6 +45,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
   // Handle reordering projects
   const handleReorder = (newOrder: deedyResumeData['projects']) => {
     setTempData((prev) => ({ ...prev, projects: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -77,6 +79,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
     });
     setNewTool('');
     setNewHighlight('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a project entry
@@ -95,6 +98,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       tools: [...prev.tools, newTool],
     }));
     setNewTool('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a tool
@@ -103,6 +107,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       tools: prev.tools.filter((_, i) => i !== toolIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Add a highlight
@@ -113,6 +118,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       highlights: [...prev.highlights, newHighlight],
     }));
     setNewHighlight('');
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove a highlight
@@ -121,6 +127,7 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       ...prev,
       highlights: prev.highlights.filter((_, i) => i !== highlightIndex),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
@@ -129,25 +136,22 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-5 shadow-sm">
-              <div className="flex items-start justify-between">
-                {/* Left Section: Project Details */}
-                <div className="w-full space-y-2">
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold">{entry.title || 'Untitled Project'}</h3>
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex w-full gap-3">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
 
-                  {/* Duration */}
-                  <p className="text-lg text-gray-500">
+                <div className="w-full space-y-2">
+                  <h3 className="text-base font-bold">{entry.title || 'Untitled Project'}</h3>
+                  <p className="text-sm text-gray-500">
                     {entry.duration || 'No Duration Provided'}
                   </p>
 
-                  {/* Tools */}
                   {entry.tools.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {entry.tools.map((tool, idx) => (
                         <span
                           key={idx}
-                          className="rounded-md bg-gray-200 px-2 py-1 text-sm text-gray-700"
+                          className="rounded-md bg-gray-200 px-2 py-1 text-xs text-gray-700"
                         >
                           {tool}
                         </span>
@@ -155,49 +159,43 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
                     </div>
                   )}
 
-                  {/* Highlights */}
                   {entry.highlights.length > 0 && (
-                    <ul className="mt-2 list-inside list-disc space-y-1 text-gray-700">
+                    <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
                       {entry.highlights.map((highlight, idx) => (
                         <li key={idx}>{highlight}</li>
                       ))}
                     </ul>
                   )}
 
-                  {/* Link */}
                   {entry.link && (
                     <a
                       href={entry.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-sm text-blue-600 hover:underline"
                     >
                       View Project
                     </a>
                   )}
                 </div>
-
-                {/* Right Section: Edit & Delete Buttons */}
-                <div className="flex space-x-3">
-                  <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                    <Pencil size={18} />
-                  </Button>
-                  <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                    <Trash size={18} />
-                  </Button>
-                </div>
+              </div>
+              <div className="flex space-x-3">
+                <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
+                  <Pencil size={18} />
+                </Button>
+                <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
+                  <Trash size={18} />
+                </Button>
               </div>
             </Card>
           </Reorder.Item>
         ))}
       </Reorder.Group>
 
-      {/* Add Project Button */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen) {
-            // Reset state when closing
             setEditingIndex(null);
             setTempEntry({
               id: '',
@@ -254,7 +252,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
             placeholder="Project Link"
           />
 
-          {/* Tools Section */}
           <div className="space-y-2">
             <p className="font-semibold">Tools</p>
             <div className="flex flex-wrap gap-2">
@@ -280,7 +277,6 @@ const ProjectsSection = ({ data, setTempData }: ProjectsProps) => {
             </div>
           </div>
 
-          {/* Highlights Section */}
           <div className="space-y-2">
             <p className="font-semibold">Highlights</p>
             <div className="flex flex-wrap gap-2">

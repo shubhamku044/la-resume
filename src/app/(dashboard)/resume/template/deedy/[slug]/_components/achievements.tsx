@@ -11,14 +11,15 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { deedyResumeData } from '@/lib/templates/deedy';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface AchievementsProps {
   data: deedyResumeData['achievements'];
   setTempData: React.Dispatch<React.SetStateAction<deedyResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AchievementsSection = ({ data, setTempData }: AchievementsProps) => {
+const AchievementsSection = ({ data, setTempData, setIsChangesSaved }: AchievementsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -31,19 +32,17 @@ const AchievementsSection = ({ data, setTempData }: AchievementsProps) => {
     link: '',
   });
 
-  // Handle reordering achievements
   const handleReorder = (newOrder: deedyResumeData['achievements']) => {
     setTempData((prev) => ({ ...prev, achievements: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
     setTempEntry(data[index]);
     setModalOpen(true);
   };
 
-  // Save achievement changes
   const handleSave = () => {
     setTempData((prev) => {
       const updatedAchievements = [...prev.achievements];
@@ -62,42 +61,47 @@ const AchievementsSection = ({ data, setTempData }: AchievementsProps) => {
       title: '',
       link: '',
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  // Remove an achievement entry
   const handleRemove = (index: number) => {
     setTempData((prev) => ({
       ...prev,
       achievements: prev.achievements.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Achievements List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              <div>
-                <h3 className="text-xl font-semibold">{entry.title || 'Untitled Achievement'}</h3>
-                {entry.link && (
-                  <a
-                    href={entry.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    View Achievement
-                  </a>
-                )}
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+              <div className="flex w-full gap-3">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold">{entry.title || 'Untitled Achievement'}</h3>
+                  {entry.link && (
+                    <a
+                      href={entry.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline"
+                    >
+                      View Achievement
+                    </a>
+                  )}
+                </div>
               </div>
-              <div className="flex space-x-2">
+
+              <div className="flex space-x-3">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                  <Pencil size={16} />
+                  <Pencil size={18} />
                 </Button>
                 <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                  <Trash size={16} />
+                  <Trash size={18} />
                 </Button>
               </div>
             </Card>
@@ -105,7 +109,6 @@ const AchievementsSection = ({ data, setTempData }: AchievementsProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Achievement Button */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {

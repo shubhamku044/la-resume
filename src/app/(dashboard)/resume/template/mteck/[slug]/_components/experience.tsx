@@ -109,7 +109,6 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Experience List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
@@ -133,7 +132,6 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                 </div>
               </div>
 
-              {/* Right Section: Edit & Delete Buttons */}
               <div className="flex space-x-2">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
                   <Pencil size={18} />

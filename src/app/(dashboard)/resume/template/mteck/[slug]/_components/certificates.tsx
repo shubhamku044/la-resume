@@ -94,7 +94,6 @@ const CertificatesSection = ({ data, setTempData, setIsChangesSaved }: Certifica
         ))}
       </Reorder.Group>
 
-      {/* Add Certificate Button */}
       <Dialog
         open={modalOpen}
         onOpenChange={(isOpen) => {

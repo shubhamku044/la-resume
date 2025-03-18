@@ -11,14 +11,15 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { deedyResumeData } from '@/lib/templates/deedy';
-import { Pencil, Trash } from 'lucide-react'; // Import icons
+import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
 
 interface EducationProps {
   data: deedyResumeData['education'];
   setTempData: React.Dispatch<React.SetStateAction<deedyResumeData>>;
+  setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const EducationSection = ({ data, setTempData }: EducationProps) => {
+const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [tempEntry, setTempEntry] = useState<{
@@ -38,6 +39,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
   // Handle reordering education entries
   const handleReorder = (newOrder: deedyResumeData['education']) => {
     setTempData((prev) => ({ ...prev, education: newOrder }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Open modal for editing
@@ -72,6 +74,7 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
       year: '',
       cgpa: '',
     });
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Remove an education entry
@@ -80,29 +83,32 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
       ...prev,
       education: prev.education.filter((_, i) => i !== index),
     }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Reorderable Education List */}
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-center justify-between p-4">
-              {' '}
-              {/* Reduced bottom padding */}
-              <div>
-                <h3 className="text-xl font-bold">{entry.institute || 'Untitled Degree'}</h3>
-                <p className="text-lg text-gray-600">{entry.degree || 'No Institution'}</p>
-                <p className="text-lg text-gray-500">{entry.year || ''}</p>
-                {entry.cgpa && <p className="text-lg text-gray-700">{entry.cgpa}</p>}
+            <Card className="flex justify-between p-4">
+              <div className="flex gap-2">
+                <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
+
+                <div>
+                  <h3 className="text-base font-bold">{entry.institute || 'Untitled Degree'}</h3>
+                  <p className="text-sm text-gray-600">{entry.degree || 'No Institution'}</p>
+                  <p className="text-sm text-gray-500">{entry.year || ''}</p>
+                  {entry.cgpa && <p className="text-sm text-gray-700">{entry.cgpa}</p>}
+                </div>
               </div>
+
               <div className="flex space-x-3">
                 <Button size="icon" variant="outline" onClick={() => handleOpenModal(index)}>
-                  <Pencil size={16} />
+                  <Pencil size={18} />
                 </Button>
                 <Button size="icon" variant="destructive" onClick={() => handleRemove(index)}>
-                  <Trash size={16} />
+                  <Trash size={18} />
                 </Button>
               </div>
             </Card>
@@ -110,7 +116,6 @@ const EducationSection = ({ data, setTempData }: EducationProps) => {
         ))}
       </Reorder.Group>
 
-      {/* Add Education Button */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogTrigger asChild>
           <Button
