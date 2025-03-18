@@ -1,5 +1,49 @@
 import { escapeLatex } from '../utils';
 
+export type OldSb2novResumeData = {
+  heading: {
+    name: string;
+    phone?: string;
+    email?: string;
+    portfolio?: string;
+    github?: string;
+    linkedin?: string;
+    leetcode?: string;
+    codeforces?: string;
+    location?: string;
+  };
+  education: {
+    id: string;
+    institution: string;
+    location: string;
+    degree: string;
+    startDate: string;
+    endDate: string;
+    marks: string;
+  }[];
+  skills: Record<string, string[]>;
+  experience: {
+    id: string;
+    title: string;
+    date: string | '';
+    accomplishments: string[];
+  }[];
+  projects: {
+    id: string;
+    title: string;
+    url: string;
+    urlLabel: string;
+    accomplishments: string[];
+  }[];
+  honorsAndAwards: {
+    id: string;
+    description: string;
+    url?: string;
+    urlLabel?: string;
+  }[];
+  sectionOrder?: Array<'education' | 'skills' | 'experience' | 'projects' | 'honorsAndAwards'>;
+};
+
 export type Sb2novResumeData = {
   heading: {
     name: string;
