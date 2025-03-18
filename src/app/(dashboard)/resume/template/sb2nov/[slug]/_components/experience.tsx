@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,7 @@ import {
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { GripVertical, X } from 'lucide-react';
 import { Pencil, Trash } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface ExperienceProps {
   data: Sb2novResumeData['experience'];
@@ -37,26 +38,88 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
   const [newAccomplishment, setNewAccomplishment] = useState('');
 
-  const handleReorder = (newOrder: Sb2novResumeData['experience']) => {
-    setTempData((prev) => ({ ...prev, experience: newOrder }));
+  const [sectionTitle, setSectionTitle] = useState(data.sectionTitle);
+  const [isEditingSectionTitle, setIsEditingSectionTitle] = useState(false);
+  const [isHoveringSectionTitle, setIsHoveringSectionTitle] = useState(false);
+  const sectionTitleInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isEditingSectionTitle && sectionTitleInputRef.current) {
+      sectionTitleInputRef.current.focus();
+      sectionTitleInputRef.current.select();
+    }
+  }, [isEditingSectionTitle]);
+
+  const handleSectionTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSectionTitle(e.target.value);
+  };
+
+  const handleSectionTitleBlur = () => {
+    if (!sectionTitle.trim()) {
+      toast.error('Section title cannot be empty');
+      setSectionTitle(data.sectionTitle);
+    }
+    setIsEditingSectionTitle(false);
+    setTempData((prev) => ({
+      ...prev,
+      experience: {
+        ...prev.experience,
+        sectionTitle: sectionTitle.trim() || data.sectionTitle,
+      },
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  const handleSectionTitleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      if (!sectionTitle.trim()) {
+        toast.error('Section title cannot be empty');
+        setSectionTitle(data.sectionTitle);
+      }
+      setIsEditingSectionTitle(false);
+      setTempData((prev) => ({
+        ...prev,
+        experience: {
+          ...prev.experience,
+          sectionTitle: sectionTitle.trim() || data.sectionTitle,
+        },
+      }));
+      if (setIsChangesSaved) setIsChangesSaved(false);
+    }
+  };
+
+  const handleReorder = (newOrder: Sb2novResumeData['experience']['entries']) => {
+    setTempData((prev) => ({
+      ...prev,
+      experience: {
+        ...prev.experience,
+        entries: newOrder,
+      },
+    }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
-    setTempEntry(data[index]);
+    setTempEntry(data.entries[index]);
     setModalOpen(true);
   };
 
   const handleSave = () => {
     setTempData((prev) => {
-      const updatedExperience = [...prev.experience];
+      const updatedEntries = [...prev.experience.entries];
       if (editingIndex !== null) {
-        updatedExperience[editingIndex] = tempEntry;
+        updatedEntries[editingIndex] = tempEntry;
       } else {
-        updatedExperience.push({ ...tempEntry, id: Date.now().toString() });
+        updatedEntries.push({ ...tempEntry, id: Date.now().toString() });
       }
-      return { ...prev, experience: updatedExperience };
+      return {
+        ...prev,
+        experience: {
+          ...prev.experience,
+          entries: updatedEntries,
+        },
+      };
     });
 
     setModalOpen(false);
@@ -69,7 +132,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   const handleRemove = (index: number) => {
     setTempData((prev) => ({
       ...prev,
-      experience: prev.experience.filter((_, i) => i !== index),
+      experience: {
+        ...prev.experience,
+        entries: prev.experience.entries.filter((_, i) => i !== index),
+      },
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -94,8 +160,37 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
   return (
     <div className="space-y-4">
-      <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
-        {data.map((entry, index) => (
+      <div
+        className="group relative flex items-center gap-2"
+        onMouseEnter={() => setIsHoveringSectionTitle(true)}
+        onMouseLeave={() => setIsHoveringSectionTitle(false)}
+      >
+        {isEditingSectionTitle ? (
+          <Input
+            ref={sectionTitleInputRef}
+            type="text"
+            value={sectionTitle}
+            onChange={handleSectionTitleChange}
+            onBlur={handleSectionTitleBlur}
+            onKeyDown={handleSectionTitleKeyDown}
+            className="text-xl font-bold transition-all"
+            placeholder="Section Title"
+          />
+        ) : (
+          <div className="relative cursor-text" onClick={() => setIsEditingSectionTitle(true)}>
+            <h1 className="text-xl font-bold transition-all group-hover:opacity-80">
+              {sectionTitle}
+            </h1>
+            <Pencil
+              className={`absolute -right-6 top-1/2 size-4 -translate-y-1/2 transition-opacity ${
+                isHoveringSectionTitle ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </div>
+        )}
+      </div>
+      <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
+        {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
             <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
               <div className="flex items-start justify-between">
