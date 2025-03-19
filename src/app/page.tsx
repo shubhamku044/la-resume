@@ -24,6 +24,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useTranslations } from 'next-intl';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { AvatarFallback } from '@radix-ui/react-avatar';
+import { useGetStatsQuery } from '@/store/services/statsApi';
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is required').max(50),
@@ -38,6 +41,7 @@ export default function LaResumeLanding() {
   const stars = useGitHubStars();
   const router = useRouter();
   const t = useTranslations('HomePage');
+  const { data } = useGetStatsQuery();
 
   const {
     register,
@@ -97,6 +101,60 @@ export default function LaResumeLanding() {
           </Link>
         </div>
       </div>
+      <section className="bg-white py-4 shadow-sm">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex gap-8"
+          >
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-blue-600">
+                <CountUp end={data?.signups || 600} duration={2} />+
+              </h2>
+              <p className="text-gray-600">Signups</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-blue-600">
+                <CountUp end={data?.resumes || 800} duration={2} />+
+              </h2>
+              <p className="text-gray-600">Resumes Created</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex flex-col items-center gap-2"
+          >
+            <h3 className="text-sm text-gray-600">Follow the Creators</h3>
+            <div className="flex">
+              <a
+                href="https://x.com/shubhamku044"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center rounded-full border-2 bg-gray-100 transition-transform hover:z-10 hover:scale-105"
+              >
+                <Avatar>
+                  <AvatarImage src="https://avatars.githubusercontent.com/u/77788249?v=4" />
+                  <AvatarFallback>SK</AvatarFallback>
+                </Avatar>
+              </a>
+              <a
+                href="https://x.com/prybruhta"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="-ml-2 flex flex-col items-center justify-center rounded-full border-2 bg-gray-100 transition-transform hover:z-10 hover:scale-105"
+              >
+                <Avatar>
+                  <AvatarImage src="https://avatars.githubusercontent.com/u/95865224?v=4" />
+                  <AvatarFallback>PM</AvatarFallback>
+                </Avatar>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       <section className="container mx-auto px-4 py-12 text-center sm:px-6 sm:py-24">
         <motion.div
