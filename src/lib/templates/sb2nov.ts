@@ -291,7 +291,7 @@ export const sb2nov = (data: Sb2novResumeData) => {
           ${data.skills.entries
             .map(
               (entry) => `
-            \\resumeItem{\\textbf{${escapeLatex(entry.category)}}: ${entry.items.map(escapeLatex).join(', ')}}
+            \\resumeItem{\\textbf{${escapeLatex(entry.category)}}: ${Array.isArray(entry.items) ? entry.items.map(escapeLatex).join(', ') : ''}}
           `
             )
             .join('\n')}
