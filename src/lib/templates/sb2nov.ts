@@ -91,7 +91,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
     ],
   },
   education: {
-    sectionTitle: 'Education',
+    sectionTitle: 'education',
     entries: [
       {
         id: 'a5092564-55f6-45a8-8866-5ab0ae54a079',
@@ -144,7 +144,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
     ],
   },
   experience: {
-    sectionTitle: 'Experience',
+    sectionTitle: 'experience',
     entries: [
       {
         id: 'eb8aefd0-2fad-4a75-a533-6d67b50baf7b',
@@ -179,7 +179,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
     ],
   },
   projects: {
-    sectionTitle: 'Projects',
+    sectionTitle: 'projects',
     entries: [
       {
         id: '9fef2c38-5026-4fa8-806d-22e95580c3f5',
@@ -206,7 +206,7 @@ export const sb2novResumeSampleData: Sb2novResumeData = {
     ],
   },
   honorsAndAwards: {
-    sectionTitle: 'Honors & Awards',
+    sectionTitle: 'honorsAndAwards',
     entries: [
       {
         id: '943f583a-18f9-44d4-bb5e-82860cfd2e5a',
