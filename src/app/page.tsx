@@ -27,7 +27,9 @@ import { useTranslations } from 'next-intl';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { AvatarFallback } from '@radix-ui/react-avatar';
 import { useGetStatsQuery } from '@/store/services/statsApi';
-
+import { Marquee } from '@/components/magicui/marquee';
+import ReviewCard from '@/components/reviewCard';
+import { reviews } from '@/data/review';
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is required').max(50),
   email: z.string().email(),
@@ -42,6 +44,8 @@ export default function LaResumeLanding() {
   const router = useRouter();
   const t = useTranslations('HomePage');
   const { data } = useGetStatsQuery();
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
 
   const {
     register,
@@ -306,32 +310,24 @@ export default function LaResumeLanding() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-12 sm:py-20">
+      <section className="bg-gray-50 py-12 dark:bg-gray-900 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 sm:mb-16">
-            {t('testimonial.title')}
+          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-gray-100 sm:mb-16">
+            What Our Users Say
           </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {[
-              {
-                text: t('testimonial.quote1.text'),
-                author: t('testimonial.quote1.author'),
-              },
-              {
-                text: t('testimonial.quote2.text'),
-                author: t('testimonial.quote2.author'),
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-50" />
-                <CardContent className="relative p-6 sm:p-8">
-                  <p className="mb-4 text-base italic text-gray-700 sm:text-lg">
-                    &quot;{testimonial.text}&quot;
-                  </p>
-                  <p className="font-medium text-gray-900">— {testimonial.author}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
           </div>
         </div>
       </section>
