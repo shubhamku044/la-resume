@@ -116,13 +116,13 @@ export default function LaResumeLanding() {
               <h2 className="text-3xl font-bold text-blue-600">
                 <CountUp end={data?.signups || 600} duration={2} />+
               </h2>
-              <p className="text-gray-600">Signups</p>
+              <p className="text-gray-600">{t('creator.sign')}</p>
             </div>
             <div className="text-center">
               <h2 className="text-3xl font-bold text-blue-600">
                 <CountUp end={data?.resumes || 800} duration={2} />+
               </h2>
-              <p className="text-gray-600">Resumes Created</p>
+              <p className="text-gray-600">{t('creator.created')}</p>
             </div>
           </motion.div>
 
@@ -131,7 +131,7 @@ export default function LaResumeLanding() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col items-center gap-2"
           >
-            <h3 className="text-sm text-gray-600">Follow the Creators</h3>
+            <h3 className="text-sm text-gray-600">{t('creator.follow')}</h3>
             <div className="flex">
               <a
                 href="https://x.com/shubhamku044"
@@ -313,7 +313,7 @@ export default function LaResumeLanding() {
       <section className="bg-gray-50 py-12 dark:bg-gray-900 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 dark:text-gray-100 sm:mb-16">
-            What Our Users Say
+            {t('feedback.title')}
           </h2>
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <Marquee pauseOnHover className="[--duration:20s]">

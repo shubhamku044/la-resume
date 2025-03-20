@@ -4,6 +4,11 @@
       "lovedBy": "Von <stars></stars> Entwicklern geschätzt",
       "starButton": "Auf GitHub sternen"
     },
+    "creator": {
+      "sign": "Anmeldungen",
+      "created": "Erstellte Lebensläufe",
+      "follow": "Folge den Erstellern"
+    },
     "hero": {
       "title": "Erstellen Sie perfekte, <highlight>ATS-optimierte</highlight> Lebensläufe",
       "description": "Professioneller Lebenslauf-Builder mit LaTeX. Kostenlos. Exportieren Sie in Sekunden als PDF oder LaTeX.",

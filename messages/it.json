@@ -4,6 +4,11 @@
       "lovedBy": "Amato da <stars></stars> sviluppatori",
       "starButton": "Metti stella su GitHub"
     },
+    "creator": {
+      "sign": "Iscrizioni",
+      "created": "CV Creati",
+      "follow": "Segui i Creatori"
+    },
     "hero": {
       "title": "Crea curriculum perfetti e <highlight>ottimizzati per gli ATS</highlight>",
       "description": "Generatore di curriculum professionale basato su LaTeX. Gratuito. Esporta in PDF o LaTeX in pochi secondi.",

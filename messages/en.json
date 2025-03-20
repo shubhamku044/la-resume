@@ -4,6 +4,11 @@
       "lovedBy": "Loved by <stars></stars> developers",
       "starButton": "Star on GitHub"
     },
+    "creator": {
+      "sign": "Signups",
+      "created": "Resumes Created",
+      "follow": "Follow the Creators"
+    },
     "hero": {
       "title": "Craft Perfect, <highlight>ATS-Friendly</highlight> Resumes",
       "description": "Professional resume builder powered by LaTeX. Free. Export to PDF or LaTeX in seconds.",
@@ -41,15 +46,7 @@
       }
     },
     "testimonial": {
-      "title": "What People Are Saying",
-      "quote1": {
-        "text": "I was able to create a professional resume in minutes. The LaTeX export feature is a game-changer.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume is the best resume builder I've ever used. The templates are top-notch.",
-        "author": "Jane Doe"
-      }
+      "title": "What Our Users Say"
     },
     "feedback": {
       "title": "Get in Touch",

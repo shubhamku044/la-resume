@@ -4,6 +4,11 @@
       "lovedBy": "開発者<stars></stars>人に愛されています",
       "starButton": "GitHubでスターを付ける"
     },
+    "creator": {
+      "sign": "サインアップ",
+      "created": "作成された履歴書",
+      "follow": "クリエイターをフォロー"
+    },
     "hero": {
       "title": "完璧な<highlight>ATS対応</highlight>レジュメを作成",
       "description": "LaTeXを利用したプロフェッショナルなレジュメビルダー。完全無料。PDF/LaTeX形式で即時エクスポート",

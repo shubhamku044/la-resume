@@ -4,6 +4,11 @@
       "lovedBy": "Adoré par <stars></stars> développeurs",
       "starButton": "Étoile sur GitHub"
     },
+    "creator": {
+      "sign": "Inscriptions",
+      "created": "CV Créés",
+      "follow": "Suivez les Créateurs"
+    },
     "hero": {
       "title": "Créez des CV parfaits <highlight>compatibles ATS</highlight>",
       "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Exportez en PDF ou LaTeX en quelques secondes.",

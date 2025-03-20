@@ -4,6 +4,11 @@
       "lovedBy": "深受<stars></stars>位开发者喜爱",
       "starButton": "在GitHub上标星"
     },
+    "creator": {
+      "sign": "注册",
+      "created": "已创建的简历",
+      "follow": "关注创作者"
+    },
     "hero": {
       "title": "打造完美<highlight>ATS优化</highlight>简历",
       "description": "基于LaTeX的专业简历生成器。完全免费。秒级导出PDF或LaTeX文件。",
@@ -41,15 +46,7 @@
       }
     },
     "testimonial": {
-      "title": "人们怎么说",
-      "quote1": {
-        "text": "我能够在几分钟内创建一个专业的简历。LaTeX导出功能简直是游戏规则改变者。",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume 是我使用过的最好的简历生成器。模板非常棒。",
-        "author": "Jane Doe"
-      }
+      "title": "人们怎么说"
     },
     "feedback": {
       "title": "联系我们",

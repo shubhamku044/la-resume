@@ -4,6 +4,11 @@
       "lovedBy": "<stars></stars> developer tərəfindən sevilir",
       "starButton": "GitHub-da Ulduz"
     },
+    "creator": {
+      "sign": "Qeydiyyatlar",
+      "created": "Yaradılan CV-lər",
+      "follow": "Yaradıcıları izləyin"
+    },
     "hero": {
       "title": "Mükəmməl, <highlight>ATS-ə Uyğun</highlight> Rezyumələr Yaradın",
       "description": "LaTeX ilə işləyən professional rezyume konstruktoru. Pulsuz. PDF və ya LaTeX formatında ixrac",

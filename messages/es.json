@@ -4,6 +4,11 @@
       "lovedBy": "Amado por <stars></stars> desarrolladores",
       "starButton": "Dar estrella en GitHub"
     },
+    "creator": {
+      "sign": "Registros",
+      "created": "Currículums Creados",
+      "follow": "Sigue a los Creadores"
+    },
     "hero": {
       "title": "Crea currículos perfectos y <highlight>compatibles con ATS</highlight>",
       "description": "Generador de currículos profesional con LaTeX. Gratuito. Exporta a PDF o LaTeX en segundos.",

@@ -4,6 +4,11 @@
       "lovedBy": "Adorado por <stars></stars> programadores",
       "starButton": "Star no GitHub"
     },
+    "creator": {
+      "sign": "Inscrições",
+      "created": "Currículos Criados",
+      "follow": "Siga os Criadores"
+    },
     "hero": {
       "title": "Crie Currículos <highlight>Otimizados para ATS</highlight> Perfeitos",
       "description": "Construtor de currículos profissional baseado em LaTeX. Gratuito. Exporte para PDF ou LaTeX em segundos",
