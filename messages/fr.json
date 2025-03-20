@@ -127,7 +127,8 @@
     "signOut": "Déconnexion",
     "signUp": "Inscription",
     "templates": "Modèles",
-    "userProfile": "Profil utilisateur"
+    "userProfile": "Profil utilisateur",
+    "pricing": "Tarifs"
   },
   "common": {
     "resumePreview": "Aperçu du CV",

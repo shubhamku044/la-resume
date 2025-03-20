@@ -127,7 +127,8 @@
     "signOut": "Esci",
     "signUp": "Registrati",
     "templates": "Modelli",
-    "userProfile": "Profilo utente"
+    "userProfile": "Profilo utente",
+    "pricing": "Prezzi"
   },
   "common": {
     "resumePreview": "Anteprima del Curriculum",

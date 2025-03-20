@@ -127,7 +127,8 @@
     "signOut": "ログアウト",
     "signUp": "会員登録",
     "templates": "テンプレート",
-    "userProfile": "ユーザープロフィール"
+    "userProfile": "ユーザープロフィール",
+    "pricing": "価格"
   },
   "common": {
     "resumePreview": "履歴書プレビュー",

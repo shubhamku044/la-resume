@@ -127,7 +127,8 @@
     "signOut": "Выйти",
     "signUp": "Регистрация",
     "templates": "Шаблоны",
-    "userProfile": "Профиль пользователя"
+    "userProfile": "Профиль пользователя",
+    "pricing": "Цены"
   },
   "common": {
     "resumePreview": "Предварительный просмотр резюме",
