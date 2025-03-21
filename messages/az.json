@@ -174,5 +174,33 @@
   "templates": {
     "resTemplate": "CV Şablonunu Seçin",
     "madeByYou": "Sizin Tərəfinizdən Hazırlanan CV-lər"
+  },
+  "contact": {
+    "title": "Bizimlə Əlaqə",
+    "description": "Kömək üçün buradayıq! İstənilən sorğu, rəy və ya dəstək üçün bizimlə əlaqə saxlayın. Komandamız ən qısa zamanda sizə cavab verəcək.",
+    "contactInformation": "Əlaqə Məlumatlarımız",
+    "merchantName": "<strong>Hüquqi Təşkilat Adı:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Qeydiyyat Ünvanı:</strong> Benachity, Qərbi Benqal, India, PIN: 713213",
+    "operationalAddress": "<strong>Fəaliyyət Ünvanı:</strong> Benachity, Qərbi Benqal, India, PIN: 713213",
+    "phoneNumber": "<strong>Telefon Nömrəsi:</strong> +91 62975 59892",
+    "email": "<strong>E-poçt:</strong> laresumetech@gmail.com",
+    "sendMessage": "Bizə Mesaj Göndərin",
+    "toast": {
+      "success": "Mesaj uğurla göndərildi!",
+      "error": "Mesaj göndərmək alınmadı"
+    },
+    "form": {
+      "name": "Ad",
+      "namePlaceholder": "Adınız",
+      "email": "E-poçt",
+      "emailPlaceholder": "your@email.com",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajınız...",
+      "submit": "Mesaj Göndər",
+      "submitting": "Göndərilir..."
+    },
+    "mapLocation": "Xəritə Yerləşməsi",
+    "supportHours": "Müştəri Dəstək Saatları",
+    "timing": "<strong>Hər gün:</strong> 9:00 - 18:00"
   }
 }
