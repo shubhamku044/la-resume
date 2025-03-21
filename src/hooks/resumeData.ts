@@ -30,11 +30,10 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     { clerk_id: clerkId!, slug: slug as string },
     { skip: !clerkId, refetchOnMountOrArgChange: true }
   );
-
   const initialData = existingResume?.data
     ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
     : resumeSampleData;
-
+  const hasPaid = existingResume?.hasPaid || false;
   return {
     resumeFunc,
     initialData,
@@ -49,5 +48,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     setLoading,
     slug,
     resumeSampleData,
+    hasPaid,
   };
 }

@@ -127,4 +127,5 @@ model Resume {
   previewUrl String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  hasPaid Boolean @default(false)
 }

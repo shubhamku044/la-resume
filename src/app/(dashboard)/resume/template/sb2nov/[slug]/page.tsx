@@ -20,6 +20,7 @@ export default function ResumeTemplatePage() {
     setLatexData,
     setLoading,
     slug,
+    hasPaid,
   } = useResumeData('sb2nov');
   const isMobile = useIsMobile();
 
@@ -56,7 +57,13 @@ export default function ResumeTemplatePage() {
         >
           {isMobile ? (
             <>
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                paymentStatus={hasPaid}
+                slug={slug as string}
+              />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
                 onUpdate={setImageUrl}
@@ -80,7 +87,13 @@ export default function ResumeTemplatePage() {
                 title={existingResume?.title || ''}
               />
               <ResizableHandle className="w-4 opacity-0" />
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                paymentStatus={hasPaid}
+                slug={slug as string}
+              />
             </>
           )}
         </ResizablePanelGroup>
