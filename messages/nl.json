@@ -174,5 +174,33 @@
   "templates": {
     "resTemplate": "Kies een CV-sjabloon",
     "madeByYou": "CV's die jij hebt gemaakt"
+  },
+  "contact": {
+    "title": "Neem Contact Met Ons Op",
+    "description": "We staan klaar om te helpen! Neem contact met ons op voor vragen, feedback of ondersteuning. Ons team neemt zo snel mogelijk contact met je op.",
+    "contactInformation": "Onze Contactgegevens",
+    "merchantName": "<strong>Naam Wettelijke Handelaar:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Geregistreerd Adres:</strong> Benachity, West-Bengalen, India, POSTCODE: 713213",
+    "operationalAddress": "<strong>Operationeel Adres:</strong> Benachity, West-Bengalen, India, POSTCODE: 713213",
+    "phoneNumber": "<strong>Telefoonnummer:</strong> +91 62975 59892",
+    "email": "<strong>E-mail:</strong> laresumetech@gmail.com",
+    "sendMessage": "Stuur Ons een Bericht",
+    "toast": {
+      "success": "Bericht succesvol verzonden!",
+      "error": "Bericht verzenden mislukt"
+    },
+    "form": {
+      "name": "Naam",
+      "namePlaceholder": "Jouw naam",
+      "email": "E-mail",
+      "emailPlaceholder": "jouw@email.com",
+      "message": "Bericht",
+      "messagePlaceholder": "Jouw bericht...",
+      "submit": "Bericht Versturen",
+      "submitting": "Bezig met verzenden..."
+    },
+    "mapLocation": "Kaartlocatie",
+    "supportHours": "Klantenservice Uren",
+    "timing": "<strong>Elke dag:</strong> 9:00 - 18:00"
   }
 }

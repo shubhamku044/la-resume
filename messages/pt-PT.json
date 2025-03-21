@@ -174,5 +174,33 @@
   "templates": {
     "resTemplate": "Escolha um Modelo de Currículo",
     "madeByYou": "Currículos Criados por Você"
+  },
+  "contact": {
+    "title": "Contacte-nos",
+    "description": "Estamos aqui para ajudar! Entre em contacto connosco para quaisquer dúvidas, feedback ou suporte. A nossa equipa responderá o mais brevemente possível.",
+    "contactInformation": "As Nossas Informações de Contacto",
+    "merchantName": "<strong>Nome Legal da Entidade:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Morada Registada:</strong> Benachity, Bengala Ocidental, India, CÓDIGO POSTAL: 713213",
+    "operationalAddress": "<strong>Morada Operacional:</strong> Benachity, Bengala Ocidental, India, CÓDIGO POSTAL: 713213",
+    "phoneNumber": "<strong>Número de Telefone:</strong> +91 62975 59892",
+    "email": "<strong>Email:</strong> laresumetech@gmail.com",
+    "sendMessage": "Envie-nos uma Mensagem",
+    "toast": {
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Falha ao enviar a mensagem"
+    },
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "O seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "message": "Mensagem",
+      "messagePlaceholder": "A sua mensagem...",
+      "submit": "Enviar Mensagem",
+      "submitting": "A Enviar..."
+    },
+    "mapLocation": "Localização no Mapa",
+    "supportHours": "Horário de Atendimento ao Cliente",
+    "timing": "<strong>Todos os dias:</strong> 9:00 - 18:00"
   }
 }
