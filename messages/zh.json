@@ -175,5 +175,33 @@
   "templates": {
     "resTemplate": "选择简历模板",
     "madeByYou": "你制作的简历"
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "我们随时为您提供帮助！如有任何疑问、反馈或支持，请随时与我们联系。我们的团队会尽快回复您。",
+    "contactInformation": "我们的联系方式",
+    "merchantName": "<strong>商户法定名称：</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>注册地址：</strong> Benachity，西孟加拉邦，印度, 邮编：713213",
+    "operationalAddress": "<strong>运营地址：</strong> Benachity，西孟加拉邦，印度, 邮编：713213",
+    "phoneNumber": "<strong>电话号码：</strong> +91 62975 59892",
+    "email": "<strong>电子邮件：</strong> laresumetech@gmail.com",
+    "sendMessage": "给我们留言",
+    "toast": {
+      "success": "消息发送成功！",
+      "error": "消息发送失败"
+    },
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "您的姓名",
+      "email": "电子邮件",
+      "emailPlaceholder": "your@email.com",
+      "message": "留言",
+      "messagePlaceholder": "您的留言...",
+      "submit": "发送留言",
+      "submitting": "发送中..."
+    },
+    "mapLocation": "地图位置",
+    "supportHours": "客户服务时间",
+    "timing": "<strong>每天：</strong> 9:00 - 18:00"
   }
 }

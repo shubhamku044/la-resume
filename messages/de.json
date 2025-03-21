@@ -175,5 +175,33 @@
   "templates": {
     "resTemplate": "Wählen Sie eine Lebenslaufvorlage",
     "madeByYou": "Von Ihnen erstellte Lebensläufe"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "description": "Wir sind für Sie da! Kontaktieren Sie uns bei Fragen, Feedback oder Supportanfragen. Unser Team wird sich so schnell wie möglich bei Ihnen melden.",
+    "contactInformation": "Unsere Kontaktinformationen",
+    "merchantName": "<strong>Rechtlicher Unternehmensname:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Registrierte Adresse:</strong> Benachity, Westbengalen, India, PLZ: 713213",
+    "operationalAddress": "<strong>Betriebsadresse:</strong> Benachity, Westbengalen, India, PLZ: 713213",
+    "phoneNumber": "<strong>Telefonnummer:</strong> +91 62975 59892",
+    "email": "<strong>E-Mail:</strong> laresumetech@gmail.com",
+    "sendMessage": "Senden Sie uns eine Nachricht",
+    "toast": {
+      "success": "Nachricht erfolgreich gesendet!",
+      "error": "Nachricht konnte nicht gesendet werden"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "your@email.com",
+      "message": "Nachricht",
+      "messagePlaceholder": "Ihre Nachricht...",
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet..."
+    },
+    "mapLocation": "Standort auf der Karte",
+    "supportHours": "Kundensupport-Zeiten",
+    "timing": "<strong>Täglich:</strong> 9:00 Uhr - 18:00 Uhr"
   }
 }

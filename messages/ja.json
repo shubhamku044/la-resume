@@ -175,5 +175,33 @@
   "templates": {
     "resTemplate": "履歴書テンプレートを選択",
     "madeByYou": "あなたが作成した履歴書"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "description": "私たちはいつでもサポートします！ご質問、ご意見、ご相談があればお気軽にご連絡ください。担当者ができるだけ早くご連絡いたします。",
+    "contactInformation": "お問い合わせ情報",
+    "merchantName": "<strong>販売業者名（法人名）:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>登録住所:</strong> ベナチティ、西ベンガル州、インド郵便番号: 713213",
+    "operationalAddress": "<strong>営業所住所:</strong> ベナチティ、西ベンガル州、インド郵便番号: 713213",
+    "phoneNumber": "<strong>電話番号:</strong> +91 62975 59892",
+    "email": "<strong>メールアドレス:</strong> laresumetech@gmail.com",
+    "sendMessage": "メッセージを送信",
+    "toast": {
+      "success": "メッセージが正常に送信されました！",
+      "error": "メッセージの送信に失敗しました"
+    },
+    "form": {
+      "name": "名前",
+      "namePlaceholder": "あなたの名前",
+      "email": "メールアドレス",
+      "emailPlaceholder": "your@email.com",
+      "message": "メッセージ",
+      "messagePlaceholder": "メッセージ内容...",
+      "submit": "メッセージを送信",
+      "submitting": "送信中..."
+    },
+    "mapLocation": "地図の位置",
+    "supportHours": "カスタマーサポート時間",
+    "timing": "<strong>毎日:</strong> 午前9時〜午後6時"
   }
 }

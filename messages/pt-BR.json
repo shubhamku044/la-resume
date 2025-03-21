@@ -175,5 +175,33 @@
   "templates": {
     "resTemplate": "Escolha um Modelo de Currículo",
     "madeByYou": "Currículos Criados por Você"
+  },
+  "contact": {
+    "title": "Fale Conosco",
+    "description": "Estamos aqui para ajudar! Entre em contato para dúvidas, feedback ou suporte. Nossa equipe responderá o mais rápido possível.",
+    "contactInformation": "Nossas Informações de Contato",
+    "merchantName": "<strong>Nome Legal da Empresa:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Endereço Registrado:</strong> Benachity, Bengala Ocidental, India, CEP: 713213",
+    "operationalAddress": "<strong>Endereço Operacional:</strong> Benachity, Bengala Ocidental, India, CEP: 713213",
+    "phoneNumber": "<strong>Telefone:</strong> +91 62975 59892",
+    "email": "<strong>Email:</strong> laresumetech@gmail.com",
+    "sendMessage": "Envie-nos uma Mensagem",
+    "toast": {
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Falha ao enviar a mensagem"
+    },
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "message": "Mensagem",
+      "messagePlaceholder": "Sua mensagem...",
+      "submit": "Enviar Mensagem",
+      "submitting": "Enviando..."
+    },
+    "mapLocation": "Localização no Mapa",
+    "supportHours": "Horário de Atendimento",
+    "timing": "<strong>Todos os dias:</strong> 9:00 - 18:00"
   }
 }
