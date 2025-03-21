@@ -679,6 +679,17 @@ export default function LaResumeLanding() {
           </div>
           <div className="mt-6 text-center text-sm text-gray-600 sm:mt-8">
             © {new Date().getFullYear()} {t('footer.privacyPolicy')}
+            <div className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href="/contactUs" className="hover:underline">
+                Contact Us
+              </Link>
+              <Link href="/termsAndConditions" className="hover:underline">
+                Terms and Conditions
+              </Link>
+              <Link href="/refundAndCancellation" className="hover:underline">
+                Refund and Cancellation
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
