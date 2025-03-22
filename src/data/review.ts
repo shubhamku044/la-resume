@@ -34,4 +34,28 @@ export const reviews = [
     avatar:
       'https://ik.imagekit.io/laresume/reviews/akash1713243104659.jpeg?updatedAt=1742482638869',
   },
+  {
+    name: 'Sekharendu',
+    username: '@Sekharendu',
+    social: 'Github',
+    profileUrl: 'https://github.com/Sekharendu',
+    body: 'Tried this recently,and wow...where has this been all my life?! 🤯⭐',
+    avatar: 'https://avatars.githubusercontent.com/u/136489075?v=4',
+  },
+  {
+    name: 'Sina Atalay',
+    username: '@sinaatalay',
+    social: 'Github',
+    profileUrl: 'https://github.com/sinaatalay',
+    body: "We love resumes, and it's great to see new tools developed :) Good luck!",
+    avatar: 'https://avatars.githubusercontent.com/u/79940989?v=4',
+  },
+  {
+    name: 'Soham',
+    username: '@sohamchatterjee',
+    social: 'Linkedin',
+    profileUrl: 'https://www.linkedin.com/in/soham-chatterjee-682064258/',
+    body: "Great website, perosnally I'm using it for my resume and it's really helpful.",
+    avatar: 'https://ik.imagekit.io/laresume/reviews/1737619927636.jpeg?updatedAt=1742568130859',
+  },
 ];
