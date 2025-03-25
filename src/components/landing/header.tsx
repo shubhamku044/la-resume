@@ -7,10 +7,8 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 
 export function Header() {
-  const t = useTranslations();
   const router = useRouter();
 
   return (
