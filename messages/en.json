@@ -174,5 +174,33 @@
   "templates": {
     "resTemplate": "Choose a Resume Template",
     "madeByYou": "Resumes Made by You"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We're here to help! Reach out to us for any inquiries, feedback, or support. Our team will get back to you as soon as possible.",
+    "contactInformation": "Our Contact Information",
+    "merchantName": "<strong>Merchant Legal Entity Name:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Registered Address:</strong> Benachity, West Bengal, India, PIN: 713213",
+    "operationalAddress": "<strong>Operational Address:</strong> Benachity, West Bengal, India, PIN: 713213",
+    "phoneNumber": "<strong>Phone Number:</strong> +91 62975 59892",
+    "email": "<strong>Email:</strong> laresumetech@gmail.com",
+    "sendMessage": "Send Us a Message",
+    "toast": {
+      "success": "Message sent successfully!",
+      "error": "Failed to submit Message"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Your Message...",
+      "submit": "Send Message",
+      "submitting": "Submitting..."
+    },
+    "mapLocation": "Map Location",
+    "supportHours": "Customer Support Hours",
+    "timing": "<strong>EveryDay:</strong> 9:00 AM - 6:00 PM"
   }
 }

@@ -174,5 +174,33 @@
   "templates": {
     "resTemplate": "Выберите шаблон резюме",
     "madeByYou": "Резюме, созданные вами"
+  },
+  "contact": {
+    "title": "Свяжитесь с нами",
+    "description": "Мы всегда готовы помочь! Свяжитесь с нами по любым вопросам, отзывам или для получения поддержки. Наша команда ответит вам как можно скорее.",
+    "contactInformation": "Контактная информация",
+    "merchantName": "<strong>Юридическое название продавца:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Юридический адрес:</strong> Беначити, Западная Бенгалия, Индия, Индекс: 713213",
+    "operationalAddress": "<strong>Фактический адрес:</strong> Беначити, Западная Бенгалия, Индия, Индекс: 713213",
+    "phoneNumber": "<strong>Телефон:</strong> +91 62975 59892",
+    "email": "<strong>Электронная почта:</strong> laresumetech@gmail.com",
+    "sendMessage": "Отправить нам сообщение",
+    "toast": {
+      "success": "Сообщение успешно отправлено!",
+      "error": "Не удалось отправить сообщение"
+    },
+    "form": {
+      "name": "Имя",
+      "namePlaceholder": "Ваше имя",
+      "email": "Электронная почта",
+      "emailPlaceholder": "ваш@email.com",
+      "message": "Сообщение",
+      "messagePlaceholder": "Ваше сообщение...",
+      "submit": "Отправить сообщение",
+      "submitting": "Отправка..."
+    },
+    "mapLocation": "Местоположение на карте",
+    "supportHours": "Время работы службы поддержки",
+    "timing": "<strong>Каждый день:</strong> 9:00 - 18:00"
   }
 }
