@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Star } from 'lucide-react';
 import { AnimatedBackground } from '@/components';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export const HeroSection = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  const t = useTranslations('HomePage');
 
   return (
     <section
@@ -32,22 +34,22 @@ export const HeroSection = () => {
           </div>
 
           <h1 className="mb-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-white md:text-6xl">
-            Craft a <span className="animated-text-gradient">professional resume</span> that lands
-            interviews
+            {t.rich('hero.title', {
+              highlight: (chunks) => <span className="animated-text-gradient">{chunks}</span>,
+            })}
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 dark:text-gray-300 md:text-xl">
-            Our intuitive resume builder helps you create a perfectly formatted, ATS-friendly resume
-            that showcases your skills and experience.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
-              className="shadow-button group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
+              className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Create Your Resume
+                {t('hero.startBuilding')}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </span>
             </Button>
@@ -59,7 +61,7 @@ export const HeroSection = () => {
             >
               <div className="flex items-center gap-2">
                 <Code className="size-4" />
-                <span>View on GitHub</span>
+                <span>{t('hero.githubButton')}</span>
               </div>
             </Button>
           </div>

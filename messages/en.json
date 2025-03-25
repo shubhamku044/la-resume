@@ -5,10 +5,10 @@
       "starButton": "Star on GitHub"
     },
     "hero": {
-      "title": "Craft Perfect, <highlight>ATS-Friendly</highlight> Resumes",
-      "description": "Professional resume builder powered by LaTeX. Free. Export to PDF or LaTeX in seconds.",
-      "startBuilding": "Start Building",
-      "githubButton": "GitHub"
+      "title": "Craft a <highlight>professional resume</highlight> that lands interviews",
+      "description": "Our intuitive resume builder helps you create a perfectly formatted, ATS-friendly resume that showcases your skills and experience.",
+      "startBuilding": "Create Your Resume",
+      "githubButton": "View on GitHub"
     },
     "features": {
       "title": "Why Professionals Choose La-Resume",
