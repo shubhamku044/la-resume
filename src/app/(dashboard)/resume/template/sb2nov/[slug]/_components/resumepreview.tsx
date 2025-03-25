@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { CircularProgress } from '@heroui/progress';
 import Image from 'next/image';
 import {
@@ -11,6 +11,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ResizablePanel } from '@/components/ui/resizable';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,15 +23,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { useTranslations } from 'next-intl';
-import { toast } from 'sonner';
-import { useUpdateUserPaymentStatusMutation } from '@/store/services/paymentApi';
 import { useUser } from '@clerk/nextjs';
-import axios from 'axios';
-import { getCurrencyAndAmountByRegion } from '@/lib/utils';
+import { Button } from '@heroui/button';
+import { Crown } from 'lucide-react';
 
 interface IProps {
   imageUrl: string | null;
@@ -42,20 +40,40 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
   const t = useTranslations();
-  const [paid, setPaid] = useState<boolean>(paymentStatus);
-  const [showPaymentAlert, setShowPaymentAlert] = useState<boolean>(false);
-  const [updatePaymentStatus] = useUpdateUserPaymentStatusMutation();
+  const [showDownloadConfirmation, setShowDownloadConfirmation] = useState<boolean>(false);
+  const [message, setMessage] = useState('');
   const { user } = useUser();
-  const email = user?.primaryEmailAddress?.emailAddress; // User's email
+  const userId = user?.id;
+  const email = user?.primaryEmailAddress?.emailAddress;
   const fullName = user?.fullName;
+  const [paymentStarted, setPaymentStarted] = useState(false);
 
-  useEffect(() => {
-    setPaid(paymentStatus);
-  }, [paymentStatus]);
+  const handlePayment = async () => {
+    try {
+      const res = await fetch('/api/lemon/purchaseProduct', {
+        method: 'POST',
+        body: JSON.stringify({
+          productId: '737782',
+          redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/resume/template/sb2nov/${slug}/`,
+          userDetails: {
+            userId,
+            email,
+            fullName,
+            slug,
+          },
+        }),
+      });
+      const data = await res.json();
+      window.location.href = data.checkoutUrl;
+      setPaymentStarted(false);
+    } catch (error) {
+      console.error('LemonSqueezy Error:', error);
+      setMessage('Failed to create LemonSqueezy order');
+    }
+  };
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
-
     try {
       const latexBlob = new Blob([latexData], { type: 'text/plain' });
       const formData = new FormData();
@@ -79,6 +97,7 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
       document.body.removeChild(link);
 
       URL.revokeObjectURL(pdfUrl);
+      toast.success('PDF downloaded successfully');
     } catch (error) {
       console.error('Error downloading PDF:', error);
     }
@@ -86,7 +105,6 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
 
   const handleDownloadLaTeX = () => {
     if (!latexData) return;
-
     const latexBlob = new Blob([latexData], { type: 'text/plain' });
     const latexUrl = URL.createObjectURL(latexBlob);
 
@@ -98,6 +116,7 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
     document.body.removeChild(link);
 
     URL.revokeObjectURL(latexUrl);
+    toast.success('LaTeX file downloaded successfully');
   };
 
   const handleExport = () => {
@@ -108,79 +127,12 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
     }
   };
 
-  const handlePayment = async () => {
-    const detectUserRegion = async () => {
-      try {
-        const response = await axios.get('https://ipapi.co/json/');
-        return response.data.country_code; // Returns country code (e.g., 'IN', 'US', 'GB')
-      } catch (error) {
-        console.error('Failed to detect user region:', error);
-        return 'IN'; // Fallback to India
-      }
-    };
-
-    const countryCode = await detectUserRegion();
-    const { currency, amount } = getCurrencyAndAmountByRegion(countryCode);
-
-    const orderResponse = await fetch('/api/razorpay', {
-      method: 'POST',
-      body: JSON.stringify({
-        amount: amount, // ₹50 in paise
-        receipt: 'receipt_order_74394',
-      }),
-    });
-    const orderData = await orderResponse.json();
-
-    // Step 2: Open Razorpay Checkout
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-      amount: orderData.amount,
-      currency: currency,
-      name: 'LaResume',
-      description: 'Pay ₹50 to Download Resume',
-      order_id: orderData.id,
-      handler: async (response: string) => {
-        console.log('Payment successful:', response);
-
-        try {
-          await updatePaymentStatus({
-            slug,
-          }).unwrap();
-
-          setPaid(true);
-          setShowPaymentAlert(false); // Close the payment dialog
-          toast.success('Payment successful! You can now download your resume.');
-        } catch (error) {
-          console.error('Failed to update payment status:', error);
-          toast.error('Failed to update payment status. Please contact support.');
-        }
-      },
-      prefill: {
-        name: fullName,
-        email: email,
-        contact: '9999999999',
-      },
-      theme: {
-        color: '#3399cc',
-      },
-    };
-
-    const razorpay = new (window as any).Razorpay(options);
-    razorpay.open();
-  };
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
   const handleDownloadClick = () => {
-    if (!paid) {
-      setShowPaymentAlert(true); // Show payment alert if not paid
+    if (!paymentStatus) {
+      setPaymentStarted(true);
+      handlePayment();
     } else {
-      setShowPaymentAlert(false); // Directly handle export if already paid
+      setShowDownloadConfirmation(true);
     }
   };
 
@@ -207,34 +159,33 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
                 <SelectItem value="tex">LaTeX</SelectItem>
               </SelectContent>
             </Select>
-            <AlertDialog open={showPaymentAlert} onOpenChange={setShowPaymentAlert}>
-              <AlertDialogTrigger
-                className="rounded-md bg-black px-4 py-2 text-white"
-                onClick={handleDownloadClick}
-              >
-                {t('common.download')}
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>
-                    {paid ? 'Confirm Download' : 'Payment Required'}
-                  </AlertDialogTitle>
-                  <AlertDialogDescription>
-                    {paid
-                      ? `Are you sure you want to download the resume in ${exportFormat.toUpperCase()} format?`
-                      : 'You need to pay ₹50 to download the resume. Do you want to proceed with the payment?'}
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={paid ? handleExport : handlePayment}>
-                    {paid ? 'Confirm' : 'Pay ₹50'}
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <Button
+              className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+              onPress={handleDownloadClick}
+              disabled={paymentStarted}
+            >
+              {paymentStarted ? (
+                <div className="flex items-center gap-2">
+                  <CircularProgress
+                    color="default"
+                    className="scale-50 text-white"
+                    strokeWidth={3}
+                    size="sm"
+                  />
+                  <span>Processing...</span>
+                </div>
+              ) : paymentStatus ? (
+                <>
+                  {t('common.download')}
+                  <Crown size={16} />
+                </>
+              ) : (
+                'Pay & Download'
+              )}
+            </Button>
           </div>
         </div>
+
         <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
           {imageUrl ? (
             <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
@@ -244,6 +195,23 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
             </p>
           )}
         </div>
+
+        <AlertDialog open={showDownloadConfirmation} onOpenChange={setShowDownloadConfirmation}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to download the resume in {exportFormat.toUpperCase()} format?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        {message && <p className="mt-4 text-red-500">{message}</p>}
       </ResizablePanel>
     );
   }

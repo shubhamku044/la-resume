@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function PATCH(req: Request, { params }: { params: { slug: string } }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   if (!slug) {
     return NextResponse.json({ message: 'Slug is required' }, { status: 400 });
