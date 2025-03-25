@@ -95,7 +95,7 @@ export default {
       },
     },
   },
-  darkMode: ['class', 'class'],
+  darkMode: 'class',
   plugins: [addVariablesForColors, require('tailwindcss-animate'), heroui()],
 } satisfies Config;
 
