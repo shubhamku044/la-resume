@@ -6,35 +6,35 @@ import { motion } from 'framer-motion';
 const companies = [
   {
     name: 'Google',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Google_2015_logo.svg?updatedAt=1743017795860',
   },
   {
     name: 'Microsoft',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Microsoft_logo_(2012).svg?updatedAt=1743017795965',
   },
   {
     name: 'Apple',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Apple_logo_black.svg?updatedAt=1743017796040',
   },
   {
     name: 'Amazon',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Amazon_logo.svg?updatedAt=1743017796010',
   },
   {
     name: 'Meta',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1200px-Meta_Platforms_Inc._logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Meta_Platforms_Inc._logo.svg?updatedAt=1743017796023',
   },
   {
     name: 'Netflix',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Netflix_2015_logo.svg?updatedAt=1743017795852',
   },
   {
     name: 'IBM',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/IBM_logo.svg?updatedAt=1743017795968',
   },
   {
     name: 'Salesforce',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1200px-Salesforce.com_logo.svg.png',
+    logo: 'https://ik.imagekit.io/laresume/logos/Salesforce.com_logo.svg?updatedAt=1743017795901',
   },
 ];
 
