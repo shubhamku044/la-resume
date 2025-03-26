@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { TestimonialsCarousel } from './testimonial-carousel';
+import ReviewsMarquee from './testimonial-flow';
 
 export const TestimonialsSection = () => {
   const t = useTranslations('HomePage');
@@ -27,8 +27,7 @@ export const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <TestimonialsCarousel />
-        {/* <ReviewsMarquee /> */}
+        <ReviewsMarquee />
       </div>
     </section>
   );

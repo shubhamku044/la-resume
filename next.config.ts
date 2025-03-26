@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     appIsrStatus: true,
   },
   images: {
-    domains: ['avatars.githubusercontent.com', 'imagekit.io'],
+    domains: ['avatars.githubusercontent.com', 'imagekit.io', 'upload.wikimedia.org'],
     remotePatterns: [
       {
         hostname: 'avatars.githubusercontent.com',
