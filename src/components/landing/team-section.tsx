@@ -73,14 +73,6 @@ export const TeamSection = () => {
                     <div className="p-6 md:w-2/3 md:p-8">
                       {/* Small Avatar next to Name */}
                       <div className="flex items-center space-x-4">
-                        <div className="relative size-12">
-                          <Image
-                            src={creator.image}
-                            alt={creator.name}
-                            fill
-                            className="rounded-full object-cover"
-                          />
-                        </div>
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                           {creator.name}
                         </h3>

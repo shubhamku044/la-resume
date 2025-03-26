@@ -7,28 +7,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useTranslations } from 'next-intl';
 
 export const FAQSection = () => {
+  const t = useTranslations('HomePage');
+
   const faqs = [
     {
-      question: 'Is this resume builder really free?',
-      answer:
-        'Yes, our core features are completely free to use. You can create, edit, and download your resume without any payment required.',
+      question: t('faq.question1.question'),
+      answer: t('faq.question1.answer'),
     },
     {
-      question: 'Are the templates ATS-friendly?',
-      answer:
-        'Absolutely! All of our templates are designed to pass through Applicant Tracking Systems with flying colors.',
+      question: t('faq.question2.question'),
+      answer: t('faq.question2.answer'),
     },
     {
-      question: 'Can I create multiple resumes?',
-      answer:
-        'Yes, you can create multiple versions of your resume for different job applications and industries.',
+      question: t('faq.question3.question'),
+      answer: t('faq.question3.answer'),
     },
     {
-      question: 'How do I export my resume?',
-      answer:
-        'You can download your resume in PDF, DOCX, or TXT formats with just a single click from the editor.',
+      question: t('faq.question4.question'),
+      answer: t('faq.question4.answer'),
     },
   ];
 
@@ -43,13 +42,13 @@ export const FAQSection = () => {
           className="mb-16 text-center"
         >
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
-            Frequently Asked Questions
+            {t('faq.title')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-            Got questions? We have answers
+            {t('faq.subtitle')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Find answers to common questions about our resume builder
+            {t('faq.description')}
           </p>
         </motion.div>
 

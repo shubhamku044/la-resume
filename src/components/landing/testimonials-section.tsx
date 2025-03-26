@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TestimonialsCarousel } from './testimonial-carousel';
 import { useTranslations } from 'next-intl';
+import { TestimonialsCarousel } from './testimonial-carousel';
 
 export const TestimonialsSection = () => {
   const t = useTranslations('HomePage');
@@ -28,6 +28,7 @@ export const TestimonialsSection = () => {
         </motion.div>
 
         <TestimonialsCarousel />
+        {/* <ReviewsMarquee /> */}
       </div>
     </section>
   );

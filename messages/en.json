@@ -143,22 +143,60 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
+      "subtitle": "Got questions? We have answers",
+      "description": "Find answers to common questions about our resume builder",
       "question1": {
-        "question": "Is La-Resume really completely free?",
-        "answer": "Yes! La-Resume is 100% free and open source. We believe professional resume building should be accessible to everyone."
+        "question": "Is this resume builder really free?",
+        "answer": "Yes, our core features are completely free to use. You can create, edit, and download your resume without any payment required."
       },
       "question2": {
-        "question": "How does the ATS optimization work?",
-        "answer": "Our templates follow industry best practices for ATS compatibility, including proper keyword placement, clean formatting, and semantic structure."
+        "question": "Are the templates ATS-friendly?",
+        "answer": "Absolutely! All of our templates are designed to pass through Applicant Tracking Systems with flying colors."
       },
       "question3": {
-        "question": "Can I use my own LaTeX templates?",
-        "answer": "Currently we support our curated templates, but we plan to add custom template support in future updates."
+        "question": "Can I create multiple resumes?",
+        "answer": "Yes, you can create multiple versions of your resume for different job applications and industries."
+      },
+      "question4": {
+        "question": "How do I export my resume?",
+        "answer": "You can download your resume in PDF, DOCX, or TXT formats with just a single click from the editor."
       }
     },
+    "contact": {
+      "badge": "Get In Touch",
+      "heading": "Have questions or feedback?",
+      "description": "We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.",
+      "contact_info_title": "Contact Information",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "Your email",
+        "subject_label": "Subject",
+        "subject_placeholder": "How can we help?",
+        "message_label": "Message",
+        "message_placeholder": "Your message...",
+        "button": "Send Message"
+      },
+      "toast_success": "Message sent successfully! We'll get back to you soon."
+    },
     "footer": {
-      "detail": "Open source resume builder",
-      "privacyPolicy": "La-Resume. MIT Licensed. Contributions welcome!"
+      "brand": "LaResume",
+      "description": "Create professional resumes in minutes with our easy-to-use resume builder. Stand out from the crowd and land your dream job.",
+      "resources": "Resources",
+      "templates": "Templates",
+      "madeByYou": "Made By You",
+      "company": "Company",
+      "aboutUs": "About Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "support": "Support",
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "faqs": "FAQs",
+      "copyright": "LaResume. MIT License."
     }
   },
   "header": {
