@@ -58,4 +58,12 @@ export const reviews = [
     body: "Great website, perosnally I'm using it for my resume and it's really helpful.",
     avatar: 'https://ik.imagekit.io/laresume/reviews/1737619927636.jpeg?updatedAt=1742568130859',
   },
+  {
+    name: 'Amitrajeet',
+    username: '@amitrajeet',
+    social: 'Linkedin',
+    profileUrl: 'https://www.linkedin.com/in/amitrajeet-jana-6648b7232/',
+    body: "I'm using this website for my resume and it's really helpful.",
+    avatar: 'https://ik.imagekit.io/laresume/reviews/1739518400068.jpeg?updatedAt=1743015594535',
+  },
 ];

@@ -10,8 +10,8 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import type { Viewport } from 'next';
-import Header from '@/components/ui/Header';
 import Favicon from '@/components/favicon';
+import { ThemeProvider } from '@/components/landing/theme-provider';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -109,14 +109,15 @@ export default async function RootLayout({
           <link rel="shortcut icon" href="/favicon-dark.ico" />
         </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Favicon />
-          <Provider>
-            <NextIntlClientProvider messages={messages}>
-              <Header />
-              <main>{children}</main>
-              <Toaster />
-            </NextIntlClientProvider>
-          </Provider>
+          <ThemeProvider>
+            <Favicon />
+            <Provider>
+              <NextIntlClientProvider messages={messages}>
+                <main>{children}</main>
+                <Toaster />
+              </NextIntlClientProvider>
+            </Provider>
+          </ThemeProvider>
           <Analytics />
           <SpeedInsights />
         </body>
