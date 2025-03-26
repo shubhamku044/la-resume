@@ -8,7 +8,6 @@ import {
   HeroSection,
   HowItWorksSection,
   StatsBanner,
-  StatsSection,
   TeamSection,
   TestimonialsSection,
 } from '@/components/landing';
@@ -21,7 +20,7 @@ const Page = () => {
       <StatsBanner />
       <HeroSection />
       <CompaniesSection />
-      <StatsSection />
+
       <FeaturesSection />
       <HowItWorksSection />
       <TeamSection />
