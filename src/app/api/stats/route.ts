@@ -8,8 +8,8 @@ interface StatsResponse {
 
 export async function GET() {
   const currentStats: StatsResponse = {
-    signups: 584,
-    resumes: 612,
+    signups: 863,
+    resumes: 1248,
   };
   try {
     const totalSignups = await prisma.user.count();

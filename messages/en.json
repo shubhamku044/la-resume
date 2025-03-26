@@ -5,51 +5,90 @@
       "starButton": "Star on GitHub"
     },
     "hero": {
-      "title": "Craft Perfect, <highlight>ATS-Friendly</highlight> Resumes",
-      "description": "Professional resume builder powered by LaTeX. Free. Export to PDF or LaTeX in seconds.",
-      "startBuilding": "Start Building",
-      "githubButton": "GitHub"
+      "title": "Craft a <highlight>professional resume</highlight> that lands interviews",
+      "description": "Our intuitive resume builder helps you create a perfectly formatted, ATS-friendly resume that showcases your skills and experience.",
+      "startBuilding": "Create Your Resume",
+      "githubButton": "View on GitHub"
+    },
+    "company": {
+      "title": "Create resumes that help you land jobs at top companies"
+    },
+    "stats": {
+      "resumeCreated": "Resumes Created",
+      "atsSuccess": "ATS Success Rate",
+      "template": "Templates Designs",
+      "customer": "Customer Support"
     },
     "features": {
-      "title": "Why Professionals Choose La-Resume",
+      "intro": "Powerful Features",
+      "title": "Everything you need to create the perfect resume",
+      "description": "Our resume builder combines beautiful design with powerful features to help you create a resume that stands out.",
       "feature1": {
-        "title": "ATS Optimized",
-        "description": "Resume templates designed to pass through Applicant Tracking Systems"
+        "title": "Easy Customization",
+        "description": "Customize every aspect of your resume with our intuitive, drag-and-drop editor."
       },
       "feature2": {
-        "title": "LaTeX Precision",
-        "description": "Professional typography and layout powered by LaTeX engine"
+        "title": "Real-time Preview",
+        "description": "See changes to your resume in real-time as you make them."
       },
       "feature3": {
-        "title": "Instant Export",
-        "description": "One-click PDF download or raw LaTeX code export"
+        "title": "Multiple Formats",
+        "description": "Export your resume in PDF, DOCX, or TXT formats for different application requirements."
+      },
+      "feature4": {
+        "title": "ATS Optimization",
+        "description": "Our templates are designed to pass Applicant Tracking Systems with ease."
+      },
+      "feature5": {
+        "title": "AI Suggestions",
+        "description": "Get smart content suggestions to improve your resume and stand out."
+      },
+      "feature6": {
+        "title": "Professional Templates",
+        "description": "Choose from a variety of ATS-friendly resume templates designed by professionals."
       }
     },
     "use": {
-      "title": "Simple 3-Step Process",
-      "step1": {
-        "title": "Input Your Information",
-        "description": "Fill in your details using our intuitive form"
+      "badge": "Simple Process",
+      "heading": "Three steps to your perfect resume",
+      "subheading": "Creating a professional resume has never been easier",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Choose a Template",
+          "description": "Select from our professionally designed templates that are optimized for ATS systems."
+        },
+        {
+          "number": "02",
+          "title": "Add Your Content",
+          "description": "Fill in your information using our intuitive editor with helpful suggestions."
+        },
+        {
+          "number": "03",
+          "title": "Download & Apply",
+          "description": "Export your resume in your preferred format and start applying for jobs immediately."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Meet Our Team",
+      "title": "The creators behind LaResume",
+      "description": "Passionate developers dedicated to helping you create professional, standout resumes.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Full Stack Developer",
+        "description": "Passionate about creating tools that help people succeed in their career journey."
       },
-      "step2": {
-        "title": "Customize Templates",
-        "description": "Select from professional ATS-optimized templates"
-      },
-      "step3": {
-        "title": "Download & Apply",
-        "description": "Export as PDF or LaTeX and start applying"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Full Stack Developer",
+        "description": "Design enthusiast focused on crafting user-friendly interfaces and experiences."
       }
     },
     "testimonial": {
-      "title": "What People Are Saying",
-      "quote1": {
-        "text": "I was able to create a professional resume in minutes. The LaTeX export feature is a game-changer.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume is the best resume builder I've ever used. The templates are top-notch.",
-        "author": "Jane Doe"
-      }
+      "intro": "Success Stories",
+      "title": "What our users are saying",
+      "description": "Join thousands of job seekers who have found success with our resume builder."
     },
     "feedback": {
       "title": "Get in Touch",
@@ -104,22 +143,61 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
+      "subtitle": "Got questions? We have answers",
+      "description": "Find answers to common questions about our resume builder",
       "question1": {
-        "question": "Is La-Resume really completely free?",
-        "answer": "Yes! La-Resume is 100% free and open source. We believe professional resume building should be accessible to everyone."
+        "question": "Is this resume builder really free?",
+        "answer": "Yes, our core features are completely free to use. You can create, edit, and download your resume without any payment required."
       },
       "question2": {
-        "question": "How does the ATS optimization work?",
-        "answer": "Our templates follow industry best practices for ATS compatibility, including proper keyword placement, clean formatting, and semantic structure."
+        "question": "Are the templates ATS-friendly?",
+        "answer": "Absolutely! All of our templates are designed to pass through Applicant Tracking Systems with flying colors."
       },
       "question3": {
-        "question": "Can I use my own LaTeX templates?",
-        "answer": "Currently we support our curated templates, but we plan to add custom template support in future updates."
+        "question": "Can I create multiple resumes?",
+        "answer": "Yes, you can create multiple versions of your resume for different job applications and industries."
+      },
+      "question4": {
+        "question": "How do I export my resume?",
+        "answer": "You can download your resume in PDF, DOCX, or TXT formats with just a single click from the editor."
       }
     },
+    "contact": {
+      "badge": "Get In Touch",
+      "heading": "Have questions or feedback?",
+      "description": "We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.",
+      "contact_info_title": "Contact Information",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "Your email",
+        "subject_label": "Subject",
+        "subject_placeholder": "How can we help?",
+        "message_label": "Message",
+        "message_placeholder": "Your message...",
+        "button": "Send Message"
+      },
+      "toast_success": "Message sent successfully! We'll get back to you soon."
+    },
     "footer": {
-      "detail": "Open source resume builder",
-      "privacyPolicy": "La-Resume. MIT Licensed. Contributions welcome!"
+      "brand": "LaResume",
+      "description": "Create professional resumes in minutes with our easy-to-use resume builder. Stand out from the crowd and land your dream job.",
+      "resources": "Resources",
+      "templates": "Templates",
+      "userDetails": "User Details",
+      "madeByYou": "Made By You",
+      "company": "Company",
+      "aboutUs": "About Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "support": "Support",
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "faqs": "FAQs",
+      "copyright": "LaResume. MIT License."
     }
   },
   "header": {

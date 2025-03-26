@@ -2,8 +2,13 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
+  devIndicators: {
+    buildActivityPosition: 'bottom-right',
+    buildActivity: true,
+    appIsrStatus: true,
+  },
   images: {
-    domains: ['avatars.githubusercontent.com', 'imagekit.io'],
+    domains: ['avatars.githubusercontent.com', 'imagekit.io', 'upload.wikimedia.org'],
     remotePatterns: [
       {
         hostname: 'avatars.githubusercontent.com',
