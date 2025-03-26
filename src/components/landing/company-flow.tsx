@@ -92,6 +92,7 @@ const CompaniesSec = () => {
                   width={128}
                   height={64}
                   className="max-h-full max-w-full object-contain"
+                  crossOrigin="anonymous"
                 />
               </div>
             ))}
