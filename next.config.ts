@@ -8,18 +8,21 @@ const nextConfig: NextConfig = {
     appIsrStatus: true,
   },
   images: {
-    domains: ['avatars.githubusercontent.com', 'imagekit.io', 'upload.wikimedia.org'],
     remotePatterns: [
       {
         hostname: 'avatars.githubusercontent.com',
+        protocol: 'https',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'ik.imagekit.io',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'imagekit.io',
+        pathname: '/**',
       },
     ],
   },
