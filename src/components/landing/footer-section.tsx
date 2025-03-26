@@ -20,29 +20,6 @@ export const FooterSection = () => {
           </div>
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
-              {t('footer.resources')}
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/templates/resume-templates"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
-                >
-                  {t('footer.templates')}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/templates/made-by-you"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
-                >
-                  {t('footer.madeByYou')}
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
               {t('footer.company')}
             </h3>
             <ul className="space-y-3">
@@ -56,7 +33,7 @@ export const FooterSection = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/refundAndCancellation"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.privacyPolicy')}
@@ -64,7 +41,7 @@ export const FooterSection = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/termsAndConditions"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.termsOfService')}
@@ -87,7 +64,7 @@ export const FooterSection = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/contactUs"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.contactUs')}
