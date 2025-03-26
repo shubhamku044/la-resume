@@ -6,11 +6,14 @@ import { ArrowRight, Code, Star } from 'lucide-react';
 import { AnimatedBackground } from '@/components';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 export const HeroSection = () => {
+  const router = useRouter();
   const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.8], [0, -50]);
   const t = useTranslations('HomePage');
 
   return (
@@ -44,15 +47,37 @@ export const HeroSection = () => {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                {t('hero.startBuilding')}
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Button>
+            <SignedIn>
+              <Button
+                size="lg"
+                className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
+                onClick={() => {
+                  router.push('/templates');
+                }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {t('hero.startBuilding')}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Button>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton
+                fallbackRedirectUrl="/templates"
+                signUpFallbackRedirectUrl="/"
+                mode="modal"
+              >
+                <Button
+                  size="lg"
+                  className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    {t('hero.startBuilding')}
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </SignInButton>
+            </SignedOut>
 
             <Button
               variant="outline"

@@ -15,16 +15,10 @@ import {
 import React from 'react';
 
 const Page = () => {
-  const stats = {
-    stars: 1250,
-    signups: 8750,
-    resumes: 12500,
-  };
-
   return (
     <div className="min-h-screen">
       <Header />
-      <StatsBanner stats={stats} />
+      <StatsBanner />
       <HeroSection />
       <CompaniesSection />
       <StatsSection />
