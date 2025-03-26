@@ -66,7 +66,13 @@ export const TeamSection = () => {
                   <div className="flex flex-col md:flex-row">
                     {/* Profile Image Section */}
                     <div className="relative h-64 md:h-auto md:w-1/3">
-                      <Image src={creator.image} alt={creator.name} fill className="object-cover" />
+                      <Image
+                        src={creator.image}
+                        alt={creator.name}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
                     </div>
 
                     {/* Content Section */}
