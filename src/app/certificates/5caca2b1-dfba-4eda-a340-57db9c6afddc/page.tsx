@@ -16,7 +16,7 @@ export default function CertificatePage() {
           <Image
             width={800}
             height={600}
-            src="https://ik.imagekit.io/laresume/certificates/shubham-laresume.png?updatedAt=1742929689579"
+            src="https://ik.imagekit.io/laresume/certificates/shubham-laresume.png"
             alt="Certificate Image"
             className="h-auto w-full object-cover"
           />
