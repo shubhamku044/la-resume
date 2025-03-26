@@ -11,6 +11,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ResizablePanel } from '@/components/ui/resizable';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,22 +23,62 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useUser } from '@clerk/nextjs';
+import { Button } from '@heroui/button';
+import { Crown } from 'lucide-react';
+import { initiateLemonSqueezyCheckout } from '@/lib/lemonSqueezy';
+
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
   loading: boolean;
+  paymentStatus: boolean;
+  slug: string;
+  productId: string;
+  resumeType: string;
 }
 
-const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
+const ResumePreview = ({
+  imageUrl,
+  latexData,
+  loading,
+  paymentStatus,
+  slug,
+  productId,
+  resumeType,
+}: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
+  const t = useTranslations();
+  const [showDownloadConfirmation, setShowDownloadConfirmation] = useState<boolean>(false);
+  const [message, setMessage] = useState('');
+  const { user } = useUser();
+  const userId = user?.id;
+  const email = user?.primaryEmailAddress?.emailAddress;
+  const fullName = user?.fullName;
+  const [paymentStarted, setPaymentStarted] = useState(false);
+
+  const handlePayment = async () => {
+    try {
+      await initiateLemonSqueezyCheckout({
+        productId: productId,
+        resumeType: resumeType,
+        userDetails: {
+          userId: userId!,
+          email: email!,
+          fullName: fullName!,
+          slug: slug,
+        },
+      });
+    } catch (error) {
+      console.error('LemonSqueezy Error:', error);
+      setMessage('Failed to create LemonSqueezy order');
+    }
+  };
 
   const handleDownloadPDF = async () => {
     if (!latexData) return;
-
     try {
       const latexBlob = new Blob([latexData], { type: 'text/plain' });
       const formData = new FormData();
@@ -59,6 +102,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
       document.body.removeChild(link);
 
       URL.revokeObjectURL(pdfUrl);
+      toast.success('PDF downloaded successfully');
     } catch (error) {
       console.error('Error downloading PDF:', error);
     }
@@ -66,7 +110,6 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
 
   const handleDownloadLaTeX = () => {
     if (!latexData) return;
-
     const latexBlob = new Blob([latexData], { type: 'text/plain' });
     const latexUrl = URL.createObjectURL(latexBlob);
 
@@ -78,6 +121,7 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
     document.body.removeChild(link);
 
     URL.revokeObjectURL(latexUrl);
+    toast.success('LaTeX file downloaded successfully');
   };
 
   const handleExport = () => {
@@ -87,13 +131,28 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
       handleDownloadLaTeX();
     }
   };
+
+  const handleDownloadClick = () => {
+    if (!paymentStatus) {
+      setPaymentStarted(true);
+      handlePayment();
+    } else {
+      setShowDownloadConfirmation(true);
+    }
+  };
+
   if (!isMobile) {
     return (
       <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
-        <h2 className="text-lg font-semibold">Resume Preview</h2>
+        <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
         <div className="mt-4 flex items-center justify-between">
           <div className="h-10 flex-1">
-            {loading && <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />}
+            {loading && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs">Compiling</span>
+                <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-4">
             <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
@@ -105,26 +164,33 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
                 <SelectItem value="tex">LaTeX</SelectItem>
               </SelectContent>
             </Select>
-            <AlertDialog>
-              <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
-                Download
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Confirm Download</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Are you sure you want to download the resume in{' '}
-                    <strong>{exportFormat.toUpperCase()}</strong> format?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <Button
+              className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+              onPress={handleDownloadClick}
+              disabled={paymentStarted}
+            >
+              {paymentStarted ? (
+                <div className="flex items-center gap-2">
+                  <CircularProgress
+                    color="default"
+                    className="scale-50 text-white"
+                    strokeWidth={3}
+                    size="sm"
+                  />
+                  <span>Processing...</span>
+                </div>
+              ) : paymentStatus ? (
+                <>
+                  {t('common.download')}
+                  <Crown size={16} />
+                </>
+              ) : (
+                'Pay & Download'
+              )}
+            </Button>
           </div>
         </div>
+
         <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
           {imageUrl ? (
             <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
@@ -134,69 +200,24 @@ const ResumePreview = ({ imageUrl, latexData, loading }: IProps) => {
             </p>
           )}
         </div>
+
+        <AlertDialog open={showDownloadConfirmation} onOpenChange={setShowDownloadConfirmation}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to download the resume in {exportFormat.toUpperCase()} format?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        {message && <p className="mt-4 text-red-500">{message}</p>}
       </ResizablePanel>
-    );
-  } else {
-    return (
-      <div className="flex w-full justify-center">
-        <ResizablePanel className="w-full max-w-[500px] rounded-md border p-4">
-          <h2 className="text-center text-lg font-semibold">Resume Preview</h2>
-
-          {/* Export Controls (Centered at Top) */}
-          <div className="mt-4 flex w-full items-center justify-center gap-2">
-            <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
-              <SelectTrigger className="w-[140px]">
-                <SelectValue placeholder="Export As" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="pdf">PDF</SelectItem>
-                <SelectItem value="tex">LaTeX</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <AlertDialog>
-              <AlertDialogTrigger className="rounded-md bg-black px-4 py-2 text-white">
-                Download
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Confirm Download</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Are you sure you want to download the resume in{' '}
-                    <strong>{exportFormat.toUpperCase()}</strong> format?
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
-
-          {/* Resume Preview with Loading */}
-          <div className="relative mt-4 flex h-auto max-h-[calc(100vh-200px)] w-full items-center justify-center rounded-md border">
-            {loading && (
-              <div className="absolute z-50 flex items-center justify-center">
-                <CircularProgress className="text-sm" strokeWidth={3} size="lg" />
-              </div>
-            )}
-            {imageUrl ? (
-              <Image
-                src={imageUrl}
-                alt="Resume Preview"
-                width={700}
-                height={990}
-                className="h-auto max-h-full w-full object-contain"
-              />
-            ) : (
-              <p className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
-                Preview will appear here...
-              </p>
-            )}
-          </div>
-        </ResizablePanel>
-      </div>
     );
   }
 };

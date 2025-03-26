@@ -40,9 +40,11 @@ export async function POST(req: NextRequest) {
         `User ID: ${userId}, Payment Status: ${isSuccessful} , slug : ${body?.meta?.custom_data?.slug}`
       );
       const slug = body?.meta?.custom_data?.slug;
+      const orderNumber = body?.data?.attributes?.order_number;
       await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/${slug}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderNumber }),
       });
     }
 

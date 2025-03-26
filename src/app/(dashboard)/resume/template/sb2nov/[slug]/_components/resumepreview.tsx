@@ -27,6 +27,7 @@ import {
 import { useUser } from '@clerk/nextjs';
 import { Button } from '@heroui/button';
 import { Crown } from 'lucide-react';
+import { initiateLemonSqueezyCheckout } from '@/lib/lemonSqueezy';
 
 interface IProps {
   imageUrl: string | null;
@@ -34,9 +35,19 @@ interface IProps {
   loading: boolean;
   paymentStatus: boolean;
   slug: string;
+  productId: string;
+  resumeType: string;
 }
 
-const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IProps) => {
+const ResumePreview = ({
+  imageUrl,
+  latexData,
+  loading,
+  paymentStatus,
+  slug,
+  productId,
+  resumeType,
+}: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
   const t = useTranslations();
@@ -50,22 +61,16 @@ const ResumePreview = ({ imageUrl, latexData, loading, paymentStatus, slug }: IP
 
   const handlePayment = async () => {
     try {
-      const res = await fetch('/api/lemon/purchaseProduct', {
-        method: 'POST',
-        body: JSON.stringify({
-          productId: '737782',
-          redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/resume/template/sb2nov/${slug}/`,
-          userDetails: {
-            userId,
-            email,
-            fullName,
-            slug,
-          },
-        }),
+      await initiateLemonSqueezyCheckout({
+        productId: productId,
+        resumeType: resumeType,
+        userDetails: {
+          userId: userId!,
+          email: email!,
+          fullName: fullName!,
+          slug: slug,
+        },
       });
-      const data = await res.json();
-      window.location.href = data.checkoutUrl;
-      setPaymentStarted(false);
     } catch (error) {
       console.error('LemonSqueezy Error:', error);
       setMessage('Failed to create LemonSqueezy order');

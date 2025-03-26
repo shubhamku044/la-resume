@@ -23,16 +23,19 @@ export const resumesMap = {
     templateType: {} as Sb2novResumeData,
     templateSampleData: sb2novResumeSampleData,
     templateFunction: sb2nov,
+    productId: '737782',
   },
   deedy: {
     templateType: {} as deedyResumeData,
     templateSampleData: deedySampleResumeData,
     templateFunction: deedy,
+    productId: '738433',
   },
   mteck: {
     templateType: {} as MTeckResumeData,
     templateSampleData: mteckResumeSampleData,
     templateFunction: mteck,
+    productId: '738435',
   },
 };
 

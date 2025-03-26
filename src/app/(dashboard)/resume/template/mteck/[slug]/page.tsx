@@ -7,6 +7,7 @@ import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable'
 import { MTeckResumeData, mteck } from '@/lib/templates/mteck';
 
 export default function ResumeTemplatePage() {
+  const resumetype = 'mteck';
   const {
     resumeFunc,
     initialData,
@@ -20,7 +21,9 @@ export default function ResumeTemplatePage() {
     setLatexData,
     setLoading,
     slug,
-  } = useResumeData('mteck');
+    hasPaid,
+    productId,
+  } = useResumeData(resumetype);
   const isMobile = useIsMobile();
 
   if (isFetching) {
@@ -56,7 +59,15 @@ export default function ResumeTemplatePage() {
         >
           {isMobile ? (
             <>
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                resumeType={resumetype}
+                paymentStatus={hasPaid}
+                productId={productId}
+                slug={slug as string}
+              />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
                 onUpdate={setImageUrl}
@@ -80,7 +91,15 @@ export default function ResumeTemplatePage() {
                 title={existingResume?.title || ''}
               />
               <ResizableHandle className="w-4 opacity-0" />
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                resumeType={resumetype}
+                slug={slug as string}
+                paymentStatus={hasPaid}
+                productId={productId}
+              />
             </>
           )}
         </ResizablePanelGroup>

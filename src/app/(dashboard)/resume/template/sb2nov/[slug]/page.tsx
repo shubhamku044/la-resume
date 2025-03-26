@@ -7,6 +7,7 @@ import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable'
 import { Sb2novResumeData, sb2nov } from '@/lib/templates/sb2nov';
 
 export default function ResumeTemplatePage() {
+  const resumeType = 'sb2nov';
   const {
     resumeFunc,
     initialData,
@@ -21,7 +22,8 @@ export default function ResumeTemplatePage() {
     setLoading,
     slug,
     hasPaid,
-  } = useResumeData('sb2nov');
+    productId,
+  } = useResumeData(resumeType);
   const isMobile = useIsMobile();
 
   if (isFetching) {
@@ -63,6 +65,8 @@ export default function ResumeTemplatePage() {
                 loading={loading}
                 paymentStatus={hasPaid}
                 slug={slug as string}
+                productId={productId}
+                resumeType={resumeType}
               />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
@@ -93,6 +97,8 @@ export default function ResumeTemplatePage() {
                 loading={loading}
                 paymentStatus={hasPaid}
                 slug={slug as string}
+                productId={productId}
+                resumeType={resumeType}
               />
             </>
           )}

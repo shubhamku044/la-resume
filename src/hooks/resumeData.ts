@@ -11,7 +11,11 @@ import {
 
 export function useResumeData(templateKey: keyof typeof resumesMap) {
   const templatePackage = resumesMap[templateKey];
-  const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
+  const {
+    templateFunction: resumeFunc,
+    templateSampleData: resumeSampleData,
+    productId: productId,
+  } = templatePackage;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);
@@ -49,5 +53,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     slug,
     resumeSampleData,
     hasPaid,
+    productId,
   };
 }

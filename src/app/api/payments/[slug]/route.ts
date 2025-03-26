@@ -3,10 +3,17 @@ import prisma from '@/lib/prisma';
 
 export async function PATCH(req: Request, { params }: { params: { slug: string } }) {
   const { slug } = await params;
+  const { orderNumber } = await req.json();
+  console.log('Updating payment:', slug, orderNumber);
 
   if (!slug) {
     return NextResponse.json({ message: 'Slug is required' }, { status: 400 });
   }
+  if (!orderNumber) {
+    return NextResponse.json({ message: 'Order number is required' }, { status: 400 });
+  }
+
+  const orderNumberString = orderNumber.toString();
 
   try {
     const resume = await prisma.resume.findUnique({ where: { slug } });
@@ -17,7 +24,7 @@ export async function PATCH(req: Request, { params }: { params: { slug: string }
 
     await prisma.resume.update({
       where: { slug },
-      data: { hasPaid: true },
+      data: { hasPaid: true, orderNumber: orderNumberString },
     });
 
     return NextResponse.json({ message: 'Payment confirmed, hasPaid updated.' }, { status: 200 });

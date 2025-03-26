@@ -14,6 +14,7 @@ interface Resume {
   folderId: string | null;
   previewUrl: string;
   hasPaid: boolean;
+  orderNumber: string | '';
 }
 
 export const templateApi = createApi({
