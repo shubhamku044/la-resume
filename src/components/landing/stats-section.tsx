@@ -1,17 +1,19 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export const StatsSection = () => {
+  const t = useTranslations('HomePage');
   return (
     <section className="bg-gray-50 py-12 dark:bg-gray-900 sm:py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {[
-            { value: '10K+', label: 'Resumes Created' },
-            { value: '98%', label: 'ATS Success Rate' },
-            { value: '15+', label: 'Template Designs' },
-            { value: '24/7', label: 'Customer Support' },
+            { value: '10K+', label: t('stats.resumeCreated') },
+            { value: '98%', label: t('stats.atsSuccess') },
+            { value: '15+', label: t('stats.template') },
+            { value: '24/7', label: t('stats.customer') },
           ].map((stat, index) => (
             <motion.div
               key={index}

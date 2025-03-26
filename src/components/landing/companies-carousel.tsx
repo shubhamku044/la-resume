@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Apple, Github, Linkedin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const companies = [
   {
@@ -77,10 +78,11 @@ const companies = [
 ];
 
 export const CompaniesCarousel = () => {
+  const t = useTranslations('HomePage');
   return (
     <div className="w-full">
       <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
-        Create resumes that help you land jobs at top companies
+        {t('company.title')}
       </h2>
 
       <Carousel

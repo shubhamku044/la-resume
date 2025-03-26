@@ -2,25 +2,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const HowItWorksSection = () => {
+  const t = useTranslations('HomePage');
+
   const steps = [
     {
-      number: '01',
-      title: 'Choose a Template',
-      description:
-        'Select from our professionally designed templates that are optimized for ATS systems.',
+      number: t('use.steps.0.number'),
+      title: t('use.steps.0.title'),
+      description: t('use.steps.0.description'),
     },
     {
-      number: '02',
-      title: 'Add Your Content',
-      description: 'Fill in your information using our intuitive editor with helpful suggestions.',
+      number: t('use.steps.1.number'),
+      title: t('use.steps.1.title'),
+      description: t('use.steps.1.description'),
     },
     {
-      number: '03',
-      title: 'Download & Apply',
-      description:
-        'Export your resume in your preferred format and start applying for jobs immediately.',
+      number: t('use.steps.2.number'),
+      title: t('use.steps.2.title'),
+      description: t('use.steps.2.description'),
     },
   ];
 
@@ -35,13 +36,13 @@ export const HowItWorksSection = () => {
           className="mb-16 text-center"
         >
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
-            Simple Process
+            {t('use.badge')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-            Three steps to your perfect resume
+            {t('use.heading')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Creating a professional resume has never been easier
+            {t('use.subheading')}
           </p>
         </motion.div>
 

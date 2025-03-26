@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Eye, Layout, Download, SlidersHorizontal, Sparkles, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const cardVariants = {
   offscreen: {
@@ -20,39 +21,37 @@ const cardVariants = {
 };
 
 export const FeaturesSection = () => {
+  const t = useTranslations('HomePage');
   const features = [
     {
       icon: <Layout className="size-8 text-purple-500" />,
-      title: 'Professional Templates',
-      description:
-        'Choose from a variety of ATS-friendly resume templates designed by professionals.',
+      title: t('features.feature1.title'),
+      description: t('features.feature1.description'),
     },
     {
       icon: <SlidersHorizontal className="size-8 text-purple-500" />,
-      title: 'Easy Customization',
-      description:
-        'Customize every aspect of your resume with our intuitive, drag-and-drop editor.',
+      title: t('features.feature2.title'),
+      description: t('features.feature2.description'),
     },
     {
       icon: <Eye className="size-8 text-purple-500" />,
-      title: 'Real-time Preview',
-      description: 'See changes to your resume in real-time as you make them.',
+      title: t('features.feature3.title'),
+      description: t('features.feature3.description'),
     },
     {
       icon: <Download className="size-8 text-purple-500" />,
-      title: 'Multiple Formats',
-      description:
-        'Export your resume in PDF, DOCX, or TXT formats for different application requirements.',
+      title: t('features.feature4.title'),
+      description: t('features.feature4.description'),
     },
     {
       icon: <Zap className="size-8 text-purple-500" />,
-      title: 'ATS Optimization',
-      description: 'Our templates are designed to pass Applicant Tracking Systems with ease.',
+      title: t('features.feature5.title'),
+      description: t('features.feature5.description'),
     },
     {
       icon: <Sparkles className="size-8 text-purple-500" />,
-      title: 'AI Suggestions',
-      description: 'Get smart content suggestions to improve your resume and stand out.',
+      title: t('features.feature6.title'),
+      description: t('features.feature6.description'),
     },
   ];
 
@@ -67,14 +66,13 @@ export const FeaturesSection = () => {
           className="mb-16 text-center"
         >
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
-            Powerful Features
+            {t('features.intro')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-            Everything you need to create the perfect resume
+            {t('features.title')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Our resume builder combines beautiful design with powerful features to help you create a
-            resume that stands out.
+            {t('features.description')}
           </p>
         </motion.div>
 

@@ -1,28 +1,31 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Github, Twitter, Mail } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const TeamSection = () => {
+  const t = useTranslations('HomePage');
   const creators = [
     {
-      name: 'Alex Morgan',
-      role: 'Lead Developer',
-      image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=256&h=256&auto=format&fit=crop',
-      github: 'https://github.com',
-      twitter: 'https://twitter.com',
-      email: 'alex@resumebuilder.com',
+      name: t('team.member1.name'),
+      role: t('team.member1.role'),
+      description: t('team.member1.description'),
+      image: 'https://avatars.githubusercontent.com/u/77788249?v=4',
+      github: 'https://github.com/shubhamku044',
+      twitter: 'https://x.com/shubhamku044',
+      email: 'shubhamku044@gmail.com',
     },
     {
-      name: 'Jamie Wilson',
-      role: 'UI/UX Designer',
-      image:
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&h=256&auto=format&fit=crop',
-      github: 'https://github.com',
-      twitter: 'https://twitter.com',
-      email: 'jamie@resumebuilder.com',
+      name: t('team.member2.name'),
+      role: t('team.member2.role'),
+      description: t('team.member2.description'),
+      image: 'https://avatars.githubusercontent.com/u/95865224?v=4',
+      github: 'https://www.github.com/PriyabrataMo',
+      twitter: 'https://x.com/prybruhta',
+      email: 'priyabrata8558@gmail.com',
     },
   ];
 
@@ -37,13 +40,13 @@ export const TeamSection = () => {
           className="mb-16 text-center"
         >
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
-            Meet Our Team
+            {t('team.intro')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-            The creators behind Resume Builder
+            {t('team.title')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Passionate developers dedicated to helping you create professional, standout resumes
+            {t('team.description')}
           </p>
         </motion.div>
 
@@ -61,22 +64,31 @@ export const TeamSection = () => {
               <Card className="h-full overflow-hidden border-0 shadow-xl">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/3">
-                      <img
-                        src={creator.image}
-                        alt={creator.name}
-                        className="size-full object-cover md:h-full"
-                      />
+                    {/* Profile Image Section */}
+                    <div className="relative h-64 md:h-auto md:w-1/3">
+                      <Image src={creator.image} alt={creator.name} fill className="object-cover" />
                     </div>
+
+                    {/* Content Section */}
                     <div className="p-6 md:w-2/3 md:p-8">
-                      <h3 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                        {creator.name}
-                      </h3>
-                      <p className="mb-4 text-purple-600 dark:text-purple-300">{creator.role}</p>
-                      <p className="mb-6 text-gray-600 dark:text-gray-300">
-                        Passionate about creating tools that help people succeed in their career
-                        journey.
+                      {/* Small Avatar next to Name */}
+                      <div className="flex items-center space-x-4">
+                        <div className="relative size-12">
+                          <Image
+                            src={creator.image}
+                            alt={creator.name}
+                            fill
+                            className="rounded-full object-cover"
+                          />
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                          {creator.name}
+                        </h3>
+                      </div>
+                      <p className="mb-4 mt-2 text-purple-600 dark:text-purple-300">
+                        {creator.role}
                       </p>
+                      <p className="mb-6 text-gray-600 dark:text-gray-300">{creator.description}</p>
                       <div className="flex space-x-4">
                         <a
                           href={creator.github}
