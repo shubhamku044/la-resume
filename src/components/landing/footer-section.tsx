@@ -25,7 +25,7 @@ export const FooterSection = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="#team"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.aboutUs')}
@@ -56,7 +56,7 @@ export const FooterSection = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="/contactUs"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.helpCenter')}
@@ -72,7 +72,7 @@ export const FooterSection = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#faq"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.faqs')}
