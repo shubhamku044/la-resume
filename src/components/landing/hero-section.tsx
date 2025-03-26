@@ -83,6 +83,7 @@ export const HeroSection = () => {
               variant="outline"
               size="lg"
               className="h-12 rounded-full border-gray-300 font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+              onClick={() => window.open('https://github.com/shubhamku044/la-resume', '_blank')}
             >
               <div className="flex items-center gap-2">
                 <Code className="size-4" />
