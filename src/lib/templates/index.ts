@@ -23,19 +23,19 @@ export const resumesMap = {
     templateType: {} as Sb2novResumeData,
     templateSampleData: sb2novResumeSampleData,
     templateFunction: sb2nov,
-    productId: '737782',
+    productId: 'pdt_D8nbWGw6pi5S1FeF0G6aF',
   },
   deedy: {
     templateType: {} as deedyResumeData,
     templateSampleData: deedySampleResumeData,
     templateFunction: deedy,
-    productId: '738433',
+    productId: 'pdt_kLLhZZkt28DKo80XTPzDC',
   },
   mteck: {
     templateType: {} as MTeckResumeData,
     templateSampleData: mteckResumeSampleData,
     templateFunction: mteck,
-    productId: '738435',
+    productId: 'pdt_aaNRJ8MCUeQAX3fnyrwOG',
   },
 };
 

@@ -27,7 +27,17 @@ import {
 import { useUser } from '@clerk/nextjs';
 import { Button } from '@heroui/button';
 import { Crown } from 'lucide-react';
-import { initiateLemonSqueezyCheckout } from '@/lib/lemonSqueezy';
+import { useCheckout } from '@/lib/checkoutDodo';
+
+type Product = {
+  product_id: string;
+  name: string;
+  redirectUrl: string;
+  userId?: string;
+  email?: string;
+  fullName?: string;
+  slug: string;
+};
 
 interface IProps {
   imageUrl: string | null;
@@ -52,31 +62,21 @@ const ResumePreview = ({
   const isMobile = useIsMobile();
   const t = useTranslations();
   const [showDownloadConfirmation, setShowDownloadConfirmation] = useState<boolean>(false);
-  const [message, setMessage] = useState('');
   const { user } = useUser();
   const userId = user?.id;
   const email = user?.primaryEmailAddress?.emailAddress;
-  const fullName = user?.fullName;
+  const fullName = user?.fullName || '';
   const [paymentStarted, setPaymentStarted] = useState(false);
-
-  const handlePayment = async () => {
-    try {
-      await initiateLemonSqueezyCheckout({
-        productId: productId,
-        resumeType: resumeType,
-        userDetails: {
-          userId: userId!,
-          email: email!,
-          fullName: fullName!,
-          slug: slug,
-        },
-      });
-    } catch (error) {
-      console.error('LemonSqueezy Error:', error);
-      setMessage('Failed to create LemonSqueezy order');
-    }
+  const { checkoutProduct } = useCheckout();
+  const product: Product = {
+    product_id: productId,
+    name: slug,
+    redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/resume/template/${resumeType}/${slug}/`,
+    userId: userId,
+    email: email,
+    fullName: fullName,
+    slug: slug,
   };
-
   const handleDownloadPDF = async () => {
     if (!latexData) return;
     try {
@@ -135,7 +135,7 @@ const ResumePreview = ({
   const handleDownloadClick = () => {
     if (!paymentStatus) {
       setPaymentStarted(true);
-      handlePayment();
+      checkoutProduct(product, true);
     } else {
       setShowDownloadConfirmation(true);
     }
@@ -215,8 +215,6 @@ const ResumePreview = ({
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-
-        {message && <p className="mt-4 text-red-500">{message}</p>}
       </ResizablePanel>
     );
   }
