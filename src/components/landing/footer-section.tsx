@@ -33,7 +33,7 @@ export const FooterSection = () => {
               </li>
               <li>
                 <a
-                  href="/refundAndCancellation"
+                  href="/privacyPolicy"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.privacyPolicy')}
@@ -45,6 +45,14 @@ export const FooterSection = () => {
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.termsOfService')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/refundAndCancellation"
+                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                >
+                  {t('footer.refunds')}
                 </a>
               </li>
             </ul>
