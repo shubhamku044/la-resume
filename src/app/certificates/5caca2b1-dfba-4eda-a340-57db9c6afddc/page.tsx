@@ -19,6 +19,7 @@ export default function CertificatePage() {
             src="https://ik.imagekit.io/laresume/certificates/shubham-laresume.png?updatedAt=1742929689579"
             alt="Certificate Image"
             className="h-auto w-full object-cover"
+            unoptimized
           />
         </div>
 
