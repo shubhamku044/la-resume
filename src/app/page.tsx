@@ -20,7 +20,6 @@ const Page = () => {
       <StatsBanner />
       <HeroSection />
       <CompaniesSection />
-
       <FeaturesSection />
       <HowItWorksSection />
       <TeamSection />

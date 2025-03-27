@@ -19,6 +19,7 @@ export default function CertificatePage() {
             src="https://ik.imagekit.io/laresume/certificates/priyabrata-laresume.png?updatedAt=1742929689740"
             alt="Certificate Image"
             className="h-auto w-full object-cover"
+            unoptimized
           />
         </div>
 
