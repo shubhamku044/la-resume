@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <SignedIn>
-        <div className="flex min-h-screen w-full">
+        <div className="flex min-h-screen w-full dark:bg-white dark:text-black">
           <AppSidebar />
 
           <main className="flex-1">
