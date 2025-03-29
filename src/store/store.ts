@@ -37,6 +37,7 @@ const rootReducers = combineReducers({
   [templateApi.reducerPath]: templateApi.reducer,
   [statsApi.reducerPath]: statsApi.reducer,
   [paymentApi.reducerPath]: paymentApi.reducer,
+
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -54,6 +55,7 @@ export const store = configureStore({
       .concat(templateApi.middleware)
       .concat(statsApi.middleware)
       .concat(paymentApi.middleware);
+      .concat(statsApi.middleware);
     /*
     .concat(() => (next) => (action) => {
       console.log('RTK Query action: ', action);
