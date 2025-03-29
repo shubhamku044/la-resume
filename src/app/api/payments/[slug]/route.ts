@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-export async function PATCH(req: Request, { params }: { params: { slug: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { orderNumber } = await req.json();
   console.log('Updating payment:', slug, orderNumber);
