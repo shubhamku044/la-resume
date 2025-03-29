@@ -18,8 +18,7 @@ import {
   experienceReducer,
   userDetailsReducer,
 } from './slices';
-import { personalInfoApi, statsApi, userDetailsApi } from './services';
-import { templateApi } from './services';
+import { personalInfoApi, statsApi, userDetailsApi, templateApi, paymentApi } from './services';
 const persistConfig = {
   key: 'root',
   storage,
@@ -37,6 +36,7 @@ const rootReducers = combineReducers({
   [personalInfoApi.reducerPath]: personalInfoApi.reducer,
   [templateApi.reducerPath]: templateApi.reducer,
   [statsApi.reducerPath]: statsApi.reducer,
+  [paymentApi.reducerPath]: paymentApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -52,6 +52,8 @@ export const store = configureStore({
       .concat(userDetailsApi.middleware)
       .concat(personalInfoApi.middleware)
       .concat(templateApi.middleware)
+      .concat(statsApi.middleware)
+      .concat(paymentApi.middleware)
       .concat(statsApi.middleware);
     /*
     .concat(() => (next) => (action) => {

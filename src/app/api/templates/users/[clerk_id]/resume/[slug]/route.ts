@@ -99,6 +99,8 @@ export async function PUT(
     // Parse the request body
     const body = await req.json();
     const { title, type, data, previewUrl } = body;
+    const hasPaid = false;
+    const orderNumber = '';
 
     // Validate required fields
     if (!title || !type || !data) {
@@ -112,7 +114,7 @@ export async function PUT(
     const updatedResume = await prisma.resume.upsert({
       where: { slug, userId: clerk_id },
       update: { title, type, data, previewUrl }, // Update previewUrl
-      create: { slug, userId: clerk_id, title, type, data, previewUrl }, // Include previewUrl
+      create: { slug, userId: clerk_id, title, type, data, previewUrl, hasPaid, orderNumber }, // Include previewUrl
     });
 
     // Return success response

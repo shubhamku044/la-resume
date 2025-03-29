@@ -7,6 +7,7 @@ import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable'
 import { Sb2novResumeData, sb2nov } from '@/lib/templates/sb2nov';
 
 export default function ResumeTemplatePage() {
+  const resumeType = 'sb2nov';
   const {
     resumeFunc,
     initialData,
@@ -20,7 +21,9 @@ export default function ResumeTemplatePage() {
     setLatexData,
     setLoading,
     slug,
-  } = useResumeData('sb2nov');
+    hasPaid,
+    productId,
+  } = useResumeData(resumeType);
   const isMobile = useIsMobile();
 
   if (isFetching) {
@@ -56,7 +59,15 @@ export default function ResumeTemplatePage() {
         >
           {isMobile ? (
             <>
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                paymentStatus={hasPaid}
+                slug={slug as string}
+                productId={productId}
+                resumeType={resumeType}
+              />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
                 onUpdate={setImageUrl}
@@ -80,7 +91,15 @@ export default function ResumeTemplatePage() {
                 title={existingResume?.title || ''}
               />
               <ResizableHandle className="w-4 opacity-0" />
-              <ResumePreview imageUrl={imageUrl} latexData={latexData} loading={loading} />
+              <ResumePreview
+                imageUrl={imageUrl}
+                latexData={latexData}
+                loading={loading}
+                paymentStatus={hasPaid}
+                slug={slug as string}
+                productId={productId}
+                resumeType={resumeType}
+              />
             </>
           )}
         </ResizablePanelGroup>

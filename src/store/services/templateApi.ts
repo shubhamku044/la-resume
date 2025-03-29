@@ -12,13 +12,10 @@ interface Resume {
   updatedAt: Date;
   userId: string;
   folderId: string | null;
-  previewUrl: string; // ✅ Optional preview URL
+  previewUrl: string;
+  hasPaid: boolean;
+  orderNumber: string | '';
 }
-
-// ResumeType now accepts string for type
-// type ResumeType<T extends string> = T extends keyof typeof resumesMap
-//   ? Extract<(typeof resumesMap)[T]['templateType'], object>
-//   : object; // ✅ Ensures flexibility
 
 export const templateApi = createApi({
   reducerPath: 'templateApi',
@@ -47,10 +44,10 @@ export const templateApi = createApi({
       {
         clerk_id: string;
         title: string;
-        type: string; // ✅ Now explicitly a string
-        data: object; // ✅ Made generic for flexibility
+        type: string;
+        data: object;
         slug: string;
-        previewUrl?: string; // ✅ Optional preview URL
+        previewUrl?: string;
       }
     >({
       query: ({ clerk_id, title, type, data, slug, previewUrl }) => ({

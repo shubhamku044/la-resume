@@ -11,7 +11,14 @@ import {
 
 export function useResumeData(templateKey: keyof typeof resumesMap) {
   const templatePackage = resumesMap[templateKey];
-  const { templateFunction: resumeFunc, templateSampleData: resumeSampleData } = templatePackage;
+  const {
+    templateFunction: resumeFunc,
+    templateSampleData: resumeSampleData,
+    productIdTest: productIdTest,
+    productIdProd: productIdProd,
+  } = templatePackage;
+
+  const productId = process.env.NEXT_PUBLIC_ENV === 'production' ? productIdProd : productIdTest;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);
@@ -30,11 +37,10 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     { clerk_id: clerkId!, slug: slug as string },
     { skip: !clerkId, refetchOnMountOrArgChange: true }
   );
-
   const initialData = existingResume?.data
     ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
     : resumeSampleData;
-
+  const hasPaid = existingResume?.hasPaid || false;
   return {
     resumeFunc,
     initialData,
@@ -49,5 +55,7 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     setLoading,
     slug,
     resumeSampleData,
+    hasPaid,
+    productId,
   };
 }
