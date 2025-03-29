@@ -26,7 +26,7 @@ export const useCheckout = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (data?.payment_link) {
         window.location.href = data.payment_link;
       } else {

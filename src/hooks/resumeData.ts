@@ -14,8 +14,11 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
   const {
     templateFunction: resumeFunc,
     templateSampleData: resumeSampleData,
-    productId: productId,
+    productIdTest: productIdTest,
+    productIdProd: productIdProd,
   } = templatePackage;
+
+  const productId = process.env.NEXT_PUBLIC_ENV === 'production' ? productIdProd : productIdTest;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [latexData, setLatexData] = useState<string | null>(null);

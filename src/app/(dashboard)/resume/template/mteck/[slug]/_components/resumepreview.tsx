@@ -28,17 +28,6 @@ import { useUser } from '@clerk/nextjs';
 import { Button } from '@heroui/button';
 import { Crown } from 'lucide-react';
 import { useCheckout } from '@/lib/checkoutDodo';
-
-type Product = {
-  product_id: string;
-  name: string;
-  redirectUrl: string;
-  userId?: string;
-  email?: string;
-  fullName?: string;
-  slug: string;
-};
-
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
@@ -48,7 +37,15 @@ interface IProps {
   productId: string;
   resumeType: string;
 }
-
+type Product = {
+  product_id: string;
+  name: string;
+  redirectUrl: string;
+  userId?: string;
+  email?: string;
+  fullName?: string;
+  slug: string;
+};
 const ResumePreview = ({
   imageUrl,
   latexData,
@@ -62,11 +59,14 @@ const ResumePreview = ({
   const isMobile = useIsMobile();
   const t = useTranslations();
   const [showDownloadConfirmation, setShowDownloadConfirmation] = useState<boolean>(false);
+  const [showPaymentConfirmation, setShowPaymentConfirmation] = useState<boolean>(false);
+  const [showFreeDownload, setShowFreeDownload] = useState<boolean>(false);
   const { user } = useUser();
   const userId = user?.id;
   const email = user?.primaryEmailAddress?.emailAddress;
   const fullName = user?.fullName || '';
   const [paymentStarted, setPaymentStarted] = useState(false);
+
   const { checkoutProduct } = useCheckout();
   const product: Product = {
     product_id: productId,
@@ -77,6 +77,7 @@ const ResumePreview = ({
     fullName: fullName,
     slug: slug,
   };
+
   const handleDownloadPDF = async () => {
     if (!latexData) return;
     try {
@@ -132,9 +133,10 @@ const ResumePreview = ({
     }
   };
 
-  const handleDownloadClick = () => {
+  const handlePayment = () => {
     if (!paymentStatus) {
       setPaymentStarted(true);
+      // handlePayment();
       checkoutProduct(product, true);
     } else {
       setShowDownloadConfirmation(true);
@@ -166,7 +168,13 @@ const ResumePreview = ({
             </Select>
             <Button
               className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
-              onPress={handleDownloadClick}
+              onPress={() => {
+                if (paymentStatus) {
+                  setShowDownloadConfirmation(true);
+                } else {
+                  setShowPaymentConfirmation(true);
+                }
+              }}
               disabled={paymentStarted}
             >
               {paymentStarted ? (
@@ -185,7 +193,7 @@ const ResumePreview = ({
                   <Crown size={16} />
                 </>
               ) : (
-                'Pay & Download'
+                'Download'
               )}
             </Button>
           </div>
@@ -200,6 +208,33 @@ const ResumePreview = ({
             </p>
           )}
         </div>
+        <AlertDialog open={showPaymentConfirmation} onOpenChange={setShowPaymentConfirmation}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Support Our Service</AlertDialogTitle>
+              <AlertDialogDescription>
+                Running our servers costs us money, and we rely on user support to keep LaResume
+                running smoothly. Your contribution helps us maintain and improve the platform. If
+                you find value in our service, we&apos;d truly appreciate your support. However, if
+                you&apos;re unable to pay right now, you may choose to{' '}
+                <span
+                  onClick={() => {
+                    setShowPaymentConfirmation(false);
+                    setShowFreeDownload(true);
+                  }}
+                  style={{ color: '#3b82f6', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  skip
+                </span>
+                .
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handlePayment}>Pay</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
 
         <AlertDialog open={showDownloadConfirmation} onOpenChange={setShowDownloadConfirmation}>
           <AlertDialogContent>
@@ -207,6 +242,23 @@ const ResumePreview = ({
               <AlertDialogTitle>Confirm Download</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to download the resume in {exportFormat.toUpperCase()} format?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <AlertDialog open={showFreeDownload} onOpenChange={setShowFreeDownload}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+              <AlertDialogDescription>
+                We understand that you may not be able to pay right now, and that&apos;s okay! At
+                LaResume, we value and appreciate you. If you find our service helpful, you can
+                support us by sharing LaResume with others.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
