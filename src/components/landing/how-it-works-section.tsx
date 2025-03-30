@@ -50,24 +50,30 @@ export const HowItWorksSection = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative"
+              transition={{ duration: 0.6, delay: index * 0.2, ease: 'easeInOut' }}
+              className="group relative"
             >
-              <div className="feature-card p-8">
+              <div className="feature-card relative p-8">
                 <div className="mb-6 text-5xl font-bold text-purple-500/20">{step.number}</div>
                 <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
                   {step.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+
+                {index < steps.length - 1 && (
+                  <motion.div
+                    className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 md:block"
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 8 }} // Moves right slightly when hovered
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ArrowRight className="size-7 transition-transform group-hover:translate-x-4" />
+                  </motion.div>
+                )}
               </div>
-              {index < steps.length - 1 && (
-                <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 text-gray-300 dark:text-gray-600 md:block">
-                  <ArrowRight className="size-8" />
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
