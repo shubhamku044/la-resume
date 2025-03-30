@@ -19,7 +19,7 @@ interface Resume {
 
 export const templateApi = createApi({
   reducerPath: 'templateApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/templates/users' }), // ✅ Corrected base URL
+  baseQuery: fetchBaseQuery({ baseUrl: '/api/templates/users', cache: 'no-store' }), // ✅ Corrected base URL
   tagTypes: ['Resume'],
   endpoints: (builder) => ({
     getResumes: builder.query<
