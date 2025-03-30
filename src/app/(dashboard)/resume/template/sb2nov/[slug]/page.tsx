@@ -23,6 +23,7 @@ export default function ResumeTemplatePage() {
     slug,
     hasPaid,
     productId,
+    productPrice,
   } = useResumeData(resumeType);
   const isMobile = useIsMobile();
 
@@ -67,6 +68,7 @@ export default function ResumeTemplatePage() {
                 slug={slug as string}
                 productId={productId}
                 resumeType={resumeType}
+                productPrice={productPrice}
               />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
@@ -99,6 +101,7 @@ export default function ResumeTemplatePage() {
                 slug={slug as string}
                 productId={productId}
                 resumeType={resumeType}
+                productPrice={productPrice}
               />
             </>
           )}

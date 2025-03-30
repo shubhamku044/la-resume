@@ -11,8 +11,9 @@ import {
   Sb2novResumeData,
   MTeckResumeData,
 } from '@/lib/templates/index';
-import { RotateCw, Trash2 } from 'lucide-react';
+import { CheckCircle, RotateCw, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 interface ResumeCardProps {
   id: string;
@@ -24,6 +25,8 @@ interface ResumeCardProps {
   lastUpdated: Date;
   data: Sb2novResumeData | deedyResumeData | MTeckResumeData;
   imageUrl: string;
+  paymentStatus: boolean;
+  orderNumber: string | '';
 }
 
 export function ResumeCard({
@@ -34,10 +37,19 @@ export function ResumeCard({
   isDeleting,
   lastUpdated,
   imageUrl: imageLink,
+  paymentStatus,
+  orderNumber,
 }: ResumeCardProps) {
   const t = useTranslations();
+  const [isHovered, setIsHovered] = useState(false);
+  const [isIconHovered, setIsIconHovered] = useState(false);
+
   return (
-    <Card className="group relative flex h-full -translate-y-1 flex-col overflow-hidden shadow-lg transition-all">
+    <Card
+      className="group relative flex h-full -translate-y-1 flex-col overflow-hidden shadow-lg transition-all"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="relative size-full bg-white" style={{ aspectRatio: '1 / 1.414' }}>
         {imageLink ? (
           <Image
@@ -59,8 +71,38 @@ export function ResumeCard({
           </div>
         )}
 
+        {!isHovered && (
+          <div className="absolute inset-0 flex flex-col justify-end p-4 text-lg font-semibold text-black">
+            {title}
+          </div>
+        )}
+
+        {paymentStatus && (
+          <div
+            className="absolute right-2 top-2 rounded-full bg-green-500 p-1.5 text-white shadow-md"
+            onMouseEnter={() => setIsIconHovered(true)}
+            onMouseLeave={() => setIsIconHovered(false)}
+          >
+            <CheckCircle className="size-5" />
+          </div>
+        )}
+
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="flex flex-col gap-3 text-white">
+            {paymentStatus && (
+              <div
+                className="absolute right-2 top-2 rounded-full bg-green-500 p-1.5 text-white shadow-md"
+                onMouseEnter={() => setIsIconHovered(true)}
+                onMouseLeave={() => setIsIconHovered(false)}
+              >
+                <CheckCircle className="size-5" />
+                {isIconHovered && isHovered && (
+                  <div className="absolute right-10 top-0 w-max whitespace-nowrap rounded bg-green-500 p-2 text-xs text-white shadow-lg">
+                    Paid #{orderNumber}
+                  </div>
+                )}
+              </div>
+            )}
             <div className="space-y-1.5">
               <h3 className="text-lg font-semibold drop-shadow-md">{title}</h3>
               <div className="flex items-center gap-2">

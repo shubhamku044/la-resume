@@ -16,6 +16,7 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     templateSampleData: resumeSampleData,
     productIdTest: productIdTest,
     productIdProd: productIdProd,
+    productPrice: productPrice,
   } = templatePackage;
 
   const productId = process.env.NEXT_PUBLIC_ENV === 'production' ? productIdProd : productIdTest;
@@ -57,5 +58,6 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     resumeSampleData,
     hasPaid,
     productId,
+    productPrice,
   };
 }

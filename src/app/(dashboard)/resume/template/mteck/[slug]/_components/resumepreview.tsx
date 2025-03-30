@@ -36,6 +36,7 @@ interface IProps {
   slug: string;
   productId: string;
   resumeType: string;
+  productPrice: string;
 }
 type Product = {
   product_id: string;
@@ -54,6 +55,7 @@ const ResumePreview = ({
   slug,
   productId,
   resumeType,
+  productPrice,
 }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
@@ -231,7 +233,7 @@ const ResumePreview = ({
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handlePayment}>Pay</AlertDialogAction>
+              <AlertDialogAction onClick={handlePayment}>Pay {productPrice}</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
