@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Code, Star } from 'lucide-react';
+import { ArrowRight, Star, StarIcon } from 'lucide-react';
 import { AnimatedBackground } from '@/components';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -78,18 +78,22 @@ export const HeroSection = () => {
                 </Button>
               </SignInButton>
             </SignedOut>
+            <motion.div className="group relative">
+              <Button
+                variant="outline"
+                size="lg"
+                className="group h-12 rounded-full border-gray-300 font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                onClick={() => window.open('https://github.com/shubhamku044/la-resume', '_blank')}
+              >
+                <div className="flex items-center gap-2">
+                  <motion.div className="transition-transform duration-300 ease-in-out group-hover:scale-110">
+                    <StarIcon className="size-4" />
+                  </motion.div>
 
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-12 rounded-full border-gray-300 font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
-              onClick={() => window.open('https://github.com/shubhamku044/la-resume', '_blank')}
-            >
-              <div className="flex items-center gap-2">
-                <Code className="size-4" />
-                <span>{t('hero.githubButton')}</span>
-              </div>
-            </Button>
+                  <span>{t('hero.githubButton')}</span>
+                </div>
+              </Button>
+            </motion.div>
           </div>
         </div>
 

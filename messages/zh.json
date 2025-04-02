@@ -127,7 +127,8 @@
     "signOut": "退出登录",
     "signUp": "注册",
     "templates": "模板",
-    "userProfile": "用户资料"
+    "userProfile": "用户资料",
+    "pricing": "价格"
   },
   "common": {
     "resumePreview": "简历预览",

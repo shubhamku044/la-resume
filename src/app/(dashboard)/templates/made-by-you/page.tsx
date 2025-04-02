@@ -37,6 +37,8 @@ interface Resume {
   data: object;
   updatedAt: Date;
   previewUrl: string;
+  hasPaid: boolean;
+  orderNumber: string | '';
 }
 
 export default function MadeByYouPage() {
@@ -133,6 +135,8 @@ export default function MadeByYouPage() {
                 lastUpdated={resume.updatedAt}
                 data={resume.data as Sb2novResumeData | deedyResumeData | MTeckResumeData}
                 imageUrl={resume.previewUrl}
+                paymentStatus={resume.hasPaid}
+                orderNumber={resume.orderNumber}
               />
             </div>
           ))}

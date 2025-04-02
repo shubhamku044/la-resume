@@ -27,6 +27,9 @@ const Header = () => {
 
         <nav className="hidden items-center gap-6 text-sm md:flex">
           <SignedIn>
+            <Link href="/pricing" className="text-gray-700 hover:text-black">
+              {t('header.pricing')}
+            </Link>
             <Link href="/templates" className="text-gray-700 hover:text-black">
               {t('header.templates')}
             </Link>

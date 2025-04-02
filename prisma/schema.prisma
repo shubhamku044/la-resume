@@ -115,16 +115,18 @@ model Folder {
 }
 
 model Resume {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  slug      String   @unique 
-  title     String
-  userId    String
-  user      User     @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
-  folderId  String?  @db.ObjectId
-  folder    Folder?  @relation(fields: [folderId], references: [id], onDelete: SetNull)
-  data      Json
-  type     String
-  previewUrl String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug        String   @unique 
+  title       String
+  userId      String
+  user        User     @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
+  folderId    String?  @db.ObjectId
+  folder      Folder?  @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  data        Json
+  type        String
+  previewUrl  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  hasPaid     Boolean  @default(false)
+  orderNumber String?  
 }
