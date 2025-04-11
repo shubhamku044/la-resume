@@ -52,8 +52,8 @@ export default function ResumeTemplatePage() {
   }
 
   return (
-    <div className="flex justify-center p-4">
-      <div className="container mx-auto px-4 sm:px-6">
+    <div className="flex justify-center">
+      <div className="container mx-auto">
         <ResizablePanelGroup
           direction={isMobile ? 'vertical' : 'horizontal'}
           className={isMobile ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-0'}
