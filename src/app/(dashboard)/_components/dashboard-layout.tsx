@@ -68,22 +68,22 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="bg-background sticky top-0 z-10 flex h-16 items-center border-b px-4">
+      <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
         <Link
-          href="/templates"
+          href="/templates/resume-templates"
           onClick={(e) => {
             e.preventDefault();
             document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
           <div className="flex items-center gap-2">
-            <FileText className="text-primary size-6" />
+            <FileText className="size-6 text-primary" />
             <span className="text-xl font-bold">La Resume</span>
           </div>
         </Link>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="hover:bg-accent mr-2 rounded-lg p-2"
+          className="mr-2 rounded-lg p-2 hover:bg-accent"
         >
           <PanelLeft className="size-5" />
         </button>
@@ -91,16 +91,16 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div className="ml-auto flex items-center gap-4">
           <Link
             href="/feedback"
-            className="bg-accent/50 hover:bg-accent flex items-center gap-1 rounded-md px-3 py-1.5 text-sm"
+            className="flex items-center gap-1 rounded-md bg-accent/50 px-3 py-1.5 text-sm hover:bg-accent"
           >
             <Star className="size-4" />
             <span>{t('feedback')}</span>
           </Link>
 
           <Link
-            href="https://github.com/your-repo"
+            href="https://github.com/shubhamku044/la-resume"
             target="_blank"
-            className="bg-muted hover:bg-muted/80 relative flex items-center gap-1 rounded-md px-3 py-1.5 text-sm"
+            className="relative flex items-center gap-1 rounded-md bg-muted px-3 py-1.5 text-sm hover:bg-muted/80"
           >
             <LuGithub className="size-4" />
             <span>{t('starOnGitHub')}</span>
