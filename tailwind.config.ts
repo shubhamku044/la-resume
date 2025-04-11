@@ -114,7 +114,12 @@ export default {
     },
   },
   darkMode: 'class',
-  plugins: [addVariablesForColors, require('tailwindcss-animate'), heroui()],
+  plugins: [
+    addVariablesForColors,
+    require('tailwindcss-animate'),
+    heroui(),
+    require('tailwind-scrollbar'),
+  ],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
