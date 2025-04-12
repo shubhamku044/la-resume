@@ -170,8 +170,8 @@
     "feedback": "Feedback",
     "language": "Taal",
     "supportUs": "Steun ons",
-    "starOnGitHub": "Geef een ster op GitHub"
-    ,"jobTracker": ""
+    "starOnGitHub": "Geef een ster op GitHub",
+    "jobTracker": "Sollicitatievolgsysteem"
   },
   "templates": {
     "resTemplate": "Kies een CV-sjabloon",

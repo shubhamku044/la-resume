@@ -170,8 +170,8 @@
     "feedback": "Retour d'information",
     "language": "Langue",
     "supportUs": "Soutenez-nous",
-    "starOnGitHub": "Mettre une étoile sur GitHub"
-    ,"jobTracker": ""
+    "starOnGitHub": "Mettre une étoile sur GitHub",
+    "jobTracker": "Suivi des candidatures"
   },
   "templates": {
     "resTemplate": "Choisissez un modèle de CV",

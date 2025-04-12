@@ -170,8 +170,8 @@
     "feedback": "Retroalimentación",
     "language": "Idioma",
     "supportUs": "Apóyanos",
-    "starOnGitHub": "Dale una estrella en GitHub"
-    ,"jobTracker": ""
+    "starOnGitHub": "Dale una estrella en GitHub",
+    "jobTracker": "Seguimiento de solicitudes"
   },
   "templates": {
     "resTemplate": "Elige una Plantilla de Currículum",
