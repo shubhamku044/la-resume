@@ -170,7 +170,8 @@
     "feedback": "フィードバック",
     "language": "言語",
     "supportUs": "サポートする",
-    "starOnGitHub": "GitHubでスターをつける"
+    "starOnGitHub": "GitHubでスターをつける",
+    "jobTracker": ""
   },
   "templates": {
     "resTemplate": "履歴書テンプレートを選択",

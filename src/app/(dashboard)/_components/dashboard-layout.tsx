@@ -14,6 +14,7 @@ import {
   User,
   UserCircle,
   PanelLeft,
+  ClipboardList,
 } from 'lucide-react';
 import { LuGithub } from 'react-icons/lu';
 import Link from 'next/link';
@@ -63,6 +64,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       title: t('madeByYou'),
       url: '/templates/made-by-you',
       icon: Brush,
+    },
+  ];
+
+  const jobTrackerItems = [
+    {
+      title: t('jobTracker'),
+      url: '/tracker/boards',
+      icon: ClipboardList,
     },
   ];
 
@@ -125,6 +134,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         >
           <div className="flex-1 overflow-y-auto p-2">
             <nav className="space-y-1">
+              <CollapsibleSection
+                title={t('jobTracker')}
+                icon={<ClipboardList className="size-4" />}
+                isCollapsed={isCollapsed}
+                items={jobTrackerItems}
+                pathname={pathname}
+              />
+
               <CollapsibleSection
                 title={t('templates')}
                 icon={<LayoutTemplate className="size-4" />}

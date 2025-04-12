@@ -249,7 +249,8 @@
     "feedback": "Feedback",
     "language": "Language",
     "supportUs": "Support Us",
-    "starOnGitHub": "Star on GitHub"
+    "starOnGitHub": "Star on GitHub",
+    "jobTracker": "Job application tracker"
   },
   "templates": {
     "resTemplate": "Choose a Resume Template",
