@@ -70,7 +70,7 @@ export default function ResumeTemplatesPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="container mx-auto">
       {iscreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-md">
           <div className="rounded-lg bg-white p-6 shadow-lg">
