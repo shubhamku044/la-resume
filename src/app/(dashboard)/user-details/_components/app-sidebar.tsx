@@ -18,6 +18,7 @@ import {
   ChevronRight,
   FileText,
   GraduationCap,
+  LayoutGrid,
   LayoutTemplate,
   Star,
   Trophy,
@@ -154,6 +155,19 @@ export default function AppSidebar() {
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  data-active={pathname.startsWith('/boards')}
+                  className="group hover:bg-accent/50"
+                >
+                  <Link href="/tracker/boards">
+                    <LayoutGrid className="size-4 text-primary" />
+                    <span>Boards</span>
+                    <ChevronRight className="ml-auto size-4 opacity-0 group-hover:opacity-100" />
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
               <SidebarMenuItem>
                 <SidebarMenuButton

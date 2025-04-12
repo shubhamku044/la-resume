@@ -27,6 +27,10 @@ model User {
 
   resumes        Resume[]
   folders        Folder[]
+  boards         Board[]
+  jobs           Job[]
+  contacts       Contact[]
+  notes          Note[]
 }
 
 model PersonalInfo {
@@ -129,4 +133,91 @@ model Resume {
   updatedAt   DateTime @updatedAt
   hasPaid     Boolean  @default(false)
   orderNumber String?  
+}
+
+model Board {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  columns     Column[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Column {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  order       Int
+  boardId     String   @db.ObjectId
+  board       Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  jobs        Job[]
+  createdAt   DateTime @default(now())
+
+  @@index([boardId])
+}
+
+model Job {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  company     String
+  description String?
+  location    String?
+  url         String?
+  salary      String?
+  status      JobStatus @default(Applied)
+  columnId    String   @db.ObjectId
+  column      Column   @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appliedAt   DateTime?
+  updatedAt   DateTime @updatedAt
+  notes       Note[]
+  contacts    Contact[]
+  createdAt   DateTime @default(now())
+
+  @@index([columnId])
+  @@index([userId])
+}
+
+model Note {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  content     String
+  jobId       String   @db.ObjectId
+  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@index([jobId])
+  @@index([userId])
+}
+
+model Contact {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String?
+  phone       String?
+  position    String?
+  jobId       String   @db.ObjectId
+  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([jobId])
+  @@index([userId])
+}
+
+enum JobStatus {
+  Interested
+  Applied
+  Interviewing
+  Offer
+  Rejected
+  Archived
 }
