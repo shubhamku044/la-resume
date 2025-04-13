@@ -97,7 +97,6 @@ export default function BoardsPage() {
                 <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
                 <p className="mb-4 text-gray-600">{board.description}</p>
                 <div className="flex justify-between text-sm text-gray-500">
-                  <span>{board.applicationCount} applications</span>
                   <span>Updated {board.updatedAt}</span>
                 </div>
               </Link>

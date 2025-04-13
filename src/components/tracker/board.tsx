@@ -1,64 +1,58 @@
 'use client';
 import { Job } from '@/types';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { useEffect, useState } from 'react';
 
-type Card = {
-  id: string;
-  title: string;
-  description: string;
-};
-
-type JobCard = {
-  id: string;
-  title: string;
-  description: string;
-};
-
-type List = {
+// Updated types to align with the expected data structure from BoardPage
+interface BoardData {
   id: string;
   name: string;
-  order: number;
-  jobCount: number;
-};
+  description: string | null;
+  lists: {
+    id: string;
+    name: string;
+    order: number;
+  }[];
+}
 
-type BoardData = {
-  id: string;
-  name: string;
-  description: string;
-  lists: List[];
-};
-
-type Column = {
-  id: string;
-  title: string;
-  cards: JobCard[]; // you can fetch and fill later from RTK Query
-};
-
-type JobsByList = Record<string, Job[]>;
+interface JobsByList {
+  [listId: string]: Job[];
+}
 
 interface IProps {
   board: BoardData | undefined;
   jobsByList: JobsByList | undefined;
 }
 
-export function Board({ board, jobsByList }: IProps) {
-  const [columns, setColumns] = useState<Column[]>([]);
+interface Column {
+  id: string;
+  title: string;
+  cards: Job[];
+}
 
+export function Board({ board, jobsByList }: IProps) {
+  console.log('Board component rendered');
+  console.log('Board:', board);
+  console.log('Jobs by lists:', jobsByList);
+  const [columns, setColumns] = useState<Column[]>([]);
   useEffect(() => {
-    if (board?.lists) {
-      const initialColumns: Column[] = board.lists
-        .sort((a, b) => a.order - b.order)
-        .map((list) => ({
-          id: list.id,
-          title: list.name,
-          cards: jobsByList?.[list.id] ?? [],
-        }));
+    console.log('useEffect triggered');
+    if (board?.lists && Array.isArray(board.lists)) {
+      const sortedLists = [...board.lists]?.sort((a, b) => a.order - b.order);
+      const initialColumns: Column[] = sortedLists.map((list) => ({
+        id: list.id,
+        title: list.name,
+        cards: jobsByList?.[list.id] ?? [],
+      }));
+      console.log('Initial Columns:', initialColumns);
       setColumns(initialColumns);
+    } else {
+      console.log('board?.lists is not available or not an array');
+      setColumns([]);
     }
   }, [board, jobsByList]);
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
     // Dropped outside the list
@@ -76,6 +70,17 @@ export function Board({ board, jobsByList }: IProps) {
     destCol.cards.splice(destination.index, 0, removed);
 
     setColumns(newColumns);
+
+    // TODO: Implement API call to update the listId of the dragged job
+    // and potentially the order of items in both source and destination lists.
+    // This part is crucial for persisting the changes in the database.
+    console.log('Drag End Result:', {
+      draggedJobId: removed.id,
+      sourceListId: source.droppableId,
+      destinationListId: destination.droppableId,
+      sourceIndex: source.index,
+      destinationIndex: destination.index,
+    });
   };
 
   console.log('Columns', columns);
@@ -91,7 +96,11 @@ export function Board({ board, jobsByList }: IProps) {
   );
 }
 
-function ColumnComponent({ column }: { column: Column }) {
+interface ColumnComponentProps {
+  column: Column;
+}
+
+function ColumnComponent({ column }: ColumnComponentProps) {
   return (
     <Droppable droppableId={column.id}>
       {(provided, snapshot) => (
@@ -115,7 +124,12 @@ function ColumnComponent({ column }: { column: Column }) {
   );
 }
 
-function CardComponent({ card, index }: { card: Job; index: number }) {
+interface CardComponentProps {
+  card: Job;
+  index: number;
+}
+
+function CardComponent({ card, index }: CardComponentProps) {
   return (
     <Draggable draggableId={card.id} index={index}>
       {(provided, snapshot) => (
