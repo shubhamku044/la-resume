@@ -11,59 +11,54 @@ export async function POST(
   }
 ) {
   try {
-    const { userId } = getAuth(request);
-    if (!userId) {
+    const { userId: clerkId } = getAuth(request);
+    if (!clerkId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const { listId } = await params;
 
-    console.log('User ID:', userId, 'listId: ', listId);
+    const dbUser = await prisma.user.findUnique({
+      where: { clerkId },
+    });
 
-    // // Validate list ownership
+    if (!dbUser) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
     const list = await prisma.list.findUnique({
       where: { id: listId },
-      select: { boardId: true },
+      select: { boardId: true, userId: true },
     });
-    console.log('List:', list);
-    //
-    // if (!list) {
-    //   return NextResponse.json({ error: 'List not found' }, { status: 404 });
-    // }
-    //
-    // if (list.userId !== userId) {
-    //   return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-    // }
-    //
-    // // Parse and validate input
-    // const { company, position, notes } = await request.json();
-    //
-    // if (!company || !position) {
-    //   return NextResponse.json({ error: 'Company and position are required' }, { status: 400 });
-    // }
-    //
-    // // Create job
-    // const newJob = await prisma.job.create({
-    //   data: {
-    //     company,
-    //     position,
-    //     notes: notes ? { create: { content: notes, userId } } : undefined,
-    //     listId: params.listId,
-    //     boardId: list.boardId,
-    //     userId,
-    //   },
-    //   include: {
-    //     notes: true,
-    //   },
-    // });
-    //
-    // return NextResponse.json(newJob, { status: 201 });
-    return NextResponse.json(
-      {
-        message: 'Created',
+
+    if (!list) {
+      return NextResponse.json({ error: 'List not found' }, { status: 404 });
+    }
+    if (list.userId !== dbUser.id) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    const { company, position, notes } = await request.json();
+
+    if (!company || !position) {
+      return NextResponse.json({ error: 'Company and position are required' }, { status: 400 });
+    }
+
+    const newJob = await prisma.job.create({
+      data: {
+        company,
+        title: position,
+        notes: notes ? { create: { content: notes, userId: dbUser.id } } : undefined,
+        listId: listId,
+        boardId: list.boardId,
+        userId: dbUser.id,
       },
-      { status: 201 }
-    );
+      include: {
+        notes: true,
+      },
+    });
+
+    return NextResponse.json(newJob, { status: 201 });
   } catch (error) {
     console.error('[JOB_CREATION_ERROR]', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

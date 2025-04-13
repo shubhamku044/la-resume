@@ -60,6 +60,25 @@ export default function BoardPage() {
     fetchBoard();
   }, [boardId, router]);
 
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch(`/api/boards/${boardId}/jobs`);
+        if (!response.ok) throw new Error('Failed to fetch board');
+        const data = await response.json();
+        console.log('Fetched jobs:', data);
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        toast.error('Could not load job');
+        // router.push('/tracker/boards');
+      } finally {
+        console.log('Jobs fetched');
+      }
+    };
+
+    fetchJobs();
+  }, [boardId, router]);
+
   const createJob = async (listId: string) => {
     const response = await fetch(`/api/lists/${listId}/jobs`, {
       method: 'POST',
