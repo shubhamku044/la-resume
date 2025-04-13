@@ -283,5 +283,22 @@
     "mapLocation": "Localização no Mapa",
     "supportHours": "Horário de Apoio ao Cliente",
     "timing": "<strong>Todos os Dias:</strong> 9:00 - 18:00"
+  },
+  "supportService": {
+    "title": "Apoie o Nosso Serviço",
+    "description": "Manter os nossos servidores custa-nos dinheiro, e dependemos do apoio dos utilizadores para manter o LaResume a funcionar sem problemas. A sua contribuição ajuda-nos a manter e melhorar a plataforma. Se encontrar valor no nosso serviço, agradecemos verdadeiramente o seu apoio. No entanto, se não puder pagar neste momento, pode optar por <link>ignorar</link>.",
+    "downloadConfirmation": {
+      "title": "Confirmar Download",
+      "description": "Tem certeza que deseja baixar o currículo no formato {format}?"
+    },
+    "freeDownload": {
+      "title": "Confirmar Download",
+      "description": "Entendemos que você pode não conseguir pagar agora, e tudo bem! No LaResume, valorizamos e apreciamos você. Se você achar nosso serviço útil, pode nos apoiar compartilhando o LaResume com outros."
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar",
+      "pay": "Pagar {price}"
+    }
   }
 }

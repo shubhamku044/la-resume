@@ -283,5 +283,22 @@
     "mapLocation": "Xəritə Ünvanı",
     "supportHours": "Müştəri Dəstəyi Saatları",
     "timing": "<strong>Hər Gün:</strong> 9:00 AM - 6:00 PM"
+  },
+  "supportService": {
+    "title": "Support Our Service",
+    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we’d truly appreciate your support. However, if you’re unable to pay right now, you may choose to <link>skip</link>.",
+    "downloadConfirmation": {
+      "title": "Yükləməni Təsdiqləyin",
+      "description": "Siz həqiqətən CV-ni {format} formatında yükləmək istəyirsiniz?"
+    },
+    "freeDownload": {
+      "title": "Yükləməni Təsdiqləyin",
+      "description": "Hazırda ödəniş edə bilmədiyinizi başa düşürük və bu normaldır! LaResume-da sizi dəyərləndiririk və qiymətləndiririk. Xidmətimizi faydalı hesab edirsinizsə, LaResume-u başqaları ilə paylaşaraq bizi dəstəkləyə bilərsiniz."
+    },
+    "buttons": {
+      "cancel": "Ləğv et",
+      "confirm": "Təsdiq et",
+      "pay": "{price} ödə"
+    }
   }
 }

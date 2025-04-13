@@ -283,5 +283,22 @@
     "mapLocation": "Localisation sur la Carte",
     "supportHours": "Heures d'Assistance Client",
     "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
+  },
+  "supportService": {
+    "title": "Soutenez Notre Service",
+    "description": "L'exploitation de nos serveurs nous coûte de l'argent, et nous comptons sur le soutien des utilisateurs pour maintenir LaResume en bon état de fonctionnement. Votre contribution nous aide à maintenir et à améliorer la plateforme. Si vous trouvez de la valeur dans notre service, nous apprécierions vraiment votre soutien. Cependant, si vous ne pouvez pas payer maintenant, vous pouvez choisir de <link>passer</link>.",
+    "downloadConfirmation": {
+      "title": "Confirmer le Téléchargement",
+      "description": "Êtes-vous sûr de vouloir télécharger le CV au format {format} ?"
+    },
+    "freeDownload": {
+      "title": "Confirmer le Téléchargement",
+      "description": "Nous comprenons que vous ne puissiez pas payer maintenant, et c'est normal ! Chez LaResume, nous vous apprécions. Si vous trouvez notre service utile, vous pouvez nous soutenir en partageant LaResume avec d'autres."
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "confirm": "Confirmer",
+      "pay": "Payer {price}"
+    }
   }
 }
