@@ -2,166 +2,245 @@
   "HomePage": {
     "github": {
       "lovedBy": "<stars></stars> developer tərəfindən sevilir",
-      "starButton": "GitHub-da Ulduz"
+      "starButton": "GitHub-da ulduzla"
     },
     "hero": {
-      "title": "Mükəmməl, <highlight>ATS-ə Uyğun</highlight> Rezyumələr Yaradın",
-      "description": "LaTeX ilə işləyən professional rezyume konstruktoru. Pulsuz. PDF və ya LaTeX formatında ixrac",
-      "startBuilding": "Yaratmağa Başla",
-      "githubButton": "GitHub"
+      "title": "Müsahibə əldə edən <highlight>peşəkar CV</highlight> hazırlayın",
+      "description": "İntuitiv CV qurucumuz sizə bacarıqlarınızı və təcrübənizi nümayiş etdirən mükəmməl formatlı, ATS-uyğun CV yaratmağa kömək edir.",
+      "startBuilding": "CV-nizi Yaradın",
+      "githubButton": "GitHub-da ulduzla"
+    },
+    "company": {
+      "title": "Üst şirkətlərdə iş tapmağa kömək edən CV-lər yaradın"
+    },
+    "stats": {
+      "resumeCreated": "Yaradılan CV-lər",
+      "atsSuccess": "ATS Uğur Dərəcəsi",
+      "template": "Şablon Dizaynları",
+      "customer": "Müştəri Dəstəyi"
     },
     "features": {
-      "title": "Peşəkarlar Niyə La-Resume-u Seçir",
+      "intro": "Güclü Xüsusiyyətlər",
+      "title": "Mükəmməl CV yaratmaq üçün lazım olan hər şey",
+      "description": "CV qurucumuz gözəl dizaynı güclü xüsusiyyətlərlə birləşdirərək fərqlənən CV yaratmağa kömək edir.",
       "feature1": {
-        "title": "ATS üçün Optimallaşdırılmış",
-        "description": "Tətbiqçi İzləmə Sistemlərindən keçmək üçün hazırlanmış CV şablonları"
+        "title": "Asan Fərdiləşdirmə",
+        "description": "İntuitiv, sürükləyib-buraxma redaktoru ilə CV-nizin hər bir aspektini fərdiləşdirin."
       },
       "feature2": {
-        "title": "LaTeX Dəqiqliyi",
-        "description": "LaTeX mühərriki ilə dəstəklənən peşəkar tipografiya və dizayn"
+        "title": "Real-vaxt önizləmə",
+        "description": "Dəyişikliklər etdikcə CV-nizdəki dəyişiklikləri real vaxtda görün."
       },
       "feature3": {
-        "title": "Ani İxrac",
-        "description": "Bir kliklə PDF yükləmə və ya xam LaTeX kodunun ixracı"
+        "title": "Çoxlu Formatlar",
+        "description": "Müxtəlif müraciət tələbləri üçün CV-nizi PDF, DOCX və ya TXT formatlarında ixrac edin."
+      },
+      "feature4": {
+        "title": "ATS Optimallaşdırması",
+        "description": "Şablonlarımız Müraciət İzləmə Sistemlərindən asanlıqla keçmək üçün hazırlanmışdır."
+      },
+      "feature5": {
+        "title": "AI Təklifləri",
+        "description": "CV-nizi yaxşılaşdırmaq və fərqlənmək üçün ağıllı məzmun təklifləri əldə edin."
+      },
+      "feature6": {
+        "title": "Peşəkar Şablonlar",
+        "description": "Peşəkarlar tərəfindən hazırlanmış müxtəlif ATS-uyğun CV şablonları arasından seçim edin."
       }
     },
     "use": {
-      "title": "Sadə 3 Addımlı Proses",
-      "step1": {
-        "title": "Məlumatınızı Daxil Edin",
-        "description": "İntuitiv formamızdan istifadə edərək məlumatlarınızı daxil edin"
+      "badge": "Sadə Proses",
+      "heading": "Mükəmməl CV-niz üçün üç addım",
+      "subheading": "Peşəkar CV yaratmaq heç bu qədər asan olmamışdır",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Şablon Seçin",
+          "description": "ATS sistemləri üçün optimallaşdırılmış peşəkar dizayn edilmiş şablonlarımızdan seçim edin."
+        },
+        {
+          "number": "02",
+          "title": "Məzmununuzu Əlavə Edin",
+          "description": "Faydalı təkliflərlə intuitiv redaktorumuzdan istifadə edərək məlumatlarınızı doldurun."
+        },
+        {
+          "number": "03",
+          "title": "Yükləyin və Müraciət Edin",
+          "description": "CV-nizi üstünlük verdiyiniz formatda ixrac edin və dərhal iş üçün müraciət etməyə başlayın."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Komandamızla Tanış Olun",
+      "title": "LaResume-nin arxasında duranlar",
+      "description": "Peşəkar, fərqlənən CV-lər yaratmağınıza kömək etmək üçün həvəskar developerlər.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Full Stack Developer",
+        "description": "İnsanların karyera yolunda uğur qazanmasına kömək edən alətlər yaratmaq passionu."
       },
-      "step2": {
-        "title": "Şablonları Fərdiləşdirin",
-        "description": "Peşəkar ATS-ə uyğunlaşdırılmış şablonlardan seçin"
-      },
-      "step3": {
-        "title": "Yükləyin və Müraciət Edin",
-        "description": "PDF və ya LaTeX kimi ixrac edin və müraciət etməyə başlayın"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Full Stack Developer",
+        "description": "İstifadəçi dostu interfeyslər və təcrübələr yaratmağa diqqət yetirən dizayn həvəskarı."
       }
     },
     "testimonial": {
-      "title": "İnsanlar Nə Deyir",
-      "quote1": {
-        "text": "Peşəkar bir CV-ni bir neçə dəqiqə ərzində yarada bildim. LaTeX ixrac funksiyası tamamilə inqilabi bir xüsusiyyətdir.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume istifadə etdiyim ən yaxşı CV hazırlayıcısıdır. Şablonlar möhtəşəmdir.",
-        "author": "Jane Doe"
-      }
+      "intro": "Uğur Hekayələri",
+      "title": "İstifadəçilərimiz nə deyir",
+      "description": "CV qurucumuzla uğur qazanmış minlərlə iş axtaranlara qoşulun."
     },
     "feedback": {
-      "title": "Əlaqə saxlayın",
+      "title": "Əlaqə Saxlayın",
       "card": {
         "name": "Adınız",
-        "email": "Elektron poçtunuz",
-        "message": "Mesajınız (minimum 100 simvol)",
+        "email": "E-poçtunuz",
+        "message": "Mesajınız (min. 100 simvol)",
         "buttonsending": "Göndərilir...",
-        "buttonsend": "Mesajı Göndər"
+        "buttonsend": "Mesaj Göndər"
       }
     },
     "pricing": {
-      "title": "Şəffaf Qiymət",
+      "title": "Şəffaf Qiymətləndirmə",
       "description": "Peşəkar CV-lər yaratmaq üçün lazım olan hər şey - tamamilə pulsuz",
       "card": {
         "title": "Pulsuz",
-        "description": "Kredit kartı tələb olunmur",
+        "description": "Kart tələb olunmur",
         "points": {
-          "point1": "Məhdudiyyətsiz CV-lər",
-          "point2": "ATS-ə uyğunlaşdırılmış şablonlar",
-          "point3": "PDF ixracı",
-          "point4": "LaTeX mənbə kodu yükləməsi",
-          "point5": "Reklamsız",
-          "point6": "Açıq mənbə",
-          "point7": "Bulud saxlama",
+          "point1": "Limitsiz CV-lər",
+          "point2": "ATS-Optimallaşdırılmış Şablonlar",
+          "point3": "PDF İxracı",
+          "point4": "LaTeX Mənbə Yükləmə",
+          "point5": "Reklam Yoxdur",
+          "point6": "Açıq Mənbə",
+          "point7": "Bulud Saxlama",
           "point8": "24/7 Dəstək"
         },
-        "button": "Pulsuz Başlayın",
-        "sentence": "Digər CV hazırlayıcıları ilə müqayisə edin: ❌ $15/a • ❌ Reklamlar • ❌ Məhdud şablonlar"
+        "button": "Pulsuz Qurmağa Başlayın",
+        "sentence": "Digər CV qurucuları ilə müqayisə: ❌ $15/ay • ❌ Reklamlar • ❌ Məhdud Şablonlar"
       }
     },
     "random": {
-      "title": "Fəxrlə açıq mənbə",
-      "button": "Mənbəni GitHub-da baxın",
+      "title": "Fəxr açıq mənbədir",
+      "button": "GitHub-da mənbəyə baxın",
       "heading": "Karyeranızı Yüksəltməyə Hazırsınız?",
-      "description": "İş axtarışını dəyişdirən minlərlə peşəkar arasında qoşulun",
-      "button2": "CV-nizi İndi Yaradın"
+      "description": "İş axtarışını çevirən minlərlə peşəkarlara qoşulun",
+      "button2": "İndi CV-nizi Yaradın"
     },
     "developers": {
-      "title": "❤️ ilə quruldu",
+      "title": "❤️ ilə hazırlayan",
       "details": {
         "dev1": {
-          "name": "Şubham Kumar",
-          "role": "Full Stack Tərtibatçısı"
+          "name": "Shubham Kumar",
+          "role": "Full Stack Developer"
         },
         "dev2": {
           "name": "Priyabrata Mondal",
-          "role": "Full Stack Tərtibatçısı"
+          "role": "Full Stack Developer"
         }
       },
-      "button": "Məni işə götürün"
+      "button": "Məni İşə Götür"
     },
     "faq": {
       "title": "Tez-tez Verilən Suallar",
+      "subtitle": "Sualınız var? Cavabımız var",
+      "description": "CV qurucumuz haqqında ümumi suallara cavab tapın",
       "question1": {
-        "question": "La-Resume həqiqətən tamamilə pulsuzdur?",
-        "answer": "Bəli! La-Resume 100% pulsuz və açıq mənbəlidir. Peşəkar CV qurmağın hər kəsə əlçatan olmalı olduğuna inanırıq."
+        "question": "Bu CV qurucusu həqiqətən pulsuzdur?",
+        "answer": "Bəli, əsas xüsusiyyətlərimiz tamamilə pulsuzdur. Ödəniş tələb olunmadan CV-nizi yarada, redaktə edə və yükləyə bilərsiniz."
       },
       "question2": {
-        "question": "ATS optimizasiyası necə işləyir?",
-        "answer": "Şablonlarımız ATS uyğunluğu üçün sənaye standartlarına uyğun olaraq hazırlanmışdır, o cümlədən düzgün açar sözlərin yerləşdirilməsi, təmiz formatlama və semantik struktur."
+        "question": "Şablonlar ATS-uyğundur?",
+        "answer": "Əlbəttə! Bütün şablonlarımız Müraciət İzləmə Sistemlərindən uğurla keçmək üçün hazırlanmışdır."
       },
       "question3": {
-        "question": "Öz LaTeX şablonlarımı istifadə edə bilərəmmi?",
-        "answer": "Hazırda yalnız öz seçilmiş şablonlarımızı dəstəkləyirik, amma gələcək yeniləmələrdə xüsusi şablon dəstəyini əlavə etməyi planlaşdırırıq."
+        "question": "Birdən çox CV yarada bilərəmmi?",
+        "answer": "Bəli, müxtəlif iş müraciətləri və sənayelər üçün CV-nizin birdən çox versiyasını yarada bilərsiniz."
+      },
+      "question4": {
+        "question": "CV-ni necə ixrac edə bilərəm?",
+        "answer": "Redaktordan yalnız bir kliklə CV-nizi PDF, DOCX və ya TXT formatlarında yükləyə bilərsiniz."
       }
     },
+    "contact": {
+      "badge": "Əlaqə Saxlayın",
+      "heading": "Sual və ya rəyiniz var?",
+      "description": "Sizdən xəbər almaq istərdik. Bizə mesaj göndərin və mümkün qədər tez sizə cavab verəcəyik.",
+      "contact_info_title": "Əlaqə Məlumatı",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Ad",
+        "name_placeholder": "Adınız",
+        "email_label": "E-poçt",
+        "email_placeholder": "E-poçtunuz",
+        "subject_label": "Mövzu",
+        "subject_placeholder": "Bizə necə kömək edə bilərik?",
+        "message_label": "Mesaj",
+        "message_placeholder": "Mesajınız...",
+        "button": "Mesaj Göndər"
+      },
+      "toast_success": "Mesaj uğurla göndərildi! Tezliklə sizə cavab verəcəyik."
+    },
     "footer": {
-      "detail": "Açıq mənbə CV qurucusu",
-      "privacyPolicy": "La-Resume. MIT Lisenziyalıdır. Töhfələrə xoş gəlmisiniz!"
+      "brand": "LaResume",
+      "description": "Asan istifadə olunan CV qurucumuzla dəqiqələr ərzində peşəkar CV-lər yaradın. Kütlədən fərqlənin və arzuladığınız işi əldə edin.",
+      "resources": "Resurslar",
+      "templates": "Şablonlar",
+      "userDetails": "İstifadəçi Məlumatları",
+      "madeByYou": "Sizin Tərəfinizdən Hazırlanıb",
+      "company": "Şirkət",
+      "aboutUs": "Haqqımızda",
+      "privacyPolicy": "Məxfilik Siyasəti",
+      "termsOfService": "Xidmət Şərtləri",
+      "support": "Dəstək",
+      "helpCenter": "Yardım Mərkəzi",
+      "contactUs": "Bizimlə Əlaqə",
+      "faqs": "Tez-tez Verilən Suallar",
+      "copyright": "LaResume. MIT Lisenziyası.",
+      "refunds": "Geri Qaytarma Siyasəti"
     }
   },
   "header": {
-    "signIn": "Daxil ol",
+    "signIn": "Daxil Ol",
     "signOut": "Çıxış",
     "signUp": "Qeydiyyat",
     "templates": "Şablonlar",
     "userProfile": "İstifadəçi Profili",
-    "pricing": "Qiymət"
+    "pricing": "Qiymətləndirmə"
   },
   "common": {
-    "resumePreview": "CV Önizləməsi",
-    "save": "Yadda saxla",
+    "resumePreview": "CV Önizləmə",
+    "save": "Yadda Saxla",
     "reorderSection": "Bölməni Yenidən Sırala",
-    "unsavedChanges": "Yadda saxlanmayan dəyişikliklər",
+    "unsavedChanges": "yadda saxlanılmayan dəyişikliklər",
     "download": "Yüklə",
     "delete": "Sil",
     "cancel": "Ləğv et"
   },
   "deleteModal": {
-    "title": "Silinməni Təsdiqləyin",
-    "message": "Siz <name></name> adlı elementi silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz."
+    "title": "Silməni Təsdiqlə",
+    "message": "<name></name> silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
-    "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "en": "🇬🇧 İngiliscə",
+    "ja": "🇯🇵 Yaponca",
+    "az": "🇦🇿 Azərbaycanca",
+    "pt-PT": "🇵🇹 Portuqalca (PT)",
+    "pt-BR": "🇧🇷 Portuqalca (BR)",
+    "zh": "🇨🇳 Çincə",
+    "de": "🇩🇪 Almanca",
+    "fr": "🇫🇷 Fransızca",
+    "it": "🇮🇹 İtalyanca",
+    "ru": "🇷🇺 Rusca",
+    "es": "🇪🇸 İspanca",
+    "nl": "🇳🇱 Hollandca"
   },
   "sidebar": {
     "navigation": "Naviqasiya",
     "templates": "Şablonlar",
     "resumeTemplates": "CV Şablonları",
-    "madeByYou": "Sizin yaratdıqlarınız",
+    "madeByYou": "Sizin Tərəfinizdən Hazırlanıb",
     "userDetails": "İstifadəçi Məlumatları",
     "personalInfo": "Şəxsi Məlumat",
     "experience": "Təcrübə",
@@ -169,39 +248,39 @@
     "accomplishments": "Nailiyyətlər",
     "feedback": "Rəy",
     "language": "Dil",
-    "supportUs": "Bizi dəstəkləyin",
-    "starOnGitHub": "GitHub-da ulduz qoyun"
+    "supportUs": "Bizi Dəstəkləyin",
+    "starOnGitHub": "GitHub-da Ulduzla"
   },
   "templates": {
-    "resTemplate": "CV Şablonunu Seçin",
+    "resTemplate": "CV Şablonu Seçin",
     "madeByYou": "Sizin Tərəfinizdən Hazırlanan CV-lər"
   },
   "contact": {
     "title": "Bizimlə Əlaqə",
-    "description": "Kömək üçün buradayıq! İstənilən sorğu, rəy və ya dəstək üçün bizimlə əlaqə saxlayın. Komandamız ən qısa zamanda sizə cavab verəcək.",
-    "contactInformation": "Əlaqə Məlumatlarımız",
-    "merchantName": "<strong>Hüquqi Təşkilat Adı:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Qeydiyyat Ünvanı:</strong> Benachity, Qərbi Benqal, India, PIN: 713213",
-    "operationalAddress": "<strong>Fəaliyyət Ünvanı:</strong> Benachity, Qərbi Benqal, India, PIN: 713213",
+    "description": "Kömək etmək üçün buradayıq! İstənilən sorğu, rəy və ya dəstək üçün bizimlə əlaqə saxlayın. Komandamız sizə mümkün qədər tez cavab verəcək.",
+    "contactInformation": "Əlaqə Məlumatımız",
+    "merchantName": "<strong>Satıcı Hüquqi Şəxs Adı:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Qeydiyyat Ünvanı:</strong> Benachity, Qərbi Bengal, Hindistan, PIN: 713213",
+    "operationalAddress": "<strong>Fəaliyyət Ünvanı:</strong> Benachity, Qərbi Bengal, Hindistan, PIN: 713213",
     "phoneNumber": "<strong>Telefon Nömrəsi:</strong> +91 62975 59892",
     "email": "<strong>E-poçt:</strong> laresumetech@gmail.com",
     "sendMessage": "Bizə Mesaj Göndərin",
     "toast": {
       "success": "Mesaj uğurla göndərildi!",
-      "error": "Mesaj göndərmək alınmadı"
+      "error": "Mesaj göndərilmədi"
     },
     "form": {
       "name": "Ad",
       "namePlaceholder": "Adınız",
       "email": "E-poçt",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "sizin@email.com",
       "message": "Mesaj",
       "messagePlaceholder": "Mesajınız...",
       "submit": "Mesaj Göndər",
       "submitting": "Göndərilir..."
     },
-    "mapLocation": "Xəritə Yerləşməsi",
-    "supportHours": "Müştəri Dəstək Saatları",
-    "timing": "<strong>Hər gün:</strong> 9:00 - 18:00"
+    "mapLocation": "Xəritə Ünvanı",
+    "supportHours": "Müştəri Dəstəyi Saatları",
+    "timing": "<strong>Hər Gün:</strong> 9:00 AM - 6:00 PM"
   }
 }
