@@ -286,6 +286,19 @@
   },
   "supportService": {
     "title": "Sostieni il Nostro Servizio",
-    "description": "Mantenere i nostri server ci costa denaro, e ci affidiamo al supporto degli utenti per mantenere LaResume in funzione. Il tuo contributo ci aiuta a mantenere e migliorare la piattaforma. Se trovi valore nel nostro servizio, apprezzeremmo davvero il tuo supporto. Tuttavia, se al momento non puoi pagare, puoi scegliere di <link>saltare</link>."
+    "description": "Mantenere i nostri server ci costa denaro, e ci affidiamo al supporto degli utenti per mantenere LaResume in funzione. Il tuo contributo ci aiuta a mantenere e migliorare la piattaforma. Se trovi valore nel nostro servizio, apprezzeremmo davvero il tuo supporto. Tuttavia, se al momento non puoi pagare, puoi scegliere di <link>saltare</link>.",
+    "downloadConfirmation": {
+      "title": "Conferma Download",
+      "description": "Sei sicuro di voler scaricare il curriculum in formato {format}?"
+    },
+    "freeDownload": {
+      "title": "Conferma Download",
+      "description": "Capiamo che potresti non essere in grado di pagare ora, e va bene così! In LaResume, ti apprezziamo. Se trovi utile il nostro servizio, puoi supportarci condividendo LaResume con altri."
+    },
+    "buttons": {
+      "cancel": "Annulla",
+      "confirm": "Conferma",
+      "pay": "Paga {price}"
+    }
   }
 }

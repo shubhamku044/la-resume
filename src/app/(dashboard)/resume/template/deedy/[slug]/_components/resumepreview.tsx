@@ -215,8 +215,8 @@ const ResumePreview = ({
             <AlertDialogHeader>
               <AlertDialogTitle>{t('supportService.title')}</AlertDialogTitle>
               <AlertDialogDescription>
-                {t('supportService.description', {
-                  skip: (
+                {t.rich('supportService.description', {
+                  link: (chunks) => (
                     <span
                       onClick={() => {
                         setShowPaymentConfirmation(false);
@@ -224,15 +224,17 @@ const ResumePreview = ({
                       }}
                       style={{ color: '#3b82f6', cursor: 'pointer', textDecoration: 'underline' }}
                     >
-                      {t('supportService.skip')}
+                      {chunks}
                     </span>
                   ),
                 })}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handlePayment}>Pay {productPrice}</AlertDialogAction>
+              <AlertDialogCancel>{t('supportService.buttons.cancel')}</AlertDialogCancel>
+              <AlertDialogAction onClick={handlePayment}>
+                {t('supportService.buttons.pay', { price: productPrice })}
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -240,14 +242,18 @@ const ResumePreview = ({
         <AlertDialog open={showDownloadConfirmation} onOpenChange={setShowDownloadConfirmation}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+              <AlertDialogTitle>{t('supportService.downloadConfirmation.title')}</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to download the resume in {exportFormat.toUpperCase()} format?
+                {t('supportService.downloadConfirmation.description', {
+                  format: exportFormat.toUpperCase(),
+                })}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+              <AlertDialogCancel>{t('supportService.buttons.cancel')}</AlertDialogCancel>
+              <AlertDialogAction onClick={handleExport}>
+                {t('supportService.buttons.confirm')}
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -255,16 +261,16 @@ const ResumePreview = ({
         <AlertDialog open={showFreeDownload} onOpenChange={setShowFreeDownload}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Confirm Download</AlertDialogTitle>
+              <AlertDialogTitle>{t('supportService.freeDownload.title')}</AlertDialogTitle>
               <AlertDialogDescription>
-                We understand that you may not be able to pay right now, and that&apos;s okay! At
-                LaResume, we value and appreciate you. If you find our service helpful, you can
-                support us by sharing LaResume with others.
+                {t('supportService.freeDownload.description')}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handleExport}>Confirm</AlertDialogAction>
+              <AlertDialogCancel>{t('supportService.buttons.cancel')}</AlertDialogCancel>
+              <AlertDialogAction onClick={handleExport}>
+                {t('supportService.buttons.confirm')}
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

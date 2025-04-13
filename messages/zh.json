@@ -286,6 +286,19 @@
   },
   "supportService": {
     "title": "支持我们的服务",
-    "description": "运行我们的服务器需要花费金钱，我们依靠用户的支持来保持LaResume顺畅运行。您的贡献帮助我们维护和改进平台。如果您觉得我们的服务有价值，我们将非常感谢您的支持。不过，如果您现在无法付款，您可以选择<link>跳过</link>。"
+    "description": "运行我们的服务器需要花费金钱，我们依靠用户的支持来保持LaResume顺畅运行。您的贡献帮助我们维护和改进平台。如果您觉得我们的服务有价值，我们将非常感谢您的支持。不过，如果您现在无法付款，您可以选择<link>跳过</link>。",
+    "downloadConfirmation": {
+      "title": "确认下载",
+      "description": "您确定要以{format}格式下载简历吗？"
+    },
+    "freeDownload": {
+      "title": "确认下载",
+      "description": "我们理解您现在可能无法付款，这没关系！在LaResume，我们重视并感激您。如果您觉得我们的服务有帮助，可以通过与他人分享LaResume来支持我们。"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "confirm": "确认",
+      "pay": "支付{price}"
+    }
   }
 }

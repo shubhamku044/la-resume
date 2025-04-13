@@ -286,6 +286,19 @@
   },
   "supportService": {
     "title": "Apoya Nuestro Servicio",
-    "description": "Mantener nuestros servidores nos cuesta dinero, y dependemos del apoyo de los usuarios para que LaResume funcione sin problemas. Tu contribución nos ayuda a mantener y mejorar la plataforma. Si encuentras valor en nuestro servicio, realmente agradeceríamos tu apoyo. Sin embargo, si no puedes pagar en este momento, puedes elegir <link>omitir</link>."
+    "description": "Mantener nuestros servidores nos cuesta dinero, y dependemos del apoyo de los usuarios para que LaResume funcione sin problemas. Tu contribución nos ayuda a mantener y mejorar la plataforma. Si encuentras valor en nuestro servicio, realmente agradeceríamos tu apoyo. Sin embargo, si no puedes pagar en este momento, puedes elegir <link>omitir</link>.",
+    "downloadConfirmation": {
+      "title": "Confirmar Descarga",
+      "description": "¿Estás seguro de que quieres descargar el currículum en formato {format}?"
+    },
+    "freeDownload": {
+      "title": "Confirmar Descarga",
+      "description": "¡Entendemos que puede que no puedas pagar ahora mismo, y eso está bien! En LaResume, te valoramos y apreciamos. Si encuentras útil nuestro servicio, puedes apoyarnos compartiendo LaResume con otros."
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar",
+      "pay": "Pagar {price}"
+    }
   }
 }

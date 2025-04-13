@@ -284,8 +284,22 @@
     "supportHours": "Customer Support Hours",
     "timing": "<strong>EveryDay:</strong> 9:00 AM - 6:00 PM"
   },
+
   "supportService": {
     "title": "Support Our Service",
-    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we'd truly appreciate your support. However, if you're unable to pay right now, you may choose to <link>skip</link>."
+    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we'd truly appreciate your support. However, if you're unable to pay right now, you may choose to <link>skip</link>.",
+    "downloadConfirmation": {
+      "title": "Confirm Download",
+      "description": "Are you sure you want to download the resume in {format} format?"
+    },
+    "freeDownload": {
+      "title": "Confirm Download",
+      "description": "We understand that you may not be able to pay right now, and that's okay! At LaResume, we value and appreciate you. If you find our service helpful, you can support us by sharing LaResume with others."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "pay": "Pay {price}"
+    }
   }
 }
