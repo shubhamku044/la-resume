@@ -25,12 +25,12 @@ model User {
   accomplishments Accomplishment[]
   personalInfoId  String?
 
-  resumes        Resume[]
-  folders        Folder[]
-  boards         Board[]
-  jobs           Job[]
-  contacts       Contact[]
-  notes          Note[]
+  resumes Resume[]
+  folders Folder[]
+  boards  Board[]
+  jobs    Job[]
+  notes   Note[]
+  List    List[]
 }
 
 model PersonalInfo {
@@ -120,7 +120,7 @@ model Folder {
 
 model Resume {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  slug        String   @unique 
+  slug        String   @unique
   title       String
   userId      String
   user        User     @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
@@ -132,7 +132,7 @@ model Resume {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   hasPaid     Boolean  @default(false)
-  orderNumber String?  
+  orderNumber String?
 }
 
 model Board {
@@ -141,83 +141,62 @@ model Board {
   description String?
   userId      String   @db.ObjectId
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  columns     Column[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  List        List[]
+  jobs        Job[]
 
   @@index([userId])
 }
 
-model Column {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  order       Int
-  boardId     String   @db.ObjectId
-  board       Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  jobs        Job[]
-  createdAt   DateTime @default(now())
+model List {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  order     Int      @default(0)
+  isDefault Boolean  @default(false)
+  boardId   String   @db.ObjectId
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobs      Job[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([boardId])
+  @@index([userId])
 }
 
 model Job {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   company     String
   description String?
   location    String?
   url         String?
   salary      String?
-  status      JobStatus @default(Applied)
-  columnId    String   @db.ObjectId
-  column      Column   @relation(fields: [columnId], references: [id], onDelete: Cascade)
-  userId      String   @db.ObjectId
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String    @db.ObjectId
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   appliedAt   DateTime?
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime  @updatedAt
   notes       Note[]
-  contacts    Contact[]
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
+  List        List?     @relation(fields: [listId], references: [id])
+  listId      String?   @db.ObjectId
+  Board       Board?    @relation(fields: [boardId], references: [id])
+  boardId     String?   @db.ObjectId
 
-  @@index([columnId])
   @@index([userId])
 }
 
 model Note {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  content     String
-  jobId       String   @db.ObjectId
-  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  userId      String   @db.ObjectId
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt   DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  jobId     String   @db.ObjectId
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 
   @@index([jobId])
   @@index([userId])
-}
-
-model Contact {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  email       String?
-  phone       String?
-  position    String?
-  jobId       String   @db.ObjectId
-  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  userId      String   @db.ObjectId
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([jobId])
-  @@index([userId])
-}
-
-enum JobStatus {
-  Interested
-  Applied
-  Interviewing
-  Offer
-  Rejected
-  Archived
 }

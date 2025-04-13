@@ -1,4 +1,3 @@
-// app/boards/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -24,18 +23,17 @@ export default function BoardsPage() {
   const user = useUser();
   const userId = user?.user?.id;
 
-  // Fetch boards on component mount
-
   useEffect(() => {
     const fetchBoards = async () => {
-      if (!userId) return; // Don't fetch if userId isn't available yet
+      if (!userId) return;
 
       try {
-        const response = await fetch(`/api/boards?userId=${userId}`);
+        const response = await fetch(`/api/boards`);
         if (!response.ok) throw new Error('Failed to fetch boards');
         const data = await response.json();
         setBoards(data);
       } catch (error) {
+        console.log('Error, ', error);
         toast.error('Could not load boards. Please try again.');
       } finally {
         setIsLoading(false);
@@ -62,7 +60,7 @@ export default function BoardsPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId, name: boardData.name, description: boardData.description }),
+        body: JSON.stringify({ name: boardData.name, description: boardData.description }),
       });
 
       if (!response.ok) throw new Error('Failed to create board');
@@ -72,10 +70,10 @@ export default function BoardsPage() {
       setIsModalOpen(false);
       toast.success('Board created successfully!');
 
-      // Redirect to the new board
-      router.push(`/boards/${newBoard.id}`);
+      router.push(`/tracker/boards/${newBoard.id}`);
     } catch (error) {
       toast.error('Could not create board. Please try again.');
+      console.log('Error', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -96,6 +94,7 @@ export default function BoardsPage() {
       setBoards(boards.filter((board) => board.id !== boardId));
       toast.success('Board deleted successfully!');
     } catch (error) {
+      console.log('Error', error);
       toast.error('Could not delete board. Please try again.');
     } finally {
       setIsDeleting(null);
@@ -104,19 +103,19 @@ export default function BoardsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      <div className="flex h-screen items-center justify-center">
+        <div className="size-12 animate-spin rounded-full border-y-2 border-indigo-600"></div>
       </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <header className="flex justify-between items-center mb-8">
+      <header className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-indigo-600">My Job Boards</h1>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors flex items-center gap-2"
+          className="flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
         >
           <span>+</span>
           <span>Create Board</span>
@@ -124,30 +123,30 @@ export default function BoardsPage() {
       </header>
 
       {boards.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-12 border-2 border-dashed border-gray-300 rounded-lg">
-          <div className="text-center max-w-md">
-            <h2 className="text-xl font-semibold mb-2">No boards yet</h2>
-            <p className="text-gray-600 mb-6">
+        <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-12">
+          <div className="max-w-md text-center">
+            <h2 className="mb-2 text-xl font-semibold">No boards yet</h2>
+            <p className="mb-6 text-gray-600">
               Create your first board to start tracking job applications
             </p>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors"
+              className="rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
             >
               Create Board
             </button>
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {boards.map((board) => (
             <div
               key={board.id}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow relative group border border-gray-200"
+              className="group relative rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
             >
-              <Link href={`/boards/${board.id}`} className="block">
-                <h3 className="text-xl font-semibold text-indigo-600 mb-2">{board.name}</h3>
-                <p className="text-gray-600 mb-4">{board.description}</p>
+              <Link href={`/tracker/boards/${board.id}`} className="block">
+                <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
+                <p className="mb-4 text-gray-600">{board.description}</p>
                 <div className="flex justify-between text-sm text-gray-500">
                   <span>{board.applicationCount} applications</span>
                   <span>Updated {board.updatedAt}</span>
@@ -158,13 +157,13 @@ export default function BoardsPage() {
                   e.preventDefault();
                   handleDeleteBoard(board.id);
                 }}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-red-100 text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-4 top-4 rounded-full p-2 text-red-600 opacity-0 transition-opacity hover:bg-red-100 group-hover:opacity-100"
                 disabled={isDeleting === board.id}
                 title="Delete board"
               >
                 {isDeleting === board.id ? (
                   <svg
-                    className="animate-spin h-5 w-5"
+                    className="size-5 animate-spin"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -186,7 +185,7 @@ export default function BoardsPage() {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className="size-5"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -203,9 +202,9 @@ export default function BoardsPage() {
 
           <div
             onClick={() => setIsModalOpen(true)}
-            className="bg-gray-100 p-6 rounded-lg flex flex-col items-center justify-center min-h-[180px] hover:bg-gray-200 transition-colors cursor-pointer border-2 border-dashed border-gray-300"
+            className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-100 p-6 transition-colors hover:bg-gray-200"
           >
-            <span className="text-3xl mb-2 text-indigo-600">+</span>
+            <span className="mb-2 text-3xl text-indigo-600">+</span>
             <span className="text-gray-600">Create New Board</span>
           </div>
         </div>
@@ -213,9 +212,9 @@ export default function BoardsPage() {
 
       {/* Create Board Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md mx-4">
-            <div className="flex justify-between items-center mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="mx-4 w-full max-w-md rounded-lg bg-white p-6">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
@@ -228,7 +227,7 @@ export default function BoardsPage() {
 
             <form onSubmit={handleCreateBoard}>
               <div className="mb-4">
-                <label htmlFor="boardName" className="block font-medium mb-1 text-gray-700">
+                <label htmlFor="boardName" className="mb-1 block font-medium text-gray-700">
                   Board Name *
                 </label>
                 <input
@@ -236,34 +235,34 @@ export default function BoardsPage() {
                   id="boardName"
                   name="boardName"
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="e.g., UX Designer Applications"
                   disabled={isSubmitting}
                 />
               </div>
 
               <div className="mb-4">
-                <label htmlFor="boardDescription" className="block font-medium mb-1 text-gray-700">
+                <label htmlFor="boardDescription" className="mb-1 block font-medium text-gray-700">
                   Description (Optional)
                 </label>
                 <textarea
                   id="boardDescription"
                   name="boardDescription"
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="What's this board for?"
                   disabled={isSubmitting}
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="boardTemplate" className="block font-medium mb-1 text-gray-700">
+                <label htmlFor="boardTemplate" className="mb-1 block font-medium text-gray-700">
                   Template (Optional)
                 </label>
                 <select
                   id="boardTemplate"
                   name="boardTemplate"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   disabled={isSubmitting}
                 >
                   <option value="">Blank Board</option>
@@ -277,20 +276,20 @@ export default function BoardsPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors"
+                  className="rounded-md bg-gray-200 px-4 py-2 text-gray-800 transition-colors hover:bg-gray-300"
                   disabled={isSubmitting}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center min-w-[120px]"
+                  className="flex min-w-[120px] items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
                       <svg
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                        className="-ml-1 mr-2 size-4 animate-spin text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"

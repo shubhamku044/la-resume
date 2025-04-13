@@ -1,20 +1,19 @@
-// app/boards/[boardId]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import { Plus, Trash2, Ellipsis, ChevronLeft } from 'lucide-react';
+import { DragDropContext, Droppable } from '@hello-pangea/dnd';
+import { Plus, ChevronLeft } from 'lucide-react';
 
 type Board = {
   id: string;
   name: string;
   description: string | null;
-  columns: Column[];
+  lists: List[];
 };
 
-type Column = {
+type List = {
   id: string;
   name: string;
   order: number;
@@ -48,9 +47,11 @@ export default function BoardPage() {
         if (!response.ok) throw new Error('Failed to fetch board');
         const data = await response.json();
         setBoard(data);
+        console.log('Fetched board:', data);
       } catch (error) {
+        console.error('Error fetching board:', error);
         toast.error('Could not load board');
-        router.push('/boards');
+        // router.push('/tracker/boards');
       } finally {
         setIsLoading(false);
       }
@@ -59,109 +60,43 @@ export default function BoardPage() {
     fetchBoard();
   }, [boardId, router]);
 
-  // Handle drag and drop
-  const handleDragEnd = async (result: any) => {
-    if (!result.destination || !board) return;
+  const createJob = async (listId: string) => {
+    const response = await fetch(`/api/lists/${listId}/jobs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        company: 'New Company',
+        position: 'Desired Position',
+      }),
+    });
+    console.log('Response:', response);
 
-    const { source, destination, draggableId } = result;
-
-    // Same column, same position
-    if (source.droppableId === destination.droppableId && source.index === destination.index) {
-      return;
-    }
-
-    // Optimistic update
-    const newColumns = [...board.columns];
-    const sourceColumn = newColumns.find((col) => col.id === source.droppableId);
-    const destColumn = newColumns.find((col) => col.id === destination.droppableId);
-    const job = sourceColumn?.jobs.find((j) => j.id === draggableId);
-
-    if (!sourceColumn || !destColumn || !job) return;
-
-    // Remove from source
-    sourceColumn.jobs.splice(source.index, 1);
-    // Add to destination
-    destColumn.jobs.splice(destination.index, 0, job);
-
-    setBoard({ ...board, columns: newColumns });
-
-    // Update in database
-    try {
-      await fetch(`/api/jobs/${draggableId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ columnId: destination.droppableId }),
-      });
-    } catch (error) {
-      toast.error('Failed to update job position');
-      // Revert if API call fails
-      setBoard(board);
-    }
-  };
-
-  // Create new job
-  const handleCreateJob = async (columnId: string) => {
-    if (!newJob?.title || !newJob.company) {
-      toast.error('Title and company are required');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/jobs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...newJob,
-          columnId,
-          status: board?.columns.find((c) => c.id === columnId)?.name || 'Applied',
-        }),
-      });
-
-      if (!response.ok) throw new Error('Failed to create job');
-
-      const createdJob = await response.json();
-      setBoard((prev) => {
-        if (!prev) return null;
-        const newColumns = prev.columns.map((col) => {
-          if (col.id === columnId) {
-            return { ...col, jobs: [...col.jobs, createdJob] };
-          }
-          return col;
-        });
-        return { ...prev, columns: newColumns };
-      });
-
-      setNewJob(null);
-      setActiveColumn(null);
-      toast.success('Job added successfully!');
-    } catch (error) {
-      toast.error('Failed to create job');
-    }
+    // Update UI with response data
   };
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      <div className="flex h-screen items-center justify-center">
+        <div className="size-12 animate-spin rounded-full border-y-2 border-indigo-600"></div>
       </div>
     );
   }
 
   if (!board) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <p>Board not found</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8 flex items-center justify-between">
           <button
-            onClick={() => router.push('/boards')}
+            onClick={() => router.push('/tracker/boards')}
             className="flex items-center text-indigo-600 hover:text-indigo-800"
           >
             <ChevronLeft className="mr-1" /> Back to Boards
@@ -174,20 +109,22 @@ export default function BoardPage() {
         </div>
 
         {/* Kanban Board */}
-        <DragDropContext onDragEnd={handleDragEnd}>
+        <DragDropContext
+          onDragEnd={() => {
+            console.log('Drag ended');
+          }}
+        >
           <div className="flex space-x-4 overflow-x-auto pb-4">
-            {board.columns.map((column) => (
+            {board.lists.map((column) => (
               <Droppable key={column.id} droppableId={column.id}>
                 {(provided) => (
                   <div
                     {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className="flex-shrink-0 w-72 bg-white rounded-lg shadow-sm p-4"
+                    className="w-56 shrink-0 rounded-lg bg-white p-4 shadow-sm"
                   >
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="font-semibold text-gray-800">
-                        {column.name} ({column.jobs.length})
-                      </h3>
+                    <div className="mb-4 flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-800">{column.name}</h3>
                       <button
                         onClick={() => {
                           setNewJob({ title: '', company: '' });
@@ -201,34 +138,37 @@ export default function BoardPage() {
 
                     {/* Add Job Form */}
                     {activeColumn === column.id && (
-                      <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                      <div className="mb-4 rounded-lg bg-gray-50 p-3">
                         <input
                           type="text"
                           placeholder="Job Title"
                           value={newJob?.title || ''}
                           onChange={(e) => setNewJob({ ...newJob, title: e.target.value })}
-                          className="w-full mb-2 p-2 border rounded"
+                          className="mb-2 w-full rounded border p-2"
                         />
                         <input
                           type="text"
                           placeholder="Company"
                           value={newJob?.company || ''}
                           onChange={(e) => setNewJob({ ...newJob, company: e.target.value })}
-                          className="w-full mb-2 p-2 border rounded"
+                          className="mb-2 w-full rounded border p-2"
                         />
                         <div className="flex justify-end space-x-2">
                           <button
-                            onClick={() => {
+                            onClick={async () => {
                               setNewJob(null);
                               setActiveColumn(null);
+                              console.log('Console', column);
                             }}
                             className="px-3 py-1 text-sm text-gray-600 hover:text-gray-800"
                           >
                             Cancel
                           </button>
                           <button
-                            onClick={() => handleCreateJob(column.id)}
-                            className="px-3 py-1 text-sm bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                            onClick={async () => {
+                              await createJob(column.id);
+                            }}
+                            className="rounded bg-indigo-600 px-3 py-1 text-sm text-white hover:bg-indigo-700"
                           >
                             Add
                           </button>
@@ -237,44 +177,7 @@ export default function BoardPage() {
                     )}
 
                     {/* Jobs List */}
-                    <div className="space-y-3">
-                      {column.jobs.map((job, index) => (
-                        <Draggable key={job.id} draggableId={job.id} index={index}>
-                          {(provided) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className="p-3 bg-white border rounded-lg shadow-xs hover:shadow-sm cursor-pointer"
-                              onClick={() => router.push(`/boards/${boardId}/jobs/${job.id}`)}
-                            >
-                              <div className="flex justify-between">
-                                <h4 className="font-medium text-gray-900">{job.title}</h4>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    // Add delete functionality here
-                                  }}
-                                  className="text-gray-400 hover:text-red-500"
-                                >
-                                  <Trash2 size={16} />
-                                </button>
-                              </div>
-                              <p className="text-sm text-gray-600">{job.company}</p>
-                              {job.location && (
-                                <p className="text-xs text-gray-500 mt-1">{job.location}</p>
-                              )}
-                              {job.appliedAt && (
-                                <p className="text-xs text-gray-500 mt-1">
-                                  Applied: {new Date(job.appliedAt).toLocaleDateString()}
-                                </p>
-                              )}
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
+                    <div className="space-y-3">{provided.placeholder}</div>
                   </div>
                 )}
               </Droppable>
