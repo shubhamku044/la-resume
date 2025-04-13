@@ -180,10 +180,10 @@ model Job {
   updatedAt   DateTime  @updatedAt
   notes       Note[]
   createdAt   DateTime  @default(now())
-  List        List?     @relation(fields: [listId], references: [id])
-  listId      String?   @db.ObjectId
-  Board       Board?    @relation(fields: [boardId], references: [id])
-  boardId     String?   @db.ObjectId
+  List        List?     @relation(fields: [listId], references: [id], onDelete: Cascade)
+  listId      String    @db.ObjectId
+  Board       Board?    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  boardId     String    @db.ObjectId
 
   @@index([userId])
 }

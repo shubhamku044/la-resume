@@ -38,16 +38,17 @@ export async function POST(
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const { company, position, notes } = await request.json();
+    const { company, title, notes } = await request.json();
+    console.log('Company', company, 'position', title);
 
-    if (!company || !position) {
+    if (!company || !title) {
       return NextResponse.json({ error: 'Company and position are required' }, { status: 400 });
     }
 
     const newJob = await prisma.job.create({
       data: {
         company,
-        title: position,
+        title,
         notes: notes ? { create: { content: notes, userId: dbUser.id } } : undefined,
         listId: listId,
         boardId: list.boardId,

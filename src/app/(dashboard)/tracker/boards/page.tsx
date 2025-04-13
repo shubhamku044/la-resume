@@ -1,103 +1,52 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useUser } from '@clerk/nextjs';
-type Board = {
-  id: string;
-  name: string;
-  description: string;
-  applicationCount: number;
-  updatedAt: string;
-};
+import {
+  useCreateBoardMutation,
+  useDeleteBoardMutation,
+  useGetBoardsQuery,
+} from '@/store/services/applicationTrackerBoard';
 
 export default function BoardsPage() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [boards, setBoards] = useState<Board[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDeleting, setIsDeleting] = useState<string | null>(null);
+  const [createBoard, { isLoading: isSubmitting }] = useCreateBoardMutation();
+  const [deleteBoard, { isLoading: isDeleting }] = useDeleteBoardMutation();
   const user = useUser();
   const userId = user?.user?.id;
 
-  useEffect(() => {
-    const fetchBoards = async () => {
-      if (!userId) return;
-
-      try {
-        const response = await fetch(`/api/boards`);
-        if (!response.ok) throw new Error('Failed to fetch boards');
-        const data = await response.json();
-        setBoards(data);
-      } catch (error) {
-        console.log('Error, ', error);
-        toast.error('Could not load boards. Please try again.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchBoards();
-  }, [userId]);
+  const { data: boards = [], isLoading } = useGetBoardsQuery();
 
   const handleCreateBoard = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
     const formData = new FormData(e.currentTarget);
-    const boardData = {
-      name: formData.get('boardName') as string,
-      description: formData.get('boardDescription') as string,
-      template: formData.get('boardTemplate') as string,
-    };
+    const name = formData.get('boardName') as string;
+    const description = formData.get('boardDescription') as string;
 
     try {
-      const response = await fetch('/api/boards', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: boardData.name, description: boardData.description }),
-      });
-
-      if (!response.ok) throw new Error('Failed to create board');
-
-      const newBoard = await response.json();
-      setBoards([...boards, newBoard]);
-      setIsModalOpen(false);
+      const newBoard = await createBoard({ name, description }).unwrap();
       toast.success('Board created successfully!');
-
+      setIsModalOpen(false);
       router.push(`/tracker/boards/${newBoard.id}`);
-    } catch (error) {
+    } catch (err) {
+      console.log('Error creating board', err);
       toast.error('Could not create board. Please try again.');
-      console.log('Error', error);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   const handleDeleteBoard = async (boardId: string) => {
     if (!confirm('Are you sure you want to delete this board?')) return;
 
-    setIsDeleting(boardId);
     try {
-      const response = await fetch(`/api/boards/${boardId}`, {
-        method: 'DELETE',
-        body: JSON.stringify({ userId }),
-      });
-
-      if (!response.ok) throw new Error('Failed to delete board');
-
-      setBoards(boards.filter((board) => board.id !== boardId));
+      await deleteBoard({ id: boardId, userId: userId! }).unwrap();
       toast.success('Board deleted successfully!');
-    } catch (error) {
-      console.log('Error', error);
+    } catch (err) {
+      console.log('Error deleting board', err);
       toast.error('Could not delete board. Please try again.');
-    } finally {
-      setIsDeleting(null);
     }
   };
 
@@ -158,10 +107,10 @@ export default function BoardsPage() {
                   handleDeleteBoard(board.id);
                 }}
                 className="absolute right-4 top-4 rounded-full p-2 text-red-600 opacity-0 transition-opacity hover:bg-red-100 group-hover:opacity-100"
-                disabled={isDeleting === board.id}
+                disabled={isDeleting}
                 title="Delete board"
               >
-                {isDeleting === board.id ? (
+                {isDeleting ? (
                   <svg
                     className="size-5 animate-spin"
                     xmlns="http://www.w3.org/2000/svg"
@@ -210,9 +159,8 @@ export default function BoardsPage() {
         </div>
       )}
 
-      {/* Create Board Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <div className="mx-4 w-full max-w-md rounded-lg bg-white p-6">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
