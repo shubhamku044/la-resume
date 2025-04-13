@@ -283,5 +283,10 @@
     "mapLocation": "Localização no Mapa",
     "supportHours": "Horário de Atendimento ao Cliente",
     "timing": "<strong>Todos os Dias:</strong> 9:00 - 18:00"
+  },
+  "supportService": {
+    "title": "Apoie nosso serviço",
+    "description": "Manter nossos servidores custa dinheiro, e contamos com o apoio dos usuários para manter o LaResume funcionando sem problemas. Sua contribuição nos ajuda a manter e melhorar a plataforma. Se você encontrar valor em nosso serviço, apreciaríamos muito seu apoio. No entanto, se você não puder pagar agora, pode optar por {skip}.",
+    "skip": "pular esta etapa"
   }
 }

@@ -283,5 +283,10 @@
     "mapLocation": "Xəritə Ünvanı",
     "supportHours": "Müştəri Dəstəyi Saatları",
     "timing": "<strong>Hər Gün:</strong> 9:00 AM - 6:00 PM"
+  },
+  "supportService": {
+    "title": "Xidmətimizi dəstəkləyin",
+    "description": "Serverlərimizi işlətmək bizə pul başa gəlir və LaResume-nin problemsiz işləməsini təmin etmək üçün istifadəçi dəstəyinə güvənirik. Sizin töhfəniz platformanı saxlamağa və təkmilləşdirməyə kömək edir. Xidmətimizdən dəyər tapırsınızsa, dəstəyinizi yüksək qiymətləndirərdik. Lakin, hazırda ödəyə bilmirsinizsə, {skip} seçə bilərsiniz.",
+    "skip": "bu addımı keçin"
   }
 }

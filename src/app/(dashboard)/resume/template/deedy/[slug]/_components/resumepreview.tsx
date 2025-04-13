@@ -213,22 +213,21 @@ const ResumePreview = ({
         <AlertDialog open={showPaymentConfirmation} onOpenChange={setShowPaymentConfirmation}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Support Our Service</AlertDialogTitle>
+              <AlertDialogTitle>{t('supportService.title')}</AlertDialogTitle>
               <AlertDialogDescription>
-                Running our servers costs us money, and we rely on user support to keep LaResume
-                running smoothly. Your contribution helps us maintain and improve the platform. If
-                you find value in our service, we&apos;d truly appreciate your support. However, if
-                you&apos;re unable to pay right now, you may choose to{' '}
-                <span
-                  onClick={() => {
-                    setShowPaymentConfirmation(false);
-                    setShowFreeDownload(true);
-                  }}
-                  style={{ color: '#3b82f6', cursor: 'pointer', textDecoration: 'underline' }}
-                >
-                  skip
-                </span>
-                .
+                {t('supportService.description', {
+                  skip: (
+                    <span
+                      onClick={() => {
+                        setShowPaymentConfirmation(false);
+                        setShowFreeDownload(true);
+                      }}
+                      style={{ color: '#3b82f6', cursor: 'pointer', textDecoration: 'underline' }}
+                    >
+                      {t('supportService.skip')}
+                    </span>
+                  ),
+                })}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

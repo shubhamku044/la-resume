@@ -283,5 +283,10 @@
     "mapLocation": "Locatie op de kaart",
     "supportHours": "Klantenservice uren",
     "timing": "<strong>Elke dag:</strong> 9:00 - 18:00"
+  },
+  "supportService": {
+    "title": "Ondersteun onze service",
+    "description": "Het draaien van onze servers kost ons geld, en we vertrouwen op de steun van gebruikers om LaResume soepel te laten werken. Uw bijdrage helpt ons om het platform te onderhouden en te verbeteren. Als u waarde vindt in onze service, zouden we uw steun zeer op prijs stellen. Als u echter momenteel niet kunt betalen, kunt u ervoor kiezen om {skip}.",
+    "skip": "deze stap overslaan"
   }
 }

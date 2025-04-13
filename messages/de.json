@@ -283,5 +283,10 @@
     "mapLocation": "Kartenstandort",
     "supportHours": "Supportzeiten",
     "timing": "<strong>Täglich:</strong> 9:00 - 18:00 Uhr"
+  },
+  "supportService": {
+    "title": "Unterstützen Sie unseren Service",
+    "description": "Das Betreiben unserer Server kostet uns Geld, und wir sind auf die Unterstützung der Nutzer angewiesen, um LaResume reibungslos am Laufen zu halten. Ihr Beitrag hilft uns, die Plattform zu erhalten und zu verbessern. Wenn Sie unseren Service schätzen, würden wir uns über Ihre Unterstützung sehr freuen. Wenn Sie jedoch derzeit nicht zahlen können, können Sie {skip} wählen.",
+    "skip": "diesen Schritt überspringen"
   }
 }

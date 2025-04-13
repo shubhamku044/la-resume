@@ -283,5 +283,10 @@
     "mapLocation": "Localisation sur la Carte",
     "supportHours": "Heures d'Assistance Client",
     "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
+  },
+  "supportService": {
+    "title": "Soutenez notre service",
+    "description": "Faire fonctionner nos serveurs nous coûte de l'argent, et nous comptons sur le soutien des utilisateurs pour que LaResume fonctionne sans problème. Votre contribution nous aide à maintenir et améliorer la plateforme. Si vous trouvez de la valeur dans notre service, nous apprécierions grandement votre soutien. Cependant, si vous ne pouvez pas payer pour le moment, vous pouvez choisir de {skip}.",
+    "skip": "passer cette étape"
   }
 }

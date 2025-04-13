@@ -283,5 +283,10 @@
     "mapLocation": "Map Location",
     "supportHours": "Customer Support Hours",
     "timing": "<strong>EveryDay:</strong> 9:00 AM - 6:00 PM"
+  },
+  "supportService": {
+    "title": "Support Our Service",
+    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we\u2019d truly appreciate your support. However, if you\u2019re unable to pay right now, you may choose to {skip}.",
+    "skip": "skip this step"
   }
 }
