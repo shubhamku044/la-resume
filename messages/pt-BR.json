@@ -248,8 +248,9 @@
     "accomplishments": "Realizações",
     "feedback": "Feedback",
     "language": "Idioma",
-    "supportUs": "Nos Apoie",
-    "starOnGitHub": "Estrela no GitHub"
+    "supportUs": "Apoie-nos",
+    "starOnGitHub": "Dê uma estrela no GitHub",
+    "jobTracker": "Rastreador de Candidaturas"
   },
   "templates": {
     "resTemplate": "Escolha um Template de Currículo",

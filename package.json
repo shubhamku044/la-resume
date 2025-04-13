@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.0",
+    "@hello-pangea/dnd": "^18.0.1",
     "@heroui/button": "^2.2.16",
     "@heroui/progress": "^2.2.10",
     "@heroui/system": "^2.4.10",

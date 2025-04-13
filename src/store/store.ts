@@ -18,7 +18,15 @@ import {
   experienceReducer,
   userDetailsReducer,
 } from './slices';
-import { personalInfoApi, statsApi, userDetailsApi, templateApi, paymentApi } from './services';
+import {
+  personalInfoApi,
+  statsApi,
+  userDetailsApi,
+  templateApi,
+  paymentApi,
+  jobApi,
+  boardApi,
+} from './services';
 const persistConfig = {
   key: 'root',
   storage,
@@ -37,6 +45,8 @@ const rootReducers = combineReducers({
   [templateApi.reducerPath]: templateApi.reducer,
   [statsApi.reducerPath]: statsApi.reducer,
   [paymentApi.reducerPath]: paymentApi.reducer,
+  [jobApi.reducerPath]: jobApi.reducer,
+  [boardApi.reducerPath]: boardApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
@@ -54,13 +64,13 @@ export const store = configureStore({
       .concat(templateApi.middleware)
       .concat(statsApi.middleware)
       .concat(paymentApi.middleware)
-      .concat(statsApi.middleware);
-    /*
-    .concat(() => (next) => (action) => {
-      console.log('RTK Query action: ', action);
-      return next(action);
-    });
-  */
+      .concat(jobApi.middleware)
+      .concat(statsApi.middleware)
+      .concat(boardApi.middleware)
+      .concat(() => (next) => (action) => {
+        console.log('RTK Query action: ', action);
+        return next(action);
+      });
   },
 });
 

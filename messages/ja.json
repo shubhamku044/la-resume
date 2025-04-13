@@ -248,7 +248,8 @@
     "accomplishments": "成果",
     "feedback": "フィードバック",
     "language": "言語",
-    "supportUs": "私たちをサポート",
+    "supportUs": "サポートする",
+    "jobTracker": "求人応募トラッカー",
     "starOnGitHub": "GitHubでスターを付ける"
   },
   "templates": {

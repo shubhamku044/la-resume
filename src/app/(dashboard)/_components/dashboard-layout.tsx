@@ -14,6 +14,8 @@ import {
   User,
   UserCircle,
   PanelLeft,
+  ClipboardList,
+  Beaker,
 } from 'lucide-react';
 import { LuGithub } from 'react-icons/lu';
 import Link from 'next/link';
@@ -63,6 +65,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       title: t('madeByYou'),
       url: '/templates/made-by-you',
       icon: Brush,
+    },
+  ];
+
+  const jobTrackerItems = [
+    {
+      title: t('jobTracker'),
+      url: '/tracker/boards',
+      icon: ClipboardList,
     },
   ];
 
@@ -119,12 +129,20 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       <div className="flex flex-1 overflow-hidden">
         <aside
           className={cn(
-            'flex flex-col border-r bg-background transition-all duration-300',
+            'flex flex-col border-r bg-background transition-width duration-300',
             isCollapsed ? 'w-[70px]' : 'w-64'
           )}
         >
           <div className="flex-1 overflow-y-auto p-2">
             <nav className="space-y-1">
+              <CollapsibleSection
+                title={t('jobTracker')}
+                icon={<ClipboardList className="size-4" />}
+                isCollapsed={isCollapsed}
+                items={jobTrackerItems}
+                pathname={pathname}
+              />
+
               <CollapsibleSection
                 title={t('templates')}
                 icon={<LayoutTemplate className="size-4" />}
@@ -187,6 +205,12 @@ function CollapsibleSection({
       >
         {icon}
         {!isCollapsed && <span className="ml-2">{title}</span>}
+        {items[0].url === '/tracker/boards' && (
+          <span className="flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">
+            <Beaker className="size-4" />
+            Beta
+          </span>
+        )}
       </div>
 
       <div className="space-y-1">

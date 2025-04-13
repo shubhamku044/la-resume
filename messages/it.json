@@ -249,7 +249,8 @@
     "feedback": "Feedback",
     "language": "Lingua",
     "supportUs": "Supportaci",
-    "starOnGitHub": "Metti una stella su GitHub"
+    "starOnGitHub": "Dai una stella su GitHub",
+    "jobTracker": "Monitoraggio candidature"
   },
   "templates": {
     "resTemplate": "Scegli un modello di curriculum",

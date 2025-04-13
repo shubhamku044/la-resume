@@ -249,7 +249,8 @@
     "feedback": "Обратная связь",
     "language": "Язык",
     "supportUs": "Поддержите нас",
-    "starOnGitHub": "Звезда на GitHub"
+    "starOnGitHub": "Поставьте звезду на GitHub",
+    "jobTracker": "Отслеживание заявок на работу"
   },
   "templates": {
     "resTemplate": "Выберите шаблон резюме",
