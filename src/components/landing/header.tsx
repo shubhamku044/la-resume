@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import LanguageSelectorDropdown from '../language-selector-dropdown';
 
 export function Header() {
   const router = useRouter();
@@ -33,7 +34,7 @@ export function Header() {
           </a>
           <a
             href="#how-it-works"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="hover:text-primary text-sm font-medium transition-colors"
           >
             How It Works
           </a>
@@ -53,6 +54,7 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <ThemeToggle />
+          <LanguageSelectorDropdown showLabel={false} />
 
           <SignedIn>
             <Button
@@ -99,23 +101,23 @@ export function Header() {
                 </a>
                 <a
                   href="#how-it-works"
-                  className="text-sm font-medium transition-colors hover:text-primary"
+                  className="hover:text-primary text-sm font-medium transition-colors"
                 >
                   How It Works
                 </a>
                 <a
                   href="#team"
-                  className="text-sm font-medium transition-colors hover:text-primary"
+                  className="hover:text-primary text-sm font-medium transition-colors"
                 >
                   Our Team
                 </a>
                 <a
                   href="#testimonials"
-                  className="text-sm font-medium transition-colors hover:text-primary"
+                  className="hover:text-primary text-sm font-medium transition-colors"
                 >
                   Testimonials
                 </a>
-                <a href="#faq" className="text-sm font-medium transition-colors hover:text-primary">
+                <a href="#faq" className="hover:text-primary text-sm font-medium transition-colors">
                   FAQ
                 </a>
 

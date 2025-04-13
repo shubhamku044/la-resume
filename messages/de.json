@@ -1,69 +1,108 @@
 {
   "HomePage": {
     "github": {
-      "lovedBy": "Von <stars></stars> Entwicklern geschätzt",
-      "starButton": "Auf GitHub sternen"
+      "lovedBy": "Beliebt bei <stars></stars> Entwicklern",
+      "starButton": "Auf GitHub bewerten"
     },
     "hero": {
-      "title": "Erstellen Sie perfekte, <highlight>ATS-optimierte</highlight> Lebensläufe",
-      "description": "Professioneller Lebenslauf-Builder mit LaTeX. Kostenlos. Exportieren Sie in Sekunden als PDF oder LaTeX.",
-      "startBuilding": "Jetzt starten",
-      "githubButton": "GitHub"
+      "title": "Erstellen Sie einen <highlight>professionellen Lebenslauf</highlight>, der zu Vorstellungsgesprächen führt",
+      "description": "Unser intuitiver Lebenslauf-Editor hilft Ihnen, einen perfekt formatierten, ATS-optimierten Lebenslauf zu erstellen, der Ihre Fähigkeiten und Erfahrungen präsentiert.",
+      "startBuilding": "Lebenslauf erstellen",
+      "githubButton": "Auf GitHub bewerten"
+    },
+    "company": {
+      "title": "Erstellen Sie Lebensläufe, die Ihnen Jobs in Top-Unternehmen verschaffen"
+    },
+    "stats": {
+      "resumeCreated": "Erstellte Lebensläufe",
+      "atsSuccess": "ATS-Erfolgsrate",
+      "template": "Vorlagen-Designs",
+      "customer": "Kundensupport"
     },
     "features": {
-      "title": "Warum Profis La-Resume wählen",
+      "intro": "Leistungsstarke Funktionen",
+      "title": "Alles, was Sie für den perfekten Lebenslauf benötigen",
+      "description": "Unser Lebenslauf-Editor kombiniert schönes Design mit leistungsstarken Funktionen, um Ihnen zu helfen, einen herausragenden Lebenslauf zu erstellen.",
       "feature1": {
-        "title": "ATS-Optimiert",
-        "description": "Lebenslaufvorlagen, die dafür entwickelt wurden, durch Bewerber-Tracking-Systeme (ATS) zu kommen"
+        "title": "Einfache Anpassung",
+        "description": "Passen Sie jeden Aspekt Ihres Lebenslaufs mit unserem intuitiven Drag-and-Drop-Editor an."
       },
       "feature2": {
-        "title": "LaTeX-Präzision",
-        "description": "Professionelle Typografie und Layout, unterstützt durch die LaTeX-Engine"
+        "title": "Echtzeit-Vorschau",
+        "description": "Sehen Sie Änderungen an Ihrem Lebenslauf in Echtzeit, während Sie sie vornehmen."
       },
       "feature3": {
-        "title": "Sofortiger Export",
-        "description": "Ein-Klick-PDF-Download oder Export des rohen LaTeX-Codes"
+        "title": "Mehrere Formate",
+        "description": "Exportieren Sie Ihren Lebenslauf in PDF-, DOCX- oder TXT-Formaten für verschiedene Bewerbungsanforderungen."
+      },
+      "feature4": {
+        "title": "ATS-Optimierung",
+        "description": "Unsere Vorlagen sind so gestaltet, dass sie problemlos durch Bewerber-Tracking-Systeme (ATS) kommen."
+      },
+      "feature5": {
+        "title": "KI-Empfehlungen",
+        "description": "Erhalten Sie intelligente Inhaltsvorschläge, um Ihren Lebenslauf zu verbessern und sich abzuheben."
+      },
+      "feature6": {
+        "title": "Professionelle Vorlagen",
+        "description": "Wählen Sie aus einer Vielzahl von ATS-optimierten Lebenslaufvorlagen, die von Profis gestaltet wurden."
       }
     },
     "use": {
-      "title": "Einfacher 3-Schritte-Prozess",
-      "step1": {
-        "title": "Geben Sie Ihre Informationen ein",
-        "description": "Füllen Sie Ihre Daten mit unserem intuitiven Formular aus"
+      "badge": "Einfacher Prozess",
+      "heading": "Drei Schritte zum perfekten Lebenslauf",
+      "subheading": "Einen professionellen Lebenslauf zu erstellen war noch nie so einfach",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Vorlage auswählen",
+          "description": "Wählen Sie aus unseren professionell gestalteten Vorlagen, die für ATS-Systeme optimiert sind."
+        },
+        {
+          "number": "02",
+          "title": "Inhalte hinzufügen",
+          "description": "Füllen Sie Ihre Informationen mit unserem intuitiven Editor und hilfreichen Vorschlägen aus."
+        },
+        {
+          "number": "03",
+          "title": "Herunterladen & Bewerben",
+          "description": "Exportieren Sie Ihren Lebenslauf in Ihrem bevorzugten Format und bewerben Sie sich sofort auf Jobs."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Unser Team",
+      "title": "Die Macher hinter LaResume",
+      "description": "Leidenschaftliche Entwickler, die Ihnen helfen, professionelle, herausragende Lebensläufe zu erstellen.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Full Stack Entwickler",
+        "description": "Leidenschaftlich daran interessiert, Tools zu entwickeln, die Menschen in ihrer Karriere helfen."
       },
-      "step2": {
-        "title": "Passen Sie Vorlagen an",
-        "description": "Wählen Sie aus professionellen, ATS-optimierten Vorlagen"
-      },
-      "step3": {
-        "title": "Herunterladen & Bewerben",
-        "description": "Exportieren Sie als PDF oder LaTeX und beginnen Sie mit der Bewerbung"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Full Stack Entwickler",
+        "description": "Design-Enthusiast, der sich auf benutzerfreundliche Oberflächen und Erfahrungen konzentriert."
       }
     },
     "testimonial": {
-      "title": "Was die Leute sagen",
-      "quote1": {
-        "text": "Ich konnte in wenigen Minuten einen professionellen Lebenslauf erstellen. Die LaTeX-Exportfunktion ist ein echter Game-Changer.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume ist der beste Lebenslauf-Builder, den ich je benutzt habe. Die Vorlagen sind erstklassig.",
-        "author": "Jane Doe"
-      }
+      "intro": "Erfolgsgeschichten",
+      "title": "Was unsere Nutzer sagen",
+      "description": "Schließen Sie sich Tausenden von Jobsuchenden an, die mit unserem Lebenslauf-Editor Erfolg hatten."
     },
     "feedback": {
-      "title": "Nehmen Sie Kontakt auf",
+      "title": "Kontakt aufnehmen",
       "card": {
         "name": "Ihr Name",
         "email": "Ihre E-Mail",
-        "message": "Ihre Nachricht (mindestens 100 Zeichen)",
+        "message": "Ihre Nachricht (mind. 100 Zeichen)",
         "buttonsending": "Wird gesendet...",
         "buttonsend": "Nachricht senden"
       }
     },
     "pricing": {
       "title": "Transparente Preise",
-      "description": "Alles, was Sie brauchen, um professionelle Lebensläufe zu erstellen – völlig kostenlos",
+      "description": "Alles, was Sie für professionelle Lebensläufe benötigen - komplett kostenlos",
       "card": {
         "title": "Kostenlos",
         "description": "Keine Kreditkarte erforderlich",
@@ -71,25 +110,25 @@
           "point1": "Unbegrenzte Lebensläufe",
           "point2": "ATS-optimierte Vorlagen",
           "point3": "PDF-Export",
-          "point4": "LaTeX-Quellcode-Download",
+          "point4": "LaTeX-Quelldownload",
           "point5": "Keine Werbung",
           "point6": "Open Source",
           "point7": "Cloud-Speicher",
           "point8": "24/7 Support"
         },
         "button": "Kostenlos starten",
-        "sentence": "Vergleichen Sie mit anderen Lebenslauf-Erstellern: ❌ 15 $/Monat • ❌ Werbung • ❌ Begrenzte Vorlagen"
+        "sentence": "Vergleich mit anderen Lebenslauf-Editoren: ❌ 15€/Monat • ❌ Werbung • ❌ Begrenzte Vorlagen"
       }
     },
     "random": {
       "title": "Stolz Open Source",
       "button": "Quellcode auf GitHub ansehen",
-      "heading": "Bereit, Ihre Karriere zu fördern?",
-      "description": "Schließen Sie sich Tausenden von Fachleuten an, die ihre Jobsuche transformiert haben",
-      "button2": "Erstellen Sie jetzt Ihren Lebenslauf"
+      "heading": "Bereit, Ihre Karriere zu verbessern?",
+      "description": "Schließen Sie sich Tausenden von Fachleuten an, die ihre Jobsuche verändert haben",
+      "button2": "Jetzt Lebenslauf erstellen"
     },
     "developers": {
-      "title": "Hergestellt mit ❤️ von",
+      "title": "Entwickelt mit ❤️ von",
       "details": {
         "dev1": {
           "name": "Shubham Kumar",
@@ -100,26 +139,66 @@
           "role": "Full Stack Entwickler"
         }
       },
-      "button": "Stellen Sie mich ein"
+      "button": "Mich einstellen"
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
+      "subtitle": "Fragen? Wir haben Antworten",
+      "description": "Antworten auf häufige Fragen zu unserem Lebenslauf-Editor",
       "question1": {
-        "question": "Ist La-Resume wirklich komplett kostenlos?",
-        "answer": "Ja! La-Resume ist zu 100 % kostenlos und Open Source. Wir glauben, dass der Aufbau eines professionellen Lebenslaufs für alle zugänglich sein sollte."
+        "question": "Ist dieser Lebenslauf-Editor wirklich kostenlos?",
+        "answer": "Ja, unsere Kernfunktionen sind komplett kostenlos. Sie können Lebensläufe erstellen, bearbeiten und herunterladen, ohne dass eine Zahlung erforderlich ist."
       },
       "question2": {
-        "question": "Wie funktioniert die ATS-Optimierung?",
-        "answer": "Unsere Vorlagen folgen den besten Branchenpraktiken für die ATS-Kompatibilität, einschließlich der richtigen Platzierung von Schlüsselwörtern, sauberem Layout und semantischer Struktur."
+        "question": "Sind die Vorlagen ATS-freundlich?",
+        "answer": "Absolut! Alle unsere Vorlagen sind so gestaltet, dass sie problemlos durch Bewerber-Tracking-Systeme (ATS) kommen."
       },
       "question3": {
-        "question": "Kann ich meine eigenen LaTeX-Vorlagen verwenden?",
-        "answer": "Derzeit unterstützen wir nur unsere kuratierten Vorlagen, aber wir planen, in zukünftigen Updates Unterstützung für benutzerdefinierte Vorlagen hinzuzufügen."
+        "question": "Kann ich mehrere Lebensläufe erstellen?",
+        "answer": "Ja, Sie können mehrere Versionen Ihres Lebenslaufs für verschiedene Bewerbungen und Branchen erstellen."
+      },
+      "question4": {
+        "question": "Wie exportiere ich meinen Lebenslauf?",
+        "answer": "Sie können Ihren Lebenslauf mit nur einem Klick im Editor als PDF, DOCX oder TXT herunterladen."
       }
     },
+    "contact": {
+      "badge": "Kontakt",
+      "heading": "Fragen oder Feedback?",
+      "description": "Wir freuen uns von Ihnen zu hören. Senden Sie uns eine Nachricht und wir melden uns so schnell wie möglich bei Ihnen.",
+      "contact_info_title": "Kontaktinformationen",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Name",
+        "name_placeholder": "Ihr Name",
+        "email_label": "E-Mail",
+        "email_placeholder": "Ihre E-Mail",
+        "subject_label": "Betreff",
+        "subject_placeholder": "Wie können wir helfen?",
+        "message_label": "Nachricht",
+        "message_placeholder": "Ihre Nachricht...",
+        "button": "Nachricht senden"
+      },
+      "toast_success": "Nachricht erfolgreich gesendet! Wir melden uns bald bei Ihnen."
+    },
     "footer": {
-      "detail": "Open Source Lebenslauf-Ersteller",
-      "privacyPolicy": "La-Resume. MIT-lizenziert. Beiträge sind willkommen!"
+      "brand": "LaResume",
+      "description": "Erstellen Sie in Minuten professionelle Lebensläufe mit unserem benutzerfreundlichen Lebenslauf-Editor. Heben Sie sich von der Masse ab und finden Sie Ihren Traumjob.",
+      "resources": "Ressourcen",
+      "templates": "Vorlagen",
+      "userDetails": "Benutzerdaten",
+      "madeByYou": "Von Ihnen erstellt",
+      "company": "Unternehmen",
+      "aboutUs": "Über uns",
+      "privacyPolicy": "Datenschutz",
+      "termsOfService": "Nutzungsbedingungen",
+      "support": "Support",
+      "helpCenter": "Hilfe-Center",
+      "contactUs": "Kontakt",
+      "faqs": "FAQs",
+      "copyright": "LaResume. MIT-Lizenz.",
+      "refunds": "Rückerstattung"
     }
   },
   "header": {
@@ -131,10 +210,10 @@
     "pricing": "Preise"
   },
   "common": {
-    "resumePreview": "Lebenslaufvorschau",
+    "resumePreview": "Lebenslauf-Vorschau",
     "save": "Speichern",
     "reorderSection": "Abschnitt neu anordnen",
-    "unsavedChanges": "Nicht gespeicherte Änderungen",
+    "unsavedChanges": "nicht gespeicherte Änderungen",
     "download": "Herunterladen",
     "delete": "Löschen",
     "cancel": "Abbrechen"
@@ -144,48 +223,48 @@
     "message": "Sind Sie sicher, dass Sie <name></name> löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
+    "en": "🇬🇧 Englisch",
+    "ja": "🇯🇵 Japanisch",
+    "az": "🇦🇿 Aserbaidschanisch",
+    "pt-PT": "🇵🇹 Portugiesisch (PT)",
+    "pt-BR": "🇧🇷 Portugiesisch (BR)",
+    "zh": "🇨🇳 Chinesisch",
     "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
-    "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "fr": "🇫🇷 Französisch",
+    "it": "🇮🇹 Italienisch",
+    "ru": "🇷🇺 Russisch",
+    "es": "🇪🇸 Spanisch",
+    "nl": "🇳🇱 Niederländisch"
   },
   "sidebar": {
     "navigation": "Navigation",
     "templates": "Vorlagen",
-    "resumeTemplates": "Lebenslaufvorlagen",
+    "resumeTemplates": "Lebenslauf-Vorlagen",
     "madeByYou": "Von Ihnen erstellt",
-    "userDetails": "Benutzerdetails",
-    "personalInfo": "Persönliche Informationen",
-    "experience": "Erfahrung",
+    "userDetails": "Benutzerdaten",
+    "personalInfo": "Persönliche Daten",
+    "experience": "Berufserfahrung",
     "education": "Bildung",
-    "accomplishments": "Errungenschaften",
+    "accomplishments": "Erfolge",
     "feedback": "Feedback",
     "language": "Sprache",
     "supportUs": "Unterstützen Sie uns",
-    "starOnGitHub": "Auf GitHub mit Stern markieren"
+    "starOnGitHub": "Auf GitHub bewerten"
   },
   "templates": {
-    "resTemplate": "Wählen Sie eine Lebenslaufvorlage",
+    "resTemplate": "Lebenslauf-Vorlage wählen",
     "madeByYou": "Von Ihnen erstellte Lebensläufe"
   },
   "contact": {
-    "title": "Kontaktieren Sie uns",
-    "description": "Wir sind für Sie da! Kontaktieren Sie uns bei Fragen, Feedback oder Supportanfragen. Unser Team wird sich so schnell wie möglich bei Ihnen melden.",
-    "contactInformation": "Unsere Kontaktinformationen",
-    "merchantName": "<strong>Rechtlicher Unternehmensname:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Registrierte Adresse:</strong> Benachity, Westbengalen, India, PLZ: 713213",
-    "operationalAddress": "<strong>Betriebsadresse:</strong> Benachity, Westbengalen, India, PLZ: 713213",
+    "title": "Kontakt",
+    "description": "Wir helfen Ihnen gerne! Kontaktieren Sie uns bei Fragen, Feedback oder Support. Unser Team meldet sich so schnell wie möglich bei Ihnen.",
+    "contactInformation": "Unsere Kontaktdaten",
+    "merchantName": "<strong>Rechtliche Firma:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Eingetragene Adresse:</strong> Benachity, Westbengalen, Indien, PIN: 713213",
+    "operationalAddress": "<strong>Betriebsadresse:</strong> Benachity, Westbengalen, Indien, PIN: 713213",
     "phoneNumber": "<strong>Telefonnummer:</strong> +91 62975 59892",
     "email": "<strong>E-Mail:</strong> laresumetech@gmail.com",
-    "sendMessage": "Senden Sie uns eine Nachricht",
+    "sendMessage": "Nachricht senden",
     "toast": {
       "success": "Nachricht erfolgreich gesendet!",
       "error": "Nachricht konnte nicht gesendet werden"
@@ -194,14 +273,14 @@
       "name": "Name",
       "namePlaceholder": "Ihr Name",
       "email": "E-Mail",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "ihre@email.com",
       "message": "Nachricht",
       "messagePlaceholder": "Ihre Nachricht...",
       "submit": "Nachricht senden",
       "submitting": "Wird gesendet..."
     },
-    "mapLocation": "Standort auf der Karte",
-    "supportHours": "Kundensupport-Zeiten",
-    "timing": "<strong>Täglich:</strong> 9:00 Uhr - 18:00 Uhr"
+    "mapLocation": "Kartenstandort",
+    "supportHours": "Supportzeiten",
+    "timing": "<strong>Täglich:</strong> 9:00 - 18:00 Uhr"
   }
 }

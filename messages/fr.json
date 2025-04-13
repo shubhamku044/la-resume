@@ -1,64 +1,103 @@
 {
   "HomePage": {
     "github": {
-      "lovedBy": "Adoré par <stars></stars> développeurs",
-      "starButton": "Étoile sur GitHub"
+      "lovedBy": "Aimé par <stars></stars> développeurs",
+      "starButton": "Mettre une étoile sur GitHub"
     },
     "hero": {
-      "title": "Créez des CV parfaits <highlight>compatibles ATS</highlight>",
-      "description": "Générateur de CV professionnel basé sur LaTeX. Gratuit. Exportez en PDF ou LaTeX en quelques secondes.",
-      "startBuilding": "Commencer",
-      "githubButton": "GitHub"
+      "title": "Créez un <highlight>CV professionnel</highlight> qui vous décroche des entretiens",
+      "description": "Notre créateur de CV intuitif vous aide à créer un CV parfaitement formaté et compatible avec les systèmes de suivi des candidatures (ATS), qui met en valeur vos compétences et votre expérience.",
+      "startBuilding": "Créez Votre CV",
+      "githubButton": "Mettre une étoile sur GitHub"
+    },
+    "company": {
+      "title": "Créez des CV qui vous aident à décrocher des emplois dans les meilleures entreprises"
+    },
+    "stats": {
+      "resumeCreated": "CV Créés",
+      "atsSuccess": "Taux de Succès ATS",
+      "template": "Modèles Disponibles",
+      "customer": "Service Client"
     },
     "features": {
-      "title": "Pourquoi les professionnels choisissent La-Resume",
+      "intro": "Fonctionnalités Puissantes",
+      "title": "Tout ce dont vous avez besoin pour créer le CV parfait",
+      "description": "Notre créateur de CV combine un design magnifique avec des fonctionnalités puissantes pour vous aider à créer un CV qui se démarque.",
       "feature1": {
-        "title": "Optimisé pour ATS",
-        "description": "Modèles de CV conçus pour passer à travers les systèmes de suivi des candidatures (ATS)"
+        "title": "Personnalisation Facile",
+        "description": "Personnalisez chaque aspect de votre CV grâce à notre éditeur intuitif par glisser-déposer."
       },
       "feature2": {
-        "title": "Précision LaTeX",
-        "description": "Typographie et mise en page professionnelles alimentées par le moteur LaTeX"
+        "title": "Aperçu en Temps Réel",
+        "description": "Visualisez les modifications apportées à votre CV en temps réel."
       },
       "feature3": {
-        "title": "Exportation Instantanée",
-        "description": "Téléchargement PDF en un clic ou exportation du code LaTeX brut"
+        "title": "Formats Multiples",
+        "description": "Exportez votre CV aux formats PDF, DOCX ou TXT pour répondre aux différentes exigences des candidatures."
+      },
+      "feature4": {
+        "title": "Optimisation ATS",
+        "description": "Nos modèles sont conçus pour passer facilement les systèmes de suivi des candidatures."
+      },
+      "feature5": {
+        "title": "Suggestions IA",
+        "description": "Obtenez des suggestions de contenu intelligentes pour améliorer votre CV et vous démarquer."
+      },
+      "feature6": {
+        "title": "Modèles Professionnels",
+        "description": "Choisissez parmi une variété de modèles de CV compatibles avec les ATS, conçus par des professionnels."
       }
     },
     "use": {
-      "title": "Processus Simple en 3 Étapes",
-      "step1": {
-        "title": "Entrez Vos Informations",
-        "description": "Remplissez vos informations en utilisant notre formulaire intuitif"
+      "badge": "Processus Simple",
+      "heading": "Trois étapes pour votre CV parfait",
+      "subheading": "Créer un CV professionnel n'a jamais été aussi simple",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Choisissez un Modèle",
+          "description": "Sélectionnez parmi nos modèles conçus par des professionnels et optimisés pour les systèmes ATS."
+        },
+        {
+          "number": "02",
+          "title": "Ajoutez Votre Contenu",
+          "description": "Remplissez vos informations à l'aide de notre éditeur intuitif avec des suggestions utiles."
+        },
+        {
+          "number": "03",
+          "title": "Téléchargez & Postulez",
+          "description": "Exportez votre CV dans le format de votre choix et commencez à postuler à des emplois immédiatement."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Notre Équipe",
+      "title": "Les créateurs derrière LaResume",
+      "description": "Des développeurs passionnés qui se consacrent à vous aider à créer des CV professionnels et remarquables.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Développeur Full Stack",
+        "description": "Passionné par la création d'outils qui aident les gens à réussir dans leur parcours professionnel."
       },
-      "step2": {
-        "title": "Personnalisez les Modèles",
-        "description": "Sélectionnez parmi des modèles professionnels optimisés pour ATS"
-      },
-      "step3": {
-        "title": "Téléchargez et Postulez",
-        "description": "Exportez en PDF ou LaTeX et commencez à postuler"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Développeur Full Stack",
+        "description": "Passionné de design, axé sur la création d'interfaces et d'expériences conviviales."
       }
     },
     "testimonial": {
-      "title": "Ce que disent les gens",
-      "quote1": {
-        "text": "J'ai pu créer un CV professionnel en quelques minutes. La fonctionnalité d'exportation LaTeX est une véritable révolution.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume est le meilleur créateur de CV que j'ai jamais utilisé. Les modèles sont de première qualité.",
-        "author": "Jane Doe"
-      }
+      "intro": "Témoignages de Réussite",
+      "title": "Ce que disent nos utilisateurs",
+      "description": "Rejoignez des milliers de chercheurs d'emploi qui ont trouvé le succès grâce à notre créateur de CV."
     },
     "feedback": {
       "title": "Contactez-nous",
       "card": {
-        "name": "Votre nom",
-        "email": "Votre e-mail",
-        "message": "Votre message (min. 100 caractères)",
+        "name": "Votre Nom",
+        "email": "Votre Email",
+        "message": "Votre Message (min. 100 caractères)",
         "buttonsending": "Envoi en cours...",
-        "buttonsend": "Envoyer le message"
+        "buttonsend": "Envoyer le Message"
       }
     },
     "pricing": {
@@ -68,28 +107,28 @@
         "title": "Gratuit",
         "description": "Aucune carte de crédit requise",
         "points": {
-          "point1": "CV illimités",
-          "point2": "Modèles optimisés pour ATS",
+          "point1": "CV Illimités",
+          "point2": "Modèles Optimisés ATS",
           "point3": "Exportation PDF",
-          "point4": "Téléchargement du code source LaTeX",
-          "point5": "Pas de publicités",
+          "point4": "Téléchargement de la Source LaTeX",
+          "point5": "Pas de Publicités",
           "point6": "Open Source",
-          "point7": "Stockage en Cloud",
-          "point8": "Support 24/7"
+          "point7": "Stockage Cloud",
+          "point8": "Support 24h/24 et 7j/7"
         },
-        "button": "Commencer à construire gratuitement",
-        "sentence": "Comparez avec d'autres créateurs de CV : ❌ 15 $/mois • ❌ Publicités • ❌ Modèles limités"
+        "button": "Commencer à Créer Gratuitement",
+        "sentence": "Comparez avec d'autres créateurs de CV : ❌ 15 $/mois • ❌ Publicités • ❌ Modèles Limités"
       }
     },
     "random": {
-      "title": "Fièrement open source",
+      "title": "Fier d'être Open Source",
       "button": "Voir le code source sur GitHub",
-      "heading": "Prêt à faire avancer votre carrière ?",
+      "heading": "Prêt à Booster Votre Carrière ?",
       "description": "Rejoignez des milliers de professionnels qui ont transformé leur recherche d'emploi",
-      "button2": "Créez votre CV maintenant"
+      "button2": "Créez Votre CV Maintenant"
     },
     "developers": {
-      "title": "Construit avec ❤️ par",
+      "title": "Construit avec ❤️ par",
       "details": {
         "dev1": {
           "name": "Shubham Kumar",
@@ -103,91 +142,131 @@
       "button": "Embauchez-moi"
     },
     "faq": {
-      "title": "Questions Fréquemment Posées",
+      "title": "Foire Aux Questions",
+      "subtitle": "Vous avez des questions ? Nous avons les réponses",
+      "description": "Trouvez les réponses aux questions courantes sur notre créateur de CV",
       "question1": {
-        "question": "La-Resume est-il vraiment complètement gratuit ?",
-        "answer": "Oui ! La-Resume est 100 % gratuit et open source. Nous croyons que la création de CV professionnels devrait être accessible à tous."
+        "question": "Ce créateur de CV est-il vraiment gratuit ?",
+        "answer": "Oui, nos fonctionnalités de base sont entièrement gratuites. Vous pouvez créer, modifier et télécharger votre CV sans aucun paiement requis."
       },
       "question2": {
-        "question": "Comment fonctionne l'optimisation ATS ?",
-        "answer": "Nos modèles suivent les meilleures pratiques de l'industrie pour la compatibilité ATS, y compris un placement approprié des mots-clés, une mise en forme soignée et une structure sémantique."
+        "question": "Les modèles sont-ils compatibles avec les ATS ?",
+        "answer": "Absolument ! Tous nos modèles sont conçus pour passer les systèmes de suivi des candidatures haut la main."
       },
       "question3": {
-        "question": "Puis-je utiliser mes propres modèles LaTeX ?",
-        "answer": "Actuellement, nous ne supportons que nos modèles sélectionnés, mais nous prévoyons d'ajouter la prise en charge des modèles personnalisés dans les futures mises à jour."
+        "question": "Puis-je créer plusieurs CV ?",
+        "answer": "Oui, vous pouvez créer plusieurs versions de votre CV pour différentes candidatures et secteurs d'activité."
+      },
+      "question4": {
+        "question": "Comment puis-je exporter mon CV ?",
+        "answer": "Vous pouvez télécharger votre CV aux formats PDF, DOCX ou TXT en un seul clic depuis l'éditeur."
       }
     },
+    "contact": {
+      "badge": "Contactez-nous",
+      "heading": "Vous avez des questions ou des commentaires ?",
+      "description": "Nous serions ravis de vous entendre. Envoyez-nous un message et nous vous répondrons dès que possible.",
+      "contact_info_title": "Informations de Contact",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Nom",
+        "name_placeholder": "Votre nom",
+        "email_label": "Email",
+        "email_placeholder": "Votre email",
+        "subject_label": "Sujet",
+        "subject_placeholder": "Comment pouvons-nous vous aider ?",
+        "message_label": "Message",
+        "message_placeholder": "Votre message...",
+        "button": "Envoyer le Message"
+      },
+      "toast_success": "Message envoyé avec succès ! Nous vous répondrons bientôt."
+    },
     "footer": {
-      "detail": "Créateur de CV open source",
-      "privacyPolicy": "La-Resume. Licence MIT. Contributions bienvenues!"
+      "brand": "LaResume",
+      "description": "Créez des CV professionnels en quelques minutes grâce à notre créateur de CV facile à utiliser. Démarquez-vous et décrochez l'emploi de vos rêves.",
+      "resources": "Ressources",
+      "templates": "Modèles",
+      "userDetails": "Détails de l'Utilisateur",
+      "madeByYou": "Créé Par Vous",
+      "company": "Entreprise",
+      "aboutUs": "À Propos de Nous",
+      "privacyPolicy": "Politique de Confidentialité",
+      "termsOfService": "Conditions d'Utilisation",
+      "support": "Support",
+      "helpCenter": "Centre d'Aide",
+      "contactUs": "Contactez-nous",
+      "faqs": "FAQ",
+      "copyright": "LaResume. Licence MIT.",
+      "refunds": "Politique de Remboursement"
     }
   },
   "header": {
-    "signIn": "Connexion",
-    "signOut": "Déconnexion",
-    "signUp": "Inscription",
+    "signIn": "Se Connecter",
+    "signOut": "Se Déconnecter",
+    "signUp": "S'inscrire",
     "templates": "Modèles",
-    "userProfile": "Profil utilisateur",
-    "pricing": "Tarifs"
+    "userProfile": "Profil Utilisateur",
+    "pricing": "Tarification"
   },
   "common": {
     "resumePreview": "Aperçu du CV",
     "save": "Enregistrer",
-    "reorderSection": "Réorganiser la section",
-    "unsavedChanges": "Modifications non enregistrées",
+    "reorderSection": "Réorganiser la Section",
+    "unsavedChanges": "modifications non enregistrées",
     "download": "Télécharger",
     "delete": "Supprimer",
     "cancel": "Annuler"
   },
   "deleteModal": {
-    "title": "Confirmer la suppression",
-    "message": "Êtes-vous sûr de vouloir supprimer <name></name> ? Cette action est irréversible."
+    "title": "Confirmer la Suppression",
+    "message": "Êtes-vous sûr de vouloir supprimer <name></name> ? Cette action est irréversible."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
+    "en": "🇬🇧 Anglais",
+    "ja": "🇯🇵 Japonais",
+    "az": "🇦🇿 Azéri",
+    "pt-PT": "🇵🇹 Portugais (PT)",
+    "pt-BR": "🇧🇷 Portugais (BR)",
+    "zh": "🇨🇳 Chinois",
+    "de": "🇩🇪 Allemand",
     "fr": "🇫🇷 Français",
-    "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "it": "🇮🇹 Italien",
+    "ru": "🇷🇺 Russe",
+    "es": "🇪🇸 Espagnol",
+    "nl": "🇳🇱 Néerlandais"
   },
   "sidebar": {
     "navigation": "Navigation",
     "templates": "Modèles",
     "resumeTemplates": "Modèles de CV",
-    "madeByYou": "Fait par Vous",
-    "userDetails": "Détails de l'utilisateur",
-    "personalInfo": "Informations personnelles",
+    "madeByYou": "Créé par Vous",
+    "userDetails": "Détails de l'Utilisateur",
+    "personalInfo": "Informations Personnelles",
     "experience": "Expérience",
-    "education": "Éducation",
+    "education": "Formation",
     "accomplishments": "Réalisations",
-    "feedback": "Retour d'information",
+    "feedback": "Commentaires",
     "language": "Langue",
     "supportUs": "Soutenez-nous",
     "starOnGitHub": "Mettre une étoile sur GitHub"
   },
   "templates": {
-    "resTemplate": "Choisissez un modèle de CV",
-    "madeByYou": "CV créés par vous"
+    "resTemplate": "Choisissez un Modèle de CV",
+    "madeByYou": "CV Créés par Vous"
   },
   "contact": {
     "title": "Contactez-nous",
-    "description": "Nous sommes là pour vous aider ! N'hésitez pas à nous contacter pour toute question, retour ou assistance. Notre équipe vous répondra dans les plus brefs délais.",
-    "contactInformation": "Nos Coordonnées",
-    "merchantName": "<strong>Nom Juridique du Commerçant :</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Adresse Enregistrée :</strong> Benachity, Bengale-Occidental, India, Code Postal : 713213",
-    "operationalAddress": "<strong>Adresse Opérationnelle :</strong> Benachity, Bengale-Occidental, India, Code Postal : 713213",
-    "phoneNumber": "<strong>Numéro de Téléphone :</strong> +91 62975 59892",
-    "email": "<strong>Email :</strong> laresumetech@gmail.com",
+    "description": "Nous sommes là pour vous aider ! N'hésitez pas à nous contacter pour toute question, commentaire ou demande d'assistance. Notre équipe vous répondra dans les plus brefs délais.",
+    "contactInformation": "Nos Informations de Contact",
+    "merchantName": "<strong>Nom de l'entité juridique du marchand :</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Adresse enregistrée :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
+    "operationalAddress": "<strong>Adresse opérationnelle :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
+    "phoneNumber": "<strong>Numéro de Téléphone :</strong> +91 62975 59892",
+    "email": "<strong>Email :</strong> laresumetech@gmail.com",
     "sendMessage": "Envoyez-nous un Message",
     "toast": {
-      "success": "Message envoyé avec succès !",
+      "success": "Message envoyé avec succès !",
       "error": "Échec de l'envoi du message"
     },
     "form": {
@@ -198,10 +277,10 @@
       "message": "Message",
       "messagePlaceholder": "Votre message...",
       "submit": "Envoyer le Message",
-      "submitting": "Envoi..."
+      "submitting": "Envoi en cours..."
     },
     "mapLocation": "Localisation sur la Carte",
     "supportHours": "Heures d'Assistance Client",
-    "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
+    "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
   }
 }
