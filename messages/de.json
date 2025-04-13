@@ -285,8 +285,7 @@
     "timing": "<strong>Täglich:</strong> 9:00 - 18:00 Uhr"
   },
   "supportService": {
-    "title": "Unterstützen Sie unseren Service",
-    "description": "Das Betreiben unserer Server kostet uns Geld, und wir sind auf die Unterstützung der Nutzer angewiesen, um LaResume reibungslos am Laufen zu halten. Ihr Beitrag hilft uns, die Plattform zu erhalten und zu verbessern. Wenn Sie unseren Service schätzen, würden wir uns über Ihre Unterstützung sehr freuen. Wenn Sie jedoch derzeit nicht zahlen können, können Sie {skip} wählen.",
-    "skip": "diesen Schritt überspringen"
+    "title": "Unterstützen Sie Unseren Dienst",
+    "description": "Der Betrieb unserer Server kostet Geld, und wir sind auf die Unterstützung der Nutzer angewiesen, um LaResume reibungslos laufen zu lassen. Ihr Beitrag hilft uns, die Plattform zu erhalten und zu verbessern. Wenn Sie unseren Dienst wertvoll finden, würden wir Ihre Unterstützung sehr schätzen. Wenn Sie jedoch im Moment nicht zahlen können, können Sie <link>überspringen</link>."
   }
 }

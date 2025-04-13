@@ -285,8 +285,7 @@
     "timing": "<strong>Todos los días:</strong> 9:00 AM - 6:00 PM"
   },
   "supportService": {
-    "title": "Apoya nuestro servicio",
-    "description": "Mantener nuestros servidores nos cuesta dinero, y dependemos del apoyo de los usuarios para que LaResume funcione sin problemas. Tu contribución nos ayuda a mantener y mejorar la plataforma. Si encuentras valor en nuestro servicio, agradeceríamos mucho tu apoyo. Sin embargo, si no puedes pagar en este momento, puedes elegir {skip}.",
-    "skip": "omitir este paso"
+    "title": "Apoya Nuestro Servicio",
+    "description": "Mantener nuestros servidores nos cuesta dinero, y dependemos del apoyo de los usuarios para que LaResume funcione sin problemas. Tu contribución nos ayuda a mantener y mejorar la plataforma. Si encuentras valor en nuestro servicio, realmente agradeceríamos tu apoyo. Sin embargo, si no puedes pagar en este momento, puedes elegir <link>omitir</link>."
   }
 }
