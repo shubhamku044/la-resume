@@ -2,57 +2,96 @@
   "HomePage": {
     "github": {
       "lovedBy": "Amato da <stars></stars> sviluppatori",
-      "starButton": "Metti stella su GitHub"
+      "starButton": "Metti una stella su GitHub"
     },
     "hero": {
-      "title": "Crea curriculum perfetti e <highlight>ottimizzati per gli ATS</highlight>",
-      "description": "Generatore di curriculum professionale basato su LaTeX. Gratuito. Esporta in PDF o LaTeX in pochi secondi.",
-      "startBuilding": "Inizia ora",
-      "githubButton": "GitHub"
+      "title": "Crea un <highlight>curriculum professionale</highlight> che ti faccia ottenere colloqui",
+      "description": "Il nostro intuitivo creatore di curriculum ti aiuta a creare un curriculum perfettamente formattato e adatto agli ATS che metta in mostra le tue competenze ed esperienze.",
+      "startBuilding": "Crea il tuo curriculum",
+      "githubButton": "Metti una stella su GitHub"
+    },
+    "company": {
+      "title": "Crea curriculum che ti aiutino a ottenere lavoro presso le migliori aziende"
+    },
+    "stats": {
+      "resumeCreated": "Curriculum creati",
+      "atsSuccess": "Tasso di successo ATS",
+      "template": "Modelli di design",
+      "customer": "Assistenza clienti"
     },
     "features": {
-      "title": "Perché i professionisti scelgono La-Resume",
+      "intro": "Funzionalità potenti",
+      "title": "Tutto ciò di cui hai bisogno per creare il curriculum perfetto",
+      "description": "Il nostro creatore di curriculum combina un design accattivante con potenti funzionalità per aiutarti a creare un curriculum che si distingua.",
       "feature1": {
-        "title": "Ottimizzato per ATS",
-        "description": "Modelli di curriculum progettati per passare attraverso i sistemi di tracciamento delle candidature (ATS)"
+        "title": "Facile personalizzazione",
+        "description": "Personalizza ogni aspetto del tuo curriculum con il nostro intuitivo editor drag-and-drop."
       },
       "feature2": {
-        "title": "Precisione LaTeX",
-        "description": "Tipografia e layout professionale alimentato dal motore LaTeX"
+        "title": "Anteprima in tempo reale",
+        "description": "Visualizza le modifiche al tuo curriculum in tempo reale mentre le apporti."
       },
       "feature3": {
-        "title": "Esportazione Istantanea",
-        "description": "Download PDF con un clic o esportazione del codice LaTeX grezzo"
+        "title": "Formati multipli",
+        "description": "Esporta il tuo curriculum in formato PDF, DOCX o TXT per diverse esigenze di candidatura."
+      },
+      "feature4": {
+        "title": "Ottimizzazione ATS",
+        "description": "I nostri modelli sono progettati per superare facilmente i sistemi di tracciamento dei candidati (ATS)."
+      },
+      "feature5": {
+        "title": "Suggerimenti AI",
+        "description": "Ricevi suggerimenti intelligenti sui contenuti per migliorare il tuo curriculum e distinguerti."
+      },
+      "feature6": {
+        "title": "Modelli professionali",
+        "description": "Scegli tra una varietà di modelli di curriculum adatti agli ATS progettati da professionisti."
       }
     },
     "use": {
-      "title": "Processo Semplice in 3 Passaggi",
-      "step1": {
-        "title": "Inserisci le Tue Informazioni",
-        "description": "Compila i tuoi dettagli utilizzando il nostro modulo intuitivo"
+      "badge": "Processo semplice",
+      "heading": "Tre passaggi per il tuo curriculum perfetto",
+      "subheading": "Creare un curriculum professionale non è mai stato così facile",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Scegli un modello",
+          "description": "Seleziona uno dei nostri modelli progettati professionalmente e ottimizzati per i sistemi ATS."
+        },
+        {
+          "number": "02",
+          "title": "Aggiungi i tuoi contenuti",
+          "description": "Inserisci le tue informazioni utilizzando il nostro intuitivo editor con suggerimenti utili."
+        },
+        {
+          "number": "03",
+          "title": "Scarica e candidati",
+          "description": "Esporta il tuo curriculum nel formato preferito e inizia subito a candidarti per i lavori."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Incontra il nostro team",
+      "title": "I creatori dietro LaResume",
+      "description": "Sviluppatori appassionati dedicati ad aiutarti a creare curriculum professionali e di spicco.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Sviluppatore Full Stack",
+        "description": "Appassionato di creare strumenti che aiutino le persone ad avere successo nel loro percorso professionale."
       },
-      "step2": {
-        "title": "Personalizza i Modelli",
-        "description": "Scegli tra modelli professionali ottimizzati per ATS"
-      },
-      "step3": {
-        "title": "Scarica e Candidati",
-        "description": "Esporta in PDF o LaTeX e inizia a candidarti"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Sviluppatore Full Stack",
+        "description": "Appassionato di design, concentrato sulla creazione di interfacce ed esperienze utente intuitive."
       }
     },
     "testimonial": {
-      "title": "Cosa Dicono le Persone",
-      "quote1": {
-        "text": "Sono riuscito a creare un curriculum professionale in pochi minuti. La funzionalità di esportazione LaTeX è un cambiamento radicale.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume è il miglior creatore di curriculum che abbia mai usato. I modelli sono eccezionali.",
-        "author": "Jane Doe"
-      }
+      "intro": "Storie di successo",
+      "title": "Cosa dicono i nostri utenti",
+      "description": "Unisciti a migliaia di persone in cerca di lavoro che hanno trovato successo con il nostro creatore di curriculum."
     },
     "feedback": {
-      "title": "Mettiti in contatto",
+      "title": "Contattaci",
       "card": {
         "name": "Il tuo nome",
         "email": "La tua email",
@@ -62,7 +101,7 @@
       }
     },
     "pricing": {
-      "title": "Prezzi Trasparenti",
+      "title": "Prezzi trasparenti",
       "description": "Tutto ciò di cui hai bisogno per creare curriculum professionali - completamente gratuito",
       "card": {
         "title": "Gratuito",
@@ -71,25 +110,25 @@
           "point1": "Curriculum illimitati",
           "point2": "Modelli ottimizzati per ATS",
           "point3": "Esportazione PDF",
-          "point4": "Download del codice sorgente LaTeX",
-          "point5": "Senza pubblicità",
+          "point4": "Download sorgente LaTeX",
+          "point5": "Nessuna pubblicità",
           "point6": "Open Source",
-          "point7": "Archiviazione Cloud",
+          "point7": "Archiviazione cloud",
           "point8": "Supporto 24/7"
         },
         "button": "Inizia a creare gratuitamente",
-        "sentence": "Confronta con altri costruttori di curriculum: ❌ $15/mese • ❌ Pubblicità • ❌ Modelli limitati"
+        "sentence": "Confronta con altri creatori di curriculum: ❌ 15 $/mese • ❌ Pubblicità • ❌ Modelli limitati"
       }
     },
     "random": {
       "title": "Orgogliosamente open source",
-      "button": "Visualizza il codice su GitHub",
-      "heading": "Pronto a far crescere la tua carriera?",
+      "button": "Visualizza il sorgente su GitHub",
+      "heading": "Pronto a far progredire la tua carriera?",
       "description": "Unisciti a migliaia di professionisti che hanno trasformato la loro ricerca di lavoro",
       "button2": "Crea il tuo curriculum ora"
     },
     "developers": {
-      "title": "Creato con ❤️ da",
+      "title": "Costruito con ❤️ da",
       "details": {
         "dev1": {
           "name": "Shubham Kumar",
@@ -100,68 +139,108 @@
           "role": "Sviluppatore Full Stack"
         }
       },
-      "button": "Assumi me"
+      "button": "Assumimi"
     },
     "faq": {
-      "title": "Domande Frequenti",
+      "title": "Domande frequenti",
+      "subtitle": "Hai domande? Abbiamo le risposte",
+      "description": "Trova le risposte alle domande più comuni sul nostro creatore di curriculum",
       "question1": {
-        "question": "La-Resume è davvero completamente gratuito?",
-        "answer": "Sì! La-Resume è 100% gratuito e open source. Crediamo che la creazione di curriculum professionali debba essere accessibile a tutti."
+        "question": "Questo creatore di curriculum è davvero gratuito?",
+        "answer": "Sì, le nostre funzionalità principali sono completamente gratuite. Puoi creare, modificare e scaricare il tuo curriculum senza alcun pagamento richiesto."
       },
       "question2": {
-        "question": "Come funziona l'ottimizzazione per ATS?",
-        "answer": "I nostri modelli seguono le migliori pratiche del settore per la compatibilità con ATS, inclusa una corretta posizione delle parole chiave, un formato pulito e una struttura semantica."
+        "question": "I modelli sono adatti agli ATS?",
+        "answer": "Assolutamente! Tutti i nostri modelli sono progettati per superare i sistemi di tracciamento dei candidati (ATS) a pieni voti."
       },
       "question3": {
-        "question": "Posso usare i miei modelli LaTeX?",
-        "answer": "Attualmente supportiamo solo i nostri modelli selezionati, ma prevediamo di aggiungere il supporto per modelli personalizzati in futuri aggiornamenti."
+        "question": "Posso creare più curriculum?",
+        "answer": "Sì, puoi creare più versioni del tuo curriculum per diverse candidature e settori."
+      },
+      "question4": {
+        "question": "Come posso esportare il mio curriculum?",
+        "answer": "Puoi scaricare il tuo curriculum in formato PDF, DOCX o TXT con un solo clic dall'editor."
       }
     },
+    "contact": {
+      "badge": "Contattaci",
+      "heading": "Hai domande o feedback?",
+      "description": "Ci farebbe piacere sentirti. Inviaci un messaggio e ti risponderemo il prima possibile.",
+      "contact_info_title": "Informazioni di contatto",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Nome",
+        "name_placeholder": "Il tuo nome",
+        "email_label": "Email",
+        "email_placeholder": "La tua email",
+        "subject_label": "Oggetto",
+        "subject_placeholder": "Come possiamo aiutarti?",
+        "message_label": "Messaggio",
+        "message_placeholder": "Il tuo messaggio...",
+        "button": "Invia messaggio"
+      },
+      "toast_success": "Messaggio inviato con successo! Ti risponderemo al più presto."
+    },
     "footer": {
-      "detail": "Creatore di curriculum open source",
-      "privacyPolicy": "La-Resume. Licenza MIT. Contributi benvenuti!"
+      "brand": "LaResume",
+      "description": "Crea curriculum professionali in pochi minuti con il nostro creatore di curriculum facile da usare. Distinguiti dalla massa e ottieni il lavoro dei tuoi sogni.",
+      "resources": "Risorse",
+      "templates": "Modelli",
+      "userDetails": "Dettagli utente",
+      "madeByYou": "Creato da te",
+      "company": "Azienda",
+      "aboutUs": "Chi siamo",
+      "privacyPolicy": "Informativa sulla privacy",
+      "termsOfService": "Termini di servizio",
+      "support": "Supporto",
+      "helpCenter": "Centro assistenza",
+      "contactUs": "Contattaci",
+      "faqs": "FAQ",
+      "copyright": "LaResume. Licenza MIT.",
+      "refunds": "Politica di rimborso"
     }
   },
   "header": {
     "signIn": "Accedi",
     "signOut": "Esci",
-    "signUp": "Registrati",
+    "signUp": "Iscriviti",
     "templates": "Modelli",
     "userProfile": "Profilo utente",
     "pricing": "Prezzi"
   },
   "common": {
-    "resumePreview": "Anteprima del Curriculum",
+    "resumePreview": "Anteprima curriculum",
     "save": "Salva",
-    "reorderSection": "Riordina Sezione",
-    "unsavedChanges": "Modifiche non salvate",
+    "reorderSection": "Riordina sezione",
+    "unsavedChanges": "modifiche non salvate",
     "download": "Scarica",
     "delete": "Elimina",
     "cancel": "Annulla"
   },
   "deleteModal": {
-    "title": "Conferma Eliminazione",
+    "title": "Conferma eliminazione",
     "message": "Sei sicuro di voler eliminare <name></name>? Questa azione non può essere annullata."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
+    "en": "🇬🇧 Inglese",
+    "ja": "🇯🇵 Giapponese",
+    "az": "🇦🇿 Azero",
+    "pt-PT": "🇵🇹 Portoghese (PT)",
+    "pt-BR": "🇧🇷 Portoghese (BR)",
+    "zh": "🇨🇳 Cinese",
+    "de": "🇩🇪 Tedesco",
+    "fr": "🇫🇷 Francese",
     "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "ru": "🇷🇺 Russo",
+    "es": "🇪🇸 Spagnolo",
+    "nl": "🇳🇱 Olandese"
   },
   "sidebar": {
     "navigation": "Navigazione",
     "templates": "Modelli",
     "resumeTemplates": "Modelli di curriculum",
-    "madeByYou": "Fatto da te",
+    "madeByYou": "Creato da te",
     "userDetails": "Dettagli utente",
     "personalInfo": "Informazioni personali",
     "experience": "Esperienza",
@@ -174,35 +253,35 @@
     "jobTracker": "Monitoraggio candidature"
   },
   "templates": {
-    "resTemplate": "Scegli un Modello di Curriculum",
-    "madeByYou": "Curriculum Creati da Te"
+    "resTemplate": "Scegli un modello di curriculum",
+    "madeByYou": "Curriculum creati da te"
   },
   "contact": {
     "title": "Contattaci",
-    "description": "Siamo qui per aiutarti! Contattaci per qualsiasi domanda, feedback o supporto. Il nostro team ti risponderà il prima possibile.",
-    "contactInformation": "Le Nostre Informazioni di Contatto",
-    "merchantName": "<strong>Nome Legale del Commerciante:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Indirizzo Registrato:</strong> Benachity, Bengala Occidentale, India, CAP: 713213",
-    "operationalAddress": "<strong>Indirizzo Operativo:</strong> Benachity, Bengala Occidentale, India, CAP: 713213",
-    "phoneNumber": "<strong>Numero di Telefono:</strong> +91 62975 59892",
+    "description": "Siamo qui per aiutarti! Contattaci per qualsiasi richiesta, feedback o supporto. Il nostro team ti risponderà il prima possibile.",
+    "contactInformation": "Le nostre informazioni di contatto",
+    "merchantName": "<strong>Nome dell'entità legale del commerciante:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Indirizzo registrato:</strong> Benachity, Bengala Occidentale, India, CAP: 713213",
+    "operationalAddress": "<strong>Indirizzo operativo:</strong> Benachity, Bengala Occidentale, India, CAP: 713213",
+    "phoneNumber": "<strong>Numero di telefono:</strong> +91 62975 59892",
     "email": "<strong>Email:</strong> laresumetech@gmail.com",
-    "sendMessage": "Inviaci un Messaggio",
+    "sendMessage": "Inviaci un messaggio",
     "toast": {
       "success": "Messaggio inviato con successo!",
-      "error": "Invio del messaggio fallito"
+      "error": "Impossibile inviare il messaggio"
     },
     "form": {
       "name": "Nome",
       "namePlaceholder": "Il tuo nome",
       "email": "Email",
-      "emailPlaceholder": "tuo@email.com",
+      "emailPlaceholder": "tua@email.com",
       "message": "Messaggio",
       "messagePlaceholder": "Il tuo messaggio...",
-      "submit": "Invia Messaggio",
+      "submit": "Invia messaggio",
       "submitting": "Invio in corso..."
     },
-    "mapLocation": "Posizione sulla Mappa",
-    "supportHours": "Orari di Assistenza Clienti",
-    "timing": "<strong>Ogni giorno:</strong> 9:00 - 18:00"
+    "mapLocation": "Posizione sulla mappa",
+    "supportHours": "Orari di assistenza clienti",
+    "timing": "<strong>Tutti i giorni:</strong> 9:00 - 18:00"
   }
 }

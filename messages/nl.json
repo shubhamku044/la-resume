@@ -5,86 +5,125 @@
       "starButton": "Ster op GitHub"
     },
     "hero": {
-      "title": "Maak perfecte <highlight>ATS-vriendelijke</highlight> cv's",
-      "description": "Professionele CV-bouwer met LaTeX. Gratis. Exporteer binnen seconden naar PDF of LaTeX.",
-      "startBuilding": "Start nu",
-      "githubButton": "GitHub"
+      "title": "Creëer een <highlight>professioneel cv</highlight> dat sollicitatiegesprekken oplevert",
+      "description": "Onze intuïtieve cv-bouwer helpt je een perfect opgemaakt, ATS-vriendelijk cv te maken dat je vaardigheden en ervaringen laat zien.",
+      "startBuilding": "Maak je cv",
+      "githubButton": "Ster op GitHub"
+    },
+    "company": {
+      "title": "Maak cv's waarmee je banen bij topbedrijven krijgt"
+    },
+    "stats": {
+      "resumeCreated": "Gemaakte cv's",
+      "atsSuccess": "ATS Succespercentage",
+      "template": "Template Ontwerpen",
+      "customer": "Klantenservice"
     },
     "features": {
-      "title": "Waarom professionals kiezen voor La-Resume",
+      "intro": "Krachtige functies",
+      "title": "Alles wat je nodig hebt om het perfecte cv te maken",
+      "description": "Onze cv-bouwer combineert prachtig design met krachtige functies om je te helpen een cv te maken dat opvalt.",
       "feature1": {
-        "title": "ATS-geoptimaliseerd",
-        "description": "Curriculum vitae sjablonen ontworpen om door Applicant Tracking Systemen (ATS) te komen"
+        "title": "Eenvoudige aanpassing",
+        "description": "Pas elk aspect van je cv aan met onze intuïtieve drag-and-drop editor."
       },
       "feature2": {
-        "title": "LaTeX Precisie",
-        "description": "Professionele typografie en lay-out aangedreven door de LaTeX-engine"
+        "title": "Real-time voorbeeld",
+        "description": "Bekijk wijzigingen in je cv in real-time terwijl je ze aanbrengt."
       },
       "feature3": {
-        "title": "Instant Export",
-        "description": "PDF-download met één klik of export van ruwe LaTeX-code"
+        "title": "Meerdere formaten",
+        "description": "Exporteer je cv in PDF-, DOCX- of TXT-formaat voor verschillende sollicitatievereisten."
+      },
+      "feature4": {
+        "title": "ATS Optimalisatie",
+        "description": "Onze templates zijn ontworpen om Applicant Tracking Systems met gemak te doorstaan."
+      },
+      "feature5": {
+        "title": "AI Suggesties",
+        "description": "Ontvang slimme inhoudsuggesties om je cv te verbeteren en op te vallen."
+      },
+      "feature6": {
+        "title": "Professionele templates",
+        "description": "Kies uit een verscheidenheid aan ATS-vriendelijke cv-templates ontworpen door professionals."
       }
     },
     "use": {
-      "title": "Eenvoudig 3-Stappen Proces",
-      "step1": {
-        "title": "Voer je Informatie in",
-        "description": "Vul je gegevens in met ons intuïtieve formulier"
+      "badge": "Eenvoudig proces",
+      "heading": "Drie stappen naar je perfecte cv",
+      "subheading": "Het maken van een professioneel cv is nog nooit zo eenvoudig geweest",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Kies een template",
+          "description": "Selecteer uit onze professioneel ontworpen templates die geoptimaliseerd zijn voor ATS-systemen."
+        },
+        {
+          "number": "02",
+          "title": "Voeg je inhoud toe",
+          "description": "Vul je informatie in met onze intuïtieve editor met handige suggesties."
+        },
+        {
+          "number": "03",
+          "title": "Download & Solliciteer",
+          "description": "Exporteer je cv in het gewenste formaat en begin direct met solliciteren."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Ontmoet ons team",
+      "title": "De makers achter LaResume",
+      "description": "Gepassioneerde ontwikkelaars die zich toeleggen op het helpen creëren van professionele, opvallende cv's.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Full Stack Ontwikkelaar",
+        "description": "Gepassioneerd over het creëren van tools die mensen helpen succesvol te zijn in hun carrière."
       },
-      "step2": {
-        "title": "Pas Sjablonen Aan",
-        "description": "Kies uit professionele ATS-geoptimaliseerde sjablonen"
-      },
-      "step3": {
-        "title": "Downloaden & Solliciteren",
-        "description": "Exporteer als PDF of LaTeX en begin met solliciteren"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Full Stack Ontwikkelaar",
+        "description": "Designliefhebber gericht op het ontwerpen van gebruiksvriendelijke interfaces en ervaringen."
       }
     },
     "testimonial": {
-      "title": "Wat Mensen Zeggen",
-      "quote1": {
-        "text": "Ik kon in enkele minuten een professioneel cv maken. De LaTeX-exportfunctie is een echte game-changer.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume is de beste cv-bouwer die ik ooit heb gebruikt. De sjablonen zijn van topkwaliteit.",
-        "author": "Jane Doe"
-      }
+      "intro": "Succesverhalen",
+      "title": "Wat onze gebruikers zeggen",
+      "description": "Sluit je aan bij duizenden werkzoekenden die succes hebben gevonden met onze cv-bouwer."
     },
     "feedback": {
       "title": "Neem contact op",
       "card": {
-        "name": "Jouw naam",
-        "email": "Jouw e-mail",
-        "message": "Jouw bericht (min. 100 tekens)",
-        "buttonsending": "Bezig met verzenden...",
-        "buttonsend": "Stuur bericht"
+        "name": "Uw naam",
+        "email": "Uw e-mail",
+        "message": "Uw bericht (min. 100 tekens)",
+        "buttonsending": "Verzenden...",
+        "buttonsend": "Bericht verzenden"
       }
     },
     "pricing": {
-      "title": "Transparante Prijzen",
-      "description": "Alles wat je nodig hebt om professionele cv's te maken - helemaal gratis",
+      "title": "Transparante prijzen",
+      "description": "Alles wat je nodig hebt om professionele cv's te maken - volledig gratis",
       "card": {
         "title": "Gratis",
         "description": "Geen creditcard vereist",
         "points": {
-          "point1": "Onbeperkte cv's",
-          "point2": "ATS-geoptimaliseerde sjablonen",
-          "point3": "PDF-export",
-          "point4": "LaTeX broncode downloaden",
+          "point1": "Onbeperkt aantal cv's",
+          "point2": "ATS-geoptimaliseerde templates",
+          "point3": "PDF Export",
+          "point4": "LaTeX broncode download",
           "point5": "Geen advertenties",
           "point6": "Open Source",
           "point7": "Cloudopslag",
           "point8": "24/7 Ondersteuning"
         },
-        "button": "Gratis beginnen",
-        "sentence": "Vergelijk met andere cv-bouwers: ❌ $15/maand • ❌ Advertenties • ❌ Beperkte sjablonen"
+        "button": "Start gratis met bouwen",
+        "sentence": "Vergelijk met andere cv-bouwers: ❌ €15/mnd • ❌ Advertenties • ❌ Beperkte templates"
       }
     },
     "random": {
-      "title": "Trots open source",
-      "button": "Bekijk de bron op GitHub",
-      "heading": "Klaar om je carrière te verbeteren?",
+      "title": "Met trots open source",
+      "button": "Bekijk broncode op GitHub",
+      "heading": "Klaar om je carrière naar een hoger niveau te tillen?",
       "description": "Sluit je aan bij duizenden professionals die hun zoektocht naar werk hebben getransformeerd",
       "button2": "Maak nu je cv"
     },
@@ -100,109 +139,149 @@
           "role": "Full Stack Ontwikkelaar"
         }
       },
-      "button": "Huur mij in"
+      "button": "Huur me in"
     },
     "faq": {
-      "title": "Veelgestelde Vragen",
+      "title": "Veelgestelde vragen",
+      "subtitle": "Vragen? Wij hebben antwoorden",
+      "description": "Vind antwoorden op veelgestelde vragen over onze cv-bouwer",
       "question1": {
-        "question": "Is La-Resume echt helemaal gratis?",
-        "answer": "Ja! La-Resume is 100% gratis en open source. Wij geloven dat het maken van professionele cv's voor iedereen toegankelijk moet zijn."
+        "question": "Is deze cv-bouwer echt gratis?",
+        "answer": "Ja, onze kernfuncties zijn volledig gratis te gebruiken. Je kunt je cv maken, bewerken en downloaden zonder enige betaling."
       },
       "question2": {
-        "question": "Hoe werkt de ATS-optimalisatie?",
-        "answer": "Onze sjablonen volgen de beste praktijken in de industrie voor ATS-compatibiliteit, inclusief de juiste plaatsing van zoekwoorden, schone opmaak en semantische structuur."
+        "question": "Zijn de templates ATS-vriendelijk?",
+        "answer": "Absoluut! Al onze templates zijn ontworpen om Applicant Tracking Systems glansrijk te doorstaan."
       },
       "question3": {
-        "question": "Kan ik mijn eigen LaTeX-sjablonen gebruiken?",
-        "answer": "Momenteel ondersteunen we alleen onze geselecteerde sjablonen, maar we zijn van plan om in toekomstige updates ondersteuning voor aangepaste sjablonen toe te voegen."
+        "question": "Kan ik meerdere cv's maken?",
+        "answer": "Ja, je kunt meerdere versies van je cv maken voor verschillende sollicitaties en branches."
+      },
+      "question4": {
+        "question": "Hoe exporteer ik mijn cv?",
+        "answer": "Je kunt je cv met één klik vanuit de editor downloaden in PDF-, DOCX- of TXT-formaat."
       }
     },
+    "contact": {
+      "badge": "Neem contact op",
+      "heading": "Heb je vragen of feedback?",
+      "description": "We horen graag van je. Stuur ons een bericht en we nemen zo snel mogelijk contact met je op.",
+      "contact_info_title": "Contactinformatie",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Naam",
+        "name_placeholder": "Uw naam",
+        "email_label": "E-mail",
+        "email_placeholder": "Uw e-mail",
+        "subject_label": "Onderwerp",
+        "subject_placeholder": "Hoe kunnen we helpen?",
+        "message_label": "Bericht",
+        "message_placeholder": "Uw bericht...",
+        "button": "Bericht verzenden"
+      },
+      "toast_success": "Bericht succesvol verzonden! We nemen zo snel mogelijk contact met je op."
+    },
     "footer": {
-      "detail": "Open source cv-bouwer",
-      "privacyPolicy": "La-Resume. MIT-licentie. Bijdragen welkom!"
+      "brand": "LaResume",
+      "description": "Maak binnen enkele minuten professionele cv's met onze eenvoudig te gebruiken cv-bouwer. Val op tussen de massa en land je droombaan.",
+      "resources": "Bronnen",
+      "templates": "Templates",
+      "userDetails": "Gebruikersdetails",
+      "madeByYou": "Door jou gemaakt",
+      "company": "Bedrijf",
+      "aboutUs": "Over ons",
+      "privacyPolicy": "Privacybeleid",
+      "termsOfService": "Servicevoorwaarden",
+      "support": "Ondersteuning",
+      "helpCenter": "Helpcentrum",
+      "contactUs": "Contacteer ons",
+      "faqs": "Veelgestelde vragen",
+      "copyright": "LaResume. MIT Licentie.",
+      "refunds": "Restitutiebeleid"
     }
   },
   "header": {
     "signIn": "Inloggen",
     "signOut": "Uitloggen",
-    "signUp": "Registreren",
-    "templates": "Sjablonen",
+    "signUp": "Aanmelden",
+    "templates": "Templates",
     "userProfile": "Gebruikersprofiel",
     "pricing": "Prijzen"
   },
   "common": {
-    "resumePreview": "Voorbeeld van CV",
+    "resumePreview": "Cv-voorbeeld",
     "save": "Opslaan",
-    "reorderSection": "Sectie herschikken",
-    "unsavedChanges": "Niet-opgeslagen wijzigingen",
+    "reorderSection": "Sectie opnieuw ordenen",
+    "unsavedChanges": "niet-opgeslagen wijzigingen",
     "download": "Downloaden",
     "delete": "Verwijderen",
     "cancel": "Annuleren"
   },
   "deleteModal": {
-    "title": "Bevestig Verwijderen",
+    "title": "Verwijdering bevestigen",
     "message": "Weet je zeker dat je <name></name> wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
-    "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
+    "en": "🇬🇧 Engels",
+    "ja": "🇯🇵 Japans",
+    "az": "🇦🇿 Azerbeidzjaans",
+    "pt-PT": "🇵🇹 Portugees (PT)",
+    "pt-BR": "🇧🇷 Portugees (BR)",
+    "zh": "🇨🇳 Chinees",
+    "de": "🇩🇪 Duits",
+    "fr": "🇫🇷 Frans",
+    "it": "🇮🇹 Italiaans",
+    "ru": "🇷🇺 Russisch",
+    "es": "🇪🇸 Spaans",
     "nl": "🇳🇱 Nederlands"
   },
   "sidebar": {
     "navigation": "Navigatie",
-    "templates": "Sjablonen",
-    "resumeTemplates": "CV-sjablonen",
-    "madeByYou": "Gemaakt door jou",
-    "userDetails": "Gebruikersgegevens",
-    "personalInfo": "Persoonlijke informatie",
+    "templates": "Templates",
+    "resumeTemplates": "Cv-templates",
+    "madeByYou": "Door jou gemaakt",
+    "userDetails": "Gebruikersdetails",
+    "personalInfo": "Persoonlijke info",
     "experience": "Ervaring",
-    "education": "Onderwijs",
+    "education": "Opleiding",
     "accomplishments": "Prestaties",
     "feedback": "Feedback",
     "language": "Taal",
     "supportUs": "Steun ons",
-    "starOnGitHub": "Geef een ster op GitHub",
-    "jobTracker": "Sollicitatievolgsysteem"
+    "jobTracker": "Sollicitatievolgsysteem",
+    "starOnGitHub": "Ster op GitHub"
   },
   "templates": {
-    "resTemplate": "Kies een CV-sjabloon",
-    "madeByYou": "CV's die jij hebt gemaakt"
+    "resTemplate": "Kies een cv-template",
+    "madeByYou": "Door jou gemaakte cv's"
   },
   "contact": {
-    "title": "Neem Contact Met Ons Op",
-    "description": "We staan klaar om te helpen! Neem contact met ons op voor vragen, feedback of ondersteuning. Ons team neemt zo snel mogelijk contact met je op.",
-    "contactInformation": "Onze Contactgegevens",
-    "merchantName": "<strong>Naam Wettelijke Handelaar:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Geregistreerd Adres:</strong> Benachity, West-Bengalen, India, POSTCODE: 713213",
-    "operationalAddress": "<strong>Operationeel Adres:</strong> Benachity, West-Bengalen, India, POSTCODE: 713213",
+    "title": "Contacteer ons",
+    "description": "We zijn er om je te helpen! Neem contact met ons op voor vragen, feedback of ondersteuning. Ons team neemt zo snel mogelijk contact met je op.",
+    "contactInformation": "Onze contactinformatie",
+    "merchantName": "<strong>Naam van de wettelijke entiteit van de handelaar:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Geregistreerd adres:</strong> Benachity, West Bengal, India, PIN: 713213",
+    "operationalAddress": "<strong>Operationeel adres:</strong> Benachity, West Bengal, India, PIN: 713213",
     "phoneNumber": "<strong>Telefoonnummer:</strong> +91 62975 59892",
     "email": "<strong>E-mail:</strong> laresumetech@gmail.com",
-    "sendMessage": "Stuur Ons een Bericht",
+    "sendMessage": "Stuur ons een bericht",
     "toast": {
       "success": "Bericht succesvol verzonden!",
       "error": "Bericht verzenden mislukt"
     },
     "form": {
       "name": "Naam",
-      "namePlaceholder": "Jouw naam",
+      "namePlaceholder": "Uw naam",
       "email": "E-mail",
-      "emailPlaceholder": "jouw@email.com",
+      "emailPlaceholder": "uw@e-mail.com",
       "message": "Bericht",
-      "messagePlaceholder": "Jouw bericht...",
-      "submit": "Bericht Versturen",
-      "submitting": "Bezig met verzenden..."
+      "messagePlaceholder": "Uw bericht...",
+      "submit": "Bericht verzenden",
+      "submitting": "Verzenden..."
     },
-    "mapLocation": "Kaartlocatie",
-    "supportHours": "Klantenservice Uren",
+    "mapLocation": "Locatie op de kaart",
+    "supportHours": "Klantenservice uren",
     "timing": "<strong>Elke dag:</strong> 9:00 - 18:00"
   }
 }

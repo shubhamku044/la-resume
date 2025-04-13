@@ -2,63 +2,102 @@
   "HomePage": {
     "github": {
       "lovedBy": "Amado por <stars></stars> desenvolvedores",
-      "starButton": "Dar Estrela no GitHub"
+      "starButton": "Estrela no GitHub"
     },
     "hero": {
-      "title": "Crie Currículos <highlight>Otimizados para ATS</highlight> Perfeitos",
-      "description": "Construtor de currículos profissional com LaTeX. Grátis. Exporte para PDF ou LaTeX em segundos",
-      "startBuilding": "Começar Agora",
-      "githubButton": "GitHub"
+      "title": "Crie um <highlight>currículo profissional</highlight> que gere entrevistas",
+      "description": "Nosso construtor de currículos intuitivo ajuda você a criar um currículo perfeitamente formatado e compatível com ATS que destaca suas habilidades e experiências.",
+      "startBuilding": "Crie Seu Currículo",
+      "githubButton": "Estrela no GitHub"
+    },
+    "company": {
+      "title": "Crie currículos que te ajudam a conseguir empregos em empresas de ponta"
+    },
+    "stats": {
+      "resumeCreated": "Currículos Criados",
+      "atsSuccess": "Taxa de Sucesso ATS",
+      "template": "Designs de Templates",
+      "customer": "Suporte ao Cliente"
     },
     "features": {
-      "title": "Por que os profissionais escolhem La-Resume",
+      "intro": "Recursos Poderosos",
+      "title": "Tudo o que você precisa para criar o currículo perfeito",
+      "description": "Nosso construtor de currículos combina um design bonito com recursos poderosos para ajudá-lo a criar um currículo que se destaque.",
       "feature1": {
-        "title": "Otimizado para ATS",
-        "description": "Modelos de currículo projetados para passar pelos sistemas de rastreamento de candidatos (ATS)"
+        "title": "Fácil Personalização",
+        "description": "Personalize todos os aspectos do seu currículo com nosso editor intuitivo de arrastar e soltar."
       },
       "feature2": {
-        "title": "Precisão LaTeX",
-        "description": "Tipografia e layout profissionais com suporte do motor LaTeX"
+        "title": "Visualização em Tempo Real",
+        "description": "Veja as alterações no seu currículo em tempo real enquanto as faz."
       },
       "feature3": {
-        "title": "Exportação Instantânea",
-        "description": "Download em PDF com um clique ou exportação do código LaTeX bruto"
+        "title": "Múltiplos Formatos",
+        "description": "Exporte seu currículo em formatos PDF, DOCX ou TXT para diferentes requisitos de candidatura."
+      },
+      "feature4": {
+        "title": "Otimização ATS",
+        "description": "Nossos templates são projetados para passar por Sistemas de Rastreamento de Candidatos com facilidade."
+      },
+      "feature5": {
+        "title": "Sugestões de IA",
+        "description": "Obtenha sugestões de conteúdo inteligentes para melhorar seu currículo e se destacar."
+      },
+      "feature6": {
+        "title": "Templates Profissionais",
+        "description": "Escolha entre uma variedade de templates de currículo compatíveis com ATS, projetados por profissionais."
       }
     },
     "use": {
-      "title": "Processo Simples em 3 Etapas",
-      "step1": {
-        "title": "Informe Seus Dados",
-        "description": "Preencha seus dados usando nosso formulário intuitivo"
+      "badge": "Processo Simples",
+      "heading": "Três passos para o seu currículo perfeito",
+      "subheading": "Criar um currículo profissional nunca foi tão fácil",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Escolha um Template",
+          "description": "Selecione um de nossos templates projetados profissionalmente e otimizados para sistemas ATS."
+        },
+        {
+          "number": "02",
+          "title": "Adicione Seu Conteúdo",
+          "description": "Preencha suas informações usando nosso editor intuitivo com sugestões úteis."
+        },
+        {
+          "number": "03",
+          "title": "Baixe e Candidate-se",
+          "description": "Exporte seu currículo no formato preferido e comece a se candidatar a empregos imediatamente."
+        }
+      ]
+    },
+    "team": {
+      "intro": "Conheça Nossa Equipe",
+      "title": "Os criadores por trás do LaResume",
+      "description": "Desenvolvedores apaixonados dedicados a ajudá-lo a criar currículos profissionais e diferenciados.",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "Desenvolvedor Full Stack",
+        "description": "Apaixonado por criar ferramentas que ajudam as pessoas a ter sucesso em sua jornada profissional."
       },
-      "step2": {
-        "title": "Personalize os Modelos",
-        "description": "Escolha entre modelos profissionais otimizados para ATS"
-      },
-      "step3": {
-        "title": "Baixe e Candidate-se",
-        "description": "Exporte como PDF ou LaTeX e comece a se candidatar"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "Desenvolvedor Full Stack",
+        "description": "Entusiasta de design focado na criação de interfaces e experiências amigáveis ao usuário."
       }
     },
     "testimonial": {
-      "title": "O Que as Pessoas Estão Dizendo",
-      "quote1": {
-        "text": "Consegui criar um currículo profissional em minutos. O recurso de exportação para LaTeX é revolucionário.",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resume é o melhor construtor de currículos que já usei. Os modelos são de primeira linha.",
-        "author": "Jane Doe"
-      }
+      "intro": "Histórias de Sucesso",
+      "title": "O que nossos usuários estão dizendo",
+      "description": "Junte-se a milhares de candidatos a emprego que encontraram sucesso com nosso construtor de currículos."
     },
     "feedback": {
-      "title": "Entre em contato",
+      "title": "Entre em Contato",
       "card": {
-        "name": "Seu nome",
-        "email": "Seu e-mail",
-        "message": "Sua mensagem (mín. 100 caracteres)",
+        "name": "Seu Nome",
+        "email": "Seu Email",
+        "message": "Sua Mensagem (mín. 100 caracteres)",
         "buttonsending": "Enviando...",
-        "buttonsend": "Enviar mensagem"
+        "buttonsend": "Enviar Mensagem"
       }
     },
     "pricing": {
@@ -66,27 +105,27 @@
       "description": "Tudo o que você precisa para criar currículos profissionais - completamente grátis",
       "card": {
         "title": "Grátis",
-        "description": "Não é necessário cartão de crédito",
+        "description": "Não requer cartão de crédito",
         "points": {
-          "point1": "Currículos ilimitados",
-          "point2": "Modelos otimizados para ATS",
+          "point1": "Currículos Ilimitados",
+          "point2": "Templates Otimizados para ATS",
           "point3": "Exportação em PDF",
-          "point4": "Download do código fonte LaTeX",
-          "point5": "Sem anúncios",
-          "point6": "Código aberto",
-          "point7": "Armazenamento em nuvem",
+          "point4": "Download do Código Fonte LaTeX",
+          "point5": "Sem Anúncios",
+          "point6": "Código Aberto",
+          "point7": "Armazenamento na Nuvem",
           "point8": "Suporte 24/7"
         },
-        "button": "Comece a criar grátis",
-        "sentence": "Compare com outros construtores de currículos: ❌ $15/mês • ❌ Anúncios • ❌ Modelos limitados"
+        "button": "Comece a Construir Grátis",
+        "sentence": "Compare com outros construtores de currículos: ❌ R$15/mês • ❌ Anúncios • ❌ Templates Limitados"
       }
     },
     "random": {
-      "title": "Orgulhosamente open source",
-      "button": "Ver código no GitHub",
-      "heading": "Pronto para elevar sua carreira?",
-      "description": "Junte-se a milhares de profissionais que transformaram sua busca de emprego",
-      "button2": "Crie seu currículo agora"
+      "title": "Orgulhosamente de código aberto",
+      "button": "Ver código fonte no GitHub",
+      "heading": "Pronto para Elevar Sua Carreira?",
+      "description": "Junte-se a milhares de profissionais que transformaram sua busca por emprego",
+      "button2": "Crie Seu Currículo Agora"
     },
     "developers": {
       "title": "Construído com ❤️ por",
@@ -100,41 +139,81 @@
           "role": "Desenvolvedor Full Stack"
         }
       },
-      "button": "Me contrate"
+      "button": "Me Contrate"
     },
     "faq": {
       "title": "Perguntas Frequentes",
+      "subtitle": "Tem perguntas? Nós temos as respostas",
+      "description": "Encontre respostas para perguntas comuns sobre nosso construtor de currículos",
       "question1": {
-        "question": "O La-Resume é realmente completamente gratuito?",
-        "answer": "Sim! O La-Resume é 100% gratuito e open source. Acreditamos que a criação de currículos profissionais deve ser acessível a todos."
+        "question": "Este construtor de currículos é realmente grátis?",
+        "answer": "Sim, nossos recursos principais são completamente gratuitos para usar. Você pode criar, editar e baixar seu currículo sem nenhum pagamento necessário."
       },
       "question2": {
-        "question": "Como funciona a otimização para ATS?",
-        "answer": "Nossos modelos seguem as melhores práticas da indústria para compatibilidade com ATS, incluindo o posicionamento adequado de palavras-chave, formatação limpa e estrutura semântica."
+        "question": "Os templates são compatíveis com ATS?",
+        "answer": "Absolutamente! Todos os nossos templates são projetados para passar pelos Sistemas de Rastreamento de Candidatos com louvor."
       },
       "question3": {
-        "question": "Posso usar meus próprios modelos LaTeX?",
-        "answer": "Atualmente, suportamos apenas nossos modelos selecionados, mas planejamos adicionar suporte para modelos personalizados em futuras atualizações."
+        "question": "Posso criar múltiplos currículos?",
+        "answer": "Sim, você pode criar múltiplas versões do seu currículo para diferentes candidaturas e setores."
+      },
+      "question4": {
+        "question": "Como faço para exportar meu currículo?",
+        "answer": "Você pode baixar seu currículo em formatos PDF, DOCX ou TXT com apenas um clique no editor."
       }
     },
+    "contact": {
+      "badge": "Entre em Contato",
+      "heading": "Tem perguntas ou feedback?",
+      "description": "Adoraríamos ouvir de você. Envie-nos uma mensagem e entraremos em contato o mais breve possível.",
+      "contact_info_title": "Informações de Contato",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "Nome",
+        "name_placeholder": "Seu nome",
+        "email_label": "Email",
+        "email_placeholder": "Seu email",
+        "subject_label": "Assunto",
+        "subject_placeholder": "Como podemos ajudar?",
+        "message_label": "Mensagem",
+        "message_placeholder": "Sua mensagem...",
+        "button": "Enviar Mensagem"
+      },
+      "toast_success": "Mensagem enviada com sucesso! Entraremos em contato em breve."
+    },
     "footer": {
-      "detail": "Construtor de currículos open source",
-      "privacyPolicy": "La-Resume. Licença MIT. Contribuições são bem-vindas!"
+      "brand": "LaResume",
+      "description": "Crie currículos profissionais em minutos com nosso construtor de currículos fácil de usar. Destaque-se da multidão e conquiste o emprego dos seus sonhos.",
+      "resources": "Recursos",
+      "templates": "Templates",
+      "userDetails": "Detalhes do Usuário",
+      "madeByYou": "Feito Por Você",
+      "company": "Empresa",
+      "aboutUs": "Sobre Nós",
+      "privacyPolicy": "Política de Privacidade",
+      "termsOfService": "Termos de Serviço",
+      "support": "Suporte",
+      "helpCenter": "Central de Ajuda",
+      "contactUs": "Entre em Contato",
+      "faqs": "Perguntas Frequentes",
+      "copyright": "LaResume. Licença MIT.",
+      "refunds": "Política de Reembolso"
     }
   },
   "header": {
     "signIn": "Entrar",
     "signOut": "Sair",
     "signUp": "Cadastrar",
-    "templates": "Modelos",
+    "templates": "Templates",
     "userProfile": "Perfil do Usuário",
     "pricing": "Preços"
   },
   "common": {
-    "resumePreview": "Pré-visualização do Currículo",
+    "resumePreview": "Visualização do Currículo",
     "save": "Salvar",
     "reorderSection": "Reordenar Seção",
-    "unsavedChanges": "Alterações não salvas",
+    "unsavedChanges": "alterações não salvas",
     "download": "Baixar",
     "delete": "Excluir",
     "cancel": "Cancelar"
@@ -144,24 +223,24 @@
     "message": "Tem certeza de que deseja excluir <name></name>? Esta ação não pode ser desfeita."
   },
   "language": {
-    "en": "🇬🇧 English",
-    "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
+    "en": "🇬🇧 Inglês",
+    "ja": "🇯🇵 Japonês",
+    "az": "🇦🇿 Azerbaijano",
     "pt-PT": "🇵🇹 Português (PT)",
     "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
+    "zh": "🇨🇳 Chinês",
+    "de": "🇩🇪 Alemão",
+    "fr": "🇫🇷 Francês",
     "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "ru": "🇷🇺 Russo",
+    "es": "🇪🇸 Espanhol",
+    "nl": "🇳🇱 Holandês"
   },
   "sidebar": {
     "navigation": "Navegação",
-    "templates": "Modelos",
-    "resumeTemplates": "Modelos de Currículo",
-    "madeByYou": "Feito por Você",
+    "templates": "Templates",
+    "resumeTemplates": "Templates de Currículo",
+    "madeByYou": "Feito Por Você",
     "userDetails": "Detalhes do Usuário",
     "personalInfo": "Informações Pessoais",
     "experience": "Experiência",
@@ -174,17 +253,17 @@
     "jobTracker": "Rastreador de Candidaturas"
   },
   "templates": {
-    "resTemplate": "Escolha um Modelo de Currículo",
-    "madeByYou": "Currículos Criados por Você"
+    "resTemplate": "Escolha um Template de Currículo",
+    "madeByYou": "Currículos Feitos Por Você"
   },
   "contact": {
-    "title": "Fale Conosco",
-    "description": "Estamos aqui para ajudar! Entre em contato para dúvidas, feedback ou suporte. Nossa equipe responderá o mais rápido possível.",
+    "title": "Entre em Contato",
+    "description": "Estamos aqui para ajudar! Entre em contato conosco para quaisquer dúvidas, feedback ou suporte. Nossa equipe entrará em contato o mais breve possível.",
     "contactInformation": "Nossas Informações de Contato",
-    "merchantName": "<strong>Nome Legal da Empresa:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Endereço Registrado:</strong> Benachity, Bengala Ocidental, India, CEP: 713213",
-    "operationalAddress": "<strong>Endereço Operacional:</strong> Benachity, Bengala Ocidental, India, CEP: 713213",
-    "phoneNumber": "<strong>Telefone:</strong> +91 62975 59892",
+    "merchantName": "<strong>Nome da Entidade Legal do Comerciante:</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Endereço Registrado:</strong> Benachity, West Bengal, Índia, CEP: 713213",
+    "operationalAddress": "<strong>Endereço Operacional:</strong> Benachity, West Bengal, Índia, CEP: 713213",
+    "phoneNumber": "<strong>Número de Telefone:</strong> +91 62975 59892",
     "email": "<strong>Email:</strong> laresumetech@gmail.com",
     "sendMessage": "Envie-nos uma Mensagem",
     "toast": {
@@ -202,7 +281,7 @@
       "submitting": "Enviando..."
     },
     "mapLocation": "Localização no Mapa",
-    "supportHours": "Horário de Atendimento",
-    "timing": "<strong>Todos os dias:</strong> 9:00 - 18:00"
+    "supportHours": "Horário de Atendimento ao Cliente",
+    "timing": "<strong>Todos os Dias:</strong> 9:00 - 18:00"
   }
 }

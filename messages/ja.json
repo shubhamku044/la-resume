@@ -1,95 +1,134 @@
 {
   "HomePage": {
     "github": {
-      "lovedBy": "開発者<stars></stars>人に愛されています",
+      "lovedBy": "<stars></stars>人の開発者に愛されています",
       "starButton": "GitHubでスターを付ける"
     },
     "hero": {
-      "title": "完璧な<highlight>ATS対応</highlight>レジュメを作成",
-      "description": "LaTeXを利用したプロフェッショナルなレジュメビルダー。完全無料。PDF/LaTeX形式で即時エクスポート",
-      "startBuilding": "作成を開始",
-      "githubButton": "GitHub"
+      "title": "面接を獲得する<highlight>プロフェッショナルな履歴書</highlight>を作成",
+      "description": "当社の直感的な履歴書ビルダーは、あなたのスキルと経験を紹介する、完璧にフォーマットされたATSフレンドリーな履歴書を作成するのに役立ちます。",
+      "startBuilding": "履歴書を作成する",
+      "githubButton": "GitHubでスターを付ける"
+    },
+    "company": {
+      "title": "一流企業で仕事を得るのに役立つ履歴書を作成する"
+    },
+    "stats": {
+      "resumeCreated": "作成された履歴書",
+      "atsSuccess": "ATS成功率",
+      "template": "テンプレートデザイン",
+      "customer": "顧客サポート"
     },
     "features": {
-      "title": "プロフェッショナルがLa-Resumeを選ぶ理由",
+      "intro": "強力な機能",
+      "title": "完璧な履歴書を作成するために必要なすべて",
+      "description": "当社の履歴書ビルダーは、美しいデザインと強力な機能を組み合わせて、目立つ履歴書を作成するのに役立ちます。",
       "feature1": {
-        "title": "ATS最適化",
-        "description": "応募者追跡システム（ATS）を通過するように設計された履歴書テンプレート"
+        "title": "簡単なカスタマイズ",
+        "description": "直感的なドラッグアンドドロップエディターで、履歴書のあらゆる側面をカスタマイズします。"
       },
       "feature2": {
-        "title": "LaTeX精度",
-        "description": "LaTeXエンジンによるプロフェッショナルなタイポグラフィとレイアウト"
+        "title": "リアルタイムプレビュー",
+        "description": "変更を加えると、履歴書の変更をリアルタイムで確認できます。"
       },
       "feature3": {
-        "title": "即時エクスポート",
-        "description": "ワンクリックでPDFダウンロードまたは生のLaTeXコードエクスポート"
+        "title": "複数の形式",
+        "description": "さまざまな応募要件に合わせて、履歴書をPDF、DOCX、またはTXT形式でエクスポートします。"
+      },
+      "feature4": {
+        "title": "ATS最適化",
+        "description": "当社のテンプレートは、応募者追跡システム（ATS）を簡単に通過するように設計されています。"
+      },
+      "feature5": {
+        "title": "AI提案",
+        "description": "履歴書を改善し、目立つためのスマートなコンテンツ提案を入手します。"
+      },
+      "feature6": {
+        "title": "プロフェッショナルなテンプレート",
+        "description": "プロがデザインした、ATSフレンドリーなさまざまな履歴書テンプレートから選択します。"
       }
     },
     "use": {
-      "title": "シンプルな3ステッププロセス",
-      "step1": {
-        "title": "情報を入力",
-        "description": "直感的なフォームを使って詳細を入力してください"
+      "badge": "シンプルなプロセス",
+      "heading": "完璧な履歴書を作成するための3つのステップ",
+      "subheading": "プロフェッショナルな履歴書を作成するのがこれまでになく簡単になりました",
+      "steps": [
+        {
+          "number": "01",
+          "title": "テンプレートを選択する",
+          "description": "ATSシステム用に最適化された、プロがデザインしたテンプレートから選択します。"
+        },
+        {
+          "number": "02",
+          "title": "コンテンツを追加する",
+          "description": "役立つ提案を備えた直感的なエディターを使用して、情報を入力します。"
+        },
+        {
+          "number": "03",
+          "title": "ダウンロードして応募する",
+          "description": "希望する形式で履歴書をエクスポートし、すぐに求人への応募を開始します。"
+        }
+      ]
+    },
+    "team": {
+      "intro": "私たちのチームを紹介します",
+      "title": "LaResumeの背後にいるクリエイター",
+      "description": "あなたがプロフェッショナルで傑出した履歴書を作成するのを支援することに情熱を注ぐ開発者。",
+      "member1": {
+        "name": "Shubham Kumar",
+        "role": "フルスタック開発者",
+        "description": "人々がキャリアの過程で成功するのを助けるツールを作成することに情熱を注いでいます。"
       },
-      "step2": {
-        "title": "テンプレートをカスタマイズ",
-        "description": "ATS最適化されたプロフェッショナルなテンプレートから選択"
-      },
-      "step3": {
-        "title": "ダウンロード & 応募",
-        "description": "PDFまたはLaTeXでエクスポートし、応募を開始"
+      "member2": {
+        "name": "Priyabrata Mondal",
+        "role": "フルスタック開発者",
+        "description": "ユーザーフレンドリーなインターフェースとエクスペリエンスの作成に焦点を当てたデザイン愛好家。"
       }
     },
     "testimonial": {
-      "title": "人々の声",
-      "quote1": {
-        "text": "数分でプロフェッショナルな履歴書を作成できました。LaTeXエクスポート機能は画期的です。",
-        "author": "John Doe"
-      },
-      "quote2": {
-        "text": "La-Resumeは私が使った中で最高の履歴書作成ツールです。テンプレートは素晴らしいです。",
-        "author": "Jane Doe"
-      }
+      "intro": "成功事例",
+      "title": "ユーザーの声",
+      "description": "私たちの履歴書ビルダーで成功を収めた何千人もの求職者に加わりましょう。"
     },
     "feedback": {
-      "title": "ご連絡ください",
+      "title": "お問い合わせ",
       "card": {
         "name": "あなたの名前",
-        "email": "あなたのメール",
-        "message": "あなたのメッセージ（最低100文字）",
+        "email": "あなたのメールアドレス",
+        "message": "あなたのメッセージ（最小100文字）",
         "buttonsending": "送信中...",
         "buttonsend": "メッセージを送信"
       }
     },
     "pricing": {
-      "title": "透明な価格設定",
-      "description": "プロフェッショナルな履歴書を作成するために必要なすべて - 完全に無料",
+      "title": "透明性のある価格設定",
+      "description": "プロフェッショナルな履歴書を作成するために必要なすべて-完全無料",
       "card": {
         "title": "無料",
         "description": "クレジットカードは不要",
         "points": {
           "point1": "無制限の履歴書",
-          "point2": "ATS最適化されたテンプレート",
+          "point2": "ATS最適化テンプレート",
           "point3": "PDFエクスポート",
-          "point4": "LaTeXソースコードのダウンロード",
+          "point4": "LaTeXソースのダウンロード",
           "point5": "広告なし",
           "point6": "オープンソース",
           "point7": "クラウドストレージ",
-          "point8": "24/7サポート"
+          "point8": "24時間年中無休のサポート"
         },
-        "button": "無料で作成を開始",
-        "sentence": "他の履歴書作成ツールと比較: ❌ $15/月 • ❌ 広告 • ❌ 制限されたテンプレート"
+        "button": "無料での作成を開始",
+        "sentence": "他の履歴書ビルダーとの比較：❌15ドル/月•❌広告•❌制限付きテンプレート"
       }
     },
     "random": {
-      "title": "誇りを持ってオープンソース",
-      "button": "GitHubでソースを見る",
-      "heading": "キャリアを向上させる準備はできていますか？",
-      "description": "就職活動を変革した何千人ものプロフェッショナルに参加しましょう",
-      "button2": "今すぐ履歴書を作成"
+      "title": "誇らしげにオープンソース",
+      "button": "GitHubでソースを表示",
+      "heading": "あなたのキャリアを高める準備はできていますか？",
+      "description": "転職活動を変革した何千人もの専門家に加わりましょう",
+      "button2": "今すぐ履歴書を作成する"
     },
     "developers": {
-      "title": "❤️ で作成された",
+      "title": "❤️によって構築",
       "details": {
         "dev1": {
           "name": "Shubham Kumar",
@@ -100,40 +139,80 @@
           "role": "フルスタック開発者"
         }
       },
-      "button": "採用する"
+      "button": "私を雇う"
     },
     "faq": {
       "title": "よくある質問",
+      "subtitle": "質問がありますか？回答があります",
+      "description": "履歴書ビルダーに関する一般的な質問への回答を見つける",
       "question1": {
-        "question": "La-Resumeは本当に完全に無料ですか？",
-        "answer": "はい！La-Resumeは100％無料でオープンソースです。私たちは、プロフェッショナルな履歴書作成が誰にでもアクセスできるべきだと考えています。"
+        "question": "この履歴書ビルダーは本当に無料ですか？",
+        "answer": "はい、当社のコア機能は完全無料で使用できます。支払いを必要とせずに、履歴書を作成、編集、ダウンロードできます。"
       },
       "question2": {
-        "question": "ATS最適化はどのように機能しますか？",
-        "answer": "私たちのテンプレートは、ATSとの互換性に関する業界のベストプラクティスに従っており、適切なキーワード配置、クリーンなフォーマット、セマンティックな構造を含みます。"
+        "question": "テンプレートはATSフレンドリーですか？",
+        "answer": "もちろんです！すべてのテンプレートは、応募者追跡システム（ATS）を簡単に通過するように設計されています。"
       },
       "question3": {
-        "question": "自分のLaTeXテンプレートを使用できますか？",
-        "answer": "現在、私たちは厳選したテンプレートのみをサポートしていますが、将来的なアップデートでカスタムテンプレートのサポートを追加する予定です。"
+        "question": "複数の履歴書を作成できますか？",
+        "answer": "はい、さまざまな求人応募や業界に合わせて、履歴書の複数のバージョンを作成できます。"
+      },
+      "question4": {
+        "question": "履歴書をエクスポートするにはどうすればよいですか？",
+        "answer": "エディターからワンクリックで、履歴書をPDF、DOCX、またはTXT形式でダウンロードできます。"
       }
     },
+    "contact": {
+      "badge": "お問い合わせ",
+      "heading": "質問やフィードバックがありますか？",
+      "description": "ご連絡をお待ちしております。メッセージをお送りください。できるだけ早くご連絡いたします。",
+      "contact_info_title": "連絡先情報",
+      "website_label": "la-resume.tech",
+      "email_label": "laresumetech@gmail.com",
+      "form": {
+        "name_label": "名前",
+        "name_placeholder": "あなたの名前",
+        "email_label": "メールアドレス",
+        "email_placeholder": "あなたのメールアドレス",
+        "subject_label": "件名",
+        "subject_placeholder": "どうすればお手伝いできますか？",
+        "message_label": "メッセージ",
+        "message_placeholder": "あなたのメッセージ...",
+        "button": "メッセージを送信"
+      },
+      "toast_success": "メッセージを送信しました！すぐに連絡します。"
+    },
     "footer": {
-      "detail": "オープンソースの履歴書作成ツール",
-      "privacyPolicy": "La-Resume. MITライセンス。貢献者歓迎！"
+      "brand": "LaResume",
+      "description": "使いやすい履歴書ビルダーで、数分でプロフェッショナルな履歴書を作成します。群衆から目立ち、あなたの夢の仕事を手に入れましょう。",
+      "resources": "リソース",
+      "templates": "テンプレート",
+      "userDetails": "ユーザーの詳細",
+      "madeByYou": "あなたによって作成",
+      "company": "会社",
+      "aboutUs": "私たちに関しては",
+      "privacyPolicy": "プライバシーポリシー",
+      "termsOfService": "利用規約",
+      "support": "サポート",
+      "helpCenter": "ヘルプセンター",
+      "contactUs": "お問い合わせ",
+      "faqs": "よくある質問",
+      "copyright": "LaResume。MITライセンス。",
+      "refunds": "払い戻しポリシー"
     }
   },
   "header": {
-    "signIn": "ログイン",
-    "signOut": "ログアウト",
-    "signUp": "会員登録",
+    "signIn": "サインイン",
+    "signOut": "サインアウト",
+    "signUp": "サインアップ",
     "templates": "テンプレート",
-    "userProfile": "ユーザープロフィール",
+    "userProfile": "ユーザープロファイル",
     "pricing": "価格"
   },
   "common": {
     "resumePreview": "履歴書プレビュー",
     "save": "保存",
-    "reorderSection": "セクションの並び替え",
+    "reorderSection": "セクションの並べ替え",
     "unsavedChanges": "未保存の変更",
     "download": "ダウンロード",
     "delete": "削除",
@@ -141,68 +220,68 @@
   },
   "deleteModal": {
     "title": "削除の確認",
-    "message": "本当に <name></name> を削除しますか？ この操作は元に戻せません。"
+    "message": "<name></name>を削除してもよろしいですか？この操作は元に戻すことはできません。"
   },
   "language": {
-    "en": "🇬🇧 English",
+    "en": "🇬🇧 英語",
     "ja": "🇯🇵 日本語",
-    "az": "🇦🇿 Azərbaycan",
-    "pt-PT": "🇵🇹 Português (PT)",
-    "pt-BR": "🇧🇷 Português (BR)",
-    "zh": "🇨🇳 中文",
-    "de": "🇩🇪 Deutsch",
-    "fr": "🇫🇷 Français",
-    "it": "🇮🇹 Italiano",
-    "ru": "🇷🇺 Русский",
-    "es": "🇪🇸 Español",
-    "nl": "🇳🇱 Nederlands"
+    "az": "🇦🇿 アゼルバイジャン語",
+    "pt-PT": "🇵🇹 ポルトガル語（PT）",
+    "pt-BR": "🇧🇷 ポルトガル語（BR）",
+    "zh": "🇨🇳 中国語",
+    "de": "🇩🇪 ドイツ語",
+    "fr": "🇫🇷 フランス語",
+    "it": "🇮🇹 イタリア語",
+    "ru": "🇷🇺 ロシア語",
+    "es": "🇪🇸 スペイン語",
+    "nl": "🇳🇱 オランダ語"
   },
   "sidebar": {
     "navigation": "ナビゲーション",
     "templates": "テンプレート",
     "resumeTemplates": "履歴書テンプレート",
-    "madeByYou": "あなたが作った",
-    "userDetails": "ユーザー詳細",
+    "madeByYou": "あなたによって作成",
+    "userDetails": "ユーザーの詳細",
     "personalInfo": "個人情報",
     "experience": "経験",
     "education": "教育",
-    "accomplishments": "実績",
+    "accomplishments": "成果",
     "feedback": "フィードバック",
     "language": "言語",
     "supportUs": "サポートする",
-    "starOnGitHub": "GitHubでスターをつける",
-    "jobTracker": "求人応募トラッカー"
+    "jobTracker": "求人応募トラッカー",
+    "starOnGitHub": "GitHubでスターを付ける"
   },
   "templates": {
-    "resTemplate": "履歴書テンプレートを選択",
-    "madeByYou": "あなたが作成した履歴書"
+    "resTemplate": "履歴書テンプレートを選択する",
+    "madeByYou": "あなたによって作成された履歴書"
   },
   "contact": {
     "title": "お問い合わせ",
-    "description": "私たちはいつでもサポートします！ご質問、ご意見、ご相談があればお気軽にご連絡ください。担当者ができるだけ早くご連絡いたします。",
-    "contactInformation": "お問い合わせ情報",
-    "merchantName": "<strong>販売業者名（法人名）:</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>登録住所:</strong> ベナチティ、西ベンガル州、インド郵便番号: 713213",
-    "operationalAddress": "<strong>営業所住所:</strong> ベナチティ、西ベンガル州、インド郵便番号: 713213",
-    "phoneNumber": "<strong>電話番号:</strong> +91 62975 59892",
-    "email": "<strong>メールアドレス:</strong> laresumetech@gmail.com",
-    "sendMessage": "メッセージを送信",
+    "description": "私たちはあなたを助けるためにここにいます！お問い合わせ、フィードバック、またはサポートについては、私たちに連絡してください。私たちのチームはできるだけ早くあなたに連絡します。",
+    "contactInformation": "当社の連絡先情報",
+    "merchantName": "<strong>マーチャント法人名：</strong>Priyabrata Mondal",
+    "registeredAddress": "<strong>登録住所：</strong>Benachity、西ベンガル、インド、PIN：713213",
+    "operationalAddress": "<strong>事業所住所：</strong>Benachity、西ベンガル、インド、PIN：713213",
+    "phoneNumber": "<strong>電話番号：</strong>+91 62975 59892",
+    "email": "<strong>メール：</strong>laresumetech@gmail.com",
+    "sendMessage": "私たちにメッセージを送る",
     "toast": {
-      "success": "メッセージが正常に送信されました！",
+      "success": "メッセージを送信しました！",
       "error": "メッセージの送信に失敗しました"
     },
     "form": {
       "name": "名前",
       "namePlaceholder": "あなたの名前",
-      "email": "メールアドレス",
+      "email": "メール",
       "emailPlaceholder": "your@email.com",
       "message": "メッセージ",
-      "messagePlaceholder": "メッセージ内容...",
+      "messagePlaceholder": "あなたのメッセージ...",
       "submit": "メッセージを送信",
       "submitting": "送信中..."
     },
-    "mapLocation": "地図の位置",
+    "mapLocation": "地図上の場所",
     "supportHours": "カスタマーサポート時間",
-    "timing": "<strong>毎日:</strong> 午前9時〜午後6時"
+    "timing": "<strong>毎日：</strong>午前9時〜午後6時"
   }
 }
