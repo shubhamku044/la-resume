@@ -2,7 +2,7 @@ import { Board } from '@/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const boardApi = createApi({
-  reducerPath: 'api',
+  reducerPath: 'boardApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
   tagTypes: ['Boards'],
   endpoints: (builder) => ({

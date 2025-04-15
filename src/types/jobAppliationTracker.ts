@@ -21,8 +21,18 @@ export type Job = {
   url: string | null;
   salary: string | null;
   userId: string;
-  appliedAt: string | Date | null;
+  createdAt: string | Date | null;
   updatedAt: string | Date;
   listId: string;
   boardId: string;
+  notes?: string;
+  appliedAt?: string | Date | null;
+};
+
+export type Note = {
+  id: string;
+  content: string;
+  jobId: string;
+  userId: string;
+  createdAt: string | Date;
 };
