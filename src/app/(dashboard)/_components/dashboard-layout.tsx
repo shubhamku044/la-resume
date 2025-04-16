@@ -163,8 +163,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
         <main
           className={cn(
-            'flex-1 overflow-auto p-4 transition-[margin] duration-300',
-            'scrollbar scrollbar-thin scrollbar-track-background scrollbar-thumb-accent',
+            'flex-1 overflow-auto transition-[margin] duration-300',
+            'scrollbar-thin scrollbar-track-background scrollbar-thumb-accent',
             'dark:scrollbar-track-muted dark:scrollbar-thumb-muted-foreground'
           )}
         >
