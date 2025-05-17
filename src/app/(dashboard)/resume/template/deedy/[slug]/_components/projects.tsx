@@ -142,7 +142,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
 
                 <div className="w-full space-y-2">
                   <h3 className="text-base font-bold">{entry.title || 'Untitled Project'}</h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {entry.duration || 'No Duration Provided'}
                   </p>
 
@@ -151,7 +151,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                       {entry.tools.map((tool, idx) => (
                         <span
                           key={idx}
-                          className="rounded-md bg-gray-200 px-2 py-1 text-xs text-gray-700"
+                          className="rounded-md bg-gray-200 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-300"
                         >
                           {tool}
                         </span>
@@ -160,7 +160,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                   )}
 
                   {entry.highlights.length > 0 && (
-                    <ul className="list-inside list-disc space-y-1 text-sm text-gray-700">
+                    <ul className="list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-300">
                       {entry.highlights.map((highlight, idx) => (
                         <li key={idx}>{highlight}</li>
                       ))}

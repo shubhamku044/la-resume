@@ -34,7 +34,7 @@ export function Header() {
           </a>
           <a
             href="#how-it-works"
-            className="hover:text-primary text-sm font-medium transition-colors"
+            className="text-sm font-medium transition-colors hover:text-primary"
           >
             How It Works
           </a>
@@ -101,23 +101,23 @@ export function Header() {
                 </a>
                 <a
                   href="#how-it-works"
-                  className="hover:text-primary text-sm font-medium transition-colors"
+                  className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   How It Works
                 </a>
                 <a
                   href="#team"
-                  className="hover:text-primary text-sm font-medium transition-colors"
+                  className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Our Team
                 </a>
                 <a
                   href="#testimonials"
-                  className="hover:text-primary text-sm font-medium transition-colors"
+                  className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Testimonials
                 </a>
-                <a href="#faq" className="hover:text-primary text-sm font-medium transition-colors">
+                <a href="#faq" className="text-sm font-medium transition-colors hover:text-primary">
                   FAQ
                 </a>
 

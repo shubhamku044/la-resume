@@ -196,11 +196,15 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div>
                   <h3 className="text-base font-bold">{entry.institution || 'Untitled Degree'}</h3>
-                  <p className="text-sm text-gray-600">{entry.degree || 'No Institution'}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {entry.degree || 'No Institution'}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {entry.startDate} - {entry.endDate || 'Present'}
                   </p>
-                  {entry.marks && <p className="text-sm text-gray-700">{entry.marks}</p>}
+                  {entry.marks && (
+                    <p className="text-sm text-gray-700 dark:text-gray-200">{entry.marks}</p>
+                  )}
                 </div>
               </div>
               <div className="flex space-x-3">

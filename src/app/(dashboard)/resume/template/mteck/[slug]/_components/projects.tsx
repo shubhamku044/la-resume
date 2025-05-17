@@ -115,12 +115,12 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                 <div className="space-y-1">
                   <h3 className="text-base font-bold">{entry.title || 'Untitled Project'}</h3>
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {entry.duration || 'No Duration Provided'}
                   </p>
 
                   {entry.details.length > 0 && (
-                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700">
+                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
                       {entry.details.map((detail, idx) => (
                         <li key={idx}>{detail}</li>
                       ))}

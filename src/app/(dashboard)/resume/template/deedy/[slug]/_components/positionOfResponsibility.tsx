@@ -94,8 +94,10 @@ const PositionsOfResponsibilitySection = ({
 
                 <div className="space-y-2">
                   <h3 className="text-base font-bold">{entry.title || 'Untitled Position'}</h3>
-                  <p className="text-sm text-gray-600">{entry.organization || 'No Organization'}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {entry.organization || 'No Organization'}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {entry.duration || 'No Duration Provided'}
                   </p>
                 </div>

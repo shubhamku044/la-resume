@@ -185,7 +185,9 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div>
                   <h3 className="text-base font-semibold">{entry.category}</h3>
-                  <p className="text-sm text-gray-500">{entry.items.join(', ')}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {entry.items.join(', ')}
+                  </p>
                 </div>
               </div>
               <div className="flex space-x-2">

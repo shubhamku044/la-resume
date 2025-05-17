@@ -42,7 +42,11 @@ export default function BoardsPage() {
     if (!confirm('Are you sure you want to delete this board?')) return;
 
     try {
-      await deleteBoard({ id: boardId, userId: userId! }).unwrap();
+      if (userId) {
+        await deleteBoard({ id: boardId, userId: userId }).unwrap();
+      } else {
+        throw new Error('User ID is required');
+      }
       toast.success('Board deleted successfully!');
     } catch (err) {
       console.log('Error deleting board', err);
@@ -75,7 +79,7 @@ export default function BoardsPage() {
         <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-12">
           <div className="max-w-md text-center">
             <h2 className="mb-2 text-xl font-semibold">No boards yet</h2>
-            <p className="mb-6 text-gray-600">
+            <p className="mb-6 text-gray-600 dark:text-gray-300">
               Create your first board to start tracking job applications
             </p>
             <button
@@ -95,8 +99,8 @@ export default function BoardsPage() {
             >
               <Link href={`/tracker/boards/${board.id}`} className="block">
                 <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
-                <p className="mb-4 text-gray-600">{board.description}</p>
-                <div className="flex justify-between text-sm text-gray-500">
+                <p className="mb-4 text-gray-600 dark:text-gray-300">{board.description}</p>
+                <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                   <span>Updated {board.updatedAt}</span>
                 </div>
               </Link>
@@ -153,7 +157,7 @@ export default function BoardsPage() {
             className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-100 p-6 transition-colors hover:bg-gray-200"
           >
             <span className="mb-2 text-3xl text-indigo-600">+</span>
-            <span className="text-gray-600">Create New Board</span>
+            <span className="text-gray-600 dark:text-gray-300">Create New Board</span>
           </div>
         </div>
       )}
@@ -165,7 +169,7 @@ export default function BoardsPage() {
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                 disabled={isSubmitting}
               >
                 &times;
@@ -174,7 +178,10 @@ export default function BoardsPage() {
 
             <form onSubmit={handleCreateBoard}>
               <div className="mb-4">
-                <label htmlFor="boardName" className="mb-1 block font-medium text-gray-700">
+                <label
+                  htmlFor="boardName"
+                  className="mb-1 block font-medium text-gray-700 dark:text-gray-300"
+                >
                   Board Name *
                 </label>
                 <input
@@ -189,7 +196,10 @@ export default function BoardsPage() {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="boardDescription" className="mb-1 block font-medium text-gray-700">
+                <label
+                  htmlFor="boardDescription"
+                  className="mb-1 block font-medium text-gray-700 dark:text-gray-300"
+                >
                   Description (Optional)
                 </label>
                 <textarea
@@ -203,7 +213,10 @@ export default function BoardsPage() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="boardTemplate" className="mb-1 block font-medium text-gray-700">
+                <label
+                  htmlFor="boardTemplate"
+                  className="mb-1 block font-medium text-gray-700 dark:text-gray-300"
+                >
                   Template (Optional)
                 </label>
                 <select
@@ -223,7 +236,7 @@ export default function BoardsPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="rounded-md bg-gray-200 px-4 py-2 text-gray-800 transition-colors hover:bg-gray-300"
+                  className="rounded-md bg-gray-200 px-4 py-2 text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
                   disabled={isSubmitting}
                 >
                   Cancel

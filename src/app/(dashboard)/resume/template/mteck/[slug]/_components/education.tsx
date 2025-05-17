@@ -90,7 +90,9 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
                   <h3 className="text-base font-bold">
                     {entry.institution || 'Untitled Institution'}
                   </h3>
-                  <p className="text-sm text-gray-600">{entry.degree || 'No Degree'}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {entry.degree || 'No Degree'}
+                  </p>
                 </div>
               </div>
               <div className="flex space-x-3">

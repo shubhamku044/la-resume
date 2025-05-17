@@ -90,7 +90,7 @@ export default function FeedbackPage() {
   return (
     <div className="mx-auto max-w-2xl p-6">
       <h1 className="mb-8 text-3xl font-bold">{t('HomePage.contact.heading')}</h1>
-      <p className="mb-6 text-gray-600">{t('HomePage.contact.description')}</p>
+      <p className="mb-6 text-gray-600 dark:text-gray-300">{t('HomePage.contact.description')}</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Honeypot field */}
         <input type="hidden" aria-hidden="true" {...register('honeypot')} />
