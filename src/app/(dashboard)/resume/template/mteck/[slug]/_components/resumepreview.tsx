@@ -205,7 +205,7 @@ const ResumePreview = ({
           {imageUrl ? (
             <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
           ) : (
-            <p className="absolute inset-0 flex items-center justify-center text-gray-500">
+            <p className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
               Preview will appear here...
             </p>
           )}

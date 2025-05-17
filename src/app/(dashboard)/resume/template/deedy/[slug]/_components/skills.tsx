@@ -58,8 +58,10 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
     setTempData((prev) => {
       const updatedSkills = { ...prev.skills };
       if (editingCategory !== tempCategory) {
-        updatedSkills[tempCategory] = updatedSkills[editingCategory!];
-        delete updatedSkills[editingCategory!];
+        if (editingCategory) {
+          updatedSkills[tempCategory] = updatedSkills[editingCategory];
+          delete updatedSkills[editingCategory];
+        }
       }
       updatedSkills[tempCategory] = tempSkills.split(', ').filter(Boolean);
       return { ...prev, skills: updatedSkills };
@@ -104,7 +106,9 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
 
                 <div className="space-y-2">
                   <h3 className="text-base font-bold">{category}</h3>
-                  <p className="text-sm text-gray-600">{data[category].join(', ')}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {data[category].join(', ')}
+                  </p>
                 </div>
               </div>
 

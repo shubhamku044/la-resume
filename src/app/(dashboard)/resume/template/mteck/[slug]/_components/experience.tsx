@@ -117,13 +117,15 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div className="space-y-1">
                   <h3 className="text-base font-bold">{entry.company || 'Untitled Company'}</h3>
-                  <p className="text-sm text-gray-600">{entry.role || 'No Role Specified'}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {entry.role || 'No Role Specified'}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {entry.duration || 'No Duration Provided'}
                   </p>
 
                   {entry.achievements.length > 0 && (
-                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700">
+                    <ul className="mt-1 list-inside list-disc text-sm text-gray-700 dark:text-gray-300">
                       {entry.achievements.map((achievement, idx) => (
                         <li key={idx}>{achievement}</li>
                       ))}

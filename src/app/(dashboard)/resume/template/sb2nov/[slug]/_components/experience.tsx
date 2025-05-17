@@ -200,10 +200,12 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                     <h3 className="text-base font-semibold">
                       {entry.title || 'Untitled Accomplishment'}
                     </h3>
-                    <p className="text-sm text-gray-500">{entry.date || 'No Date Provided'}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {entry.date || 'No Date Provided'}
+                    </p>
 
                     {entry.accomplishments && entry.accomplishments.length > 0 && (
-                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700">
+                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-300">
                         {entry.accomplishments.map((point, idx) => (
                           <li key={idx}>{point}</li>
                         ))}

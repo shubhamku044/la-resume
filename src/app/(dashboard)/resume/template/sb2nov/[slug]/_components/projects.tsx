@@ -219,13 +219,13 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                           {entry.urlLabel || 'No URL Label'}
                         </a>
                       ) : (
-                        <p className="text-base text-gray-500">
+                        <p className="text-base text-gray-500 dark:text-gray-400">
                           {entry.urlLabel || 'No URL Label'}
                         </p>
                       )}
                     </div>
                     {entry.accomplishments && entry.accomplishments.length > 0 && (
-                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700">
+                      <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-300">
                         {entry.accomplishments.map((point, idx) => (
                           <li key={idx}>{point}</li>
                         ))}

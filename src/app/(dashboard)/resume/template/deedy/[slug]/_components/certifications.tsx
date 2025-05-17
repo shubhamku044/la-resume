@@ -93,10 +93,12 @@ const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: Certifi
 
                 <div className="space-y-2">
                   <h3 className="text-base font-bold">{entry.name || 'Untitled Certification'}</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     {entry.issuingOrganization || 'No Organization'}
                   </p>
-                  <p className="text-sm text-gray-500">{entry.date || 'No Date Provided'}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {entry.date || 'No Date Provided'}
+                  </p>
 
                   {entry.link && (
                     <a

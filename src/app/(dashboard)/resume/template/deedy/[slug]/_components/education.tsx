@@ -97,9 +97,13 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
 
                 <div>
                   <h3 className="text-base font-bold">{entry.institute || 'Untitled Degree'}</h3>
-                  <p className="text-sm text-gray-600">{entry.degree || 'No Institution'}</p>
-                  <p className="text-sm text-gray-500">{entry.year || ''}</p>
-                  {entry.cgpa && <p className="text-sm text-gray-700">{entry.cgpa}</p>}
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {entry.degree || 'No Institution'}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{entry.year || ''}</p>
+                  {entry.cgpa && (
+                    <p className="text-sm text-gray-700 dark:text-gray-200">{entry.cgpa}</p>
+                  )}
                 </div>
               </div>
 

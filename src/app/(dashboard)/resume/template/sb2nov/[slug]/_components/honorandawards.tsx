@@ -184,7 +184,9 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
               <div className="flex gap-2">
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div className="w-full space-y-2">
-                  <p className="text-base text-gray-800">{entry.description || 'No Description'}</p>
+                  <p className="text-base text-gray-800 dark:text-gray-200">
+                    {entry.description || 'No Description'}
+                  </p>
                   {entry.url && (
                     <a
                       href={entry.url}

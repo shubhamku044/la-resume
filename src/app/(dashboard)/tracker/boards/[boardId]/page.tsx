@@ -19,7 +19,7 @@ export default function BoardPage() {
     isLoading: isBoardLoading,
     error: boardError,
     refetch: refetchBoard,
-  } = useGetBoardQuery(boardId!, {
+  } = useGetBoardQuery(boardId || '', {
     skip: !boardId,
     refetchOnMountOrArgChange: true,
   });
@@ -29,7 +29,7 @@ export default function BoardPage() {
     isLoading: isJobsLoading,
     error: jobsError,
     refetch: refetchJobs,
-  } = useGetJobsByBoardQuery(boardId!, {
+  } = useGetJobsByBoardQuery(boardId || '', {
     skip: !boardId,
     refetchOnMountOrArgChange: true,
   });
@@ -149,8 +149,10 @@ export default function BoardPage() {
                 </svg>
               </div>
 
-              <h2 className="mb-4 text-xl font-semibold text-gray-900">Failed to load board</h2>
-              <p className="mb-6 text-gray-600">
+              <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
+                Failed to load board
+              </h2>
+              <p className="mb-6 text-gray-600 dark:text-gray-300">
                 There was an issue loading this board&apos;s data. Please try again or return to the
                 boards page.
               </p>

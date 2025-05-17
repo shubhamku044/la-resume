@@ -58,8 +58,10 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
     setTempData((prev) => {
       const updatedSkills = { ...prev.skills };
       if (editingCategory !== tempCategory) {
-        updatedSkills[tempCategory] = updatedSkills[editingCategory!];
-        delete updatedSkills[editingCategory!];
+        if (editingCategory) {
+          updatedSkills[tempCategory] = updatedSkills[editingCategory];
+          delete updatedSkills[editingCategory];
+        }
       }
       updatedSkills[tempCategory] = tempSkills.split(', ').filter(Boolean);
       return { ...prev, skills: updatedSkills };
@@ -104,7 +106,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div className="space-y-1">
                   <h3 className="text-base font-bold">{category}</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     {data[category].join(', ') || 'No Skills Added'}
                   </p>
                 </div>

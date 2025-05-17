@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+
 export default function ResumeTemplatesPage() {
   const router = useRouter();
   const { user } = useUser();
@@ -78,7 +79,6 @@ export default function ResumeTemplatesPage() {
           </div>
         </div>
       )}
-      {/* Mobile Select Dropdown */}
       <div className="mb-6 sm:hidden">
         <Select
           defaultValue="/templates/resume-templates"
@@ -127,7 +127,9 @@ export default function ResumeTemplatesPage() {
               <h2 className="mt-2 text-center text-base font-semibold sm:text-lg">
                 {template.name}
               </h2>
-              <p className="text-center text-sm text-gray-600">{template.description}</p>
+              <p className="text-center text-sm text-gray-600 dark:text-gray-300">
+                {template.description}
+              </p>
             </div>
           </div>
         ))}
