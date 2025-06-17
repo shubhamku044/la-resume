@@ -1,7 +1,7 @@
 # La-Resume 📄🚀
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shubhamku044/la-resume/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shubhamku044/la-resume/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/shubhamku044/la-resume.svg)](https://github.com/shubhamku044/la-resume/stargazers)
 
 A modern, open-source resume builder with ATS optimization and LaTeX export capabilities. Create professional resumes effortlessly, completely free!
