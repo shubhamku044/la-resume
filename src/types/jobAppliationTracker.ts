@@ -25,7 +25,7 @@ export type Job = {
   updatedAt: string | Date;
   listId: string;
   boardId: string;
-  notes?: string;
+  notes?: Note[];
   appliedAt?: string | Date | null;
 };
 
