@@ -32,8 +32,17 @@ export function JobCard({ card, index, deleteJob, isDeleting }: CardComponentPro
                 <p>{card.company}</p>
               </div>
 
-              {card.notes && (
-                <p className="mt-2 line-clamp-2 text-xs text-gray-600">{card.notes}</p>
+              {card.notes && card.notes.length > 0 && (
+                <div className="mt-2 space-y-1">
+                  {card.notes.slice(0, 2).map((note) => (
+                    <p key={note.id} className="line-clamp-1 text-xs text-gray-600">
+                      {note.content}
+                    </p>
+                  ))}
+                  {card.notes.length > 2 && (
+                    <p className="text-xs text-gray-400">+{card.notes.length - 2} more notes</p>
+                  )}
+                </div>
               )}
             </div>
           </div>
