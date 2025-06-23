@@ -22,25 +22,28 @@ export function JobCreationModal({
   if (!activeColumn) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-        <div className="mb-5 flex items-center justify-between">
-          <h3 className="text-xl font-semibold">Add New Job</h3>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-md rounded-xl bg-white p-4 shadow-xl sm:p-6">
+        <div className="mb-4 flex items-center justify-between sm:mb-5">
+          <h3 className="text-lg font-semibold sm:text-xl">Add New Job</h3>
           <Button
             variant="ghost"
             size="icon"
+            className="size-8 sm:size-10"
             onClick={() => {
               setActiveColumn(null);
               setNewJob(null);
             }}
           >
-            <X size={18} />
+            <X size={16} className="sm:size-5" />
           </Button>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">Job Title *</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">
+              Job Title *
+            </label>
             <input
               type="text"
               value={newJob?.title || ''}
@@ -51,13 +54,15 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Frontend Developer"
             />
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">Company *</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">
+              Company *
+            </label>
             <input
               type="text"
               value={newJob?.company || ''}
@@ -68,13 +73,13 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Acme Inc."
             />
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-gray-700">Notes</label>
+            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">Notes</label>
             <textarea
               value={newJob?.notes || ''}
               onChange={(e) =>
@@ -84,15 +89,16 @@ export function JobCreationModal({
                   notes: e.target.value,
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="Any additional information..."
               rows={3}
             />
           </div>
 
-          <div className="flex justify-end space-x-2.5 pt-4">
+          <div className="flex flex-col space-y-2 pt-3 sm:flex-row sm:justify-end sm:space-x-2.5 sm:space-y-0 sm:pt-4">
             <Button
               variant="outline"
+              className="w-full sm:w-auto"
               onClick={() => {
                 setActiveColumn(null);
                 setNewJob(null);
@@ -100,7 +106,11 @@ export function JobCreationModal({
             >
               Cancel
             </Button>
-            <Button onClick={() => handleCreateJob(activeColumn)} disabled={isCreating}>
+            <Button
+              className="w-full sm:w-auto"
+              onClick={() => handleCreateJob(activeColumn)}
+              disabled={isCreating}
+            >
               {isCreating ? 'Adding...' : 'Add Job'}
             </Button>
           </div>

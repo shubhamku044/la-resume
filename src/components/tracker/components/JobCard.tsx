@@ -20,20 +20,20 @@ export function JobCard({ card, index, deleteJob, isDeleting }: CardComponentPro
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={cn(
-            'rounded-lg border bg-white p-3.5 shadow-sm transition-all',
-            snapshot.isDragging ? 'shadow-md rotate-1 scale-[1.02]' : ''
+            'rounded-lg border bg-white p-2.5 shadow-sm transition-all sm:p-3.5',
+            snapshot.isDragging ? 'rotate-1 scale-[1.02] shadow-md' : ''
           )}
         >
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="text-sm font-medium text-gray-900">{card.title}</h3>
-              <div className="mt-1.5 flex items-center text-xs text-gray-500">
-                <Briefcase className="mr-1 size-3.5" />
-                <p>{card.company}</p>
+              <h3 className="text-xs font-medium text-gray-900 sm:text-sm">{card.title}</h3>
+              <div className="mt-1 flex items-center text-xs text-gray-500 sm:mt-1.5">
+                <Briefcase className="mr-1 size-3 sm:size-3.5" />
+                <p className="truncate">{card.company}</p>
               </div>
 
               {card.notes && card.notes.length > 0 && (
-                <div className="mt-2 space-y-1">
+                <div className="mt-1.5 space-y-1 sm:mt-2">
                   {card.notes.slice(0, 2).map((note) => (
                     <p key={note.id} className="line-clamp-1 text-xs text-gray-600">
                       {note.content}
@@ -47,21 +47,33 @@ export function JobCard({ card, index, deleteJob, isDeleting }: CardComponentPro
             </div>
           </div>
 
-          <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-2">
+          <div className="mt-2 flex items-center justify-between border-t border-gray-100 pt-1.5 sm:mt-3 sm:pt-2">
             {card.createdAt && (
               <div className="flex items-center text-xs text-gray-400">
                 <Calendar className="mr-1 size-3" />
-                {new Date(card.createdAt).toLocaleDateString()}
+                <span className="hidden sm:inline">
+                  {new Date(card.createdAt).toLocaleDateString()}
+                </span>
+                <span className="sm:hidden">
+                  {new Date(card.createdAt).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </span>
               </div>
             )}
             <Button
               variant="destructive"
               size="sm"
-              className="ml-auto"
+              className="ml-auto size-7 p-0 sm:size-8"
               onClick={() => deleteJob(card.id)}
               disabled={isDeleting === card.id}
             >
-              {isDeleting === card.id ? 'Deleting...' : <Trash2 size={14} />}
+              {isDeleting === card.id ? (
+                <span className="text-xs">...</span>
+              ) : (
+                <Trash2 size={12} className="sm:size-14" />
+              )}
             </Button>
           </div>
         </div>

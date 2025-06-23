@@ -12,7 +12,6 @@ import {
 import { JobColumn } from './components/JobColumn';
 import { JobCreationModal } from './components/JobCreationModal';
 import { BoardData, Column, JobsByList, NewJob } from './components/types';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface IProps {
   board: BoardData | undefined;
@@ -42,9 +41,9 @@ export function Board({ board, jobsByList }: IProps) {
       setColumns(initialColumns);
 
       // Calculate max jobs to determine column height
-      const maxJobs = Math.max(...Object.values(jobsByList || {}).map((jobs) => jobs.length), 3);
-      // Base height plus additional height per job (around 110px per job)
-      setMaxColumnHeight(Math.max(500, maxJobs * 120 + 120)); // 120px for each job + some padding
+      const maxJobs = Math.max(...Object.values(jobsByList || {}).map((jobs) => jobs.length), 1);
+      // More accurate height calculation: header (60px) + padding (24px) + jobs (90px each) + add button (44px) + extra padding (50px)
+      setMaxColumnHeight(Math.max(400, 60 + 24 + maxJobs * 90 + 44 + 50));
     } else {
       setColumns([]);
       setMaxColumnHeight(500); // Default height
@@ -168,10 +167,10 @@ export function Board({ board, jobsByList }: IProps) {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex h-[calc(100vh-150px)] flex-col">
-        <ScrollArea className="grow overflow-x-auto">
+      <div className="flex min-h-[calc(100vh-120px)] flex-col sm:min-h-[calc(100vh-150px)]">
+        <div className="grow overflow-x-auto">
           <div
-            className="flex min-h-full gap-5 p-6 pb-10"
+            className="flex min-w-fit gap-4 p-2 pb-6 sm:gap-5 sm:p-6 sm:pb-10"
             style={{ minHeight: `${maxColumnHeight}px` }}
           >
             {columns.map((column) => (
@@ -185,7 +184,7 @@ export function Board({ board, jobsByList }: IProps) {
               />
             ))}
           </div>
-        </ScrollArea>
+        </div>
       </div>
 
       {/* Job Creation Modal */}

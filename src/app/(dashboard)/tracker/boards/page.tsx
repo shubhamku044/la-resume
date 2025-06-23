@@ -10,10 +10,22 @@ import {
   useDeleteBoardMutation,
   useGetBoardsQuery,
 } from '@/store/services/applicationTrackerBoard';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 export default function BoardsPage() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [boardToDelete, setBoardToDelete] = useState<string | null>(null);
   const [createBoard, { isLoading: isSubmitting }] = useCreateBoardMutation();
   const [deleteBoard, { isLoading: isDeleting }] = useDeleteBoardMutation();
   const user = useUser();
@@ -39,8 +51,6 @@ export default function BoardsPage() {
   };
 
   const handleDeleteBoard = async (boardId: string) => {
-    if (!confirm('Are you sure you want to delete this board?')) return;
-
     try {
       if (userId) {
         await deleteBoard({ id: boardId, userId: userId }).unwrap();
@@ -48,10 +58,17 @@ export default function BoardsPage() {
         throw new Error('User ID is required');
       }
       toast.success('Board deleted successfully!');
+      setDeleteDialogOpen(false);
+      setBoardToDelete(null);
     } catch (err) {
       console.log('Error deleting board', err);
       toast.error('Could not delete board. Please try again.');
     }
+  };
+
+  const openDeleteDialog = (boardId: string) => {
+    setBoardToDelete(boardId);
+    setDeleteDialogOpen(true);
   };
 
   if (isLoading) {
@@ -101,13 +118,22 @@ export default function BoardsPage() {
                 <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
                 <p className="mb-4 text-gray-600 dark:text-gray-300">{board.description}</p>
                 <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
-                  <span>Updated {board.updatedAt}</span>
+                  <span>
+                    Updated{' '}
+                    {new Date(board.updatedAt).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </span>
                 </div>
               </Link>
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  handleDeleteBoard(board.id);
+                  openDeleteDialog(board.id);
                 }}
                 className="absolute right-4 top-4 rounded-full p-2 text-red-600 opacity-0 transition-opacity hover:bg-red-100 group-hover:opacity-100"
                 disabled={isDeleting}
@@ -279,6 +305,32 @@ export default function BoardsPage() {
           </div>
         </div>
       )}
+
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Board</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete{' '}
+              <strong>
+                &ldquo;{boards.find((board) => board.id === boardToDelete)?.name}&rdquo;
+              </strong>
+              ? This action cannot be undone and will permanently delete all job applications in
+              this board.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => boardToDelete && handleDeleteBoard(boardToDelete)}
+              disabled={isDeleting}
+              className="bg-red-600 hover:bg-red-700 focus:ring-red-600"
+            >
+              {isDeleting ? 'Deleting...' : 'Delete Board'}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

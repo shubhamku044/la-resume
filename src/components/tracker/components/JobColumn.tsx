@@ -28,15 +28,15 @@ export function JobColumn({
           ref={provided.innerRef}
           className={cn(
             'w-72 shrink-0 rounded-xl border border-gray-200 bg-gray-50 shadow-sm transition-colors',
-            snapshot.isDraggingOver && 'bg-blue-50 border-blue-200'
+            snapshot.isDraggingOver && 'border-blue-200 bg-blue-50'
           )}
         >
-          <div className="rounded-t-xl border-b border-gray-200 bg-white p-3">
-            <h2 className="font-semibold text-gray-800">{column.title}</h2>
+          <div className="rounded-t-xl border-b border-gray-200 bg-white p-2 sm:p-3">
+            <h2 className="text-sm font-semibold text-gray-800 sm:text-base">{column.title}</h2>
             <p className="mt-0.5 text-xs text-gray-500">{column.cards.length} jobs</p>
           </div>
 
-          <div className="min-h-[200px] space-y-3 p-3">
+          <div className="min-h-[150px] space-y-2 p-2 sm:min-h-[200px] sm:space-y-3 sm:p-3">
             {column.cards.map((card, index) => (
               <JobCard
                 key={card.id}
@@ -51,14 +51,15 @@ export function JobColumn({
             {/* Add Job Button */}
             <Button
               variant="ghost"
-              className="mt-2 w-full border border-dashed border-gray-300 text-gray-600 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+              className="mt-2 w-full border border-dashed border-gray-300 text-sm text-gray-600 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 sm:text-base"
               onClick={() => {
                 setActiveColumn(column.id);
                 setNewJob({ title: '', company: '' });
               }}
             >
               <PlusCircle size={16} className="mr-1.5" />
-              Add Job
+              <span className="hidden sm:inline">Add Job</span>
+              <span className="sm:hidden">Add</span>
             </Button>
           </div>
         </div>
