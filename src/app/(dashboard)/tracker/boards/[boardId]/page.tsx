@@ -68,29 +68,31 @@ export default function BoardPage() {
   if (isBoardLoading || isJobsLoading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 flex items-center justify-between pt-6">
+        <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="mb-4 flex flex-col space-y-4 pt-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:pt-6">
             <Button
               variant="ghost"
-              className="flex items-center text-indigo-600 hover:text-indigo-800"
+              className="flex items-center self-start text-indigo-600 hover:text-indigo-800"
               onClick={() => router.push('/tracker/boards')}
             >
-              <ChevronLeft className="mr-1" size={16} /> Back to Boards
+              <ChevronLeft className="mr-1" size={16} />
+              <span className="hidden sm:inline">Back to Boards</span>
+              <span className="sm:hidden">Back</span>
             </Button>
 
-            <div className="flex items-center space-x-4">
-              <Skeleton className="h-8 w-40" />
-              <Skeleton className="h-6 w-64" />
+            <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
+              <Skeleton className="h-8 w-full sm:w-40" />
+              <Skeleton className="hidden h-6 w-full sm:block sm:w-64" />
             </div>
 
-            <div className="w-24">
-              <Skeleton className="h-8 w-20" />
+            <div className="w-full sm:w-24">
+              <Skeleton className="h-8 w-full sm:w-20" />
             </div>
           </div>
         </div>
 
-        <div className="px-6 pb-10 pt-4">
-          <div className="flex space-x-5 overflow-x-auto">
+        <div className="overflow-x-auto pb-6 pt-2 sm:pb-10 sm:pt-4">
+          <div className="flex min-w-fit gap-4 px-2 sm:gap-5 sm:px-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
@@ -103,7 +105,7 @@ export default function BoardPage() {
 
                 <div className="space-y-3 p-3">
                   {[1, 2, 3].map((j) => (
-                    <Skeleton key={j} className="h-24 w-full rounded-lg" />
+                    <Skeleton key={j} className="h-20 w-full rounded-lg sm:h-24" />
                   ))}
                   <Skeleton className="mt-4 h-9 w-full" />
                 </div>
@@ -119,23 +121,25 @@ export default function BoardPage() {
   if (!board || !jobsData) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 flex items-center justify-between pt-6">
+        <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="mb-4 flex items-center justify-between pt-4 sm:mb-8 sm:pt-6">
             <Button
               variant="ghost"
               className="flex items-center text-indigo-600 hover:text-indigo-800"
               onClick={() => router.push('/tracker/boards')}
             >
-              <ChevronLeft className="mr-1" size={16} /> Back to Boards
+              <ChevronLeft className="mr-1" size={16} />
+              <span className="hidden sm:inline">Back to Boards</span>
+              <span className="sm:hidden">Back</span>
             </Button>
           </div>
 
-          <div className="flex h-[60vh] flex-col items-center justify-center px-4 text-center">
-            <div className="w-full max-w-lg rounded-lg border border-gray-200 bg-white p-8 shadow-md">
-              <div className="mx-auto mb-6 flex size-12 items-center justify-center rounded-full bg-red-100">
+          <div className="flex h-[60vh] flex-col items-center justify-center px-2 text-center sm:px-4">
+            <div className="w-full max-w-lg rounded-lg border border-gray-200 bg-white p-4 shadow-md sm:p-8">
+              <div className="mx-auto mb-4 flex size-10 items-center justify-center rounded-full bg-red-100 sm:mb-6 sm:size-12">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-6 text-red-600"
+                  className="size-5 text-red-600 sm:size-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -149,10 +153,10 @@ export default function BoardPage() {
                 </svg>
               </div>
 
-              <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100 sm:mb-4 sm:text-xl">
                 Failed to load board
               </h2>
-              <p className="mb-6 text-gray-600 dark:text-gray-300">
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-300 sm:mb-6 sm:text-base">
                 There was an issue loading this board&apos;s data. Please try again or return to the
                 boards page.
               </p>
@@ -161,7 +165,7 @@ export default function BoardPage() {
                 <Button
                   variant="outline"
                   onClick={() => router.push('/tracker/boards')}
-                  className="sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   Return to Boards
                 </Button>
@@ -171,7 +175,7 @@ export default function BoardPage() {
                     refetchJobs();
                     toast.info('Attempting to reload board data...');
                   }}
-                  className="sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   Try Again
                 </Button>
@@ -186,20 +190,22 @@ export default function BoardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="sticky top-0 z-10 border-b border-gray-200 bg-white shadow-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
+        <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+          <div className="flex flex-col space-y-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:py-4">
             <Button
               variant="ghost"
-              className="flex items-center text-indigo-600 hover:text-indigo-800"
+              className="flex items-center self-start text-indigo-600 hover:text-indigo-800"
               onClick={() => router.push('/tracker/boards')}
             >
-              <ChevronLeft className="mr-1" size={16} /> Back to Boards
+              <ChevronLeft className="mr-1" size={16} />
+              <span className="hidden sm:inline">Back to Boards</span>
+              <span className="sm:hidden">Back</span>
             </Button>
 
-            <div className="flex items-center">
-              <h1 className="mr-3 text-xl font-bold text-gray-900">{board.name}</h1>
+            <div className="flex flex-col items-start sm:items-center">
+              <h1 className="text-lg font-bold text-gray-900 sm:mr-3 sm:text-xl">{board.name}</h1>
               {board.description && (
-                <span className="hidden max-w-md truncate text-sm text-gray-600 md:block">
+                <span className="mt-1 max-w-md truncate text-xs text-gray-600 sm:mt-0 sm:text-sm md:block">
                   {board.description}
                 </span>
               )}
@@ -216,13 +222,16 @@ export default function BoardPage() {
               }}
             >
               <RefreshCcw size={14} className="mr-1.5" />
-              Refresh
+              <span className="hidden sm:inline">Refresh</span>
+              <span className="sm:hidden">↻</span>
             </Button>
           </div>
         </div>
       </div>
 
-      <Board board={board} jobsByList={jobsData.jobsByList} />
+      <div className="pb-6">
+        <Board board={board} jobsByList={jobsData.jobsByList} />
+      </div>
     </div>
   );
 }
