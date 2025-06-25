@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Apoie o Nosso Serviço",
-    "description": "Manter os nossos servidores custa-nos dinheiro, e dependemos do apoio dos utilizadores para manter o LaResume a funcionar sem problemas. A sua contribuição ajuda-nos a manter e melhorar a plataforma. Se encontrar valor no nosso serviço, agradecemos verdadeiramente o seu apoio. No entanto, se não puder pagar neste momento, pode optar por <link>ignorar</link>.",
+    "description": "Manter os nossos servidores custa-nos dinheiro, e dependemos do apoio dos utilizadores para manter o LaResume a funcionar sem problemas. A sua contribuição ajuda-nos a manter e melhorar a plataforma. Se encontrar valor no nosso serviço, agradecemos verdadeiramente o seu apoio.",
     "downloadConfirmation": {
       "title": "Confirmar Download",
       "description": "Tem certeza que deseja baixar o currículo no formato {format}?"

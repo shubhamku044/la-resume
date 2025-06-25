@@ -214,21 +214,7 @@ const ResumePreview = ({
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>{t('supportService.title')}</AlertDialogTitle>
-              <AlertDialogDescription>
-                {t.rich('supportService.description', {
-                  link: (chunks) => (
-                    <span
-                      onClick={() => {
-                        setShowPaymentConfirmation(false);
-                        setShowFreeDownload(true);
-                      }}
-                      style={{ color: '#3b82f6', cursor: 'pointer', textDecoration: 'underline' }}
-                    >
-                      {chunks}
-                    </span>
-                  ),
-                })}
-              </AlertDialogDescription>
+              <AlertDialogDescription>{t('supportService.description')}</AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>{t('supportService.buttons.cancel')}</AlertDialogCancel>
