@@ -96,33 +96,37 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <ClerkProvider
-      afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
-      afterMultiSessionSingleSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
-      <html lang={locale}>
-        <head>
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
-          <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
-          <link rel="shortcut icon" href="/favicon-dark.ico" />
-        </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ThemeProvider>
-            <Favicon />
-            <Provider>
-              <NextIntlClientProvider messages={messages}>
-                <main>{children}</main>
-                <Toaster />
-              </NextIntlClientProvider>
-            </Provider>
-          </ThemeProvider>
-          <Analytics />
-          <SpeedInsights />
-        </body>
+    <html lang={locale}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
+        <link rel="shortcut icon" href="/favicon-dark.ico" />
+      </head>
+      <body>
+        <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <ClerkProvider
+            afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'}
+            afterMultiSessionSingleSignOutUrl={
+              process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_OUT_URL || '/'
+            }
+            publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+          >
+            <ThemeProvider>
+              <Favicon />
+              <Provider>
+                <NextIntlClientProvider messages={messages}>
+                  <main>{children}</main>
+                  <Toaster />
+                </NextIntlClientProvider>
+              </Provider>
+            </ThemeProvider>
+          </ClerkProvider>
+        </div>
+        <Analytics />
+        <SpeedInsights />
         <GoogleAnalytics gaId="G-DQR3LS5N69" />
-      </html>
-    </ClerkProvider>
+      </body>
+    </html>
   );
 }

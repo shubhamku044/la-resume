@@ -65,7 +65,6 @@ export const store = configureStore({
       .concat(statsApi.middleware)
       .concat(paymentApi.middleware)
       .concat(jobApi.middleware)
-      .concat(statsApi.middleware)
       .concat(boardApi.middleware)
       .concat(() => (next) => (action) => {
         console.log('RTK Query action: ', action);
