@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Unterstützen Sie Unseren Dienst",
-    "description": "Der Betrieb unserer Server kostet Geld, und wir sind auf die Unterstützung der Nutzer angewiesen, um LaResume reibungslos laufen zu lassen. Ihr Beitrag hilft uns, die Plattform zu erhalten und zu verbessern. Wenn Sie unseren Dienst wertvoll finden, würden wir Ihre Unterstützung sehr schätzen. Wenn Sie jedoch im Moment nicht zahlen können, können Sie <link>überspringen</link>.",
+    "description": "Der Betrieb unserer Server kostet Geld, und wir sind auf die Unterstützung der Nutzer angewiesen, um LaResume reibungslos laufen zu lassen. Ihr Beitrag hilft uns, die Plattform zu erhalten und zu verbessern.",
     "downloadConfirmation": {
       "title": "Download bestätigen",
       "description": "Sind Sie sicher, dass Sie den Lebenslauf im {format}-Format herunterladen möchten?"

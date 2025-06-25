@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Soutenez Notre Service",
-    "description": "L'exploitation de nos serveurs nous coûte de l'argent, et nous comptons sur le soutien des utilisateurs pour maintenir LaResume en bon état de fonctionnement. Votre contribution nous aide à maintenir et à améliorer la plateforme. Si vous trouvez de la valeur dans notre service, nous apprécierions vraiment votre soutien. Cependant, si vous ne pouvez pas payer maintenant, vous pouvez choisir de <link>passer</link>.",
+    "description": "L'exploitation de nos serveurs nous coûte de l'argent, et nous comptons sur le soutien des utilisateurs pour maintenir LaResume en bon état de fonctionnement. Votre contribution nous aide à maintenir et à améliorer la plateforme.",
     "downloadConfirmation": {
       "title": "Confirmer le Téléchargement",
       "description": "Êtes-vous sûr de vouloir télécharger le CV au format {format} ?"

@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Ondersteun Onze Service",
-    "description": "Het draaien van onze servers kost ons geld, en we zijn afhankelijk van gebruikersondersteuning om LaResume soepel te laten draaien. Jouw bijdrage helpt ons het platform te onderhouden en te verbeteren. Als je waarde vindt in onze service, zouden we je steun echt waarderen. Als je op dit moment echter niet kunt betalen, kun je ervoor kiezen om dit <link>over te slaan</link>.",
+    "description": "Het draaien van onze servers kost ons geld, en we zijn afhankelijk van gebruikersondersteuning om LaResume soepel te laten draaien. Jouw bijdrage helpt ons het platform te onderhouden en te verbeteren. Als je waarde vindt in onze service, zouden we je steun echt waarderen.",
     "downloadConfirmation": {
       "title": "Download Bevestigen",
       "description": "Weet je zeker dat je het cv wilt downloaden in {format} formaat?"
