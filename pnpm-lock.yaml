@@ -32,12 +32,6 @@ importers:
       '@next/third-parties':
         specifier: ^15.3.4
         version: 15.3.4(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
-      '@paypal/paypal-server-sdk':
-        specifier: ^1.1.0
-        version: 1.1.0
-      '@paypal/react-paypal-js':
-        specifier: ^8.8.3
-        version: 8.8.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@prisma/client':
         specifier: ^6.10.1
         version: 6.10.1(prisma@6.10.1(typescript@5.8.3))(typescript@5.8.3)
@@ -140,9 +134,6 @@ importers:
       nodemailer:
         specifier: ^7.0.3
         version: 7.0.3
-      razorpay:
-        specifier: ^2.9.6
-        version: 2.9.6
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -161,9 +152,6 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.1.0)
-      react-paypal-button-v2:
-        specifier: ^2.6.3
-        version: 2.6.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-phone-number-input:
         specifier: ^3.4.12
         version: 3.4.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -276,53 +264,6 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
-
-  '@apimatic/authentication-adapters@0.5.8':
-    resolution: {integrity: sha512-PVFAKil48WAB8arXmnBBkGK0uJ4uFtUQU6sTW0+yhY2U1FnaRLiBZA0ZlaoHau4M1IEmVY2a5FMredMdRP32Mw==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/axios-client-adapter@0.3.9':
-    resolution: {integrity: sha512-3g7uJ/TzU7DA8f+aqFSmQOqdKbOlzPF1qcDvrZglB0Sw/CLAVvqzsr6b5KZUJrgY2gSOgCe1DJr22Zy8N2UbTA==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/convert-to-stream@0.0.2':
-    resolution: {integrity: sha512-1DRg17ItExfMYsXwjt6WIjJSCgV5RGg3fHPLgYD44/YmiU+7suWj7YfPKKUqmNcnJ/AvMh4lG1+tHrfOT01zXw==}
-    engines: {node: '>=10.4.0'}
-
-  '@apimatic/convert-to-stream@0.1.5':
-    resolution: {integrity: sha512-aMGxQFXh97KAqHf6owcXCZVFDqq7SUnTaeGWgduHBf1Aji1+m4j+HKR28IMzoWtMzItxqZFbauQYEC6UIwIK9A==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/core-interfaces@0.2.9':
-    resolution: {integrity: sha512-kHzsbQ+fyb/Sl96OmlqvBJUa25a/69YQmQlYIFx3+Lk69hDtGcpdQsNygNsbAxQJ1oOCkFQ7TjK9Ny6KDeMyQg==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/core@0.10.19':
-    resolution: {integrity: sha512-yctmGm8kFZHntyGfCCnJSyGNd1R7Rv1HYE9KVOfnVImkWZwqPPuaYNrq2zaySig0nSopE5Pq4eGMwrOpfqSLJA==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/file-wrapper@0.3.5':
-    resolution: {integrity: sha512-N/iItJrHrKomLXyL5CDZSIGwRLYcO8sO08VueQHr0RFRkkeT4ZoEKSP5L/c4SfXtImCFWvoVXpHtG28w6pnYzQ==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/http-headers@0.3.5':
-    resolution: {integrity: sha512-S5BXweey0RvmRxVQIoG+UWrztxmrHq8nXXJPBljH17/5iPtOGlxNylsUxEYHLY2EaV2LCHqp6zHlk47CUUEHiQ==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/http-query@0.3.5':
-    resolution: {integrity: sha512-n6GG8TA/XP+PaLpWLta/6e0NUou0yahtDF7YY+8G5YXJ47OCP0i4rD90OKrwLlyyDwEgdw1pAuikVuLbaSMCgA==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/json-bigint@1.2.0':
-    resolution: {integrity: sha512-+bmVzYMdZu0Ya5L+my4FXFUih54OvQA/qlZsFOYdOoostyUuB27UDrVWQs/WVCmS0ADdo5vTU0eeTrrBkHoySw==}
-
-  '@apimatic/oauth-adapters@0.4.11':
-    resolution: {integrity: sha512-GiAF+SVQpOM6rfJDvdrwXQohZNSad2MI/Nn6XLVQU4YoIsj4IM7GxTkn5EX86Unzm8ER+MJ1ynICnK/I0tUQlQ==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
-
-  '@apimatic/schema@0.7.16':
-    resolution: {integrity: sha512-4u855UE/A3/8t9vqxI4Ma8wpVKCvWtXHQGaOnThdeE8ZDoo4Ha+R+jmxi3DoOkDWNeGe2vyEVDP1xGyxvjuZ2g==}
-    engines: {node: '>=14.15.0 || >=16.0.0'}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -882,22 +823,6 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
-
-  '@paypal/paypal-js@8.2.0':
-    resolution: {integrity: sha512-hLg5wNORW3WiyMiRNJOm6cN2IqjPlClpxd971bEdm0LNpbbejQZYtesb0/0arTnySSbGcxg7MxjkZ/N5Z5qBNQ==}
-
-  '@paypal/paypal-server-sdk@1.1.0':
-    resolution: {integrity: sha512-MaJQmSVpQb5nEeZWZDTtGRxeaHj6O51G9Olmm3zQ5E4XNgR4emAI08CKC2ZPhBldVoxAoBVjLyvKjGV5lC1n2Q==}
-    engines: {node: '>=14.17.0'}
-
-  '@paypal/react-paypal-js@8.8.3':
-    resolution: {integrity: sha512-H5s3EU7S+RFaLad3BmV9nSAmD3iaJI14mCtbngpqMm4ruMNGHjOTaSTX3jAAk/ghmzGAda2GMfyiYondO4F21Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18 || ^19
-      react-dom: ^16.8.0 || ^17 || ^18 || ^19
-
-  '@paypal/sdk-constants@1.0.154':
-    resolution: {integrity: sha512-Bd5gzP23s/lbj2VZYVpwu+aOE9ZWa6O3DmKSlWe9ymnpI5S8UIppllh3bxqsGH39mOtO7ZzCKsiqbqot+yYeIw==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -2195,18 +2120,12 @@ packages:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
 
-  detect-browser@5.3.0:
-    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
-
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
 
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
-
-  detect-node@2.1.0:
-    resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
 
   didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
@@ -2723,9 +2642,6 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hi-base32@0.5.1:
-    resolution: {integrity: sha512-EmBBpvdYh/4XxsnUybsPag6VikPYnN30td+vQk+GI3qpahVEG9+gTkG0aXVxTjBqQ5T6ijbWIu77O+C5WFWsnA==}
-
   humanize-ms@1.2.1:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
 
@@ -2964,9 +2880,6 @@ packages:
   json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
-  json-ptr@3.1.1:
-    resolution: {integrity: sha512-SiSJQ805W1sDUCD1+/t1/1BIrveq2Fe9HJqENxZmMCILmrPI7WhS/pePpIOx85v6/H2z1Vy7AI08GV2TzfXocg==}
-
   json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
@@ -3031,12 +2944,6 @@ packages:
 
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
-
-  lodash.defaultsdeep@4.6.1:
-    resolution: {integrity: sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==}
-
-  lodash.flatmap@4.5.0:
-    resolution: {integrity: sha512-/OcpcAGWlrZyoHGeHh3cAoa6nGdX6QYtmzNP84Jqol6UEQQ2gIaU3H+0eICcjcKGl0/XF8LWOujNn9lffsnaOg==}
 
   lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
@@ -3447,9 +3354,6 @@ packages:
       typescript:
         optional: true
 
-  promise-polyfill@8.3.0:
-    resolution: {integrity: sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==}
-
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
@@ -3468,9 +3372,6 @@ packages:
 
   raf-schd@4.0.3:
     resolution: {integrity: sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==}
-
-  razorpay@2.9.6:
-    resolution: {integrity: sha512-zsHAQzd6e1Cc6BNoCNZQaf65ElL6O6yw0wulxmoG5VQDr363fZC90Mp1V5EktVzG45yPyNomNXWlf4cQ3622gQ==}
 
   react-countup@6.5.3:
     resolution: {integrity: sha512-udnqVQitxC7QWADSPDOxVWULkLvKUWrDapn5i53HE4DPRVgs+Y5rr4bo25qEl8jSh+0l2cToJgGMx+clxPM3+w==}
@@ -3501,12 +3402,6 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-
-  react-paypal-button-v2@2.6.3:
-    resolution: {integrity: sha512-Kt0QxWjZn+RnIbbFPHDfH8iHwMqe/jG5+SkKElEJ0Fg+CM9yeK37y8zQW97l5C9P9D1yPacW5YNAnuxmI9uS9w==}
-    peerDependencies:
-      react: ^0.14.6 || 15.x.x || 16.x.x || 17.x.x
-      react-dom: ^0.14.6 || 15.x.x || 16.x.x || 17.x.x
 
   react-phone-number-input@3.4.12:
     resolution: {integrity: sha512-Raob77KdtLGm49iC6nuOX9qy6Mg16idkgC7Y1mHmvG2WBYoauHpzxYNlfmFskQKeiztrJIwPhPzBhjFwjenNCA==}
@@ -3921,9 +3816,6 @@ packages:
   tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
 
-  tiny-warning@1.0.3:
-    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
-
   tinyexec@1.0.1:
     resolution: {integrity: sha512-5uC6DDlmeqiOwCPmK9jMSdOuZTh8bU39Ys6yidB+UTt5hfZUPGAypSgFRiEp+jbi9qH40BLDvy85jIU88wKSqw==}
 
@@ -4153,88 +4045,6 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
-
-  '@apimatic/authentication-adapters@0.5.8':
-    dependencies:
-      '@apimatic/core-interfaces': 0.2.9
-      '@apimatic/http-headers': 0.3.5
-      '@apimatic/http-query': 0.3.5
-      tslib: 2.8.1
-
-  '@apimatic/axios-client-adapter@0.3.9':
-    dependencies:
-      '@apimatic/convert-to-stream': 0.1.5
-      '@apimatic/core-interfaces': 0.2.9
-      '@apimatic/file-wrapper': 0.3.5
-      '@apimatic/http-headers': 0.3.5
-      '@apimatic/http-query': 0.3.5
-      '@apimatic/json-bigint': 1.2.0
-      '@apimatic/schema': 0.7.16
-      axios: 1.10.0
-      detect-browser: 5.3.0
-      detect-node: 2.1.0
-      form-data: 4.0.3
-      lodash.flatmap: 4.5.0
-      tiny-warning: 1.0.3
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - debug
-
-  '@apimatic/convert-to-stream@0.0.2': {}
-
-  '@apimatic/convert-to-stream@0.1.5':
-    dependencies:
-      tslib: 2.8.1
-
-  '@apimatic/core-interfaces@0.2.9':
-    dependencies:
-      '@apimatic/file-wrapper': 0.3.5
-      tslib: 2.8.1
-
-  '@apimatic/core@0.10.19':
-    dependencies:
-      '@apimatic/convert-to-stream': 0.0.2
-      '@apimatic/core-interfaces': 0.2.9
-      '@apimatic/file-wrapper': 0.3.5
-      '@apimatic/http-headers': 0.3.5
-      '@apimatic/http-query': 0.3.5
-      '@apimatic/json-bigint': 1.2.0
-      '@apimatic/schema': 0.7.16
-      detect-browser: 5.3.0
-      detect-node: 2.1.0
-      form-data: 4.0.3
-      json-ptr: 3.1.1
-      lodash.defaultsdeep: 4.6.1
-      lodash.flatmap: 4.5.0
-      tiny-warning: 1.0.3
-      tslib: 2.8.1
-
-  '@apimatic/file-wrapper@0.3.5':
-    dependencies:
-      tslib: 2.8.1
-
-  '@apimatic/http-headers@0.3.5':
-    dependencies:
-      tslib: 2.8.1
-
-  '@apimatic/http-query@0.3.5':
-    dependencies:
-      '@apimatic/file-wrapper': 0.3.5
-      tslib: 2.8.1
-
-  '@apimatic/json-bigint@1.2.0': {}
-
-  '@apimatic/oauth-adapters@0.4.11':
-    dependencies:
-      '@apimatic/core-interfaces': 0.2.9
-      '@apimatic/file-wrapper': 0.3.5
-      '@apimatic/http-headers': 0.3.5
-      '@apimatic/schema': 0.7.16
-      tslib: 2.8.1
-
-  '@apimatic/schema@0.7.16':
-    dependencies:
-      tslib: 2.8.1
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -4871,31 +4681,6 @@ snapshots:
       fastq: 1.19.1
 
   '@nolyfill/is-core-module@1.0.39': {}
-
-  '@paypal/paypal-js@8.2.0':
-    dependencies:
-      promise-polyfill: 8.3.0
-
-  '@paypal/paypal-server-sdk@1.1.0':
-    dependencies:
-      '@apimatic/authentication-adapters': 0.5.8
-      '@apimatic/axios-client-adapter': 0.3.9
-      '@apimatic/core': 0.10.19
-      '@apimatic/oauth-adapters': 0.4.11
-      '@apimatic/schema': 0.7.16
-    transitivePeerDependencies:
-      - debug
-
-  '@paypal/react-paypal-js@8.8.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
-    dependencies:
-      '@paypal/paypal-js': 8.2.0
-      '@paypal/sdk-constants': 1.0.154
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-
-  '@paypal/sdk-constants@1.0.154':
-    dependencies:
-      hi-base32: 0.5.1
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -6236,14 +6021,10 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  detect-browser@5.3.0: {}
-
   detect-libc@2.0.4:
     optional: true
 
   detect-node-es@1.1.0: {}
-
-  detect-node@2.1.0: {}
 
   didyoumean@1.2.2: {}
 
@@ -6952,8 +6733,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hi-base32@0.5.1: {}
-
   humanize-ms@1.2.1:
     dependencies:
       ms: 2.1.3
@@ -7185,8 +6964,6 @@ snapshots:
 
   json-parse-even-better-errors@2.3.1: {}
 
-  json-ptr@3.1.1: {}
-
   json-schema-traverse@0.4.1: {}
 
   json-schema-traverse@1.0.0: {}
@@ -7260,10 +7037,6 @@ snapshots:
       p-locate: 6.0.0
 
   lodash.camelcase@4.3.0: {}
-
-  lodash.defaultsdeep@4.6.1: {}
-
-  lodash.flatmap@4.5.0: {}
 
   lodash.isplainobject@4.0.6: {}
 
@@ -7616,8 +7389,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  promise-polyfill@8.3.0: {}
-
   prop-types@15.8.1:
     dependencies:
       loose-envify: 1.4.0
@@ -7633,12 +7404,6 @@ snapshots:
   queue-microtask@1.2.3: {}
 
   raf-schd@4.0.3: {}
-
-  razorpay@2.9.6:
-    dependencies:
-      axios: 1.10.0
-    transitivePeerDependencies:
-      - debug
 
   react-countup@6.5.3(react@19.1.0):
     dependencies:
@@ -7666,13 +7431,6 @@ snapshots:
       react: 19.1.0
 
   react-is@16.13.1: {}
-
-  react-paypal-button-v2@2.6.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      prop-types: 15.8.1
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      rimraf: 3.0.2
 
   react-phone-number-input@3.4.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
@@ -8172,8 +7930,6 @@ snapshots:
   through@2.3.8: {}
 
   tiny-invariant@1.3.3: {}
-
-  tiny-warning@1.0.3: {}
 
   tinyexec@1.0.1: {}
 
