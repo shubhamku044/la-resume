@@ -3,10 +3,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   devIndicators: {
-    buildActivityPosition: 'bottom-right',
-    buildActivity: true,
-    appIsrStatus: true,
+    position: 'bottom-left',
   },
+  turbopack: {},
   images: {
     domains: ['avatars.githubusercontent.com', 'imagekit.io'],
     remotePatterns: [

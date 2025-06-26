@@ -1,8 +1,16 @@
-import { dodopayments } from '@/lib/dodopayments';
+import { dodopayments, isDodoPaymentsAvailable } from '@/lib/dodopayments';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   try {
+    // Check if DodoPayments is properly configured
+    if (!isDodoPaymentsAvailable() || !dodopayments) {
+      return NextResponse.json(
+        { error: 'Payment service is not configured. Please contact support.' },
+        { status: 503 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('productId');
     const redirectUrl = searchParams.get('redirect_url');

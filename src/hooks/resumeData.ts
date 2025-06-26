@@ -30,24 +30,46 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
   const params = useParams();
   const { slug } = params;
 
+  // Add safety checks and error handling for RTK Query
+  const shouldSkip = !clerkId || !slug;
+
   const {
     data: existingResume,
     isLoading: isFetching,
     isError,
+    error,
   } = useGetResumeBySlugQuery(
-    { clerk_id: clerkId!, slug: slug as string },
-    { skip: !clerkId, refetchOnMountOrArgChange: true }
+    {
+      clerk_id: clerkId || '',
+      slug: (slug as string) || '',
+    },
+    {
+      skip: shouldSkip,
+      refetchOnMountOrArgChange: true,
+      // Add error handling options for Redux Toolkit 2.8.2 compatibility
+      selectFromResult: ({ data, isLoading, isError, error }) => ({
+        data,
+        isLoading,
+        isError,
+        error,
+      }),
+    }
   );
+
+  // Safe data access with fallback
   const initialData = existingResume?.data
     ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
     : resumeSampleData;
+
   const hasPaid = existingResume?.hasPaid || false;
+
   return {
     resumeFunc,
     initialData,
     existingResume,
     isFetching,
     isError,
+    error,
     imageUrl,
     latexData,
     loading,

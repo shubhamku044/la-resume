@@ -12,6 +12,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import type { Viewport } from 'next';
 import Favicon from '@/components/favicon';
 import { ThemeProvider } from '@/components/landing/theme-provider';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -41,6 +42,14 @@ export const metadata: Metadata = {
     'la resume',
     'la resume tech',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-dark.ico', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon-light.ico', media: '(prefers-color-scheme: dark)' },
+    ],
+    shortcut: '/favicon-dark.ico',
+  },
   openGraph: {
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
     description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
@@ -102,12 +111,6 @@ export default async function RootLayout({
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang={locale}>
-        <head>
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
-          <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
-          <link rel="shortcut icon" href="/favicon-dark.ico" />
-        </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <ThemeProvider>
             <Favicon />
@@ -120,8 +123,8 @@ export default async function RootLayout({
           </ThemeProvider>
           <Analytics />
           <SpeedInsights />
+          <GoogleAnalytics gaId="G-DQR3LS5N69" />
         </body>
-        <GoogleAnalytics gaId="G-DQR3LS5N69" />
       </html>
     </ClerkProvider>
   );

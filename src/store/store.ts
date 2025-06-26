@@ -27,10 +27,20 @@ import {
   jobApi,
   boardApi,
 } from './services';
+
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['userDetails', 'personalInfo'],
+  blacklist: [
+    'userDetails',
+    'personalInfo',
+    'templateApi',
+    'personalInfoApi',
+    'statsApi',
+    'paymentApi',
+    'jobApi',
+    'boardApi',
+  ],
 };
 
 const rootReducers = combineReducers({
@@ -57,21 +67,39 @@ export const store = configureStore({
     return getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        // Ignore RTK Query state paths for serialization checks
+        ignoredPaths: [
+          'templateApi',
+          'personalInfoApi',
+          'statsApi',
+          'userDetailsApi',
+          'paymentApi',
+          'jobApi',
+          'boardApi',
+        ],
+      },
+      // Disable immutability check for RTK Query cache
+      immutableCheck: {
+        ignoredPaths: [
+          'templateApi',
+          'personalInfoApi',
+          'statsApi',
+          'userDetailsApi',
+          'paymentApi',
+          'jobApi',
+          'boardApi',
+        ],
       },
     })
       .concat(userDetailsApi.middleware)
       .concat(personalInfoApi.middleware)
       .concat(templateApi.middleware)
-      .concat(statsApi.middleware)
       .concat(paymentApi.middleware)
       .concat(jobApi.middleware)
       .concat(statsApi.middleware)
-      .concat(boardApi.middleware)
-      .concat(() => (next) => (action) => {
-        console.log('RTK Query action: ', action);
-        return next(action);
-      });
+      .concat(boardApi.middleware);
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type RootState = ReturnType<typeof store.getState>;
