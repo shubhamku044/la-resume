@@ -1,32 +1,32 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REGISTER,
-  PURGE,
-  PERSIST,
   PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
-  educationReducer,
-  personalInfoReducer,
-  skillsReducer,
-  projectReducer,
-  experienceReducer,
-  userDetailsReducer,
-} from './slices';
-import {
+  boardApi,
+  jobApi,
+  paymentApi,
   personalInfoApi,
   statsApi,
-  userDetailsApi,
   templateApi,
-  paymentApi,
-  jobApi,
-  boardApi,
+  userDetailsApi,
 } from './services';
+import {
+  educationReducer,
+  experienceReducer,
+  personalInfoReducer,
+  projectReducer,
+  skillsReducer,
+  userDetailsReducer,
+} from './slices';
 
 const persistConfig = {
   key: 'root',
@@ -67,7 +67,6 @@ export const store = configureStore({
     return getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        // Ignore RTK Query state paths for serialization checks
         ignoredPaths: [
           'templateApi',
           'personalInfoApi',
@@ -78,7 +77,6 @@ export const store = configureStore({
           'boardApi',
         ],
       },
-      // Disable immutability check for RTK Query cache
       immutableCheck: {
         ignoredPaths: [
           'templateApi',
