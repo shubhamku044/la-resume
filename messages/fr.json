@@ -128,7 +128,7 @@
       "button2": "Créez Votre CV Maintenant"
     },
     "developers": {
-      "title": "Construit avec ❤️ par",
+      "title": "Construit avec ❤️ par",
       "details": {
         "dev1": {
           "name": "Shubham Kumar",
@@ -143,28 +143,28 @@
     },
     "faq": {
       "title": "Foire Aux Questions",
-      "subtitle": "Vous avez des questions ? Nous avons les réponses",
+      "subtitle": "Vous avez des questions ? Nous avons les réponses",
       "description": "Trouvez les réponses aux questions courantes sur notre créateur de CV",
       "question1": {
-        "question": "Ce créateur de CV est-il vraiment gratuit ?",
+        "question": "Ce créateur de CV est-il vraiment gratuit ?",
         "answer": "Oui, nos fonctionnalités de base sont entièrement gratuites. Vous pouvez créer, modifier et télécharger votre CV sans aucun paiement requis."
       },
       "question2": {
-        "question": "Les modèles sont-ils compatibles avec les ATS ?",
-        "answer": "Absolument ! Tous nos modèles sont conçus pour passer les systèmes de suivi des candidatures haut la main."
+        "question": "Les modèles sont-ils compatibles avec les ATS ?",
+        "answer": "Absolument ! Tous nos modèles sont conçus pour passer les systèmes de suivi des candidatures haut la main."
       },
       "question3": {
-        "question": "Puis-je créer plusieurs CV ?",
+        "question": "Puis-je créer plusieurs CV ?",
         "answer": "Oui, vous pouvez créer plusieurs versions de votre CV pour différentes candidatures et secteurs d'activité."
       },
       "question4": {
-        "question": "Comment puis-je exporter mon CV ?",
+        "question": "Comment puis-je exporter mon CV ?",
         "answer": "Vous pouvez télécharger votre CV aux formats PDF, DOCX ou TXT en un seul clic depuis l'éditeur."
       }
     },
     "contact": {
       "badge": "Contactez-nous",
-      "heading": "Vous avez des questions ou des commentaires ?",
+      "heading": "Vous avez des questions ou des commentaires ?",
       "description": "Nous serions ravis de vous entendre. Envoyez-nous un message et nous vous répondrons dès que possible.",
       "contact_info_title": "Informations de Contact",
       "website_label": "la-resume.tech",
@@ -175,12 +175,12 @@
         "email_label": "Email",
         "email_placeholder": "Votre email",
         "subject_label": "Sujet",
-        "subject_placeholder": "Comment pouvons-nous vous aider ?",
+        "subject_placeholder": "Comment pouvons-nous vous aider ?",
         "message_label": "Message",
         "message_placeholder": "Votre message...",
         "button": "Envoyer le Message"
       },
-      "toast_success": "Message envoyé avec succès ! Nous vous répondrons bientôt."
+      "toast_success": "Message envoyé avec succès ! Nous vous répondrons bientôt."
     },
     "footer": {
       "brand": "LaResume",
@@ -220,7 +220,7 @@
   },
   "deleteModal": {
     "title": "Confirmer la Suppression",
-    "message": "Êtes-vous sûr de vouloir supprimer <name></name> ? Cette action est irréversible."
+    "message": "Êtes-vous sûr de vouloir supprimer <name></name> ? Cette action est irréversible."
   },
   "language": {
     "en": "🇬🇧 Anglais",
@@ -258,16 +258,16 @@
   },
   "contact": {
     "title": "Contactez-nous",
-    "description": "Nous sommes là pour vous aider ! N'hésitez pas à nous contacter pour toute question, commentaire ou demande d'assistance. Notre équipe vous répondra dans les plus brefs délais.",
+    "description": "Nous sommes là pour vous aider ! N'hésitez pas à nous contacter pour toute question, commentaire ou demande d'assistance. Notre équipe vous répondra dans les plus brefs délais.",
     "contactInformation": "Nos Informations de Contact",
-    "merchantName": "<strong>Nom de l'entité juridique du marchand :</strong> Priyabrata Mondal",
-    "registeredAddress": "<strong>Adresse enregistrée :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
-    "operationalAddress": "<strong>Adresse opérationnelle :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
-    "phoneNumber": "<strong>Numéro de Téléphone :</strong> +91 62975 59892",
-    "email": "<strong>Email :</strong> laresumetech@gmail.com",
+    "merchantName": "<strong>Nom de l'entité juridique du marchand :</strong> Priyabrata Mondal",
+    "registeredAddress": "<strong>Adresse enregistrée :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
+    "operationalAddress": "<strong>Adresse opérationnelle :</strong> Benachity, West Bengal, Inde, Code Postal : 713213",
+    "phoneNumber": "<strong>Numéro de Téléphone :</strong> +91 62975 59892",
+    "email": "<strong>Email :</strong> laresumetech@gmail.com",
     "sendMessage": "Envoyez-nous un Message",
     "toast": {
-      "success": "Message envoyé avec succès !",
+      "success": "Message envoyé avec succès !",
       "error": "Échec de l'envoi du message"
     },
     "form": {
@@ -282,7 +282,7 @@
     },
     "mapLocation": "Localisation sur la Carte",
     "supportHours": "Heures d'Assistance Client",
-    "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
+    "timing": "<strong>Tous les jours :</strong> 9h00 - 18h00"
   },
   "supportService": {
     "title": "Soutenez Notre Service",
@@ -299,6 +299,61 @@
       "cancel": "Annuler",
       "confirm": "Confirmer",
       "pay": "Payer {price}"
+    }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Utilisé dans plus de 50 pays"
+    },
+    "hero": {
+      "title": "Créez votre CV de Rêve en Minutes",
+      "subtitle": "Rejoignez des milliers de professionnels qui ont décroché leur emploi de rêve avec notre créateur de CV alimenté par l'IA. Modèles professionnels, compatibles ATS et téléchargements instantanés."
+    },
+    "stats": {
+      "resumesCreated": "CV Créés",
+      "happyUsers": "Utilisateurs Satisfaits",
+      "templates": "Modèles",
+      "countries": "Pays"
+    },
+    "features": {
+      "title": "Pourquoi les professionnels nous choisissent",
+      "aiPowered": {
+        "title": "Rédaction alimentée par l'IA",
+        "description": "Suggestions intelligentes pour améliorer le contenu de votre CV"
+      },
+      "atsFriendly": {
+        "title": "Compatible ATS",
+        "description": "Optimisé pour les systèmes de suivi des candidatures"
+      },
+      "instantDownload": {
+        "title": "Téléchargement Instantané",
+        "description": "PDF prêt en quelques secondes, pas d'attente"
+      },
+      "privacySecure": {
+        "title": "Confidentialité Sécurisée",
+        "description": "Vos données sont cryptées et protégées"
+      },
+      "freeToStart": "Gratuit pour commencer, aucune carte de crédit requise",
+      "quickCreation": "Créez votre CV en moins de 5 minutes",
+      "secureData": "Vos données sont sécurisées et cryptées"
+    },
+    "trustIndicators": {
+      "trustedBy": "Approuvé par des professionnels chez"
+    },
+    "signInCard": {
+      "welcomeBack": "Bon retour !",
+      "subtitle": "Connectez-vous pour continuer à créer votre CV professionnel"
+    },
+    "legal": {
+      "agreementText": "En vous connectant, vous acceptez nos",
+      "termsOfService": "Conditions d'Utilisation",
+      "and": "et",
+      "privacyPolicy": "Politique de Confidentialité"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Fonctionne parfaitement sur tous les appareils",
+      "mobile": "Mobile",
+      "desktop": "Bureau"
     }
   }
 }

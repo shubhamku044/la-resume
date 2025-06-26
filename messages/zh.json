@@ -300,5 +300,60 @@
       "confirm": "确认",
       "pay": "支付{price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "在50多个国家使用"
+    },
+    "hero": {
+      "title": "几分钟内创建您的梦想简历",
+      "subtitle": "加入数千名通过我们AI驱动的简历构建器获得梦想工作的专业人士。专业模板、ATS友好、即时下载。"
+    },
+    "stats": {
+      "resumesCreated": "已创建简历",
+      "happyUsers": "满意用户",
+      "templates": "模板",
+      "countries": "国家"
+    },
+    "features": {
+      "title": "专业人士选择我们的原因",
+      "aiPowered": {
+        "title": "AI驱动写作",
+        "description": "智能建议改善您的简历内容"
+      },
+      "atsFriendly": {
+        "title": "ATS友好",
+        "description": "为申请人跟踪系统优化"
+      },
+      "instantDownload": {
+        "title": "即时下载",
+        "description": "PDF在几秒内就绪，无需等待"
+      },
+      "privacySecure": {
+        "title": "隐私安全",
+        "description": "您的数据经过加密和保护"
+      },
+      "freeToStart": "免费开始，无需信用卡",
+      "quickCreation": "在5分钟内创建您的简历",
+      "secureData": "您的数据安全且加密"
+    },
+    "trustIndicators": {
+      "trustedBy": "专业人士信赖于"
+    },
+    "signInCard": {
+      "welcomeBack": "欢迎回来！",
+      "subtitle": "登录以继续创建您的专业简历"
+    },
+    "legal": {
+      "agreementText": "通过登录，您同意我们的",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "在所有设备上完美运行",
+      "mobile": "移动设备",
+      "desktop": "桌面"
+    }
   }
 }

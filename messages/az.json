@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Support Our Service",
-    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we’d truly appreciate your support.",
+    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we'd truly appreciate your support.",
     "downloadConfirmation": {
       "title": "Yükləməni Təsdiqləyin",
       "description": "Siz həqiqətən CV-ni {format} formatında yükləmək istəyirsiniz?"
@@ -299,6 +299,61 @@
       "cancel": "Ləğv et",
       "confirm": "Təsdiq et",
       "pay": "{price} ödə"
+    }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "50+ ölkədə istifadə olunur"
+    },
+    "hero": {
+      "title": "Dəqiqələr ərzində Arzuladığınız CV-ni Yaradın",
+      "subtitle": "AI-dəstəkli CV qurucumuzla arzuladığı işi əldə edən minlərlə peşəkara qoşulun. Peşəkar şablonlar, ATS-uyğun və dərhal yükləmə."
+    },
+    "stats": {
+      "resumesCreated": "Yaradılan CV-lər",
+      "happyUsers": "Məmnun İstifadəçilər",
+      "templates": "Şablonlar",
+      "countries": "Ölkələr"
+    },
+    "features": {
+      "title": "Peşəkarlar nə üçün bizi seçir",
+      "aiPowered": {
+        "title": "AI-Dəstəkli Yazı",
+        "description": "CV məzmununuzu yaxşılaşdırmaq üçün ağıllı təkliflər"
+      },
+      "atsFriendly": {
+        "title": "ATS-Uyğun",
+        "description": "Müraciət izləmə sistemləri üçün optimallaşdırılmış"
+      },
+      "instantDownload": {
+        "title": "Dərhal Yükləmə",
+        "description": "PDF saniyələrdə hazır, gözləmə yoxdur"
+      },
+      "privacySecure": {
+        "title": "Məxfilik Təhlükəsiz",
+        "description": "Məlumatlarınız şifrələnmiş və qorunmuşdur"
+      },
+      "freeToStart": "Başlamaq üçün pulsuz, kredit kartı tələb olunmur",
+      "quickCreation": "CV-nizi 5 dəqiqədən az müddətdə yaradın",
+      "secureData": "Məlumatlarınız təhlükəsiz və şifrələnmişdir"
+    },
+    "trustIndicators": {
+      "trustedBy": "Peşəkarlar tərəfindən güvənilir"
+    },
+    "signInCard": {
+      "welcomeBack": "Yenidən xoş gəlmisiniz!",
+      "subtitle": "Peşəkar CV-nizi qurmağa davam etmək üçün daxil olun"
+    },
+    "legal": {
+      "agreementText": "Daxil olmaqla, bizim",
+      "termsOfService": "Xidmət Şərtlərimiz",
+      "and": "və",
+      "privacyPolicy": "Məxfilik Siyasətimiz"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Bütün cihazlarda mükəmməl işləyir",
+      "mobile": "Mobil",
+      "desktop": "Masaüstü"
     }
   }
 }

@@ -300,5 +300,60 @@
       "confirm": "Bestätigen",
       "pay": "{price} bezahlen"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "In 50+ Ländern verwendet"
+    },
+    "hero": {
+      "title": "Erstellen Sie Ihren Traumlebenslauf in Minuten",
+      "subtitle": "Schließen Sie sich Tausenden von Fachleuten an, die ihren Traumjob mit unserem KI-gestützten Lebenslauf-Builder gefunden haben. Professionelle Vorlagen, ATS-freundlich und sofortige Downloads."
+    },
+    "stats": {
+      "resumesCreated": "Erstellte Lebensläufe",
+      "happyUsers": "Zufriedene Nutzer",
+      "templates": "Vorlagen",
+      "countries": "Länder"
+    },
+    "features": {
+      "title": "Warum Profis uns wählen",
+      "aiPowered": {
+        "title": "KI-unterstütztes Schreiben",
+        "description": "Intelligente Vorschläge zur Verbesserung Ihres Lebenslaufinhalts"
+      },
+      "atsFriendly": {
+        "title": "ATS-freundlich",
+        "description": "Optimiert für Bewerberverfolgungssysteme"
+      },
+      "instantDownload": {
+        "title": "Sofortiger Download",
+        "description": "PDF in Sekunden fertig, kein Warten"
+      },
+      "privacySecure": {
+        "title": "Datenschutz sicher",
+        "description": "Ihre Daten sind verschlüsselt und geschützt"
+      },
+      "freeToStart": "Kostenlos zu starten, keine Kreditkarte erforderlich",
+      "quickCreation": "Erstellen Sie Ihren Lebenslauf in unter 5 Minuten",
+      "secureData": "Ihre Daten sind sicher und verschlüsselt"
+    },
+    "trustIndicators": {
+      "trustedBy": "Vertraut von Fachleuten bei"
+    },
+    "signInCard": {
+      "welcomeBack": "Willkommen zurück!",
+      "subtitle": "Melden Sie sich an, um mit der Erstellung Ihres professionellen Lebenslaufs fortzufahren"
+    },
+    "legal": {
+      "agreementText": "Mit der Anmeldung stimmen Sie unseren",
+      "termsOfService": "Nutzungsbedingungen",
+      "and": "und",
+      "privacyPolicy": "Datenschutzrichtlinie"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Funktioniert perfekt auf allen Geräten",
+      "mobile": "Mobil",
+      "desktop": "Desktop"
+    }
   }
 }

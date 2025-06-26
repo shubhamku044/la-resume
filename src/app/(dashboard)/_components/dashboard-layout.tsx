@@ -1,30 +1,30 @@
 'use client';
-import { useState } from 'react';
+import { LanguageSelectorDropdown } from '@/components';
+import { ThemeToggle } from '@/components/landing/theme-provider';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useGitHubStars } from '@/hooks';
+import { cn } from '@/lib/utils';
 import { UserButton } from '@clerk/nextjs';
 import type { LucideIcon } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
+  Beaker,
   Briefcase,
   Brush,
+  ClipboardList,
   FileText,
   GraduationCap,
   LayoutTemplate,
+  PanelLeft,
   Star,
   Trophy,
   User,
   UserCircle,
-  PanelLeft,
-  ClipboardList,
-  Beaker,
 } from 'lucide-react';
-import { LuGithub } from 'react-icons/lu';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useGitHubStars } from '@/hooks';
-import { LanguageSelectorDropdown } from '@/components';
-import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
-import { ThemeToggle } from '@/components/landing/theme-provider';
+import { useState } from 'react';
+import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -80,9 +80,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen flex-col">
       <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
         <Link
-          href="/templates/resume-templates"
-          onClick={(e) => {
-            e.preventDefault();
+          href="/"
+          onClick={() => {
             document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >

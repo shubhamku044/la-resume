@@ -300,5 +300,60 @@
       "confirm": "Bevestigen",
       "pay": "Betaal {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Gebruikt in 50+ landen"
+    },
+    "hero": {
+      "title": "Maak je Droomcv in Minuten",
+      "subtitle": "Sluit je aan bij duizenden professionals die hun droombaan hebben gekregen met onze AI-aangedreven cv-bouwer. Professionele templates, ATS-vriendelijk en directe downloads."
+    },
+    "stats": {
+      "resumesCreated": "Gemaakte cv's",
+      "happyUsers": "Tevreden Gebruikers",
+      "templates": "Templates",
+      "countries": "Landen"
+    },
+    "features": {
+      "title": "Waarom professionals voor ons kiezen",
+      "aiPowered": {
+        "title": "AI-aangedreven Schrijven",
+        "description": "Slimme suggesties om je cv-inhoud te verbeteren"
+      },
+      "atsFriendly": {
+        "title": "ATS-vriendelijk",
+        "description": "Geoptimaliseerd voor sollicitantvolgsystemen"
+      },
+      "instantDownload": {
+        "title": "Directe Download",
+        "description": "PDF klaar in seconden, geen wachten"
+      },
+      "privacySecure": {
+        "title": "Privacy Veilig",
+        "description": "Je gegevens zijn versleuteld en beschermd"
+      },
+      "freeToStart": "Gratis om te beginnen, geen creditcard vereist",
+      "quickCreation": "Maak je cv in minder dan 5 minuten",
+      "secureData": "Je gegevens zijn veilig en versleuteld"
+    },
+    "trustIndicators": {
+      "trustedBy": "Vertrouwd door professionals bij"
+    },
+    "signInCard": {
+      "welcomeBack": "Welkom terug!",
+      "subtitle": "Log in om door te gaan met het bouwen van je professionele cv"
+    },
+    "legal": {
+      "agreementText": "Door in te loggen ga je akkoord met onze",
+      "termsOfService": "Servicevoorwaarden",
+      "and": "en",
+      "privacyPolicy": "Privacybeleid"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Werkt perfect op alle apparaten",
+      "mobile": "Mobiel",
+      "desktop": "Desktop"
+    }
   }
 }

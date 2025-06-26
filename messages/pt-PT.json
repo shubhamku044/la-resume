@@ -300,5 +300,61 @@
       "confirm": "Confirmar",
       "pay": "Pagar {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Usado em mais de 50 países"
+    },
+    "hero": {
+      "title": "Crie o seu Currículo de Sonho em Minutos",
+      "subtitle": "Junte-se a milhares de profissionais que conseguiram o emprego dos seus sonhos com o nosso criador de currículos alimentado por IA. Modelos profissionais, compatível com ATS e downloads instantâneos."
+    },
+    "stats": {
+      "resumesCreated": "Currículos Criados",
+      "happyUsers": "Utilizadores Felizes",
+      "templates": "Modelos",
+      "countries": "Países"
+    },
+    "features": {
+      "title": "Porque é que os profissionais nos escolhem",
+      "aiPowered": {
+        "title": "Escrita Alimentada por IA",
+        "description": "Sugestões inteligentes para melhorar o conteúdo do seu currículo"
+      },
+      "atsFriendly": {
+        "title": "Compatível com ATS",
+        "description": "Optimizado para sistemas de rastreamento de candidatos"
+      },
+      "instantDownload": {
+        "title": "Download Instantâneo",
+        "description": "PDF pronto em segundos, sem espera"
+      },
+      "privacySecure": {
+        "title": "Privacidade Segura",
+        "description": "Os seus dados são encriptados e protegidos"
+      },
+      "freeToStart": "Grátis para começar, sem cartão de crédito necessário",
+      "quickCreation": "Crie o seu currículo em menos de 5 minutos",
+      "secureData": "Os seus dados são seguros e encriptados"
+    },
+    "trustIndicators": {
+      "trustedBy": "Confiado por profissionais em"
+    },
+    "signInCard": {
+      "welcomeBack": "Bem-vindo de volta!",
+      "subtitle": "Inicie sessão para continuar a criar o seu currículo profissional"
+    },
+
+    "legal": {
+      "agreementText": "Ao iniciar sessão, concorda com os nossos",
+      "termsOfService": "Termos de Serviço",
+      "and": "e",
+      "privacyPolicy": "Política de Privacidade"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Funciona perfeitamente em todos os dispositivos",
+      "mobile": "Móvel",
+      "desktop": "Desktop"
+    }
   }
 }

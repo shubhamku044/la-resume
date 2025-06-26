@@ -1,12 +1,12 @@
 'use client';
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Star, StarIcon } from 'lucide-react';
 import { AnimatedBackground } from '@/components';
-import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, Star, StarIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export const HeroSection = () => {
@@ -62,11 +62,7 @@ export const HeroSection = () => {
               </Button>
             </SignedIn>
             <SignedOut>
-              <SignInButton
-                fallbackRedirectUrl="/templates"
-                signUpFallbackRedirectUrl="/"
-                mode="modal"
-              >
+              <Link href="/sign-in">
                 <Button
                   size="lg"
                   className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
@@ -76,7 +72,7 @@ export const HeroSection = () => {
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
-              </SignInButton>
+              </Link>
             </SignedOut>
             <motion.div className="group relative">
               <Button
@@ -109,7 +105,7 @@ export const HeroSection = () => {
           }}
         >
           <div className="relative overflow-hidden rounded-xl shadow-2xl">
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10"></div>
+            <div className="absolute inset-0 rounded-xl"></div>
             <Image
               alt="Resume Builder Interface"
               className="shadow-lg shadow-purple-300"

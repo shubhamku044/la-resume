@@ -1,14 +1,14 @@
 'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { LuGithub } from 'react-icons/lu';
-import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
-import { Button } from './button';
-import { usePathname } from 'next/navigation';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { LuGithub } from 'react-icons/lu';
 import LanguageSelectorDropdown from '../language-selector-dropdown';
+import { Button } from './button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,16 +40,12 @@ const Header = () => {
           </SignedIn>
           <SignedOut>
             <div className="flex gap-2">
-              <SignInButton
-                fallbackRedirectUrl="/templates"
-                signUpFallbackRedirectUrl="/"
-                mode="modal"
-              >
+              <Link href="/sign-in">
                 <Button variant="outline">Sign In</Button>
-              </SignInButton>
-              <SignUpButton fallbackRedirectUrl="/" mode="modal">
+              </Link>
+              <Link href="/sign-in">
                 <Button>Sign Up</Button>
-              </SignUpButton>
+              </Link>
             </div>
           </SignedOut>
           <Link
@@ -92,16 +88,12 @@ const Header = () => {
               <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
             </SignedIn>
             <SignedOut>
-              <SignInButton
-                fallbackRedirectUrl="/templates"
-                signUpFallbackRedirectUrl="/"
-                mode="modal"
-              >
+              <Link href="/sign-in">
                 <Button variant="outline">Sign In</Button>
-              </SignInButton>
-              <SignUpButton fallbackRedirectUrl="/" mode="modal">
+              </Link>
+              <Link href="/sign-in">
                 <Button>Sign Up</Button>
-              </SignUpButton>
+              </Link>
             </SignedOut>
             <Link
               className="mt-2 rounded-full border border-gray-300 p-2"

@@ -300,5 +300,60 @@
       "confirm": "Conferma",
       "pay": "Paga {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Utilizzato in oltre 50 paesi"
+    },
+    "hero": {
+      "title": "Crea il tuo Curriculum dei Sogni in Minuti",
+      "subtitle": "Unisciti a migliaia di professionisti che hanno ottenuto il lavoro dei loro sogni con il nostro creatore di curriculum alimentato dall'IA. Modelli professionali, compatibili ATS e download istantanei."
+    },
+    "stats": {
+      "resumesCreated": "Curriculum Creati",
+      "happyUsers": "Utenti Felici",
+      "templates": "Modelli",
+      "countries": "Paesi"
+    },
+    "features": {
+      "title": "Perché i professionisti ci scelgono",
+      "aiPowered": {
+        "title": "Scrittura alimentata dall'IA",
+        "description": "Suggerimenti intelligenti per migliorare il contenuto del tuo curriculum"
+      },
+      "atsFriendly": {
+        "title": "Compatibile con ATS",
+        "description": "Ottimizzato per i sistemi di tracciamento dei candidati"
+      },
+      "instantDownload": {
+        "title": "Download Istantaneo",
+        "description": "PDF pronto in secondi, senza attese"
+      },
+      "privacySecure": {
+        "title": "Privacy Sicura",
+        "description": "I tuoi dati sono crittografati e protetti"
+      },
+      "freeToStart": "Gratuito per iniziare, nessuna carta di credito richiesta",
+      "quickCreation": "Crea il tuo curriculum in meno di 5 minuti",
+      "secureData": "I tuoi dati sono sicuri e crittografati"
+    },
+    "trustIndicators": {
+      "trustedBy": "Fidato dai professionisti di"
+    },
+    "signInCard": {
+      "welcomeBack": "Bentornato!",
+      "subtitle": "Accedi per continuare a creare il tuo curriculum professionale"
+    },
+    "legal": {
+      "agreementText": "Accedendo, accetti i nostri",
+      "termsOfService": "Termini di Servizio",
+      "and": "e",
+      "privacyPolicy": "Informativa sulla Privacy"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Funziona perfettamente su tutti i dispositivi",
+      "mobile": "Mobile",
+      "desktop": "Desktop"
+    }
   }
 }
