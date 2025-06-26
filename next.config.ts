@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   devIndicators: {
     position: 'bottom-left',
   },
+  turbopack: {},
   images: {
     domains: ['avatars.githubusercontent.com', 'imagekit.io'],
     remotePatterns: [
