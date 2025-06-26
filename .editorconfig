@@ -7,3 +7,12 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+[*.{ts,tsx,js,jsx}]
+indent_style = space
+indent_size = 2
+charset = utf-8
+
+[*.{json,jsonc}]
+indent_style = space
+indent_size = 2

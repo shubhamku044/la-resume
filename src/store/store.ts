@@ -1,36 +1,46 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REGISTER,
-  PURGE,
-  PERSIST,
   PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
-  educationReducer,
-  personalInfoReducer,
-  skillsReducer,
-  projectReducer,
-  experienceReducer,
-  userDetailsReducer,
-} from './slices';
-import {
+  boardApi,
+  jobApi,
+  paymentApi,
   personalInfoApi,
   statsApi,
-  userDetailsApi,
   templateApi,
-  paymentApi,
-  jobApi,
-  boardApi,
+  userDetailsApi,
 } from './services';
+import {
+  educationReducer,
+  experienceReducer,
+  personalInfoReducer,
+  projectReducer,
+  skillsReducer,
+  userDetailsReducer,
+} from './slices';
+
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['userDetails', 'personalInfo'],
+  blacklist: [
+    'userDetails',
+    'personalInfo',
+    'templateApi',
+    'personalInfoApi',
+    'statsApi',
+    'paymentApi',
+    'jobApi',
+    'boardApi',
+  ],
 };
 
 const rootReducers = combineReducers({
@@ -57,21 +67,37 @@ export const store = configureStore({
     return getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: [
+          'templateApi',
+          'personalInfoApi',
+          'statsApi',
+          'userDetailsApi',
+          'paymentApi',
+          'jobApi',
+          'boardApi',
+        ],
+      },
+      immutableCheck: {
+        ignoredPaths: [
+          'templateApi',
+          'personalInfoApi',
+          'statsApi',
+          'userDetailsApi',
+          'paymentApi',
+          'jobApi',
+          'boardApi',
+        ],
       },
     })
       .concat(userDetailsApi.middleware)
       .concat(personalInfoApi.middleware)
       .concat(templateApi.middleware)
-      .concat(statsApi.middleware)
       .concat(paymentApi.middleware)
       .concat(jobApi.middleware)
       .concat(statsApi.middleware)
-      .concat(boardApi.middleware)
-      .concat(() => (next) => (action) => {
-        console.log('RTK Query action: ', action);
-        return next(action);
-      });
+      .concat(boardApi.middleware);
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type RootState = ReturnType<typeof store.getState>;

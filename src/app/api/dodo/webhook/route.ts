@@ -1,13 +1,26 @@
 import { Webhook } from 'standardwebhooks';
 import { headers } from 'next/headers';
-import { dodopayments } from '@/lib/dodopayments';
+import { dodopayments, isDodoPaymentsAvailable } from '@/lib/dodopayments';
 
-const webhook = new Webhook(process.env.DODO_PAYMENTS_WEBHOOK_KEY!);
+// Handle missing webhook key gracefully
+const webhookKey = process.env.DODO_PAYMENTS_WEBHOOK_KEY;
+const webhook = webhookKey ? new Webhook(webhookKey) : null;
 
 export async function POST(request: Request) {
   const headersList = await headers();
 
   try {
+    // Check if DodoPayments and webhook are properly configured
+    if (!isDodoPaymentsAvailable() || !dodopayments) {
+      console.log('DodoPayments is not configured, skipping webhook processing');
+      return Response.json({ message: 'Payment service not configured' }, { status: 503 });
+    }
+
+    if (!webhook) {
+      console.log('Webhook key is not configured, skipping webhook verification');
+      return Response.json({ message: 'Webhook not configured' }, { status: 503 });
+    }
+
     const rawBody = await request.text();
     const webhookHeaders = {
       'webhook-id': headersList.get('webhook-id') || '',

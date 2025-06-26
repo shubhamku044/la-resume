@@ -1,4 +1,3 @@
-/* eslint-disable */
 'use client';
 
 import { useTheme } from 'next-themes';

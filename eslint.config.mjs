@@ -13,8 +13,8 @@ const eslintConfig = [
   ...compat.extends(
     'next/core-web-vitals',
     'next/typescript',
-    'prettier',
-    'plugin:tailwindcss/recommended'
+    'prettier'
+    // Temporarily removed until stable v4 is released: 'plugin:tailwindcss/recommended'
   ),
   {
     rules: {
