@@ -300,5 +300,77 @@
       "confirm": "Confirmer",
       "pay": "Payer {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Utilisé dans plus de 50 pays"
+    },
+    "hero": {
+      "title": "Créez votre CV de Rêve en Minutes",
+      "subtitle": "Rejoignez des milliers de professionnels qui ont décroché leur emploi de rêve avec notre créateur de CV alimenté par l'IA. Modèles professionnels, compatibles ATS et téléchargements instantanés."
+    },
+    "stats": {
+      "resumesCreated": "CV Créés",
+      "happyUsers": "Utilisateurs Satisfaits",
+      "templates": "Modèles",
+      "countries": "Pays"
+    },
+    "features": {
+      "title": "Pourquoi les professionnels nous choisissent",
+      "aiPowered": {
+        "title": "Rédaction alimentée par l'IA",
+        "description": "Suggestions intelligentes pour améliorer le contenu de votre CV"
+      },
+      "atsFriendly": {
+        "title": "Compatible ATS",
+        "description": "Optimisé pour les systèmes de suivi des candidatures"
+      },
+      "instantDownload": {
+        "title": "Téléchargement Instantané",
+        "description": "PDF prêt en quelques secondes, pas d'attente"
+      },
+      "privacySecure": {
+        "title": "Confidentialité Sécurisée",
+        "description": "Vos données sont cryptées et protégées"
+      },
+      "freeToStart": "Gratuit pour commencer, aucune carte de crédit requise",
+      "quickCreation": "Créez votre CV en moins de 5 minutes",
+      "secureData": "Vos données sont sécurisées et cryptées"
+    },
+    "testimonials": {
+      "sarahChen": {
+        "name": "Sarah Chen",
+        "role": "Ingénieure Logiciel chez Google",
+        "content": "La Resume m'a aidée à décrocher mon emploi de rêve chez Google. Modèles professionnels et suggestions IA !"
+      },
+      "marcusJohnson": {
+        "name": "Marcus Johnson",
+        "role": "Chef de Produit chez Microsoft",
+        "content": "Le meilleur créateur de CV que j'ai utilisé. Des designs épurés et l'optimisation ATS ont fait la différence."
+      },
+      "elenaRodriguez": {
+        "name": "Elena Rodriguez",
+        "role": "Designeuse UX chez Apple",
+        "content": "Beaux modèles et super facile à utiliser. J'ai reçu plusieurs appels d'entretiens !"
+      }
+    },
+    "trustIndicators": {
+      "trustedBy": "Fait confiance par les professionnels chez"
+    },
+    "signInCard": {
+      "welcomeBack": "Bon retour !",
+      "subtitle": "Connectez-vous pour continuer à créer votre CV professionnel"
+    },
+    "legal": {
+      "agreementText": "En vous connectant, vous acceptez nos",
+      "termsOfService": "Conditions d'Utilisation",
+      "and": "et",
+      "privacyPolicy": "Politique de Confidentialité"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Fonctionne parfaitement sur tous les appareils",
+      "mobile": "Mobile",
+      "desktop": "Bureau"
+    }
   }
 }

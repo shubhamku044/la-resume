@@ -1,13 +1,12 @@
 'use client';
-import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from './theme-provider';
-import { FileText, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { FileText, Menu } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import LanguageSelectorDropdown from '../language-selector-dropdown';
+import { ThemeToggle } from './theme-provider';
 
 export function Header() {
   const router = useRouter();
@@ -69,18 +68,14 @@ export function Header() {
             <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
           </SignedIn>
           <SignedOut>
-            <SignInButton
-              fallbackRedirectUrl="/templates"
-              signUpFallbackRedirectUrl="/"
-              mode="modal"
-            >
+            <Link href="/sign-in">
               <Button
                 size="sm"
                 className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex"
               >
                 Get Started
               </Button>
-            </SignInButton>
+            </Link>
           </SignedOut>
 
           <Sheet>
@@ -134,18 +129,11 @@ export function Header() {
                   <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
                 </SignedIn>
                 <SignedOut>
-                  <SignInButton
-                    fallbackRedirectUrl="/templates"
-                    signUpFallbackRedirectUrl="/"
-                    mode="modal"
-                  >
-                    <Button
-                      size="sm"
-                      className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex"
-                    >
+                  <Link href="/sign-in">
+                    <Button size="sm" className="bg-purple-500 text-white hover:bg-purple-600">
                       Get Started
                     </Button>
-                  </SignInButton>
+                  </Link>
                 </SignedOut>
               </nav>
             </SheetContent>

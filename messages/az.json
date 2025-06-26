@@ -300,5 +300,77 @@
       "confirm": "Təsdiq et",
       "pay": "{price} ödə"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "50+ ölkədə istifadə olunur"
+    },
+    "hero": {
+      "title": "Dəqiqələr ərzində Arzuladığınız CV-ni Yaradın",
+      "subtitle": "AI-dəstəkli CV qurucumuzla arzuladığı işi əldə edən minlərlə peşəkara qoşulun. Peşəkar şablonlar, ATS-uyğun və dərhal yükləmə."
+    },
+    "stats": {
+      "resumesCreated": "Yaradılan CV-lər",
+      "happyUsers": "Məmnun İstifadəçilər",
+      "templates": "Şablonlar",
+      "countries": "Ölkələr"
+    },
+    "features": {
+      "title": "Peşəkarlar nə üçün bizi seçir",
+      "aiPowered": {
+        "title": "AI-Dəstəkli Yazı",
+        "description": "CV məzmununuzu yaxşılaşdırmaq üçün ağıllı təkliflər"
+      },
+      "atsFriendly": {
+        "title": "ATS-Uyğun",
+        "description": "Müraciət izləmə sistemləri üçün optimallaşdırılmış"
+      },
+      "instantDownload": {
+        "title": "Dərhal Yükləmə",
+        "description": "PDF saniyələrdə hazır, gözləmə yoxdur"
+      },
+      "privacySecure": {
+        "title": "Məxfilik Təhlükəsiz",
+        "description": "Məlumatlarınız şifrələnmiş və qorunmuşdur"
+      },
+      "freeToStart": "Başlamaq üçün pulsuz, kredit kartı tələb olunmur",
+      "quickCreation": "CV-nizi 5 dəqiqədən az müddətdə yaradın",
+      "secureData": "Məlumatlarınız təhlükəsiz və şifrələnmişdir"
+    },
+    "testimonials": {
+      "sarahChen": {
+        "name": "Sarah Chen",
+        "role": "Google-da Proqram Mühəndisi",
+        "content": "La Resume mənə Google-da arzuladığım işi əldə etməyə kömək etdi. Peşəkar şablonlar və AI təklifləri!"
+      },
+      "marcusJohnson": {
+        "name": "Marcus Johnson",
+        "role": "Microsoft-da Məhsul Meneceri",
+        "content": "İstifadə etdiyim ən yaxşı CV qurucusu. Təmiz dizaynlar və ATS optimallaşdırması fərq yaratdı."
+      },
+      "elenaRodriguez": {
+        "name": "Elena Rodriguez",
+        "role": "Apple-da UX Dizayner",
+        "content": "Gözəl şablonlar və istifadəsi çox asandır. Bir neçə müsahibə çağırışı aldım!"
+      }
+    },
+    "trustIndicators": {
+      "trustedBy": "Peşəkarlar tərəfindən etibar edilir:"
+    },
+    "signInCard": {
+      "welcomeBack": "Yenidən xoş gəlmisiniz!",
+      "subtitle": "Peşəkar CV-nizi qurmağa davam etmək üçün daxil olun"
+    },
+    "legal": {
+      "agreementText": "Daxil olmaqla, bizim",
+      "termsOfService": "Xidmət Şərtlərimiz",
+      "and": "və",
+      "privacyPolicy": "Məxfilik Siyasətimiz"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Bütün cihazlarda mükəmməl işləyir",
+      "mobile": "Mobil",
+      "desktop": "Masaüstü"
+    }
   }
 }

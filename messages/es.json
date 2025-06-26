@@ -300,5 +300,77 @@
       "confirm": "Confirmar",
       "pay": "Pagar {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Usado en más de 50 países"
+    },
+    "hero": {
+      "title": "Crea tu Currículum de Ensueño en Minutos",
+      "subtitle": "Únete a miles de profesionales que consiguieron el trabajo de sus sueños con nuestro creador de currículums potenciado por IA. Plantillas profesionales, compatibles con ATS y descargas instantáneas."
+    },
+    "stats": {
+      "resumesCreated": "Currículums Creados",
+      "happyUsers": "Usuarios Felices",
+      "templates": "Plantillas",
+      "countries": "Países"
+    },
+    "features": {
+      "title": "Por qué los profesionales nos eligen",
+      "aiPowered": {
+        "title": "Escritura Potenciada por IA",
+        "description": "Sugerencias inteligentes para mejorar el contenido de tu currículum"
+      },
+      "atsFriendly": {
+        "title": "Compatible con ATS",
+        "description": "Optimizado para sistemas de seguimiento de candidatos"
+      },
+      "instantDownload": {
+        "title": "Descarga Instantánea",
+        "description": "PDF listo en segundos, sin esperas"
+      },
+      "privacySecure": {
+        "title": "Privacidad Segura",
+        "description": "Tus datos están encriptados y protegidos"
+      },
+      "freeToStart": "Gratis para empezar, no se requiere tarjeta de crédito",
+      "quickCreation": "Crea tu currículum en menos de 5 minutos",
+      "secureData": "Tus datos están seguros y encriptados"
+    },
+    "testimonials": {
+      "sarahChen": {
+        "name": "Sarah Chen",
+        "role": "Ingeniera de Software en Google",
+        "content": "La Resume me ayudó a conseguir el trabajo de mis sueños en Google. ¡Plantillas profesionales y sugerencias de IA!"
+      },
+      "marcusJohnson": {
+        "name": "Marcus Johnson",
+        "role": "Gerente de Producto en Microsoft",
+        "content": "El mejor creador de currículums que he usado. Los diseños limpios y la optimización ATS marcaron la diferencia."
+      },
+      "elenaRodriguez": {
+        "name": "Elena Rodriguez",
+        "role": "Diseñadora UX en Apple",
+        "content": "Plantillas hermosas y súper fácil de usar. ¡Recibí múltiples llamadas para entrevistas!"
+      }
+    },
+    "trustIndicators": {
+      "trustedBy": "Confiado por profesionales en"
+    },
+    "signInCard": {
+      "welcomeBack": "¡Bienvenido de vuelta!",
+      "subtitle": "Inicia sesión para continuar creando tu currículum profesional"
+    },
+    "legal": {
+      "agreementText": "Al iniciar sesión, aceptas nuestros",
+      "termsOfService": "Términos de Servicio",
+      "and": "y",
+      "privacyPolicy": "Política de Privacidad"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Funciona perfectamente en todos los dispositivos",
+      "mobile": "Móvil",
+      "desktop": "Escritorio"
+    }
   }
 }

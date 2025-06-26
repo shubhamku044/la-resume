@@ -300,5 +300,77 @@
       "confirm": "Confirm",
       "pay": "Pay {price}"
     }
+  },
+  "signIn": {
+    "header": {
+      "usedInCountries": "Used in 50+ countries"
+    },
+    "hero": {
+      "title": "Create Your Dream Resume in Minutes",
+      "subtitle": "Join thousands of professionals who landed their dream jobs with our AI-powered resume builder. Professional templates, ATS-friendly, and instant downloads."
+    },
+    "stats": {
+      "resumesCreated": "Resumes Created",
+      "happyUsers": "Happy Users",
+      "templates": "Templates",
+      "countries": "Countries"
+    },
+    "features": {
+      "title": "Why professionals choose us",
+      "freeToStart": "Free to start, no credit card required",
+      "quickCreation": "Create your resume in under 5 minutes",
+      "secureData": "Your data is secure and encrypted",
+      "aiPowered": {
+        "title": "AI-Powered Writing",
+        "description": "Smart suggestions to improve your resume content"
+      },
+      "atsFriendly": {
+        "title": "ATS-Friendly",
+        "description": "Optimized for applicant tracking systems"
+      },
+      "instantDownload": {
+        "title": "Instant Download",
+        "description": "PDF ready in seconds, no waiting"
+      },
+      "privacySecure": {
+        "title": "Privacy Secure",
+        "description": "Your data is encrypted and protected"
+      }
+    },
+    "testimonials": {
+      "sarahChen": {
+        "name": "Sarah Chen",
+        "role": "Software Engineer at Google",
+        "content": "La Resume helped me land my dream job at Google. Professional templates and AI suggestions!"
+      },
+      "marcusJohnson": {
+        "name": "Marcus Johnson",
+        "role": "Product Manager at Microsoft",
+        "content": "The best resume builder I've used. Clean designs and ATS optimization made a difference."
+      },
+      "elenaRodriguez": {
+        "name": "Elena Rodriguez",
+        "role": "UX Designer at Apple",
+        "content": "Beautiful templates and super easy to use. Got multiple interview calls!"
+      }
+    },
+    "trustIndicators": {
+      "trustedBy": "Trusted by professionals at"
+    },
+    "signInCard": {
+      "welcomeBack": "Welcome back!",
+      "subtitle": "Sign in to continue building your professional resume"
+    },
+    "legal": {
+      "agreementText": "By signing in, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "deviceCompatibility": {
+      "worksOnAllDevices": "Works perfectly on all devices",
+      "mobile": "Mobile",
+      "desktop": "Desktop"
+    }
   }
 }
