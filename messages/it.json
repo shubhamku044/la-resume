@@ -337,25 +337,8 @@
       "quickCreation": "Crea il tuo curriculum in meno di 5 minuti",
       "secureData": "I tuoi dati sono sicuri e crittografati"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Ingegnere Software presso Google",
-        "content": "La Resume mi ha aiutato a ottenere il lavoro dei miei sogni presso Google. Modelli professionali e suggerimenti IA!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Product Manager presso Microsoft",
-        "content": "Il miglior creatore di curriculum che abbia mai usato. Design puliti e ottimizzazione ATS hanno fatto la differenza."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "UX Designer presso Apple",
-        "content": "Modelli bellissimi e super facile da usare. Ho ricevuto multiple chiamate per colloqui!"
-      }
-    },
     "trustIndicators": {
-      "trustedBy": "Fidato dai professionisti presso"
+      "trustedBy": "Fidato dai professionisti di"
     },
     "signInCard": {
       "welcomeBack": "Bentornato!",

@@ -337,23 +337,6 @@
       "quickCreation": "Erstellen Sie Ihren Lebenslauf in unter 5 Minuten",
       "secureData": "Ihre Daten sind sicher und verschlüsselt"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Software-Ingenieurin bei Google",
-        "content": "La Resume hat mir geholfen, meinen Traumjob bei Google zu bekommen. Professionelle Vorlagen und KI-Vorschläge!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Produktmanager bei Microsoft",
-        "content": "Der beste Lebenslauf-Builder, den ich verwendet habe. Saubere Designs und ATS-Optimierung machten den Unterschied."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "UX-Designerin bei Apple",
-        "content": "Schöne Vorlagen und super einfach zu verwenden. Ich habe mehrere Vorstellungsgespräche bekommen!"
-      }
-    },
     "trustIndicators": {
       "trustedBy": "Vertraut von Fachleuten bei"
     },

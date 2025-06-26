@@ -337,23 +337,6 @@
         "description": "Your data is encrypted and protected"
       }
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Software Engineer at Google",
-        "content": "La Resume helped me land my dream job at Google. Professional templates and AI suggestions!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Product Manager at Microsoft",
-        "content": "The best resume builder I've used. Clean designs and ATS optimization made a difference."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "UX Designer at Apple",
-        "content": "Beautiful templates and super easy to use. Got multiple interview calls!"
-      }
-    },
     "trustIndicators": {
       "trustedBy": "Trusted by professionals at"
     },

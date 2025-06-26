@@ -286,7 +286,7 @@
   },
   "supportService": {
     "title": "Support Our Service",
-    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we’d truly appreciate your support.",
+    "description": "Running our servers costs us money, and we rely on user support to keep LaResume running smoothly. Your contribution helps us maintain and improve the platform. If you find value in our service, we'd truly appreciate your support.",
     "downloadConfirmation": {
       "title": "Yükləməni Təsdiqləyin",
       "description": "Siz həqiqətən CV-ni {format} formatında yükləmək istəyirsiniz?"
@@ -337,25 +337,8 @@
       "quickCreation": "CV-nizi 5 dəqiqədən az müddətdə yaradın",
       "secureData": "Məlumatlarınız təhlükəsiz və şifrələnmişdir"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Google-da Proqram Mühəndisi",
-        "content": "La Resume mənə Google-da arzuladığım işi əldə etməyə kömək etdi. Peşəkar şablonlar və AI təklifləri!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Microsoft-da Məhsul Meneceri",
-        "content": "İstifadə etdiyim ən yaxşı CV qurucusu. Təmiz dizaynlar və ATS optimallaşdırması fərq yaratdı."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "Apple-da UX Dizayner",
-        "content": "Gözəl şablonlar və istifadəsi çox asandır. Bir neçə müsahibə çağırışı aldım!"
-      }
-    },
     "trustIndicators": {
-      "trustedBy": "Peşəkarlar tərəfindən etibar edilir:"
+      "trustedBy": "Peşəkarlar tərəfindən güvənilir"
     },
     "signInCard": {
       "welcomeBack": "Yenidən xoş gəlmisiniz!",

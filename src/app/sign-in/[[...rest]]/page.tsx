@@ -2,6 +2,7 @@
 
 import LanguageSelectorDropdown from '@/components/language-selector-dropdown';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { reviews } from '@/data/review';
 import { SignIn } from '@clerk/nextjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -22,6 +23,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -60,36 +62,15 @@ export default function SignInPage() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: t('testimonials.sarahChen.name'),
-      role: t('testimonials.sarahChen.role'),
-      content: t('testimonials.sarahChen.content'),
-      rating: 5,
-    },
-    {
-      name: t('testimonials.marcusJohnson.name'),
-      role: t('testimonials.marcusJohnson.role'),
-      content: t('testimonials.marcusJohnson.content'),
-      rating: 5,
-    },
-    {
-      name: t('testimonials.elenaRodriguez.name'),
-      role: t('testimonials.elenaRodriguez.role'),
-      content: t('testimonials.elenaRodriguez.content'),
-      rating: 5,
-    },
-  ];
-
   const companies = ['Google', 'Microsoft', 'Apple', 'Meta', 'Netflix', 'Spotify'];
 
   useEffect(() => {
     setMounted(true);
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      setCurrentTestimonial((prev) => (prev + 1) % reviews.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, []);
 
   if (!mounted) return null;
 
@@ -238,18 +219,24 @@ export default function SignInPage() {
                             <Quote className="h-6 w-6 text-indigo-500 shrink-0 mt-1" />
                             <div className="space-y-3 flex-1">
                               <p className="text-gray-700 dark:text-gray-300 italic leading-relaxed text-sm lg:text-base">
-                                &quot;{testimonials[currentTestimonial].content}&quot;
+                                &quot;{reviews[currentTestimonial].body}&quot;
                               </p>
                               <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-semibold shadow-lg">
-                                  {testimonials[currentTestimonial].name.charAt(0)}
+                                <div className="h-10 w-10 rounded-full overflow-hidden shadow-lg relative">
+                                  <Image
+                                    src={reviews[currentTestimonial].avatar}
+                                    alt={reviews[currentTestimonial].name}
+                                    fill
+                                    className="object-cover"
+                                  />
                                 </div>
                                 <div>
                                   <div className="font-semibold text-gray-900 dark:text-white">
-                                    {testimonials[currentTestimonial].name}
+                                    {reviews[currentTestimonial].name}
                                   </div>
                                   <div className="text-sm text-gray-600 dark:text-gray-400">
-                                    {testimonials[currentTestimonial].role}
+                                    {reviews[currentTestimonial].username} •{' '}
+                                    {reviews[currentTestimonial].social}
                                   </div>
                                 </div>
                               </div>
@@ -270,7 +257,7 @@ export default function SignInPage() {
 
                   {/* Testimonial Dots */}
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center gap-2">
-                    {testimonials.map((_, index) => (
+                    {reviews.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentTestimonial(index)}

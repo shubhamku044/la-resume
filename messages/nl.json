@@ -337,23 +337,6 @@
       "quickCreation": "Maak je cv in minder dan 5 minuten",
       "secureData": "Je gegevens zijn veilig en versleuteld"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Software Engineer bij Google",
-        "content": "La Resume heeft me geholpen mijn droombaan bij Google te krijgen. Professionele templates en AI-suggesties!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Product Manager bij Microsoft",
-        "content": "De beste cv-bouwer die ik heb gebruikt. Strakke ontwerpen en ATS-optimalisatie maakten het verschil."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "UX Designer bij Apple",
-        "content": "Mooie templates en super makkelijk te gebruiken. Ik kreeg meerdere sollicitatiegesprekken!"
-      }
-    },
     "trustIndicators": {
       "trustedBy": "Vertrouwd door professionals bij"
     },

@@ -337,25 +337,8 @@
       "quickCreation": "5分未満で履歴書を作成",
       "secureData": "あなたのデータは安全で暗号化されています"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Googleのソフトウェアエンジニア",
-        "content": "La Resumeのおかげで、Googleで夢の仕事を得ることができました。プロのテンプレートとAI提案が素晴らしい！"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Microsoftのプロダクトマネージャー",
-        "content": "使った中で最高の履歴書ビルダーです。クリーンなデザインとATS最適化が違いを生みました。"
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "AppleのUXデザイナー",
-        "content": "美しいテンプレートで使いやすい。複数の面接の呼び出しを受けました！"
-      }
-    },
     "trustIndicators": {
-      "trustedBy": "以下の企業のプロフェッショナルから信頼"
+      "trustedBy": "専門家に信頼されています"
     },
     "signInCard": {
       "welcomeBack": "お帰りなさい！",

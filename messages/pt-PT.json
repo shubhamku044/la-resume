@@ -337,23 +337,6 @@
       "quickCreation": "Crie o seu currículo em menos de 5 minutos",
       "secureData": "Os seus dados são seguros e encriptados"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "Sarah Chen",
-        "role": "Engenheira de Software na Google",
-        "content": "O La Resume ajudou-me a conseguir o emprego dos meus sonhos na Google. Modelos profissionais e sugestões de IA!"
-      },
-      "marcusJohnson": {
-        "name": "Marcus Johnson",
-        "role": "Gestor de Produto na Microsoft",
-        "content": "O melhor criador de currículos que já usei. Designs limpos e optimização ATS fizeram a diferença."
-      },
-      "elenaRodriguez": {
-        "name": "Elena Rodriguez",
-        "role": "Designer UX na Apple",
-        "content": "Modelos lindos e super fácil de usar. Recebi várias chamadas para entrevistas!"
-      }
-    },
     "trustIndicators": {
       "trustedBy": "Confiado por profissionais em"
     },

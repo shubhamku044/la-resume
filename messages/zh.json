@@ -337,25 +337,8 @@
       "quickCreation": "在5分钟内创建您的简历",
       "secureData": "您的数据安全且加密"
     },
-    "testimonials": {
-      "sarahChen": {
-        "name": "陈莎拉",
-        "role": "谷歌软件工程师",
-        "content": "La Resume帮助我在谷歌获得了梦想工作。专业模板和AI建议太棒了！"
-      },
-      "marcusJohnson": {
-        "name": "马库斯·约翰逊",
-        "role": "微软产品经理",
-        "content": "我使用过的最好的简历构建器。简洁的设计和ATS优化产生了影响。"
-      },
-      "elenaRodriguez": {
-        "name": "埃琳娜·罗德里格斯",
-        "role": "苹果UX设计师",
-        "content": "美丽的模板，超级易用。我收到了多个面试电话！"
-      }
-    },
     "trustIndicators": {
-      "trustedBy": "受到以下公司专业人士信赖"
+      "trustedBy": "专业人士信赖于"
     },
     "signInCard": {
       "welcomeBack": "欢迎回来！",
