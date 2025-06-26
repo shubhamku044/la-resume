@@ -42,9 +42,6 @@ export async function POST(request: Request) {
       switch (payload.type) {
         case 'payment.succeeded':
           const paymentDataResp = await dodopayments.payments.retrieve(payload.data.payment_id);
-          //   console.log('-------PAYMENT DATA START ---------');
-          //   console.log(paymentDataResp);
-          //   console.log('-------PAYMENT DATA END ---------');
           const slug = paymentDataResp.metadata.metadata_slug;
           const orderNumber = paymentDataResp.payment_id;
           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/${slug}`, {

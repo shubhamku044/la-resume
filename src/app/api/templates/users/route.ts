@@ -51,18 +51,14 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const { slug } = await req.json();
-    console.log('Deleting resume:', slug);
-    // Validate input
     if (!slug) {
       return NextResponse.json({ error: 'Missing slug in request' }, { status: 400 });
     }
 
     // Search for fileId using file name
     const filename = `name='${slug}'`;
-    // console.log('Searching for file:', filename);
     const folder = process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER || 'resumes';
     const files = await imagekit.listFiles({ searchQuery: filename, path: `/${folder}/` });
-    // console.log('Files:', files);
     if (!files || files.length === 0) {
       return NextResponse.json({ error: 'File not found in ImageKit' }, { status: 404 });
     }

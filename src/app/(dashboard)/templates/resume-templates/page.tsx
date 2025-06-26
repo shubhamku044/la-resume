@@ -58,7 +58,7 @@ export default function ResumeTemplatesPage() {
       }).unwrap();
 
       toast.success('Resume created successfully!');
-      console.log('✅ Saved Resume:', response);
+      console.log('✅ Save Resume Response:', response);
 
       // Navigate to the resume editor with the new slug
       await router.push(`/resume/template/${templateId}/${newSlug}`);

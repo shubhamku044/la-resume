@@ -29,8 +29,6 @@ export async function POST(req: NextRequest) {
     // Parse JSON after signature verification
     const body = JSON.parse(rawBody);
 
-    console.log('Webhook Body:', body);
-
     // Handle the event
     if (eventType === 'order_created') {
       const userId: string | undefined = body?.meta?.custom_data?.user_id;

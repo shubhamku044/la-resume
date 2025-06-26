@@ -17,7 +17,6 @@ interface CertificatesProps {
   setTempData: React.Dispatch<React.SetStateAction<MTeckResumeData>>;
   setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
-console.log('CertificatesSection Rendered');
 
 const CertificatesSection = ({ data, setTempData, setIsChangesSaved }: CertificatesProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,7 +26,6 @@ const CertificatesSection = ({ data, setTempData, setIsChangesSaved }: Certifica
     setTempData((prev) => ({ ...prev, certificates: newOrder }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
-  console.log(data);
   // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);

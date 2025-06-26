@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import type { Middleware } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -51,6 +52,11 @@ const rootReducers = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 
+const rtkLoggerMiddleware: Middleware = (storeAPI) => (next) => (action) => {
+  console.log('RTK Query action:', action, storeAPI);
+  return next(action);
+};
+
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => {
@@ -62,15 +68,11 @@ export const store = configureStore({
       .concat(userDetailsApi.middleware)
       .concat(personalInfoApi.middleware)
       .concat(templateApi.middleware)
-      .concat(statsApi.middleware)
       .concat(paymentApi.middleware)
       .concat(jobApi.middleware)
       .concat(statsApi.middleware)
       .concat(boardApi.middleware)
-      .concat(() => (next) => (action) => {
-        console.log('RTK Query action: ', action);
-        return next(action);
-      });
+      .concat(rtkLoggerMiddleware);
   },
 });
 
