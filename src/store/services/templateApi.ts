@@ -1,7 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { deedyResumeData, MTeckResumeData, Sb2novResumeData } from '@/lib/templates/index';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Define the actual Resume type from the database
 interface Resume {
   id: string;
   title: string;
@@ -21,7 +20,6 @@ export const templateApi = createApi({
   reducerPath: 'templateApi',
   baseQuery: fetchBaseQuery({
     baseUrl: '/api/templates/users',
-    // Add error handling for better compatibility
     prepareHeaders: (headers) => {
       headers.set('Content-Type', 'application/json');
       return headers;
@@ -34,7 +32,6 @@ export const templateApi = createApi({
   endpoints: (builder) => ({
     getResumes: builder.query<Resume[], { clerk_id: string }>({
       query: ({ clerk_id }) => `/${clerk_id}/resume`,
-      // Function-based tags for reliable cache management
       providesTags: (result) =>
         result
           ? [
@@ -46,7 +43,6 @@ export const templateApi = createApi({
 
     getResumeBySlug: builder.query<Resume, { clerk_id: string; slug: string }>({
       query: ({ clerk_id, slug }) => `/${clerk_id}/resume/${slug}`,
-      // Function-based tags
       providesTags: (result) => (result ? [{ type: 'Resume' as const, id: result.id }] : []),
     }),
 
@@ -66,7 +62,6 @@ export const templateApi = createApi({
         method: 'PUT',
         body,
       }),
-      // Function-based invalidation tags
       invalidatesTags: (result) =>
         result
           ? [
@@ -74,24 +69,6 @@ export const templateApi = createApi({
               { type: 'Resume', id: 'LIST' },
             ]
           : [{ type: 'Resume', id: 'LIST' }],
-    }),
-
-    createResume: builder.mutation<
-      Resume,
-      {
-        clerk_id: string;
-        title?: string;
-        type?: string;
-        data: object;
-      }
-    >({
-      query: ({ clerk_id, ...body }) => ({
-        url: `/${clerk_id}/resume`,
-        method: 'POST',
-        body,
-      }),
-      // Always invalidate the list when creating new resumes
-      invalidatesTags: () => [{ type: 'Resume', id: 'LIST' }],
     }),
 
     deleteResume: builder.mutation<void, { clerk_id: string; slug: string }>({
@@ -104,7 +81,7 @@ export const templateApi = createApi({
 
     uploadImage: builder.mutation<{ url: string }, { file: string; fileName: string }>({
       query: ({ file, fileName }) => ({
-        url: '/upload', // You may need to adjust this endpoint
+        url: '',
         method: 'POST',
         body: { file, fileName },
       }),
@@ -112,7 +89,7 @@ export const templateApi = createApi({
 
     deleteImageKitFile: builder.mutation<{ message: string; url: string }, { slug: string }>({
       query: ({ slug }) => ({
-        url: '/delete-image', // You may need to adjust this endpoint
+        url: '/',
         method: 'DELETE',
         body: { slug },
       }),
@@ -120,12 +97,10 @@ export const templateApi = createApi({
   }),
 });
 
-// Export hooks for usage in functional components
 export const {
   useGetResumesQuery,
   useGetResumeBySlugQuery,
   useSaveResumeMutation,
-  useCreateResumeMutation,
   useDeleteResumeMutation,
   useUploadImageMutation,
   useDeleteImageKitFileMutation,
