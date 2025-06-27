@@ -41,14 +41,17 @@ export async function GET(
 /**
  * DELETE: Delete shared resume when a resume is deleted
  */
-export async function DELETE(request: NextRequest, { params }: { params: { shareId: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ shareId: string }> }
+) {
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { shareId } = params;
+    const { shareId } = await params;
     if (!shareId) {
       return NextResponse.json({ error: 'Share ID is required' }, { status: 400 });
     }

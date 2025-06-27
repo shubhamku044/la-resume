@@ -5,9 +5,12 @@ import { NextRequest, NextResponse } from 'next/server';
  * POST: Increment the view count for a shared resume
  * This endpoint is only called once per session per browser
  */
-export async function POST(request: NextRequest, { params }: { params: { shareId: string } }) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ shareId?: string }> }
+) {
   try {
-    const { shareId } = params;
+    const { shareId } = await params;
 
     if (!shareId) {
       return NextResponse.json({ error: 'Share ID is required' }, { status: 400 });
