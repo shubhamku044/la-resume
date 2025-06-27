@@ -75,7 +75,7 @@ export default function SignInPage() {
   if (!mounted) return null;
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
+    <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -108,11 +108,11 @@ export default function SignInPage() {
         </header>
 
         {/* Main Content */}
-        <div className="flex-1 px-3 sm:px-6 lg:px-8 pb-3 overflow-hidden">
+        <div className="flex-1 px-3 sm:px-6 lg:px-8 pb-3 overflow-y-auto scrollbar-hide">
           <div className="mx-auto max-w-7xl h-full">
-            <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 h-full items-center">
+            <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 h-fit min-h-full items-center">
               {/* Left Side - Marketing Content */}
-              <div className="lg:col-span-3 space-y-4 lg:space-y-6 order-2 lg:order-1 overflow-y-auto lg:overflow-visible max-h-[calc(100vh-8rem)] lg:max-h-none">
+              <div className="lg:col-span-3 space-y-4 lg:space-y-6 order-2 lg:order-1 lg:overflow-visible">
                 {/* Hero Text */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
