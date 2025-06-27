@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       file: file, // Base64 file
       fileName: fileName, // Unique file name
       useUniqueFileName: false, // Overwrite if file exists
-      folder: folder, // Optional: Organize files in a folder
+      folder: folder,
     });
 
     // Append a cache-busting timestamp to the URL

@@ -200,3 +200,14 @@ model Note {
   @@index([jobId])
   @@index([userId])
 }
+
+model SharedResume {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  shareId      String   @unique
+  resumeId     String   
+  pdfUrl       String
+  authorName   String
+  createdAt    DateTime @default(now())
+  lastUpdated  DateTime @updatedAt
+  viewCount    Int      @default(0)
+}
