@@ -2,7 +2,6 @@ import imagekit from '@/lib/imagekit';
 import prisma from '@/lib/prisma';
 import { auth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
-import { v4 as uuidv4 } from 'uuid';
 
 /**
  * POST: Create a shareable resume link
@@ -20,11 +19,11 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { resumeId, pdfDataUrl, authorName } = body;
+    const { resumeId, pdfDataUrl, authorName, clerkId } = body;
 
-    if (!resumeId || !pdfDataUrl) {
+    if (!resumeId || !pdfDataUrl || !authorName || !clerkId) {
       return NextResponse.json(
-        { error: 'Missing required fields: resumeId or pdfDataUrl' },
+        { error: 'Missing required fields: resumeId or pdfDataUrl or authorName or clerkId' },
         { status: 400 }
       );
     }
@@ -49,7 +48,7 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(base64Data, 'base64');
 
     // Generate unique ID for the shared resume
-    const shareId = uuidv4();
+    const shareId = resumeId;
 
     // Upload PDF to ImageKit
     const uploadResponse = await imagekit.upload({
@@ -61,7 +60,6 @@ export async function POST(req: NextRequest) {
 
     // Create shared resume record
     const sharedResume = await prisma.$transaction(async (tx) => {
-      // Run prisma generate to update the schema before deployment
       return tx.sharedResume.create({
         data: {
           shareId,
@@ -69,6 +67,7 @@ export async function POST(req: NextRequest) {
           pdfUrl: uploadResponse.url,
           authorName,
           viewCount: 0,
+          userId: clerkId,
         },
       });
     });

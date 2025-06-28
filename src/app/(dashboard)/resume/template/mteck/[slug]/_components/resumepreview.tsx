@@ -1,19 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import { CircularProgress } from '@heroui/progress';
-import Image from 'next/image';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { ResizablePanel } from '@/components/ui/resizable';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { useTranslations } from 'next-intl';
-import { toast } from 'sonner';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,10 +10,25 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { ResizablePanel } from '@/components/ui/resizable';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { ShareModal } from '@/components/ui/share-modal';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useCheckout } from '@/lib/checkoutDodo';
 import { useUser } from '@clerk/nextjs';
 import { Button } from '@heroui/button';
-import { Crown } from 'lucide-react';
-import { useCheckout } from '@/lib/checkoutDodo';
+import { CircularProgress } from '@heroui/progress';
+import { Crown, Share2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useState } from 'react';
+import { toast } from 'sonner';
 interface IProps {
   imageUrl: string | null;
   latexData: string | null;
@@ -63,11 +64,15 @@ const ResumePreview = ({
   const [showDownloadConfirmation, setShowDownloadConfirmation] = useState<boolean>(false);
   const [showPaymentConfirmation, setShowPaymentConfirmation] = useState<boolean>(false);
   const [showFreeDownload, setShowFreeDownload] = useState<boolean>(false);
+  const [showShareModal, setShowShareModal] = useState<boolean>(false);
   const { user } = useUser();
   const userId = user?.id;
   const email = user?.primaryEmailAddress?.emailAddress;
   const fullName = user?.fullName || '';
   const [paymentStarted, setPaymentStarted] = useState(false);
+  const [pdfDataUrl, setPdfDataUrl] = useState<string | null>(null);
+  const [shareId, setShareId] = useState<string | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
 
   const { checkoutProduct } = useCheckout();
   const product: Product = {
@@ -78,6 +83,85 @@ const ResumePreview = ({
     email: email,
     fullName: fullName,
     slug: slug,
+  };
+
+  // Function to generate PDF for sharing without downloading
+  const generatePDFForSharing = async (): Promise<string | null> => {
+    if (!latexData) return null;
+    try {
+      const latexBlob = new Blob([latexData], { type: 'text/plain' });
+      const formData = new FormData();
+      formData.append('latex', latexBlob, 'resume.tex');
+
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('Failed to generate PDF');
+
+      const pdfBlob = await response.blob();
+
+      // Convert blob to base64 data URL for sharing
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(pdfBlob);
+        reader.onloadend = () => {
+          const pdfDataUrl = reader.result as string;
+          setPdfDataUrl(pdfDataUrl);
+          resolve(pdfDataUrl);
+        };
+      });
+    } catch (error) {
+      console.error('Error generating PDF for sharing:', error);
+      return null;
+    }
+  };
+
+  // Function to handle share button click
+  const handleShare = async () => {
+    try {
+      setIsSharing(true);
+      // Check if we already have a share link for this resume
+      const response = await fetch(`/api/sharing/by-resume?resumeId=${slug}`);
+      const data = await response.json();
+
+      // Generate PDF for sharing if not already generated
+      const pdfData = await generatePDFForSharing();
+      if (!pdfData) {
+        toast.error('Failed to generate PDF for sharing');
+        return;
+      }
+
+      if (data.success && data.data) {
+        // Update the existing shared resume with new PDF
+        const updateResponse = await fetch('/api/sharing/update', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            shareId: data.data.shareId,
+            pdfDataUrl: pdfData,
+            resumeId: slug,
+          }),
+        });
+
+        const updateResult = await updateResponse.json();
+        if (updateResult.success) {
+          setShareId(data.data.shareId);
+          setShowShareModal(true);
+        } else {
+          toast.error('Failed to update shared resume');
+        }
+      } else {
+        // No existing share, show the modal which will create a new one
+        setShowShareModal(true);
+      }
+      setIsSharing(false);
+    } catch (error) {
+      console.error('Error handling share:', error);
+      toast.error('Failed to share resume');
+      setIsSharing(false);
+    }
   };
 
   const handleDownloadPDF = async () => {
@@ -96,6 +180,13 @@ const ResumePreview = ({
 
       const pdfBlob = await response.blob();
       const pdfUrl = URL.createObjectURL(pdfBlob);
+
+      // Convert blob to base64 data URL for sharing
+      const reader = new FileReader();
+      reader.readAsDataURL(pdfBlob);
+      reader.onloadend = () => {
+        setPdfDataUrl(reader.result as string);
+      };
 
       const link = document.createElement('a');
       link.href = pdfUrl;
@@ -198,6 +289,30 @@ const ResumePreview = ({
                 'Download'
               )}
             </Button>
+            {paymentStatus && (
+              <Button
+                className="bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg"
+                disabled={isSharing}
+                onPress={handleShare}
+              >
+                {isSharing ? (
+                  <div className="flex items-center gap-2">
+                    <CircularProgress
+                      color="default"
+                      className="scale-50 text-white"
+                      strokeWidth={3}
+                      size="sm"
+                    />
+                    <span>Sharing...</span>
+                  </div>
+                ) : (
+                  <>
+                    Share
+                    <Share2 size={16} className="mr-2" />
+                  </>
+                )}
+              </Button>
+            )}
           </div>
         </div>
 
@@ -224,6 +339,7 @@ const ResumePreview = ({
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
+
         <AlertDialog open={showDownloadConfirmation} onOpenChange={setShowDownloadConfirmation}>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -259,6 +375,17 @@ const ResumePreview = ({
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
+
+        <ShareModal
+          open={showShareModal}
+          onOpenChange={setShowShareModal}
+          resumeId={slug}
+          authorName={fullName}
+          pdfDataUrl={pdfDataUrl}
+          existingShareId={shareId}
+          onShareCreated={(newShareId) => setShareId(newShareId)}
+          clerkId={userId || ''}
+        />
       </ResizablePanel>
     );
   }

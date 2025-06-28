@@ -384,6 +384,7 @@ const ResumePreview = ({
           pdfDataUrl={pdfDataUrl}
           existingShareId={shareId}
           onShareCreated={(newShareId) => setShareId(newShareId)}
+          clerkId={userId || ''}
         />
       </ResizablePanel>
     );

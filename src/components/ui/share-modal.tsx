@@ -22,6 +22,7 @@ interface ShareModalProps {
   pdfDataUrl: string | null;
   existingShareId?: string | null;
   onShareCreated?: (shareId: string) => void;
+  clerkId: string;
 }
 
 export const ShareModal = ({
@@ -32,6 +33,7 @@ export const ShareModal = ({
   pdfDataUrl,
   existingShareId = null,
   onShareCreated,
+  clerkId,
 }: ShareModalProps) => {
   const [isSharing, setIsSharing] = useState(false);
   const [shareLink, setShareLink] = useState<string | null>(null);
@@ -63,6 +65,7 @@ export const ShareModal = ({
           resumeId,
           pdfDataUrl,
           authorName,
+          clerkId,
         }),
       });
 

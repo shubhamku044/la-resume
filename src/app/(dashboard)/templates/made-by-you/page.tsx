@@ -9,25 +9,25 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { useEffect, useState } from 'react';
-import { useUser } from '@clerk/nextjs';
-import { Skeleton } from '@/components/ui/skeleton';
-import {
-  useGetResumesQuery,
-  useDeleteResumeMutation,
-  useDeleteImageKitFileMutation,
-} from '@/store/services/templateApi';
 import { Button } from '@/components/ui/button';
-import { ResumeCard } from '../_components/resume-card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { templates } from '@/lib/templates';
 import {
   deedyResumeData,
+  MTeckResumeData,
   resumesMap,
   Sb2novResumeData,
-  MTeckResumeData,
 } from '@/lib/templates/index';
-import { templates } from '@/lib/templates';
-import { toast } from 'sonner';
+import {
+  useDeleteImageKitFileMutation,
+  useDeleteResumeMutation,
+  useGetResumesQuery,
+} from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { ResumeCard } from '../_components/resume-card';
 
 interface Resume {
   id: string;
@@ -78,7 +78,7 @@ export default function MadeByYouPage() {
       const isTemplateImage = templates.some((template) => resume.previewUrl === template.imageUrl);
 
       if (!isTemplateImage) {
-        await deleteImageKitFile({ slug: resume.slug }).unwrap();
+        await deleteImageKitFile({ slug: resume.slug, hasPaid: resume.hasPaid }).unwrap();
       }
       await deleteResume({ clerk_id: clerkId, slug: resume.slug }).unwrap();
       toast.success('Resume deleted successfully');

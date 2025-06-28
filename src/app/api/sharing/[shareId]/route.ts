@@ -6,23 +6,33 @@ import { auth } from '@clerk/nextjs/server';
 
 /**
  * GET: Retrieve a shared resume by its shareId
+ * Optionally increments view count based on countView query param
  */
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ shareId: string }> }
 ) {
   try {
+    const { userId } = await auth();
     const { shareId } = await params;
+    const url = new URL(request.url);
+    const shouldCountView = url.searchParams.get('countView') === 'true';
 
     if (!shareId) {
       return NextResponse.json({ error: 'Share ID is required' }, { status: 400 });
     }
 
-    // Find the shared resume without incrementing view count
-    // (view count is now handled by a separate endpoint)
     const sharedResume = await prisma.sharedResume.findUnique({
       where: { shareId },
     });
+
+    // If we should count this view, increment the view count
+    if (shouldCountView && sharedResume?.userId !== userId) {
+      await prisma.sharedResume.update({
+        where: { shareId },
+        data: { viewCount: { increment: 1 } },
+      });
+    }
 
     if (!sharedResume) {
       return NextResponse.json({ error: 'Shared resume not found' }, { status: 404 });

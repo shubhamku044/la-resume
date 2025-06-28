@@ -207,6 +207,7 @@ model SharedResume {
   resumeId     String   
   pdfUrl       String
   authorName   String
+  userId       String
   createdAt    DateTime @default(now())
   lastUpdated  DateTime @updatedAt
   viewCount    Int      @default(0)
