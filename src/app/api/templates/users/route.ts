@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import imagekit from '@/lib/imagekit'; // Import your ImageKit utility
+import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       file: file, // Base64 file
       fileName: fileName, // Unique file name
       useUniqueFileName: false, // Overwrite if file exists
-      folder: folder, // Optional: Organize files in a folder
+      folder: folder,
     });
 
     // Append a cache-busting timestamp to the URL
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    const { slug } = await req.json();
+    const { slug, hasPaid } = await req.json();
     console.log('Deleting resume:', slug);
     // Validate input
     if (!slug) {
@@ -80,23 +80,37 @@ export async function DELETE(req: Request) {
     // Delete the file from ImageKit
     await imagekit.deleteFile(file.fileId);
 
-    // Cache-busting timestamp
-    const timestamp = Date.now();
-    const cacheBustedUrl = `${file.url}?v=${timestamp}`;
-
-    // Return response with cache-busting headers
-    return new Response(
-      JSON.stringify({ message: 'Resume deleted successfully', url: cacheBustedUrl }),
-      {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0',
-        },
+    if (hasPaid) {
+      const filename2 = `name='${slug}'`;
+      // console.log('Searching for file:', filename);
+      const folder = 'shared-resumes';
+      const files2 = await imagekit.listFiles({ searchQuery: filename2, path: `/${folder}/` });
+      // console.log('Files:', files2);
+      if (!files2 || files2.length === 0) {
+        return NextResponse.json({ error: 'File not found in ImageKit' }, { status: 404 });
       }
-    );
+
+      // Find the correct file with a valid fileId
+      const file2 = files2.find((f) => 'fileId' in f);
+
+      if (!file2 || !('fileId' in file2)) {
+        return NextResponse.json(
+          { error: 'Invalid file data received from ImageKit' },
+          { status: 500 }
+        );
+      }
+      await imagekit.deleteFile(file2.fileId);
+    }
+    // Return response with cache-busting headers
+    return new Response(JSON.stringify({ message: 'Resume deleted successfully' }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
     console.error('❌ DELETE Resume Error:', error);
     return new Response(JSON.stringify({ message: 'Failed to delete resume' }), {

@@ -87,11 +87,11 @@ export const templateApi = createApi({
       }),
     }),
 
-    deleteImageKitFile: builder.mutation<{ message: string; url: string }, { slug: string }>({
-      query: ({ slug }) => ({
+    deleteImageKitFile: builder.mutation<{ message: string }, { slug: string; hasPaid: boolean }>({
+      query: ({ slug, hasPaid }) => ({
         url: '/',
         method: 'DELETE',
-        body: { slug },
+        body: { slug, hasPaid },
       }),
     }),
   }),
