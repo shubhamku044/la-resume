@@ -217,7 +217,7 @@ export const ContactSection = () => {
 
                     <Button
                       type="submit"
-                      className="w-full rounded-full bg-purple-600 hover:bg-purple-700"
+                      className="w-full lg:text-lg  rounded-full bg-purple-600 hover:bg-purple-700 "
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? t_contact('submitting') : t('form.button')}

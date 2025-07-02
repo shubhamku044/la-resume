@@ -78,7 +78,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
+      <header className="sticky top-0 z-10 flex h-16 items-center gap-6 border-b bg-background px-4">
         <Link
           href="/"
           onClick={() => {
@@ -125,10 +125,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1  overflow-hidden">
         <aside
           className={cn(
-            'flex flex-col border-r bg-background transition-width duration-300',
+            'flex flex-col border-r bg-background transition-width duration-300 ',
             isCollapsed ? 'w-[70px]' : 'w-64'
           )}
         >
@@ -162,7 +162,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
         <main
           className={cn(
-            'flex-1 overflow-auto transition-[margin] duration-300',
+            'flex-1 overflow-auto transition-[margin] duration-300 p-4',
             'scrollbar-thin scrollbar-track-background scrollbar-thumb-accent',
             'dark:scrollbar-track-muted dark:scrollbar-thumb-muted-foreground'
           )}
@@ -196,21 +196,23 @@ function CollapsibleSection({
 }: CollapsibleSectionProps) {
   return (
     <div className="space-y-1">
-      <div
-        className={cn(
-          'flex items-center rounded-md p-2 text-sm font-medium',
-          items.some((item) => pathname.startsWith(item.url)) && 'bg-accent'
-        )}
-      >
-        {icon}
-        {!isCollapsed && <span className="ml-2">{title}</span>}
-        {items[0].url === '/tracker/boards' && (
-          <span className="flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">
-            <Beaker className="size-4" />
-            Beta
-          </span>
-        )}
-      </div>
+      {!isCollapsed && (
+        <div
+          className={cn(
+            'flex items-center flex-wrap gap-2 rounded-md p-2  text-base font-medium',
+            items.some((item) => pathname.startsWith(item.url)) && 'bg-accent'
+          )}
+        >
+          {icon}
+          {!isCollapsed && <span className="ml-2 text-nowrap">{title}</span>}
+          {items[0].url === '/tracker/boards' && !isCollapsed && (
+            <span className="flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 lg:py-1 text-xs font-medium text-blue-700">
+              <Beaker className="size-4" />
+              Beta
+            </span>
+          )}
+        </div>
+      )}
 
       <div className="space-y-1">
         {items.map((item) => {
@@ -226,7 +228,7 @@ function CollapsibleSection({
                 isCollapsed ? 'justify-center' : 'ml-4 gap-2'
               )}
             >
-              <item.icon className="size-4" />
+              <item.icon className="size-4 lg:size-5" />
               {!isCollapsed && <span>{item.title}</span>}
             </Link>
           );
