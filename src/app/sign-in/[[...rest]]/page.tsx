@@ -83,7 +83,7 @@ export default function SignInPage() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
-      <div className="relative z-10 h-full flex flex-col">
+      <div className="relative z-10 h-full flex flex-col ">
         {/* Header */}
         <header className="px-3 py-3 sm:px-6 lg:px-8 shrink-0">
           <div className="flex items-center justify-between">
@@ -108,7 +108,7 @@ export default function SignInPage() {
         </header>
 
         {/* Main Content */}
-        <div className="flex-1 px-3 sm:px-6 lg:px-8 pb-3 overflow-y-auto scrollbar-hide">
+        <div className="flex-1 px-3 sm:px-6 lg:px-8 mb-5 overflow-y-auto scrollbar-hide ">
           <div className="mx-auto max-w-7xl h-full">
             <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 h-fit min-h-full items-center">
               {/* Left Side - Marketing Content */}
@@ -278,7 +278,7 @@ export default function SignInPage() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="text-center lg:text-left"
                 >
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  <p className="text-lg font-medium text-gray-500 dark:text-gray-400 ">
                     {t('trustIndicators.trustedBy')}
                   </p>
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 opacity-70">
@@ -334,9 +334,9 @@ export default function SignInPage() {
                               headerTitle: 'hidden',
                               headerSubtitle: 'hidden',
                               socialButtonsBlockButton:
-                                'bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-200 rounded-xl font-medium shadow-sm hover:shadow-md text-sm',
+                                'bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-200 rounded-xl font-medium shadow-sm hover:shadow-md text-base py-3',
                               formButtonPrimary:
-                                'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 rounded-xl font-semibold text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02]',
+                                'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 rounded-xl font-semibold text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02] py-2',
                               footerActionLink:
                                 'text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium',
                               formFieldInput:
@@ -364,22 +364,22 @@ export default function SignInPage() {
 
                       {/* Additional Features */}
                       <div className="space-y-2 pt-3 border-t border-gray-100 dark:border-gray-700">
-                        <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                          <CheckCircle className="h-3 w-3 text-green-500 shrink-0" />
+                        <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                          <CheckCircle className="size-3 lg:size-5 text-green-500 shrink-0" />
                           <span>{t('features.freeToStart')}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                          <Clock className="h-3 w-3 text-blue-500 shrink-0" />
+                        <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                          <Clock className="size-3 lg:size-5 text-blue-500 shrink-0" />
                           <span>{t('features.quickCreation')}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                          <Shield className="h-3 w-3 text-indigo-500 shrink-0" />
+                        <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                          <Shield className="size-3 lg:size-5 text-indigo-500 shrink-0" />
                           <span>{t('features.secureData')}</span>
                         </div>
                       </div>
 
-                      <div className="text-center pt-2">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                      <div className="text-center lg:text-left pt-2">
+                        <p className="text-xs  text-gray-500 dark:text-gray-400 leading-relaxed">
                           {t('legal.agreementText')}{' '}
                           <Link
                             href="/termsAndConditions"
@@ -406,7 +406,7 @@ export default function SignInPage() {
                     transition={{ duration: 0.6, delay: 0.8 }}
                     className="mt-4 text-center"
                   >
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                    <p className="text-xs lg:text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
                       {t('deviceCompatibility.worksOnAllDevices')}
                     </p>
                     <div className="flex items-center justify-center gap-4">

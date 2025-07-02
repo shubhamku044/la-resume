@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between">
+      <div className="container mx-auto px-4 lg:px-6 flex h-16 items-center justify-between">
         <Link
           href="/"
           onClick={(e) => {
@@ -61,7 +61,7 @@ export function Header() {
                 router.push('/templates');
               }}
               size="sm"
-              className="bg-purple-500 text-white hover:bg-purple-600"
+              className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
             >
               Go to app
             </Button>
@@ -70,8 +70,8 @@ export function Header() {
           <SignedOut>
             <Link href="/sign-in">
               <Button
-                size="sm"
-                className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex"
+                size="default"
+                className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex rounded-full"
               >
                 Get Started
               </Button>
@@ -122,7 +122,7 @@ export function Header() {
                       router.push('/templates');
                     }}
                     size="sm"
-                    className="bg-purple-500 text-white hover:bg-purple-600"
+                    className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
                   >
                     Go to app
                   </Button>
@@ -130,7 +130,10 @@ export function Header() {
                 </SignedIn>
                 <SignedOut>
                   <Link href="/sign-in">
-                    <Button size="sm" className="bg-purple-500 text-white hover:bg-purple-600">
+                    <Button
+                      size="sm"
+                      className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
+                    >
                       Get Started
                     </Button>
                   </Link>

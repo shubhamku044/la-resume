@@ -59,7 +59,7 @@ export const TeamSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ y: -5 }}
-              className="relative"
+              className="relative group"
             >
               <Card className="h-full overflow-hidden border-0 shadow-xl">
                 <CardContent className="p-0">
@@ -70,7 +70,7 @@ export const TeamSection = () => {
                         src={creator.image}
                         alt={creator.name}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-all ease-in duration-300"
                         unoptimized
                       />
                     </div>
@@ -83,7 +83,7 @@ export const TeamSection = () => {
                           {creator.name}
                         </h3>
                       </div>
-                      <p className="mb-4 mt-2 text-purple-600 dark:text-purple-300">
+                      <p className="mb-4 -mt-2 text-purple-600 dark:text-purple-300">
                         {creator.role}
                       </p>
                       <p className="mb-6 text-gray-600 dark:text-gray-300">{creator.description}</p>

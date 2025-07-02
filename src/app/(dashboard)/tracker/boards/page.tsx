@@ -20,6 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import Image from 'next/image';
 
 export default function BoardsPage() {
   const router = useRouter();
@@ -87,7 +88,9 @@ export default function BoardsPage() {
           onClick={() => setIsModalOpen(true)}
           className="flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
         >
-          <span>+</span>
+          <span>
+            <Image src="/plus.svg" alt="plus" width={20} height={20} />
+          </span>
           <span>Create Board</span>
         </button>
       </header>
@@ -189,13 +192,13 @@ export default function BoardsPage() {
       )}
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
-          <div className="mx-4 w-full max-w-md rounded-lg bg-white p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm   ">
+          <div className="mx-4 w-full max-w-md rounded-lg bg-white dark:bg-gray-900 p-6 ">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-3xl"
                 disabled={isSubmitting}
               >
                 &times;
@@ -215,7 +218,7 @@ export default function BoardsPage() {
                   id="boardName"
                   name="boardName"
                   required
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="e.g., UX Designer Applications"
                   disabled={isSubmitting}
                 />
@@ -232,7 +235,7 @@ export default function BoardsPage() {
                   id="boardDescription"
                   name="boardDescription"
                   rows={3}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="What's this board for?"
                   disabled={isSubmitting}
                 />
@@ -248,7 +251,7 @@ export default function BoardsPage() {
                 <select
                   id="boardTemplate"
                   name="boardTemplate"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   disabled={isSubmitting}
                 >
                   <option value="">Blank Board</option>

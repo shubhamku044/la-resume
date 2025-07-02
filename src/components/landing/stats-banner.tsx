@@ -11,7 +11,7 @@ export const StatsBanner = () => {
   const { data } = useGetStatsQuery();
 
   return (
-    <div className="bg-gray-900 px-4 py-3 text-white dark:bg-gray-800">
+    <div className="bg-gray-100 px-4 py-3 text-gray-700 dark:bg-gray-800 dark:text-white">
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-8 text-center sm:gap-12">
         <div className="flex items-center gap-2">
           <LuGithub className="size-5" />
