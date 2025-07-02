@@ -147,3 +147,8 @@ input {
     display: none; /* Chrome, Safari and Opera */
   }
 }
+
+/* sigin footer color  */
+.cl-footer {
+  background-color: transparent;
+}

@@ -60,7 +60,7 @@ export function Header() {
               onClick={() => {
                 router.push('/templates');
               }}
-              size="sm"
+              size="default"
               className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
             >
               Go to app

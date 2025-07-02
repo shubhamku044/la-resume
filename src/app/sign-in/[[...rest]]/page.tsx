@@ -330,6 +330,7 @@ export default function SignInPage() {
                           appearance={{
                             elements: {
                               rootBox: 'w-full',
+
                               card: 'shadow-none border-0 bg-transparent',
                               headerTitle: 'hidden',
                               headerSubtitle: 'hidden',
@@ -340,10 +341,10 @@ export default function SignInPage() {
                               footerActionLink:
                                 'text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium',
                               formFieldInput:
-                                'rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 transition-all duration-200 text-sm',
+                                ' rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 transition-all duration-200 text-sm ',
                               formFieldLabel:
                                 'text-gray-700 dark:text-gray-300 font-medium text-sm',
-                              dividerLine: 'bg-gray-200',
+                              dividerLine: 'bg-gray-200 dark:bg-gray-700',
                               dividerText: 'text-gray-500 font-medium text-sm',
                               formFieldAction:
                                 'text-indigo-600 hover:text-indigo-700 font-medium text-sm',
