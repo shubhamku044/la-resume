@@ -28,27 +28,30 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center space-x-6 md:flex">
-          <a href="#features" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link
+            href="/#features"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Features
-          </a>
-          <a
-            href="#how-it-works"
+          </Link>
+          <Link
+            href="/#how-it-works"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             How It Works
-          </a>
-          <a href="#team" className="text-sm font-medium transition-colors hover:text-primary">
+          </Link>
+          <Link href="/#team" className="text-sm font-medium transition-colors hover:text-primary">
             Our Team
-          </a>
-          <a
-            href="#testimonials"
+          </Link>
+          <Link
+            href="/#testimonials"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Testimonials
-          </a>
-          <a href="#faq" className="text-sm font-medium transition-colors hover:text-primary">
+          </Link>
+          <Link href="/#faq" className="text-sm font-medium transition-colors hover:text-primary">
             FAQ
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
