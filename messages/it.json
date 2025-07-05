@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Formati multipli",
-        "description": "Esporta il tuo curriculum in formato PDF, DOCX o TXT per diverse esigenze di candidatura."
+        "description": "Esporta il tuo curriculum in formato PDF o LaTeX per diverse esigenze di candidatura."
       },
       "feature4": {
         "title": "Ottimizzazione ATS",
         "description": "I nostri modelli sono progettati per superare facilmente i sistemi di tracciamento dei candidati (ATS)."
       },
       "feature5": {
-        "title": "Suggerimenti AI",
-        "description": "Ricevi suggerimenti intelligenti sui contenuti per migliorare il tuo curriculum e distinguerti."
+        "title": "Link Condivisibile",
+        "description": "Condividi facilmente il tuo curriculum con un link unico. Invialo a recruiter, amici o conservalo per riferimento futuro."
       },
       "feature6": {
         "title": "Modelli professionali",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Prezzi trasparenti",
-      "description": "Tutto ciò di cui hai bisogno per creare curriculum professionali - completamente gratuito",
+      "badge": "Prezzi Semplici",
+      "title": "Pagamento Unico, Accesso a Vita",
+      "description": "Paga una volta, goditi per sempre. Crea, scarica e condividi il tuo curriculum professionale con accesso illimitato.",
       "card": {
-        "title": "Gratuito",
-        "description": "Nessuna carta di credito richiesta",
-        "points": {
-          "point1": "Curriculum illimitati",
-          "point2": "Modelli ottimizzati per ATS",
-          "point3": "Esportazione PDF",
-          "point4": "Download sorgente LaTeX",
-          "point5": "Nessuna pubblicità",
-          "point6": "Open Source",
-          "point7": "Archiviazione cloud",
-          "point8": "Supporto 24/7"
+        "title": "Accesso al Curriculum",
+        "description": "Tutto ciò di cui hai bisogno per creare e condividere il tuo curriculum professionale",
+        "currency": "USD",
+        "badge": "Pagamento unico",
+        "features": {
+          "unlimited_downloads": "Scarica il tuo curriculum illimitate volte",
+          "shareable_links": "Crea link pubblici condivisibili",
+          "auto_updates": "Aggiornamenti automatici ai link condivisi",
+          "analytics": "Visualizza analisi e tracciamento",
+          "no_expiration": "Nessuna data di scadenza"
         },
-        "button": "Inizia a creare gratuitamente",
-        "sentence": "Confronta con altri creatori di curriculum: ❌ 15 $/mese • ❌ Pubblicità • ❌ Modelli limitati"
+        "button": "Ottieni Accesso Ora"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Download Illimitati",
+          "description": "Una volta pagato, scarica il tuo curriculum sempre e ovunque"
+        },
+        "shareable_links": {
+          "title": "Link Condivisibili",
+          "description": "Crea link pubblici per condividere il tuo curriculum con chiunque"
+        },
+        "auto_updates": {
+          "title": "Aggiornamenti Automatici",
+          "description": "I link condivisi riflettono automaticamente le ultime modifiche del tuo curriculum"
+        },
+        "analytics": {
+          "title": "Visualizza Analisi",
+          "description": "Traccia chi visualizza il tuo curriculum e quando"
+        },
+        "no_login": {
+          "title": "Nessun Login Richiesto",
+          "description": "Chiunque può visualizzare il tuo curriculum condiviso senza registrarsi"
+        },
+        "realtime": {
+          "title": "Aggiornamenti in Tempo Reale",
+          "description": "Vedi quando il tuo curriculum è stato aggiornato l'ultima volta"
+        }
+      },
+      "how_it_works": {
+        "title": "Come Funziona",
+        "step1": {
+          "title": "Crea il Tuo Curriculum",
+          "description": "Costruisci il tuo curriculum professionale usando i nostri modelli e editor"
+        },
+        "step2": {
+          "title": "Paga Una Volta",
+          "description": "Effettua un pagamento unico di 1 $ per sbloccare tutte le funzionalità"
+        },
+        "step3": {
+          "title": "Scarica e Condividi",
+          "description": "Scarica illimitate volte e crea link condivisibili che si aggiornano automaticamente"
+        }
+      },
+      "smart_sharing": {
+        "title": "Tecnologia di Condivisione Intelligente",
+        "description": "Quando aggiorni il tuo curriculum, tutti i tuoi link condivisi mostrano automaticamente la versione più recente. Traccia le visualizzazioni, vedi i timestamp degli aggiornamenti e condividi con fiducia sapendo che il tuo curriculum è sempre aggiornato."
       }
     },
     "random": {

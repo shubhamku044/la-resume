@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Çoxlu Formatlar",
-        "description": "Müxtəlif müraciət tələbləri üçün CV-nizi PDF, DOCX və ya TXT formatlarında ixrac edin."
+        "description": "Müxtəlif müraciət tələbləri üçün CV-nizi PDF və ya LaTeX formatlarında ixrac edin."
       },
       "feature4": {
         "title": "ATS Optimallaşdırması",
         "description": "Şablonlarımız Müraciət İzləmə Sistemlərindən asanlıqla keçmək üçün hazırlanmışdır."
       },
       "feature5": {
-        "title": "AI Təklifləri",
-        "description": "CV-nizi yaxşılaşdırmaq və fərqlənmək üçün ağıllı məzmun təklifləri əldə edin."
+        "title": "Paylaşıla Bilən Link",
+        "description": "CV-nizi unikal link ilə asanlıqla paylaşın. İşəgötürənlərə, dostlara göndərin və ya gələcək istinad üçün saxlayın."
       },
       "feature6": {
         "title": "Peşəkar Şablonlar",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Şəffaf Qiymətləndirmə",
-      "description": "Peşəkar CV-lər yaratmaq üçün lazım olan hər şey - tamamilə pulsuz",
+      "badge": "Sadə Qiymətləndirmə",
+      "title": "Birdəfəlik Ödəniş, Ömürlük Giriş",
+      "description": "Bir dəfə ödəyin, həmişəlik istifadə edin. Peşəkar CV-nizi yaradın, endirin və paylaşın, limitsiz girişlə.",
       "card": {
-        "title": "Pulsuz",
-        "description": "Kart tələb olunmur",
-        "points": {
-          "point1": "Limitsiz CV-lər",
-          "point2": "ATS-Optimallaşdırılmış Şablonlar",
-          "point3": "PDF İxracı",
-          "point4": "LaTeX Mənbə Yükləmə",
-          "point5": "Reklam Yoxdur",
-          "point6": "Açıq Mənbə",
-          "point7": "Bulud Saxlama",
-          "point8": "24/7 Dəstək"
+        "title": "CV Girişi",
+        "description": "Peşəkar CV yaratmaq və paylaşmaq üçün lazım olan hər şey",
+        "currency": "USD",
+        "badge": "Birdəfəlik ödəniş",
+        "features": {
+          "unlimited_downloads": "CV-nizi limitsiz dəfə endirin",
+          "shareable_links": "Paylaşıla bilən ümumi linklər yaradın",
+          "auto_updates": "Paylaşılan linklərin avtomatik yenilənməsi",
+          "analytics": "Analitika və izləmə baxın",
+          "no_expiration": "Son istifadə tarixi yoxdur"
         },
-        "button": "Pulsuz Qurmağa Başlayın",
-        "sentence": "Digər CV qurucuları ilə müqayisə: ❌ $15/ay • ❌ Reklamlar • ❌ Məhdud Şablonlar"
+        "button": "İndi Giriş Alın"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Limitsiz Endirmələr",
+          "description": "Bir dəfə ödədikdən sonra CV-nizi istənilən vaxt və yerdə endirin"
+        },
+        "shareable_links": {
+          "title": "Paylaşıla Bilən Linklər",
+          "description": "CV-nizi hər kəslə paylaşmaq üçün ümumi linklər yaradın"
+        },
+        "auto_updates": {
+          "title": "Avtomatik Yenilənmələr",
+          "description": "Paylaşılan linklər CV-nizdəki son dəyişiklikləri avtomatik əks etdirir"
+        },
+        "analytics": {
+          "title": "Analitika Baxın",
+          "description": "CV-nizi kimin və nə vaxt baxdığını izləyin"
+        },
+        "no_login": {
+          "title": "Giriş Tələb Olunmur",
+          "description": "Hər kəs qeydiyyatdan keçmədən paylaşılan CV-nizi baxa bilər"
+        },
+        "realtime": {
+          "title": "Real-vaxt Yenilənmələri",
+          "description": "CV-nizin son dəfə nə vaxt yenilənməsini görün"
+        }
+      },
+      "how_it_works": {
+        "title": "Necə İşləyir",
+        "step1": {
+          "title": "CV-nizi Yaradın",
+          "description": "Şablonlarımız və redaktorumuzdan istifadə edərək peşəkar CV-nizi qurun"
+        },
+        "step2": {
+          "title": "Bir Dəfə Ödəyin",
+          "description": "Bütün funksiyaları açmaq üçün 1 $ birdəfəlik ödəniş edin"
+        },
+        "step3": {
+          "title": "Endirin və Paylaşın",
+          "description": "Limitsiz endirin və avtomatik yenilənən paylaşıla bilən linklər yaradın"
+        }
+      },
+      "smart_sharing": {
+        "title": "Ağıllı Paylaşma Texnologiyası",
+        "description": "CV-nizi yenilədiyiniz zaman bütün paylaşılan linkləriniz avtomatik olaraq ən son versiyanı göstərir. Baxışları izləyin, yenilənmə vaxt damğalarını görün və CV-nizin həmişə güncel olduğunu bilərək etinadla paylaşın."
       }
     },
     "random": {

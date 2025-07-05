@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "多种格式",
-        "description": "以 PDF、DOCX 或 TXT 格式导出您的简历，以满足不同的申请要求。"
+        "description": "以 PDF 或 LaTeX 格式导出您的简历，以满足不同的申请要求。"
       },
       "feature4": {
         "title": "ATS 优化",
         "description": "我们的模板旨在轻松通过应聘者追踪系统。"
       },
       "feature5": {
-        "title": "AI 建议",
-        "description": "获得智能内容建议，以改进您的简历并脱颖而出。"
+        "title": "可分享链接",
+        "description": "通过独特链接轻松分享您的简历。发送给招聘人员、朋友或保存以备将来参考。"
       },
       "feature6": {
         "title": "专业模板",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "透明的定价",
-      "description": "创建专业简历所需的一切 - 完全免费",
+      "badge": "简单定价",
+      "title": "一次付费，终身访问",
+      "description": "一次付费，永久享受。创建、下载和分享您的专业简历，享受无限制访问。",
       "card": {
-        "title": "免费",
-        "description": "无需信用卡",
-        "points": {
-          "point1": "无限量简历",
-          "point2": "ATS 优化模板",
-          "point3": "PDF 导出",
-          "point4": "LaTeX 源代码下载",
-          "point5": "无广告",
-          "point6": "开源",
-          "point7": "云存储",
-          "point8": "24/7 支持"
+        "title": "简历访问",
+        "description": "创建和分享专业简历所需的一切",
+        "currency": "USD",
+        "badge": "一次性付费",
+        "features": {
+          "unlimited_downloads": "无限次下载您的简历",
+          "shareable_links": "创建可分享的公共链接",
+          "auto_updates": "分享链接自动更新",
+          "analytics": "查看分析和跟踪",
+          "no_expiration": "无过期时间"
         },
-        "button": "开始免费制作",
-        "sentence": "与其他简历生成器比较：❌ 15 美元/月 • ❌ 广告 • ❌ 有限的模板"
+        "button": "立即获取访问权限"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "无限下载",
+          "description": "一次付费后，随时随地下载您的简历"
+        },
+        "shareable_links": {
+          "title": "可分享链接",
+          "description": "创建公共链接与任何人分享您的简历"
+        },
+        "auto_updates": {
+          "title": "自动更新",
+          "description": "分享的链接自动反映您简历的最新更改"
+        },
+        "analytics": {
+          "title": "查看分析",
+          "description": "跟踪谁在何时查看了您的简历"
+        },
+        "no_login": {
+          "title": "无需登录",
+          "description": "任何人都可以查看您分享的简历而无需注册"
+        },
+        "realtime": {
+          "title": "实时更新",
+          "description": "查看您的简历最后更新时间"
+        }
+      },
+      "how_it_works": {
+        "title": "如何使用",
+        "step1": {
+          "title": "创建您的简历",
+          "description": "使用我们的模板和编辑器构建您的专业简历"
+        },
+        "step2": {
+          "title": "一次付费",
+          "description": "一次性支付1美元即可解锁所有功能"
+        },
+        "step3": {
+          "title": "下载和分享",
+          "description": "无限次下载并创建自动更新的可分享链接"
+        }
+      },
+      "smart_sharing": {
+        "title": "智能分享技术",
+        "description": "当您更新简历时，所有分享的链接都会自动显示最新版本。跟踪查看次数，查看更新时间戳，安心分享，知道您的简历始终是最新的。"
       }
     },
     "random": {

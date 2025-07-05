@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Formats Multiples",
-        "description": "Exportez votre CV aux formats PDF, DOCX ou TXT pour répondre aux différentes exigences des candidatures."
+        "description": "Exportez votre CV aux formats PDF ou LaTeX pour répondre aux différentes exigences des candidatures."
       },
       "feature4": {
         "title": "Optimisation ATS",
         "description": "Nos modèles sont conçus pour passer facilement les systèmes de suivi des candidatures."
       },
       "feature5": {
-        "title": "Suggestions IA",
-        "description": "Obtenez des suggestions de contenu intelligentes pour améliorer votre CV et vous démarquer."
+        "title": "Lien Partageable",
+        "description": "Partagez facilement votre CV avec un lien unique. Envoyez-le aux recruteurs, amis ou gardez-le pour référence future."
       },
       "feature6": {
         "title": "Modèles Professionnels",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Tarification Transparente",
-      "description": "Tout ce dont vous avez besoin pour créer des CV professionnels - entièrement gratuit",
+      "badge": "Tarification Simple",
+      "title": "Paiement Unique, Accès à Vie",
+      "description": "Payez une fois, profitez pour toujours. Créez, téléchargez et partagez votre CV professionnel avec un accès illimité.",
       "card": {
-        "title": "Gratuit",
-        "description": "Aucune carte de crédit requise",
-        "points": {
-          "point1": "CV Illimités",
-          "point2": "Modèles Optimisés ATS",
-          "point3": "Exportation PDF",
-          "point4": "Téléchargement de la Source LaTeX",
-          "point5": "Pas de Publicités",
-          "point6": "Open Source",
-          "point7": "Stockage Cloud",
-          "point8": "Support 24h/24 et 7j/7"
+        "title": "Accès CV",
+        "description": "Tout ce dont vous avez besoin pour créer et partager votre CV professionnel",
+        "currency": "USD",
+        "badge": "Paiement unique",
+        "features": {
+          "unlimited_downloads": "Téléchargez votre CV un nombre illimité de fois",
+          "shareable_links": "Créez des liens publics partageables",
+          "auto_updates": "Mises à jour automatiques des liens partagés",
+          "analytics": "Consultez les analyses et le suivi",
+          "no_expiration": "Aucune date d'expiration"
         },
-        "button": "Commencer à Créer Gratuitement",
-        "sentence": "Comparez avec d'autres créateurs de CV : ❌ 15 $/mois • ❌ Publicités • ❌ Modèles Limités"
+        "button": "Obtenir l'Accès Maintenant"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Téléchargements Illimités",
+          "description": "Une fois payé, téléchargez votre CV à tout moment, n'importe où"
+        },
+        "shareable_links": {
+          "title": "Liens Partageables",
+          "description": "Créez des liens publics pour partager votre CV avec n'importe qui"
+        },
+        "auto_updates": {
+          "title": "Mises à Jour Automatiques",
+          "description": "Les liens partagés reflètent automatiquement les dernières modifications de votre CV"
+        },
+        "analytics": {
+          "title": "Voir les Analyses",
+          "description": "Suivez qui consulte votre CV et quand"
+        },
+        "no_login": {
+          "title": "Aucune Connexion Requise",
+          "description": "N'importe qui peut consulter votre CV partagé sans s'inscrire"
+        },
+        "realtime": {
+          "title": "Mises à Jour en Temps Réel",
+          "description": "Voyez quand votre CV a été mis à jour pour la dernière fois"
+        }
+      },
+      "how_it_works": {
+        "title": "Comment Ça Marche",
+        "step1": {
+          "title": "Créez Votre CV",
+          "description": "Construisez votre CV professionnel en utilisant nos modèles et éditeur"
+        },
+        "step2": {
+          "title": "Payez Une Fois",
+          "description": "Effectuez un paiement unique de 1 $ pour débloquer toutes les fonctionnalités"
+        },
+        "step3": {
+          "title": "Téléchargez et Partagez",
+          "description": "Téléchargez un nombre illimité de fois et créez des liens partageables qui se mettent à jour automatiquement"
+        }
+      },
+      "smart_sharing": {
+        "title": "Technologie de Partage Intelligent",
+        "description": "Lorsque vous mettez à jour votre CV, tous vos liens partagés affichent automatiquement la dernière version. Suivez les vues, voyez les horodatages de mise à jour, et partagez en toute confiance en sachant que votre CV est toujours à jour."
       }
     },
     "random": {

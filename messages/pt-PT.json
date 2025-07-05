@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Múltiplos Formatos",
-        "description": "Exporte o seu currículo em formatos PDF, DOCX ou TXT para diferentes requisitos de candidatura."
+        "description": "Exporte o seu currículo em formatos PDF ou LaTeX para diferentes requisitos de candidatura."
       },
       "feature4": {
         "title": "Otimização ATS",
         "description": "Os nossos modelos são projetados para passar nos Sistemas de Rastreamento de Candidatos com facilidade."
       },
       "feature5": {
-        "title": "Sugestões de IA",
-        "description": "Obtenha sugestões de conteúdo inteligentes para melhorar o seu currículo e destacar-se."
+        "title": "Ligação Partilhável",
+        "description": "Partilhe facilmente o seu currículo com uma ligação única. Envie para recrutadores, amigos ou mantenha para referência futura."
       },
       "feature6": {
         "title": "Modelos Profissionais",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Preços Transparentes",
-      "description": "Tudo o que precisa para criar currículos profissionais - completamente grátis",
+      "badge": "Preços Simples",
+      "title": "Pagamento Único, Acesso Vitalício",
+      "description": "Pague uma vez, desfrute para sempre. Crie, descarregue e partilhe o seu currículo profissional com acesso ilimitado.",
       "card": {
-        "title": "Grátis",
-        "description": "Não requer cartão de crédito",
-        "points": {
-          "point1": "Currículos Ilimitados",
-          "point2": "Modelos Otimizados para ATS",
-          "point3": "Exportação em PDF",
-          "point4": "Download do Código Fonte LaTeX",
-          "point5": "Sem Anúncios",
-          "point6": "Código Aberto",
-          "point7": "Armazenamento na Nuvem",
-          "point8": "Suporte 24/7"
+        "title": "Acesso ao Currículo",
+        "description": "Tudo o que precisa para criar e partilhar o seu currículo profissional",
+        "currency": "USD",
+        "badge": "Pagamento único",
+        "features": {
+          "unlimited_downloads": "Descarregue o seu currículo ilimitadas vezes",
+          "shareable_links": "Crie ligações públicas partilháveis",
+          "auto_updates": "Actualizações automáticas nas ligações partilhadas",
+          "analytics": "Visualize análises e rastreamento",
+          "no_expiration": "Sem data de expiração"
         },
-        "button": "Comece a Construir Gratuitamente",
-        "sentence": "Compare com outros criadores de currículos: ❌ 15€/mês • ❌ Anúncios • ❌ Modelos Limitados"
+        "button": "Obter Acesso Agora"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Descarregamentos Ilimitados",
+          "description": "Uma vez pago, descarregue o seu currículo a qualquer altura e lugar"
+        },
+        "shareable_links": {
+          "title": "Ligações Partilháveis",
+          "description": "Crie ligações públicas para partilhar o seu currículo com qualquer pessoa"
+        },
+        "auto_updates": {
+          "title": "Actualizações Automáticas",
+          "description": "Ligações partilhadas reflectem automaticamente as últimas alterações do seu currículo"
+        },
+        "analytics": {
+          "title": "Visualizar Análises",
+          "description": "Rastreie quem visualiza o seu currículo e quando"
+        },
+        "no_login": {
+          "title": "Sem Login Necessário",
+          "description": "Qualquer pessoa pode visualizar o seu currículo partilhado sem se registar"
+        },
+        "realtime": {
+          "title": "Actualizações em Tempo Real",
+          "description": "Veja quando o seu currículo foi actualizado pela última vez"
+        }
+      },
+      "how_it_works": {
+        "title": "Como Funciona",
+        "step1": {
+          "title": "Crie o Seu Currículo",
+          "description": "Construa o seu currículo profissional usando os nossos modelos e editor"
+        },
+        "step2": {
+          "title": "Pague Uma Vez",
+          "description": "Faça um pagamento único de 1€ para desbloquear todas as funcionalidades"
+        },
+        "step3": {
+          "title": "Descarregue e Partilhe",
+          "description": "Descarregue ilimitadas vezes e crie ligações partilháveis que se actualizam automaticamente"
+        }
+      },
+      "smart_sharing": {
+        "title": "Tecnologia de Partilha Inteligente",
+        "description": "Quando actualiza o seu currículo, todas as suas ligações partilhadas mostram automaticamente a versão mais recente. Rastreie visualizações, veja timestamps de actualizações e partilhe com confiança sabendo que o seu currículo está sempre actualizado."
       }
     },
     "random": {

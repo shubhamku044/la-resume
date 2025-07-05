@@ -33,8 +33,8 @@ export default function SignInPage() {
   const [mounted, setMounted] = useState(false);
 
   const stats = [
-    { label: t('stats.resumesCreated'), value: '1,971+', icon: FileText },
-    { label: t('stats.happyUsers'), value: '1,477+', icon: Users },
+    { label: t('stats.resumesCreated'), value: '2,000+', icon: FileText },
+    { label: t('stats.happyUsers'), value: '1,600+', icon: Users },
     { label: t('stats.templates'), value: '3', icon: Award },
     { label: t('stats.countries'), value: '50+', icon: Star },
   ];

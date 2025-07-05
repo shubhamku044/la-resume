@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Mehrere Formate",
-        "description": "Exportieren Sie Ihren Lebenslauf in PDF-, DOCX- oder TXT-Formaten für verschiedene Bewerbungsanforderungen."
+        "description": "Exportieren Sie Ihren Lebenslauf in PDF- oder LaTeX-Formaten für verschiedene Bewerbungsanforderungen."
       },
       "feature4": {
         "title": "ATS-Optimierung",
         "description": "Unsere Vorlagen sind so gestaltet, dass sie problemlos durch Bewerber-Tracking-Systeme (ATS) kommen."
       },
       "feature5": {
-        "title": "KI-Empfehlungen",
-        "description": "Erhalten Sie intelligente Inhaltsvorschläge, um Ihren Lebenslauf zu verbessern und sich abzuheben."
+        "title": "Teilbarer Link",
+        "description": "Teilen Sie Ihren Lebenslauf einfach mit einem eindeutigen Link. Senden Sie ihn an Personalvermittler, Freunde oder behalten Sie ihn für zukünftige Referenz."
       },
       "feature6": {
         "title": "Professionelle Vorlagen",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Transparente Preise",
-      "description": "Alles, was Sie für professionelle Lebensläufe benötigen - komplett kostenlos",
+      "badge": "Einfache Preise",
+      "title": "Einmalige Zahlung, Lebenslanger Zugang",
+      "description": "Einmal bezahlen, für immer nutzen. Erstellen, herunterladen und teilen Sie Ihren professionellen Lebenslauf mit unbegrenztem Zugang.",
       "card": {
-        "title": "Kostenlos",
-        "description": "Keine Kreditkarte erforderlich",
-        "points": {
-          "point1": "Unbegrenzte Lebensläufe",
-          "point2": "ATS-optimierte Vorlagen",
-          "point3": "PDF-Export",
-          "point4": "LaTeX-Quelldownload",
-          "point5": "Keine Werbung",
-          "point6": "Open Source",
-          "point7": "Cloud-Speicher",
-          "point8": "24/7 Support"
+        "title": "Lebenslauf-Zugang",
+        "description": "Alles was Sie brauchen, um Ihren professionellen Lebenslauf zu erstellen und zu teilen",
+        "currency": "USD",
+        "badge": "Einmalige Zahlung",
+        "features": {
+          "unlimited_downloads": "Laden Sie Ihren Lebenslauf unbegrenzt herunter",
+          "shareable_links": "Erstellen Sie teilbare öffentliche Links",
+          "auto_updates": "Automatische Updates der geteilten Links",
+          "analytics": "Analysen und Tracking anzeigen",
+          "no_expiration": "Kein Ablaufdatum"
         },
-        "button": "Kostenlos starten",
-        "sentence": "Vergleich mit anderen Lebenslauf-Editoren: ❌ 15€/Monat • ❌ Werbung • ❌ Begrenzte Vorlagen"
+        "button": "Jetzt Zugang erhalten"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Unbegrenzte Downloads",
+          "description": "Einmal bezahlt, laden Sie Ihren Lebenslauf jederzeit und überall herunter"
+        },
+        "shareable_links": {
+          "title": "Teilbare Links",
+          "description": "Erstellen Sie öffentliche Links, um Ihren Lebenslauf mit jedem zu teilen"
+        },
+        "auto_updates": {
+          "title": "Auto-Updates",
+          "description": "Geteilte Links spiegeln automatisch Ihre neuesten Lebenslauf-Änderungen wider"
+        },
+        "analytics": {
+          "title": "Analysen anzeigen",
+          "description": "Verfolgen Sie, wer Ihren Lebenslauf wann ansieht"
+        },
+        "no_login": {
+          "title": "Keine Anmeldung erforderlich",
+          "description": "Jeder kann Ihren geteilten Lebenslauf ohne Registrierung ansehen"
+        },
+        "realtime": {
+          "title": "Echtzeit-Updates",
+          "description": "Sehen Sie, wann Ihr Lebenslauf zuletzt aktualisiert wurde"
+        }
+      },
+      "how_it_works": {
+        "title": "Wie es funktioniert",
+        "step1": {
+          "title": "Erstellen Sie Ihren Lebenslauf",
+          "description": "Erstellen Sie Ihren professionellen Lebenslauf mit unseren Vorlagen und Editor"
+        },
+        "step2": {
+          "title": "Einmal bezahlen",
+          "description": "Tätigen Sie eine einmalige Zahlung von 1 $ um alle Funktionen freizuschalten"
+        },
+        "step3": {
+          "title": "Herunterladen & Teilen",
+          "description": "Laden Sie unbegrenzt herunter und erstellen Sie teilbare Links, die sich automatisch aktualisieren"
+        }
+      },
+      "smart_sharing": {
+        "title": "Intelligente Sharing-Technologie",
+        "description": "Wenn Sie Ihren Lebenslauf aktualisieren, zeigen alle Ihre geteilten Links automatisch die neueste Version. Verfolgen Sie Aufrufe, sehen Sie Update-Zeitstempel und teilen Sie mit Vertrauen, da Sie wissen, dass Ihr Lebenslauf immer aktuell ist."
       }
     },
     "random": {

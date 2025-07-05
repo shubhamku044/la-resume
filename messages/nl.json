@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Meerdere formaten",
-        "description": "Exporteer je cv in PDF-, DOCX- of TXT-formaat voor verschillende sollicitatievereisten."
+        "description": "Exporteer je cv in PDF- of LaTeX-formaat voor verschillende sollicitatievereisten."
       },
       "feature4": {
         "title": "ATS Optimalisatie",
         "description": "Onze templates zijn ontworpen om Applicant Tracking Systems met gemak te doorstaan."
       },
       "feature5": {
-        "title": "AI Suggesties",
-        "description": "Ontvang slimme inhoudsuggesties om je cv te verbeteren en op te vallen."
+        "title": "Deelbare Link",
+        "description": "Deel je cv eenvoudig met een unieke link. Stuur het naar recruiters, vrienden of bewaar het voor toekomstige referentie."
       },
       "feature6": {
         "title": "Professionele templates",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Transparante prijzen",
-      "description": "Alles wat je nodig hebt om professionele cv's te maken - volledig gratis",
+      "badge": "Eenvoudige Prijzen",
+      "title": "Eenmalige Betaling, Levenslange Toegang",
+      "description": "Betaal eenmaal, geniet voor altijd. Maak, download en deel je professionele cv met onbeperkte toegang.",
       "card": {
-        "title": "Gratis",
-        "description": "Geen creditcard vereist",
-        "points": {
-          "point1": "Onbeperkt aantal cv's",
-          "point2": "ATS-geoptimaliseerde templates",
-          "point3": "PDF Export",
-          "point4": "LaTeX broncode download",
-          "point5": "Geen advertenties",
-          "point6": "Open Source",
-          "point7": "Cloudopslag",
-          "point8": "24/7 Ondersteuning"
+        "title": "CV Toegang",
+        "description": "Alles wat je nodig hebt om je professionele cv te maken en te delen",
+        "currency": "USD",
+        "badge": "Eenmalige betaling",
+        "features": {
+          "unlimited_downloads": "Download je cv onbeperkt vaak",
+          "shareable_links": "Maak deelbare openbare links",
+          "auto_updates": "Automatische updates van gedeelde links",
+          "analytics": "Bekijk analyses en tracking",
+          "no_expiration": "Geen vervaldatum"
         },
-        "button": "Start gratis met bouwen",
-        "sentence": "Vergelijk met andere cv-bouwers: ❌ €15/mnd • ❌ Advertenties • ❌ Beperkte templates"
+        "button": "Krijg Nu Toegang"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Onbeperkte Downloads",
+          "description": "Eenmaal betaald, download je cv altijd en overal"
+        },
+        "shareable_links": {
+          "title": "Deelbare Links",
+          "description": "Maak openbare links om je cv met iedereen te delen"
+        },
+        "auto_updates": {
+          "title": "Auto-Updates",
+          "description": "Gedeelde links reflecteren automatisch je laatste cv-wijzigingen"
+        },
+        "analytics": {
+          "title": "Bekijk Analyses",
+          "description": "Volg wie je cv bekijkt en wanneer"
+        },
+        "no_login": {
+          "title": "Geen Inloggen Vereist",
+          "description": "Iedereen kan je gedeelde cv bekijken zonder zich aan te melden"
+        },
+        "realtime": {
+          "title": "Real-time Updates",
+          "description": "Zie wanneer je cv voor het laatst is bijgewerkt"
+        }
+      },
+      "how_it_works": {
+        "title": "Hoe Het Werkt",
+        "step1": {
+          "title": "Maak Je CV",
+          "description": "Bouw je professionele cv met onze templates en editor"
+        },
+        "step2": {
+          "title": "Betaal Eenmaal",
+          "description": "Doe een eenmalige betaling van €1 om alle functies te ontgrendelen"
+        },
+        "step3": {
+          "title": "Download & Deel",
+          "description": "Download onbeperkt en maak deelbare links die automatisch updaten"
+        }
+      },
+      "smart_sharing": {
+        "title": "Slimme Deeltechnologie",
+        "description": "Wanneer je je cv bijwerkt, tonen al je gedeelde links automatisch de nieuwste versie. Volg weergaven, zie update-tijdstempels en deel met vertrouwen wetende dat je cv altijd actueel is."
       }
     },
     "random": {

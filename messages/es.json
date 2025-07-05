@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Múltiples Formatos",
-        "description": "Exporta tu currículum en formatos PDF, DOCX o TXT para diferentes requisitos de aplicación."
+        "description": "Exporta tu currículum en formatos PDF o LaTeX para diferentes requisitos de aplicación."
       },
       "feature4": {
         "title": "Optimización ATS",
         "description": "Nuestras plantillas están diseñadas para pasar los Sistemas de Seguimiento de Candidatos con facilidad."
       },
       "feature5": {
-        "title": "Sugerencias de IA",
-        "description": "Obtén sugerencias inteligentes de contenido para mejorar tu currículum y destacar."
+        "title": "Enlace Compartible",
+        "description": "Comparte fácilmente tu currículum con un enlace único. Envíalo a reclutadores, amigos o guárdalo para referencia futura."
       },
       "feature6": {
         "title": "Plantillas Profesionales",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Precios Transparentes",
-      "description": "Todo lo que necesitas para crear currículums profesionales - completamente gratis",
+      "badge": "Precios Simples",
+      "title": "Pago Único, Acceso de por Vida",
+      "description": "Paga una vez, disfruta para siempre. Crea, descarga y comparte tu currículum profesional con acceso ilimitado.",
       "card": {
-        "title": "Gratis",
-        "description": "No se requiere tarjeta de crédito",
-        "points": {
-          "point1": "Currículums Ilimitados",
-          "point2": "Plantillas Optimizadas para ATS",
-          "point3": "Exportación a PDF",
-          "point4": "Descarga de Código LaTeX",
-          "point5": "Sin Anuncios",
-          "point6": "Código Abierto",
-          "point7": "Almacenamiento en la Nube",
-          "point8": "Soporte 24/7"
+        "title": "Acceso al Currículum",
+        "description": "Todo lo que necesitas para crear y compartir tu currículum profesional",
+        "currency": "USD",
+        "badge": "Pago único",
+        "features": {
+          "unlimited_downloads": "Descarga tu currículum ilimitadas veces",
+          "shareable_links": "Crea enlaces públicos compartibles",
+          "auto_updates": "Actualizaciones automáticas en enlaces compartidos",
+          "analytics": "Ver análisis y seguimiento",
+          "no_expiration": "Sin fecha de vencimiento"
         },
-        "button": "Comenzar Gratis",
-        "sentence": "Compara con otros creadores de currículums: ❌ $15/mes • ❌ Anuncios • ❌ Plantillas Limitadas"
+        "button": "Obtener Acceso Ahora"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Descargas Ilimitadas",
+          "description": "Una vez pagado, descarga tu currículum en cualquier momento y lugar"
+        },
+        "shareable_links": {
+          "title": "Enlaces Compartibles",
+          "description": "Crea enlaces públicos para compartir tu currículum con cualquiera"
+        },
+        "auto_updates": {
+          "title": "Actualizaciones Automáticas",
+          "description": "Los enlaces compartidos reflejan automáticamente los últimos cambios de tu currículum"
+        },
+        "analytics": {
+          "title": "Ver Análisis",
+          "description": "Rastrea quién ve tu currículum y cuándo"
+        },
+        "no_login": {
+          "title": "Sin Inicio de Sesión Requerido",
+          "description": "Cualquiera puede ver tu currículum compartido sin registrarse"
+        },
+        "realtime": {
+          "title": "Actualizaciones en Tiempo Real",
+          "description": "Ve cuándo fue actualizado tu currículum por última vez"
+        }
+      },
+      "how_it_works": {
+        "title": "Cómo Funciona",
+        "step1": {
+          "title": "Crea Tu Currículum",
+          "description": "Construye tu currículum profesional usando nuestras plantillas y editor"
+        },
+        "step2": {
+          "title": "Paga Una Vez",
+          "description": "Haz un pago único de $1 para desbloquear todas las funciones"
+        },
+        "step3": {
+          "title": "Descarga y Comparte",
+          "description": "Descarga ilimitadas veces y crea enlaces compartibles que se actualizan automáticamente"
+        }
+      },
+      "smart_sharing": {
+        "title": "Tecnología de Compartición Inteligente",
+        "description": "Cuando actualizas tu currículum, todos tus enlaces compartidos muestran automáticamente la versión más reciente. Rastrea visualizaciones, ve marcas de tiempo de actualizaciones y comparte con confianza sabiendo que tu currículum siempre está actualizado."
       }
     },
     "random": {
