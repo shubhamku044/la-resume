@@ -7,11 +7,11 @@ import {
   Header,
   HeroSection,
   HowItWorksSection,
+  PricingSection,
   StatsBanner,
   TeamSection,
   TestimonialsSection,
 } from '@/components/landing';
-import React from 'react';
 
 const Page = () => {
   return (
@@ -22,6 +22,7 @@ const Page = () => {
       <CompaniesSection />
       <FeaturesSection />
       <HowItWorksSection />
+      <PricingSection />
       <TeamSection />
       <TestimonialsSection />
       <FAQSection />

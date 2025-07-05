@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Multiple Formats",
-        "description": "Export your resume in PDF, DOCX, or TXT formats for different application requirements."
+        "description": "Export your resume in PDF or LaTeX formats for different application requirements."
       },
       "feature4": {
         "title": "ATS Optimization",
         "description": "Our templates are designed to pass Applicant Tracking Systems with ease."
       },
       "feature5": {
-        "title": "AI Suggestions",
-        "description": "Get smart content suggestions to improve your resume and stand out."
+        "title": "Shareable Link",
+        "description": "Easily share your resume with a unique link. Send it to recruiters, friends, or keep it for future reference."
       },
       "feature6": {
         "title": "Professional Templates",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Transparent Pricing",
-      "description": "Everything you need to create professional resumes - completely free",
+      "badge": "Simple Pricing",
+      "title": "One-Time Payment, Lifetime Access",
+      "description": "Pay once, enjoy forever. Create, download, and share your professional resume with unlimited access.",
       "card": {
-        "title": "Free",
-        "description": "No credit card required",
-        "points": {
-          "point1": "Unlimited Resumes",
-          "point2": "ATS-Optimized Templates",
-          "point3": "PDF Export",
-          "point4": "LaTeX Source Download",
-          "point5": "No Ads",
-          "point6": "Open Source",
-          "point7": "Cloud Storage",
-          "point8": "24/7 Support"
+        "title": "Resume Access",
+        "description": "Everything you need to create and share your professional resume",
+        "currency": "USD",
+        "badge": "One-time payment",
+        "features": {
+          "unlimited_downloads": "Download your resume unlimited times",
+          "shareable_links": "Create shareable public links",
+          "auto_updates": "Automatic updates to shared links",
+          "analytics": "View analytics and tracking",
+          "no_expiration": "No expiration date"
         },
-        "button": "Start Building Free",
-        "sentence": "Compare with other resume builders: ❌ $15/mo • ❌ Ads • ❌ Limited Templates"
+        "button": "Get Access Now"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Unlimited Downloads",
+          "description": "Once paid, download your resume anytime, anywhere"
+        },
+        "shareable_links": {
+          "title": "Shareable Links",
+          "description": "Create public links to share your resume with anyone"
+        },
+        "auto_updates": {
+          "title": "Auto-Updates",
+          "description": "Shared links automatically reflect your latest resume changes"
+        },
+        "analytics": {
+          "title": "View Analytics",
+          "description": "Track who views your resume and when"
+        },
+        "no_login": {
+          "title": "No Login Required",
+          "description": "Anyone can view your shared resume without signing up"
+        },
+        "realtime": {
+          "title": "Real-time Updates",
+          "description": "See when your resume was last updated"
+        }
+      },
+      "how_it_works": {
+        "title": "How It Works",
+        "step1": {
+          "title": "Create Your Resume",
+          "description": "Build your professional resume using our templates and editor"
+        },
+        "step2": {
+          "title": "Pay Once",
+          "description": "Make a one-time payment of $1 to unlock all features"
+        },
+        "step3": {
+          "title": "Download & Share",
+          "description": "Download unlimited times and create shareable links that auto-update"
+        }
+      },
+      "smart_sharing": {
+        "title": "Smart Sharing Technology",
+        "description": "When you update your resume, all your shared links automatically show the latest version. Track views, see update timestamps, and share with confidence knowing your resume is always current."
       }
     },
     "random": {

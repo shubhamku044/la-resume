@@ -33,15 +33,15 @@
       },
       "feature3": {
         "title": "Múltiplos Formatos",
-        "description": "Exporte seu currículo em formatos PDF, DOCX ou TXT para diferentes requisitos de candidatura."
+        "description": "Exporte seu currículo em formatos PDF ou LaTeX para diferentes requisitos de candidatura."
       },
       "feature4": {
         "title": "Otimização ATS",
         "description": "Nossos templates são projetados para passar por Sistemas de Rastreamento de Candidatos com facilidade."
       },
       "feature5": {
-        "title": "Sugestões de IA",
-        "description": "Obtenha sugestões de conteúdo inteligentes para melhorar seu currículo e se destacar."
+        "title": "Link Compartilhável",
+        "description": "Compartilhe facilmente seu currículo com um link único. Envie para recrutadores, amigos ou mantenha para referência futura."
       },
       "feature6": {
         "title": "Templates Profissionais",
@@ -101,23 +101,67 @@
       }
     },
     "pricing": {
-      "title": "Preços Transparentes",
-      "description": "Tudo o que você precisa para criar currículos profissionais - completamente grátis",
+      "badge": "Preços Simples",
+      "title": "Pagamento Único, Acesso Vitalício",
+      "description": "Pague uma vez, aproveite para sempre. Crie, baixe e compartilhe seu currículo profissional com acesso ilimitado.",
       "card": {
-        "title": "Grátis",
-        "description": "Não requer cartão de crédito",
-        "points": {
-          "point1": "Currículos Ilimitados",
-          "point2": "Templates Otimizados para ATS",
-          "point3": "Exportação em PDF",
-          "point4": "Download do Código Fonte LaTeX",
-          "point5": "Sem Anúncios",
-          "point6": "Código Aberto",
-          "point7": "Armazenamento na Nuvem",
-          "point8": "Suporte 24/7"
+        "title": "Acesso ao Currículo",
+        "description": "Tudo o que você precisa para criar e compartilhar seu currículo profissional",
+        "currency": "USD",
+        "badge": "Pagamento único",
+        "features": {
+          "unlimited_downloads": "Baixe seu currículo ilimitadas vezes",
+          "shareable_links": "Crie links públicos compartilháveis",
+          "auto_updates": "Atualizações automáticas nos links compartilhados",
+          "analytics": "Visualize análises e rastreamento",
+          "no_expiration": "Sem data de expiração"
         },
-        "button": "Comece a Construir Grátis",
-        "sentence": "Compare com outros construtores de currículos: ❌ R$15/mês • ❌ Anúncios • ❌ Templates Limitados"
+        "button": "Obter Acesso Agora"
+      },
+      "features": {
+        "unlimited_downloads": {
+          "title": "Downloads Ilimitados",
+          "description": "Uma vez pago, baixe seu currículo a qualquer hora e lugar"
+        },
+        "shareable_links": {
+          "title": "Links Compartilháveis",
+          "description": "Crie links públicos para compartilhar seu currículo com qualquer pessoa"
+        },
+        "auto_updates": {
+          "title": "Atualizações Automáticas",
+          "description": "Links compartilhados refletem automaticamente as últimas mudanças do seu currículo"
+        },
+        "analytics": {
+          "title": "Visualizar Análises",
+          "description": "Rastreie quem visualiza seu currículo e quando"
+        },
+        "no_login": {
+          "title": "Sem Login Necessário",
+          "description": "Qualquer pessoa pode visualizar seu currículo compartilhado sem se cadastrar"
+        },
+        "realtime": {
+          "title": "Atualizações em Tempo Real",
+          "description": "Veja quando seu currículo foi atualizado pela última vez"
+        }
+      },
+      "how_it_works": {
+        "title": "Como Funciona",
+        "step1": {
+          "title": "Crie Seu Currículo",
+          "description": "Construa seu currículo profissional usando nossos modelos e editor"
+        },
+        "step2": {
+          "title": "Pague Uma Vez",
+          "description": "Faça um pagamento único de R$1 para desbloquear todas as funcionalidades"
+        },
+        "step3": {
+          "title": "Baixe e Compartilhe",
+          "description": "Baixe ilimitadas vezes e crie links compartilháveis que se atualizam automaticamente"
+        }
+      },
+      "smart_sharing": {
+        "title": "Tecnologia de Compartilhamento Inteligente",
+        "description": "Quando você atualiza seu currículo, todos os seus links compartilhados mostram automaticamente a versão mais recente. Rastreie visualizações, veja timestamps de atualizações e compartilhe com confiança sabendo que seu currículo está sempre atualizado."
       }
     },
     "random": {
