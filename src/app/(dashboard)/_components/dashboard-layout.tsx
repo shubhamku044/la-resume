@@ -23,7 +23,7 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -31,6 +31,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
+  const langaugeDropdownRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -143,7 +144,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           className={cn(
             'flex flex-col border-r bg-background overflow-x-hidden transition-all duration-300 z-50',
             'lg:relative lg:translate-x-0',
-            'fixed left-0 h-[calc(100vh-4rem)]',
+            'fixed left-0 h-[calc(100dvh-4rem)]',
             isCollapsed
               ? 'w-0 lg:w-[70px] -translate-x-full lg:translate-x-0'
               : 'w-64 translate-x-0'
@@ -175,8 +176,19 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               />
             </nav>
           </div>
-          <div className="p-2 border-t lg:hidden">
+          <div className="p-2 border-t lg:hidden pb-safe">
             <div className="space-y-2">
+              <div
+                className="flex items-center gap-2 rounded-md bg-secondary/50 px-3 py-2 text-sm"
+                onClick={() => {
+                  langaugeDropdownRef.current?.click();
+                }}
+              >
+                <div className="flex items-center gap-2 flex-1">
+                  <span className="text-muted-foreground">{t('language')}</span>
+                </div>
+                <LanguageSelectorDropdown ref={langaugeDropdownRef} showLabel={false} />
+              </div>
               <Link
                 href="/feedback"
                 className="flex items-center gap-2 rounded-md bg-accent/50 px-3 py-2 text-sm hover:bg-accent transition-colors"
