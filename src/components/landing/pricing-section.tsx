@@ -218,7 +218,7 @@ export const PricingSection = () => {
           {/* Features Grid */}
           <div className="w-full lg:w-auto">
             {/* Mobile: Swipeable horizontal scroll - One card at a time */}
-            <div className="block sm:hidden mb-6 pb-6">
+            <div className="block sm:hidden mb-6">
               <div ref={containerRef} className="relative overflow-hidden w-full min-h-[200px]">
                 <motion.div
                   className="flex cursor-grab active:cursor-grabbing h-full"
@@ -265,11 +265,11 @@ export const PricingSection = () => {
                       whileInView="onscreen"
                       viewport={{ once: true, amount: 0.1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="group flex-shrink-0 px-4 w-full"
+                      className="group flex-shrink-0 px-4 pb-4 w-full"
                       style={{ width: '100%', flex: '0 0 100%' }}
                     >
                       <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
-                        <CardContent className="p-6 pb-8 flex-1 flex flex-col">
+                        <CardContent className="p-6 flex-1 flex flex-col">
                           <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                             {feature.icon}
                           </div>
