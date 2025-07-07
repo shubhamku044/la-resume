@@ -111,6 +111,13 @@ export default {
         'marquee': 'marquee var(--duration) infinite linear',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
+      padding: {
+        safe: 'env(safe-area-inset-bottom)',
+      },
+      height: {
+        'screen-safe': 'calc(100vh - env(safe-area-inset-bottom))',
+        'dvh': '100dvh',
+      },
     },
   },
   darkMode: 'class',
