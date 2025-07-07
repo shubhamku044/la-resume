@@ -270,6 +270,7 @@ export const PricingSection = () => {
                     >
                       <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
                         <CardContent className="p-6 flex-1 flex flex-col">
+
                           <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                             {feature.icon}
                           </div>
