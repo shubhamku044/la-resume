@@ -23,14 +23,20 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsCollapsed(window.innerWidth < 1024);
+    }
+  }, []);
 
   const userDetailItems = [
     {
@@ -100,7 +106,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div className="ml-auto flex items-center gap-4">
           <Link
             href="/feedback"
-            className="flex items-center gap-1 rounded-md bg-accent/50 px-3 py-1.5 text-sm hover:bg-accent"
+            className="hidden lg:flex items-center gap-1 rounded-md bg-accent/50 px-3 py-1.5 text-sm hover:bg-accent"
           >
             <Star className="size-4" />
             <span>{t('feedback')}</span>
@@ -109,7 +115,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           <Link
             href="https://github.com/shubhamku044/la-resume"
             target="_blank"
-            className="relative flex items-center gap-1 rounded-md bg-muted px-3 py-1.5 text-sm hover:bg-muted/80"
+            className="relative hidden lg:flex items-center gap-1 rounded-md bg-muted px-3 py-1.5 text-sm hover:bg-muted/80"
           >
             <LuGithub className="size-4" />
             <span>{t('starOnGitHub')}</span>
@@ -120,19 +126,30 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           <UserButton afterSignOutUrl="/" />
-          <LanguageSelectorDropdown showLabel={false} />
+          <LanguageSelectorDropdown className={cn('hidden lg:flex')} showLabel={false} />
           <ThemeToggle />
         </div>
       </header>
 
-      <div className="flex flex-1  overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
+        {!isCollapsed && (
+          <div
+            className="fixed top-16 inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setIsCollapsed(true)}
+          />
+        )}
+
         <aside
           className={cn(
-            'flex flex-col border-r bg-background transition-width duration-300 ',
-            isCollapsed ? 'w-[70px]' : 'w-64'
+            'flex flex-col border-r bg-background overflow-x-hidden transition-all duration-300 z-50',
+            'lg:relative lg:translate-x-0',
+            'fixed left-0 h-[calc(100vh-4rem)]',
+            isCollapsed
+              ? 'w-0 lg:w-[70px] -translate-x-full lg:translate-x-0'
+              : 'w-64 translate-x-0'
           )}
         >
-          <div className="flex-1 overflow-y-auto p-2">
+          <div className="flex-1 justify-between overflow-x-hidden overflow-y-auto p-2">
             <nav className="space-y-1">
               <CollapsibleSection
                 title={t('jobTracker')}
@@ -157,6 +174,32 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 pathname={pathname}
               />
             </nav>
+          </div>
+          <div className="p-2 border-t lg:hidden">
+            <div className="space-y-2">
+              <Link
+                href="/feedback"
+                className="flex items-center gap-2 rounded-md bg-accent/50 px-3 py-2 text-sm hover:bg-accent transition-colors"
+              >
+                <Star className="size-4" />
+                <span>{t('feedback')}</span>
+              </Link>
+
+              <Link
+                href="https://github.com/shubhamku044/la-resume"
+                target="_blank"
+                className="flex items-center justify-between rounded-md bg-muted px-3 py-2 text-sm hover:bg-muted/80 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <LuGithub className="size-4" />
+                  <span>{t('starOnGitHub')}</span>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <Star className="size-3 fill-yellow-500 text-yellow-500" />
+                  <span>{stars}</span>
+                </div>
+              </Link>
+            </div>
           </div>
         </aside>
 
@@ -225,7 +268,7 @@ function CollapsibleSection({
               className={cn(
                 'flex items-center rounded-md p-2 text-sm hover:bg-accent transition-colors',
                 isActive && 'bg-accent',
-                isCollapsed ? 'justify-center' : 'ml-4 gap-2'
+                isCollapsed ? 'lg:justify-center hidden lg:flex' : 'ml-4 gap-2'
               )}
             >
               <item.icon className="size-4 lg:size-5" />
