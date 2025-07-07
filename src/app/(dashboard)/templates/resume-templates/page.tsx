@@ -1,20 +1,13 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { templates } from '@/lib/templates';
-import Image from 'next/image';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { useUser } from '@clerk/nextjs';
 import { useSaveResumeMutation } from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import { v4 as uuid } from 'uuid';
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
 
 export default function ResumeTemplatesPage() {
   const router = useRouter();
@@ -79,22 +72,6 @@ export default function ResumeTemplatesPage() {
           </div>
         </div>
       )}
-      <div className="mb-6 sm:hidden">
-        <Select
-          defaultValue="/templates/resume-templates"
-          onValueChange={(value) => router.push(value)}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select Page" defaultValue="/templates/resume-templates" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="/templates/resume-templates">
-              {t('sidebar.resumeTemplates')}
-            </SelectItem>
-            <SelectItem value="/templates/made-by-you">{t('templates.resTemplate')}</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
 
       <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">
         {t('templates.resTemplate')}

@@ -1,21 +1,22 @@
-import React, { useTransition } from 'react';
+import { Locale } from '@/i18n/config';
+import { setUserLocale } from '@/services/locale';
+import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
+import { useTransition } from 'react';
+import { IoLanguageOutline } from 'react-icons/io5';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { IoLanguageOutline } from 'react-icons/io5';
-import { useTranslations } from 'next-intl';
-import { Locale } from '@/i18n/config';
-import { setUserLocale } from '@/services/locale';
-import clsx from 'clsx';
 
 interface IProps {
   showLabel: boolean;
+  className?: string;
 }
 
-const LanguageSelectorDropdown = ({ showLabel }: IProps) => {
+const LanguageSelectorDropdown = ({ showLabel, className }: IProps) => {
   const t = useTranslations();
   const languages = t.raw('language') as Record<Locale, string>;
 
@@ -34,7 +35,8 @@ const LanguageSelectorDropdown = ({ showLabel }: IProps) => {
         className={clsx(
           'p-2 outline-none',
           isPending && 'pointer-events-none opacity-60',
-          'flex gap-2'
+          'flex gap-2',
+          className
         )}
       >
         {showLabel && <span>{t('sidebar.language')}</span>}
