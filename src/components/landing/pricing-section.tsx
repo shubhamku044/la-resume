@@ -18,7 +18,7 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const cardVariants = {
   offscreen: {
     y: 50,
@@ -39,8 +39,33 @@ export const PricingSection = () => {
   const router = useRouter();
   const t = useTranslations('HomePage.pricing');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const constraintsRef = useRef(null);
   const x = useMotionValue(0);
+
+  // Get container width on client-side after mount
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Update width on mount and resize
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const updateWidth = () => {
+        // Trigger rerender when width changes
+        if (containerRef.current) {
+          // Update position based on new width
+          const cardWidth = containerRef.current.clientWidth;
+          x.set(-currentIndex * cardWidth);
+        }
+      };
+
+      // Initial update
+      setTimeout(updateWidth, 100); // Short delay to ensure container is rendered
+
+      // Add resize listener
+      window.addEventListener('resize', updateWidth);
+
+      // Clean up
+      return () => window.removeEventListener('resize', updateWidth);
+    }
+  }, [currentIndex, x]);
 
   const features = [
     {
@@ -193,19 +218,25 @@ export const PricingSection = () => {
           {/* Features Grid */}
           <div className="w-full lg:w-auto">
             {/* Mobile: Swipeable horizontal scroll - One card at a time */}
-            <div className="block sm:hidden" ref={constraintsRef}>
-              <div className="relative overflow-hidden w-full">
+            <div className="block sm:hidden mb-6 pb-6">
+              <div ref={containerRef} className="relative overflow-hidden w-full min-h-[200px]">
                 <motion.div
-                  className="flex cursor-grab active:cursor-grabbing"
+                  className="flex cursor-grab active:cursor-grabbing h-full"
                   drag="x"
                   style={{ x }}
                   dragConstraints={{
-                    left: -(features.length - 1) * (window.innerWidth - 40), // Full width minus padding
+                    left:
+                      typeof window !== 'undefined'
+                        ? -(features.length - 1) * (containerRef.current?.clientWidth || 0)
+                        : 0,
                     right: 0,
                   }}
                   dragElastic={0.1}
                   dragMomentum={false}
                   onDragEnd={(_, { offset, velocity }) => {
+                    if (!containerRef.current) return;
+
+                    const cardWidth = containerRef.current.clientWidth;
                     const swipeThreshold = 50;
                     const swipeVelocityThreshold = 500;
 
@@ -213,15 +244,15 @@ export const PricingSection = () => {
                       // Swipe left - next card
                       const nextIndex = Math.min(currentIndex + 1, features.length - 1);
                       setCurrentIndex(nextIndex);
-                      x.set(-nextIndex * (window.innerWidth - 40));
+                      x.set(-nextIndex * cardWidth);
                     } else if (offset.x > swipeThreshold || velocity.x > swipeVelocityThreshold) {
                       // Swipe right - previous card
                       const prevIndex = Math.max(currentIndex - 1, 0);
                       setCurrentIndex(prevIndex);
-                      x.set(-prevIndex * (window.innerWidth - 40));
+                      x.set(-prevIndex * cardWidth);
                     } else {
                       // Snap back to current position
-                      x.set(-currentIndex * (window.innerWidth - 40));
+                      x.set(-currentIndex * cardWidth);
                     }
                   }}
                   whileTap={{ cursor: 'grabbing' }}
@@ -234,18 +265,18 @@ export const PricingSection = () => {
                       whileInView="onscreen"
                       viewport={{ once: true, amount: 0.1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="group flex-shrink-0 px-4"
-                      style={{ width: `${window.innerWidth - 32}px` }} // Full width minus padding
+                      className="group flex-shrink-0 px-4 w-full"
+                      style={{ width: '100%', flex: '0 0 100%' }}
                     >
-                      <Card className="h-full border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full">
-                        <CardContent className="p-6">
+                      <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
+                        <CardContent className="p-6 pb-8 flex-1 flex flex-col">
                           <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                             {feature.icon}
                           </div>
-                          <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
                             {feature.title}
                           </h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">
+                          <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-3">
                             {feature.description}
                           </p>
                         </CardContent>
@@ -255,15 +286,17 @@ export const PricingSection = () => {
                 </motion.div>
               </div>
               {/* Scroll indicator dots */}
-              <div className="flex justify-center mt-4 space-x-2">
+              <div className="flex justify-center mt-5 mb-4 space-x-2">
                 {features.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => {
+                      if (!containerRef.current) return;
+                      const cardWidth = containerRef.current.clientWidth;
                       setCurrentIndex(index);
-                      x.set(-index * (window.innerWidth - 40));
+                      x.set(-index * cardWidth);
                     }}
-                    className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                    className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
                       index === currentIndex
                         ? 'bg-purple-500 dark:bg-purple-400'
                         : 'bg-gray-300 dark:bg-gray-600'
@@ -285,15 +318,15 @@ export const PricingSection = () => {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <Card className="h-full border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
+                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm h-[200px] flex flex-col">
+                    <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                         {feature.icon}
                       </div>
-                      <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                      <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                      <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
                         {feature.description}
                       </p>
                     </CardContent>
