@@ -19,7 +19,7 @@ import {
   Sb2novResumeData,
 } from '@/lib/templates/index';
 import {
-  useDeleteImageKitFileMutation,
+  useDeleteImageFileMutation,
   useDeleteResumeMutation,
   useGetResumesQuery,
 } from '@/store/services/templateApi';
@@ -59,7 +59,7 @@ export default function MadeByYouPage() {
   );
 
   const [deleteResume] = useDeleteResumeMutation();
-  const [deleteImageKitFile] = useDeleteImageKitFileMutation();
+  const [deleteImageFile] = useDeleteImageFileMutation();
   const t = useTranslations();
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function MadeByYouPage() {
       const isTemplateImage = templates.some((template) => resume.previewUrl === template.imageUrl);
 
       if (!isTemplateImage) {
-        await deleteImageKitFile({ slug: resume.slug, hasPaid: resume.hasPaid }).unwrap();
+        await deleteImageFile({ slug: resume.slug, hasPaid: resume.hasPaid }).unwrap();
       }
       await deleteResume({ clerk_id: clerkId, slug: resume.slug }).unwrap();
       toast.success('Resume deleted successfully');

@@ -87,7 +87,7 @@ export const templateApi = createApi({
       }),
     }),
 
-    deleteImageKitFile: builder.mutation<{ message: string }, { slug: string; hasPaid: boolean }>({
+    deleteImageFile: builder.mutation<{ message: string }, { slug: string; hasPaid: boolean }>({
       query: ({ slug, hasPaid }) => ({
         url: '/',
         method: 'DELETE',
@@ -103,5 +103,5 @@ export const {
   useSaveResumeMutation,
   useDeleteResumeMutation,
   useUploadImageMutation,
-  useDeleteImageKitFileMutation,
+  useDeleteImageFileMutation,
 } = templateApi;

@@ -1,5 +1,5 @@
-import imagekit from '@/lib/imagekit';
 import prisma from '@/lib/prisma';
+import { uploadSharedResume } from '@/lib/shareUtils';
 import { auth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -48,17 +48,15 @@ export async function PUT(req: NextRequest) {
 
     // Convert base64 data URL to buffer
     const base64Data = pdfDataUrl.split(';base64,').pop();
-    const buffer = Buffer.from(base64Data, 'base64');
+    const buffer = Buffer.from(base64Data || '', 'base64');
 
-    // Upload PDF to ImageKit with the same name to replace the old one
-    const uploadResponse = await imagekit.upload({
-      file: buffer,
-      fileName: `${shareId}.pdf`,
-      folder: '/shared-resumes',
-      useUniqueFileName: false,
-    });
+    // Upload PDF to S3 with the same name to replace the old one
+    const pdfUrl = await uploadSharedResume(buffer, shareId);
+
+    // Add cache busting parameter to URL
     const timestamp = Date.now();
-    const cacheBustedUrl = `${uploadResponse.url}?v=${timestamp}`;
+    const cacheBustedUrl = `${pdfUrl}?v=${timestamp}`;
+
     // Update shared resume record
     const updatedSharedResume = await prisma.sharedResume.update({
       where: { shareId },

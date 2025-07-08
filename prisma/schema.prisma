@@ -133,6 +133,9 @@ model Resume {
   updatedAt   DateTime @updatedAt
   hasPaid     Boolean  @default(false)
   orderNumber String?
+
+  sharedResume SharedResume?
+  @@index([userId])
 }
 
 model Board {
@@ -211,4 +214,9 @@ model SharedResume {
   createdAt    DateTime @default(now())
   lastUpdated  DateTime @updatedAt
   viewCount    Int      @default(0)
+
+  resume     Resume   @relation(fields: [shareId], references: [slug], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([resumeId])
 }
