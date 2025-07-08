@@ -1,8 +1,7 @@
 import prisma from '@/lib/prisma';
-import { NextRequest, NextResponse } from 'next/server';
-
-import imagekit from '@/lib/imagekit';
+import { deleteSharedResume } from '@/lib/shareUtils';
 import { auth } from '@clerk/nextjs/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * GET: Retrieve a shared resume by its shareId
@@ -83,14 +82,11 @@ export async function DELETE(
       where: { shareId: sharedResume.shareId },
     });
 
-    // Delete the PDF from ImageKit
+    // Delete the PDF from S3
     try {
-      // Extract the file ID from the URL or get it from ImageKit API
-      // This assumes you have the fileId stored or can extract it
-      const fileId = `${sharedResume.shareId}.pdf`;
-      await imagekit.deleteFile(fileId);
+      await deleteSharedResume(sharedResume.shareId);
     } catch (deleteError) {
-      console.error('Error deleting file from ImageKit:', deleteError);
+      console.error('Error deleting file from S3:', deleteError);
       // We continue even if file deletion fails
     }
 

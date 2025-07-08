@@ -13,6 +13,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.842.0",
+    "@aws-sdk/s3-request-presigner": "^3.842.0",
     "@clerk/nextjs": "^6.23.0",
     "@hello-pangea/dnd": "^18.0.1",
     "@heroui/button": "^2.2.22",

@@ -1,5 +1,5 @@
-import imagekit from '@/lib/imagekit';
 import prisma from '@/lib/prisma';
+import { uploadSharedResume } from '@/lib/shareUtils';
 import { auth } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
  * POST: Create a shareable resume link
  * Requirements:
  * 1. Resume must be paid
- * 2. Generate a PDF and upload to ImageKit
+ * 2. Generate a PDF and upload to Amazon S3
  * 3. Create a shareable link record in the database
  */
 export async function POST(req: NextRequest) {
@@ -45,18 +45,13 @@ export async function POST(req: NextRequest) {
 
     // Convert base64 data URL to buffer
     const base64Data = pdfDataUrl.split(';base64,').pop();
-    const buffer = Buffer.from(base64Data, 'base64');
+    const buffer = Buffer.from(base64Data || '', 'base64');
 
     // Generate unique ID for the shared resume
     const shareId = resumeId;
 
-    // Upload PDF to ImageKit
-    const uploadResponse = await imagekit.upload({
-      file: buffer,
-      fileName: `${shareId}.pdf`,
-      folder: '/shared-resumes',
-      useUniqueFileName: false,
-    });
+    // Upload PDF to S3 and get the URL
+    const pdfUrl = await uploadSharedResume(buffer, shareId);
 
     // Create shared resume record
     const sharedResume = await prisma.$transaction(async (tx) => {
@@ -64,7 +59,7 @@ export async function POST(req: NextRequest) {
         data: {
           shareId,
           resumeId,
-          pdfUrl: uploadResponse.url,
+          pdfUrl,
           authorName,
           viewCount: 0,
           userId: clerkId,

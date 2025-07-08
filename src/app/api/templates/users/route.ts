@@ -1,30 +1,52 @@
-import imagekit from '@/lib/imagekit'; // Import your ImageKit utility
+import s3Client from '@/lib/s3';
+import { DeleteObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { NextResponse } from 'next/server';
+
+// Helper to get the S3 bucket name from environment variables
+const getBucketName = () => {
+  return process.env.AWS_BUCKET_NAME || 'la-resume-files';
+};
 
 export async function POST(req: Request) {
   try {
     // Parse the request body
     const { file, fileName } = await req.json();
-    const folder = process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER || 'resumes';
+    const folder = process.env.NEXT_PUBLIC_S3_FOLDER || 'resumes';
 
     // Validate the request body
     if (!file || !fileName) {
       return NextResponse.json({ message: 'File and fileName are required' }, { status: 400 });
     }
 
-    // Upload the file to ImageKit
-    const result = await imagekit.upload({
-      file: file, // Base64 file
-      fileName: fileName, // Unique file name
-      useUniqueFileName: false, // Overwrite if file exists
-      folder: folder,
-    });
+    // Convert base64 file to buffer
+    const buffer = Buffer.from(file.replace(/^data:.*?;base64,/, ''), 'base64');
+
+    // Determine content type from base64 string
+    const contentType = file.match(/^data:(.*?);base64,/)?.[1] || 'application/pdf';
+
+    // Create key for S3 (path in bucket)
+    const key = `${folder}/${fileName}`;
+
+    // Upload the file to S3
+    await s3Client.send(
+      new PutObjectCommand({
+        Bucket: getBucketName(),
+        Key: key,
+        Body: buffer,
+        ContentType: contentType,
+        ContentDisposition: 'inline',
+        CacheControl: 'max-age=31536000',
+      })
+    );
+
+    // Construct the direct S3 URL
+    const s3Url = `https://${getBucketName()}.s3.${process.env.AWS_REGION || 'us-west-1'}.amazonaws.com/${key}`;
 
     // Append a cache-busting timestamp to the URL
     const timestamp = Date.now();
-    const cacheBustedUrl = `${result.url}?v=${timestamp}`;
+    const cacheBustedUrl = `${s3Url}?v=${timestamp}`;
 
-    // Return the ImageKit URL with cache-busting headers
+    // Return the S3 URL with cache-busting headers
     return new Response(JSON.stringify({ url: cacheBustedUrl }), {
       status: 200,
       headers: {
@@ -35,8 +57,8 @@ export async function POST(req: Request) {
       },
     });
   } catch (error) {
-    console.error('Error uploading image to ImageKit:', error);
-    return new Response(JSON.stringify({ message: 'Failed to upload image' }), {
+    console.error('Error uploading file to S3:', error);
+    return new Response(JSON.stringify({ message: 'Failed to upload file' }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
@@ -52,55 +74,45 @@ export async function DELETE(req: Request) {
   try {
     const { slug, hasPaid } = await req.json();
     console.log('Deleting resume:', slug);
+
     // Validate input
     if (!slug) {
       return NextResponse.json({ error: 'Missing slug in request' }, { status: 400 });
     }
 
-    // Search for fileId using file name
-    const filename = `name='${slug}'`;
-    // console.log('Searching for file:', filename);
-    const folder = process.env.NEXT_PUBLIC_IMAGEKIT_FOLDER || 'resumes';
-    const files = await imagekit.listFiles({ searchQuery: filename, path: `/${folder}/` });
-    // console.log('Files:', files);
-    if (!files || files.length === 0) {
-      return NextResponse.json({ error: 'File not found in ImageKit' }, { status: 404 });
-    }
+    const folder = process.env.NEXT_PUBLIC_S3_FOLDER || 'resumes';
+    const key = `${folder}/${slug}`;
 
-    // Find the correct file with a valid fileId
-    const file = files.find((f) => 'fileId' in f);
-
-    if (!file || !('fileId' in file)) {
-      return NextResponse.json(
-        { error: 'Invalid file data received from ImageKit' },
-        { status: 500 }
+    // Delete the file from S3
+    try {
+      await s3Client.send(
+        new DeleteObjectCommand({
+          Bucket: getBucketName(),
+          Key: key,
+        })
       );
+    } catch (error) {
+      console.error(`Error deleting file ${key} from S3:`, error);
+      return NextResponse.json({ error: 'File not found in S3' }, { status: 404 });
     }
-
-    // Delete the file from ImageKit
-    await imagekit.deleteFile(file.fileId);
 
     if (hasPaid) {
-      const filename2 = `name='${slug}'`;
-      // console.log('Searching for file:', filename);
-      const folder = 'shared-resumes';
-      const files2 = await imagekit.listFiles({ searchQuery: filename2, path: `/${folder}/` });
-      // console.log('Files:', files2);
-      if (!files2 || files2.length === 0) {
-        return NextResponse.json({ error: 'File not found in ImageKit' }, { status: 404 });
-      }
+      try {
+        const sharedKey = `${process.env.NEXT_PUBLIC_S3_SHARED_FOLDER}/${slug}.pdf`;
+        console.log('Checking for shared resume:', sharedKey);
 
-      // Find the correct file with a valid fileId
-      const file2 = files2.find((f) => 'fileId' in f);
-
-      if (!file2 || !('fileId' in file2)) {
-        return NextResponse.json(
-          { error: 'Invalid file data received from ImageKit' },
-          { status: 500 }
+        await s3Client.send(
+          new DeleteObjectCommand({
+            Bucket: getBucketName(),
+            Key: sharedKey,
+          })
         );
+        console.log('Shared resume deleted successfully');
+      } catch (error) {
+        console.log('No shared resume found or error deleting shared file:', error);
       }
-      await imagekit.deleteFile(file2.fileId);
     }
+
     // Return response with cache-busting headers
     return new Response(JSON.stringify({ message: 'Resume deleted successfully' }), {
       status: 200,
