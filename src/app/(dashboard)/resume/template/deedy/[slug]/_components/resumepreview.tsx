@@ -38,6 +38,7 @@ interface IProps {
   productId: string;
   resumeType: string;
   productPrice: string;
+  title: string;
 }
 type Product = {
   product_id: string;
@@ -57,6 +58,7 @@ const ResumePreview = ({
   productId,
   resumeType,
   productPrice,
+  title,
 }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
@@ -377,6 +379,7 @@ const ResumePreview = ({
         </AlertDialog>
 
         <ShareModal
+          title={title}
           open={showShareModal}
           onOpenChange={setShowShareModal}
           resumeId={slug}
