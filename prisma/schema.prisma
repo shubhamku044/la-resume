@@ -207,6 +207,7 @@ model Note {
 model SharedResume {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   shareId      String   @unique
+  resumeTitle        String
   resumeId     String   
   pdfUrl       String
   authorName   String

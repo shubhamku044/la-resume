@@ -23,6 +23,7 @@ interface ShareModalProps {
   existingShareId?: string | null;
   onShareCreated?: (shareId: string) => void;
   clerkId: string;
+  title: string;
 }
 
 export const ShareModal = ({
@@ -34,6 +35,7 @@ export const ShareModal = ({
   existingShareId = null,
   onShareCreated,
   clerkId,
+  title,
 }: ShareModalProps) => {
   const [isSharing, setIsSharing] = useState(false);
   const [shareLink, setShareLink] = useState<string | null>(null);
@@ -62,6 +64,7 @@ export const ShareModal = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          title,
           resumeId,
           pdfDataUrl,
           authorName,

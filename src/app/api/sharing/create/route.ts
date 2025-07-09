@@ -19,11 +19,14 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { resumeId, pdfDataUrl, authorName, clerkId } = body;
+    const { title, resumeId, pdfDataUrl, authorName, clerkId } = body;
 
-    if (!resumeId || !pdfDataUrl || !authorName || !clerkId) {
+    if (!title || !resumeId || !pdfDataUrl || !authorName || !clerkId) {
       return NextResponse.json(
-        { error: 'Missing required fields: resumeId or pdfDataUrl or authorName or clerkId' },
+        {
+          error:
+            'Missing required fields: title or resumeId or pdfDataUrl or authorName or clerkId',
+        },
         { status: 400 }
       );
     }
@@ -57,6 +60,7 @@ export async function POST(req: NextRequest) {
     const sharedResume = await prisma.$transaction(async (tx) => {
       return tx.sharedResume.create({
         data: {
+          resumeTitle: title,
           shareId,
           resumeId,
           pdfUrl,
