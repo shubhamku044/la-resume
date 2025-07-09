@@ -256,8 +256,6 @@
   "common": {
     "resumePreview": "Lebenslauf-Vorschau",
     "save": "Speichern",
-    "saved": "Gespeichert",
-    "saving": "Speichern",
     "reorderSection": "Abschnitt neu anordnen",
     "unsavedChanges": "nicht gespeicherte Änderungen",
     "download": "Herunterladen",

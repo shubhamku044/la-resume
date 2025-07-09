@@ -256,8 +256,6 @@
   "common": {
     "resumePreview": "Resume Preview",
     "save": "Save",
-    "saved": "Saved",
-    "saving": "Saving",
     "reorderSection": "Reorder Section",
     "unsavedChanges": "unsaved changes",
     "download": "Download",

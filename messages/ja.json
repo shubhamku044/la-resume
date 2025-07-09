@@ -256,8 +256,6 @@
   "common": {
     "resumePreview": "履歴書プレビュー",
     "save": "保存",
-    "saved": "保存済み",
-    "saving": "保存中",
     "reorderSection": "セクションの並べ替え",
     "unsavedChanges": "未保存の変更",
     "download": "ダウンロード",

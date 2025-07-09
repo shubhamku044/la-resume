@@ -256,8 +256,6 @@
   "common": {
     "resumePreview": "简历预览",
     "save": "保存",
-    "saved": "已保存",
-    "saving": "保存中",
     "reorderSection": "重新排序部分",
     "unsavedChanges": "未保存的更改",
     "download": "下载",
