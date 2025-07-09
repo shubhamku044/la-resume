@@ -2,6 +2,7 @@
 
 import { Header } from '@/components/landing/header';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAuth } from '@clerk/nextjs';
 import { format } from 'date-fns';
 import { Calendar, Download, Eye, Maximize } from 'lucide-react';
 import Link from 'next/link';
@@ -15,6 +16,8 @@ interface SharedResumeData {
   lastUpdated: string;
   createdAt: string;
   viewCount: number;
+  resumeTitle: string;
+  userId: string;
 }
 
 export default function SharedResumePage() {
@@ -23,6 +26,7 @@ export default function SharedResumePage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
+  const { userId } = useAuth();
 
   useEffect(() => {
     const checkAndTrackView = async () => {
@@ -109,7 +113,9 @@ export default function SharedResumePage() {
             <div className="p-3 sm:p-4 border-b border-gray-200 bg-gray-50">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 sm:gap-3">
                 <div>
-                  <h1 className="text-lg sm:text-xl font-bold text-gray-800">Resume</h1>
+                  <h1 className="text-lg sm:text-xl font-bold text-gray-800">
+                    {resumeData.resumeTitle || 'Untitled Resume'}
+                  </h1>
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1 text-gray-600 text-xs sm:text-sm">
                     <div className="flex items-center">
                       <span className="font-medium mr-1">Author:</span>
@@ -119,12 +125,14 @@ export default function SharedResumePage() {
                       <Calendar size={isMobile ? 12 : 14} className="mr-1" />
                       <span>{format(new Date(resumeData.lastUpdated), 'MMM dd, yyyy')}</span>
                     </div>
-                    <div className="flex items-center">
-                      <Eye size={isMobile ? 12 : 14} className="mr-1" />
-                      <span>
-                        {resumeData.viewCount} view{resumeData.viewCount === 1 ? '' : 's'}
-                      </span>
-                    </div>
+                    {userId === resumeData.userId && (
+                      <div className="flex items-center">
+                        <Eye size={isMobile ? 12 : 14} className="mr-1" />
+                        <span>
+                          {resumeData.viewCount} view{resumeData.viewCount === 1 ? '' : 's'}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -38,6 +38,7 @@ interface IProps {
   productId: string;
   resumeType: string;
   productPrice: string;
+  title: string;
 }
 type Product = {
   product_id: string;
@@ -57,6 +58,7 @@ const ResumePreview = ({
   productId,
   resumeType,
   productPrice,
+  title,
 }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
@@ -139,6 +141,7 @@ const ResumePreview = ({
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            title: title,
             shareId: data.data.shareId,
             pdfDataUrl: pdfData,
             resumeId: slug,
@@ -385,6 +388,7 @@ const ResumePreview = ({
           existingShareId={shareId}
           onShareCreated={(newShareId) => setShareId(newShareId)}
           clerkId={userId || ''}
+          title={title}
         />
       </ResizablePanel>
     );

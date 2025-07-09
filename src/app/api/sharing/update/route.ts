@@ -15,11 +15,11 @@ export async function PUT(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { shareId, pdfDataUrl, resumeId } = body;
+    const { title, shareId, pdfDataUrl, resumeId } = body;
 
-    if (!shareId || !pdfDataUrl || !resumeId) {
+    if (!title || !shareId || !pdfDataUrl || !resumeId) {
       return NextResponse.json(
-        { error: 'Missing required fields: shareId, pdfDataUrl, or resumeId' },
+        { error: 'Missing required fields: title,  shareId, pdfDataUrl, or resumeId' },
         { status: 400 }
       );
     }
@@ -61,6 +61,7 @@ export async function PUT(req: NextRequest) {
     const updatedSharedResume = await prisma.sharedResume.update({
       where: { shareId },
       data: {
+        resumeTitle: title,
         pdfUrl: cacheBustedUrl,
       },
     });

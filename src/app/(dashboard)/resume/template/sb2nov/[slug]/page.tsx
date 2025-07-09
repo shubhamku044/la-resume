@@ -69,6 +69,7 @@ export default function ResumeTemplatePage() {
                 productId={productId}
                 resumeType={resumeType}
                 productPrice={productPrice}
+                title={existingResume?.title || ''}
               />
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
@@ -104,6 +105,7 @@ export default function ResumeTemplatePage() {
                 productId={productId}
                 resumeType={resumeType}
                 productPrice={productPrice}
+                title={existingResume?.title || ''}
               />
             </>
           )}
