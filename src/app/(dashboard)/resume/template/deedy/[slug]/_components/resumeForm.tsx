@@ -1,25 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Reorder } from 'framer-motion';
-import { ResizablePanel } from '@/components/ui/resizable';
-import { deedyResumeData } from '@/lib/templates/deedy';
-import HeadingSection from './heading';
-import EducationSection from './education';
-import SkillsSection from './skills';
-import ExperienceSection from './experience';
-import ProjectsSection from './projects';
-import CertificationsSection from './certifications';
-import AchievementsSection from './achievements';
-import PositionsOfResponsibilitySection from './positionOfResponsibility';
-import { useUser } from '@clerk/nextjs';
-import { toast } from 'sonner';
-import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
-import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { CircularProgress } from '@heroui/progress';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,11 +9,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { ResizablePanel } from '@/components/ui/resizable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useResumeData } from '@/hooks/resumeData';
+import { deedyResumeData } from '@/lib/templates/deedy';
+import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
+import { Reorder } from 'framer-motion';
+import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import AchievementsSection from './achievements';
+import CertificationsSection from './certifications';
+import EducationSection from './education';
+import ExperienceSection from './experience';
+import HeadingSection from './heading';
+import PositionsOfResponsibilitySection from './positionOfResponsibility';
+import ProjectsSection from './projects';
+import SkillsSection from './skills';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
+  loading: boolean;
   setLoading: (loading: boolean) => void;
   setLatexData: (latexData: string | null) => void;
   templateSampleData: deedyResumeData;
@@ -43,6 +43,7 @@ interface ResumeFormProps {
 
 const ResumeForm = ({
   onUpdate,
+  loading,
   setLoading,
   setLatexData,
   templateSampleData,
@@ -258,24 +259,30 @@ const ResumeForm = ({
         <div className="flex items-center gap-2">
           <div className="relative">
             <Button
-              disabled={isSaving || isChangesSaved}
-              className="relative disabled:cursor-not-allowed"
-              size="sm"
+              disabled={isSaving || isChangesSaved || loading}
+              className="relative"
+              size="default"
               onClick={handleSave}
+              variant={
+                loading
+                  ? 'destructive'
+                  : isSaving
+                    ? 'destructive'
+                    : isChangesSaved
+                      ? 'link'
+                      : 'destructive'
+              }
             >
               {isSaving ? (
-                <CircularProgress
-                  aria-label="CircularProgress"
-                  className="scale-50 text-sm"
-                  strokeWidth={3}
-                  size="lg"
-                />
+                <>{t('common.saving')}</>
+              ) : isChangesSaved ? (
+                <>{t('common.saved')}</>
               ) : (
                 <>{t('common.save')}</>
               )}
-              <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
+              {/* <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
                 {!isChangesSaved && <>*{t('common.unsavedChanges')}</>}
-              </span>
+              </span> */}
             </Button>
           </div>
           {resumeSectionsOrder && (
