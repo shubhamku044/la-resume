@@ -256,6 +256,8 @@
   "common": {
     "resumePreview": "Visualização do Currículo",
     "save": "Salvar",
+    "saved": "Salvo",
+    "saving": "Salvando",
     "reorderSection": "Reordenar Seção",
     "unsavedChanges": "alterações não salvas",
     "download": "Baixar",

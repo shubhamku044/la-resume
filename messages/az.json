@@ -256,6 +256,8 @@
   "common": {
     "resumePreview": "CV Önizləmə",
     "save": "Yadda Saxla",
+    "saved": "Yadda Saxlanıldı",
+    "saving": "Yadda Saxlanılır",
     "reorderSection": "Bölməni Yenidən Sırala",
     "unsavedChanges": "yadda saxlanılmayan dəyişikliklər",
     "download": "Yüklə",
