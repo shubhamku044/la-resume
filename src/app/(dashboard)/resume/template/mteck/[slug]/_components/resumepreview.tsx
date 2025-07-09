@@ -141,6 +141,7 @@ const ResumePreview = ({
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            title: title,
             shareId: data.data.shareId,
             pdfDataUrl: pdfData,
             resumeId: slug,
