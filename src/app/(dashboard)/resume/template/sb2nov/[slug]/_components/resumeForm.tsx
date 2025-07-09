@@ -1,23 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Reorder } from 'framer-motion';
-import { ResizablePanel } from '@/components/ui/resizable';
-import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import HeadingSection from './heading';
-import EducationSection from './education';
-import SkillsSection from './skills';
-import ExperienceSection from './experience';
-import ProjectsSection from './projects';
-import HonorsAndRewards from './honorandawards';
-import { useUser } from '@clerk/nextjs';
-import { toast } from 'sonner';
-import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
-import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { CircularProgress } from '@heroui/progress';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,8 +9,24 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { ResizablePanel } from '@/components/ui/resizable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useResumeData } from '@/hooks/resumeData';
+import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
+import { Reorder } from 'framer-motion';
+import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import EducationSection from './education';
+import ExperienceSection from './experience';
+import HeadingSection from './heading';
+import HonorsAndRewards from './honorandawards';
+import ProjectsSection from './projects';
+import SkillsSection from './skills';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
@@ -97,6 +96,69 @@ const ResumeForm = ({
     }
   };
 
+  const handleSave = useCallback(async () => {
+    setIsSaving(true);
+    if (!filename.trim()) {
+      toast.error('Please enter a filename');
+      setIsSaving(false);
+      return;
+    }
+
+    if (!clerkId) {
+      toast.error('User ID is missing. Please try again.');
+      setIsSaving(false);
+      return;
+    }
+
+    if (!formData || typeof formData !== 'object') {
+      toast.error('Resume data is invalid.');
+      setIsSaving(false);
+      return;
+    }
+
+    try {
+      let imageUrl = null;
+
+      if (previewImage) {
+        const { url } = await uploadImage({
+          file: previewImage,
+          fileName: slug,
+        }).unwrap();
+        imageUrl = url;
+      }
+      if (!imageUrl) {
+        setIsSaving(false);
+        return;
+      }
+      await saveResume({
+        clerk_id: clerkId,
+        title: filename,
+        type: 'sb2nov',
+        data: formData,
+        slug,
+        previewUrl: imageUrl,
+      }).unwrap();
+
+      // toast.success('Resume saved successfully!');
+      setIsSaving(false);
+      setIsChangesSaved(true);
+    } catch (error) {
+      console.error('❌ Save Resume Error:', error);
+      toast.error('Error saving resume');
+      setIsSaving(false);
+    }
+  }, [
+    clerkId,
+    formData,
+    filename,
+    previewImage,
+    saveResume,
+    setIsChangesSaved,
+    setIsSaving,
+    slug,
+    uploadImage,
+  ]);
+
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
@@ -128,6 +190,10 @@ const ResumeForm = ({
         setPreviewImage(base64);
         onUpdate(base64);
       };
+      if (!isChangesSaved) {
+        handleSave();
+        setIsChangesSaved(true);
+      }
       const imageUrl = URL.createObjectURL(blob);
       onUpdate(imageUrl);
     } catch (error) {
@@ -135,7 +201,7 @@ const ResumeForm = ({
     } finally {
       setLoading(false);
     }
-  }, [formData, onUpdate, setLatexData, setLoading, templateFunction]);
+  }, [formData, handleSave, isChangesSaved, onUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
     setTempData((prev) => ({
@@ -157,69 +223,14 @@ const ResumeForm = ({
   const sections = Object.keys(formData) as Array<keyof Sb2novResumeData>;
   const sectionsOrder = formData?.sectionOrder || templateSampleData.sectionOrder;
 
-  const handleSave = async () => {
-    setIsSaving(true);
-    if (!filename.trim()) {
-      toast.error('Please enter a filename');
-      setIsSaving(false);
-      return;
-    }
+  // const handleSaveCallback = useCallback(handleSave, [handleSave]);
 
-    if (!clerkId) {
-      toast.error('User ID is missing. Please try again.');
-      setIsSaving(false);
-      return;
-    }
-
-    if (!formData || typeof formData !== 'object') {
-      toast.error('Resume data is invalid.');
-      setIsSaving(false);
-      return;
-    }
-
-    try {
-      let imageUrl = null;
-
-      if (previewImage) {
-        const { url } = await uploadImage({
-          file: previewImage,
-          fileName: slug,
-        }).unwrap();
-        imageUrl = url;
-        console.log('🖼️ Uploaded Image URL:', imageUrl);
-      }
-      if (!imageUrl) {
-        setIsSaving(false);
-        toast.error('Error uploading image');
-        return;
-      }
-      await saveResume({
-        clerk_id: clerkId,
-        title: filename,
-        type: 'sb2nov',
-        data: formData,
-        slug,
-        previewUrl: imageUrl,
-      }).unwrap();
-
-      toast.success('Resume saved successfully!');
-      setIsSaving(false);
-      setIsChangesSaved(true);
-    } catch (error) {
-      console.error('❌ Save Resume Error:', error);
-      toast.error('Error saving resume');
-      setIsSaving(false);
-    }
-  };
-
-  const handleSaveCallback = useCallback(handleSave, [handleSave]);
-
-  useEffect(() => {
-    if (isChangesSaved) {
-      // handleSaveCallback();
-      // setIsChangesSaved(false);
-    }
-  }, [isChangesSaved, handleSaveCallback]);
+  // useEffect(() => {
+  //   if (isChangesSaved) {
+  //     // handleSaveCallback();
+  //     // setIsChangesSaved(false);
+  //   }
+  // }, [isChangesSaved, handleSaveCallback]);
 
   return (
     <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
@@ -257,23 +268,21 @@ const ResumeForm = ({
           <div className="relative">
             <Button
               disabled={isSaving || isChangesSaved}
-              className="relative disabled:cursor-not-allowed"
-              size="sm"
+              className="relative"
+              size="default"
               onClick={handleSave}
+              variant={isSaving ? 'destructive' : isChangesSaved ? 'link' : 'destructive'}
             >
               {isSaving ? (
-                <CircularProgress
-                  aria-label="CircularProgress"
-                  className="scale-50 text-sm"
-                  strokeWidth={3}
-                  size="lg"
-                />
+                <>{t('common.saving')}</>
+              ) : isChangesSaved ? (
+                <>{t('common.saved')}</>
               ) : (
                 <>{t('common.save')}</>
               )}
-              <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
+              {/* <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
                 {!isChangesSaved && <>*{t('common.unsavedChanges')}</>}
-              </span>
+              </span> */}
             </Button>
           </div>
           {resumeSectionsOrder && (
