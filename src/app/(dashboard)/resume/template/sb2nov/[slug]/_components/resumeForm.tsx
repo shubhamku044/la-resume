@@ -30,6 +30,7 @@ import SkillsSection from './skills';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
+  loading: boolean;
   setLoading: (loading: boolean) => void;
   setLatexData: (latexData: string | null) => void;
   templateSampleData: Sb2novResumeData;
@@ -40,6 +41,7 @@ interface ResumeFormProps {
 
 const ResumeForm = ({
   onUpdate,
+  loading,
   setLoading,
   setLatexData,
   templateSampleData,
@@ -110,7 +112,7 @@ const ResumeForm = ({
       return;
     }
 
-    if (!formData || typeof formData !== 'object') {
+    if (!tempData || typeof tempData !== 'object') {
       toast.error('Resume data is invalid.');
       setIsSaving(false);
       return;
@@ -134,7 +136,7 @@ const ResumeForm = ({
         clerk_id: clerkId,
         title: filename,
         type: 'sb2nov',
-        data: formData,
+        data: tempData,
         slug,
         previewUrl: imageUrl,
       }).unwrap();
@@ -149,7 +151,7 @@ const ResumeForm = ({
     }
   }, [
     clerkId,
-    formData,
+    tempData,
     filename,
     previewImage,
     saveResume,
@@ -190,10 +192,10 @@ const ResumeForm = ({
         setPreviewImage(base64);
         onUpdate(base64);
       };
-      if (!isChangesSaved) {
-        handleSave();
-        setIsChangesSaved(true);
-      }
+      // if (!isChangesSaved) {
+      //   handleSave();
+      //   setIsChangesSaved(true);
+      // }
       const imageUrl = URL.createObjectURL(blob);
       onUpdate(imageUrl);
     } catch (error) {
@@ -201,7 +203,7 @@ const ResumeForm = ({
     } finally {
       setLoading(false);
     }
-  }, [formData, handleSave, isChangesSaved, onUpdate, setLatexData, setLoading, templateFunction]);
+  }, [formData, onUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
     setTempData((prev) => ({
@@ -267,11 +269,19 @@ const ResumeForm = ({
         <div className="flex items-center gap-2">
           <div className="relative">
             <Button
-              disabled={isSaving || isChangesSaved}
+              disabled={isSaving || isChangesSaved || loading}
               className="relative"
               size="default"
               onClick={handleSave}
-              variant={isSaving ? 'destructive' : isChangesSaved ? 'link' : 'destructive'}
+              variant={
+                loading
+                  ? 'destructive'
+                  : isSaving
+                    ? 'destructive'
+                    : isChangesSaved
+                      ? 'link'
+                      : 'destructive'
+              }
             >
               {isSaving ? (
                 <>{t('common.saving')}</>
