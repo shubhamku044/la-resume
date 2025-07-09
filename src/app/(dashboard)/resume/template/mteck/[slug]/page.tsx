@@ -1,10 +1,10 @@
 'use client';
+import { ResizableHandle, ResizablePanelGroup } from '@/components/ui/resizable';
 import { useResumeData } from '@/hooks/resumeData';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { MTeckResumeData, mteck } from '@/lib/templates/mteck';
 import ResumeForm from './_components/resumeForm';
 import ResumePreview from './_components/resumepreview';
-import { ResizablePanelGroup, ResizableHandle } from '@/components/ui/resizable';
-import { MTeckResumeData, mteck } from '@/lib/templates/mteck';
 
 export default function ResumeTemplatePage() {
   const resumetype = 'mteck';
@@ -73,6 +73,7 @@ export default function ResumeTemplatePage() {
               <ResizableHandle className="h-4 w-full opacity-0" />
               <ResumeForm
                 onUpdate={setImageUrl}
+                loading={loading}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
                 templateSampleData={initialData as MTeckResumeData}
@@ -85,6 +86,7 @@ export default function ResumeTemplatePage() {
             <>
               <ResumeForm
                 onUpdate={setImageUrl}
+                loading={loading}
                 setLoading={setLoading}
                 setLatexData={setLatexData}
                 templateSampleData={initialData as MTeckResumeData}

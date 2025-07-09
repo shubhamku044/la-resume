@@ -1,36 +1,36 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ResizablePanel } from '@/components/ui/resizable';
-import { MTeckResumeData } from '@/lib/templates/mteck';
-import { useUser } from '@clerk/nextjs';
-import { toast } from 'sonner';
-import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
-import { PencilIcon, ChevronDown, GripVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import HeadingSection from './heading';
-import SkillsSection from './skills';
-import ExperienceSection from './experience';
-import EducationSection from './education';
-import ProjectsSection from './projects';
-import CertificatesSection from './certificates';
-import { CircularProgress } from '@heroui/progress';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { ResizablePanel } from '@/components/ui/resizable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useResumeData } from '@/hooks/resumeData';
-import { useTranslations } from 'next-intl';
+import { MTeckResumeData } from '@/lib/templates/mteck';
+import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
 import { Reorder } from 'framer-motion';
+import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import CertificatesSection from './certificates';
+import EducationSection from './education';
+import ExperienceSection from './experience';
+import HeadingSection from './heading';
+import ProjectsSection from './projects';
+import SkillsSection from './skills';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
+  loading: boolean;
   setLoading: (loading: boolean) => void;
   setLatexData: (latexData: string | null) => void;
   templateSampleData: MTeckResumeData;
@@ -41,6 +41,7 @@ interface ResumeFormProps {
 
 const ResumeForm = ({
   onUpdate,
+  loading,
   setLoading,
   setLatexData,
   templateSampleData,
@@ -253,24 +254,30 @@ const ResumeForm = ({
         <div className="flex items-center gap-2">
           <div className="relative">
             <Button
-              disabled={isSaving || isChangesSaved}
-              className="relative disabled:cursor-not-allowed"
-              size="sm"
+              disabled={isSaving || isChangesSaved || loading}
+              className="relative"
+              size="default"
               onClick={handleSave}
+              variant={
+                loading
+                  ? 'destructive'
+                  : isSaving
+                    ? 'destructive'
+                    : isChangesSaved
+                      ? 'link'
+                      : 'destructive'
+              }
             >
               {isSaving ? (
-                <CircularProgress
-                  aria-label="CircularProgress"
-                  className="scale-50 text-sm"
-                  strokeWidth={3}
-                  size="lg"
-                />
+                <>{t('common.saving')}</>
+              ) : isChangesSaved ? (
+                <>{t('common.saved')}</>
               ) : (
                 <>{t('common.save')}</>
               )}
-              <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
+              {/* <span className="absolute -bottom-4 right-0 w-fit text-xs font-medium text-red-500">
                 {!isChangesSaved && <>*{t('common.unsavedChanges')}</>}
-              </span>
+              </span> */}
             </Button>
           </div>
           {resumeSectionsOrder && (
