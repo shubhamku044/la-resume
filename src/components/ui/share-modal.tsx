@@ -102,10 +102,10 @@ export const ShareModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="mx-3 w-[calc(100vw-1.5rem)] max-w-[90vw] sm:mx-auto sm:w-full sm:max-w-md">
-        <DialogHeader className="text-left">
-          <DialogTitle className="text-lg font-semibold">Share Resume</DialogTitle>
-          <DialogDescription className="text-sm text-muted-foreground mt-1">
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Share Resume</DialogTitle>
+          <DialogDescription>
             Create a shareable link for your resume that anyone can view without signing in.
           </DialogDescription>
         </DialogHeader>
@@ -113,77 +113,55 @@ export const ShareModal = ({
         {!shareLink ? (
           <>
             <div className="flex flex-col space-y-4 py-4">
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground">
                 This will generate a public link to your resume that can be shared with anyone.
               </p>
               {error && (
-                <div className="bg-red-50 text-red-800 p-3 rounded-md text-sm border border-red-200">
-                  {error}
-                </div>
+                <div className="bg-red-50 text-red-800 p-3 rounded-md text-sm">{error}</div>
               )}
             </div>
-            <DialogFooter className="flex-col gap-2 sm:flex-row sm:justify-start">
+            <DialogFooter className="sm:justify-start">
               <Button
                 type="button"
                 variant="default"
                 onClick={handleCreateShareableLink}
                 disabled={isSharing || !pdfDataUrl}
-                className="w-full sm:w-auto flex items-center justify-center gap-2"
+                className="w-full sm:w-auto"
               >
                 {isSharing
                   ? 'Creating link...'
                   : existingShareId
                     ? 'Regenerate link'
                     : 'Create shareable link'}
-                <Share2 className="h-4 w-4" />
+                <Share2 className="ml-2 h-4 w-4" />
               </Button>
             </DialogFooter>
           </>
         ) : (
           <>
             <div className="flex flex-col space-y-4 py-4">
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground">
                 Your resume is now shared! Use this link to share with others:
               </p>
-              <div className="space-y-3">
-                {/* Mobile: Stacked layout */}
-                <div className="block sm:hidden space-y-2">
-                  <div className="relative">
-                    <LinkIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input className="pl-10 pr-3 text-sm" value={shareLink} readOnly />
-                  </div>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={copyToClipboard}
-                    className="w-full flex items-center justify-center gap-2"
-                  >
-                    <Copy className="h-4 w-4" />
-                    Copy Link
-                  </Button>
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <LinkIcon className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input className="pl-8" value={shareLink} readOnly />
                 </div>
-
-                {/* Desktop: Side by side layout */}
-                <div className="hidden sm:flex items-center gap-2">
-                  <div className="relative flex-1">
-                    <LinkIcon className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input className="pl-8" value={shareLink} readOnly />
-                  </div>
-                  <Button type="button" variant="outline" size="icon" onClick={copyToClipboard}>
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </div>
+                <Button type="button" variant="outline" size="icon" onClick={copyToClipboard}>
+                  <Copy className="h-4 w-4" />
+                </Button>
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground">
                 Note: This link will remain active as long as your resume exists.
               </p>
             </div>
-            <DialogFooter className="flex-col gap-2 sm:flex-row sm:justify-start">
+            <DialogFooter className="sm:justify-start">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => window.open(shareLink, '_blank')}
-                className="w-full sm:w-auto flex items-center justify-center gap-2"
+                className="w-full sm:w-auto"
               >
                 Open shared page
               </Button>
