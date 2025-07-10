@@ -230,7 +230,7 @@ const ResumeForm = ({
       await saveResume({
         clerk_id: clerkId,
         title: filename,
-        type: 'sb2nov',
+        type: 'deedy',
         data: formData,
         slug,
         previewUrl: imageUrl,
