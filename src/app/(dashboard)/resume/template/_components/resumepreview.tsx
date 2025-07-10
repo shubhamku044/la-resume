@@ -24,7 +24,7 @@ import { useCheckout } from '@/lib/checkoutDodo';
 import { useUser } from '@clerk/nextjs';
 import { Button } from '@heroui/button';
 import { CircularProgress } from '@heroui/progress';
-import { Crown, Share2 } from 'lucide-react';
+import { Download, Lock, Share2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -120,11 +120,9 @@ const ResumePreview = ({
     }
   };
 
-  // Function to handle share button click
   const handleShare = async () => {
     try {
       setIsSharing(true);
-      // Check if we already have a share link for this resume
       const response = await fetch(`/api/sharing/by-resume?resumeId=${slug}`);
       const data = await response.json();
 
@@ -156,7 +154,6 @@ const ResumePreview = ({
           toast.error('Failed to update shared resume');
         }
       } else {
-        // No existing share, show the modal which will create a new one
         setShowShareModal(true);
       }
       setIsSharing(false);
@@ -263,7 +260,11 @@ const ResumePreview = ({
               </SelectContent>
             </Select>
             <Button
-              className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+              className={`${
+                paymentStatus
+                  ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
+                  : 'bg-gray-400 dark:bg-gray-700'
+              } text-white shadow-lg flex items-center gap-2`}
               onPress={() => {
                 if (paymentStatus) {
                   setShowDownloadConfirmation(true);
@@ -273,6 +274,7 @@ const ResumePreview = ({
               }}
               disabled={paymentStarted}
             >
+              {!paymentStatus && <Lock size={16} />}
               {paymentStarted ? (
                 <div className="flex items-center gap-2">
                   <CircularProgress
@@ -285,37 +287,45 @@ const ResumePreview = ({
                 </div>
               ) : paymentStatus ? (
                 <>
+                  <Download size={16} />
                   {t('common.download')}
-                  <Crown size={16} />
                 </>
               ) : (
                 'Download'
               )}
             </Button>
-            {paymentStatus && (
-              <Button
-                className="bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg"
-                disabled={isSharing}
-                onPress={handleShare}
-              >
-                {isSharing ? (
-                  <div className="flex items-center gap-2">
-                    <CircularProgress
-                      color="default"
-                      className="scale-50 text-white"
-                      strokeWidth={3}
-                      size="sm"
-                    />
-                    <span>Sharing...</span>
-                  </div>
-                ) : (
-                  <>
-                    Share
-                    <Share2 size={16} className="mr-2" />
-                  </>
-                )}
-              </Button>
-            )}
+            <Button
+              className={`${
+                paymentStatus
+                  ? 'bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg'
+                  : 'bg-gray-400 dark:bg-gray-700'
+              } text-white shadow-lg flex items-center gap-2`}
+              disabled={isSharing}
+              onPress={() => {
+                if (paymentStatus) {
+                  handleShare();
+                } else {
+                  setShowPaymentConfirmation(true);
+                }
+              }}
+            >
+              {isSharing ? (
+                <div className="flex items-center gap-2">
+                  <CircularProgress
+                    color="default"
+                    className="scale-50 text-white"
+                    strokeWidth={3}
+                    size="sm"
+                  />
+                  <span>Sharing...</span>
+                </div>
+              ) : (
+                <>
+                  <Share2 size={16} />
+                  Share
+                </>
+              )}
+            </Button>
           </div>
         </div>
 

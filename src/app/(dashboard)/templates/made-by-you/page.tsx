@@ -137,6 +137,7 @@ export default function MadeByYouPage() {
                 imageUrl={resume.previewUrl}
                 paymentStatus={resume.hasPaid}
                 orderNumber={resume.orderNumber}
+                clerkId={clerkId}
               />
             </div>
           ))}

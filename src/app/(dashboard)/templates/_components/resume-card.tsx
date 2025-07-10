@@ -1,19 +1,31 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card } from '@/components/ui/card';
-import { formatDistanceToNow } from 'date-fns';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { ShareModal } from '@/components/ui/share-modal';
 import {
   deedyResumeData,
+  MTeckResumeData,
   resumesMap,
   Sb2novResumeData,
-  MTeckResumeData,
 } from '@/lib/templates/index';
-import { CheckCircle, RotateCw, Trash2 } from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
+import { CheckCircle, Edit, Lock, RotateCw, Share2, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface ResumeCardProps {
   id: string;
@@ -27,6 +39,7 @@ interface ResumeCardProps {
   imageUrl: string;
   paymentStatus: boolean;
   orderNumber: string | '';
+  clerkId: string;
 }
 
 export function ResumeCard({
@@ -39,10 +52,50 @@ export function ResumeCard({
   imageUrl: imageLink,
   paymentStatus,
   orderNumber,
+  clerkId,
 }: ResumeCardProps) {
   const t = useTranslations();
   const [isHovered, setIsHovered] = useState(false);
   const [isIconHovered, setIsIconHovered] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareId, setShareId] = useState<string | null>(null);
+  const [pdfDataUrl, setPdfDataUrl] = useState<string | null>(null);
+  const [showCreateShareAlert, setShowCreateShareAlert] = useState(false);
+  const [isCheckingShare, setIsCheckingShare] = useState(false);
+
+  const checkSharedLink = async () => {
+    if (!paymentStatus) {
+      return;
+    }
+
+    try {
+      setIsCheckingShare(true);
+      const response = await fetch(`/api/sharing/by-resume?resumeId=${slug}`);
+      const data = await response.json();
+
+      if (data.success && data.data) {
+        setShareId(data.data.shareId);
+        setPdfDataUrl(imageLink);
+        setShowShareModal(true);
+      } else {
+        setShowCreateShareAlert(true);
+      }
+    } catch (error) {
+      console.error('Error checking shared link:', error);
+      toast.error('Failed to check shared status');
+    } finally {
+      setIsCheckingShare(false);
+    }
+  };
+
+  const handleShareClick = () => {
+    if (!paymentStatus) {
+      toast.error('Purchase required to share this resume');
+      return;
+    }
+
+    checkSharedLink();
+  };
 
   return (
     <Card
@@ -117,20 +170,48 @@ export function ResumeCard({
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20"
-                  asChild
+                  className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 gap-1.5"
+                  onClick={handleShareClick}
                 >
-                  <Link href={imageLink ?? '#'} target="_blank">
-                    Preview PDF
-                  </Link>
+                  {isCheckingShare ? (
+                    <>
+                      <RotateCw className="size-4 animate-spin" />
+                      Checking...
+                    </>
+                  ) : !paymentStatus ? (
+                    <>
+                      <Lock className="size-4" />
+                      Share
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="size-4" />
+                      Share
+                    </>
+                  )}
                 </Button>
+                {/* {imageLink && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20"
+                    asChild
+                  >
+                    <Link href={imageLink} target="_blank">
+                      View PDF
+                    </Link>
+                  </Button>
+                )} */}
                 <Button
                   variant="outline"
                   size="sm"
                   className="border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20"
                   asChild
                 >
-                  <Link href={`/resume/template/${type}/${slug}`}>Edit Resume</Link>
+                  <Link href={`/resume/template/${type}/${slug}`}>
+                    <Edit className="size-4" />
+                    Edit
+                  </Link>
                 </Button>
               </div>
 
@@ -157,6 +238,37 @@ export function ResumeCard({
           </div>
         </div>
       </div>
+
+      {/* Share Modal for when sharing is possible */}
+      <ShareModal
+        open={showShareModal}
+        onOpenChange={setShowShareModal}
+        resumeId={slug}
+        authorName=""
+        pdfDataUrl={pdfDataUrl}
+        existingShareId={shareId}
+        onShareCreated={(newShareId) => setShareId(newShareId)}
+        clerkId={clerkId}
+        title={title}
+      />
+
+      <AlertDialog open={showCreateShareAlert} onOpenChange={setShowCreateShareAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Create Shareable Link</AlertDialogTitle>
+            <AlertDialogDescription>
+              You need to create a shareable link from the resume editor. Would you like to go to
+              the resume editor now?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Link href={`/resume/template/${type}/${slug}`}>Go to Editor</Link>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }
