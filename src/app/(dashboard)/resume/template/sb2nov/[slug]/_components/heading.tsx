@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { useDebounce } from '@/hooks';
-import { X, Check } from 'lucide-react';
+import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Check, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 interface HeadingProps {
   data: Sb2novResumeData['heading'];
   setTempData: React.Dispatch<React.SetStateAction<Sb2novResumeData>>;
@@ -87,45 +87,51 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
         <label className="text-sm font-semibold capitalize">Socials</label>
         <div className="space-y-2">
           {tempValues.socials?.map((social, index) => (
-            <div key={index} className="flex items-center gap-2">
+            <div
+              key={index}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-2"
+            >
               <input
                 type="text"
                 value={social.name}
                 onChange={(e) => handleSocialChange(index, 'name', e.target.value)}
                 placeholder="Social Name"
-                className="w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
               />
               <input
                 type="text"
                 value={social.url}
                 onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
                 placeholder="Social URL"
-                className="w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
               />
               <button
                 onClick={() => handleRemoveSocial(index)}
-                className="text-red-500 hover:text-red-700"
+                className="self-end sm:self-auto text-red-500 hover:text-red-700"
               >
                 <X size={16} />
               </button>
             </div>
           ))}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
             <input
               type="text"
               value={newSocialName}
               onChange={(e) => setNewSocialName(e.target.value)}
               placeholder="New Social Name"
-              className="flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+              className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
             />
             <input
               type="text"
               value={newSocialUrl}
               onChange={(e) => setNewSocialUrl(e.target.value)}
               placeholder="New Social URL"
-              className="flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+              className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
             />
-            <button onClick={handleAddSocial} className="text-green-500 hover:text-green-700">
+            <button
+              onClick={handleAddSocial}
+              className="self-end sm:self-auto text-green-500 hover:text-green-700"
+            >
               <Check size={16} />
             </button>
           </div>

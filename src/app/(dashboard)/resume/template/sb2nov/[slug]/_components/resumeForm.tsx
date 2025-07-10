@@ -363,7 +363,45 @@ const ResumeForm = ({
 
       {/* Mobile Controls Section */}
       {isMobileView && (
-        <div className="sticky top-[73px] z-20 bg-white border-b border-gray-200 px-4 py-3 mb-4">
+        <div className="bg-white px-4 py-3 mb-4">
+          {/* Mobile Filename Section */}
+          <div className="mb-3">
+            <div
+              className="group relative flex items-center gap-2"
+              onMouseEnter={() => setIsHoveringFilename(true)}
+              onMouseLeave={() => setIsHoveringFilename(false)}
+            >
+              {isEditingFilename ? (
+                <Input
+                  ref={filenameInputRef}
+                  type="text"
+                  value={filename}
+                  onChange={handleFilenameChange}
+                  onBlur={handleFilenameBlur}
+                  onKeyDown={handleFilenameKeyDown}
+                  className="text-lg font-semibold transition-all border-0 shadow-none p-0 h-auto focus-visible:ring-0 w-full"
+                  placeholder="Enter resume title"
+                />
+              ) : (
+                <div
+                  className="relative cursor-text w-full py-1 px-2 -mx-2 rounded-md touch-manipulation active:bg-gray-100"
+                  onClick={() => setIsEditingFilename(true)}
+                  onTouchStart={() => setIsHoveringFilename(true)}
+                  onTouchEnd={() => setIsHoveringFilename(false)}
+                >
+                  <h1 className="text-lg font-semibold text-gray-900 truncate transition-all group-hover:opacity-80">
+                    {filename}
+                  </h1>
+                  <PencilIcon
+                    className={`absolute -right-1 top-1/2 size-4 -translate-y-1/2 transition-opacity text-gray-400 ${
+                      isHoveringFilename ? 'opacity-100' : 'opacity-60'
+                    }`}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
           <div className="flex items-center justify-between gap-2 mb-3">
             <Button
               disabled={isSaving || isChangesSaved || loading}
