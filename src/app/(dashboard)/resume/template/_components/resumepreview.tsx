@@ -39,7 +39,6 @@ interface IProps {
   resumeType: string;
   productPrice: string;
   title: string;
-  isOverlay?: boolean;
 }
 type Product = {
   product_id: string;
@@ -60,7 +59,6 @@ const ResumePreview = ({
   resumeType,
   productPrice,
   title,
-  isOverlay = false,
 }: IProps) => {
   const [exportFormat, setExportFormat] = useState<string>('pdf');
   const isMobile = useIsMobile();
@@ -238,17 +236,12 @@ const ResumePreview = ({
     }
   };
 
-  if (!isMobile || isOverlay) {
-    const ContainerComponent = isOverlay ? 'div' : ResizablePanel;
-    const containerProps = isOverlay
-      ? { className: 'w-full p-4' }
-      : { className: 'min-h-[500px] w-full min-w-[500px] rounded-md border p-4' };
-
+  if (!isMobile) {
     return (
-      <ContainerComponent {...containerProps}>
+      <ResizablePanel className="min-h-[500px] w-full min-w-[500px] rounded-md border p-4">
         <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
-        <div className={`mt-4 ${isOverlay ? 'space-y-3' : 'flex items-center justify-between'}`}>
-          <div className={`${isOverlay ? 'order-2' : 'h-10 flex-1'}`}>
+        <div className="mt-4 flex items-center justify-between">
+          <div className="h-10 flex-1">
             {loading && (
               <div className="flex items-center gap-2">
                 <span className="text-xs">Compiling</span>
@@ -256,93 +249,83 @@ const ResumePreview = ({
               </div>
             )}
           </div>
-          <div
-            className={`${isOverlay ? 'flex flex-col gap-2 order-1' : 'flex items-center gap-4'}`}
-          >
-            {!isOverlay && (
-              <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Export As" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="pdf">PDF</SelectItem>
-                  <SelectItem value="tex">LaTeX</SelectItem>
-                </SelectContent>
-              </Select>
-            )}
-            <div className={`${isOverlay ? 'flex gap-2' : 'flex gap-4'}`}>
-              <Button
-                className={`${
-                  paymentStatus
-                    ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
-                    : 'bg-gray-400 dark:bg-gray-700'
-                } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
-                onPress={() => {
-                  if (paymentStatus) {
-                    if (isOverlay) {
-                      handleDownloadPDF();
-                    } else {
-                      setShowDownloadConfirmation(true);
-                    }
-                  } else {
-                    setShowPaymentConfirmation(true);
-                  }
-                }}
-                disabled={paymentStarted}
-              >
-                {!paymentStatus && <Lock size={16} />}
-                {paymentStarted ? (
-                  <div className="flex items-center gap-2">
-                    <CircularProgress
-                      color="default"
-                      className="scale-50 text-white"
-                      strokeWidth={3}
-                      size="sm"
-                    />
-                    <span className={isOverlay ? 'text-sm' : ''}>Processing...</span>
-                  </div>
-                ) : paymentStatus ? (
-                  <>
-                    <Download size={16} />
-                    <span className={isOverlay ? 'text-sm' : ''}>{t('common.download')}</span>
-                  </>
-                ) : (
-                  <span className={isOverlay ? 'text-sm' : ''}>Download</span>
-                )}
-              </Button>
-              <Button
-                className={`${
-                  paymentStatus
-                    ? 'bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg'
-                    : 'bg-gray-400 dark:bg-gray-700'
-                } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
-                disabled={isSharing}
-                onPress={() => {
-                  if (paymentStatus) {
-                    handleShare();
-                  } else {
-                    setShowPaymentConfirmation(true);
-                  }
-                }}
-              >
-                {isSharing ? (
-                  <div className="flex items-center gap-2">
-                    <CircularProgress
-                      color="default"
-                      className="scale-50 text-white"
-                      strokeWidth={3}
-                      size="sm"
-                    />
-                    <span className={isOverlay ? 'text-sm' : ''}>Sharing...</span>
-                  </div>
-                ) : (
-                  <>
-                    <Share2 size={16} />
-                    <span className={isOverlay ? 'text-sm' : ''}>Share</span>
-                  </>
-                )}
-              </Button>
-            </div>
+          <div className="flex items-center gap-4">
+            <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
+              <SelectTrigger className="w-[140px]">
+                <SelectValue placeholder="Export As" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="pdf">PDF</SelectItem>
+                <SelectItem value="tex">LaTeX</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button
+              className={`${
+                paymentStatus
+                  ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
+                  : 'bg-gray-400 dark:bg-gray-700'
+              } text-white shadow-lg flex items-center gap-2`}
+              onPress={() => {
+                if (paymentStatus) {
+                  setShowDownloadConfirmation(true);
+                } else {
+                  setShowPaymentConfirmation(true);
+                }
+              }}
+              disabled={paymentStarted}
+            >
+              {!paymentStatus && <Lock size={16} />}
+              {paymentStarted ? (
+                <div className="flex items-center gap-2">
+                  <CircularProgress
+                    color="default"
+                    className="scale-50 text-white"
+                    strokeWidth={3}
+                    size="sm"
+                  />
+                  <span>Processing...</span>
+                </div>
+              ) : paymentStatus ? (
+                <>
+                  <Download size={16} />
+                  {t('common.download')}
+                </>
+              ) : (
+                'Download'
+              )}
+            </Button>
+            <Button
+              className={`${
+                paymentStatus
+                  ? 'bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg'
+                  : 'bg-gray-400 dark:bg-gray-700'
+              } text-white shadow-lg flex items-center gap-2`}
+              disabled={isSharing}
+              onPress={() => {
+                if (paymentStatus) {
+                  handleShare();
+                } else {
+                  setShowPaymentConfirmation(true);
+                }
+              }}
+            >
+              {isSharing ? (
+                <div className="flex items-center gap-2">
+                  <CircularProgress
+                    color="default"
+                    className="scale-50 text-white"
+                    strokeWidth={3}
+                    size="sm"
+                  />
+                  <span>Sharing...</span>
+                </div>
+              ) : (
+                <>
+                  <Share2 size={16} />
+                  Share
+                </>
+              )}
+            </Button>
           </div>
         </div>
 
@@ -355,7 +338,6 @@ const ResumePreview = ({
             </p>
           )}
         </div>
-
         <AlertDialog open={showPaymentConfirmation} onOpenChange={setShowPaymentConfirmation}>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -418,25 +400,9 @@ const ResumePreview = ({
           clerkId={userId || ''}
           title={title}
         />
-      </ContainerComponent>
+      </ResizablePanel>
     );
   }
-
-  // Mobile version (when not in overlay)
-  return (
-    <div className="w-full p-4">
-      <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
-      <div className="relative mt-4 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
-        {imageUrl ? (
-          <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
-        ) : (
-          <p className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-            Preview will appear here...
-          </p>
-        )}
-      </div>
-    </div>
-  );
 };
 
 export default ResumePreview;
