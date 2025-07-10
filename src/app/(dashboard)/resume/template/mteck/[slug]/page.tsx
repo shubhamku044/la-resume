@@ -11,7 +11,7 @@ import ResumePreview from '../../_components/resumepreview';
 import ResumeForm from './_components/resumeForm';
 
 export default function ResumeTemplatePage() {
-  const resumeType = 'mteck';
+  const resumeType = 'sb2nov';
   const {
     resumeFunc,
     initialData,
