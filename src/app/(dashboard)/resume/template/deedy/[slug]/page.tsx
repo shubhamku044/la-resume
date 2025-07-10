@@ -4,7 +4,7 @@ import { useResumeData } from '@/hooks/resumeData';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { deedy, deedyResumeData } from '@/lib/templates/deedy';
 import ResumeForm from './_components/resumeForm';
-import ResumePreview from './_components/resumepreview';
+import ResumePreview from '../../_components/resumepreview';
 
 export default function ResumeTemplatePage() {
   const resumetype = 'deedy';
