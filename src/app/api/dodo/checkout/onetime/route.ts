@@ -1,9 +1,11 @@
 import { dodopayments, isDodoPaymentsAvailable } from '@/lib/dodopayments';
+import { geolocation } from '@vercel/functions';
+import { CountryCode } from 'dodopayments/resources/misc.mjs';
 import { NextResponse } from 'next/server';
-
 export async function GET(request: Request) {
+  const geo = await geolocation(request);
+  console.log('Geolocation data:', geo);
   try {
-    // Check if DodoPayments is properly configured
     if (!isDodoPaymentsAvailable() || !dodopayments) {
       return NextResponse.json(
         { error: 'Payment service is not configured. Please contact support.' },
@@ -29,7 +31,7 @@ export async function GET(request: Request) {
     const response = await dodopayments.payments.create({
       billing: {
         city: '',
-        country: 'IN',
+        country: (geo?.countryRegion as CountryCode) || 'US',
         state: '',
         street: '',
         zipcode: '',

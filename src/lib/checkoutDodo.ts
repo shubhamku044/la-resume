@@ -20,7 +20,7 @@ export const useCheckout = () => {
       const productType = 'onetime';
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/dodo/checkout/${productType}?productId=${product.product_id}&redirect_url=${product.redirectUrl}&userId=${product.userId}&email=${product.email}&fullName=${product.fullName}&slug=${product.slug}`,
+        `/api/dodo/checkout/${productType}?productId=${product.product_id}&redirect_url=${product.redirectUrl}&userId=${product.userId}&email=${product.email}&fullName=${product.fullName}&slug=${product.slug}`,
         {
           cache: 'no-store',
         }
