@@ -32,6 +32,7 @@ export async function GET(request: Request) {
       billing: {
         city: '',
         country: (geo?.country as CountryCode) || 'US',
+
         state: '',
         street: '',
         zipcode: '',
