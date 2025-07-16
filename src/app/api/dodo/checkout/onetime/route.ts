@@ -31,7 +31,8 @@ export async function GET(request: Request) {
     const response = await dodopayments.payments.create({
       billing: {
         city: '',
-        country: (geo?.countryRegion as CountryCode) || 'US',
+        country: (geo?.country as CountryCode) || 'US',
+
         state: '',
         street: '',
         zipcode: '',
