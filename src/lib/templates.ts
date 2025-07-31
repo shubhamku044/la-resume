@@ -1,6 +1,7 @@
-import { sb2novResumeSampleData } from './templates/sb2nov';
 import { deedySampleResumeData } from './templates/deedy';
 import { mteckResumeSampleData } from './templates/mteck';
+import { sb2novResumeSampleData } from './templates/sb2nov';
+import { techProResumeSampleData } from './templates/techpro';
 export const templates = [
   {
     id: 'sb2nov',
@@ -24,6 +25,14 @@ export const templates = [
     description: 'A LaTeX resume template for software engineers.',
     image: '/templates/mteck.webp',
     sampleData: mteckResumeSampleData,
+    imageUrl: 'https://ik.imagekit.io/laresume/templates/mteck.webp?updatedAt=1741502621839',
+  },
+  {
+    id: 'techpro',
+    name: 'TechPro Resume',
+    description: 'A modern resume template for tech professionals.',
+    image: '/templates/mteck.webp',
+    sampleData: techProResumeSampleData,
     imageUrl: 'https://ik.imagekit.io/laresume/templates/mteck.webp?updatedAt=1741502621839',
   },
 ];

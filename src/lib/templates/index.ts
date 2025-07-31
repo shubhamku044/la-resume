@@ -1,22 +1,20 @@
-import { sb2nov } from './sb2nov';
-import { sb2novResumeSampleData } from './sb2nov';
-import type { Sb2novResumeData } from './sb2nov';
-import { deedy } from './deedy';
-import { deedySampleResumeData } from './deedy';
 import type { deedyResumeData } from './deedy';
-import { mteck } from './mteck';
-import { mteckResumeSampleData } from './mteck';
+import { deedy, deedySampleResumeData } from './deedy';
 import type { MTeckResumeData } from './mteck';
+import { mteck, mteckResumeSampleData } from './mteck';
+import type { Sb2novResumeData } from './sb2nov';
+import { sb2nov, sb2novResumeSampleData } from './sb2nov';
+import { techPro, TechProResumeData, techProResumeSampleData } from './techpro';
 
-export { sb2nov };
-export { sb2novResumeSampleData };
-export type { Sb2novResumeData };
-export { deedy };
-export { deedySampleResumeData };
-export type { deedyResumeData };
-export { mteck };
-export { mteckResumeSampleData };
-export type { MTeckResumeData };
+export {
+  deedy,
+  deedySampleResumeData,
+  mteck,
+  mteckResumeSampleData,
+  sb2nov,
+  sb2novResumeSampleData,
+};
+export type { deedyResumeData, MTeckResumeData, Sb2novResumeData };
 
 export const resumesMap = {
   sb2nov: {
@@ -39,6 +37,14 @@ export const resumesMap = {
     templateType: {} as MTeckResumeData,
     templateSampleData: mteckResumeSampleData,
     templateFunction: mteck,
+    productIdTest: 'pdt_aaNRJ8MCUeQAX3fnyrwOG',
+    productIdProd: 'pdt_txAMSeuDTE1zZigM8DfI7',
+    productPrice: '$0.99',
+  },
+  techpro: {
+    templateType: {} as TechProResumeData,
+    templateSampleData: techProResumeSampleData,
+    templateFunction: techPro,
     productIdTest: 'pdt_aaNRJ8MCUeQAX3fnyrwOG',
     productIdProd: 'pdt_txAMSeuDTE1zZigM8DfI7',
     productPrice: '$0.99',
