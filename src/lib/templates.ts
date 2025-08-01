@@ -31,7 +31,7 @@ export const templates = [
     id: 'techpro',
     name: 'TechPro Resume',
     description: 'A modern resume template for tech professionals.',
-    image: '/templates/mteck.webp',
+    image: '/templates/techpro.webp',
     sampleData: techProResumeSampleData,
     imageUrl: 'https://ik.imagekit.io/laresume/templates/mteck.webp?updatedAt=1741502621839',
   },

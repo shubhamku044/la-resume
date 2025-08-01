@@ -132,10 +132,8 @@ const ResumeForm = ({
   const generateResumePreview = useCallback(async () => {
     setLoading(true);
     try {
-      // const latexText = templateFunction(formData);
-      const latexText = templateFunction(tempData);
+      const latexText = templateFunction(formData);
 
-      console.log('Template Function Output:', tempData);
       setLatexData(latexText);
 
       const latexBlob = new Blob([latexText], { type: 'text/plain' });

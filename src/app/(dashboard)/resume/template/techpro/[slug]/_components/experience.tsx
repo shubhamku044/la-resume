@@ -330,20 +330,6 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
             }
             placeholder="Skills (comma-separated)"
           />
-          <Input
-            type="text"
-            value={tempEntry.startDate}
-            onChange={(e) => setTempEntry((prev) => ({ ...prev, startDate: e.target.value }))}
-            placeholder="Start Date"
-          />
-
-          <Input
-            type="text"
-            value={tempEntry.endDate}
-            onChange={(e) => setTempEntry((prev) => ({ ...prev, endDate: e.target.value }))}
-            placeholder="End Date"
-          />
-
           <div className="space-y-2">
             <p className="font-semibold">Accomplishments</p>
             <div className="flex flex-wrap gap-2">

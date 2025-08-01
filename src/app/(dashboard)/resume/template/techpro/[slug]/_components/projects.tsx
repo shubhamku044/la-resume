@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { TechProResumeData } from '@/lib/templates/techpro';
 import { Reorder } from 'framer-motion';
-import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import { Check, GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -45,6 +45,8 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
 
   const [sectionTitle, setSectionTitle] = useState(data.sectionTitle);
   const [isEditingSectionTitle, setIsEditingSectionTitle] = useState(false);
+  const [newSocialName, setNewSocialName] = useState('');
+  const [newSocialUrl, setNewSocialUrl] = useState('');
   const [isHoveringSectionTitle, setIsHoveringSectionTitle] = useState(false);
   const sectionTitleInputRef = useRef<HTMLInputElement>(null);
 
@@ -147,6 +149,32 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
         ...prev.projects,
         entries: prev.projects.entries.filter((_, i) => i !== index),
       },
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+  const handleSocialChange = (index: number, field: 'label' | 'url', value: string) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      urls: prev.urls.map((social, i) => (i === index ? { ...social, [field]: value } : social)),
+    }));
+  };
+
+  const handleAddSocial = () => {
+    if (!tempEntry.urls.some((url) => url.label === '' && url.url === '')) {
+      setTempEntry((prev) => ({
+        ...prev,
+        urls: [...prev.urls, { label: '', url: '' }],
+      }));
+    } else {
+      toast.error('Please fill in the social label and URL before adding a new one.');
+    }
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  const handleRemoveSocial = (index: number) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      urls: prev.urls.filter((_, i) => i !== index),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -293,6 +321,61 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
             }
             placeholder="Project Skills"
           />
+
+          <div className="space-y-2">
+            <p className="font-semibold">Urls</p>
+            <div className="flex flex-wrap gap-2 w-full">
+              {tempEntry.urls?.map((social, index) => (
+                <div
+                  key={index}
+                  className="flex w-full flex-col sm:flex-row items-start sm:items-center gap-2"
+                >
+                  <input
+                    type="text"
+                    value={social.label}
+                    onChange={(e) => handleSocialChange(index, 'label', e.target.value)}
+                    placeholder="Social Label"
+                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  />
+                  <input
+                    type="text"
+                    value={social.url}
+                    onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
+                    placeholder="Social URL"
+                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  />
+                  <button
+                    onClick={() => handleRemoveSocial(index)}
+                    className="self-end sm:self-auto text-red-500 hover:text-red-700"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              ))}
+              <div className="flex w-full flex-col sm:flex-row items-start sm:items-center gap-2">
+                <input
+                  type="text"
+                  value={newSocialName}
+                  onChange={(e) => setNewSocialName(e.target.value)}
+                  placeholder="New Social Name"
+                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                />
+                <input
+                  type="text"
+                  value={newSocialUrl}
+                  onChange={(e) => setNewSocialUrl(e.target.value)}
+                  placeholder="New Social URL"
+                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                />
+                <button
+                  onClick={handleAddSocial}
+                  className="self-end sm:self-auto text-green-500 hover:text-green-700"
+                >
+                  <Check size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
 
           {/* Accomplishments Section */}
           <div className="space-y-2">

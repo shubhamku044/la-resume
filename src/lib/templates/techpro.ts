@@ -1,3 +1,5 @@
+import { escapeLatex } from '../utils';
+
 export type TechProResumeData = {
   heading: {
     name: string;
@@ -167,111 +169,6 @@ export const techProResumeSampleData: TechProResumeData = {
   sectionOrder: ['skills', 'experience', 'projects', 'education'],
 };
 
-/*
-%-----------PROGRAMMING SKILLS-----------
-\\section{Technical Skills}
-\\resumeItemListStart
-  \\resumeItem{\\textbf{Programming Languages}: JavaScript, TypeScript, Python, Go}
-  \\vspace{-1mm}
-  \\resumeItem{\\textbf{Databases}: MySQL, MongoDB, PostgreSQL, Prisma, GORM}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{Frameworks / Libraries}: Next.js, React.js, Vue.js, Nuxt.js, Gin, Express.js, Redux Toolkit, REST APIs}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{DevOps / Tools}: Git, GitHub Actions, Docker, Nginx, CI/CD, AWS (EC2, S3), Postman, Vim, Linux}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{Concepts}: Data Structures and Algorithms (DSA), System Design, OOP, Microservices, Agile Development}
-\\resumeItemListEnd
-
-\\vspace{-2mm}
-%-----------EXPERIENCE-----------
-\\section{Experience}
-\\resumeSubHeadingListStart
-\\resumeSubheading
-{Testlify \\textnormal{ (Typescript, Vue.js, Nuxt.js, React Native, Express.js,  MongoDB)}}{Oct 2024 -- Present}
-{Full Stack Developer}{Mumbai, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Contributed to TypeScript migration in Nuxt.js codebase, improving type safety and maintainability.}
-  \\resumeItem{Replaced base64 image storage with direct S3 uploads from markdown editor, cutting DB bloat and API load.}
-  \\resumeItem{Implemented multi-monitor proctoring to block external screens, strengthening exam integrity for 2,000+ users.}
-  \\resumeItem{Refactored large Vue files by initiating Option-to-Composition API migration and guiding teammates to build reusable composables and components.}
-  \\resumeItem{Integrated reCAPTCHA in OTP flow, preventing spam from overseas bots and saving \\$5,000+ in Twilio credits.}
-  \\resumeItem{Managed React Native app via Expo; upgraded audio question flow and removed deprecated packages.}
-  \\resumeItem{Replaced bulky libraries with native Expo Camera and rerouted audio uploads from api.video to GCP for better performance.}
-\\resumeItemListEnd
-
-\\resumeSubheading
-{StylesterAI \\textnormal{ (TypeScript, React Native, Expo, Redux, Appwrite, Expo Router)}}{July 2024 -- Aug 2024}
-{Full Stack Developer Intern}{Chennai, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Developed and maintained a performant cross-platform mobile app using React Native and Expo.}
-  \\resumeItem{Rewrote state management layer by replacing Context API with Redux, improving performance and scalability.}
-  \\resumeItem{Implemented authentication and backend services using Appwrite for seamless user data management.}
-\\resumeItemListEnd
-
-\\resumeSubheading
-{Fable \\textnormal{ (React.js, Next.js, Express.js, AWS, Slack API, GA, GitHub Actions)}}{Nov 2022 -- June 2024}
-{Software Engineer Intern (Founding Team)}{ Bengaluru, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Worked on Fable’s core B2B interactive demo platform from inception as part of the founding engineering team.}
-  \\resumeItem{Built and maintained user interfaces in React.js using Styled Components, enhancing usability and code quality.}
-  \\resumeItem{Created a real-time notification service integrating Slack API for instant alerts on form submissions.}
-  \\resumeItem{Developed and maintained Fable's browser extension with shared auth and interactive preview support.}
-  \\resumeItem{Built landing page with Next.js and implemented CI/CD on AWS via GitHub Actions, improving SEO and reducing deployment time.}
-  \\resumeItem{Tracked events with Google Analytics, driving 9,000+ monthly visitors through behavior-based optimizations.}
-\\resumeItemListEnd
-
-% -----------Multiple Positions Heading-----------
-%    \\resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \\resumeItemListStart
-%        \\resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \\resumeItemListEnd
-%    \\resumeSubHeadingListEnd
-%-------------------------------------------
-
-\\resumeSubHeadingListEnd
-
-\\vspace{-2mm}
-%-----------PROJECTS-----------
-\\section{Projects}
-\\resumeSubHeadingListStart
-
-\\resumeProjectHeading
-{\\textbf{La-Resume} $|$ \\emph{Python, Next.js, Redux, MongoDB, Docker, AWS, Vercel, TeX Live}}{\\underline{\\href{https://la-resume.tech/}{Live Link}}
-  \\underline{\\href{https://github.com/shubhamku044/la-resume}{GitHub}}}
-\\resumeItemListStart
-   \\resumeItem{Built an ATS-friendly resume builder with 1,800+ signups, 26,000+ views, and 25+ paying customers.}
-  \\resumeItem{Enabled shareable resume links with view tracking; exported resumes as LaTeX PDFs via Dockerized TeX Live.}
-  \\resumeItem{Deployed backend on AWS EC2 (Docker) and frontend on Vercel for global scalability.}
-  \\resumeItem{Enabled paid plans via webhook-triggered Dodopayments integration, earned 160+ stars and 23+ forks with user-driven development.}
-\\resumeItemListEnd
-
-\\resumeProjectHeading
-{\\textbf{YTClipper} $|$ \\emph{Go, Gin, Vite, React.js, Next.js, TurboRepo, Docker, GitHub Actions, NGINX}}{\\underline{\\href{https://yt-clipper.com}{Live Link}}}
-\\resumeItemListStart
-  \\resumeItem{Structured the app with a monorepo (TurboRepo) — shared UI, ESLint, Prettier, and Tailwind across frontend, backend, and landing page.}
-  \\resumeItem{Dockerized all services and set up GitHub Actions CI/CD for per-branch deploys on VPS with NGINX subdomains and auto cleanup.}
-  \\resumeItem{Created Chrome extension and synced authentication state between extension and web app using \\texttt{window.postMessage}.}
-\\resumeItemListEnd
-
-\\vspace{-2mm}
-%-----------EDUCATION-----------
-\\section{Education}
-\\resumeSubHeadingListEnd
-\\resumeSubHeadingListStart
-\\resumeSubheading
-{Techno Main Salt Lake}{Kolkata, India}
-{Bachelors of Technology in Computer Science}{June. 2021 -- June 2025}
-\\resumeSubHeadingListEnd
-
-%
-
-%-------------------------------------------
-\\end{document}
-
-*/
-
 export const techPro = (data: TechProResumeData) => {
   const generateSubHeading = () => {
     /*
@@ -281,19 +178,119 @@ India $|$
   \href{https://www.shubhams.dev/}{\underline{Portfolio}} $|$
   \href{https://github.com/shubhamku044}{\underline{Github}}
      */
-
-    let socials: string = '';
-    if (data.heading?.socials) {
-      socials = data.heading.socials
-        .map((social) => `\\href{${social.url}}{\\underline{${social.label}}}`)
-        .join(' $|$ ');
-      console.log(socials);
+    const details = [];
+    if (data.heading.location) {
+      details.push(escapeLatex(data.heading.location));
     }
-    return `
-`;
+    if (data.heading.phone) {
+      details.push(escapeLatex(data.heading.phone));
+    }
+    if (data.heading.email) {
+      details.push(
+        `\\href{mailto:${escapeLatex(data.heading.email)}}{\\underline{${escapeLatex(data.heading.email)}}}`
+      );
+    }
+    if (data.heading.socials) {
+      data.heading.socials.forEach((social) => {
+        details.push(
+          `\\href{${escapeLatex(social.url)}}{\\underline{${escapeLatex(social.label)}}}`
+        );
+      });
+    }
+    return `${details.join(' $|$ ')}`;
   };
 
-  generateSubHeading();
+  const generateSection = (sectionKey: keyof TechProResumeData) => {
+    switch (sectionKey) {
+      case 'skills':
+        return data.skills.entries.length
+          ? `
+%-----------PROGRAMMING SKILLS-----------
+\\section{${escapeLatex(data.skills.sectionTitle)}}
+\\resumeItemListStart
+  ${data.skills.entries
+    .map(
+      (entry) =>
+        `\\resumeItem{\\textbf{${escapeLatex(entry.category)}}: ${escapeLatex(entry.items.join(', '))}}\\vspace{-1mm}`
+    )
+    .join('\n  ')}
+\\resumeItemListEnd
+\\vspace{-2mm}
+        `
+          : ``;
+
+      case 'experience':
+        return data.experience.entries.length
+          ? `
+
+%-----------EXPERIENCE-----------
+\\section{${escapeLatex(data.experience.sectionTitle)}}
+\\resumeSubHeadingListStart
+
+${data.experience.entries
+  .map(
+    (entry) => `\\resumeSubheading
+{${escapeLatex(entry.company)} \\textnormal{ (${escapeLatex(entry.skills.join(', '))})}}{${escapeLatex(entry.startDate)} -- ${escapeLatex(entry.endDate)}}
+{${escapeLatex(entry.position)}}{${escapeLatex(entry.location)}}
+\\resumeItemListStart
+  ${entry.accomplishments
+    .map((accomplishment) => `\\resumeItem{${escapeLatex(accomplishment)}}`)
+    .join('\n  ')}
+\\resumeItemListEnd`
+  )
+  .join('\n\n')}
+\\resumeSubHeadingListEnd
+\\vspace{-2mm}
+        `
+          : '';
+
+      case 'projects':
+        return data.projects.entries.length
+          ? `
+%-----------PROJECTS-----------
+\\section{${escapeLatex(data.projects.sectionTitle)}}
+\\resumeSubHeadingListStart
+${data.projects.entries
+  .map(
+    (entry) => `\\resumeProjectHeading
+{\\textbf{${escapeLatex(entry.title)}} $|$ \\emph{${escapeLatex(entry.skills.join(', '))}}}{${entry.urls
+      .map((url) => `\\underline{\\href{${escapeLatex(url.url)}}{${escapeLatex(url.label)}}}`)
+      .join(' $|$ ')}}
+\\resumeItemListStart
+  ${entry.accomplishments
+    .map((accomplishment) => `\\resumeItem{${escapeLatex(accomplishment)}}`)
+    .join('\n  ')}
+\\resumeItemListEnd`
+  )
+  .join('\n\n')}
+\\resumeSubHeadingListEnd
+\\vspace{-2mm}
+        `
+          : '';
+      case 'education':
+        return data.education.entries.length
+          ? `
+%-----------EDUCATION-----------
+\\section{${escapeLatex(data.education.sectionTitle)}}
+\\resumeSubHeadingListStart
+${data.education.entries
+  .map(
+    (entry) => `\\resumeSubheading
+{${escapeLatex(entry.institution)}}{${entry.startDate} -- ${entry.endDate}}
+{${escapeLatex(entry.degree)}}{${escapeLatex(entry.location)}}
+`
+  )
+  .join('\n\n')}
+\\resumeSubHeadingListEnd
+\\vspace{-2mm}
+        `
+          : '';
+    }
+  };
+
+  const sections = data.sectionOrder || ['skills', 'experience', 'projects', 'education'];
+
+  const sectionContent = sections.map(generateSection).filter(Boolean).join('\n');
 
   return `
 \\documentclass[letterpaper,11pt]{article}
@@ -400,118 +397,15 @@ India $|$
 
 \\begin{center}
 
-  \\textbf{\\fontsize{50}{50}\\selectfont\\bfseries\\scshape Shubham Kumar} \\\\
-  \\vspace{12pt} India $|$
-  +91 620-221-7968 $|$ \\href{mailto:shubhamku044@gmail.com}{\\underline{shubhamku044@gmail.com}} $|$
-  \\href{https://linkedin.com/in/shubhamku044}{\\underline{LinkedIn}} $|$
-  \\href{https://www.shubhams.dev/}{\\underline{Portfolio}} $|$
-  \\href{https://github.com/shubhamku044}{\\underline{Github}}
+  \\textbf{\\fontsize{50}{50}\\selectfont\\bfseries\\scshape ${escapeLatex(data.heading.name)}} \\\\
+  \\vspace{12pt} ${generateSubHeading()}
 
 \\end{center}
 
-\\vspace{-4mm}
+% \\vspace{-4mm}
 
-%-----------PROGRAMMING SKILLS-----------
-\\section{Technical Skills}
-\\resumeItemListStart
-  \\resumeItem{\\textbf{Programming Languages}: JavaScript, TypeScript, Python, Go}
-  \\vspace{-1mm}
-  \\resumeItem{\\textbf{Databases}: MySQL, MongoDB, PostgreSQL, Prisma, GORM}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{Frameworks / Libraries}: Next.js, React.js, Vue.js, Nuxt.js, Gin, Express.js, Redux Toolkit, REST APIs}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{DevOps / Tools}: Git, GitHub Actions, Docker, Nginx, CI/CD, AWS (EC2, S3), Postman, Vim, Linux}
-    \\vspace{-1mm}
-  \\resumeItem{\\textbf{Concepts}: Data Structures and Algorithms (DSA), System Design, OOP, Microservices, Agile Development}
-\\resumeItemListEnd
+${sectionContent}
 
-\\vspace{-2mm}
-%-----------EXPERIENCE-----------
-\\section{Experience}
-\\resumeSubHeadingListStart
-\\resumeSubheading
-{Testlify \\textnormal{ (Typescript, Vue.js, Nuxt.js, React Native, Express.js,  MongoDB)}}{Oct 2024 -- Present}
-{Full Stack Developer}{Mumbai, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Contributed to TypeScript migration in Nuxt.js codebase, improving type safety and maintainability.}
-  \\resumeItem{Replaced base64 image storage with direct S3 uploads from markdown editor, cutting DB bloat and API load.}
-  \\resumeItem{Implemented multi-monitor proctoring to block external screens, strengthening exam integrity for 2,000+ users.}
-  \\resumeItem{Refactored large Vue files by initiating Option-to-Composition API migration and guiding teammates to build reusable composables and components.}
-  \\resumeItem{Integrated reCAPTCHA in OTP flow, preventing spam from overseas bots and saving \\$5,000+ in Twilio credits.}
-  \\resumeItem{Managed React Native app via Expo; upgraded audio question flow and removed deprecated packages.}
-  \\resumeItem{Replaced bulky libraries with native Expo Camera and rerouted audio uploads from api.video to GCP for better performance.}
-\\resumeItemListEnd
-
-\\resumeSubheading
-{StylesterAI \\textnormal{ (TypeScript, React Native, Expo, Redux, Appwrite, Expo Router)}}{July 2024 -- Aug 2024}
-{Full Stack Developer Intern}{Chennai, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Developed and maintained a performant cross-platform mobile app using React Native and Expo.}
-  \\resumeItem{Rewrote state management layer by replacing Context API with Redux, improving performance and scalability.}
-  \\resumeItem{Implemented authentication and backend services using Appwrite for seamless user data management.}
-\\resumeItemListEnd
-
-\\resumeSubheading
-{Fable \\textnormal{ (React.js, Next.js, Express.js, AWS, Slack API, GA, GitHub Actions)}}{Nov 2022 -- June 2024}
-{Software Engineer Intern (Founding Team)}{ Bengaluru, IN (Remote)}
-\\resumeItemListStart
-  \\resumeItem{Worked on Fable’s core B2B interactive demo platform from inception as part of the founding engineering team.}
-  \\resumeItem{Built and maintained user interfaces in React.js using Styled Components, enhancing usability and code quality.}
-  \\resumeItem{Created a real-time notification service integrating Slack API for instant alerts on form submissions.}
-  \\resumeItem{Developed and maintained Fable's browser extension with shared auth and interactive preview support.}
-  \\resumeItem{Built landing page with Next.js and implemented CI/CD on AWS via GitHub Actions, improving SEO and reducing deployment time.}
-  \\resumeItem{Tracked events with Google Analytics, driving 9,000+ monthly visitors through behavior-based optimizations.}
-\\resumeItemListEnd
-
-% -----------Multiple Positions Heading-----------
-%    \\resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \\resumeItemListStart
-%        \\resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \\resumeItemListEnd
-%    \\resumeSubHeadingListEnd
-%-------------------------------------------
-
-\\resumeSubHeadingListEnd
-
-\\vspace{-2mm}
-%-----------PROJECTS-----------
-\\section{Projects}
-\\resumeSubHeadingListStart
-
-\\resumeProjectHeading
-{\\textbf{La-Resume} $|$ \\emph{Python, Next.js, Redux, MongoDB, Docker, AWS, Vercel, TeX Live}}{\\underline{\\href{https://la-resume.tech/}{Live Link}}
-  \\underline{\\href{https://github.com/shubhamku044/la-resume}{GitHub}}}
-\\resumeItemListStart
-   \\resumeItem{Built an ATS-friendly resume builder with 1,800+ signups, 26,000+ views, and 25+ paying customers.}
-  \\resumeItem{Enabled shareable resume links with view tracking; exported resumes as LaTeX PDFs via Dockerized TeX Live.}
-  \\resumeItem{Deployed backend on AWS EC2 (Docker) and frontend on Vercel for global scalability.}
-  \\resumeItem{Enabled paid plans via webhook-triggered Dodopayments integration, earned 160+ stars and 23+ forks with user-driven development.}
-\\resumeItemListEnd
-
-
-\\resumeProjectHeading
-{\\textbf{YTClipper} $|$ \\emph{Go, Gin, Vite, React.js, Next.js, TurboRepo, Docker, GitHub Actions, NGINX}}{\\underline{\\href{https://yt-clipper.com}{Live Link}}}
-\\resumeItemListStart
-  \\resumeItem{Structured the app with a monorepo (TurboRepo) — shared UI, ESLint, Prettier, and Tailwind across frontend, backend, and landing page.}
-  \\resumeItem{Dockerized all services and set up GitHub Actions CI/CD for per-branch deploys on VPS with NGINX subdomains and auto cleanup.}
-  \\resumeItem{Created Chrome extension and synced authentication state between extension and web app using \\texttt{window.postMessage}.}
-\\resumeItemListEnd
-
-\\vspace{-2mm}
-%-----------EDUCATION-----------
-\\section{Education}
-\\resumeSubHeadingListEnd
-\\resumeSubHeadingListStart
-\\resumeSubheading
-{Techno Main Salt Lake}{Kolkata, India}
-{Bachelors of Technology in Computer Science}{June. 2021 -- June 2025}
-\\resumeSubHeadingListEnd
-
-%
-
-%-------------------------------------------
 \\end{document}
 
 `;

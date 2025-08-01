@@ -45,9 +45,9 @@ export const resumesMap = {
     templateType: {} as TechProResumeData,
     templateSampleData: techProResumeSampleData,
     templateFunction: techPro,
-    productIdTest: 'pdt_aaNRJ8MCUeQAX3fnyrwOG',
-    productIdProd: 'pdt_txAMSeuDTE1zZigM8DfI7',
-    productPrice: '$0.99',
+    productIdTest: 'pdt_txAMSeuDTE1zZigM8DfI7',
+    productIdProd: 'pdt_jIPAWkNCyjkbCoxWBrisj',
+    productPrice: '$1.39',
   },
 };
 
