@@ -1,13 +1,14 @@
-import { useState } from 'react';
-import { useUser } from '@clerk/nextjs';
-import { useParams } from 'next/navigation';
-import { useGetResumeBySlugQuery } from '@/store/services/templateApi';
 import {
   deedyResumeData,
+  MTeckResumeData,
   resumesMap,
   Sb2novResumeData,
-  MTeckResumeData,
 } from '@/lib/templates/index';
+import { TechProResumeData } from '@/lib/templates/techpro';
+import { useGetResumeBySlugQuery } from '@/store/services/templateApi';
+import { useUser } from '@clerk/nextjs';
+import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
 export function useResumeData(templateKey: keyof typeof resumesMap) {
   const templatePackage = resumesMap[templateKey];
@@ -58,7 +59,11 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
 
   // Safe data access with fallback
   const initialData = existingResume?.data
-    ? (existingResume.data as deedyResumeData | Sb2novResumeData | MTeckResumeData)
+    ? (existingResume.data as
+      | deedyResumeData
+      | Sb2novResumeData
+      | MTeckResumeData
+      | TechProResumeData)
     : resumeSampleData;
 
   const hasPaid = existingResume?.hasPaid || false;
