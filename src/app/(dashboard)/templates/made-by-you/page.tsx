@@ -12,18 +12,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { templates } from '@/lib/templates';
-import {
-  deedyResumeData,
-  MTeckResumeData,
-  resumesMap,
-  Sb2novResumeData,
-} from '@/lib/templates/index';
+import { resumesMap } from '@/lib/templates/index';
 import {
   useDeleteImageFileMutation,
   useDeleteResumeMutation,
   useGetResumesQuery,
 } from '@/store/services/templateApi';
 import { useUser } from '@clerk/nextjs';
+import { FileText, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
@@ -108,7 +104,7 @@ export default function MadeByYouPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl p-6">
+    <div className="mx-auto p-6">
       <h1 className="mb-4 text-2xl font-semibold">{t('templates.madeByYou')}</h1>
       <DeleteConfirmationDialog
         open={!!selectedResume}
@@ -120,31 +116,36 @@ export default function MadeByYouPage() {
         }}
         resumeTitle={selectedResume?.title || ''}
       />
-      {resumes.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {resumes.map((resume) => (
-            <div key={resume.id} className="aspect-[1/1.4] w-full">
-              <ResumeCard
-                key={resume.id}
-                id={resume.id}
-                title={resume.title}
-                slug={resume.slug}
-                type={resume.type as keyof typeof resumesMap}
-                onDelete={() => setSelectedResume(resume)}
-                isDeleting={isDeleting && selectedResume?.id === resume.id}
-                lastUpdated={resume.updatedAt}
-                data={resume.data as Sb2novResumeData | deedyResumeData | MTeckResumeData}
-                imageUrl={resume.previewUrl}
-                paymentStatus={resume.hasPaid}
-                orderNumber={resume.orderNumber}
-                clerkId={clerkId}
-              />
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {resumes.length > 0 &&
+          resumes.map((resume) => (
+            <ResumeCard
+              key={resume.id}
+              id={resume.id}
+              title={resume.title}
+              slug={resume.slug}
+              type={resume.type as keyof typeof resumesMap}
+              onDelete={() => setSelectedResume(resume)}
+              isDeleting={isDeleting && selectedResume?.id === resume.id}
+              lastUpdated={resume.updatedAt}
+              imageUrl={resume.previewUrl}
+              paymentStatus={resume.hasPaid}
+              orderNumber={resume.orderNumber}
+              clerkId={clerkId}
+            />
           ))}
-        </div>
-      ) : (
-        <div className="flex h-64 items-center justify-center rounded-lg border-2 border-dashed bg-muted">
-          <p className="text-muted-foreground">No resumes found. Start by creating one!</p>
+      </div>
+      {resumes.length === 0 && (
+        <div className="text-center py-16">
+          <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+            <FileText className="w-8 h-8 text-muted-foreground" />
+          </div>
+          <h3 className="text-lg font-medium mb-2">No resumes yet</h3>
+          <p className="text-muted-foreground mb-4">Create your first resume to get started</p>
+          <Button variant="hero">
+            <Plus className="w-4 h-4 mr-2" />
+            Create Your First Resume
+          </Button>
         </div>
       )}
     </div>
