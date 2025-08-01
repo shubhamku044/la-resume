@@ -3,11 +3,11 @@ import { templates } from '@/lib/templates';
 import { useSaveResumeMutation } from '@/store/services/templateApi';
 import { useUser } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { v4 as uuid } from 'uuid';
+import { TemplateCard } from '../_components/template-card';
 
 export default function ResumeTemplatesPage() {
   const router = useRouter();
@@ -64,7 +64,7 @@ export default function ResumeTemplatesPage() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container space-y-4 mx-auto">
       {iscreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-md">
           <div className="rounded-lg bg-white p-6 shadow-lg">
@@ -73,41 +73,26 @@ export default function ResumeTemplatesPage() {
         </div>
       )}
 
-      <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">
-        {t('templates.resTemplate')}
-      </h1>
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text">
+          {t('templates.resTemplate')}
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Select from our collection of professionally designed resume templates
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {templates.map((template) => (
-          <div
-            key={template.id}
-            className="block cursor-pointer"
-            onClick={() => handleTemplateClick(template.id)}
-          >
-            <div className="flex flex-col items-center rounded-lg border p-3 shadow-md transition hover:shadow-lg">
-              <div
-                className="w-full overflow-hidden rounded-lg bg-gray-100"
-                style={{ aspectRatio: '210/297', width: '100%' }}
-              >
-                <Image
-                  src={template.imageUrl ?? ''}
-                  alt={template.name}
-                  width={210}
-                  height={297}
-                  quality={100}
-                  className="size-full object-cover"
-                  priority
-                  unoptimized
-                />
-              </div>
-
-              <h2 className="mt-2 text-center text-base font-semibold sm:text-lg">
-                {template.name}
-              </h2>
-              <p className="text-center text-sm text-gray-600 dark:text-gray-300">
-                {template.description}
-              </p>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {templates.map((template, index) => (
+          <div key={template.id} style={{ animationDelay: `${index * 100}ms` }}>
+            <TemplateCard
+              title={template.name}
+              description={template.description}
+              isPremium
+              imageUrl={template.imageUrl}
+              rating={0}
+              onUse={() => handleTemplateClick(template.id)}
+            />
           </div>
         ))}
       </div>
