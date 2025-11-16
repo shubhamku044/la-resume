@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { format, parseISO, parse } from 'date-fns';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -42,7 +42,6 @@ const formSchema = z.object({
 export default function PersonalInfo() {
   const { user, isLoaded: isClerkLoaded } = useUser();
   const userId = user?.id;
-  const [formInitialized, setFormInitialized] = useState(false);
 
   const [updatePersonalInfo] = useUpdatePersonalInfoMutation();
   const {
@@ -69,7 +68,7 @@ export default function PersonalInfo() {
   });
 
   useEffect(() => {
-    if (isSuccess && userId && !formInitialized) {
+    if (isSuccess && userId) {
       const defaultValues = {
         fullName: user?.fullName || '',
         email: user?.primaryEmailAddress?.emailAddress || '',
@@ -107,10 +106,8 @@ export default function PersonalInfo() {
       } else {
         form.reset(defaultValues);
       }
-
-      setFormInitialized(true);
     }
-  }, [userData, isSuccess, form, formInitialized, userId, user]);
+  }, [userData, isSuccess, form, userId, user]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -132,7 +129,7 @@ export default function PersonalInfo() {
     }
   }
 
-  const isLoading = !isClerkLoaded || !userId || isQueryLoading || !formInitialized;
+  const isLoading = !isClerkLoaded || !userId || isQueryLoading;
 
   if (isLoading) {
     return (

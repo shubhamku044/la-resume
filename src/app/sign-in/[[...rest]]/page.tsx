@@ -30,7 +30,6 @@ import { useEffect, useState } from 'react';
 export default function SignInPage() {
   const t = useTranslations('signIn');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [mounted, setMounted] = useState(false);
 
   const stats = [
     { label: t('stats.resumesCreated'), value: '2,000+', icon: FileText },
@@ -65,14 +64,11 @@ export default function SignInPage() {
   const companies = ['Google', 'Microsoft', 'Apple', 'Meta', 'Netflix', 'Spotify'];
 
   useEffect(() => {
-    setMounted(true);
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % reviews.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">

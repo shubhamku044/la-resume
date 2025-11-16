@@ -39,6 +39,7 @@ export const PricingSection = () => {
   const router = useRouter();
   const t = useTranslations('HomePage.pricing');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
   const x = useMotionValue(0);
 
   // Get container width on client-side after mount
@@ -52,6 +53,7 @@ export const PricingSection = () => {
         if (containerRef.current) {
           // Update position based on new width
           const cardWidth = containerRef.current.clientWidth;
+          setContainerWidth(cardWidth);
           x.set(-currentIndex * cardWidth);
         }
       };
@@ -225,18 +227,14 @@ export const PricingSection = () => {
                   drag="x"
                   style={{ x }}
                   dragConstraints={{
-                    left:
-                      typeof window !== 'undefined'
-                        ? -(features.length - 1) * (containerRef.current?.clientWidth || 0)
-                        : 0,
+                    left: containerWidth > 0 ? -(features.length - 1) * containerWidth : 0,
                     right: 0,
                   }}
                   dragElastic={0.1}
                   dragMomentum={false}
                   onDragEnd={(_, { offset, velocity }) => {
-                    if (!containerRef.current) return;
+                    if (containerWidth === 0) return;
 
-                    const cardWidth = containerRef.current.clientWidth;
                     const swipeThreshold = 50;
                     const swipeVelocityThreshold = 500;
 
@@ -244,15 +242,15 @@ export const PricingSection = () => {
                       // Swipe left - next card
                       const nextIndex = Math.min(currentIndex + 1, features.length - 1);
                       setCurrentIndex(nextIndex);
-                      x.set(-nextIndex * cardWidth);
+                      x.set(-nextIndex * containerWidth);
                     } else if (offset.x > swipeThreshold || velocity.x > swipeVelocityThreshold) {
                       // Swipe right - previous card
                       const prevIndex = Math.max(currentIndex - 1, 0);
                       setCurrentIndex(prevIndex);
-                      x.set(-prevIndex * cardWidth);
+                      x.set(-prevIndex * containerWidth);
                     } else {
                       // Snap back to current position
-                      x.set(-currentIndex * cardWidth);
+                      x.set(-currentIndex * containerWidth);
                     }
                   }}
                   whileTap={{ cursor: 'grabbing' }}
@@ -270,7 +268,6 @@ export const PricingSection = () => {
                     >
                       <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
                         <CardContent className="p-6 flex-1 flex flex-col">
-
                           <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                             {feature.icon}
                           </div>
@@ -292,10 +289,9 @@ export const PricingSection = () => {
                   <button
                     key={index}
                     onClick={() => {
-                      if (!containerRef.current) return;
-                      const cardWidth = containerRef.current.clientWidth;
+                      if (containerWidth === 0) return;
                       setCurrentIndex(index);
-                      x.set(-index * cardWidth);
+                      x.set(-index * containerWidth);
                     }}
                     className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
                       index === currentIndex

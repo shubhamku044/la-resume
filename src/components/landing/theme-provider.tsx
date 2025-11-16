@@ -1,7 +1,7 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Moon, Sun } from 'lucide-react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -13,23 +13,16 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      setTheme('light');
+  // Initialize theme from localStorage or default to 'light'
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as Theme | null;
+      return savedTheme || 'light';
     }
-  }, []);
+    return 'light';
+  });
 
   useEffect(() => {
-    if (!mounted) return;
-
     // Update the document class when theme changes
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -38,17 +31,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
 
     // Save the theme preference
-    localStorage.setItem('theme', theme);
-  }, [theme, mounted]);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
-  // Prevent hydration mismatch by not rendering until mounted
-  if (!mounted) {
-    return <div suppressHydrationWarning>{children}</div>;
-  }
 
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }

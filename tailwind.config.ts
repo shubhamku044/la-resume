@@ -120,7 +120,7 @@ export default {
       },
     },
   },
-  darkMode: 'class',
+  darkMode: ['class', 'class'],
   plugins: [
     addVariablesForColors,
     require('tailwindcss-animate'),

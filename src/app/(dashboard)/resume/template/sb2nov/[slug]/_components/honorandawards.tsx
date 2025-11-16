@@ -104,7 +104,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
       setTempEntry(data.entries[index]);
     } else {
       setTempEntry({
-        id: Date.now().toString(),
+        id: '',
         description: '',
         url: '',
         urlLabel: '',
@@ -120,7 +120,11 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
       if (editingIndex !== null) {
         updatedEntries[editingIndex] = tempEntry;
       } else {
-        updatedEntries.push(tempEntry);
+        const newEntry = {
+          ...tempEntry,
+          id: tempEntry.id || Date.now().toString(),
+        };
+        updatedEntries.push(newEntry);
       }
       return {
         ...prev,
