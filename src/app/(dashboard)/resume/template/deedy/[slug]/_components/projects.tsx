@@ -12,6 +12,7 @@ import { deedyResumeData } from '@/lib/templates/deedy';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface ProjectsProps {
   data: deedyResumeData['projects'];
@@ -112,6 +113,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   // Add a highlight
   const handleAddHighlight = () => {
     if (!newHighlight.trim()) return;
+    if (tempEntry.highlights.includes(newHighlight)) {
+      toast.error('This highlight already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       highlights: [...prev.highlights, newHighlight],
