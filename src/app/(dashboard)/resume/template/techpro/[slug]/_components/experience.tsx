@@ -158,6 +158,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
   const handleAddAccomplishment = () => {
     if (!newAccomplishment.trim()) return;
+    if ((tempEntry.accomplishments as string[]).includes(newAccomplishment)) {
+      toast.error('This accomplishment already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       accomplishments: [...(prev.accomplishments as string[]), newAccomplishment],
@@ -166,10 +170,19 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  const handleRemoveAccomplishment = (accIndex: number) => {
+  const handleRemoveAccomplishment = (accValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      accomplishments: (prev.accomplishments as string[]).filter((_, i) => i !== accIndex),
+      accomplishments: prev.accomplishments.filter((a) => a !== accValue),
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  // Reorder accomplishments
+  const handleReorderAccomplishments = (newOrder: string[]) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      accomplishments: newOrder,
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -332,25 +345,39 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
           />
           <div className="space-y-2">
             <p className="font-semibold">Accomplishments</p>
-            <div className="flex flex-wrap gap-2">
-              {(tempEntry.accomplishments as string[]).map((acc, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {acc}
-                  <button
-                    onClick={() => handleRemoveAccomplishment(i)}
-                    className="ml-2 text-red-500"
-                  >
-                    <X size={14} />
-                  </button>
-                </span>
+            <Reorder.Group
+              axis="y"
+              values={tempEntry.accomplishments as string[]}
+              onReorder={handleReorderAccomplishments}
+              className="space-y-2"
+            >
+              {(tempEntry.accomplishments as string[]).map((acc) => (
+                <Reorder.Item key={acc} value={acc}>
+                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                    <GripVertical size={16} className="cursor-grab text-gray-400" />
+                    <span className="flex-1 text-sm">{acc}</span>
+                    <button
+                      onClick={() => handleRemoveAccomplishment(acc)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                </Reorder.Item>
               ))}
-            </div>
+            </Reorder.Group>
             <div className="flex items-center gap-2">
               <Input
                 type="text"
                 value={newAccomplishment}
                 onChange={(e) => setNewAccomplishment(e.target.value)}
                 placeholder="Add an accomplishment"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddAccomplishment();
+                  }
+                }}
               />
               <Button onClick={handleAddAccomplishment} className="bg-green-500 text-white">
                 Add
