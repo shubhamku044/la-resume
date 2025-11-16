@@ -93,6 +93,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   // Add a tool
   const handleAddTool = () => {
     if (!newTool.trim()) return;
+    if (tempEntry.tools.includes(newTool)) {
+      toast.error('This tool already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       tools: [...prev.tools, newTool],
