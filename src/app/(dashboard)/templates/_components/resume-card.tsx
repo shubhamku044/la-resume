@@ -10,7 +10,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import {
@@ -92,10 +91,23 @@ export function ResumeCard({
   return (
     <Card
       key={id}
-      className="group transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-2xl border"
+      className={`group transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-2xl border relative overflow-hidden ${
+        paymentStatus ? 'ring-2 ring-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)]' : ''
+      }`}
     >
+      {/* Ribbon for Paid */}
+      {paymentStatus && (
+        <div className="absolute left-[-40px] top-6 rotate-[-45deg] bg-yellow-500 text-white text-xs font-semibold px-12 py-1 shadow-md z-20">
+          PREMIUM
+        </div>
+      )}
+
       <CardContent className="p-0">
-        <div className="aspect-[8.5/11] bg-white rounded-t-2xl relative overflow-hidden">
+        <div
+          className={`aspect-[8.5/11] bg-white rounded-t-2xl relative overflow-hidden ${
+            paymentStatus ? 'bg-gradient-to-b from-yellow-50 to-white' : ''
+          }`}
+        >
           <div className="w-full h-full flex items-center justify-center p-2">
             <Image
               src={imageUrl}
@@ -106,12 +118,6 @@ export function ResumeCard({
               unoptimized
             />
           </div>
-
-          {paymentStatus && (
-            <Badge className="absolute top-3 left-3" variant="default">
-              Paid
-            </Badge>
-          )}
 
           <div className="absolute top-3 right-3 z-10">
             <DropdownMenu>
@@ -158,9 +164,6 @@ export function ResumeCard({
 
           <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <div className="space-x-2">
-              {/* <Button onClick={handlePreviewClick} size="sm" variant="outline">
-                <Eye className="w-4 h-4 mr-1" /> Preview
-              </Button> */}
               <Button onClick={handleEditClick} size="sm" variant="default">
                 <Edit className="w-4 h-4 mr-1" /> Edit
               </Button>
@@ -171,14 +174,20 @@ export function ResumeCard({
 
       <CardFooter className="p-4">
         <div className="w-full">
-          <h3 className="font-semibold text-base mb-1 truncate">{title}</h3>
+          <h3 className="font-semibold text-base mb-1 truncate flex items-center gap-2">
+            {title}
+            {paymentStatus && (
+              <span className="text-yellow-600 text-xs font-medium bg-yellow-100 px-2 py-0.5 rounded-full">
+                Premium
+              </span>
+            )}
+          </h3>
           <p className="text-sm text-muted-foreground mb-2 truncate">{type}</p>
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>Modified {formatDistanceToNow(lastUpdated, { addSuffix: true })}</span>
           </div>
         </div>
       </CardFooter>
-
       <ShareModal
         open={showShareModal}
         onOpenChange={setShowShareModal}
