@@ -113,7 +113,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   const handleRemoveDetail = (detailValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      details: prev.details.filter((d) => d !== detailValue),
+      details: prev.details.filter((d) => d.text !== detailValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -232,7 +232,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{detail.text}</span>
                     <button
-                      onClick={() => handleRemoveDetail(detail)}
+                      onClick={() => handleRemoveDetail(detail.text)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
