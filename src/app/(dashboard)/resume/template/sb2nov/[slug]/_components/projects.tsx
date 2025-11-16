@@ -149,6 +149,10 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
 
   const handleAddAccomplishment = () => {
     if (!newAccomplishment.trim()) return;
+    if (tempEntry.accomplishments.includes(newAccomplishment)) {
+      toast.error('This accomplishment already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       accomplishments: [...prev.accomplishments, newAccomplishment],
