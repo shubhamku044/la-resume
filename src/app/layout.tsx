@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Provider } from '@/store';
 import { Toaster } from '@/components/ui/sonner';
@@ -12,16 +11,6 @@ import { getLocale, getMessages } from 'next-intl/server';
 import type { Viewport } from 'next';
 import Favicon from '@/components/favicon';
 import { ThemeProvider } from '@/components/landing/theme-provider';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
@@ -111,7 +100,12 @@ export default async function RootLayout({
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang={locale}>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body
+          className="antialiased"
+          style={{
+            fontFamily: 'var(--font-geist-sans, system-ui, -apple-system, sans-serif)',
+          }}
+        >
           <ThemeProvider>
             <Favicon />
             <Provider>

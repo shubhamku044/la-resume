@@ -115,7 +115,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   // Add an achievement
   const handleAddAchievement = () => {
     if (!newAchievement.trim()) return;
-    if (tempEntry.achievements.includes(newAchievement)) {
+    if (tempEntry.achievements.some((a) => a.text === newAchievement)) {
       toast.error('This achievement already exists');
       return;
     }
@@ -131,10 +131,14 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   };
 
   // Remove an achievement
-  const handleRemoveAchievement = (achievementValue: string) => {
+  const handleRemoveAchievement = (achievementValue: string | AchievementItem) => {
     setTempEntry((prev) => ({
       ...prev,
-      achievements: prev.achievements.filter((a) => a !== achievementValue),
+      achievements: prev.achievements.filter((a) =>
+        typeof achievementValue === 'string'
+          ? a.text !== achievementValue
+          : a.id !== achievementValue.id
+      ),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
