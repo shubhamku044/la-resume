@@ -19,6 +19,11 @@ interface ProjectsProps {
   setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface DetailItem {
+  id: string;
+  text: string;
+}
+
 const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
@@ -26,7 +31,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
     id: string;
     title: string;
     duration: string;
-    details: string[];
+    details: DetailItem[];
   }>({
     id: '',
     title: '',
@@ -45,7 +50,14 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
-    setTempEntry(data[index]);
+    const project = data[index];
+    setTempEntry({
+      ...project,
+      details: project.details.map((detail) => ({
+        id: Date.now().toString() + Math.random(),
+        text: detail,
+      })),
+    });
     setModalOpen(true);
   };
 
@@ -53,10 +65,14 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   const handleSave = () => {
     setTempData((prev) => {
       const updatedProjects = [...prev.projects];
+      const projectToSave = {
+        ...tempEntry,
+        details: tempEntry.details.map((d) => d.text),
+      };
       if (editingIndex !== null) {
-        updatedProjects[editingIndex] = tempEntry;
+        updatedProjects[editingIndex] = projectToSave;
       } else {
-        updatedProjects.push({ ...tempEntry, id: Date.now().toString() });
+        updatedProjects.push({ ...projectToSave, id: Date.now().toString() });
       }
       return { ...prev, projects: updatedProjects };
     });
@@ -87,7 +103,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
     if (!newDetail.trim()) return;
     setTempEntry((prev) => ({
       ...prev,
-      details: [...prev.details, newDetail],
+      details: [...prev.details, { id: Date.now().toString() + Math.random(), text: newDetail }],
     }));
     setNewDetail('');
     if (setIsChangesSaved) setIsChangesSaved(false);
@@ -97,13 +113,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   const handleRemoveDetail = (detailValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      details: prev.details.filter((d) => d !== detailValue),
+      details: prev.details.filter((d) => d.text !== detailValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
   // Reorder details
-  const handleReorderDetails = (newOrder: string[]) => {
+  const handleReorderDetails = (newOrder: DetailItem[]) => {
     setTempEntry((prev) => ({
       ...prev,
       details: newOrder,
@@ -210,13 +226,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderDetails}
               className="space-y-2"
             >
-              {tempEntry.details.map((detail) => (
-                <Reorder.Item key={detail} value={detail}>
+              {tempEntry.details.map((detail, i) => (
+                <Reorder.Item key={detail.id} value={detail}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
-                    <span className="flex-1 text-sm">{detail}</span>
+                    <span className="flex-1 text-sm">{detail.text}</span>
                     <button
-                      onClick={() => handleRemoveDetail(detail)}
+                      onClick={() => handleRemoveDetail(detail.text)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
