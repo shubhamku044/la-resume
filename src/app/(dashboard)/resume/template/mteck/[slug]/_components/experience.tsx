@@ -12,6 +12,7 @@ import { MTeckResumeData } from '@/lib/templates/mteck';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface Experience {
   id: string;
@@ -90,6 +91,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   // Add an achievement
   const handleAddAchievement = () => {
     if (!newAchievement.trim()) return;
+    if (tempEntry.achievements.includes(newAchievement)) {
+      toast.error('This achievement already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       achievements: [...prev.achievements, newAchievement],
@@ -99,10 +104,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   };
 
   // Remove an achievement
-  const handleRemoveAchievement = (achievementIndex: number) => {
+  const handleRemoveAchievement = (achievementValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      achievements: prev.achievements.filter((_, i) => i !== achievementIndex),
+      achievements: prev.achievements.filter((a) => a !== achievementValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -225,13 +230,13 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
               onReorder={handleReorderAchievements}
               className="space-y-2"
             >
-              {tempEntry.achievements.map((achievement, i) => (
+              {tempEntry.achievements.map((achievement) => (
                 <Reorder.Item key={achievement} value={achievement}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{achievement}</span>
                     <button
-                      onClick={() => handleRemoveAchievement(i)}
+                      onClick={() => handleRemoveAchievement(achievement)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
