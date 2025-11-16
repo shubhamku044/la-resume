@@ -286,8 +286,8 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderTools}
               className="space-y-2"
             >
-              {tempEntry.tools.map((tool) => (
-                <Reorder.Item key={tool} value={tool}>
+              {tempEntry.tools.map((tool, idx) => (
+                <Reorder.Item key={`${tool}-${idx}`} value={tool}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{tool}</span>
@@ -328,8 +328,8 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderHighlights}
               className="space-y-2"
             >
-              {tempEntry.highlights.map((highlight) => (
-                <Reorder.Item key={highlight} value={highlight}>
+              {tempEntry.highlights.map((highlight, idx) => (
+                <Reorder.Item key={`${highlight}-${idx}`} value={highlight}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{highlight}</span>
