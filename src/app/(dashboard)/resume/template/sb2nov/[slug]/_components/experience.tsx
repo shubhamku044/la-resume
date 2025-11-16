@@ -1,7 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -10,9 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
-import { GripVertical, X } from 'lucide-react';
-import { Pencil, Trash } from 'lucide-react';
+import { Reorder } from 'framer-motion';
+import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 interface ExperienceProps {
@@ -158,6 +157,15 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
+  // Reorder accomplishments
+  const handleReorderAccomplishments = (newOrder: string[]) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      accomplishments: newOrder,
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
   return (
     <div className="space-y-4">
       <div
@@ -275,25 +283,39 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
           <div className="space-y-2">
             <p className="font-semibold">Accomplishments</p>
-            <div className="flex flex-wrap gap-2">
+            <Reorder.Group
+              axis="y"
+              values={tempEntry.accomplishments as string[]}
+              onReorder={handleReorderAccomplishments}
+              className="space-y-2"
+            >
               {(tempEntry.accomplishments as string[]).map((acc, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {acc}
-                  <button
-                    onClick={() => handleRemoveAccomplishment(i)}
-                    className="ml-2 text-red-500"
-                  >
-                    <X size={14} />
-                  </button>
-                </span>
+                <Reorder.Item key={acc} value={acc}>
+                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                    <GripVertical size={16} className="cursor-grab text-gray-400" />
+                    <span className="flex-1 text-sm">{acc}</span>
+                    <button
+                      onClick={() => handleRemoveAccomplishment(i)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                </Reorder.Item>
               ))}
-            </div>
+            </Reorder.Group>
             <div className="flex items-center gap-2">
               <Input
                 type="text"
                 value={newAccomplishment}
                 onChange={(e) => setNewAccomplishment(e.target.value)}
                 placeholder="Add an accomplishment"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddAccomplishment();
+                  }
+                }}
               />
               <Button onClick={handleAddAccomplishment} className="bg-green-500 text-white">
                 Add

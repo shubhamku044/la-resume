@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -10,9 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { GripVertical, X } from 'lucide-react';
-import { Pencil, Trash } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { MTeckResumeData } from '@/lib/templates/mteck';
+import { Reorder } from 'framer-motion';
+import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import { useState } from 'react';
 
 interface ProjectsProps {
   data: MTeckResumeData['projects'];
@@ -99,6 +98,15 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
     setTempEntry((prev) => ({
       ...prev,
       details: prev.details.filter((_, i) => i !== detailIndex),
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  // Reorder details
+  const handleReorderDetails = (newOrder: string[]) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      details: newOrder,
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -196,22 +204,39 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
           {/* Details Section */}
           <div className="space-y-2">
             <p className="font-semibold">Details</p>
-            <div className="flex flex-wrap gap-2">
+            <Reorder.Group
+              axis="y"
+              values={tempEntry.details}
+              onReorder={handleReorderDetails}
+              className="space-y-2"
+            >
               {tempEntry.details.map((detail, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {detail}
-                  <button onClick={() => handleRemoveDetail(i)} className="ml-2 text-red-500">
-                    <X size={14} />
-                  </button>
-                </span>
+                <Reorder.Item key={detail} value={detail}>
+                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                    <GripVertical size={16} className="cursor-grab text-gray-400" />
+                    <span className="flex-1 text-sm">{detail}</span>
+                    <button
+                      onClick={() => handleRemoveDetail(i)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                </Reorder.Item>
               ))}
-            </div>
+            </Reorder.Group>
             <div className="flex items-center gap-2">
               <Input
                 type="text"
                 value={newDetail}
                 onChange={(e) => setNewDetail(e.target.value)}
                 placeholder="Add a detail"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddDetail();
+                  }
+                }}
               />
               <Button onClick={handleAddDetail} className="bg-green-500 text-white">
                 Add

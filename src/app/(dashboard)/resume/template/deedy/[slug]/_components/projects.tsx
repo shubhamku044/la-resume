@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -10,9 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import { deedyResumeData } from '@/lib/templates/deedy';
-import { GripVertical, X } from 'lucide-react';
-import { Pencil, Trash } from 'lucide-react';
+import { Reorder } from 'framer-motion';
+import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import { useState } from 'react';
 
 interface ProjectsProps {
   data: deedyResumeData['projects'];
@@ -126,6 +125,24 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
     setTempEntry((prev) => ({
       ...prev,
       highlights: prev.highlights.filter((_, i) => i !== highlightIndex),
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  // Reorder tools
+  const handleReorderTools = (newOrder: string[]) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      tools: newOrder,
+    }));
+    if (setIsChangesSaved) setIsChangesSaved(false);
+  };
+
+  // Reorder highlights
+  const handleReorderHighlights = (newOrder: string[]) => {
+    setTempEntry((prev) => ({
+      ...prev,
+      highlights: newOrder,
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -254,22 +271,39 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
 
           <div className="space-y-2">
             <p className="font-semibold">Tools</p>
-            <div className="flex flex-wrap gap-2">
+            <Reorder.Group
+              axis="y"
+              values={tempEntry.tools}
+              onReorder={handleReorderTools}
+              className="space-y-2"
+            >
               {tempEntry.tools.map((tool, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {tool}
-                  <button onClick={() => handleRemoveTool(i)} className="ml-2 text-red-500">
-                    <X size={14} />
-                  </button>
-                </span>
+                <Reorder.Item key={tool} value={tool}>
+                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                    <GripVertical size={16} className="cursor-grab text-gray-400" />
+                    <span className="flex-1 text-sm">{tool}</span>
+                    <button
+                      onClick={() => handleRemoveTool(i)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                </Reorder.Item>
               ))}
-            </div>
+            </Reorder.Group>
             <div className="flex items-center gap-2">
               <Input
                 type="text"
                 value={newTool}
                 onChange={(e) => setNewTool(e.target.value)}
                 placeholder="Add a tool"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddTool();
+                  }
+                }}
               />
               <Button onClick={handleAddTool} className="bg-green-500 text-white">
                 Add
@@ -279,22 +313,39 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
 
           <div className="space-y-2">
             <p className="font-semibold">Highlights</p>
-            <div className="flex flex-wrap gap-2">
+            <Reorder.Group
+              axis="y"
+              values={tempEntry.highlights}
+              onReorder={handleReorderHighlights}
+              className="space-y-2"
+            >
               {tempEntry.highlights.map((highlight, i) => (
-                <span key={i} className="flex items-center rounded-md bg-gray-200 px-2 py-1">
-                  {highlight}
-                  <button onClick={() => handleRemoveHighlight(i)} className="ml-2 text-red-500">
-                    <X size={14} />
-                  </button>
-                </span>
+                <Reorder.Item key={highlight} value={highlight}>
+                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                    <GripVertical size={16} className="cursor-grab text-gray-400" />
+                    <span className="flex-1 text-sm">{highlight}</span>
+                    <button
+                      onClick={() => handleRemoveHighlight(i)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                </Reorder.Item>
               ))}
-            </div>
+            </Reorder.Group>
             <div className="flex items-center gap-2">
               <Input
                 type="text"
                 value={newHighlight}
                 onChange={(e) => setNewHighlight(e.target.value)}
                 placeholder="Add a highlight"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddHighlight();
+                  }
+                }}
               />
               <Button onClick={handleAddHighlight} className="bg-green-500 text-white">
                 Add
