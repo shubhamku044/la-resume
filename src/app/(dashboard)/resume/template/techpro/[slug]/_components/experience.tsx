@@ -158,6 +158,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
 
   const handleAddAccomplishment = () => {
     if (!newAccomplishment.trim()) return;
+    if ((tempEntry.accomplishments as string[]).includes(newAccomplishment)) {
+      toast.error('This accomplishment already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       accomplishments: [...(prev.accomplishments as string[]), newAccomplishment],
