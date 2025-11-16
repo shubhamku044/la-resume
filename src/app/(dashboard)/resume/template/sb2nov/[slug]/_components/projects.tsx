@@ -161,10 +161,10 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
 
-  const handleRemoveAccomplishment = (accIndex: number) => {
+  const handleRemoveAccomplishment = (accValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      accomplishments: prev.accomplishments.filter((_, i) => i !== accIndex),
+      accomplishments: prev.accomplishments.filter((a) => a !== accValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -327,13 +327,13 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
               onReorder={handleReorderAccomplishments}
               className="space-y-2"
             >
-              {tempEntry.accomplishments.map((acc, i) => (
+              {tempEntry.accomplishments.map((acc) => (
                 <Reorder.Item key={acc} value={acc}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{acc}</span>
                     <button
-                      onClick={() => handleRemoveAccomplishment(i)}
+                      onClick={() => handleRemoveAccomplishment(acc)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
