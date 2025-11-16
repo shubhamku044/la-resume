@@ -12,6 +12,7 @@ import { MTeckResumeData } from '@/lib/templates/mteck';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface Experience {
   id: string;
@@ -90,6 +91,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   // Add an achievement
   const handleAddAchievement = () => {
     if (!newAchievement.trim()) return;
+    if (tempEntry.achievements.includes(newAchievement)) {
+      toast.error('This achievement already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       achievements: [...prev.achievements, newAchievement],
