@@ -103,10 +103,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   };
 
   // Remove an achievement
-  const handleRemoveAchievement = (achievementIndex: number) => {
+  const handleRemoveAchievement = (achievementValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      achievements: prev.achievements.filter((_, i) => i !== achievementIndex),
+      achievements: prev.achievements.filter((a) => a !== achievementValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -265,7 +265,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{achievement}</span>
                     <button
-                      onClick={() => handleRemoveAchievement(i)}
+                      onClick={() => handleRemoveAchievement(achievement)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
