@@ -4,7 +4,18 @@ import { useEffect, useState } from 'react';
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
 export function useGitHubStars() {
-  const [stars, setStars] = useState<string | null>(null);
+  const [stars, setStars] = useState<string | null>(() => {
+    const cachedStars = localStorage.getItem('githubStars');
+    const cachedTime = localStorage.getItem('githubStarsTimestamp');
+
+    if (cachedStars && cachedTime) {
+      const age = Date.now() - parseInt(cachedTime);
+      if (age < CACHE_DURATION) {
+        return cachedStars;
+      }
+    }
+    return null;
+  });
 
   useEffect(() => {
     const fetchStars = async () => {
@@ -25,19 +36,11 @@ export function useGitHubStars() {
       }
     };
 
-    const cachedStars = localStorage.getItem('githubStars');
-    const cachedTime = localStorage.getItem('githubStarsTimestamp');
-
-    if (cachedStars && cachedTime) {
-      const age = Date.now() - parseInt(cachedTime);
-      if (age < CACHE_DURATION) {
-        setStars(cachedStars);
-        return;
-      }
+    // Only fetch if we don't have valid cached data
+    if (stars === null) {
+      fetchStars();
     }
-
-    fetchStars();
-  }, []);
+  }, [stars]);
 
   return stars ? +stars : 1000;
 }

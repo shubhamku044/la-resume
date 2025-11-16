@@ -1,6 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -9,10 +7,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Reorder } from 'framer-motion';
+import { Input } from '@/components/ui/input';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 interface HonorsAwardsProps {
@@ -104,7 +104,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
       setTempEntry(data.entries[index]);
     } else {
       setTempEntry({
-        id: Date.now().toString(),
+        id: '',
         description: '',
         url: '',
         urlLabel: '',
@@ -120,7 +120,11 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
       if (editingIndex !== null) {
         updatedEntries[editingIndex] = tempEntry;
       } else {
-        updatedEntries.push(tempEntry);
+        const newEntry = {
+          ...tempEntry,
+          id: tempEntry.id || Date.now().toString(),
+        };
+        updatedEntries.push(newEntry);
       }
       return {
         ...prev,

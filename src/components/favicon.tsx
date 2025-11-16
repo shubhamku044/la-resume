@@ -1,17 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Favicon() {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
     const updateFavicon = () => {
       const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const favicon = darkMode ? '/favicon-light.ico' : '/favicon-dark.ico';
@@ -35,7 +27,7 @@ export default function Favicon() {
         .matchMedia('(prefers-color-scheme: dark)')
         .removeEventListener('change', updateFavicon);
     };
-  }, [mounted]);
+  }, []);
 
   return null;
 }

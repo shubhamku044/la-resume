@@ -1,25 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Experience } from '@/types';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
-import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { addExperience, updateExperience } from '@/store/slices';
+import { Experience } from '@/types';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 type ExperienceModalProps = {
@@ -28,42 +28,27 @@ type ExperienceModalProps = {
   initialData?: Experience;
 };
 
+const defaultExperience: Experience = {
+  id: '',
+  company: '',
+  role: '',
+  startDate: '',
+  endDate: '',
+  responsibilities: [''],
+  location: '',
+};
+
 export default function ExperienceModal({ open, onClose, initialData }: ExperienceModalProps) {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState<Experience>({
-    id: '',
-    company: '',
-    role: '',
-    startDate: '',
-    endDate: '',
-    responsibilities: [''],
-    location: '',
-  });
 
-  const [startDate, setStartDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
-
-  useEffect(() => {
-    if (open) {
-      if (initialData) {
-        setFormData({ ...initialData, id: initialData.id });
-        setStartDate(new Date(initialData.startDate));
-        setEndDate(initialData.endDate ? new Date(initialData.endDate) : undefined);
-      } else {
-        setFormData({
-          id: '',
-          company: '',
-          role: '',
-          startDate: '',
-          endDate: '',
-          responsibilities: [''],
-          location: '',
-        });
-        setStartDate(undefined);
-        setEndDate(undefined);
-      }
-    }
-  }, [open, initialData]);
+  // Initialize state directly without effects
+  const [formData, setFormData] = useState<Experience>(() => initialData || defaultExperience);
+  const [startDate, setStartDate] = useState<Date | undefined>(() =>
+    initialData?.startDate ? new Date(initialData.startDate) : undefined
+  );
+  const [endDate, setEndDate] = useState<Date | undefined>(() =>
+    initialData?.endDate ? new Date(initialData.endDate) : undefined
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -131,7 +116,15 @@ export default function ExperienceModal({ open, onClose, initialData }: Experien
   };
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog
+      key={initialData?.id || 'new'}
+      open={open}
+      onOpenChange={(open) => {
+        if (!open) {
+          onClose();
+        }
+      }}
+    >
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>{initialData ? 'Edit Experience' : 'Add Experience'}</DialogTitle>

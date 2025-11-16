@@ -23,21 +23,20 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return true;
+  });
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
   const langaugeDropdownRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsCollapsed(window.innerWidth < 1024);
-    }
-  }, []);
 
   const userDetailItems = [
     {

@@ -26,7 +26,7 @@ export default function ResumeTemplatesPage() {
     }
 
     // Generate a new title and slug
-    const newTitle = `Resume-${Date.now()}`;
+    const newTitle = `Resume-${uuid()}`;
     const newSlug = uuid();
 
     // Get the sample data for the selected template
