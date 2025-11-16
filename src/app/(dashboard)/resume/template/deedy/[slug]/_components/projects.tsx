@@ -12,6 +12,7 @@ import { deedyResumeData } from '@/lib/templates/deedy';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface ProjectsProps {
   data: deedyResumeData['projects'];
@@ -92,6 +93,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   // Add a tool
   const handleAddTool = () => {
     if (!newTool.trim()) return;
+    if (tempEntry.tools.includes(newTool)) {
+      toast.error('This tool already exists');
+      return;
+    }
     setTempEntry((prev) => ({
       ...prev,
       tools: [...prev.tools, newTool],
