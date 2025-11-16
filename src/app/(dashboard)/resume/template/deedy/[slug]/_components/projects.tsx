@@ -106,10 +106,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   };
 
   // Remove a tool
-  const handleRemoveTool = (toolIndex: number) => {
+  const handleRemoveTool = (toolValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      tools: prev.tools.filter((_, i) => i !== toolIndex),
+      tools: prev.tools.filter((t) => t !== toolValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -130,10 +130,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
   };
 
   // Remove a highlight
-  const handleRemoveHighlight = (highlightIndex: number) => {
+  const handleRemoveHighlight = (highlightValue: string) => {
     setTempEntry((prev) => ({
       ...prev,
-      highlights: prev.highlights.filter((_, i) => i !== highlightIndex),
+      highlights: prev.highlights.filter((h) => h !== highlightValue),
     }));
     if (setIsChangesSaved) setIsChangesSaved(false);
   };
@@ -286,13 +286,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderTools}
               className="space-y-2"
             >
-              {tempEntry.tools.map((tool, i) => (
-                <Reorder.Item key={tool} value={tool}>
+              {tempEntry.tools.map((tool, idx) => (
+                <Reorder.Item key={`${tool}-${idx}`} value={tool}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{tool}</span>
                     <button
-                      onClick={() => handleRemoveTool(i)}
+                      onClick={() => handleRemoveTool(tool)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
@@ -328,13 +328,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderHighlights}
               className="space-y-2"
             >
-              {tempEntry.highlights.map((highlight, i) => (
-                <Reorder.Item key={highlight} value={highlight}>
+              {tempEntry.highlights.map((highlight, idx) => (
+                <Reorder.Item key={`${highlight}-${idx}`} value={highlight}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{highlight}</span>
                     <button
-                      onClick={() => handleRemoveHighlight(i)}
+                      onClick={() => handleRemoveHighlight(highlight)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <X size={14} />
