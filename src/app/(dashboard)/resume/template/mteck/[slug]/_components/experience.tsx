@@ -13,12 +13,25 @@ import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useState } from 'react';
 
+interface AchievementItem {
+  id: string;
+  text: string;
+}
+
 interface Experience {
   id: string;
   company: string;
   duration: string;
   role: string;
   achievements: string[];
+}
+
+interface TempExperience {
+  id: string;
+  company: string;
+  duration: string;
+  role: string;
+  achievements: AchievementItem[];
 }
 
 interface ExperienceProps {
@@ -30,7 +43,7 @@ interface ExperienceProps {
 const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [tempEntry, setTempEntry] = useState<Experience>({
+  const [tempEntry, setTempEntry] = useState<TempExperience>({
     id: '',
     company: '',
     duration: '',
@@ -49,7 +62,14 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   // Open modal for editing
   const handleOpenModal = (index: number) => {
     setEditingIndex(index);
-    setTempEntry(data[index]);
+    const experience = data[index];
+    setTempEntry({
+      ...experience,
+      achievements: experience.achievements.map((achievement) => ({
+        id: Date.now().toString() + Math.random(),
+        text: achievement,
+      })),
+    });
     setModalOpen(true);
   };
 
@@ -57,10 +77,14 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   const handleSave = () => {
     setTempData((prev) => {
       const updatedExperience = [...prev.experience];
+      const experienceToSave = {
+        ...tempEntry,
+        achievements: tempEntry.achievements.map((a) => a.text),
+      };
       if (editingIndex !== null) {
-        updatedExperience[editingIndex] = tempEntry;
+        updatedExperience[editingIndex] = experienceToSave;
       } else {
-        updatedExperience.push({ ...tempEntry, id: Date.now().toString() });
+        updatedExperience.push({ ...experienceToSave, id: Date.now().toString() });
       }
       return { ...prev, experience: updatedExperience };
     });
@@ -92,7 +116,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
     if (!newAchievement.trim()) return;
     setTempEntry((prev) => ({
       ...prev,
-      achievements: [...prev.achievements, newAchievement],
+      achievements: [
+        ...prev.achievements,
+        { id: Date.now().toString() + Math.random(), text: newAchievement },
+      ],
     }));
     setNewAchievement('');
     if (setIsChangesSaved) setIsChangesSaved(false);
@@ -108,7 +135,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
   };
 
   // Reorder achievements
-  const handleReorderAchievements = (newOrder: string[]) => {
+  const handleReorderAchievements = (newOrder: AchievementItem[]) => {
     setTempEntry((prev) => ({
       ...prev,
       achievements: newOrder,
@@ -226,10 +253,10 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
               className="space-y-2"
             >
               {tempEntry.achievements.map((achievement, i) => (
-                <Reorder.Item key={achievement} value={achievement}>
+                <Reorder.Item key={achievement.id} value={achievement}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
-                    <span className="flex-1 text-sm">{achievement}</span>
+                    <span className="flex-1 text-sm">{achievement.text}</span>
                     <button
                       onClick={() => handleRemoveAchievement(i)}
                       className="text-red-500 hover:text-red-700"
