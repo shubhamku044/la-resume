@@ -1,26 +1,26 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useEffect, useState } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import { useAppDispatch } from '@/store/hooks';
+import { addEducation, updateEducation } from '@/store/slices';
 import { Education } from '@/types';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
-import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch } from '@/store/hooks';
-import { addEducation, updateEducation } from '@/store/slices';
+import { useState } from 'react';
 import { toast } from 'sonner';
+import { v4 as uuidv4 } from 'uuid';
 
 type EducationModalProps = {
   open: boolean;
@@ -43,10 +43,14 @@ const defaultEducation: Education = {
 export default function EducationModal({ open, onClose, initialData }: EducationModalProps) {
   const dispatch = useAppDispatch();
 
-  const [formData, setFormData] = useState<Education>(defaultEducation);
-
-  const [startDate, setStartDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
+  // Initialize state directly without effects
+  const [formData, setFormData] = useState<Education>(() => initialData || defaultEducation);
+  const [startDate, setStartDate] = useState<Date | undefined>(() =>
+    initialData?.startYear ? new Date(initialData.startYear) : undefined
+  );
+  const [endDate, setEndDate] = useState<Date | undefined>(() =>
+    initialData?.endYear ? new Date(initialData.endYear) : undefined
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -97,32 +101,14 @@ export default function EducationModal({ open, onClose, initialData }: Education
     onClose();
   };
 
-  useEffect(() => {
-    if (!open) {
-      setFormData(defaultEducation);
-      setStartDate(undefined);
-      setEndDate(undefined);
-    }
-  }, [open]);
-
-  useEffect(() => {
-    if (initialData && open) {
-      setFormData(initialData);
-      setStartDate(new Date(initialData.startYear));
-      setEndDate(new Date(initialData.endYear));
-    }
-  }, [initialData, open]);
-
   return (
     <Dialog
+      key={initialData?.id || 'new'}
       open={open}
       onOpenChange={(open) => {
         if (!open) {
-          setFormData(defaultEducation);
-          setStartDate(undefined);
-          setEndDate(undefined);
+          onClose();
         }
-        onClose();
       }}
     >
       <DialogContent aria-describedby="Eduction add">

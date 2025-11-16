@@ -1,20 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Project } from '@/types';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { addProject, updateProject } from '@/store/slices';
+import { Project } from '@/types';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 type ProjectModalProps = {
@@ -23,31 +23,17 @@ type ProjectModalProps = {
   initialData?: Project;
 };
 
+const defaultProject: Project = {
+  id: '',
+  title: '',
+  description: [''],
+  technologies: [''],
+  link: '',
+};
+
 export default function ProjectModal({ open, onClose, initialData }: ProjectModalProps) {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState<Project>({
-    id: '',
-    title: '',
-    description: [''],
-    technologies: [''],
-    link: '',
-  });
-
-  useEffect(() => {
-    if (open) {
-      if (initialData) {
-        setFormData({ ...initialData, id: initialData.id });
-      } else {
-        setFormData({
-          id: '',
-          title: '',
-          description: [''],
-          technologies: [''],
-          link: '',
-        });
-      }
-    }
-  }, [open, initialData]);
+  const [formData, setFormData] = useState<Project>(() => initialData || defaultProject);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -118,7 +104,15 @@ export default function ProjectModal({ open, onClose, initialData }: ProjectModa
   };
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
+    <Dialog
+      key={initialData?.id || 'new'}
+      open={open}
+      onOpenChange={(open) => {
+        if (!open) {
+          onClose();
+        }
+      }}
+    >
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>{initialData ? 'Edit Project' : 'Add Project'}</DialogTitle>
