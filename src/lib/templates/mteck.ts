@@ -63,12 +63,6 @@ export const mteckResumeSampleData: MTeckResumeData = {
         'Analyzed network traffic patterns to identify bottlenecks and optimize performance',
         'Implemented firewall rules to enhance network security and prevent unauthorized access',
         'Conducted regular vulnerability assessments and applied patches to secure systems',
-        'Collaborated with cross-functional teams to streamline IT processes and improve efficiency',
-        'Configured monitoring tools to track system performance and troubleshoot issues proactively',
-        'Automated routine tasks using scripts to reduce manual effort and increase productivity',
-        'Documented system configurations and procedures for knowledge sharing within the team',
-        'Participated in disaster recovery planning and drills to ensure business continuity in case of emergencies',
-        'Implemented cloud migration strategies to move applications to a hybrid environment',
         'Optimized database performance through indexing and query tuning techniques',
         'Conducted capacity planning and scalability assessments to support future growth',
         'Provided on-call support for critical issues and worked on root cause analysis for incident resolution',
@@ -81,11 +75,6 @@ export const mteckResumeSampleData: MTeckResumeData = {
       role: 'Senior Systems Administrator (SRE)',
       achievements: [
         'Managed virtualized server environment spanning multiple data centers',
-        'Oversaw migration of critical business applications to cloud-based platforms',
-        'Configured and monitored network security measures, including firewalls and intrusion detection systems',
-        'Implemented multi-factor authentication for remote access to company systems',
-        'Streamlined patch management process, reducing vulnerabilities and downtime',
-        'Conducted regular vulnerability assessments and penetration testing',
         'Automated server provisioning and configuration management tasks',
         'Maintained documentation for IT policies and procedures',
         'Coordinated responses to cybersecurity incidents with internal teams and external vendors',
@@ -163,7 +152,7 @@ export const mteck = (data: MTeckResumeData) => {
     }
 
     return `\\documentTitle{${escapeLatex(name)}}{${links.join(' ~ | ~ ')}}
-  
+
     %---------%
     % Summary %
     %---------%
@@ -183,9 +172,9 @@ export const mteck = (data: MTeckResumeData) => {
           %--------%
           % Skills %
           %--------%
-          
+
           \\section{Skills}
-          
+
           \\begin{multicols}{2}
             \\begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=75pt]
               ${Object.entries(data.skills)
@@ -204,9 +193,9 @@ export const mteck = (data: MTeckResumeData) => {
           %------------%
           % Experience %
           %------------%
-          
+
           \\section{Experience}
-          
+
           ${data.experience
             .map(
               (exp) => `
@@ -259,8 +248,8 @@ export const mteck = (data: MTeckResumeData) => {
           \\end{resume_list}
         `
         : ''
-    }    
-    
+    }
+
     \\resumeSubHeadingListEnd
   `
           : '';
@@ -271,9 +260,9 @@ export const mteck = (data: MTeckResumeData) => {
           %----------------------------%
           % Extracurricular Activities %
           %----------------------------%
-          
+
           \\section{Projects}
-          
+
           ${data.projects
             .map(
               (project) => `

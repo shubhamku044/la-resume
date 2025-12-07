@@ -17,7 +17,6 @@ import {
   PanelLeft,
   Star,
   Trophy,
-  User,
   UserCircle,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -151,13 +150,13 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         >
           <div className="flex-1 justify-between overflow-x-hidden overflow-y-auto p-2">
             <nav className="space-y-1">
-              <CollapsibleSection
+              {/* <CollapsibleSection
                 title={t('jobTracker')}
                 icon={<ClipboardList className="size-4" />}
                 isCollapsed={isCollapsed}
                 items={jobTrackerItems}
                 pathname={pathname}
-              />
+              /> */}
 
               <CollapsibleSection
                 title={t('templates')}
@@ -166,13 +165,13 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 items={templateItems}
                 pathname={pathname}
               />
-              <CollapsibleSection
+              {/* <CollapsibleSection
                 title={t('userDetails')}
                 icon={<User className="size-4" />}
                 isCollapsed={isCollapsed}
                 items={userDetailItems}
                 pathname={pathname}
-              />
+              /> */}
             </nav>
           </div>
           <div className="p-2 border-t lg:hidden pb-safe">

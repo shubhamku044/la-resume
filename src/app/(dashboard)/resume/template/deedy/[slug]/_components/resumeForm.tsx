@@ -339,14 +339,16 @@ const ResumeForm = ({
                   <DropdownMenuLabel>{t('common.reorderSection')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <Reorder.Group
+                    axis="y"
                     values={resumeSectionsOrder}
                     onReorder={(values) => {
                       setResumeSectionsOrder(values);
                     }}
+                    className="space-y-1"
                   >
                     {sectionsOrder?.map((section) => (
-                      <Reorder.Item key={section} value={section}>
-                        <DropdownMenuItem key={section}>
+                      <Reorder.Item key={section} value={section} dragElastic={0}>
+                        <DropdownMenuItem key={section} onSelect={(e) => e.preventDefault()}>
                           <div className="flex w-full items-center justify-between gap-4">
                             <p>{section}</p>
                             <GripVertical size={16} className="cursor-grab opacity-65" />
@@ -442,14 +444,16 @@ const ResumeForm = ({
                   <DropdownMenuLabel>{t('common.reorderSection')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <Reorder.Group
+                    axis="y"
                     values={resumeSectionsOrder}
                     onReorder={(values) => {
                       setResumeSectionsOrder(values);
                     }}
+                    className="space-y-1"
                   >
                     {sectionsOrder?.map((section) => (
-                      <Reorder.Item key={section} value={section}>
-                        <DropdownMenuItem key={section}>
+                      <Reorder.Item key={section} value={section} dragElastic={0}>
+                        <DropdownMenuItem key={section} onSelect={(e) => e.preventDefault()}>
                           <div className="flex w-full items-center justify-between gap-4">
                             <p>{section}</p>
                             <GripVertical size={16} className="cursor-grab opacity-65" />
