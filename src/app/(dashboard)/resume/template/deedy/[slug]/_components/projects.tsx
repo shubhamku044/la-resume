@@ -20,17 +20,12 @@ interface ProjectsProps {
   setIsChangesSaved?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type ProjectEntry = deedyResumeData['projects'][number];
+
 const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  const [tempEntry, setTempEntry] = useState<{
-    id: string;
-    title: string;
-    tools: string[];
-    duration: string;
-    link: string;
-    highlights: string[];
-  }>({
+  const [tempEntry, setTempEntry] = useState<ProjectEntry>({
     id: '',
     title: '',
     tools: [],
