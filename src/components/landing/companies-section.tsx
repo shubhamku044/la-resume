@@ -1,4 +1,3 @@
-import React from 'react';
 import CompaniesSec from './company-flow';
 
 export const CompaniesSection = () => {

@@ -34,6 +34,7 @@ const LanguageSelectorDropdown = forwardRef<HTMLButtonElement, IProps>(
       <DropdownMenu>
         <DropdownMenuTrigger
           ref={ref}
+          aria-label={t('sidebar.language')}
           className={clsx(
             'p-2 outline-none',
             isPending && 'pointer-events-none opacity-60',

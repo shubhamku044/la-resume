@@ -1,15 +1,13 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { MousePointer, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, type SubmitHandler } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 type ApiSuccessResponse = {
@@ -90,13 +88,7 @@ export const ContactSection = () => {
   return (
     <section className="bg-gray-50 py-20 dark:bg-gray-900 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
+        <div className="mb-12 text-center">
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
             {t('badge')}
           </div>
@@ -106,14 +98,9 @@ export const ContactSection = () => {
           <p className="mx-auto max-w-4xl text-lg text-gray-600 dark:text-gray-300">
             {t('description')}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <div>
           <Card className="overflow-hidden border-0 shadow-lg">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-5">
@@ -227,7 +214,7 @@ export const ContactSection = () => {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

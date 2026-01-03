@@ -1,17 +1,16 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import { Provider } from '@/store';
+import Favicon from '@/components/favicon';
+import JsonLd from '@/components/json-ld';
+import I18nProvider from '@/components/providers/i18n-provider';
+import ThemeProvider from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { ClerkProvider } from '@clerk/nextjs';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { NextIntlClientProvider } from 'next-intl';
+import type { Metadata, Viewport } from 'next';
 import { getLocale, getMessages } from 'next-intl/server';
-import type { Viewport } from 'next';
-import Favicon from '@/components/favicon';
-import { ThemeProvider } from '@/components/landing/theme-provider';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -91,7 +90,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
   viewportFit: 'cover',
   themeColor: '#ffffff',
 };
@@ -112,14 +111,13 @@ export default async function RootLayout({
     >
       <html lang={locale}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <JsonLd />
           <ThemeProvider>
             <Favicon />
-            <Provider>
-              <NextIntlClientProvider messages={messages}>
-                <main>{children}</main>
-                <Toaster />
-              </NextIntlClientProvider>
-            </Provider>
+            <I18nProvider locale={locale} messages={messages}>
+              <main>{children}</main>
+              <Toaster />
+            </I18nProvider>
           </ThemeProvider>
           <Analytics />
           <SpeedInsights />

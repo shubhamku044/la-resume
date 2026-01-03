@@ -1,9 +1,7 @@
-'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
-import { motion, useMotionValue } from 'framer-motion';
 import {
   CheckCircle,
   Clock,
@@ -15,59 +13,11 @@ import {
   Share2,
   Users,
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-const cardVariants = {
-  offscreen: {
-    y: 50,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring' as const,
-      bounce: 0.4,
-      duration: 0.8,
-    },
-  },
-};
 
-export const PricingSection = () => {
-  const router = useRouter();
-  const t = useTranslations('HomePage.pricing');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
-  const x = useMotionValue(0);
-
-  // Get container width on client-side after mount
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Update width on mount and resize
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const updateWidth = () => {
-        // Trigger rerender when width changes
-        if (containerRef.current) {
-          // Update position based on new width
-          const cardWidth = containerRef.current.clientWidth;
-          setContainerWidth(cardWidth);
-          x.set(-currentIndex * cardWidth);
-        }
-      };
-
-      // Initial update
-      setTimeout(updateWidth, 100); // Short delay to ensure container is rendered
-
-      // Add resize listener
-      window.addEventListener('resize', updateWidth);
-
-      // Clean up
-      return () => window.removeEventListener('resize', updateWidth);
-    }
-  }, [currentIndex, x]);
+export const PricingSection = async () => {
+  const t = await getTranslations('HomePage.pricing');
 
   const features = [
     {
@@ -105,13 +55,7 @@ export const PricingSection = () => {
   return (
     <section id="pricing" className="bg-gray-50 py-20 dark:bg-gray-900 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
+        <div className="mb-16 text-center">
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
             {t('badge')}
           </div>
@@ -121,17 +65,11 @@ export const PricingSection = () => {
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
             {t('description')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="gap-8 w-full flex flex-col lg:flex-row justify-center items-center lg:gap-12">
           {/* Pricing Card */}
-          <motion.div
-            variants={cardVariants}
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.1 }}
-            className="flex justify-center w-full lg:w-auto"
-          >
+          <div className="flex justify-center w-full lg:w-auto">
             <Card className="relative w-full max-w-md overflow-hidden border-2 border-purple-200 shadow-xl dark:border-purple-800">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20" />
               <div className="relative">
@@ -196,14 +134,11 @@ export const PricingSection = () => {
                   </div>
 
                   <SignedIn>
-                    <Button
-                      onClick={() => {
-                        router.push('/templates/made-by-you');
-                      }}
-                      className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base"
-                    >
-                      {t('card.button')}
-                    </Button>
+                    <Link href="/templates/made-by-you">
+                      <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
+                        {t('card.button')}
+                      </Button>
+                    </Link>
                   </SignedIn>
                   <SignedOut>
                     <Link href="/sign-in">
@@ -215,106 +150,36 @@ export const PricingSection = () => {
                 </CardContent>
               </div>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Features Grid */}
           <div className="w-full lg:w-auto">
             {/* Mobile: Swipeable horizontal scroll - One card at a time */}
             <div className="block sm:hidden mb-6">
-              <div ref={containerRef} className="relative overflow-hidden w-full min-h-[200px]">
-                <motion.div
-                  className="flex cursor-grab active:cursor-grabbing h-full"
-                  drag="x"
-                  style={{ x }}
-                  dragConstraints={{
-                    left: containerWidth > 0 ? -(features.length - 1) * containerWidth : 0,
-                    right: 0,
-                  }}
-                  dragElastic={0.1}
-                  dragMomentum={false}
-                  onDragEnd={(_, { offset, velocity }) => {
-                    if (containerWidth === 0) return;
-
-                    const swipeThreshold = 50;
-                    const swipeVelocityThreshold = 500;
-
-                    if (offset.x < -swipeThreshold || velocity.x < -swipeVelocityThreshold) {
-                      // Swipe left - next card
-                      const nextIndex = Math.min(currentIndex + 1, features.length - 1);
-                      setCurrentIndex(nextIndex);
-                      x.set(-nextIndex * containerWidth);
-                    } else if (offset.x > swipeThreshold || velocity.x > swipeVelocityThreshold) {
-                      // Swipe right - previous card
-                      const prevIndex = Math.max(currentIndex - 1, 0);
-                      setCurrentIndex(prevIndex);
-                      x.set(-prevIndex * containerWidth);
-                    } else {
-                      // Snap back to current position
-                      x.set(-currentIndex * containerWidth);
-                    }
-                  }}
-                  whileTap={{ cursor: 'grabbing' }}
-                >
-                  {features.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardVariants}
-                      initial="offscreen"
-                      whileInView="onscreen"
-                      viewport={{ once: true, amount: 0.1 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="group flex-shrink-0 px-4 pb-4 w-full"
-                      style={{ width: '100%', flex: '0 0 100%' }}
-                    >
-                      <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
-                        <CardContent className="p-6 flex-1 flex flex-col">
-                          <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
-                            {feature.icon}
-                          </div>
-                          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                            {feature.title}
-                          </h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-3">
-                            {feature.description}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-              {/* Scroll indicator dots */}
-              <div className="flex justify-center mt-5 mb-4 space-x-2">
-                {features.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      if (containerWidth === 0) return;
-                      setCurrentIndex(index);
-                      x.set(-index * containerWidth);
-                    }}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${
-                      index === currentIndex
-                        ? 'bg-purple-500 dark:bg-purple-400'
-                        : 'bg-gray-300 dark:bg-gray-600'
-                    }`}
-                  />
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 scrollbar-hide">
+                {features.map((feature, index) => (
+                  <div key={index} className="flex-shrink-0 w-[85vw] snap-center">
+                    <Card className="border-0 shadow-md transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
+                      <CardContent className="p-6 flex-1 flex flex-col">
+                        <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700">
+                          {feature.icon}
+                        </div>
+                        <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+                          {feature.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-3">
+                          {feature.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
                 ))}
               </div>
             </div>
             {/* Desktop: Grid layout */}
             <div className="hidden sm:grid gap-6 grid-cols-2 lg:grid-cols-2">
               {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  variants={cardVariants}
-                  initial="offscreen"
-                  whileInView="onscreen"
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="group"
-                >
+                <div key={index} className="group">
                   <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm h-[200px] flex flex-col">
                     <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
@@ -328,20 +193,14 @@ export const PricingSection = () => {
                       </p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </div>
 
         {/* How it Works */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 sm:mt-20"
-        >
+        <div className="mt-16 sm:mt-20">
           <h3 className="mb-6 sm:mb-8 text-center text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
             {t('how_it_works.title')}
           </h3>
@@ -386,16 +245,10 @@ export const PricingSection = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
+        <div className="mt-16 text-center">
           <Card className="mx-auto max-w-2xl border-dashed border-2 border-gray-300 dark:border-gray-600 bg-transparent">
             <CardContent className="p-8">
               <LinkIcon className="mx-auto mb-4 size-8 text-gray-400" />
@@ -405,7 +258,7 @@ export const PricingSection = () => {
               <p className="text-gray-600 dark:text-gray-300">{t('smart_sharing.description')}</p>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

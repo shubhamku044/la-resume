@@ -1,16 +1,13 @@
-'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export const FAQSection = () => {
-  const t = useTranslations('HomePage');
+export const FAQSection = async () => {
+  const t = await getTranslations('HomePage');
 
   const faqs = [
     {
@@ -34,13 +31,7 @@ export const FAQSection = () => {
   return (
     <section className="py-20 md:py-32" id="faq">
       <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
+        <div className="mb-16 text-center">
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
             {t('faq.title')}
           </div>
@@ -50,18 +41,12 @@ export const FAQSection = () => {
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
             {t('faq.description')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
+              <div key={index}>
                 <AccordionItem
                   value={`item-${index}`}
                   className="rounded-lg border border-gray-200 px-6 dark:border-gray-700"
@@ -73,7 +58,7 @@ export const FAQSection = () => {
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
-              </motion.div>
+              </div>
             ))}
           </Accordion>
         </div>

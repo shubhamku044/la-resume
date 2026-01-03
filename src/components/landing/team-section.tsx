@@ -1,13 +1,11 @@
-'use client';
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Github, Twitter, Mail } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { Github, Mail, Twitter } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export const TeamSection = () => {
-  const t = useTranslations('HomePage');
+export const TeamSection = async () => {
+  const t = await getTranslations('HomePage');
   const creators = [
     {
       name: t('team.member1.name'),
@@ -32,13 +30,7 @@ export const TeamSection = () => {
   return (
     <section className="py-20 md:py-32" id="team">
       <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
+        <div className="mb-16 text-center">
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
             {t('team.intro')}
           </div>
@@ -48,19 +40,11 @@ export const TeamSection = () => {
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
             {t('team.description')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-8 md:grid-cols-2">
           {creators.map((creator, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ y: -5 }}
-              className="relative group"
-            >
+            <div key={index} className="relative group transition-transform hover:-translate-y-1">
               <Card className="h-full overflow-hidden border-0 shadow-xl">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
@@ -88,34 +72,37 @@ export const TeamSection = () => {
                       </p>
                       <p className="mb-6 text-gray-600 dark:text-gray-300">{creator.description}</p>
                       <div className="flex space-x-4">
-                        <a
+                        <Link
                           href={creator.github}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`GitHub profile of ${creator.name}`}
                           className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <Github className="size-5" />
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href={creator.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Twitter profile of ${creator.name}`}
                           className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <Twitter className="size-5" />
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href={`mailto:${creator.email}`}
+                          aria-label={`Email ${creator.name}`}
                           className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <Mail className="size-5" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -97,33 +97,36 @@ export function Header() {
             <SheetContent side="right" className="w-[240px] sm:w-[300px]">
               <SheetTitle>Mobile Navigation</SheetTitle>
               <nav className="mt-6 flex flex-col gap-4">
-                <a
+                <Link
                   href="#features"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Features
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#how-it-works"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   How It Works
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#team"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Our Team
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#testimonials"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Testimonials
-                </a>
-                <a href="#faq" className="text-sm font-medium transition-colors hover:text-primary">
+                </Link>
+                <Link
+                  href="#faq"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                >
                   FAQ
-                </a>
+                </Link>
 
                 <SignedIn>
                   <Button

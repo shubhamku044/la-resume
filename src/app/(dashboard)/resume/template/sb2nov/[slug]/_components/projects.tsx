@@ -12,6 +12,7 @@ import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 interface ProjectsProps {
@@ -222,14 +223,14 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                         {entry.title || 'Untitled Project'}
                       </h3>
                       {entry.url ? (
-                        <a
+                        <Link
                           href={entry.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-sm text-blue-600 hover:underline"
                         >
                           {entry.urlLabel || 'No URL Label'}
-                        </a>
+                        </Link>
                       ) : (
                         <p className="text-base text-gray-500 dark:text-gray-400">
                           {entry.urlLabel || 'No URL Label'}

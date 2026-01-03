@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import Link from 'next/link';
 
 const PrivacyPolicy = () => {
   return (
@@ -17,17 +15,17 @@ const PrivacyPolicy = () => {
       <p className="mb-4 text-gray-700">
         If you have additional questions or require more information about our Privacy Policy, do
         not hesitate to contact us at{' '}
-        <a href="mailto:priyabrata8558@gmail.com" className="text-blue-600">
+        <Link href="mailto:priyabrata8558@gmail.com" className="text-blue-600">
           priyabrata8558@gmail.com
-        </a>
+        </Link>
         .
       </p>
       <p className="mb-4 text-gray-700">
         This Privacy Policy applies only to our online activities and is valid for visitors to our
         website with regards to the information that they shared and/or collected on{' '}
-        <a href="https://la-resume.tech/" className="text-blue-600">
+        <Link href="https://la-resume.tech/" className="text-blue-600">
           https://la-resume.tech/
-        </a>
+        </Link>
         . This policy is not applicable to any information collected offline or via channels other
         than this website.
       </p>
