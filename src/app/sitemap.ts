@@ -9,16 +9,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://la-resume.tech/templates',
+      url: 'https://la-resume.tech/templates/resume-templates',
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: 'https://la-resume.tech/resume/sb2nov',
+      url: 'https://la-resume.tech/contactUs',
       lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://la-resume.tech/privacyPolicy',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://la-resume.tech/refundAndCancellation',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://la-resume.tech/termsAndConditions',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://la-resume.tech/sign-in',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ];
 }

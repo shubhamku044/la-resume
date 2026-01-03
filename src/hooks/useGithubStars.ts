@@ -5,8 +5,8 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
 export function useGitHubStars() {
   const [stars, setStars] = useState<string | null>(() => {
-    const cachedStars = localStorage.getItem('githubStars');
-    const cachedTime = localStorage.getItem('githubStarsTimestamp');
+    const cachedStars = localStorage?.getItem('githubStars');
+    const cachedTime = localStorage?.getItem('githubStarsTimestamp');
 
     if (cachedStars && cachedTime) {
       const age = Date.now() - parseInt(cachedTime);
