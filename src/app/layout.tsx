@@ -10,7 +10,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Head from 'next/head';
 import './globals.css';
 
 const geistSans = Geist({
@@ -111,10 +110,8 @@ export default async function RootLayout({
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang={locale}>
-        <Head>
-          <JsonLd />
-        </Head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <JsonLd />
           <ThemeProvider>
             <Favicon />
             <I18nProvider locale={locale} messages={messages}>

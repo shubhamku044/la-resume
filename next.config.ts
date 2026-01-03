@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     position: 'bottom-left',
   },
   turbopack: {},
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: process.env.NODE_ENV !== 'production',
   images: {
     domains: ['avatars.githubusercontent.com', 'imagekit.io'],
     remotePatterns: [
