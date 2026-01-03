@@ -1,10 +1,11 @@
 'use client';
 
-import { Project } from '@/types';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Edit, Trash2, Link as LinkIcon } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Project } from '@/types';
+import { Edit, Link as LinkIcon, Trash2 } from 'lucide-react';
+import Link from 'next/link';
 
 interface ProjectCardProps {
   project: Project;
@@ -54,14 +55,14 @@ export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardPr
           {project.link && (
             <div className="flex items-center gap-2">
               <LinkIcon className="size-4 text-muted-foreground" />
-              <a
+              <Link
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-blue-500 hover:text-blue-700"
               >
                 Project Link
-              </a>
+              </Link>
             </div>
           )}
         </div>

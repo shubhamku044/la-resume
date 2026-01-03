@@ -1,9 +1,9 @@
-import React from 'react';
 import { FileText } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
 
-export const FooterSection = () => {
-  const t = useTranslations('HomePage');
+export const FooterSection = async () => {
+  const t = await getTranslations('HomePage');
 
   return (
     <footer className="bg-white py-12 dark:bg-gray-800 md:py-16">
@@ -24,36 +24,36 @@ export const FooterSection = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
+                <Link
                   href="#team"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.aboutUs')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/privacyPolicy"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.privacyPolicy')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/termsAndConditions"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.termsOfService')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/refundAndCancellation"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.refunds')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -63,28 +63,28 @@ export const FooterSection = () => {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
+                <Link
                   href="/contactUs"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.helpCenter')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contactUs"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.contactUs')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#faq"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.faqs')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

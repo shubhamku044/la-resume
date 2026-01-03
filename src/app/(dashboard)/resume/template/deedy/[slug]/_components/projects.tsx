@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { deedyResumeData } from '@/lib/templates/deedy';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -189,14 +190,14 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                   )}
 
                   {entry.link && (
-                    <a
+                    <Link
                       href={entry.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-blue-600 hover:underline"
                     >
                       View Project
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>

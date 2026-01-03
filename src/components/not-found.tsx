@@ -75,12 +75,12 @@ export default function NotFound() {
             className="mt-8 text-sm text-gray-500"
           >
             Still lost? Contact us at{' '}
-            <a
+            <Link
               href="mailto:shubhamku044@gmail.com"
               className="text-blue-600 underline hover:text-blue-700"
             >
               here
-            </a>
+            </Link>
           </motion.p>
         </motion.div>
       </div>

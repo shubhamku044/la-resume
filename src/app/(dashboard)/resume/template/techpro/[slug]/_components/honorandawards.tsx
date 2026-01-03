@@ -12,6 +12,7 @@ import { Sb2novResumeData } from '@/lib/templates/sb2nov';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -192,14 +193,14 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
                     {entry.description || 'No Description'}
                   </p>
                   {entry.url && (
-                    <a
+                    <Link
                       href={entry.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-blue-600 hover:underline"
                     >
                       {entry.urlLabel || 'Link'}
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>

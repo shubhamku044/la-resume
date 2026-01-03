@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -10,8 +7,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
 import { deedyResumeData } from '@/lib/templates/deedy';
+import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface CertificationsProps {
   data: deedyResumeData['certifications'];
@@ -101,14 +102,14 @@ const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: Certifi
                   </p>
 
                   {entry.link && (
-                    <a
+                    <Link
                       href={entry.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-blue-600 hover:underline"
                     >
                       View Certification
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>

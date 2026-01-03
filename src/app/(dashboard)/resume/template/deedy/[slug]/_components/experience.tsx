@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { deedyResumeData } from '@/lib/templates/deedy';
 import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash, X } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -153,14 +154,14 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                   )}
 
                   {entry.website && (
-                    <a
+                    <Link
                       href={entry.website}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-blue-600 hover:underline"
                     >
                       View Website
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>

@@ -1,6 +1,4 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
   Carousel,
   CarouselContent,
@@ -95,20 +93,14 @@ export const CompaniesCarousel = () => {
         <CarouselContent>
           {companies.map((company, index) => (
             <CarouselItem key={index} className="md:basis-1/4 lg:basis-1/6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col items-center justify-center p-4"
-              >
+              <div className="flex flex-col items-center justify-center p-4 transition-transform duration-300 hover:scale-110">
                 <div className="rounded-full bg-white p-4 shadow-md transition-shadow hover:shadow-lg dark:bg-gray-800">
                   {company.icon}
                 </div>
                 <p className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                   {company.name}
                 </p>
-              </motion.div>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>

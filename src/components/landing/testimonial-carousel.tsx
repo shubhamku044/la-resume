@@ -1,7 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { Users } from 'lucide-react';
 
 // Enhanced testimonials data
 const testimonials = [
@@ -56,12 +54,7 @@ export const TestimonialsCarousel = () => {
       <CarouselContent className="-ml-1">
         {testimonials.map((testimonial, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="h-full"
-            >
+            <div className="h-full">
               <Card className="h-full overflow-hidden border border-purple-100/80 bg-gradient-to-br from-white to-purple-50/50 dark:border-purple-900/20 dark:from-gray-800 dark:to-purple-900/10">
                 <div className="absolute -right-10 -top-10 size-40 rounded-full bg-purple-100/50 opacity-30 dark:bg-purple-900/20" />
                 <CardContent className="relative p-6">
@@ -82,7 +75,7 @@ export const TestimonialsCarousel = () => {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
