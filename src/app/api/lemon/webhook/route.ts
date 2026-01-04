@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
 
   const data = JSON.parse(rawBody);
   if (data.meta.event_name === 'order_created') {
-    console.log('Order created event received:', data);
     if (data.data.status === 'paid') {
       const slug = data.meta.custom_data.slug;
       const orderNumber = data.data.attributes.id;

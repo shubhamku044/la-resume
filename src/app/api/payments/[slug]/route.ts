@@ -4,7 +4,6 @@ import prisma from '@/lib/prisma';
 export async function PATCH(req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { orderNumber } = await req.json();
-  console.log('Updating payment:', slug, orderNumber);
 
   if (!slug) {
     return NextResponse.json({ message: 'Slug is required' }, { status: 400 });

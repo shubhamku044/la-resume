@@ -4,7 +4,6 @@ import { CountryCode } from 'dodopayments/resources/misc.mjs';
 import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const geo = await geolocation(request);
-  console.log('Geolocation data:', geo);
   try {
     if (!isDodoPaymentsAvailable() || !dodopayments) {
       return NextResponse.json(
@@ -19,8 +18,6 @@ export async function GET(request: Request) {
     const email = searchParams.get('email');
     const fullName = searchParams.get('fullName');
     const slug = searchParams.get('slug');
-    // console.log('productId:', productId);
-    // console.log('redirectUrl:', redirectUrl);
 
     if (!productId || !redirectUrl || !slug) {
       return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
@@ -32,7 +29,6 @@ export async function GET(request: Request) {
       billing: {
         city: '',
         country: (geo?.country as CountryCode) || 'US',
-
         state: '',
         street: '',
         zipcode: '',
@@ -51,7 +47,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(response);
   } catch (error) {
-    console.error(error);
+    console.error('Error initiating checkout:', error);
     return NextResponse.json({ error: 'Failed to initiate checkout' }, { status: 500 });
   }
 }

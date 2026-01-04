@@ -89,7 +89,7 @@ export const PricingSection = async () => {
                   <div className="mb-4 sm:mb-6 text-center">
                     <div className="flex items-baseline justify-center">
                       <span className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white">
-                        $0.99
+                        $2.49
                       </span>
                       <span className="ml-2 text-base sm:text-lg text-gray-500 dark:text-gray-400">
                         {t('card.currency')}
