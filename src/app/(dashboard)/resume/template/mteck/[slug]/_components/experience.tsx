@@ -227,7 +227,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
             Add Experience
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {editingIndex !== null ? 'Edit Experience' : 'Add Experience'}
@@ -261,7 +261,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
               onReorder={handleReorderAchievements}
               className="space-y-2"
             >
-              {tempEntry.achievements.map((achievement, i) => (
+              {tempEntry.achievements.map((achievement) => (
                 <Reorder.Item key={achievement.id} value={achievement}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />

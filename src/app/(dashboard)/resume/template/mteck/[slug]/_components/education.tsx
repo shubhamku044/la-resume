@@ -1,7 +1,4 @@
-import { useState } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import {
   Dialog,
@@ -10,8 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { GripVertical, Pencil, Plus, Trash } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { MTeckResumeData } from '@/lib/templates/mteck';
+import { Reorder } from 'framer-motion';
+import { GripVertical, Pencil, Plus, Trash } from 'lucide-react';
+import { useState } from 'react';
 
 interface EducationProps {
   data: MTeckResumeData['education'];
@@ -130,7 +130,7 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
             Add Education
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingIndex !== null ? 'Edit Education' : 'Add Education'}</DialogTitle>
           </DialogHeader>

@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -9,9 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Sb2novResumeData } from '@/lib/templates/sb2nov';
+import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 interface SkillsProps {
@@ -221,7 +221,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
         <DialogTrigger asChild>
           <Button onClick={() => handleOpenModal(null)}>Add New Category</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingIndex !== null ? 'Edit Category' : 'Add Category'}</DialogTitle>
           </DialogHeader>
