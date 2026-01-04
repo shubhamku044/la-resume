@@ -220,7 +220,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
         <DialogTrigger asChild>
           <Button onClick={() => handleOpenModal(null)}>Add Honor / Award</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {editingIndex !== null ? 'Edit Honor / Award' : 'Add Honor / Award'}

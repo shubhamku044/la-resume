@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { Reorder } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -9,9 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { deedyResumeData } from '@/lib/templates/deedy';
+import { Reorder } from 'framer-motion';
 import { GripVertical, Pencil, Trash } from 'lucide-react'; // Import icons
+import { useState } from 'react';
 
 interface SkillsProps {
   data: deedyResumeData['skills'];
@@ -141,7 +141,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
         <DialogTrigger asChild>
           <Button>Add New Category</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Add New Category</DialogTitle>
           </DialogHeader>
@@ -168,7 +168,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
           setModalOpen(isOpen);
         }}
       >
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Edit Category</DialogTitle>
           </DialogHeader>

@@ -266,7 +266,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
             Add Experience
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {editingIndex !== null ? 'Edit Experience' : 'Add Experience'}

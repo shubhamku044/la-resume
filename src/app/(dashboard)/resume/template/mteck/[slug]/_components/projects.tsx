@@ -200,7 +200,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
             Add Project
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingIndex !== null ? 'Edit Project' : 'Add Project'}</DialogTitle>
           </DialogHeader>
@@ -226,7 +226,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
               onReorder={handleReorderDetails}
               className="space-y-2"
             >
-              {tempEntry.details.map((detail, i) => (
+              {tempEntry.details.map((detail) => (
                 <Reorder.Item key={detail.id} value={detail}>
                   <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />

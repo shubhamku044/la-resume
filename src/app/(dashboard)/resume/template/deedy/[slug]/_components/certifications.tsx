@@ -160,7 +160,7 @@ const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: Certifi
             Add Certification
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {editingIndex !== null ? 'Edit Certification' : 'Add Certification'}

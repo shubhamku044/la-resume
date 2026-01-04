@@ -234,7 +234,7 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
             Add Education
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-h-[calc(100vh-10rem)] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingIndex !== null ? 'Edit Education' : 'Add Education'}</DialogTitle>
           </DialogHeader>
