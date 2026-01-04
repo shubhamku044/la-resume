@@ -39,7 +39,6 @@ export async function POST(
     }
 
     const { company, title, notes } = await request.json();
-    console.log('Company', company, 'position', title);
 
     if (!company || !title) {
       return NextResponse.json({ error: 'Company and position are required' }, { status: 400 });

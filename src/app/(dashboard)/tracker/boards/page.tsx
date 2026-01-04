@@ -46,7 +46,7 @@ export default function BoardsPage() {
       setIsModalOpen(false);
       router.push(`/tracker/boards/${newBoard.id}`);
     } catch (err) {
-      console.log('Error creating board', err);
+      console.error('Error creating board', err);
       toast.error('Could not create board. Please try again.');
     }
   };
@@ -62,7 +62,7 @@ export default function BoardsPage() {
       setDeleteDialogOpen(false);
       setBoardToDelete(null);
     } catch (err) {
-      console.log('Error deleting board', err);
+      console.error('Error deleting board', err);
       toast.error('Could not delete board. Please try again.');
     }
   };

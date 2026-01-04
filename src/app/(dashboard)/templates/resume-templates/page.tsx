@@ -41,7 +41,7 @@ export default function ResumeTemplatesPage() {
 
     try {
       // Save the new resume
-      const response = await saveResume({
+      await saveResume({
         clerk_id: clerkId,
         title: newTitle,
         type: templateId,
@@ -51,7 +51,6 @@ export default function ResumeTemplatesPage() {
       }).unwrap();
 
       toast.success('Resume created successfully!');
-      console.log('✅ Saved Resume:', response);
 
       // Navigate to the resume editor with the new slug
       await router.push(`/resume/template/${templateId}/${newSlug}`);

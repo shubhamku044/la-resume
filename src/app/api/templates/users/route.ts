@@ -73,7 +73,6 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const { slug, hasPaid } = await req.json();
-    console.log('Deleting resume:', slug);
 
     // Validate input
     if (!slug) {
@@ -99,7 +98,6 @@ export async function DELETE(req: Request) {
     if (hasPaid) {
       try {
         const sharedKey = `${process.env.NEXT_PUBLIC_S3_SHARED_FOLDER}/${slug}.pdf`;
-        console.log('Checking for shared resume:', sharedKey);
 
         await s3Client.send(
           new DeleteObjectCommand({
@@ -107,9 +105,8 @@ export async function DELETE(req: Request) {
             Key: sharedKey,
           })
         );
-        console.log('Shared resume deleted successfully');
       } catch (error) {
-        console.log('No shared resume found or error deleting shared file:', error);
+        console.error('No shared resume found or error deleting shared file:', error);
       }
     }
 

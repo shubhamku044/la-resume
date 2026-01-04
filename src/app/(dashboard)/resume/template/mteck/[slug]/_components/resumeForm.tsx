@@ -219,7 +219,6 @@ const ResumeForm = ({
           fileName: slug,
         }).unwrap();
         imageUrl = url;
-        console.log('🖼️ Uploaded Image URL:', imageUrl);
       }
       if (!imageUrl) {
         setIsSaving(false);

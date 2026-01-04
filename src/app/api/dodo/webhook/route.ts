@@ -1,6 +1,6 @@
-import { Webhook } from 'standardwebhooks';
-import { headers } from 'next/headers';
 import { dodopayments, isDodoPaymentsAvailable } from '@/lib/dodopayments';
+import { headers } from 'next/headers';
+import { Webhook } from 'standardwebhooks';
 
 // Handle missing webhook key gracefully
 const webhookKey = process.env.DODO_PAYMENTS_WEBHOOK_KEY;
@@ -12,12 +12,10 @@ export async function POST(request: Request) {
   try {
     // Check if DodoPayments and webhook are properly configured
     if (!isDodoPaymentsAvailable() || !dodopayments) {
-      console.log('DodoPayments is not configured, skipping webhook processing');
       return Response.json({ message: 'Payment service not configured' }, { status: 503 });
     }
 
     if (!webhook) {
-      console.log('Webhook key is not configured, skipping webhook verification');
       return Response.json({ message: 'Webhook not configured' }, { status: 503 });
     }
 
@@ -33,12 +31,7 @@ export async function POST(request: Request) {
     if (payload.data.payload_type === 'Subscription') {
       switch (payload.type) {
         case 'subscription.active':
-          const subscription = await dodopayments.subscriptions.retrieve(
-            payload.data.subscription_id
-          );
-          console.log('-------SUBSCRIPTION DATA START ---------');
-          console.log(subscription);
-          console.log('-------SUBSCRIPTION DATA END ---------');
+          await dodopayments.subscriptions.retrieve(payload.data.subscription_id);
           break;
         case 'subscription.failed':
           break;
@@ -55,9 +48,6 @@ export async function POST(request: Request) {
       switch (payload.type) {
         case 'payment.succeeded':
           const paymentDataResp = await dodopayments.payments.retrieve(payload.data.payment_id);
-          //   console.log('-------PAYMENT DATA START ---------');
-          //   console.log(paymentDataResp);
-          //   console.log('-------PAYMENT DATA END ---------');
           const slug = paymentDataResp.metadata.metadata_slug;
           const orderNumber = paymentDataResp.payment_id;
           await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/${slug}`, {
@@ -72,8 +62,6 @@ export async function POST(request: Request) {
     }
     return Response.json({ message: 'Webhook processed successfully' }, { status: 200 });
   } catch (error) {
-    console.log(' ----- webhoook verification failed -----');
-    console.log(error);
-    return Response.json({ message: 'Webhook processed successfully' }, { status: 200 });
+    return Response.json({ message: 'webhook processing failed', error }, { status: 500 });
   }
 }
