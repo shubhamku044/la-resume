@@ -23,8 +23,8 @@ const PrivacyPolicy = () => {
       <p className="mb-4 text-gray-700">
         This Privacy Policy applies only to our online activities and is valid for visitors to our
         website with regards to the information that they shared and/or collected on{' '}
-        <Link href="https://la-resume.tech/" className="text-blue-600">
-          https://la-resume.tech/
+        <Link href="https://la-resume.com/" className="text-blue-600">
+          https://la-resume.com/
         </Link>
         . This policy is not applicable to any information collected offline or via channels other
         than this website.

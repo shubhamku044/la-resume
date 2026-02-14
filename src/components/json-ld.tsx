@@ -5,8 +5,8 @@ export default function JsonLd() {
       {
         '@type': 'Organization',
         'name': 'La-Resume',
-        'url': 'https://la-resume.tech',
-        'logo': 'https://la-resume.tech/icon.png',
+        'url': 'https://la-resume.com',
+        'logo': 'https://la-resume.com/icon.png',
         'sameAs': ['https://github.com/shubhamku044/la-resume'],
       },
       {
@@ -23,10 +23,10 @@ export default function JsonLd() {
       {
         '@type': 'WebSite',
         'name': 'La-Resume',
-        'url': 'https://la-resume.tech',
+        'url': 'https://la-resume.com',
         'potentialAction': {
           '@type': 'SearchAction',
-          'target': 'https://la-resume.tech/?q={search_term_string}',
+          'target': 'https://la-resume.com/?q={search_term_string}',
           'query-input': 'required name=search_term_string',
         },
       },
