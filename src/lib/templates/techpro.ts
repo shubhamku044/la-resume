@@ -147,7 +147,7 @@ export const techProResumeSampleData: TechProResumeData = {
           'Deployed backend on AWS EC2 (Docker) and frontend on Vercel for global scalability.',
         ],
         urls: [
-          { label: 'Live Link', url: 'https://la-resume.tech/' },
+          { label: 'Live Link', url: 'https://la-resume.com/' },
           { label: 'GitHub', url: 'https://github.com/shubhamku044/la-resume' },
         ],
       },

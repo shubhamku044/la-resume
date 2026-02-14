@@ -6,9 +6,9 @@
 
 A modern, open-source resume builder with ATS optimization and LaTeX export capabilities. Create professional resumes effortlessly, completely free!
 
-👉 [Live Link](https://la-resume.tech/) | [Demo Video](https://youtu.be/IxrN5y3VP0A?si=hhgGYL7jfN9GA8fx)
+👉 [Live Link](https://la-resume.com/) | [Demo Video](https://youtu.be/IxrN5y3VP0A?si=hhgGYL7jfN9GA8fx)
 
-![La-Resume Interface](https://la-resume.tech/og-image.png)
+![La-Resume Interface](https://la-resume.com/og-image.png)
 ![La-Resume Interface](https://ik.imagekit.io/laresume/public/la-resume-mockup.webp?updatedAt=1741200085904)
 
 ## Features ✨

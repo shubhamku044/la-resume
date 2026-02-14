@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     'shubhamku044',
     'prybruhta',
     'la-resume',
-    'la-resume.tech',
+    'la-resume.com',
     'laresume',
     'la resume',
     'la resume tech',
@@ -52,11 +52,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
     description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
-    url: 'https://la-resume.tech',
+    url: 'https://la-resume.com',
     siteName: 'La-Resume',
     images: [
       {
-        url: 'https://la-resume.tech/og-image.png',
+        url: 'https://la-resume.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'La-Resume Interface Preview',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
     description: 'Free ATS-friendly resume builder with LaTeX export',
-    images: ['https://la-resume.tech/og-image.png'],
+    images: ['https://la-resume.com/og-image.png'],
   },
   robots: {
     index: true,
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://la-resume.tech',
+    canonical: 'https://la-resume.com',
   },
 };
 
