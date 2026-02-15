@@ -3,6 +3,7 @@
 import LanguageSelectorDropdown from '@/components/language-selector-dropdown';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { reviews } from '@/data/review';
+import { getAssetUrl } from '@/lib/assets';
 import { SignIn } from '@clerk/nextjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -220,7 +221,7 @@ export default function SignInPage() {
                               <div className="flex items-center gap-3">
                                 <div className="h-10 w-10 rounded-full overflow-hidden shadow-lg relative">
                                   <Image
-                                    src={reviews[currentTestimonial].avatar}
+                                    src={getAssetUrl(reviews[currentTestimonial].avatar)}
                                     alt={reviews[currentTestimonial].name}
                                     fill
                                     className="object-cover"
