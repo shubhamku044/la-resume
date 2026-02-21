@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ShareModal } from '@/components/ui/share-modal';
+import { getAssetUrl } from '@/lib/assets';
 import { formatDistanceToNow } from 'date-fns';
 import { Edit, Eye, MoreVertical, RotateCw, Share2, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -110,7 +111,7 @@ export function ResumeCard({
         >
           <div className="w-full h-full flex items-center justify-center p-2">
             <Image
-              src={imageUrl}
+              src={getAssetUrl(imageUrl)}
               alt={`Preview of ${title}`}
               width={400}
               height={500}

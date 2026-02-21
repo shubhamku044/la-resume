@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
   turbopack: {},
   productionBrowserSourceMaps: process.env.NODE_ENV !== 'production',
   images: {
-    domains: ['avatars.githubusercontent.com', 'imagekit.io'],
     remotePatterns: [
       {
         hostname: 'avatars.githubusercontent.com',
@@ -20,6 +19,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'imagekit.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.la-resume.com',
       },
     ],
   },

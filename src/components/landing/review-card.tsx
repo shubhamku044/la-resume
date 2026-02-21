@@ -1,6 +1,8 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getAssetUrl } from '@/lib/assets';
+
 const ReviewCard = ({
   name,
   username,
@@ -28,7 +30,13 @@ const ReviewCard = ({
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <Image src={imgSrc} alt={name} width={32} height={32} className="rounded-full" />
+        <Image
+          src={getAssetUrl(imgSrc)}
+          alt={name}
+          width={32}
+          height={32}
+          className="rounded-full"
+        />
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">{name}</figcaption>
           <Link

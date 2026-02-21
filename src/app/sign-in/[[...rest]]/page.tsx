@@ -3,6 +3,7 @@
 import LanguageSelectorDropdown from '@/components/language-selector-dropdown';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { reviews } from '@/data/review';
+import { getAssetUrl } from '@/lib/assets';
 import { SignIn } from '@clerk/nextjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -220,7 +221,7 @@ export default function SignInPage() {
                               <div className="flex items-center gap-3">
                                 <div className="h-10 w-10 rounded-full overflow-hidden shadow-lg relative">
                                   <Image
-                                    src={reviews[currentTestimonial].avatar}
+                                    src={getAssetUrl(reviews[currentTestimonial].avatar)}
                                     alt={reviews[currentTestimonial].name}
                                     fill
                                     className="object-cover"
@@ -379,14 +380,14 @@ export default function SignInPage() {
                         <p className="text-xs  text-gray-500 dark:text-gray-400 leading-relaxed">
                           {t('legal.agreementText')}{' '}
                           <Link
-                            href="/termsAndConditions"
+                            href="/terms-and-conditions"
                             className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
                           >
                             {t('legal.termsOfService')}
                           </Link>{' '}
                           {t('legal.and')}{' '}
                           <Link
-                            href="/privacyPolicy"
+                            href="/privacy-policy"
                             className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
                           >
                             {t('legal.privacyPolicy')}
