@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { useUser } from '@clerk/nextjs';
+import { getAssetUrl } from '@/lib/assets';
 import {
   useCreateBoardMutation,
   useDeleteBoardMutation,
@@ -89,7 +90,7 @@ export default function BoardsPage() {
           className="flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
         >
           <span>
-            <Image src="/plus.svg" alt="plus" width={20} height={20} />
+            <Image src={getAssetUrl('/plus.svg')} alt="plus" width={20} height={20} />
           </span>
           <span>Create Board</span>
         </button>

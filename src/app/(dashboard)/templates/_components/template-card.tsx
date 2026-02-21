@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Eye, Star } from 'lucide-react';
 import Image from 'next/image';
+import { getAssetUrl } from '@/lib/assets';
 
 interface TemplateCardProps {
   title: string;
@@ -28,7 +29,7 @@ export function TemplateCard({
           <div className="aspect-[8.5/11] bg-gradient-secondary rounded-t-lg relative overflow-hidden">
             {imageUrl ? (
               <Image
-                src={imageUrl}
+                src={getAssetUrl(imageUrl)}
                 alt={title}
                 width={210}
                 height={297}

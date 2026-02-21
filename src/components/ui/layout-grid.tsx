@@ -1,7 +1,8 @@
 'use client';
-import React, { JSX, useState } from 'react';
-import { motion } from 'framer-motion';
+import { getAssetUrl } from '@/lib/assets';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import React, { JSX, useState } from 'react';
 
 type Card = {
   id: number;
@@ -62,7 +63,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
   return (
     <motion.img
       layoutId={`image-${card.id}-image`}
-      src={card.thumbnail}
+      src={getAssetUrl(card.thumbnail)}
       height="500"
       width="500"
       className={cn(

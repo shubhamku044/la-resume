@@ -1,4 +1,5 @@
 'use client';
+import { getAssetUrl } from '@/lib/assets';
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -22,7 +23,7 @@ const Header = () => {
     <header className="bg-white">
       <div className="mx-auto flex max-w-5xl items-center justify-between border-b p-4 md:px-6">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="La-Resume Logo" width={120} height={40} />
+          <Image src={getAssetUrl('/logo.png')} alt="La-Resume Logo" width={120} height={40} />
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm md:flex">

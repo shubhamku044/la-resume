@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { getAssetUrl } from '@/lib/assets';
 import { Github, Mail, Twitter } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
@@ -51,7 +52,7 @@ export const TeamSection = async () => {
                     {/* Profile Image Section */}
                     <div className="relative h-64 md:h-auto md:w-1/3">
                       <Image
-                        src={creator.image}
+                        src={getAssetUrl(creator.image)}
                         alt={creator.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-all ease-in duration-300"
