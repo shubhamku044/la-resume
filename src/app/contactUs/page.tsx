@@ -162,6 +162,7 @@ const ContactPage = () => {
             height="300"
             style={{ border: 0 }}
             allowFullScreen
+            title="Google Maps"
             loading="lazy"
             className="rounded-lg shadow-md"
           />
