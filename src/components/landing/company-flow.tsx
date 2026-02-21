@@ -1,3 +1,4 @@
+import { getAssetUrl } from '@/lib/assets';
 import Image from 'next/image';
 
 const companies = [
@@ -59,7 +60,7 @@ const CompaniesSec = () => {
                 className="flex h-12 w-24 shrink-0 items-center justify-center opacity-70 transition-opacity hover:opacity-100 md:h-16 md:w-32"
               >
                 <Image
-                  src={company.logo}
+                  src={getAssetUrl(company.logo)}
                   alt={company.name}
                   width={128}
                   height={64}

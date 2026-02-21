@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { getAssetUrl } from '@/lib/assets';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { ArrowRight, Star, StarIcon } from 'lucide-react';
 import Image from 'next/image';
@@ -94,7 +95,7 @@ export const HeroInteractive = ({
               className="shadow-lg shadow-purple-300"
               width={1024}
               height={800}
-              src="https://ik.imagekit.io/laresume/public/la-resume-mockup.webp?updatedAt=1741200085904"
+              src={getAssetUrl('/la-resume-mockup.webp')}
             />
           </div>
         </div>
