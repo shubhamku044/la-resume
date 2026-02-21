@@ -380,14 +380,14 @@ export default function SignInPage() {
                         <p className="text-xs  text-gray-500 dark:text-gray-400 leading-relaxed">
                           {t('legal.agreementText')}{' '}
                           <Link
-                            href="/termsAndConditions"
+                            href="/terms-and-conditions"
                             className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
                           >
                             {t('legal.termsOfService')}
                           </Link>{' '}
                           {t('legal.and')}{' '}
                           <Link
-                            href="/privacyPolicy"
+                            href="/privacy-policy"
                             className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
                           >
                             {t('legal.privacyPolicy')}
