@@ -21,7 +21,7 @@ type ApiErrorResponse = {
 
 type ApiResponse = ApiSuccessResponse | ApiErrorResponse;
 
-const ContactPage = () => {
+const ContactPageClient = () => {
   const {
     register,
     handleSubmit,
@@ -180,4 +180,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactPageClient;
