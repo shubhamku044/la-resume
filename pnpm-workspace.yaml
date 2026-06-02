@@ -1,0 +1,14 @@
+allowBuilds:
+  '@clerk/shared': true
+  '@heroui/shared-utils': true
+  '@prisma/client': true
+  '@prisma/engines': true
+  '@vercel/speed-insights': true
+  esbuild: true
+  prisma: true
+  sharp: true
+  unrs-resolver: true
+
+overrides:
+  '@types/react': 19.2.5
+  '@types/react-dom': 19.2.3

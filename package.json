@@ -2,6 +2,7 @@
   "name": "la-resume",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@11.5.1",
   "scripts": {
     "dev": "next dev",
     "dev:local": "NEXT_PUBLIC_API_URL=http://localhost:8082 next dev",
@@ -108,21 +109,5 @@
       "prettier --write",
       "eslint"
     ]
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@clerk/shared",
-      "@heroui/shared-utils",
-      "@prisma/client",
-      "@prisma/engines",
-      "@vercel/speed-insights",
-      "esbuild",
-      "prisma",
-      "sharp"
-    ],
-    "overrides": {
-      "@types/react": "19.2.5",
-      "@types/react-dom": "19.2.3"
-    }
   }
 }

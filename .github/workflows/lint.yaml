@@ -14,9 +14,9 @@ jobs:
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 10.3.0 # Ensure it matches your local version
+          # Version is read from the "packageManager" field in package.json
           run_install: false
 
       - name: Setup Node.js
