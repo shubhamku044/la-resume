@@ -2,6 +2,7 @@
   "name": "la-resume",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
     "dev:local": "NEXT_PUBLIC_API_URL=http://localhost:8082 next dev",
