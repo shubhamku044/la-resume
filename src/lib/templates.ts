@@ -9,7 +9,7 @@ export const templates = [
     description: 'A CV/resume theme of RenderCV.',
     image: '/templates/sb2nov.webp',
     sampleData: sb2novResumeSampleData,
-    imageUrl: 'https://laresume.s3.us-west-1.amazonaws.com/templates/sb2nov.webp',
+    imageUrl: 'https://assets.la-resume.com/templates/sb2nov.webp',
   },
   {
     id: 'techpro',
@@ -17,7 +17,7 @@ export const templates = [
     description: 'A modern resume template for tech professionals.',
     image: '/templates/techpro.webp',
     sampleData: techProResumeSampleData,
-    imageUrl: 'https://laresume.s3.us-west-1.amazonaws.com/templates/techpro.webp',
+    imageUrl: 'https://assets.la-resume.com/templates/techpro.webp',
   },
   {
     id: 'deedy',
@@ -25,7 +25,7 @@ export const templates = [
     description: 'Professional Resume for Engineering Students.',
     image: '/templates/deedy.webp',
     sampleData: deedySampleResumeData,
-    imageUrl: 'https://laresume.s3.us-west-1.amazonaws.com/templates/deedy.webp',
+    imageUrl: 'https://assets.la-resume.com/templates/deedy.webp',
   },
   {
     id: 'mteck',
@@ -33,6 +33,6 @@ export const templates = [
     description: 'A LaTeX resume template for software engineers.',
     image: '/templates/mteck.webp',
     sampleData: mteckResumeSampleData,
-    imageUrl: 'https://laresume.s3.us-west-1.amazonaws.com/templates/mteck.webp',
+    imageUrl: 'https://assets.la-resume.com/templates/mteck.webp',
   },
 ];
