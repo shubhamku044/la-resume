@@ -2,6 +2,7 @@ import Favicon from '@/components/favicon';
 import JsonLd from '@/components/json-ld';
 import I18nProvider from '@/components/providers/i18n-provider';
 import ThemeProvider from '@/components/providers/theme-provider';
+import { PostHogProvider } from '@/components/providers/posthog-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { ClerkProvider } from '@clerk/nextjs';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -111,17 +112,19 @@ export default async function RootLayout({
     >
       <html lang={locale} suppressHydrationWarning>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <JsonLd />
-          <ThemeProvider>
-            <Favicon />
-            <I18nProvider locale={locale} messages={messages}>
-              <main>{children}</main>
-              <Toaster />
-            </I18nProvider>
-          </ThemeProvider>
-          <Analytics />
-          <SpeedInsights />
-          <GoogleAnalytics gaId="G-DQR3LS5N69" />
+          <PostHogProvider>
+            <JsonLd />
+            <ThemeProvider>
+              <Favicon />
+              <I18nProvider locale={locale} messages={messages}>
+                <main>{children}</main>
+                <Toaster />
+              </I18nProvider>
+            </ThemeProvider>
+            <Analytics />
+            <SpeedInsights />
+            <GoogleAnalytics gaId="G-DQR3LS5N69" />
+          </PostHogProvider>
         </body>
       </html>
     </ClerkProvider>

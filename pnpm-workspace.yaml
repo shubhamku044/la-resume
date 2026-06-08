@@ -3,7 +3,9 @@ allowBuilds:
   '@heroui/shared-utils': true
   '@prisma/client': true
   '@prisma/engines': true
+  '@sentry/cli': true
   '@vercel/speed-insights': true
+  core-js: true
   esbuild: true
   prisma: true
   sharp: true
