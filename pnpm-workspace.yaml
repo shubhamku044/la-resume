@@ -5,6 +5,7 @@ allowBuilds:
   '@prisma/engines': true
   '@sentry/cli': true
   '@vercel/speed-insights': true
+  core-js: true
   esbuild: true
   prisma: true
   sharp: true
