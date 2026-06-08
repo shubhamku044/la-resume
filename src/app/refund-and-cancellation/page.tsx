@@ -2,12 +2,12 @@ import React from 'react';
 
 const CancellationRefundPolicyPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-lg">
-        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
+    <div className="min-h-screen bg-muted px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl rounded-lg bg-card p-8 shadow-lg">
+        <h1 className="mb-8 text-center text-3xl font-bold text-foreground">
           Cancellation & Refund Policy
         </h1>
-        <p className="mb-8 text-center text-sm text-gray-600">
+        <p className="mb-8 text-center text-sm text-muted-foreground">
           Last updated on <strong>21-03-2025 13:50:05</strong>
         </p>
 
@@ -17,7 +17,9 @@ const CancellationRefundPolicyPage = () => {
             and has therefore a liberal cancellation policy. Under this policy:
           </p>
 
-          <h2 className="mb-4 mt-6 text-xl font-semibold text-gray-800">1. Cancellation Policy</h2>
+          <h2 className="mb-4 mt-6 text-xl font-semibold text-foreground">
+            1. Cancellation Policy
+          </h2>
           <ul className="list-disc pl-6">
             <li>
               Cancellations will be considered only if the request is made immediately after placing
@@ -32,7 +34,7 @@ const CancellationRefundPolicyPage = () => {
             </li>
           </ul>
 
-          <h2 className="mb-4 mt-6 text-xl font-semibold text-gray-800">
+          <h2 className="mb-4 mt-6 text-xl font-semibold text-foreground">
             2. Damaged or Defective Items
           </h2>
           <ul className="list-disc pl-6">
@@ -50,19 +52,19 @@ const CancellationRefundPolicyPage = () => {
             </li>
           </ul>
 
-          <h2 className="mb-4 mt-6 text-xl font-semibold text-gray-800">3. Warranty Claims</h2>
+          <h2 className="mb-4 mt-6 text-xl font-semibold text-foreground">3. Warranty Claims</h2>
           <p>
             In case of complaints regarding products that come with a warranty from manufacturers,
             please refer the issue to them.
           </p>
 
-          <h2 className="mb-4 mt-6 text-xl font-semibold text-gray-800">4. Refund Process</h2>
+          <h2 className="mb-4 mt-6 text-xl font-semibold text-foreground">4. Refund Process</h2>
           <p>
             In case of any refunds approved by <strong>PRIYABRATA MONDAL</strong>, it’ll take{' '}
             <strong>1-2 Days</strong> for the refund to be processed to the end customer.
           </p>
 
-          <h2 className="mb-4 mt-6 text-xl font-semibold text-gray-800">5. Contact Us</h2>
+          <h2 className="mb-4 mt-6 text-xl font-semibold text-foreground">5. Contact Us</h2>
           <p>
             For any questions or concerns regarding cancellations or refunds, please contact our
             Customer Service team using the contact information provided on this website.

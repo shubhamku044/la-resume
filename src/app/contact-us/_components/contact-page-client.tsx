@@ -72,16 +72,18 @@ const ContactPageClient = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-lg">
-        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">{t('title')}</h1>
-        <p className="mb-8 text-center text-gray-600">{t('description')}</p>
+    <div className="min-h-screen bg-muted px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl rounded-lg bg-card p-8 shadow-lg">
+        <h1 className="mb-8 text-center text-3xl font-bold text-foreground">{t('title')}</h1>
+        <p className="mb-8 text-center text-muted-foreground">{t('description')}</p>
 
         {/* Contact Information */}
         <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
-            <h2 className="mb-4 text-xl font-semibold text-gray-700">{t('contactInformation')}</h2>
-            <ul className="space-y-3 text-gray-600">
+            <h2 className="mb-4 text-xl font-semibold text-muted-foreground">
+              {t('contactInformation')}
+            </h2>
+            <ul className="space-y-3 text-muted-foreground">
               <li>{t.rich('merchantName', { strong: (chunk) => <strong>{chunk}</strong> })}</li>
               <li>
                 {t.rich('registeredAddress', {
@@ -100,7 +102,7 @@ const ContactPageClient = () => {
 
           {/* Feedback Form */}
           <div>
-            <h2 className="mb-4 text-xl font-semibold text-gray-700">{t('sendMessage')}</h2>
+            <h2 className="mb-4 text-xl font-semibold text-muted-foreground">{t('sendMessage')}</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               {/* Honeypot field */}
               <input type="hidden" aria-hidden="true" {...register('honeypot')} />
@@ -155,7 +157,7 @@ const ContactPageClient = () => {
 
         {/* Map Location */}
         <div className="mb-12">
-          <h2 className="mb-4 text-xl font-semibold text-gray-700">{t('mapLocation')}</h2>
+          <h2 className="mb-4 text-xl font-semibold text-muted-foreground">{t('mapLocation')}</h2>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.123456789012!2d88.12345678901234!3d23.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f771f0b9f8e3f3%3A0x6ec00f9dea6ee44f!2sEast%20Ave%2C%20Ambuja%2C%20Durgapur%2C%20West%20Bengal%20713216!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
             width="100%"
@@ -170,8 +172,8 @@ const ContactPageClient = () => {
 
         {/* Customer Support Hours */}
         <div className="text-center">
-          <h2 className="mb-4 text-xl font-semibold text-gray-700">{t('supportHours')}</h2>
-          <p className="text-gray-600">
+          <h2 className="mb-4 text-xl font-semibold text-muted-foreground">{t('supportHours')}</h2>
+          <p className="text-muted-foreground">
             {t.rich('timing', { strong: (chunk) => <strong>{chunk}</strong> })}
           </p>
         </div>

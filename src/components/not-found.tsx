@@ -36,16 +36,16 @@ export default function NotFound() {
           <motion.h1
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="mb-4 text-9xl font-bold text-gray-900"
+            className="mb-4 text-9xl font-bold text-foreground"
           >
             404
           </motion.h1>
 
-          <h2 className="mb-4 text-3xl font-semibold text-gray-800 sm:text-4xl">
+          <h2 className="mb-4 text-3xl font-semibold text-foreground sm:text-4xl">
             Oops! Page Not Found
           </h2>
 
-          <p className="mb-8 text-lg text-gray-600">
+          <p className="mb-8 text-lg text-muted-foreground">
             The resume page you&apos;re looking for has either been moved or doesn&apos;t exist.
             Let&apos;s get you back to building amazing resumes!
           </p>
@@ -57,7 +57,7 @@ export default function NotFound() {
             >
               Go Back
             </Button>
-            <span className="text-gray-500">or</span>
+            <span className="text-muted-foreground">or</span>
             <Link href="/" legacyBehavior passHref>
               <Button
                 variant="secondary"
@@ -72,7 +72,7 @@ export default function NotFound() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-8 text-sm text-gray-500"
+            className="mt-8 text-sm text-muted-foreground"
           >
             Still lost? Contact us at{' '}
             <Link

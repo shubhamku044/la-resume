@@ -67,7 +67,7 @@ export default function BoardPage() {
   // Show enhanced loading state while data is being fetched
   if (isBoardLoading || isJobsLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
           <div className="mb-4 flex flex-col space-y-4 pt-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:pt-6">
             <Button
@@ -96,9 +96,9 @@ export default function BoardPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="w-72 shrink-0 rounded-xl border border-gray-200 bg-gray-50 shadow-sm"
+                className="w-72 shrink-0 rounded-xl border border-border bg-muted shadow-sm"
               >
-                <div className="rounded-t-xl border-b border-gray-200 bg-white p-3">
+                <div className="rounded-t-xl border-b border-border bg-card p-3">
                   <Skeleton className="mb-2 h-5 w-24" />
                   <Skeleton className="h-3 w-16" />
                 </div>
@@ -120,7 +120,7 @@ export default function BoardPage() {
   // Show enhanced error state if data failed to load
   if (!board || !jobsData) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
           <div className="mb-4 flex items-center justify-between pt-4 sm:mb-8 sm:pt-6">
             <Button
@@ -135,7 +135,7 @@ export default function BoardPage() {
           </div>
 
           <div className="flex h-[60vh] flex-col items-center justify-center px-2 text-center sm:px-4">
-            <div className="w-full max-w-lg rounded-lg border border-gray-200 bg-white p-4 shadow-md sm:p-8">
+            <div className="w-full max-w-lg rounded-lg border border-border bg-card p-4 shadow-md sm:p-8">
               <div className="mx-auto mb-4 flex size-10 items-center justify-center rounded-full bg-red-100 sm:mb-6 sm:size-12">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,8 +188,8 @@ export default function BoardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="sticky top-0 z-10 border-b border-gray-200 bg-white shadow-sm">
+    <div className="min-h-screen bg-background">
+      <div className="sticky top-0 z-10 border-b border-border bg-card shadow-sm">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
           <div className="flex flex-col space-y-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:py-4">
             <Button
@@ -203,9 +203,9 @@ export default function BoardPage() {
             </Button>
 
             <div className="flex flex-col items-start sm:items-center">
-              <h1 className="text-lg font-bold text-gray-900 sm:mr-3 sm:text-xl">{board.name}</h1>
+              <h1 className="text-lg font-bold text-foreground sm:mr-3 sm:text-xl">{board.name}</h1>
               {board.description && (
-                <span className="mt-1 max-w-md truncate text-xs text-gray-600 sm:mt-0 sm:text-sm md:block">
+                <span className="mt-1 max-w-md truncate text-xs text-muted-foreground sm:mt-0 sm:text-sm md:block">
                   {board.description}
                 </span>
               )}

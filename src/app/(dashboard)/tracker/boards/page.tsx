@@ -97,7 +97,7 @@ export default function BoardsPage() {
       </header>
 
       {boards.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-12">
+        <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border py-12">
           <div className="max-w-md text-center">
             <h2 className="mb-2 text-xl font-semibold">No boards yet</h2>
             <p className="mb-6 text-gray-600 dark:text-gray-300">
@@ -116,7 +116,7 @@ export default function BoardsPage() {
           {boards.map((board) => (
             <div
               key={board.id}
-              className="group relative rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="group relative rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
             >
               <Link href={`/tracker/boards/${board.id}`} className="block">
                 <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
@@ -184,7 +184,7 @@ export default function BoardsPage() {
 
           <div
             onClick={() => setIsModalOpen(true)}
-            className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-100 p-6 transition-colors hover:bg-gray-200"
+            className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted p-6 transition-colors hover:bg-accent"
           >
             <span className="mb-2 text-3xl text-indigo-600">+</span>
             <span className="text-gray-600 dark:text-gray-300">Create New Board</span>
