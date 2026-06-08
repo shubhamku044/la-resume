@@ -19,9 +19,11 @@ export default function ResumeTemplatePage() {
     isFetching,
     isError,
     imageUrl,
+    previewPages,
     latexData,
     loading,
     setImageUrl,
+    setPreviewPages,
     setLatexData,
     setLoading,
     slug,
@@ -77,6 +79,7 @@ export default function ResumeTemplatePage() {
         <div className="px-2">
           <ResumeForm
             onUpdate={setImageUrl}
+            onPreviewPagesUpdate={setPreviewPages}
             loading={loading}
             setLoading={setLoading}
             setLatexData={setLatexData}
@@ -97,6 +100,7 @@ export default function ResumeTemplatePage() {
             <div className="flex-1 overflow-auto min-h-0">
               <ResumePreview
                 imageUrl={imageUrl}
+                previewPages={previewPages}
                 latexData={latexData}
                 loading={loading}
                 paymentStatus={hasPaid}
@@ -117,10 +121,11 @@ export default function ResumeTemplatePage() {
   // Desktop layout (unchanged)
   return (
     <div className="flex justify-center">
-      <div className="container mx-auto">
+      <div className="mx-auto h-[calc(100dvh-4rem)] overflow-hidden">
         <ResizablePanelGroup direction="horizontal" className="grid grid-cols-2 gap-0">
           <ResumeForm
             onUpdate={setImageUrl}
+            onPreviewPagesUpdate={setPreviewPages}
             loading={loading}
             setLoading={setLoading}
             setLatexData={setLatexData}
@@ -130,9 +135,10 @@ export default function ResumeTemplatePage() {
             title={existingResume?.title || ''}
             isMobileView={false}
           />
-          <ResizableHandle className="w-4 opacity-0" />
+          <ResizableHandle />
           <ResumePreview
             imageUrl={imageUrl}
+            previewPages={previewPages}
             latexData={latexData}
             loading={loading}
             paymentStatus={hasPaid}

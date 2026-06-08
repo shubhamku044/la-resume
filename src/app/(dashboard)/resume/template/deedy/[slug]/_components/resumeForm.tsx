@@ -32,6 +32,7 @@ import SkillsSection from './skills';
 
 interface ResumeFormProps {
   onUpdate: (imageUrl: string | null) => void;
+  onPreviewPagesUpdate?: (previewPages: string[]) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
   setLatexData: (latexData: string | null) => void;
@@ -44,6 +45,7 @@ interface ResumeFormProps {
 
 const ResumeForm = ({
   onUpdate,
+  onPreviewPagesUpdate,
   loading,
   setLoading,
   setLatexData,
@@ -141,17 +143,31 @@ const ResumeForm = ({
       const formDataUpload = new FormData();
       formDataUpload.append('latex', latexBlob, 'resume.tex');
 
-      const response = await fetch('/api/compile', {
+      const response = await fetch('/api/compile/preview', {
         method: 'POST',
         body: formDataUpload,
       });
 
-      if (!response.ok)
+      if (!response.ok) {
         toast.error('Error generating resume preview', {
           style: {
             color: '#ff0034',
           },
         });
+        onPreviewPagesUpdate?.([]);
+        return;
+      }
+
+      const contentType = response.headers.get('content-type')?.toLowerCase() || '';
+      if (contentType.includes('application/json')) {
+        const data = await response.json();
+        const pages = Array.isArray(data.pages) ? data.pages : [];
+        const firstPage = pages.length > 0 ? pages[0] : null;
+        setPreviewImage(firstPage);
+        onUpdate(firstPage);
+        onPreviewPagesUpdate?.(pages);
+        return;
+      }
 
       const blob = await response.blob();
       const reader = new FileReader();
@@ -161,15 +177,15 @@ const ResumeForm = ({
         const base64 = reader.result as string;
         setPreviewImage(base64);
         onUpdate(base64);
+        onPreviewPagesUpdate?.([base64]);
       };
-      const imageUrl = URL.createObjectURL(blob);
-      onUpdate(imageUrl);
     } catch (error) {
       console.error('Error generating resume preview:', error);
+      onPreviewPagesUpdate?.([]);
     } finally {
       setLoading(false);
     }
-  }, [formData, onUpdate, setLatexData, setLoading, templateFunction]);
+  }, [formData, onUpdate, onPreviewPagesUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
     setTempData((prev) => ({
@@ -256,7 +272,7 @@ const ResumeForm = ({
 
   const containerClass = isMobileView
     ? 'w-full bg-white'
-    : 'min-h-[500px] w-full min-w-[500px] rounded-md border p-4';
+    : 'min-h-[500px] w-full min-w-[500px] rounded-md p-4';
 
   const Container = isMobileView ? 'div' : ResizablePanel;
   const containerProps = isMobileView

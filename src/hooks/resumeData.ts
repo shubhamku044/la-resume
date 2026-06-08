@@ -23,6 +23,7 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
   const productId = process.env.NEXT_PUBLIC_ENV === 'production' ? productIdProd : productIdTest;
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [previewPages, setPreviewPages] = useState<string[]>([]);
   const [latexData, setLatexData] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -76,9 +77,11 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
     isError,
     error,
     imageUrl,
+    previewPages,
     latexData,
     loading,
     setImageUrl,
+    setPreviewPages,
     setLatexData,
     setLoading,
     slug,

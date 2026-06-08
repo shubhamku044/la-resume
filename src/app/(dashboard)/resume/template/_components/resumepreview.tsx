@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable @next/next/no-img-element */
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,6 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 import { ResizablePanel } from '@/components/ui/resizable';
 import {
   Select,
@@ -19,17 +22,16 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ShareModal } from '@/components/ui/share-modal';
-import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useCheckout } from '@/lib/checkoutDodo';
 import { useUser } from '@clerk/nextjs';
 import { Download, Loader2, Lock, Share2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from 'sonner';
 interface IProps {
-  imageUrl: string | null;
+  imageUrl?: string | null;
+  previewPages?: string[];
   latexData: string | null;
   loading: boolean;
   paymentStatus: boolean;
@@ -51,6 +53,7 @@ type Product = {
 };
 const ResumePreview = ({
   imageUrl,
+  previewPages,
   latexData,
   loading,
   paymentStatus,
@@ -87,6 +90,8 @@ const ResumePreview = ({
     fullName: fullName,
     slug: slug,
   };
+
+  const previewPagesToRender = previewPages?.length ? previewPages : imageUrl ? [imageUrl] : [];
 
   // Function to generate PDF for sharing without downloading
   const generatePDFForSharing = async (): Promise<string | null> => {
@@ -241,107 +246,139 @@ const ResumePreview = ({
     const ContainerComponent = isOverlay ? 'div' : ResizablePanel;
     const containerProps = isOverlay
       ? { className: 'w-full p-4' }
-      : { className: 'min-h-[500px] w-full min-w-[500px] rounded-md border p-4' };
+      : {
+          className:
+            'h-full w-full min-w-[500px] rounded-[1.25rem] border border-slate-200 bg-slate-50/80 p-4 overflow-hidden flex flex-col shadow-sm',
+        };
 
     return (
-      <ContainerComponent {...containerProps}>
-        <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
-        <div className={`mt-4 ${isOverlay ? 'space-y-3' : 'flex items-center justify-between'}`}>
-          <div className={`${isOverlay ? 'order-2' : 'h-10 flex-1'}`}>
-            {loading && (
-              <div className="flex items-center gap-2">
-                <span className="text-xs">Compiling</span>
-                <Loader2 className="h-4 w-4 animate-spin" />
-              </div>
-            )}
-          </div>
-          <div
-            className={`${isOverlay ? 'flex flex-col gap-2 order-1' : 'flex items-center gap-4'}`}
-          >
-            {!isOverlay && (
-              <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Export As" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="pdf">PDF</SelectItem>
-                  <SelectItem value="tex">LaTeX</SelectItem>
-                </SelectContent>
-              </Select>
-            )}
-            <div className={`${isOverlay ? 'flex gap-2' : 'flex gap-4'}`}>
-              <Button
-                className={`${
-                  paymentStatus
-                    ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
-                    : 'bg-gray-400 dark:bg-gray-700'
-                } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
-                onClick={() => {
-                  if (paymentStatus) {
-                    if (isOverlay) {
-                      handleDownloadPDF();
+      <ContainerComponent
+        {...(isOverlay ? { className: 'w-full p-4 flex flex-col h-full' } : containerProps)}
+      >
+        <div className="flex-shrink-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0">
+              <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
+              {!isOverlay && (
+                <p className="text-sm text-slate-500">
+                  Preview your resume pages in a scrollable panel.
+                </p>
+              )}
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              {!isOverlay && (
+                <Select onValueChange={(value) => setExportFormat(value)} defaultValue="pdf">
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder="Export As" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="pdf">PDF</SelectItem>
+                    <SelectItem value="tex">LaTeX</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  className={`${
+                    paymentStatus
+                      ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
+                      : 'bg-slate-300 text-slate-700 hover:bg-slate-400 dark:bg-slate-700 dark:text-white'
+                  } shadow-sm flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
+                  onClick={() => {
+                    if (paymentStatus) {
+                      if (isOverlay) {
+                        handleDownloadPDF();
+                      } else {
+                        setShowDownloadConfirmation(true);
+                      }
                     } else {
-                      setShowDownloadConfirmation(true);
+                      setShowPaymentConfirmation(true);
                     }
-                  } else {
-                    setShowPaymentConfirmation(true);
-                  }
-                }}
-                disabled={paymentStarted}
-              >
-                {!paymentStatus && <Lock size={16} />}
-                {paymentStarted ? (
-                  <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-white" />
-                    <span className={isOverlay ? 'text-sm' : ''}>Processing...</span>
-                  </div>
-                ) : paymentStatus ? (
-                  <>
-                    <Download size={16} />
-                    <span className={isOverlay ? 'text-sm' : ''}>{t('common.download')}</span>
-                  </>
-                ) : (
-                  <span className={isOverlay ? 'text-sm' : ''}>Download</span>
-                )}
-              </Button>
-              <Button
-                className={`${
-                  paymentStatus
-                    ? 'bg-gradient-to-bl from-blue-300 to-blue-700 text-white shadow-lg'
-                    : 'bg-gray-400 dark:bg-gray-700'
-                } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
-                disabled={isSharing}
-                onClick={() => {
-                  if (paymentStatus) {
-                    handleShare();
-                  } else {
-                    setShowPaymentConfirmation(true);
-                  }
-                }}
-              >
-                {isSharing ? (
-                  <div className="flex items-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin text-white" />
-                    <span className={isOverlay ? 'text-sm' : ''}>Sharing...</span>
-                  </div>
-                ) : (
-                  <>
-                    <Share2 size={16} />
-                    <span className={isOverlay ? 'text-sm' : ''}>Share</span>
-                  </>
-                )}
-              </Button>
+                  }}
+                  disabled={paymentStarted}
+                >
+                  {!paymentStatus && <Lock size={16} />}
+                  {paymentStarted ? (
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin text-white" />
+                      <span className={isOverlay ? 'text-sm' : ''}>Processing...</span>
+                    </div>
+                  ) : paymentStatus ? (
+                    <>
+                      <Download size={16} />
+                      <span className={isOverlay ? 'text-sm' : ''}>{t('common.download')}</span>
+                    </>
+                  ) : (
+                    <span className={isOverlay ? 'text-sm' : ''}>Download</span>
+                  )}
+                </Button>
+                <Button
+                  className={`${
+                    paymentStatus
+                      ? 'bg-gradient-to-bl from-blue-500 to-indigo-600 text-white shadow-sm'
+                      : 'bg-slate-300 text-slate-700 hover:bg-slate-400 dark:bg-slate-700 dark:text-white'
+                  } shadow-sm flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
+                  disabled={isSharing}
+                  onClick={() => {
+                    if (paymentStatus) {
+                      handleShare();
+                    } else {
+                      setShowPaymentConfirmation(true);
+                    }
+                  }}
+                >
+                  {isSharing ? (
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin text-white" />
+                      <span className={isOverlay ? 'text-sm' : ''}>Sharing...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <Share2 size={16} />
+                      <span className={isOverlay ? 'text-sm' : ''}>Share</span>
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
+          {loading && (
+            <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              <span>Compiling resume preview...</span>
+            </div>
+          )}
         </div>
 
-        <div className="relative mt-2 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
-          {imageUrl ? (
-            <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
+        <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">
+          {previewPagesToRender.length > 0 ? (
+            previewPagesToRender.map((pageUrl, index) => (
+              <div
+                key={index}
+                className="mx-auto w-full max-w-[880px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm"
+              >
+                <div className="aspect-[8.5/11] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={pageUrl}
+                    alt={`Resume Preview page ${index + 1}`}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                {previewPagesToRender.length > 1 && (
+                  <div className="border-t border-slate-200 bg-slate-50 px-4 py-2 text-right text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                    Page {index + 1}
+                  </div>
+                )}
+              </div>
+            ))
           ) : (
-            <p className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-              Preview will appear here...
-            </p>
+            <div className="mx-auto w-full max-w-[880px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
+              <div className="aspect-[8.5/11] w-full bg-slate-50">
+                <div className="flex h-full items-center justify-center text-slate-500">
+                  Preview will appear here...
+                </div>
+              </div>
+            </div>
           )}
         </div>
 
@@ -413,15 +450,39 @@ const ResumePreview = ({
 
   // Mobile version (when not in overlay)
   return (
-    <div className="w-full p-4">
-      <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
-      <div className="relative mt-4 flex aspect-[1/1.414] w-full items-center justify-center overflow-hidden rounded-md border">
-        {imageUrl ? (
-          <Image src={imageUrl} alt="Resume Preview" fill className="object-contain" />
+    <div className="w-full p-4 flex flex-col h-full">
+      <div className="flex-shrink-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
+      </div>
+      <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">
+        {previewPagesToRender.length > 0 ? (
+          previewPagesToRender.map((pageUrl, index) => (
+            <div
+              key={index}
+              className="mx-auto w-full max-w-[720px] overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm"
+            >
+              <div className="aspect-[8.5/11] w-full overflow-hidden bg-slate-100">
+                <img
+                  src={pageUrl}
+                  alt={`Resume Preview page ${index + 1}`}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              {previewPagesToRender.length > 1 && (
+                <div className="border-t border-slate-200 bg-slate-50 px-4 py-2 text-right text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                  Page {index + 1}
+                </div>
+              )}
+            </div>
+          ))
         ) : (
-          <p className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-            Preview will appear here...
-          </p>
+          <div className="mx-auto w-full max-w-[720px] overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
+            <div className="aspect-[8.5/11] w-full bg-slate-50">
+              <div className="flex h-full items-center justify-center text-slate-500">
+                Preview will appear here...
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
