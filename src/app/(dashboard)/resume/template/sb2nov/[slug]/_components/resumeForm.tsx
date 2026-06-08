@@ -271,7 +271,7 @@ const ResumeForm = ({
 
   const containerClass = isMobileView
     ? 'w-full bg-white'
-    : 'min-h-[500px] w-full min-w-[500px] rounded-md p-4';
+    : 'flex h-full min-h-0 w-full min-w-[500px] rounded-md p-4 overflow-auto flex-col';
 
   const Container = isMobileView ? 'div' : ResizablePanel;
   const containerProps = isMobileView
@@ -484,86 +484,90 @@ const ResumeForm = ({
         </div>
       )}
 
-      <Tabs defaultValue={String(sections[0])} className="w-full">
-        <div
-          ref={tabsListRef}
-          className={`overflow-x-auto scrollbar-hide`}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-        >
-          <TabsList className="flex w-max gap-2">
-            {sections
-              .filter((section) => section !== 'sectionOrder')
-              .map((section) => (
-                <TabsTrigger
-                  key={String(section)}
-                  value={String(section)}
-                  className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
-                >
-                  {String(section)}
-                </TabsTrigger>
-              ))}
-          </TabsList>
-        </div>
-
-        {sections.map((section) => (
-          <TabsContent
-            key={String(section)}
-            value={String(section)}
-            className={isMobileView ? 'border-0 p-0 space-y-4' : 'rounded-md border p-4'}
+      <div className="min-h-0 overflow-hidden flex-1">
+        <Tabs defaultValue={String(sections[0])} className="w-full h-full">
+          <div
+            ref={tabsListRef}
+            className="overflow-x-auto scrollbar-hide"
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
           >
-            {section === 'heading' && (
-              <HeadingSection
-                data={tempData.heading}
-                setIsChangesSaved={setIsChangesSaved}
-                setTempData={setTempData}
-              />
-            )}
+            <TabsList className="flex w-max gap-2">
+              {sections
+                .filter((section) => section !== 'sectionOrder')
+                .map((section) => (
+                  <TabsTrigger
+                    key={String(section)}
+                    value={String(section)}
+                    className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
+                  >
+                    {String(section)}
+                  </TabsTrigger>
+                ))}
+            </TabsList>
+          </div>
 
-            {section === 'education' && (
-              <EducationSection
-                setIsChangesSaved={setIsChangesSaved}
-                data={tempData.education}
-                setTempData={setTempData}
-              />
-            )}
+          <div className="min-h-0 flex-1 overflow-auto">
+            {sections.map((section) => (
+              <TabsContent
+                key={String(section)}
+                value={String(section)}
+                className={isMobileView ? 'border-0 p-0 space-y-4' : 'rounded-md border p-4'}
+              >
+                {section === 'heading' && (
+                  <HeadingSection
+                    data={tempData.heading}
+                    setIsChangesSaved={setIsChangesSaved}
+                    setTempData={setTempData}
+                  />
+                )}
 
-            {section === 'skills' && (
-              <SkillsSection
-                setIsChangesSaved={setIsChangesSaved}
-                data={tempData.skills}
-                setTempData={setTempData}
-              />
-            )}
+                {section === 'education' && (
+                  <EducationSection
+                    setIsChangesSaved={setIsChangesSaved}
+                    data={tempData.education}
+                    setTempData={setTempData}
+                  />
+                )}
 
-            {section === 'experience' && (
-              <ExperienceSection
-                setIsChangesSaved={setIsChangesSaved}
-                data={tempData.experience}
-                setTempData={setTempData}
-              />
-            )}
+                {section === 'skills' && (
+                  <SkillsSection
+                    setIsChangesSaved={setIsChangesSaved}
+                    data={tempData.skills}
+                    setTempData={setTempData}
+                  />
+                )}
 
-            {section === 'projects' && (
-              <ProjectsSection
-                setIsChangesSaved={setIsChangesSaved}
-                data={tempData.projects}
-                setTempData={setTempData}
-              />
-            )}
+                {section === 'experience' && (
+                  <ExperienceSection
+                    setIsChangesSaved={setIsChangesSaved}
+                    data={tempData.experience}
+                    setTempData={setTempData}
+                  />
+                )}
 
-            {section === 'honorsAndAwards' && (
-              <HonorsAndRewards
-                setIsChangesSaved={setIsChangesSaved}
-                data={tempData.honorsAndAwards}
-                setTempData={setTempData}
-              />
-            )}
-          </TabsContent>
-        ))}
-      </Tabs>
+                {section === 'projects' && (
+                  <ProjectsSection
+                    setIsChangesSaved={setIsChangesSaved}
+                    data={tempData.projects}
+                    setTempData={setTempData}
+                  />
+                )}
+
+                {section === 'honorsAndAwards' && (
+                  <HonorsAndRewards
+                    setIsChangesSaved={setIsChangesSaved}
+                    data={tempData.honorsAndAwards}
+                    setTempData={setTempData}
+                  />
+                )}
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
+      </div>
     </Container>
   );
 };

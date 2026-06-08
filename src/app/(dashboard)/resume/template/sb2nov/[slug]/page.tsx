@@ -121,7 +121,7 @@ export default function ResumeTemplatePage() {
   // Desktop layout (unchanged)
   return (
     <div className="flex justify-center">
-      <div className="mx-auto h-[calc(100dvh-4rem)] overflow-hidden">
+      <div className="mx-auto overflow-hidden">
         <ResizablePanelGroup direction="horizontal" className="grid grid-cols-2 gap-0">
           <ResumeForm
             onUpdate={setImageUrl}

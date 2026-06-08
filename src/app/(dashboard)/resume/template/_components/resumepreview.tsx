@@ -12,6 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ResizablePanel } from '@/components/ui/resizable';
 import {
@@ -247,15 +248,14 @@ const ResumePreview = ({
     const containerProps = isOverlay
       ? { className: 'w-full p-4' }
       : {
-          className:
-            'h-full w-full min-w-[500px] rounded-[1.25rem] border border-slate-200 bg-slate-50/80 p-4 overflow-hidden flex flex-col shadow-sm',
+          className: 'h-full w-full min-w-[500px] p-4 overflow-hidden flex flex-col',
         };
 
     return (
       <ContainerComponent
         {...(isOverlay ? { className: 'w-full p-4 flex flex-col h-full' } : containerProps)}
       >
-        <div className="flex-shrink-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className={`flex-shrink-0 pb-4${!isOverlay ? ' border-b border-slate-200' : ''}`}>
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
@@ -355,9 +355,9 @@ const ResumePreview = ({
             previewPagesToRender.map((pageUrl, index) => (
               <div
                 key={index}
-                className="mx-auto w-full max-w-[880px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm"
+                className="mx-auto relative w-full max-w-[880px] overflow-hidden rounded-[1rem] border border-slate-200 bg-white shadow-sm"
               >
-                <div className="aspect-[8.5/11] w-full overflow-hidden bg-slate-100">
+                <div className="aspect-[8.5/11] relative w-full overflow-hidden bg-slate-100">
                   <img
                     src={pageUrl}
                     alt={`Resume Preview page ${index + 1}`}
@@ -365,9 +365,9 @@ const ResumePreview = ({
                   />
                 </div>
                 {previewPagesToRender.length > 1 && (
-                  <div className="border-t border-slate-200 bg-slate-50 px-4 py-2 text-right text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                  <Badge variant="outline" className="absolute bottom-2 right-2 z-10">
                     Page {index + 1}
-                  </div>
+                  </Badge>
                 )}
               </div>
             ))
@@ -451,7 +451,7 @@ const ResumePreview = ({
   // Mobile version (when not in overlay)
   return (
     <div className="w-full p-4 flex flex-col h-full">
-      <div className="flex-shrink-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="flex-shrink-0 pb-4">
         <h2 className="text-lg font-semibold">{t('common.resumePreview')}</h2>
       </div>
       <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">
