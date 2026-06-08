@@ -22,7 +22,7 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -36,6 +36,15 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
   const langaugeDropdownRef = useRef<HTMLButtonElement>(null);
+
+  // Auto-close sidebar when navigating to resume template or made-by-you pages
+  useEffect(() => {
+    const isTemplateRoute =
+      pathname.includes('/resume/template/') || pathname.includes('/templates/made-by-you');
+    if (isTemplateRoute) {
+      setIsCollapsed(true);
+    }
+  }, [pathname]);
 
   const userDetailItems = [
     {
@@ -215,7 +224,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
         <main
           className={cn(
-            'flex-1 overflow-auto transition-[margin] duration-300 p-4',
+            'flex-1 overflow-auto transition-[margin] duration-300',
             'scrollbar-thin scrollbar-track-background scrollbar-thumb-accent',
             'dark:scrollbar-track-muted dark:scrollbar-thumb-muted-foreground'
           )}

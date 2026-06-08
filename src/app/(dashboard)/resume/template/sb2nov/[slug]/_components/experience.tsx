@@ -201,7 +201,11 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
           </div>
         )}
       </div>
-      <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
+      <Reorder.Group
+        values={data.entries}
+        onReorder={handleReorder}
+        className="space-y-3 overflow-y-auto"
+      >
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
             <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
