@@ -1,3 +1,4 @@
+import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -76,4 +77,15 @@ const nextConfig: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin();
 
-export default withNextIntl(nextConfig);
+export default withSentryConfig(withNextIntl(nextConfig), {
+  // Suppress noisy Sentry build logs
+  silent: true,
+
+  // Don't upload source maps to Sentry (opt-in later if needed)
+  sourcemaps: {
+    disable: true,
+  },
+
+  // Disable Sentry telemetry
+  telemetry: false,
+});
