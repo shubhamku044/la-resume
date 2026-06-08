@@ -19,12 +19,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ShareModal } from '@/components/ui/share-modal';
+import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useCheckout } from '@/lib/checkoutDodo';
 import { useUser } from '@clerk/nextjs';
-import { Button } from '@heroui/button';
-import { CircularProgress } from '@heroui/progress';
-import { Download, Lock, Share2 } from 'lucide-react';
+import { Download, Loader2, Lock, Share2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -252,7 +251,7 @@ const ResumePreview = ({
             {loading && (
               <div className="flex items-center gap-2">
                 <span className="text-xs">Compiling</span>
-                <CircularProgress className="scale-50 text-sm" strokeWidth={3} size="lg" />
+                <Loader2 className="h-4 w-4 animate-spin" />
               </div>
             )}
           </div>
@@ -277,7 +276,7 @@ const ResumePreview = ({
                     ? 'bg-gradient-to-tr from-pink-500 to-yellow-500'
                     : 'bg-gray-400 dark:bg-gray-700'
                 } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
-                onPress={() => {
+                onClick={() => {
                   if (paymentStatus) {
                     if (isOverlay) {
                       handleDownloadPDF();
@@ -293,12 +292,7 @@ const ResumePreview = ({
                 {!paymentStatus && <Lock size={16} />}
                 {paymentStarted ? (
                   <div className="flex items-center gap-2">
-                    <CircularProgress
-                      color="default"
-                      className="scale-50 text-white"
-                      strokeWidth={3}
-                      size="sm"
-                    />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                     <span className={isOverlay ? 'text-sm' : ''}>Processing...</span>
                   </div>
                 ) : paymentStatus ? (
@@ -317,7 +311,7 @@ const ResumePreview = ({
                     : 'bg-gray-400 dark:bg-gray-700'
                 } text-white shadow-lg flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
                 disabled={isSharing}
-                onPress={() => {
+                onClick={() => {
                   if (paymentStatus) {
                     handleShare();
                   } else {
@@ -327,12 +321,7 @@ const ResumePreview = ({
               >
                 {isSharing ? (
                   <div className="flex items-center gap-2">
-                    <CircularProgress
-                      color="default"
-                      className="scale-50 text-white"
-                      strokeWidth={3}
-                      size="sm"
-                    />
+                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                     <span className={isOverlay ? 'text-sm' : ''}>Sharing...</span>
                   </div>
                 ) : (

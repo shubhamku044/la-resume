@@ -60,10 +60,10 @@ export function useResumeData(templateKey: keyof typeof resumesMap) {
   // Safe data access with fallback
   const initialData = existingResume?.data
     ? (existingResume.data as
-      | deedyResumeData
-      | Sb2novResumeData
-      | MTeckResumeData
-      | TechProResumeData)
+        | deedyResumeData
+        | Sb2novResumeData
+        | MTeckResumeData
+        | TechProResumeData)
     : resumeSampleData;
 
   const hasPaid = existingResume?.hasPaid || false;

@@ -142,7 +142,7 @@ export default function MadeByYouPage() {
           </div>
           <h3 className="text-lg font-medium mb-2">No resumes yet</h3>
           <p className="text-muted-foreground mb-4">Create your first resume to get started</p>
-          <Button variant="hero">
+          <Button>
             <Plus className="w-4 h-4 mr-2" />
             Create Your First Resume
           </Button>

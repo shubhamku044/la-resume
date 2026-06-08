@@ -1,4 +1,3 @@
-import { heroui } from '@heroui/theme';
 /* eslint-disable */
 import type { Config } from 'tailwindcss';
 
@@ -9,7 +8,6 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@heroui/theme/dist/components/progress.js',
   ],
   theme: {
     extend: {
@@ -121,12 +119,7 @@ export default {
     },
   },
   darkMode: ['class', 'class'],
-  plugins: [
-    addVariablesForColors,
-    require('tailwindcss-animate'),
-    heroui(),
-    require('tailwind-scrollbar'),
-  ],
+  plugins: [addVariablesForColors, require('tailwindcss-animate'), require('tailwind-scrollbar')],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
