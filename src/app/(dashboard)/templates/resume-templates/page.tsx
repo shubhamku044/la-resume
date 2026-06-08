@@ -66,7 +66,7 @@ export default function ResumeTemplatesPage() {
     <div className="container space-y-4 mx-auto py-6">
       {iscreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-md">
-          <div className="rounded-lg bg-white p-6 shadow-lg">
+          <div className="rounded-lg bg-card p-6 shadow-lg">
             <h2 className="text-center text-lg font-semibold">Creating Resume...</h2>
           </div>
         </div>

@@ -72,7 +72,7 @@ export const HeroInteractive = ({
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group h-12 rounded-full border-gray-300 font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
+                  className="group h-12 rounded-full border-border font-medium text-foreground hover:bg-accent hover:text-accent-foreground"
                 >
                   <div className="flex items-center gap-2">
                     <div className="transition-transform duration-300 ease-in-out group-hover:scale-110">

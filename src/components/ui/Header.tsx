@@ -20,7 +20,7 @@ const Header = () => {
   if (hideHeader) return null;
 
   return (
-    <header className="bg-white">
+    <header className="bg-background">
       <div className="mx-auto flex max-w-5xl items-center justify-between border-b p-4 md:px-6">
         <Link href="/" className="flex items-center">
           <Image src={getAssetUrl('/logo.png')} alt="La-Resume Logo" width={120} height={40} />
@@ -28,13 +28,13 @@ const Header = () => {
 
         <nav className="hidden items-center gap-6 text-sm md:flex">
           <SignedIn>
-            <Link href="/pricing" className="text-gray-700 hover:text-black">
+            <Link href="/pricing" className="text-muted-foreground hover:text-foreground">
               {t('header.pricing')}
             </Link>
-            <Link href="/templates" className="text-gray-700 hover:text-black">
+            <Link href="/templates" className="text-muted-foreground hover:text-foreground">
               {t('header.templates')}
             </Link>
-            <Link href="/user-details" className="text-gray-700 hover:text-black">
+            <Link href="/user-details" className="text-muted-foreground hover:text-foreground">
               {t('header.userProfile')}
             </Link>
             <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
@@ -50,7 +50,7 @@ const Header = () => {
             </div>
           </SignedOut>
           <Link
-            className="rounded-full border border-gray-300 p-2"
+            className="rounded-full border border-border p-2"
             href="https://github.com/shubhamku044/la-resume"
             target="_blank"
           >
@@ -69,19 +69,19 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute z-10 w-full bg-white md:hidden">
+        <div className="absolute z-10 w-full bg-background md:hidden">
           <nav className="flex flex-col items-center gap-4 border-b py-4">
             <SignedIn>
               <Link
                 href="/templates"
-                className="text-gray-700 hover:text-black"
+                className="text-muted-foreground hover:text-foreground"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('header.templates')}
               </Link>
               <Link
                 href="/user-details"
-                className="text-gray-700 hover:text-black"
+                className="text-muted-foreground hover:text-foreground"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('header.userProfile')}
@@ -97,7 +97,7 @@ const Header = () => {
               </Link>
             </SignedOut>
             <Link
-              className="mt-2 rounded-full border border-gray-300 p-2"
+              className="mt-2 rounded-full border border-border p-2"
               href="https://github.com/shubhamku044/la-resume"
               target="_blank"
             >

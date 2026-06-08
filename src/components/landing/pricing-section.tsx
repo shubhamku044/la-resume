@@ -251,7 +251,7 @@ export const PricingSection = async () => {
         <div className="mt-16 text-center">
           <Card className="mx-auto max-w-2xl border-dashed border-2 border-gray-300 dark:border-gray-600 bg-transparent">
             <CardContent className="p-8">
-              <LinkIcon className="mx-auto mb-4 size-8 text-gray-400" />
+              <LinkIcon className="mx-auto mb-4 size-8 text-muted-foreground" />
               <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
                 {t('smart_sharing.title')}
               </h4>

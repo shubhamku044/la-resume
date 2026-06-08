@@ -1,73 +1,41 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Moon, Sun } from 'lucide-react';
-import { MotionConfig } from 'framer-motion';
-import React, { createContext, useContext, useEffect, useState } from 'react';
-
-type Theme = 'light' | 'dark';
-
-type ThemeContextType = {
-  theme: Theme;
-  toggleTheme: () => void;
-};
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Initialize theme from localStorage or default to 'light'
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as Theme | null;
-      return savedTheme || 'light';
-    }
-    return 'light';
-  });
-
-  useEffect(() => {
-    // Update the document class when theme changes
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-
-    // Save the theme preference
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
-
-  return (
-    <MotionConfig reducedMotion="user">
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
-    </MotionConfig>
-  );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-}
+import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Avoid hydration mismatch: the resolved theme is only known on the client.
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className="rounded-full"
+        aria-label="Toggle theme"
+        disabled
+      >
+        <Sun className="size-5" />
+      </Button>
+    );
+  }
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={toggleTheme}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className="rounded-full"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <Sun className="size-5" /> : <Moon className="size-5" />}
+      {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
     </Button>
   );
 }

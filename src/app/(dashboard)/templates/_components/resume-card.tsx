@@ -105,7 +105,7 @@ export function ResumeCard({
 
       <CardContent className="p-0">
         <div
-          className={`aspect-[8.5/11] bg-white rounded-t-2xl relative overflow-hidden ${
+          className={`aspect-[8.5/11] bg-card rounded-t-2xl relative overflow-hidden ${
             paymentStatus ? 'bg-gradient-to-b from-yellow-50 to-white' : ''
           }`}
         >

@@ -85,7 +85,7 @@ export default function SignInPage() {
         <header className="px-3 py-3 sm:px-6 lg:px-8 shrink-0">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
-              <ChevronLeft className="h-4 w-4 text-gray-600 group-hover:text-gray-900 transition-colors lg:hidden" />
+              <ChevronLeft className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors lg:hidden" />
               <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
                 <FileText className="h-4 w-4 text-white" />
               </div>

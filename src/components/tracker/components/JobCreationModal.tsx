@@ -23,7 +23,7 @@ export function JobCreationModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-xl bg-white p-4 shadow-xl sm:p-6">
+      <div className="w-full max-w-md rounded-xl bg-card p-4 shadow-xl sm:p-6">
         <div className="mb-4 flex items-center justify-between sm:mb-5">
           <h3 className="text-lg font-semibold sm:text-xl">Add New Job</h3>
           <Button
@@ -41,7 +41,7 @@ export function JobCreationModal({
 
         <div className="space-y-3 sm:space-y-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">
+            <label className="mb-1 block text-sm font-medium text-muted-foreground sm:mb-1.5">
               Job Title *
             </label>
             <input
@@ -54,13 +54,13 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Frontend Developer"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">
+            <label className="mb-1 block text-sm font-medium text-muted-foreground sm:mb-1.5">
               Company *
             </label>
             <input
@@ -73,13 +73,15 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Acme Inc."
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700 sm:mb-1.5">Notes</label>
+            <label className="mb-1 block text-sm font-medium text-muted-foreground sm:mb-1.5">
+              Notes
+            </label>
             <textarea
               value={newJob?.notes || ''}
               onChange={(e) =>
@@ -89,7 +91,7 @@ export function JobCreationModal({
                   notes: e.target.value,
                 }))
               }
-              className="w-full rounded-lg border border-gray-300 p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="Any additional information..."
               rows={3}
             />
