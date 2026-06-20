@@ -8,7 +8,6 @@ import {
   HeroSection,
   HowItWorksSection,
   PricingSection,
-  StatsBanner,
   TeamSection,
   TestimonialsSection,
 } from '@/components/landing';
@@ -17,7 +16,6 @@ const Page = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <StatsBanner />
       <HeroSection />
       <CompaniesSection />
       <FeaturesSection />
