@@ -46,9 +46,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/favicon-dark.ico', media: '(prefers-color-scheme: light)' },
       { url: '/favicon-light.ico', media: '(prefers-color-scheme: dark)' },
     ],
+    apple: '/apple-icon.png',
     shortcut: '/favicon-dark.ico',
   },
   openGraph: {

@@ -6,7 +6,7 @@ export default function JsonLd() {
         '@type': 'Organization',
         'name': 'La-Resume',
         'url': 'https://la-resume.com',
-        'logo': 'https://la-resume.com/og-image.png',
+        'logo': 'https://la-resume.com/icon-512.png',
         'sameAs': ['https://github.com/shubhamku044/la-resume'],
       },
       {
