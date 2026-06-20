@@ -322,8 +322,8 @@ export default function SignInPage() {
                     <CardContent className="p-4 lg:p-6 space-y-4">
                       <div className="flex justify-center">
                         <SignIn
-                          afterSignInUrl="/templates"
-                          afterSignUpUrl="/templates"
+                          fallbackRedirectUrl="/templates"
+                          signUpFallbackRedirectUrl="/templates"
                           appearance={{
                             elements: {
                               rootBox: 'w-full',
@@ -348,11 +348,11 @@ export default function SignInPage() {
                             },
                             variables: {
                               colorPrimary: '#4f46e5',
-                              colorText: '#374151',
-                              colorTextSecondary: '#6b7280',
+                              colorForeground: '#374151',
+                              colorMutedForeground: '#6b7280',
                               colorBackground: '#ffffff',
-                              colorInputBackground: '#ffffff',
-                              colorInputText: '#374151',
+                              colorInput: '#ffffff',
+                              colorInputForeground: '#374151',
                               borderRadius: '0.75rem',
                               fontSize: '0.875rem',
                             },

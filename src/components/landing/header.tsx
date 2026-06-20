@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { Show, UserButton } from '@clerk/nextjs';
 import { FileText, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -64,7 +64,7 @@ export function Header() {
           <ThemeToggle />
           <LanguageSelectorDropdown showLabel={false} />
 
-          <SignedIn>
+          <Show when="signed-in">
             <Button
               onClick={() => {
                 router.push('/templates');
@@ -74,9 +74,9 @@ export function Header() {
             >
               Go to app
             </Button>
-            <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
-          </SignedIn>
-          <SignedOut>
+            <UserButton />
+          </Show>
+          <Show when="signed-out">
             <Link href="/sign-in">
               <Button
                 size="default"
@@ -85,7 +85,7 @@ export function Header() {
                 Get Started
               </Button>
             </Link>
-          </SignedOut>
+          </Show>
 
           <Sheet>
             <SheetTrigger asChild>
@@ -128,7 +128,7 @@ export function Header() {
                   FAQ
                 </Link>
 
-                <SignedIn>
+                <Show when="signed-in">
                   <Button
                     onClick={() => {
                       router.push('/templates');
@@ -138,9 +138,9 @@ export function Header() {
                   >
                     Go to app
                   </Button>
-                  <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
-                </SignedIn>
-                <SignedOut>
+                  <UserButton />
+                </Show>
+                <Show when="signed-out">
                   <Link href="/sign-in">
                     <Button
                       size="sm"
@@ -149,7 +149,7 @@ export function Header() {
                       Get Started
                     </Button>
                   </Link>
-                </SignedOut>
+                </Show>
               </nav>
             </SheetContent>
           </Sheet>

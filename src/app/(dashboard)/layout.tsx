@@ -1,18 +1,18 @@
 import ReduxProvider from '@/components/providers/redux-provider';
-import { RedirectToSignUp, SignedIn, SignedOut } from '@clerk/nextjs';
+import { RedirectToSignUp, Show } from '@clerk/nextjs';
 import { DashboardLayout } from './_components';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <DashboardLayout>
-        <SignedIn>
+        <Show when="signed-in">
           <ReduxProvider>{children}</ReduxProvider>
-        </SignedIn>
+        </Show>
       </DashboardLayout>
-      <SignedOut>
+      <Show when="signed-out">
         <RedirectToSignUp redirectUrl={'/'} />
-      </SignedOut>
+      </Show>
     </>
   );
 }

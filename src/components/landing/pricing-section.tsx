@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { Show } from '@clerk/nextjs';
 import {
   CheckCircle,
   Clock,
@@ -133,20 +133,20 @@ export const PricingSection = async () => {
                     </div>
                   </div>
 
-                  <SignedIn>
+                  <Show when="signed-in">
                     <Link href="/templates/made-by-you">
                       <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
-                  </SignedIn>
-                  <SignedOut>
+                  </Show>
+                  <Show when="signed-out">
                     <Link href="/sign-in">
                       <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
-                  </SignedOut>
+                  </Show>
                 </CardContent>
               </div>
             </Card>

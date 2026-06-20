@@ -133,7 +133,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
 
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
           <LanguageSelectorDropdown className={cn('hidden lg:flex')} showLabel={false} />
           <ThemeToggle />
         </div>

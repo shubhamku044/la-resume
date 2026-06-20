@@ -1,6 +1,6 @@
 'use client';
 import { getAssetUrl } from '@/lib/assets';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { Show, UserButton } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm md:flex">
-          <SignedIn>
+          <Show when="signed-in">
             <Link href="/pricing" className="text-muted-foreground hover:text-foreground">
               {t('header.pricing')}
             </Link>
@@ -37,9 +37,9 @@ const Header = () => {
             <Link href="/user-details" className="text-muted-foreground hover:text-foreground">
               {t('header.userProfile')}
             </Link>
-            <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
-          </SignedIn>
-          <SignedOut>
+            <UserButton />
+          </Show>
+          <Show when="signed-out">
             <div className="flex gap-2">
               <Link href="/sign-in">
                 <Button variant="outline">Sign In</Button>
@@ -48,7 +48,7 @@ const Header = () => {
                 <Button>Sign Up</Button>
               </Link>
             </div>
-          </SignedOut>
+          </Show>
           <Link
             className="rounded-full border border-border p-2"
             href="https://github.com/shubhamku044/la-resume"
@@ -71,7 +71,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="absolute z-10 w-full bg-background md:hidden">
           <nav className="flex flex-col items-center gap-4 border-b py-4">
-            <SignedIn>
+            <Show when="signed-in">
               <Link
                 href="/templates"
                 className="text-muted-foreground hover:text-foreground"
@@ -86,16 +86,16 @@ const Header = () => {
               >
                 {t('header.userProfile')}
               </Link>
-              <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/templates" />
-            </SignedIn>
-            <SignedOut>
+              <UserButton />
+            </Show>
+            <Show when="signed-out">
               <Link href="/sign-in">
                 <Button variant="outline">Sign In</Button>
               </Link>
               <Link href="/sign-in">
                 <Button>Sign Up</Button>
               </Link>
-            </SignedOut>
+            </Show>
             <Link
               className="mt-2 rounded-full border border-border p-2"
               href="https://github.com/shubhamku044/la-resume"
