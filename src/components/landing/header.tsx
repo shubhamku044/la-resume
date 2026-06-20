@@ -31,6 +31,12 @@ export function Header() {
 
         <nav className="hidden items-center space-x-6 md:flex">
           <Link
+            href="/resume-templates"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Templates
+          </Link>
+          <Link
             href="/#features"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
@@ -99,6 +105,12 @@ export function Header() {
             <SheetContent side="right" className="w-[240px] sm:w-[300px]">
               <SheetTitle>Mobile Navigation</SheetTitle>
               <nav className="mt-6 flex flex-col gap-4">
+                <Link
+                  href="/resume-templates"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Templates
+                </Link>
                 <Link
                   href="#features"
                   className="text-sm font-medium transition-colors hover:text-primary"

@@ -25,6 +25,14 @@ export const FooterSection = async () => {
             <ul className="space-y-3">
               <li>
                 <Link
+                  href="/resume-templates"
+                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                >
+                  Resume Templates
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="#team"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >

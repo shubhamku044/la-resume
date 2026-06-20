@@ -47,14 +47,14 @@ export const HeroInteractive = ({
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-hero pb-20 pt-12 md:pb-28 md:pt-16"
+      className="relative overflow-hidden bg-gradient-hero pb-20 pt-12 md:pb-28 md:pt-16 dark:bg-none dark:bg-background"
       id="hero"
     >
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent px-4 py-1.5 text-sm font-medium text-accent-foreground">
             <Sparkles className="size-4" />
-            <span>Open-source · ATS-friendly · Free forever</span>
+            <span>Open-source · ATS-friendly · LaTeX-powered</span>
           </div>
 
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
