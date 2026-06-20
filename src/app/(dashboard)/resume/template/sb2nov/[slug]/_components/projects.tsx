@@ -213,7 +213,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
+            <Card className="rounded-lg border border-gray-300 p-4 shadow-xs">
               <div className="flex items-start justify-between">
                 <div className="flex gap-2">
                   <GripVertical size={20} className="cursor-grab opacity-65" />

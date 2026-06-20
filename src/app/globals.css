@@ -1,6 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility glass-card {
+  @apply bg-white/70 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+}
+
+@utility feature-card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300;
+}
+
+@utility button-glow {
+  @apply relative overflow-hidden;
+
+  &::after {
+    @apply absolute content-[''] inset-0 rounded-full bg-primary/20 blur-xs -z-10 opacity-0 transition-opacity duration-300;
+  }
+
+  &:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@utility animated-text-gradient {
+  @apply bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-size-[200%_auto] bg-clip-text text-transparent;
+  animation: gradient-shift 3s linear infinite;
+}
+
+@utility rotating-border {
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(45deg, #d946ef, #8b5cf6, #d946ef);
+    background-size: 200% 200%;
+    animation: rotate 3s linear infinite;
+    border-radius: inherit;
+    z-index: -1;
+  }
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 30s linear infinite;
+}
 
 @layer base {
   :root {
@@ -77,45 +149,6 @@
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-white/70 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
-  }
-
-  .feature-card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300;
-  }
-
-  .button-glow {
-    @apply relative overflow-hidden;
-  }
-
-  .button-glow::after {
-    @apply absolute content-[''] inset-0 rounded-full bg-primary/20 blur-sm -z-10 opacity-0 transition-opacity duration-300;
-  }
-
-  .button-glow:hover::after {
-    @apply opacity-100;
-  }
-
-  .animated-text-gradient {
-    @apply bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-[length:200%_auto] bg-clip-text text-transparent;
-    animation: gradient-shift 3s linear infinite;
-  }
-
-  .rotating-border::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    background: linear-gradient(45deg, #d946ef, #8b5cf6, #d946ef);
-    background-size: 200% 200%;
-    animation: rotate 3s linear infinite;
-    border-radius: inherit;
-    z-index: -1;
-  }
-
   @keyframes gradient-shift {
     0% {
       background-position: 0% 50%;
@@ -141,35 +174,28 @@
   }
 }
 
-input {
-  @apply dark:bg-gray-700 dark:text-white;
+@layer utilities {
+  input {
+    @apply dark:bg-gray-700 dark:text-white;
+  }
 }
 
 @layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+  /* sigin footer color  */
+  .cl-footer {
+    background-color: transparent;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* sigin footer color  */
-.cl-footer {
-  background-color: transparent;
 }
 
 @layer base {
@@ -189,8 +215,5 @@ input {
     100% {
       transform: translateX(-50%);
     }
-  }
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
   }
 }

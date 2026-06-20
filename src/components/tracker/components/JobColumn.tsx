@@ -27,7 +27,7 @@ export function JobColumn({
           {...provided.droppableProps}
           ref={provided.innerRef}
           className={cn(
-            'w-72 shrink-0 rounded-xl border border-border bg-muted shadow-sm transition-colors',
+            'w-72 shrink-0 rounded-xl border border-border bg-muted shadow-xs transition-colors',
             snapshot.isDraggingOver && 'border-blue-200 bg-blue-50'
           )}
         >

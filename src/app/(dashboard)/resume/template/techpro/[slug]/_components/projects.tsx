@@ -244,7 +244,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-4 shadow-sm">
+            <Card className="rounded-lg border border-gray-300 p-4 shadow-xs">
               <div className="flex items-start justify-between">
                 <div className="flex gap-2">
                   <GripVertical size={20} className="cursor-grab opacity-65" />
@@ -348,14 +348,14 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                     value={social.label}
                     onChange={(e) => handleSocialChange(index, 'label', e.target.value)}
                     placeholder="Social Label"
-                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
                   />
                   <input
                     type="text"
                     value={social.url}
                     onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
                     placeholder="Social URL"
-                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
                   />
                   <button
                     onClick={() => handleRemoveSocial(index)}
@@ -371,14 +371,14 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                   value={newSocialName}
                   onChange={(e) => setNewSocialName(e.target.value)}
                   placeholder="New Social Name"
-                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
                 />
                 <input
                   type="text"
                   value={newSocialUrl}
                   onChange={(e) => setNewSocialUrl(e.target.value)}
                   placeholder="New Social URL"
-                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
                 />
                 <button
                   onClick={handleAddSocial}

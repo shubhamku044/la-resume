@@ -1,10 +1,13 @@
-import ImageKit from 'imagekit';
+import ImageKit from '@imagekit/nodejs';
 
-// Configure ImageKit
+// Configure the ImageKit server SDK.
+// The new @imagekit/nodejs SDK is API-only and authenticates with the private
+// key (webhookSecret is only needed for verifying webhook signatures). The old
+// publicKey/urlEndpoint values were used for client-side URL generation, which
+// this server helper does not perform.
 const imagekit = new ImageKit({
-  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY as string,
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY as string,
-  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT as string,
+  webhookSecret: process.env.IMAGEKIT_WEBHOOK_SECRET,
 });
 
 export default imagekit;

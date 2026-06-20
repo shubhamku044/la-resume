@@ -101,7 +101,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
                 )}
               </div>
 
-              <div className="bg-white rounded-lg border border-gray-300 overflow-hidden shadow-sm max-w-6xl mx-auto touch-manipulation">
+              <div className="bg-white rounded-lg border border-gray-300 overflow-hidden shadow-xs max-w-6xl mx-auto touch-manipulation">
                 {isMobile && (
                   <div className="p-4 w-full flex items-center justify-center bg-gray-50 border-b border-gray-200">
                     <Link
@@ -114,7 +114,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
                     </Link>
                   </div>
                 )}
-                <div className="relative h-[70vh] sm:h-[100vh]">
+                <div className="relative h-[70vh] sm:h-screen">
                   <object
                     data={`${data.pdfUrl}#view='Fit'`}
                     type="application/pdf"

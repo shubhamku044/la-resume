@@ -72,7 +72,7 @@ export default function SignInPage() {
   }, []);
 
   return (
-    <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
+    <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-linear-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -86,10 +86,10 @@ export default function SignInPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
               <ChevronLeft className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors lg:hidden" />
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 shadow-lg">
                 <FileText className="h-4 w-4 text-white" />
               </div>
-              <span className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-lg font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 La Resume
               </span>
             </Link>
@@ -118,7 +118,7 @@ export default function SignInPage() {
                   className="text-center lg:text-left"
                 >
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-                    <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                       {t('hero.title')}
                     </span>
                   </h1>
@@ -140,10 +140,10 @@ export default function SignInPage() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      className="text-center p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="text-center p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <div className="flex items-center justify-center mb-2">
-                        <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg">
+                        <div className="p-2 rounded-lg bg-linear-to-r from-indigo-500 to-purple-500 shadow-lg">
                           <stat.icon className="h-4 w-4 text-white" />
                         </div>
                       </div>
@@ -174,10 +174,10 @@ export default function SignInPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                        className="p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 hover:bg-white/90 dark:hover:bg-gray-800/90 transition-all duration-300 group shadow-lg hover:shadow-xl"
+                        className="p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 hover:bg-white/90 dark:hover:bg-gray-800/90 transition-all duration-300 group shadow-lg hover:shadow-xl"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          <div className="p-2 rounded-lg bg-linear-to-r from-indigo-500 to-purple-500 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <feature.icon className="h-4 w-4 text-white" />
                           </div>
                           <div>
@@ -210,7 +210,7 @@ export default function SignInPage() {
                       transition={{ duration: 0.5 }}
                       className="absolute inset-0"
                     >
-                      <Card className="border-0 bg-gradient-to-r from-white/80 to-indigo-50/80 backdrop-blur-sm shadow-xl dark:from-gray-800/80 dark:to-indigo-900/80 overflow-hidden h-full">
+                      <Card className="border-0 bg-linear-to-r from-white/80 to-indigo-50/80 backdrop-blur-xs shadow-xl dark:from-gray-800/80 dark:to-indigo-900/80 overflow-hidden h-full">
                         <CardContent className="p-4 lg:p-6 h-full flex flex-col justify-between">
                           <div className="flex items-start gap-3">
                             <Quote className="h-6 w-6 text-indigo-500 shrink-0 mt-1" />
@@ -303,9 +303,9 @@ export default function SignInPage() {
                   className="w-full max-w-sm lg:max-w-md"
                 >
                   <Card className="border-0 bg-white/95 backdrop-blur-lg shadow-2xl dark:bg-gray-800/95 overflow-hidden">
-                    <CardHeader className="text-center space-y-3 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 px-4 py-6">
+                    <CardHeader className="text-center space-y-3 bg-linear-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 px-4 py-6">
                       <div className="flex items-center justify-center">
-                        <div className="p-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg">
+                        <div className="p-2.5 rounded-xl bg-linear-to-r from-indigo-500 to-purple-500 shadow-lg">
                           <FileText className="h-5 w-5 text-white" />
                         </div>
                       </div>
@@ -322,8 +322,8 @@ export default function SignInPage() {
                     <CardContent className="p-4 lg:p-6 space-y-4">
                       <div className="flex justify-center">
                         <SignIn
-                          afterSignInUrl="/templates"
-                          afterSignUpUrl="/templates"
+                          fallbackRedirectUrl="/templates"
+                          signUpFallbackRedirectUrl="/templates"
                           appearance={{
                             elements: {
                               rootBox: 'w-full',
@@ -332,9 +332,9 @@ export default function SignInPage() {
                               headerTitle: 'hidden',
                               headerSubtitle: 'hidden',
                               socialButtonsBlockButton:
-                                'bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-200 rounded-xl font-medium shadow-sm hover:shadow-md text-base py-3',
+                                'bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-200 rounded-xl font-medium shadow-xs hover:shadow-md text-base py-3',
                               formButtonPrimary:
-                                'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 rounded-xl font-semibold text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02] py-2',
+                                'bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 rounded-xl font-semibold text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02] py-2',
                               footerActionLink:
                                 'text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium',
                               formFieldInput:
@@ -348,11 +348,11 @@ export default function SignInPage() {
                             },
                             variables: {
                               colorPrimary: '#4f46e5',
-                              colorText: '#374151',
-                              colorTextSecondary: '#6b7280',
+                              colorForeground: '#374151',
+                              colorMutedForeground: '#6b7280',
                               colorBackground: '#ffffff',
-                              colorInputBackground: '#ffffff',
-                              colorInputText: '#374151',
+                              colorInput: '#ffffff',
+                              colorInputForeground: '#374151',
                               borderRadius: '0.75rem',
                               fontSize: '0.875rem',
                             },

@@ -1,7 +1,21 @@
 /* eslint-disable */
 import type { Config } from 'tailwindcss';
 
-const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette');
+// Inlined from tailwindcss/lib/util/flattenColorPalette — that internal path was
+// removed in Tailwind v4. Flattens a (possibly nested) color object into a flat
+// map, e.g. { red: { 500: '#f00' } } -> { 'red-500': '#f00' }, DEFAULT -> base key.
+function flattenColorPalette(colors: Record<string, any>): Record<string, string> {
+  return Object.assign(
+    {},
+    ...Object.entries(colors ?? {}).flatMap(([color, values]) =>
+      typeof values === 'object' && values !== null
+        ? Object.entries(flattenColorPalette(values)).map(([number, hex]) => ({
+            [color + (number === 'DEFAULT' ? '' : `-${number}`)]: hex,
+          }))
+        : [{ [color]: values }]
+    )
+  );
+}
 
 export default {
   content: [

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { getAssetUrl } from '@/lib/assets';
-import { SignedIn, SignedOut } from '@clerk/nextjs';
+import { Show } from '@clerk/nextjs';
 import { ArrowRight, Star, StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ export const HeroInteractive = ({
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <SignedIn>
+            <Show when="signed-in">
               <Link href="/templates">
                 <Button
                   size="lg"
@@ -53,8 +53,8 @@ export const HeroInteractive = ({
                   </span>
                 </Button>
               </Link>
-            </SignedIn>
-            <SignedOut>
+            </Show>
+            <Show when="signed-out">
               <Link href="/sign-in">
                 <Button
                   size="lg"
@@ -66,7 +66,7 @@ export const HeroInteractive = ({
                   </span>
                 </Button>
               </Link>
-            </SignedOut>
+            </Show>
             <div className="group relative">
               <Link href="https://github.com/shubhamku044/la-resume" target="_blank">
                 <Button

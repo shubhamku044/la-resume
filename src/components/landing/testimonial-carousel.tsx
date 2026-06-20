@@ -55,7 +55,7 @@ export const TestimonialsCarousel = () => {
         {testimonials.map((testimonial, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
             <div className="h-full">
-              <Card className="h-full overflow-hidden border border-purple-100/80 bg-gradient-to-br from-white to-purple-50/50 dark:border-purple-900/20 dark:from-gray-800 dark:to-purple-900/10">
+              <Card className="h-full overflow-hidden border border-purple-100/80 bg-linear-to-br from-white to-purple-50/50 dark:border-purple-900/20 dark:from-gray-800 dark:to-purple-900/10">
                 <div className="absolute -right-10 -top-10 size-40 rounded-full bg-purple-100/50 opacity-30 dark:bg-purple-900/20" />
                 <CardContent className="relative p-6">
                   <div className="mb-4 text-4xl text-purple-400">&apos;</div>
@@ -80,8 +80,8 @@ export const TestimonialsCarousel = () => {
         ))}
       </CarouselContent>
       <div className="mt-6 flex justify-center gap-2">
-        <CarouselPrevious className="relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:-left-0" />
-        <CarouselNext className="relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:-right-0" />
+        <CarouselPrevious className="relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:left-0" />
+        <CarouselNext className="relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:right-0" />
       </div>
     </Carousel>
   );

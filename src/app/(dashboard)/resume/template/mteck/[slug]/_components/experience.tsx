@@ -157,7 +157,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-xs">
               <div className="flex gap-2">
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div className="space-y-1">

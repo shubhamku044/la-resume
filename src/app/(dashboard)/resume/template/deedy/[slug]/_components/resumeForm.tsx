@@ -277,7 +277,7 @@ const ResumeForm = ({
   const Container = isMobileView ? 'div' : ResizablePanel;
   const containerProps = isMobileView
     ? { className: containerClass }
-    : { className: containerClass };
+    : { className: containerClass, defaultSize: '50%', minSize: '30%' };
 
   return (
     <Container {...containerProps}>

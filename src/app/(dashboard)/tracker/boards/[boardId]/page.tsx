@@ -96,7 +96,7 @@ export default function BoardPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="w-72 shrink-0 rounded-xl border border-border bg-muted shadow-sm"
+                className="w-72 shrink-0 rounded-xl border border-border bg-muted shadow-xs"
               >
                 <div className="rounded-t-xl border-b border-border bg-card p-3">
                   <Skeleton className="mb-2 h-5 w-24" />
@@ -189,7 +189,7 @@ export default function BoardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-10 border-b border-border bg-card shadow-sm">
+      <div className="sticky top-0 z-10 border-b border-border bg-card shadow-xs">
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
           <div className="flex flex-col space-y-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:py-4">
             <Button
