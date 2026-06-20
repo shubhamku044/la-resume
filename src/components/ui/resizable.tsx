@@ -26,14 +26,14 @@ const ResizableHandle = ({
 }) => (
   <ResizablePrimitive.Separator
     className={cn(
-      'relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1',
+      'group relative flex w-1.5 items-center justify-center bg-border transition-colors hover:bg-primary/40 data-[resize-handle-state=drag]:bg-primary/60 after:absolute after:inset-y-0 after:left-1/2 after:w-3 after:-translate-x-1/2 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1',
       className
     )}
     {...props}
   >
     {withHandle && (
-      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <GripVertical className="h-2.5 w-2.5" />
+      <div className="z-10 flex h-7 w-4 items-center justify-center rounded-md border bg-background text-muted-foreground shadow-sm transition-colors group-hover:border-primary/50 group-hover:text-primary">
+        <GripVertical className="h-3.5 w-3.5" />
       </div>
     )}
   </ResizablePrimitive.Separator>

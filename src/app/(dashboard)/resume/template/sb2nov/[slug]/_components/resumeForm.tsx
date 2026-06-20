@@ -270,8 +270,8 @@ const ResumeForm = ({
   }, [isChangesSaved, handleSaveCallback]);
 
   const containerClass = isMobileView
-    ? 'w-full bg-white'
-    : 'flex h-full min-h-0 w-full min-w-[500px] rounded-md p-4 overflow-auto flex-col';
+    ? 'w-full bg-background'
+    : 'flex h-full min-h-0 w-full min-w-[360px] rounded-md p-4 overflow-auto flex-col';
 
   const Container = isMobileView ? 'div' : ResizablePanel;
   const containerProps = isMobileView
@@ -380,7 +380,7 @@ const ResumeForm = ({
 
       {/* Mobile Controls Section */}
       {isMobileView && (
-        <div className="bg-white px-4 py-3 mb-4">
+        <div className="bg-background px-4 py-3 mb-4">
           {/* Mobile Filename Section */}
           <div className="mb-3">
             <div

@@ -248,7 +248,7 @@ const ResumePreview = ({
     const containerProps = isOverlay
       ? { className: 'w-full p-4' }
       : {
-          className: 'h-full w-full min-w-[500px] p-4 overflow-hidden flex flex-col',
+          className: 'h-full w-full min-w-[360px] p-4 overflow-hidden flex flex-col',
           defaultSize: '50%',
           minSize: '30%',
         };
