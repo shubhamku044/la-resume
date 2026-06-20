@@ -157,7 +157,7 @@ export default {
       },
     },
   },
-  darkMode: ['class', 'class'],
+  darkMode: 'class',
   plugins: [addVariablesForColors, require('tailwindcss-animate'), require('tailwind-scrollbar')],
 } satisfies Config;
 

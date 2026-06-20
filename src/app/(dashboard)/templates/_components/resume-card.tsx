@@ -23,7 +23,7 @@ import { ShareModal } from '@/components/ui/share-modal';
 import { getAssetUrl } from '@/lib/assets';
 import { templates } from '@/lib/templates';
 import { formatDistanceToNow } from 'date-fns';
-import { Edit, Eye, MoreVertical, RotateCw, Share2, Sparkles, Trash2 } from 'lucide-react';
+import { Edit, MoreVertical, RotateCw, Share2, Sparkles, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -70,10 +70,6 @@ export function ResumeCard({
 
   const handleEditClick = () => {
     router.push(`/resume/template/${type}/${slug}`);
-  };
-
-  const handlePreviewClick = () => {
-    router.push(`/resume/preview/${slug}`);
   };
 
   const checkSharedLink = async () => {
@@ -142,9 +138,6 @@ export function ResumeCard({
                     <Edit className="mr-2 h-4 w-4" /> Edit
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={handlePreviewClick}>
-                  <Eye className="mr-2 h-4 w-4" /> Preview
-                </DropdownMenuItem>
                 <DropdownMenuItem onClick={checkSharedLink}>
                   <Share2 className="mr-2 h-4 w-4" /> Share
                 </DropdownMenuItem>
@@ -169,19 +162,9 @@ export function ResumeCard({
           </div>
 
           <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-black/60 via-black/10 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="flex w-full gap-2">
-              <Button onClick={handleEditClick} size="sm" className="flex-1 gap-1.5 shadow-lg">
-                <Edit className="size-4" /> Edit
-              </Button>
-              <Button
-                onClick={handlePreviewClick}
-                size="sm"
-                variant="secondary"
-                className="gap-1.5 shadow-lg"
-              >
-                <Eye className="size-4" /> Preview
-              </Button>
-            </div>
+            <Button onClick={handleEditClick} size="sm" className="w-full gap-1.5 shadow-lg">
+              <Edit className="size-4" /> Edit resume
+            </Button>
           </div>
         </div>
       </CardContent>
