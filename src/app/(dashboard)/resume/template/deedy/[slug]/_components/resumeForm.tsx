@@ -492,17 +492,19 @@ const ResumeForm = ({
           onMouseMove={handleMouseMove}
         >
           <TabsList className="flex w-max gap-2">
-            {sections
-              .filter((section) => section !== 'sectionOrder')
-              .map((section) => (
-                <TabsTrigger
-                  key={String(section)}
-                  value={String(section)}
-                  className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
-                >
-                  {String(section)}
-                </TabsTrigger>
-              ))}
+            {sections.flatMap((section) =>
+              section === 'sectionOrder'
+                ? []
+                : [
+                    <TabsTrigger
+                      key={String(section)}
+                      value={String(section)}
+                      className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
+                    >
+                      {String(section)}
+                    </TabsTrigger>,
+                  ]
+            )}
           </TabsList>
         </div>
 

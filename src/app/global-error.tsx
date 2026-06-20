@@ -1,7 +1,7 @@
 'use client';
 
 import * as Sentry from '@sentry/nextjs';
-import { useEffect } from 'react';
+import { useEffect, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { Geist } from 'next/font/google';
 
@@ -9,6 +9,24 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
+
+// global-error renders outside the app's stylesheet/providers, so it can't use
+// Tailwind — inline styles are required here. Hoisted to module scope so they
+// aren't rebuilt on every render.
+const primaryButtonStyle: CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+  padding: '0.625rem 1.25rem',
+  fontSize: '0.875rem',
+  fontWeight: 600,
+  color: '#fff',
+  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+  border: 'none',
+  borderRadius: '0.5rem',
+  cursor: 'pointer',
+  transition: 'opacity 0.2s',
+};
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };
@@ -130,20 +148,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
               <button
                 type="button"
                 onClick={reset}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.625rem 1.25rem',
-                  fontSize: '0.875rem',
-                  fontWeight: 600,
-                  color: '#fff',
-                  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-                  border: 'none',
-                  borderRadius: '0.5rem',
-                  cursor: 'pointer',
-                  transition: 'opacity 0.2s',
-                }}
+                style={primaryButtonStyle}
                 onMouseOver={(e) => (e.currentTarget.style.opacity = '0.85')}
                 onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
               >
