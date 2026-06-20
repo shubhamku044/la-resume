@@ -22,8 +22,10 @@ export function Header() {
           }}
         >
           <div className="flex items-center gap-2">
-            <FileText className="size-6 text-primary" />
-            <span className="text-xl font-bold">La Resume</span>
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+              <FileText className="size-5" />
+            </span>
+            <span className="text-xl font-bold tracking-tight">La Resume</span>
           </div>
         </Link>
 
@@ -70,7 +72,7 @@ export function Header() {
                 router.push('/templates');
               }}
               size="default"
-              className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
+              className="rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow"
             >
               Go to app
             </Button>
@@ -80,7 +82,7 @@ export function Header() {
             <Link href="/sign-in">
               <Button
                 size="default"
-                className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex rounded-full"
+                className="hidden rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow md:flex"
               >
                 Get Started
               </Button>
@@ -134,7 +136,7 @@ export function Header() {
                       router.push('/templates');
                     }}
                     size="sm"
-                    className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
+                    className="rounded-full bg-gradient-primary text-white"
                   >
                     Go to app
                   </Button>
@@ -142,10 +144,7 @@ export function Header() {
                 </Show>
                 <Show when="signed-out">
                   <Link href="/sign-in">
-                    <Button
-                      size="sm"
-                      className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
-                    >
+                    <Button size="sm" className="rounded-full bg-gradient-primary text-white">
                       Get Started
                     </Button>
                   </Link>

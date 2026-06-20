@@ -45,7 +45,7 @@ export const HeroInteractive = ({
               <Link href="/templates">
                 <Button
                   size="lg"
-                  className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
+                  className="group relative h-12 overflow-hidden rounded-full bg-gradient-primary px-8 font-medium text-white transition-all hover:shadow-glow"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {startBuildingText}
@@ -58,7 +58,7 @@ export const HeroInteractive = ({
               <Link href="/sign-in">
                 <Button
                   size="lg"
-                  className="group relative h-12 overflow-hidden rounded-full bg-purple-600 px-8 font-medium text-white transition-all hover:bg-purple-700 hover:shadow-lg"
+                  className="group relative h-12 overflow-hidden rounded-full bg-gradient-primary px-8 font-medium text-white transition-all hover:shadow-glow"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {startBuildingText}

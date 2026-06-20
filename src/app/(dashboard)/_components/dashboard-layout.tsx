@@ -92,7 +92,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="sticky top-0 z-10 flex h-16 items-center gap-6 border-b bg-background px-4">
+      <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur-sm">
         <Link
           href="/"
           onClick={() => {
@@ -100,13 +100,16 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           }}
         >
           <div className="flex items-center gap-2">
-            <FileText className="size-6 text-primary" />
-            <span className="text-xl font-bold">La Resume</span>
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+              <FileText className="size-5" />
+            </span>
+            <span className="text-xl font-bold tracking-tight">La Resume</span>
           </div>
         </Link>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="mr-2 rounded-lg p-2 hover:bg-accent"
+          className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          aria-label="Toggle sidebar"
         >
           <PanelLeft className="size-5" />
         </button>
