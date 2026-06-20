@@ -344,12 +344,19 @@ const ResumePreview = ({
               </div>
             </div>
           </div>
-          {loading && (
-            <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              <span>Compiling resume preview...</span>
-            </div>
-          )}
+          {/* Fixed-height status row so toggling 'compiling' never shifts the preview */}
+          <div
+            className="mt-3 flex h-5 items-center gap-2 text-sm text-muted-foreground"
+            role="status"
+            aria-live="polite"
+          >
+            {loading && (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>Compiling resume preview…</span>
+              </>
+            )}
+          </div>
         </div>
 
         <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">

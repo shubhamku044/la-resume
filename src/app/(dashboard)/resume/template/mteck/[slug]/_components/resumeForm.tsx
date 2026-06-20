@@ -318,15 +318,7 @@ const ResumeForm = ({
                 className="relative"
                 size="default"
                 onClick={handleSave}
-                variant={
-                  loading
-                    ? 'destructive'
-                    : isSaving
-                      ? 'destructive'
-                      : isChangesSaved
-                        ? 'link'
-                        : 'destructive'
-                }
+                variant={isChangesSaved ? 'outline' : 'default'}
               >
                 {isSaving ? (
                   <>{t('common.saving')}</>
@@ -423,15 +415,7 @@ const ResumeForm = ({
               className="flex-1"
               size="default"
               onClick={handleSave}
-              variant={
-                loading
-                  ? 'destructive'
-                  : isSaving
-                    ? 'destructive'
-                    : isChangesSaved
-                      ? 'default'
-                      : 'destructive'
-              }
+              variant={isChangesSaved ? 'outline' : 'default'}
             >
               {isSaving ? (
                 <>{t('common.saving')}</>

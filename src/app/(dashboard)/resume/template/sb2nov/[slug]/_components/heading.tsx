@@ -76,7 +76,7 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
               type="text"
               value={tempValues[field] ?? ''}
               onChange={(e) => handleChange(field, e.target.value)}
-              className="w-full rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+              className="w-full rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
             />
           </div>
         </div>
@@ -96,18 +96,18 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
                 value={social.name}
                 onChange={(e) => handleSocialChange(index, 'name', e.target.value)}
                 placeholder="Social Name"
-                className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
               />
               <input
                 type="text"
                 value={social.url}
                 onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
                 placeholder="Social URL"
-                className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
               />
               <button
                 onClick={() => handleRemoveSocial(index)}
-                className="self-end sm:self-auto text-red-500 hover:text-red-700"
+                className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
               >
                 <X size={16} />
               </button>
@@ -119,18 +119,18 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
               value={newSocialName}
               onChange={(e) => setNewSocialName(e.target.value)}
               placeholder="New Social Name"
-              className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+              className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
             />
             <input
               type="text"
               value={newSocialUrl}
               onChange={(e) => setNewSocialUrl(e.target.value)}
               placeholder="New Social URL"
-              className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+              className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
             />
             <button
               onClick={handleAddSocial}
-              className="self-end sm:self-auto text-green-500 hover:text-green-700"
+              className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-primary/40 bg-primary/10 text-primary transition-colors hover:bg-primary/20"
             >
               <Check size={16} />
             </button>

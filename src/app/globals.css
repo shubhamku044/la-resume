@@ -182,9 +182,17 @@
   }
 }
 
-@layer utilities {
-  input {
-    @apply dark:bg-gray-700 dark:text-white;
+@layer base {
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-muted-foreground;
+  }
+  /* Subtle, token-consistent fill so inputs read as elevated on dark surfaces
+     (replaces the old hardcoded dark:bg-gray-700 override that fought the
+     design system). */
+  .dark input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  .dark textarea {
+    @apply bg-white/[0.04] text-foreground;
   }
 }
 

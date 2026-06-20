@@ -132,7 +132,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             <span>{t('starOnGitHub')}</span>
             <div className="ml-1 flex items-center gap-1 text-xs">
               <Star className="size-3 fill-yellow-500 text-yellow-500" />
-              <span>{stars}</span>
+              <span>{stars ?? '—'}</span>
             </div>
           </Link>
 
@@ -218,7 +218,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 </div>
                 <div className="flex items-center gap-1 text-xs">
                   <Star className="size-3 fill-yellow-500 text-yellow-500" />
-                  <span>{stars}</span>
+                  <span>{stars ?? '—'}</span>
                 </div>
               </Link>
             </div>
