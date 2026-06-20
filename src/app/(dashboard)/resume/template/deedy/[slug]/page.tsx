@@ -122,7 +122,7 @@ export default function ResumeTemplatePage() {
   return (
     <div className="flex justify-center">
       <div className="container mx-auto">
-        <ResizablePanelGroup direction="horizontal" className="grid grid-cols-2 gap-0">
+        <ResizablePanelGroup orientation="horizontal" className="grid grid-cols-2 gap-0">
           <ResumeForm
             onUpdate={setImageUrl}
             onPreviewPagesUpdate={setPreviewPages}
