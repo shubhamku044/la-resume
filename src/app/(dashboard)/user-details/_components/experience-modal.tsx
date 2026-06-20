@@ -161,7 +161,7 @@ export default function ExperienceModal({ open, onClose, initialData }: Experien
                   mode="single"
                   selected={startDate}
                   onSelect={handleStartDateChange}
-                  initialFocus
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>
@@ -187,7 +187,7 @@ export default function ExperienceModal({ open, onClose, initialData }: Experien
                   mode="single"
                   selected={endDate}
                   onSelect={handleEndDateChange}
-                  initialFocus
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>

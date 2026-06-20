@@ -181,7 +181,7 @@ export default function EducationModal({ open, onClose, initialData }: Education
                   mode="single"
                   selected={startDate}
                   onSelect={handleStartDateChange}
-                  initialFocus
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>
@@ -207,7 +207,7 @@ export default function EducationModal({ open, onClose, initialData }: Education
                   mode="single"
                   selected={endDate}
                   onSelect={handleEndDateChange}
-                  initialFocus
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>
