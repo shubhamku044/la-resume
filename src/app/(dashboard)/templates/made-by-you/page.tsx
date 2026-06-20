@@ -21,6 +21,7 @@ import {
 import { useUser } from '@clerk/nextjs';
 import { FileText, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { ResumeCard } from '../_components/resume-card';
@@ -91,21 +92,33 @@ export default function MadeByYouPage() {
     return null;
   }
 
-  if (!isLoaded) {
-    return <Skeleton className="h-20 w-full" />;
-  }
-
-  if (isLoading) {
-    return <Skeleton className="h-20 w-full" />;
+  if (!isLoaded || isLoading) {
+    return (
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <Skeleton className="mb-2 h-9 w-64" />
+        <Skeleton className="mb-8 h-5 w-80" />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <Skeleton key={i} className="aspect-8.5/11 w-full rounded-2xl" />
+          ))}
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error loading resumes</div>;
+    return (
+      <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
+        <p className="text-destructive">Something went wrong loading your resumes.</p>
+        <Button variant="outline" className="mt-4" onClick={() => refetch()}>
+          Try again
+        </Button>
+      </div>
+    );
   }
 
   return (
-    <div className="mx-auto p-6">
-      <h1 className="mb-4 text-2xl font-semibold">{t('templates.madeByYou')}</h1>
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
       <DeleteConfirmationDialog
         open={!!selectedResume}
         onOpenChange={(open) => !open && setSelectedResume(null)}
@@ -116,9 +129,31 @@ export default function MadeByYouPage() {
         }}
         resumeTitle={selectedResume?.title || ''}
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {resumes.length > 0 &&
-          resumes.map((resume) => (
+
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+            {t('templates.madeByYou')}
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            {resumes.length > 0
+              ? `${resumes.length} ${resumes.length === 1 ? 'resume' : 'resumes'} — edit, preview, share or download.`
+              : 'Your saved resumes will appear here.'}
+          </p>
+        </div>
+        {resumes.length > 0 && (
+          <Button asChild className="shrink-0 gap-2">
+            <Link href="/templates/resume-templates">
+              <Plus className="size-4" />
+              New resume
+            </Link>
+          </Button>
+        )}
+      </div>
+
+      {resumes.length > 0 ? (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {resumes.map((resume) => (
             <ResumeCard
               key={resume.id}
               id={resume.id}
@@ -134,17 +169,21 @@ export default function MadeByYouPage() {
               clerkId={clerkId}
             />
           ))}
-      </div>
-      {resumes.length === 0 && (
-        <div className="text-center py-16">
-          <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-            <FileText className="w-8 h-8 text-muted-foreground" />
+        </div>
+      ) : (
+        <div className="flex flex-col items-center rounded-2xl border border-dashed border-border bg-secondary/40 px-6 py-20 text-center">
+          <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-gradient-primary text-white shadow-glow">
+            <FileText className="size-8" />
           </div>
-          <h3 className="text-lg font-medium mb-2">No resumes yet</h3>
-          <p className="text-muted-foreground mb-4">Create your first resume to get started</p>
-          <Button>
-            <Plus className="w-4 h-4 mr-2" />
-            Create Your First Resume
+          <h3 className="text-xl font-semibold">No resumes yet</h3>
+          <p className="mb-6 mt-2 max-w-sm text-muted-foreground">
+            Choose a professionally designed template to build your first ATS-friendly resume.
+          </p>
+          <Button asChild size="lg" className="gap-2">
+            <Link href="/templates/resume-templates">
+              <Plus className="size-4" />
+              Create your first resume
+            </Link>
           </Button>
         </div>
       )}

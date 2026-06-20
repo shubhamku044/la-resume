@@ -21,8 +21,9 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ShareModal } from '@/components/ui/share-modal';
 import { getAssetUrl } from '@/lib/assets';
+import { templates } from '@/lib/templates';
 import { formatDistanceToNow } from 'date-fns';
-import { Edit, Eye, MoreVertical, RotateCw, Share2, Trash2 } from 'lucide-react';
+import { Edit, Eye, MoreVertical, RotateCw, Share2, Sparkles, Trash2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -63,6 +64,10 @@ export function ResumeCard({
   const [showCreateShareAlert, setShowCreateShareAlert] = useState(false);
   const router = useRouter();
 
+  const templateName = templates.find((tpl) => tpl.id === type)?.name ?? type;
+  const isAutoTitle = /^Resume-[0-9a-f-]{12,}$/i.test(title.trim());
+  const displayTitle = isAutoTitle ? 'Untitled resume' : title;
+
   const handleEditClick = () => {
     router.push(`/resume/template/${type}/${slug}`);
   };
@@ -92,41 +97,41 @@ export function ResumeCard({
   return (
     <Card
       key={id}
-      className={`group transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] rounded-2xl border relative overflow-hidden ${
-        paymentStatus ? 'ring-2 ring-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)]' : ''
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant ${
+        paymentStatus ? 'border-warning/50 ring-1 ring-warning/40' : ''
       }`}
     >
-      {/* Ribbon for Paid */}
       {paymentStatus && (
-        <div className="absolute left-[-40px] top-6 -rotate-45 bg-yellow-500 text-white text-xs font-semibold px-12 py-1 shadow-md z-20">
-          PREMIUM
+        <div className="absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-warning px-2.5 py-1 text-xs font-semibold text-warning-foreground shadow-sm">
+          <Sparkles className="size-3" />
+          Premium
         </div>
       )}
 
       <CardContent className="p-0">
         <div
-          className={`aspect-8.5/11 bg-card rounded-t-2xl relative overflow-hidden ${
-            paymentStatus ? 'bg-linear-to-b from-yellow-50 to-white' : ''
+          className={`relative aspect-8.5/11 overflow-hidden bg-secondary ${
+            paymentStatus ? 'bg-linear-to-b from-warning/10 to-secondary' : ''
           }`}
         >
-          <div className="w-full h-full flex items-center justify-center p-2">
+          <div className="flex h-full w-full items-center justify-center p-3">
             <Image
               src={getAssetUrl(imageUrl)}
-              alt={`Preview of ${title}`}
+              alt={`Preview of ${displayTitle}`}
               width={400}
               height={500}
-              className="object-contain rounded-xl w-full h-full"
+              className="h-full w-full rounded-lg object-contain shadow-sm transition-transform duration-500 group-hover:scale-[1.02]"
               unoptimized
             />
           </div>
 
-          <div className="absolute top-3 right-3 z-10">
+          <div className="absolute right-3 top-3 z-10">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="size-8 bg-background/80 opacity-0 shadow-sm backdrop-blur-sm transition-opacity hover:bg-background group-hover:opacity-100"
                 >
                   <MoreVertical className="h-4 w-4" />
                 </Button>
@@ -163,27 +168,28 @@ export function ResumeCard({
             </DropdownMenu>
           </div>
 
-          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div className="space-x-2">
-              <Button onClick={handleEditClick} size="sm" variant="default">
-                <Edit className="w-4 h-4 mr-1" /> Edit
+          <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-black/60 via-black/10 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="flex w-full gap-2">
+              <Button onClick={handleEditClick} size="sm" className="flex-1 gap-1.5 shadow-lg">
+                <Edit className="size-4" /> Edit
+              </Button>
+              <Button
+                onClick={handlePreviewClick}
+                size="sm"
+                variant="secondary"
+                className="gap-1.5 shadow-lg"
+              >
+                <Eye className="size-4" /> Preview
               </Button>
             </div>
           </div>
         </div>
       </CardContent>
 
-      <CardFooter className="p-4">
+      <CardFooter className="flex-1 items-start p-4">
         <div className="w-full">
-          <h3 className="font-semibold text-base mb-1 truncate flex items-center gap-2">
-            {title}
-            {paymentStatus && (
-              <span className="text-yellow-600 text-xs font-medium bg-yellow-100 px-2 py-0.5 rounded-full">
-                Premium
-              </span>
-            )}
-          </h3>
-          <p className="text-sm text-muted-foreground mb-2 truncate">{type}</p>
+          <h3 className="mb-0.5 truncate text-base font-semibold tracking-tight">{displayTitle}</h3>
+          <p className="mb-2 truncate text-sm text-muted-foreground">{templateName}</p>
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>Modified {formatDistanceToNow(lastUpdated, { addSuffix: true })}</span>
           </div>
