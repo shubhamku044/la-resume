@@ -26,7 +26,7 @@ export function TemplateCard({
     <>
       <Card className="group cursor-pointer animate-fade-in hover:scale-105 transition-all duration-300">
         <CardContent className="p-0">
-          <div className="aspect-[8.5/11] bg-gradient-secondary rounded-t-lg relative overflow-hidden">
+          <div className="aspect-8.5/11 bg-gradient-secondary rounded-t-lg relative overflow-hidden">
             {imageUrl ? (
               <Image
                 src={getAssetUrl(imageUrl)}

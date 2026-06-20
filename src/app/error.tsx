@@ -17,7 +17,7 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-background to-muted/20 px-4">
       <div className="max-w-md w-full text-center space-y-8">
         <div className="relative">
           <div className="mx-auto w-24 h-24 bg-destructive/10 rounded-full flex items-center justify-center">

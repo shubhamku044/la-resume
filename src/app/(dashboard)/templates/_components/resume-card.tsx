@@ -98,15 +98,15 @@ export function ResumeCard({
     >
       {/* Ribbon for Paid */}
       {paymentStatus && (
-        <div className="absolute left-[-40px] top-6 rotate-[-45deg] bg-yellow-500 text-white text-xs font-semibold px-12 py-1 shadow-md z-20">
+        <div className="absolute left-[-40px] top-6 -rotate-45 bg-yellow-500 text-white text-xs font-semibold px-12 py-1 shadow-md z-20">
           PREMIUM
         </div>
       )}
 
       <CardContent className="p-0">
         <div
-          className={`aspect-[8.5/11] bg-card rounded-t-2xl relative overflow-hidden ${
-            paymentStatus ? 'bg-gradient-to-b from-yellow-50 to-white' : ''
+          className={`aspect-8.5/11 bg-card rounded-t-2xl relative overflow-hidden ${
+            paymentStatus ? 'bg-linear-to-b from-yellow-50 to-white' : ''
           }`}
         >
           <div className="w-full h-full flex items-center justify-center p-2">

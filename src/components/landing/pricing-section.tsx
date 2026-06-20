@@ -71,10 +71,10 @@ export const PricingSection = async () => {
           {/* Pricing Card */}
           <div className="flex justify-center w-full lg:w-auto">
             <Card className="relative w-full max-w-md overflow-hidden border-2 border-purple-200 shadow-xl dark:border-purple-800">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20" />
+              <div className="absolute inset-0 bg-linear-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20" />
               <div className="relative">
                 <CardHeader className="text-center pb-2 px-4 sm:px-6">
-                  <div className="mx-auto mb-3 sm:mb-4 flex size-12 sm:size-16 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500">
+                  <div className="mx-auto mb-3 sm:mb-4 flex size-12 sm:size-16 items-center justify-center rounded-full bg-linear-to-r from-purple-500 to-blue-500">
                     <DollarSign className="size-6 sm:size-8 text-white" />
                   </div>
                   <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
@@ -102,31 +102,31 @@ export const PricingSection = async () => {
 
                   <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.unlimited_downloads')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.shareable_links')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.auto_updates')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.analytics')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.no_expiration')}
                       </span>
@@ -135,14 +135,14 @@ export const PricingSection = async () => {
 
                   <Show when="signed-in">
                     <Link href="/templates/made-by-you">
-                      <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
+                      <Button className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
                   </Show>
                   <Show when="signed-out">
                     <Link href="/sign-in">
-                      <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
+                      <Button className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
@@ -158,8 +158,8 @@ export const PricingSection = async () => {
             <div className="block sm:hidden mb-6">
               <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 scrollbar-hide">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex-shrink-0 w-[85vw] snap-center">
-                    <Card className="border-0 shadow-md transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm w-full h-[200px] flex flex-col">
+                  <div key={index} className="shrink-0 w-[85vw] snap-center">
+                    <Card className="border-0 shadow-md transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xs w-full h-[200px] flex flex-col">
                       <CardContent className="p-6 flex-1 flex flex-col">
                         <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700">
                           {feature.icon}
@@ -180,7 +180,7 @@ export const PricingSection = async () => {
             <div className="hidden sm:grid gap-6 grid-cols-2 lg:grid-cols-2">
               {features.map((feature, index) => (
                 <div key={index} className="group">
-                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm h-[200px] flex flex-col">
+                  <Card className="border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xs h-[200px] flex flex-col">
                     <CardContent className="p-6 flex-1 flex flex-col">
                       <div className="mb-4 flex size-12 items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-700 group-hover:scale-110 transition-transform duration-300">
                         {feature.icon}

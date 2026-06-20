@@ -116,7 +116,7 @@ export default function BoardsPage() {
           {boards.map((board) => (
             <div
               key={board.id}
-              className="group relative rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="group relative rounded-lg border border-border bg-card p-6 shadow-xs transition-shadow hover:shadow-md"
             >
               <Link href={`/tracker/boards/${board.id}`} className="block">
                 <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
@@ -193,7 +193,7 @@ export default function BoardsPage() {
       )}
 
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm   ">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs   ">
           <div className="mx-4 w-full max-w-md rounded-lg bg-white dark:bg-gray-900 p-6 ">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
@@ -219,7 +219,7 @@ export default function BoardsPage() {
                   id="boardName"
                   name="boardName"
                   required
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                   placeholder="e.g., UX Designer Applications"
                   disabled={isSubmitting}
                 />
@@ -236,7 +236,7 @@ export default function BoardsPage() {
                   id="boardDescription"
                   name="boardDescription"
                   rows={3}
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                   placeholder="What's this board for?"
                   disabled={isSubmitting}
                 />
@@ -252,7 +252,7 @@ export default function BoardsPage() {
                 <select
                   id="boardTemplate"
                   name="boardTemplate"
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                   disabled={isSubmitting}
                 >
                   <option value="">Blank Board</option>

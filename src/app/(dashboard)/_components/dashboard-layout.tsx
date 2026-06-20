@@ -298,7 +298,7 @@ function CollapsibleSection({
           return isCollapsed ? (
             <TooltipProvider key={item.url}>
               <Tooltip>
-                <TooltipTrigger asChild className="z-[1]">
+                <TooltipTrigger asChild className="z-1">
                   {link}
                 </TooltipTrigger>
                 <TooltipContent side="right" className="text-sm">

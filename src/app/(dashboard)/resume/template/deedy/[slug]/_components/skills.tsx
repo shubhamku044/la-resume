@@ -100,7 +100,7 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
       <Reorder.Group values={Object.keys(data)} onReorder={handleReorder} className="space-y-3">
         {Object.keys(data).map((category) => (
           <Reorder.Item key={category} value={category}>
-            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-sm">
+            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-xs">
               <div className="flex w-full gap-3">
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
 

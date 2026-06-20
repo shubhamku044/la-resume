@@ -22,7 +22,7 @@ export function JobCreationModal({
   if (!activeColumn) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
       <div className="w-full max-w-md rounded-xl bg-card p-4 shadow-xl sm:p-6">
         <div className="mb-4 flex items-center justify-between sm:mb-5">
           <h3 className="text-lg font-semibold sm:text-xl">Add New Job</h3>
@@ -54,7 +54,7 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Frontend Developer"
             />
           </div>
@@ -73,7 +73,7 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="e.g. Acme Inc."
             />
           </div>
@@ -91,7 +91,7 @@ export function JobCreationModal({
                   notes: e.target.value,
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
               placeholder="Any additional information..."
               rows={3}
             />

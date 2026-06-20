@@ -104,7 +104,7 @@ export const ContactSection = () => {
           <Card className="overflow-hidden border-0 shadow-lg">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-5">
-                <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-8 text-white md:col-span-2">
+                <div className="bg-linear-to-br from-purple-600 to-pink-600 p-8 text-white md:col-span-2">
                   <h3 className="mb-6 text-2xl font-bold">{t('contact_info_title')}</h3>
                   <div className="space-y-4">
                     <p className="flex items-center gap-3">

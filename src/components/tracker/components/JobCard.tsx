@@ -23,7 +23,7 @@ export function JobCard({ card, index, deleteJob, isDeleting }: CardComponentPro
           // CSSProperties (Radix adds a `--radix-*` index signature); re-assert the type.
           style={provided.draggableProps.style as React.CSSProperties}
           className={cn(
-            'rounded-lg border bg-card p-2.5 shadow-sm transition-all sm:p-3.5',
+            'rounded-lg border bg-card p-2.5 shadow-xs transition-all sm:p-3.5',
             snapshot.isDragging ? 'rotate-1 scale-[1.02] shadow-md' : ''
           )}
         >
