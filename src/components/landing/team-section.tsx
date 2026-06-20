@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { getAssetUrl } from '@/lib/assets';
-import { Github, Mail, Twitter } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -80,7 +81,7 @@ export const TeamSection = async () => {
                           aria-label={`GitHub profile of ${creator.name}`}
                           className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
-                          <Github className="size-5" />
+                          <FaGithub className="size-5" />
                         </Link>
                         <Link
                           href={creator.twitter}
@@ -89,7 +90,7 @@ export const TeamSection = async () => {
                           aria-label={`Twitter profile of ${creator.name}`}
                           className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
-                          <Twitter className="size-5" />
+                          <FaTwitter className="size-5" />
                         </Link>
                         <Link
                           href={`mailto:${creator.email}`}

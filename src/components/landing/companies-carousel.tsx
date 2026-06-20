@@ -6,7 +6,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Apple, Github, Linkedin } from 'lucide-react';
+import { Apple } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 
 const companies = [
@@ -59,7 +60,7 @@ const companies = [
       </svg>
     ),
   },
-  { name: 'LinkedIn', icon: <Linkedin className="size-10 text-gray-700 dark:text-gray-300" /> },
+  { name: 'LinkedIn', icon: <FaLinkedin className="size-10 text-gray-700 dark:text-gray-300" /> },
   {
     name: 'Walmart',
     icon: (
@@ -72,7 +73,7 @@ const companies = [
       </svg>
     ),
   },
-  { name: 'Github', icon: <Github className="size-10 text-gray-700 dark:text-gray-300" /> },
+  { name: 'Github', icon: <FaGithub className="size-10 text-gray-700 dark:text-gray-300" /> },
 ];
 
 export const CompaniesCarousel = () => {

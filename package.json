@@ -55,7 +55,7 @@
     "dotenv-cli": "^11.0.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.40.0",
-    "lucide-react": "^0.523.0",
+    "lucide-react": "^1.21.0",
     "motion": "^12.40.0",
     "next": "16.2.9",
     "next-intl": "^4.13.0",
