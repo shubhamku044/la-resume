@@ -347,6 +347,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                     type="text"
                     value={social.label}
                     onChange={(e) => handleSocialChange(index, 'label', e.target.value)}
+                    aria-label="Social label"
                     placeholder="Social Label"
                     className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                   />
@@ -354,6 +355,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                     type="text"
                     value={social.url}
                     onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
+                    aria-label="Social URL"
                     placeholder="Social URL"
                     className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                   />
@@ -371,6 +373,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                   type="text"
                   value={newSocialName}
                   onChange={(e) => setNewSocialName(e.target.value)}
+                  aria-label="New social name"
                   placeholder="New Social Name"
                   className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                 />
@@ -378,6 +381,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                   type="text"
                   value={newSocialUrl}
                   onChange={(e) => setNewSocialUrl(e.target.value)}
+                  aria-label="New social URL"
                   placeholder="New Social URL"
                   className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                 />

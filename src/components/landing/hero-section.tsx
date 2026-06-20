@@ -3,8 +3,10 @@ import { getTranslations } from 'next-intl/server';
 import { HeroInteractive } from './hero-interactive';
 
 export const HeroSection = async () => {
-  const t = await getTranslations('HomePage');
-  const { stars, signups, resumes } = await getStats();
+  const [t, { stars, signups, resumes }] = await Promise.all([
+    getTranslations('HomePage'),
+    getStats(),
+  ]);
 
   return (
     <HeroInteractive

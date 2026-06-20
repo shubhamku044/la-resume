@@ -254,10 +254,11 @@ export default function SignInPage() {
 
                   {/* Testimonial Dots */}
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center gap-2">
-                    {reviews.map((_, index) => (
+                    {reviews.map((review, index) => (
                       <button
                         type="button"
-                        key={index}
+                        key={review.username}
+                        aria-label={`Show testimonial ${index + 1}`}
                         onClick={() => setCurrentTestimonial(index)}
                         className={`h-2 w-2 rounded-full transition-all duration-300 ${
                           index === currentTestimonial
