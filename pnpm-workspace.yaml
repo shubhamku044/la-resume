@@ -1,9 +1,11 @@
 allowBuilds:
   '@clerk/shared': true
   '@heroui/shared-utils': true
+  '@parcel/watcher': false
   '@prisma/client': true
   '@prisma/engines': true
   '@sentry/cli': true
+  '@swc/core': false
   '@vercel/speed-insights': true
   core-js: true
   esbuild: true
@@ -12,5 +14,5 @@ allowBuilds:
   unrs-resolver: true
 
 overrides:
-  '@types/react': 19.2.5
+  '@types/react': 19.2.17
   '@types/react-dom': 19.2.3
