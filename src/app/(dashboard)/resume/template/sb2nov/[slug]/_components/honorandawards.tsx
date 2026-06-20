@@ -185,7 +185,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex items-start justify-between rounded-lg border border-gray-300 p-5 shadow-xs">
+            <Card className="flex items-start justify-between rounded-lg border border-input p-5 shadow-xs">
               <div className="flex gap-2">
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
                 <div className="w-full space-y-2">

@@ -213,7 +213,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-4 shadow-xs">
+            <Card className="rounded-lg border border-input p-4 shadow-xs">
               <div className="flex items-start justify-between">
                 <div className="flex gap-2">
                   <GripVertical size={20} className="cursor-grab opacity-65" />
@@ -330,12 +330,13 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
             >
               {tempEntry.accomplishments.map((acc) => (
                 <Reorder.Item key={acc} value={acc}>
-                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                  <div className="flex items-center gap-2 rounded-md border border-input bg-muted/50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{acc}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveAccomplishment(acc)}
-                      className="text-red-500 hover:text-red-700"
+                      className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >
                       <X size={14} />
                     </button>

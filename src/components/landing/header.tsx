@@ -22,14 +22,22 @@ export function Header() {
           }}
         >
           <div className="flex items-center gap-2">
-            <FileText className="size-6 text-primary" />
-            <span className="text-xl font-bold">La Resume</span>
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+              <FileText className="size-5" />
+            </span>
+            <span className="text-xl font-bold tracking-tight">La Resume</span>
           </div>
         </Link>
 
         <nav className="hidden items-center space-x-6 md:flex">
           <Link
-            href="/#features"
+            href="/resume-templates"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            Templates
+          </Link>
+          <Link
+            href="/features"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Features
@@ -41,12 +49,12 @@ export function Header() {
             How It Works
           </Link>
           <Link
-            href="/#pricing"
+            href="/pricing"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Pricing
           </Link>
-          <Link href="/#team" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
             Our Team
           </Link>
           <Link
@@ -55,7 +63,7 @@ export function Header() {
           >
             Testimonials
           </Link>
-          <Link href="/#faq" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/faq" className="text-sm font-medium transition-colors hover:text-primary">
             FAQ
           </Link>
         </nav>
@@ -70,7 +78,7 @@ export function Header() {
                 router.push('/templates');
               }}
               size="default"
-              className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
+              className="rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow"
             >
               Go to app
             </Button>
@@ -80,7 +88,7 @@ export function Header() {
             <Link href="/sign-in">
               <Button
                 size="default"
-                className="hidden bg-purple-500 text-white hover:bg-purple-600 md:flex rounded-full"
+                className="hidden rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow md:flex"
               >
                 Get Started
               </Button>
@@ -98,7 +106,13 @@ export function Header() {
               <SheetTitle>Mobile Navigation</SheetTitle>
               <nav className="mt-6 flex flex-col gap-4">
                 <Link
-                  href="#features"
+                  href="/resume-templates"
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Templates
+                </Link>
+                <Link
+                  href="/features"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Features
@@ -110,7 +124,7 @@ export function Header() {
                   How It Works
                 </Link>
                 <Link
-                  href="#team"
+                  href="/about"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Our Team
@@ -122,7 +136,7 @@ export function Header() {
                   Testimonials
                 </Link>
                 <Link
-                  href="#faq"
+                  href="/faq"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   FAQ
@@ -134,7 +148,7 @@ export function Header() {
                       router.push('/templates');
                     }}
                     size="sm"
-                    className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
+                    className="rounded-full bg-gradient-primary text-white"
                   >
                     Go to app
                   </Button>
@@ -142,10 +156,7 @@ export function Header() {
                 </Show>
                 <Show when="signed-out">
                   <Link href="/sign-in">
-                    <Button
-                      size="sm"
-                      className="bg-purple-500 text-white hover:bg-purple-600 rounded-full"
-                    >
+                    <Button size="sm" className="rounded-full bg-gradient-primary text-white">
                       Get Started
                     </Button>
                   </Link>

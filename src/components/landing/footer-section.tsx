@@ -25,7 +25,15 @@ export const FooterSection = async () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="#team"
+                  href="/resume-templates"
+                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                >
+                  Resume Templates
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.aboutUs')}
@@ -33,7 +41,7 @@ export const FooterSection = async () => {
               </li>
               <li>
                 <Link
-                  href="/privacyPolicy"
+                  href="/privacy-policy"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.privacyPolicy')}
@@ -80,7 +88,7 @@ export const FooterSection = async () => {
               </li>
               <li>
                 <Link
-                  href="#faq"
+                  href="/faq"
                   className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
                 >
                   {t('footer.faqs')}

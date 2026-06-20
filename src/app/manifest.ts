@@ -7,6 +7,9 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
     display: 'standalone',
     start_url: '/',
+    theme_color: '#ffffff',
+    background_color: '#ffffff',
+    categories: ['productivity', 'business', 'utilities'],
     icons: [
       {
         src: '/favicon.ico',
@@ -14,14 +17,22 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/x-icon',
       },
       {
-        src: '/favicon-light.ico',
-        sizes: '16x16 32x32',
-        type: 'image/x-icon',
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
       },
       {
-        src: '/favicon-dark.ico',
-        sizes: '16x16 32x32',
-        type: 'image/x-icon',
+        src: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-maskable-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   };

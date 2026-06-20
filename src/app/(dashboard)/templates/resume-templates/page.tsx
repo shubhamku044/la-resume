@@ -1,4 +1,5 @@
 'use client';
+import { Sparkles } from 'lucide-react';
 import { templates } from '@/lib/templates';
 import { useSaveResumeMutation } from '@/store/services/templateApi';
 import { useUser } from '@clerk/nextjs';
@@ -63,27 +64,39 @@ export default function ResumeTemplatesPage() {
   };
 
   return (
-    <div className="container space-y-4 mx-auto py-6">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
       {iscreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-md">
-          <div className="rounded-lg bg-card p-6 shadow-lg">
-            <h2 className="text-center text-lg font-semibold">Creating Resume...</h2>
+          <div className="flex items-center gap-3 rounded-xl bg-card px-6 py-5 shadow-elegant">
+            <span className="size-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+            <h2 className="text-lg font-semibold">Creating your resume…</h2>
           </div>
         </div>
       )}
 
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text">
-          {t('templates.resTemplate')}
+      <div className="mx-auto mb-10 max-w-2xl space-y-4 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent px-3 py-1 text-sm font-medium text-accent-foreground">
+          <Sparkles className="size-4" />
+          {templates.length} professional templates
+        </span>
+        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+          <span className="bg-gradient-primary bg-clip-text text-transparent">
+            {t('templates.resTemplate')}
+          </span>
         </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Select from our collection of professionally designed resume templates
+        <p className="mx-auto max-w-xl text-lg text-muted-foreground">
+          Pick a recruiter-approved, ATS-friendly design. Customize it in minutes and export to PDF
+          or LaTeX.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {templates.map((template, index) => (
-          <div key={template.id} style={{ animationDelay: `${index * 100}ms` }}>
+          <div
+            key={template.id}
+            className="animate-fade-in"
+            style={{ animationDelay: `${index * 80}ms` }}
+          >
             <TemplateCard
               title={template.name}
               description={template.description}

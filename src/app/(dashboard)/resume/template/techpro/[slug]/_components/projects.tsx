@@ -244,7 +244,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
       <Reorder.Group values={data.entries} onReorder={handleReorder} className="space-y-3">
         {data.entries.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="rounded-lg border border-gray-300 p-4 shadow-xs">
+            <Card className="rounded-lg border border-input p-4 shadow-xs">
               <div className="flex items-start justify-between">
                 <div className="flex gap-2">
                   <GripVertical size={20} className="cursor-grab opacity-65" />
@@ -347,19 +347,22 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                     type="text"
                     value={social.label}
                     onChange={(e) => handleSocialChange(index, 'label', e.target.value)}
+                    aria-label="Social label"
                     placeholder="Social Label"
-                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                    className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                   />
                   <input
                     type="text"
                     value={social.url}
                     onChange={(e) => handleSocialChange(index, 'url', e.target.value)}
+                    aria-label="Social URL"
                     placeholder="Social URL"
-                    className="w-full sm:w-1/2 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                    className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                   />
                   <button
+                    type="button"
                     onClick={() => handleRemoveSocial(index)}
-                    className="self-end sm:self-auto text-red-500 hover:text-red-700"
+                    className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                   >
                     <X size={16} />
                   </button>
@@ -370,19 +373,22 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                   type="text"
                   value={newSocialName}
                   onChange={(e) => setNewSocialName(e.target.value)}
+                  aria-label="New social name"
                   placeholder="New Social Name"
-                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                 />
                 <input
                   type="text"
                   value={newSocialUrl}
                   onChange={(e) => setNewSocialUrl(e.target.value)}
+                  aria-label="New social URL"
                   placeholder="New Social URL"
-                  className="w-full sm:flex-1 rounded-md border border-gray-300 p-2 text-sm text-gray-700 focus:border-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:text-gray-200"
+                  className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
                 />
                 <button
+                  type="button"
                   onClick={handleAddSocial}
-                  className="self-end sm:self-auto text-green-500 hover:text-green-700"
+                  className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-primary/40 bg-primary/10 text-primary transition-colors hover:bg-primary/20"
                 >
                   <Check size={16} />
                 </button>
@@ -401,12 +407,13 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
             >
               {tempEntry.accomplishments.map((acc) => (
                 <Reorder.Item key={acc} value={acc}>
-                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                  <div className="flex items-center gap-2 rounded-md border border-input bg-muted/50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{acc}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveAccomplishment(acc)}
-                      className="text-red-500 hover:text-red-700"
+                      className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >
                       <X size={14} />
                     </button>

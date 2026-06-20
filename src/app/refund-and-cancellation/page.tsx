@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Cancellation & Refund Policy | La-Resume',
+  description: 'La-Resume cancellation and refund policy for paid features.',
+  alternates: { canonical: 'https://la-resume.com/refund-and-cancellation' },
+};
 
 const CancellationRefundPolicyPage = () => {
   return (

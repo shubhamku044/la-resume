@@ -36,7 +36,7 @@ export default function ResumeTemplatePage() {
 
   if (isFetching) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Loading...</div>
       </div>
     );
@@ -44,7 +44,7 @@ export default function ResumeTemplatePage() {
 
   if (isError) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Error loading resume. Please try again.</div>
       </div>
     );
@@ -52,7 +52,7 @@ export default function ResumeTemplatePage() {
 
   if (!existingResume) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Loading.</div>
       </div>
     );
@@ -61,7 +61,7 @@ export default function ResumeTemplatePage() {
   if (isMobile) {
     return (
       <div className="min-h-screen ">
-        <div className=" bg-white px-2 ">
+        <div className=" bg-background px-2 ">
           <div className="flex items-center justify-center">
             <Button
               onClick={() => setShowPreviewOverlay(true)}
@@ -72,6 +72,22 @@ export default function ResumeTemplatePage() {
               Preview
             </Button>
           </div>
+        </div>
+
+        {/* Mobile Resume Form */}
+        <div className="px-2">
+          <ResumeForm
+            onUpdate={setImageUrl}
+            onPreviewPagesUpdate={setPreviewPages}
+            loading={loading}
+            setLoading={setLoading}
+            setLatexData={setLatexData}
+            templateSampleData={initialData as TechProResumeData}
+            templateFunction={resumeFunc as typeof techPro}
+            slug={slug as string}
+            title={existingResume?.title || ''}
+            isMobileView={true}
+          />
         </div>
 
         <Dialog open={showPreviewOverlay} onOpenChange={setShowPreviewOverlay}>
@@ -101,9 +117,9 @@ export default function ResumeTemplatePage() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="container mx-auto">
-        <ResizablePanelGroup orientation="horizontal" className="grid grid-cols-2 gap-0">
+    <div className="h-[calc(100dvh-4rem)] w-full overflow-hidden">
+      <div className="h-full w-full">
+        <ResizablePanelGroup orientation="horizontal" className="h-full w-full">
           <ResumeForm
             onUpdate={setImageUrl}
             onPreviewPagesUpdate={setPreviewPages}
@@ -116,7 +132,7 @@ export default function ResumeTemplatePage() {
             title={existingResume?.title || ''}
             isMobileView={false}
           />
-          <ResizableHandle />
+          <ResizableHandle withHandle />
           <ResumePreview
             imageUrl={imageUrl}
             previewPages={previewPages}

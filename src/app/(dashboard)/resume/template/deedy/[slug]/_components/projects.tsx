@@ -158,7 +158,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
       <Reorder.Group values={data} onReorder={handleReorder} className="space-y-3">
         {data.map((entry, index) => (
           <Reorder.Item key={entry.id} value={entry}>
-            <Card className="flex justify-between rounded-lg border border-gray-300 p-4 shadow-xs">
+            <Card className="flex justify-between rounded-lg border border-input p-4 shadow-xs">
               <div className="flex w-full gap-3">
                 <GripVertical size={20} className="mt-1 cursor-grab opacity-65" />
 
@@ -284,12 +284,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
             >
               {tempEntry.tools.map((tool, idx) => (
                 <Reorder.Item key={`${tool}-${idx}`} value={tool}>
-                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                  <div className="flex items-center gap-2 rounded-md border border-input bg-muted/50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{tool}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveTool(tool)}
-                      className="text-red-500 hover:text-red-700"
+                      className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >
                       <X size={14} />
                     </button>
@@ -326,12 +327,13 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
             >
               {tempEntry.highlights.map((highlight, idx) => (
                 <Reorder.Item key={`${highlight}-${idx}`} value={highlight}>
-                  <div className="flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 p-2">
+                  <div className="flex items-center gap-2 rounded-md border border-input bg-muted/50 p-2">
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{highlight}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveHighlight(highlight)}
-                      className="text-red-500 hover:text-red-700"
+                      className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >
                       <X size={14} />
                     </button>

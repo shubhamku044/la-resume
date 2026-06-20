@@ -3,45 +3,45 @@ import { useEffect, useState } from 'react';
 
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
-export function useGitHubStars() {
-  const [stars, setStars] = useState<string | null>(() => {
-    if (typeof window === 'undefined') return null;
+/**
+ * Returns the formatted GitHub star count, or null until it's loaded.
+ *
+ * Important: nothing reads localStorage during the initial render, so the
+ * server and the client's first paint both render `null`. The real value is
+ * only filled in after mount — this avoids the hydration mismatch that the
+ * old initializer (which read localStorage synchronously) produced.
+ */
+export function useGitHubStars(): string | null {
+  const [stars, setStars] = useState<string | null>(null);
+
+  useEffect(() => {
     const cachedStars = localStorage?.getItem('githubStars');
     const cachedTime = localStorage?.getItem('githubStarsTimestamp');
 
-    if (cachedStars && cachedTime) {
-      const age = Date.now() - parseInt(cachedTime);
-      if (age < CACHE_DURATION) {
-        return cachedStars;
-      }
+    if (cachedStars && cachedTime && Date.now() - parseInt(cachedTime) < CACHE_DURATION) {
+      setStars(cachedStars);
+      return;
     }
-    return null;
-  });
 
-  useEffect(() => {
     const fetchStars = async () => {
       try {
         const response = await fetch('https://api.github.com/repos/shubhamku044/la-resume');
         const data = await response.json();
-        const count = data.stargazers_count;
-
-        const formatted = count > 1000 ? `${(count / 1000).toFixed(1)}k` : count.toString();
+        const count: number = data.stargazers_count;
+        const formatted = count >= 1000 ? `${(count / 1000).toFixed(1)}k` : count.toString();
 
         localStorage?.setItem('githubStars', formatted);
         localStorage?.setItem('githubStarsTimestamp', Date.now().toString());
         setStars(formatted);
       } catch (error) {
         console.error('Failed to fetch GitHub stars:', error);
-        const cached = localStorage?.getItem('githubStars');
-        setStars(cached || '–––');
+        // Keep whatever was cached rather than fabricating a number.
+        setStars(cachedStars ?? null);
       }
     };
 
-    // Only fetch if we don't have valid cached data
-    if (stars === null) {
-      fetchStars();
-    }
-  }, [stars]);
+    fetchStars();
+  }, []);
 
-  return stars ? +stars : 1000;
+  return stars;
 }

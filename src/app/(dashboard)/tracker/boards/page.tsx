@@ -86,6 +86,7 @@ export default function BoardsPage() {
       <header className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-indigo-600">My Job Boards</h1>
         <button
+          type="button"
           onClick={() => setIsModalOpen(true)}
           className="flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
         >
@@ -104,6 +105,7 @@ export default function BoardsPage() {
               Create your first board to start tracking job applications
             </p>
             <button
+              type="button"
               onClick={() => setIsModalOpen(true)}
               className="rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
             >
@@ -135,6 +137,7 @@ export default function BoardsPage() {
                 </div>
               </Link>
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   openDeleteDialog(board.id);
@@ -198,6 +201,7 @@ export default function BoardsPage() {
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
               <button
+                type="button"
                 onClick={() => setIsModalOpen(false)}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-3xl"
                 disabled={isSubmitting}

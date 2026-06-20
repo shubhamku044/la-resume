@@ -248,7 +248,7 @@ const ResumePreview = ({
     const containerProps = isOverlay
       ? { className: 'w-full p-4' }
       : {
-          className: 'h-full w-full min-w-[500px] p-4 overflow-hidden flex flex-col',
+          className: 'h-full w-full min-w-[360px] p-4 overflow-hidden flex flex-col',
           defaultSize: '50%',
           minSize: '30%',
         };
@@ -344,12 +344,18 @@ const ResumePreview = ({
               </div>
             </div>
           </div>
-          {loading && (
-            <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
-              <Loader2 className="h-4 w-4 animate-spin" />
-              <span>Compiling resume preview...</span>
-            </div>
-          )}
+          {/* Fixed-height status row so toggling 'compiling' never shifts the preview */}
+          <output
+            className="mt-3 flex h-5 items-center gap-2 text-sm text-muted-foreground"
+            aria-live="polite"
+          >
+            {loading && (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>Compiling resume preview…</span>
+              </>
+            )}
+          </output>
         </div>
 
         <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">

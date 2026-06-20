@@ -16,8 +16,7 @@ import { useResumeData } from '@/hooks/resumeData';
 import { MTeckResumeData } from '@/lib/templates/mteck';
 import { useSaveResumeMutation, useUploadImageMutation } from '@/store/services/templateApi';
 import { useUser } from '@clerk/nextjs';
-import { Reorder } from 'framer-motion';
-import { ChevronDown, GripVertical, PencilIcon } from 'lucide-react';
+import { ChevronDown, ChevronUp, PencilIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -187,14 +186,6 @@ const ResumeForm = ({
   }, [formData, onUpdate, onPreviewPagesUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
-    setTempData((prev) => ({
-      ...prev,
-      sectionOrder: resumeSectionsOrder,
-    }));
-    setIsChangesSaved(false);
-  }, [resumeSectionsOrder]);
-
-  useEffect(() => {
     const timeout = setTimeout(() => setFormData(tempData), 500);
     return () => clearTimeout(timeout);
   }, [tempData]);
@@ -205,6 +196,16 @@ const ResumeForm = ({
 
   const sections = Object.keys(formData) as Array<keyof MTeckResumeData>;
   const sectionsOrder = formData?.sectionOrder || templateSampleData.sectionOrder;
+
+  const moveSection = (from: number, to: number) => {
+    if (!resumeSectionsOrder || to < 0 || to >= resumeSectionsOrder.length) return;
+    const next = [...resumeSectionsOrder];
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    setResumeSectionsOrder(next);
+    setTempData((prev) => ({ ...prev, sectionOrder: next }));
+    setIsChangesSaved(false);
+  };
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -260,18 +261,9 @@ const ResumeForm = ({
     }
   };
 
-  const handleSaveCallback = useCallback(handleSave, [handleSave]);
-
-  useEffect(() => {
-    if (isChangesSaved) {
-      // handleSaveCallback();
-      // setIsChangesSaved(false);
-    }
-  }, [isChangesSaved, handleSaveCallback]);
-
   const containerClass = isMobileView
-    ? 'w-full bg-white'
-    : 'min-h-[500px] w-full min-w-[500px] rounded-md p-4';
+    ? 'w-full bg-background'
+    : 'min-h-[500px] w-full min-w-[360px] rounded-md p-4';
 
   const Container = isMobileView ? 'div' : ResizablePanel;
   const containerProps = isMobileView
@@ -318,15 +310,7 @@ const ResumeForm = ({
                 className="relative"
                 size="default"
                 onClick={handleSave}
-                variant={
-                  loading
-                    ? 'destructive'
-                    : isSaving
-                      ? 'destructive'
-                      : isChangesSaved
-                        ? 'link'
-                        : 'destructive'
-                }
+                variant={isChangesSaved ? 'outline' : 'default'}
               >
                 {isSaving ? (
                   <>{t('common.saving')}</>
@@ -352,25 +336,36 @@ const ResumeForm = ({
                 >
                   <DropdownMenuLabel>{t('common.reorderSection')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <Reorder.Group
-                    axis="y"
-                    values={resumeSectionsOrder}
-                    onReorder={(values) => {
-                      setResumeSectionsOrder(values);
-                    }}
-                    className="space-y-1"
-                  >
-                    {sectionsOrder?.map((section) => (
-                      <Reorder.Item key={section} value={section} dragElastic={0}>
-                        <DropdownMenuItem key={section} onSelect={(e) => e.preventDefault()}>
-                          <div className="flex w-full items-center justify-between gap-4">
-                            <p>{section}</p>
-                            <GripVertical size={16} className="cursor-grab opacity-65" />
-                          </div>
-                        </DropdownMenuItem>
-                      </Reorder.Item>
+                  <div className="space-y-0.5">
+                    {resumeSectionsOrder?.map((section, index) => (
+                      <div
+                        key={section}
+                        className="flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-sm"
+                      >
+                        <span className="capitalize">{section}</span>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            aria-label={`Move ${section} up`}
+                            disabled={index === 0}
+                            onClick={() => moveSection(index, index - 1)}
+                            className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
+                          >
+                            <ChevronUp size={15} />
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={`Move ${section} down`}
+                            disabled={index === resumeSectionsOrder.length - 1}
+                            onClick={() => moveSection(index, index + 1)}
+                            className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
+                          >
+                            <ChevronDown size={15} />
+                          </button>
+                        </div>
+                      </div>
                     ))}
-                  </Reorder.Group>
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
@@ -379,7 +374,7 @@ const ResumeForm = ({
       )}
       {/* Mobile Controls Section */}
       {isMobileView && (
-        <div className="bg-white px-4 py-3 mb-4">
+        <div className="bg-background px-4 py-3 mb-4">
           {/* Mobile Filename Section */}
           <div className="mb-3">
             <div
@@ -423,15 +418,7 @@ const ResumeForm = ({
               className="flex-1"
               size="default"
               onClick={handleSave}
-              variant={
-                loading
-                  ? 'destructive'
-                  : isSaving
-                    ? 'destructive'
-                    : isChangesSaved
-                      ? 'default'
-                      : 'destructive'
-              }
+              variant={isChangesSaved ? 'outline' : 'default'}
             >
               {isSaving ? (
                 <>{t('common.saving')}</>
@@ -456,30 +443,36 @@ const ResumeForm = ({
                 >
                   <DropdownMenuLabel>{t('common.reorderSection')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <Reorder.Group
-                    axis="y"
-                    values={resumeSectionsOrder}
-                    onReorder={(values) => {
-                      setResumeSectionsOrder(values);
-                    }}
-                    className="space-y-1"
-                  >
-                    {sectionsOrder?.map((section) => (
-                      <Reorder.Item
+                  <div className="space-y-0.5">
+                    {resumeSectionsOrder?.map((section, index) => (
+                      <div
                         key={section}
-                        value={section}
-                        dragConstraints={{ top: 0, bottom: 0 }}
-                        dragElastic={0}
+                        className="flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-sm"
                       >
-                        <DropdownMenuItem key={section} onSelect={(e) => e.preventDefault()}>
-                          <div className="flex w-full items-center justify-between gap-4">
-                            <p>{section}</p>
-                            <GripVertical size={16} className="cursor-grab opacity-65" />
-                          </div>
-                        </DropdownMenuItem>
-                      </Reorder.Item>
+                        <span className="capitalize">{section}</span>
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            aria-label={`Move ${section} up`}
+                            disabled={index === 0}
+                            onClick={() => moveSection(index, index - 1)}
+                            className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
+                          >
+                            <ChevronUp size={15} />
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={`Move ${section} down`}
+                            disabled={index === resumeSectionsOrder.length - 1}
+                            onClick={() => moveSection(index, index + 1)}
+                            className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
+                          >
+                            <ChevronDown size={15} />
+                          </button>
+                        </div>
+                      </div>
                     ))}
-                  </Reorder.Group>
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
@@ -496,17 +489,19 @@ const ResumeForm = ({
           onMouseMove={handleMouseMove}
         >
           <TabsList className="flex w-max gap-2">
-            {sections
-              .filter((section) => section !== 'sectionOrder')
-              .map((section) => (
-                <TabsTrigger
-                  key={String(section)}
-                  value={String(section)}
-                  className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
-                >
-                  {String(section)}
-                </TabsTrigger>
-              ))}
+            {sections.flatMap((section) =>
+              section === 'sectionOrder'
+                ? []
+                : [
+                    <TabsTrigger
+                      key={String(section)}
+                      value={String(section)}
+                      className={isMobileView ? 'capitalize text-xs py-2 px-1' : 'capitalize'}
+                    >
+                      {String(section)}
+                    </TabsTrigger>,
+                  ]
+            )}
           </TabsList>
         </div>
 

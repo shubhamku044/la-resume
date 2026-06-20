@@ -28,8 +28,25 @@ export const FAQSection = async () => {
     },
   ];
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map((faq) => ({
+      '@type': 'Question',
+      'name': faq.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': faq.answer,
+      },
+    })),
+  };
+
   return (
     <section className="py-20 md:py-32" id="faq">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-16 text-center">
           <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">

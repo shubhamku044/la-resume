@@ -36,7 +36,7 @@ export default function ResumeTemplatePage() {
 
   if (isFetching) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Loading...</div>
       </div>
     );
@@ -44,7 +44,7 @@ export default function ResumeTemplatePage() {
 
   if (isError) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Error loading resume. Please try again.</div>
       </div>
     );
@@ -52,7 +52,7 @@ export default function ResumeTemplatePage() {
 
   if (!existingResume) {
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+      <div className="flex h-[calc(100dvh-4rem)] w-full items-center justify-center bg-background">
         <div className="text-lg font-semibold">Loading.</div>
       </div>
     );
@@ -62,7 +62,7 @@ export default function ResumeTemplatePage() {
     return (
       <div className="min-h-screen">
         {/* Mobile Header with Preview Button */}
-        <div className=" bg-white px-2 ">
+        <div className=" bg-background px-2 ">
           <div className="flex items-center justify-center">
             <Button
               onClick={() => setShowPreviewOverlay(true)}
@@ -120,9 +120,9 @@ export default function ResumeTemplatePage() {
 
   // Desktop layout (unchanged)
   return (
-    <div className="flex justify-center">
-      <div className="container mx-auto">
-        <ResizablePanelGroup orientation="horizontal" className="grid grid-cols-2 gap-0">
+    <div className="h-[calc(100dvh-4rem)] w-full overflow-hidden">
+      <div className="h-full w-full">
+        <ResizablePanelGroup orientation="horizontal" className="h-full w-full">
           <ResumeForm
             onUpdate={setImageUrl}
             onPreviewPagesUpdate={setPreviewPages}
@@ -135,7 +135,7 @@ export default function ResumeTemplatePage() {
             title={existingResume?.title || ''}
             isMobileView={false}
           />
-          <ResizableHandle />
+          <ResizableHandle withHandle />
           <ResumePreview
             imageUrl={imageUrl}
             previewPages={previewPages}

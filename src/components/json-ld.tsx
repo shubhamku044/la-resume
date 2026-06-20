@@ -6,7 +6,7 @@ export default function JsonLd() {
         '@type': 'Organization',
         'name': 'La-Resume',
         'url': 'https://la-resume.com',
-        'logo': 'https://la-resume.com/icon.png',
+        'logo': 'https://la-resume.com/icon-512.png',
         'sameAs': ['https://github.com/shubhamku044/la-resume'],
       },
       {
@@ -24,11 +24,17 @@ export default function JsonLd() {
         '@type': 'WebSite',
         'name': 'La-Resume',
         'url': 'https://la-resume.com',
-        'potentialAction': {
-          '@type': 'SearchAction',
-          'target': 'https://la-resume.com/?q={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        'name': ['Resume Templates', 'Features', 'Pricing', 'FAQ', 'Contact'],
+        'url': [
+          'https://la-resume.com/resume-templates',
+          'https://la-resume.com/features',
+          'https://la-resume.com/pricing',
+          'https://la-resume.com/faq',
+          'https://la-resume.com/contact-us',
+        ],
       },
     ],
   };

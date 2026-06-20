@@ -24,6 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://la-resume.com'),
   title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
   description:
     'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly. No signup required.',
@@ -45,14 +46,17 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/favicon-dark.ico', media: '(prefers-color-scheme: light)' },
       { url: '/favicon-light.ico', media: '(prefers-color-scheme: dark)' },
     ],
+    apple: '/apple-icon.png',
     shortcut: '/favicon-dark.ico',
   },
   openGraph: {
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
-    description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
+    description:
+      'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly. No signup required.',
     url: 'https://la-resume.com',
     siteName: 'La-Resume',
     images: [
@@ -69,7 +73,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'La-Resume: Free ATS-Optimized Resume Builder with LaTeX Export',
-    description: 'Free ATS-friendly resume builder with LaTeX export',
+    description:
+      'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly. No signup required.',
     images: ['https://la-resume.com/og-image.png'],
   },
   robots: {
