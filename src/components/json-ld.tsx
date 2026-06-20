@@ -25,6 +25,17 @@ export default function JsonLd() {
         'name': 'La-Resume',
         'url': 'https://la-resume.com',
       },
+      {
+        '@type': 'SiteNavigationElement',
+        'name': ['Resume Templates', 'Features', 'Pricing', 'FAQ', 'Contact'],
+        'url': [
+          'https://la-resume.com/resume-templates',
+          'https://la-resume.com/features',
+          'https://la-resume.com/pricing',
+          'https://la-resume.com/faq',
+          'https://la-resume.com/contact-us',
+        ],
+      },
     ],
   };
 

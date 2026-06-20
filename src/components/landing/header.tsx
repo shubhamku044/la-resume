@@ -37,7 +37,7 @@ export function Header() {
             Templates
           </Link>
           <Link
-            href="/#features"
+            href="/features"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Features
@@ -49,12 +49,12 @@ export function Header() {
             How It Works
           </Link>
           <Link
-            href="/#pricing"
+            href="/pricing"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Pricing
           </Link>
-          <Link href="/#team" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
             Our Team
           </Link>
           <Link
@@ -63,7 +63,7 @@ export function Header() {
           >
             Testimonials
           </Link>
-          <Link href="/#faq" className="text-sm font-medium transition-colors hover:text-primary">
+          <Link href="/faq" className="text-sm font-medium transition-colors hover:text-primary">
             FAQ
           </Link>
         </nav>
@@ -112,7 +112,7 @@ export function Header() {
                   Templates
                 </Link>
                 <Link
-                  href="#features"
+                  href="/features"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Features
@@ -124,7 +124,7 @@ export function Header() {
                   How It Works
                 </Link>
                 <Link
-                  href="#team"
+                  href="/about"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   Our Team
@@ -136,7 +136,7 @@ export function Header() {
                   Testimonials
                 </Link>
                 <Link
-                  href="#faq"
+                  href="/faq"
                   className="text-sm font-medium transition-colors hover:text-primary"
                 >
                   FAQ

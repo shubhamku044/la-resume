@@ -94,21 +94,45 @@ const valueProps = [
 export default function ResumeTemplatesPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    'name': 'Professional ATS-Friendly Resume Templates',
-    'description':
-      'A collection of professional, ATS-friendly, LaTeX-powered resume templates you can customize and export to PDF.',
-    'url': CANONICAL_URL,
-    'mainEntity': {
-      '@type': 'ItemList',
-      'itemListElement': templates.map((template, index) => ({
-        '@type': 'ListItem',
-        'position': index + 1,
-        'name': template.name,
-        'description': template.description,
-        'url': `https://la-resume.com${BUILDER_URL}`,
-      })),
-    },
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        'name': 'Professional ATS-Friendly Resume Templates',
+        'description':
+          'A collection of professional, ATS-friendly, LaTeX-powered resume templates you can customize and export to PDF.',
+        'url': CANONICAL_URL,
+        'mainEntity': {
+          '@type': 'ItemList',
+          'itemListElement': templates.map((template, index) => ({
+            '@type': 'ListItem',
+            'position': index + 1,
+            'name': template.name,
+            'description': template.description,
+            'url': `${CANONICAL_URL}/${template.id}`,
+          })),
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://la-resume.com' },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Resume Templates',
+            'item': CANONICAL_URL,
+          },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        'mainEntity': faqs.map((faq) => ({
+          '@type': 'Question',
+          'name': faq.question,
+          'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer },
+        })),
+      },
+    ],
   };
 
   return (
@@ -164,8 +188,8 @@ export default function ResumeTemplatesPage() {
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <Link
-                  href={BUILDER_URL}
-                  aria-label={`Use the ${template.name} template`}
+                  href={`/resume-templates/${template.id}`}
+                  aria-label={`View the ${template.name} template`}
                   className="block"
                 >
                   <div className="relative aspect-8.5/11 overflow-hidden border-b border-border/60 bg-secondary">
@@ -175,14 +199,15 @@ export default function ResumeTemplatesPage() {
                       width={420}
                       height={544}
                       className="h-full w-full rounded-t-2xl object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                      unoptimized
                     />
                   </div>
                 </Link>
 
                 <div className="flex flex-1 flex-col p-5">
                   <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                    {template.name}
+                    <Link href={`/resume-templates/${template.id}`} className="hover:text-primary">
+                      {template.name}
+                    </Link>
                   </h2>
                   <p className="mt-1 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {template.description}
