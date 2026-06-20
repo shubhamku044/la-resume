@@ -256,6 +256,7 @@ export default function SignInPage() {
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex justify-center gap-2">
                     {reviews.map((_, index) => (
                       <button
+                        type="button"
                         key={index}
                         onClick={() => setCurrentTestimonial(index)}
                         className={`h-2 w-2 rounded-full transition-all duration-300 ${

@@ -128,6 +128,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
               }}
             >
               <button
+                type="button"
                 onClick={reset}
                 style={{
                   display: 'inline-flex',

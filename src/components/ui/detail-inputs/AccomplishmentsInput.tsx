@@ -86,7 +86,7 @@ function StringListInput({
         {items.map((item, index) => (
           <span key={index} className="flex items-center gap-1 rounded bg-muted px-3 py-1">
             {item}
-            <button onClick={() => removeItem(index)} className="text-red-500">
+            <button type="button" onClick={() => removeItem(index)} className="text-red-500">
               <X size={12} />
             </button>
           </span>
@@ -134,6 +134,7 @@ function CertificationInput({
       {certifications.map((cert, index) => (
         <div key={index} className="relative mb-3 rounded border p-4">
           <button
+            type="button"
             onClick={() => removeCertification(index)}
             className="absolute right-2 top-2 text-red-500"
           >

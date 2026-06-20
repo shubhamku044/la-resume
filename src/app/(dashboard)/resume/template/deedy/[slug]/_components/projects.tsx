@@ -288,6 +288,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{tool}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveTool(tool)}
                       className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >
@@ -330,6 +331,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{highlight}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveHighlight(highlight)}
                       className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >

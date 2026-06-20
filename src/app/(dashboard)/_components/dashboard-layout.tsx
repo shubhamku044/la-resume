@@ -107,6 +107,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </div>
         </Link>
         <button
+          type="button"
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           aria-label="Toggle sidebar"

@@ -345,9 +345,8 @@ const ResumePreview = ({
             </div>
           </div>
           {/* Fixed-height status row so toggling 'compiling' never shifts the preview */}
-          <div
+          <output
             className="mt-3 flex h-5 items-center gap-2 text-sm text-muted-foreground"
-            role="status"
             aria-live="polite"
           >
             {loading && (
@@ -356,7 +355,7 @@ const ResumePreview = ({
                 <span>Compiling resume preview…</span>
               </>
             )}
-          </div>
+          </output>
         </div>
 
         <div className="mt-4 flex-1 overflow-y-auto space-y-4 pr-1">

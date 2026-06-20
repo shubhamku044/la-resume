@@ -187,14 +187,6 @@ const ResumeForm = ({
   }, [formData, onUpdate, onPreviewPagesUpdate, setLatexData, setLoading, templateFunction]);
 
   useEffect(() => {
-    setTempData((prev) => ({
-      ...prev,
-      sectionOrder: resumeSectionsOrder,
-    }));
-    setIsChangesSaved(false);
-  }, [resumeSectionsOrder]);
-
-  useEffect(() => {
     const timeout = setTimeout(() => setFormData(tempData), 500);
     return () => clearTimeout(timeout);
   }, [tempData]);
@@ -259,15 +251,6 @@ const ResumeForm = ({
       setIsSaving(false);
     }
   };
-
-  const handleSaveCallback = useCallback(handleSave, [handleSave]);
-
-  useEffect(() => {
-    if (isChangesSaved) {
-      // handleSaveCallback();
-      // setIsChangesSaved(false);
-    }
-  }, [isChangesSaved, handleSaveCallback]);
 
   const containerClass = isMobileView
     ? 'w-full bg-background'
@@ -349,6 +332,8 @@ const ResumeForm = ({
                     values={resumeSectionsOrder}
                     onReorder={(values) => {
                       setResumeSectionsOrder(values);
+                      setTempData((prev) => ({ ...prev, sectionOrder: values }));
+                      setIsChangesSaved(false);
                     }}
                     className="space-y-1"
                   >
@@ -447,6 +432,8 @@ const ResumeForm = ({
                     values={resumeSectionsOrder}
                     onReorder={(values) => {
                       setResumeSectionsOrder(values);
+                      setTempData((prev) => ({ ...prev, sectionOrder: values }));
+                      setIsChangesSaved(false);
                     }}
                     className="space-y-1"
                   >

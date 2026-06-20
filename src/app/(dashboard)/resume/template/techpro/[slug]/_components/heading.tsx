@@ -106,6 +106,7 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
                 className="w-full sm:w-1/2 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
               />
               <button
+                type="button"
                 onClick={() => handleRemoveSocial(index)}
                 className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
               >
@@ -129,6 +130,7 @@ const HeadingSection = ({ data, setTempData, setIsChangesSaved }: HeadingProps) 
               className="w-full sm:flex-1 rounded-md border border-input p-2 text-sm text-gray-700 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/30 dark:text-gray-200"
             />
             <button
+              type="button"
               onClick={handleAddSocial}
               className="flex size-9 shrink-0 items-center justify-center self-end sm:self-auto rounded-md border border-primary/40 bg-primary/10 text-primary transition-colors hover:bg-primary/20"
             >

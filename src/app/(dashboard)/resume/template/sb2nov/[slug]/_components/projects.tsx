@@ -334,6 +334,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                     <GripVertical size={16} className="cursor-grab text-gray-400" />
                     <span className="flex-1 text-sm">{acc}</span>
                     <button
+                      type="button"
                       onClick={() => handleRemoveAccomplishment(acc)}
                       className="flex size-9 shrink-0 items-center justify-center rounded-md border border-input text-muted-foreground transition-colors hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive"
                     >

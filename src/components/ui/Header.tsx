@@ -60,6 +60,7 @@ const Header = () => {
         </nav>
 
         <button
+          type="button"
           className="p-2 md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
