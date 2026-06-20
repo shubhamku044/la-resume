@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Get in touch with the La-Resume team. Send us a message or find our contact information.',
   alternates: {
-    canonical: 'https://la-resume.com/contactUs',
+    canonical: 'https://la-resume.com/contact-us',
   },
 };
 

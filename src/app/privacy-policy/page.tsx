@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | La-Resume',
+  description: 'How La-Resume collects, uses, and protects your personal data.',
+  alternates: { canonical: 'https://la-resume.com/privacy-policy' },
+};
 
 const PrivacyPolicy = () => {
   return (

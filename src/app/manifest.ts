@@ -7,6 +7,9 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Create perfect, ATS-friendly resumes for free. Export to PDF or LaTeX instantly.',
     display: 'standalone',
     start_url: '/',
+    theme_color: '#ffffff',
+    background_color: '#ffffff',
+    categories: ['productivity', 'business', 'utilities'],
     icons: [
       {
         src: '/favicon.ico',
