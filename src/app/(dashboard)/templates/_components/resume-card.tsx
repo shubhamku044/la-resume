@@ -162,7 +162,11 @@ export function ResumeCard({
           </div>
 
           <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-black/60 via-black/10 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <Button onClick={handleEditClick} size="sm" className="w-full gap-1.5 shadow-lg">
+            <Button
+              onClick={handleEditClick}
+              size="sm"
+              className="w-full cursor-pointer gap-1.5 shadow-lg"
+            >
               <Edit className="size-4" /> Edit resume
             </Button>
           </div>
