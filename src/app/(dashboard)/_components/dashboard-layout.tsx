@@ -22,29 +22,37 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
+// Viewport-derived sidebar default. useSyncExternalStore renders the server
+// snapshot (collapsed) during hydration so it matches the SSR HTML, then
+// applies the real viewport value before the browser paints — no hydration
+// mismatch and no post-paint flash. The never-firing subscription reads the
+// viewport once; the sidebar should not collapse/expand on live resizes.
+const subscribeNoop = () => () => {};
+const getViewportCollapsed = () => window.innerWidth < 1024;
+const getServerCollapsed = () => true;
+
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  // Server-safe initial value; the real viewport-based value is applied in an
-  // effect below — reading `window` during the first render would render a
-  // different branch than the SSR HTML and break hydration.
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [userCollapsed, setUserCollapsed] = useState<boolean | null>(null);
+  const viewportCollapsed = useSyncExternalStore(
+    subscribeNoop,
+    getViewportCollapsed,
+    getServerCollapsed
+  );
+  const isCollapsed = userCollapsed ?? viewportCollapsed;
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
   const langaugeDropdownRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    setIsCollapsed(window.innerWidth < 1024);
-  }, []);
 
   // Auto-close sidebar when navigating to resume template or made-by-you pages
   useEffect(() => {
     const isTemplateRoute =
       pathname.includes('/resume/template/') || pathname.includes('/templates/made-by-you');
     if (isTemplateRoute) {
-      setIsCollapsed(true);
+      setUserCollapsed(true);
     }
   }, [pathname]);
 
@@ -110,7 +118,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </Link>
         <button
           type="button"
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={() => setUserCollapsed(!isCollapsed)}
           className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           aria-label="Toggle sidebar"
         >
@@ -149,7 +157,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         {!isCollapsed && (
           <div
             className="fixed top-16 inset-0 bg-black/50 z-40 lg:hidden"
-            onClick={() => setIsCollapsed(true)}
+            onClick={() => setUserCollapsed(true)}
           />
         )}
 
