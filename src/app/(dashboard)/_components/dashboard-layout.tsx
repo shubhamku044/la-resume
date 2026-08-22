@@ -25,11 +25,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
-// Viewport-derived sidebar default. useSyncExternalStore renders the server
-// snapshot (collapsed) during hydration so it matches the SSR HTML, then
-// applies the real viewport value before the browser paints — no hydration
-// mismatch and no post-paint flash. The never-firing subscription reads the
-// viewport once; the sidebar should not collapse/expand on live resizes.
+// Server snapshot keeps the first render matching SSR; the no-op subscription reads the viewport once (no live resize updates).
 const subscribeNoop = () => () => {};
 const getViewportCollapsed = () => window.innerWidth < 1024;
 const getServerCollapsed = () => true;

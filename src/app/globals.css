@@ -3,15 +3,10 @@
 @config '../../tailwind.config.ts';
 
 /*
-  Emerald Professional semantic color tokens — single source of truth for UI colors.
-  Utilities like bg-primary / text-content / hover:bg-primary-hover are generated
-  from these. Dark-mode overrides live in the .dark block below; utilities emit
-  var(--color-*), so re-declaring the variables under .dark re-themes dark mode.
-
-  Never use raw hex values or default Tailwind palette classes (e.g. emerald
-  or blue utilities) in components — reference these tokens instead.
-  `accent` (existing shadcn token) stays a soft hover tint; the saturated
-  teal accent is `accent-strong`.
+  Emerald Professional semantic tokens — the single source of truth for UI colors.
+  Use these instead of raw hex or palette classes; overriding the --color-* values
+  in the .dark block re-themes dark mode. `accent` stays a soft hover tint (shadcn),
+  the saturated teal accent is `accent-strong`.
 */
 @theme {
   --color-primary: #059669; /* emerald-600 — buttons, links, active states */
