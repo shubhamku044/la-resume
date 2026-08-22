@@ -80,9 +80,7 @@ export default function ResumeTemplatesPage() {
           {templates.length} professional templates
         </span>
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-          <span className="bg-gradient-primary bg-clip-text text-transparent">
-            {t('templates.resTemplate')}
-          </span>
+          <span className="text-primary">{t('templates.resTemplate')}</span>
         </h1>
         <p className="mx-auto max-w-xl text-lg text-muted-foreground">
           Pick a recruiter-approved, ATS-friendly design. Customize it in minutes and export to PDF

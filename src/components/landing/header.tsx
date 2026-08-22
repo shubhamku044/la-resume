@@ -22,7 +22,7 @@ export function Header() {
           }}
         >
           <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+            <span className="flex size-8 items-center justify-center rounded-full bg-primary text-white shadow-sm">
               <FileText className="size-5" />
             </span>
             <span className="text-xl font-bold tracking-tight">La Resume</span>
@@ -78,7 +78,7 @@ export function Header() {
                 router.push('/templates');
               }}
               size="default"
-              className="rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow"
+              className="rounded-full bg-primary text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
             >
               Go to app
             </Button>
@@ -88,7 +88,7 @@ export function Header() {
             <Link href="/sign-in">
               <Button
                 size="default"
-                className="hidden rounded-full bg-gradient-primary text-white shadow-sm transition-shadow hover:shadow-glow md:flex"
+                className="hidden rounded-full bg-primary text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow md:flex"
               >
                 Get Started
               </Button>
@@ -148,7 +148,7 @@ export function Header() {
                       router.push('/templates');
                     }}
                     size="sm"
-                    className="rounded-full bg-gradient-primary text-white"
+                    className="rounded-full bg-primary text-white hover:bg-primary-hover"
                   >
                     Go to app
                   </Button>
@@ -156,7 +156,10 @@ export function Header() {
                 </Show>
                 <Show when="signed-out">
                   <Link href="/sign-in">
-                    <Button size="sm" className="rounded-full bg-gradient-primary text-white">
+                    <Button
+                      size="sm"
+                      className="rounded-full bg-primary text-white hover:bg-primary-hover"
+                    >
                       Get Started
                     </Button>
                   </Link>

@@ -151,7 +151,10 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
             value={newCategoryName}
             onChange={(e) => setNewCategoryName(e.target.value)}
           />
-          <Button onClick={handleAddCategory} className="bg-green-500 text-white">
+          <Button
+            onClick={handleAddCategory}
+            className="bg-primary text-white hover:bg-primary-hover"
+          >
             Add
           </Button>
         </DialogContent>
@@ -184,7 +187,10 @@ const SkillsSection = ({ data, setTempData, setIsChangesSaved }: SkillsProps) =>
             onChange={(e) => setTempSkills(e.target.value)}
             placeholder="Skills (comma-separated)"
           />
-          <Button onClick={handleSaveCategory} className="bg-blue-500 text-white">
+          <Button
+            onClick={handleSaveCategory}
+            className="bg-primary text-white hover:bg-primary-hover"
+          >
             Save
           </Button>
         </DialogContent>

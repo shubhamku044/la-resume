@@ -72,7 +72,7 @@ export default function BoardPage() {
           <div className="mb-4 flex flex-col space-y-4 pt-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:pt-6">
             <Button
               variant="ghost"
-              className="flex items-center self-start text-indigo-600 hover:text-indigo-800"
+              className="flex items-center self-start text-primary hover:text-primary-hover"
               onClick={() => router.push('/tracker/boards')}
             >
               <ChevronLeft className="mr-1" size={16} />
@@ -125,7 +125,7 @@ export default function BoardPage() {
           <div className="mb-4 flex items-center justify-between pt-4 sm:mb-8 sm:pt-6">
             <Button
               variant="ghost"
-              className="flex items-center text-indigo-600 hover:text-indigo-800"
+              className="flex items-center text-primary hover:text-primary-hover"
               onClick={() => router.push('/tracker/boards')}
             >
               <ChevronLeft className="mr-1" size={16} />
@@ -136,10 +136,10 @@ export default function BoardPage() {
 
           <div className="flex h-[60vh] flex-col items-center justify-center px-2 text-center sm:px-4">
             <div className="w-full max-w-lg rounded-lg border border-border bg-card p-4 shadow-md sm:p-8">
-              <div className="mx-auto mb-4 flex size-10 items-center justify-center rounded-full bg-red-100 sm:mb-6 sm:size-12">
+              <div className="mx-auto mb-4 flex size-10 items-center justify-center rounded-full bg-destructive/10 sm:mb-6 sm:size-12">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-5 text-red-600 sm:size-6"
+                  className="size-5 text-destructive sm:size-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -194,7 +194,7 @@ export default function BoardPage() {
           <div className="flex flex-col space-y-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 sm:py-4">
             <Button
               variant="ghost"
-              className="flex items-center self-start text-indigo-600 hover:text-indigo-800"
+              className="flex items-center self-start text-primary hover:text-primary-hover"
               onClick={() => router.push('/tracker/boards')}
             >
               <ChevronLeft className="mr-1" size={16} />
@@ -214,7 +214,7 @@ export default function BoardPage() {
             <Button
               variant="outline"
               size="sm"
-              className="flex items-center text-indigo-600"
+              className="flex items-center text-primary"
               onClick={() => {
                 refetchBoard();
                 refetchJobs();

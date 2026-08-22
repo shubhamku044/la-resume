@@ -21,32 +21,32 @@ export const PricingSection = async () => {
 
   const features = [
     {
-      icon: <Download className="size-5 text-green-500" />,
+      icon: <Download className="size-5 text-success" />,
       title: t('features.unlimited_downloads.title'),
       description: t('features.unlimited_downloads.description'),
     },
     {
-      icon: <Share2 className="size-5 text-blue-500" />,
+      icon: <Share2 className="size-5 text-primary" />,
       title: t('features.shareable_links.title'),
       description: t('features.shareable_links.description'),
     },
     {
-      icon: <RefreshCw className="size-5 text-purple-500" />,
+      icon: <RefreshCw className="size-5 text-primary" />,
       title: t('features.auto_updates.title'),
       description: t('features.auto_updates.description'),
     },
     {
-      icon: <Eye className="size-5 text-orange-500" />,
+      icon: <Eye className="size-5 text-accent-strong" />,
       title: t('features.analytics.title'),
       description: t('features.analytics.description'),
     },
     {
-      icon: <Users className="size-5 text-pink-500" />,
+      icon: <Users className="size-5 text-accent-strong" />,
       title: t('features.no_login.title'),
       description: t('features.no_login.description'),
     },
     {
-      icon: <Clock className="size-5 text-teal-500" />,
+      icon: <Clock className="size-5 text-accent-strong" />,
       title: t('features.realtime.title'),
       description: t('features.realtime.description'),
     },
@@ -56,7 +56,7 @@ export const PricingSection = async () => {
     <section id="pricing" className="bg-gray-50 py-20 dark:bg-gray-900 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+          <div className="mb-4 inline-block rounded-full bg-primary-soft px-4 py-2 text-sm font-medium text-primary-ink">
             {t('badge')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
@@ -70,11 +70,11 @@ export const PricingSection = async () => {
         <div className="gap-8 w-full flex flex-col lg:flex-row justify-center items-center lg:gap-12">
           {/* Pricing Card */}
           <div className="flex justify-center w-full lg:w-auto">
-            <Card className="relative w-full max-w-md overflow-hidden border-2 border-purple-200 shadow-xl dark:border-purple-800">
-              <div className="absolute inset-0 bg-linear-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20" />
+            <Card className="relative w-full max-w-md overflow-hidden border-2 border-primary/40 shadow-xl">
+              <div className="absolute inset-0 bg-primary-soft" />
               <div className="relative">
                 <CardHeader className="text-center pb-2 px-4 sm:px-6">
-                  <div className="mx-auto mb-3 sm:mb-4 flex size-12 sm:size-16 items-center justify-center rounded-full bg-linear-to-r from-purple-500 to-blue-500">
+                  <div className="mx-auto mb-3 sm:mb-4 flex size-12 sm:size-16 items-center justify-center rounded-full bg-primary">
                     <DollarSign className="size-6 sm:size-8 text-white" />
                   </div>
                   <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
@@ -102,31 +102,31 @@ export const PricingSection = async () => {
 
                   <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-success shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.unlimited_downloads')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-success shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.shareable_links')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-success shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.auto_updates')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-success shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.analytics')}
                       </span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <CheckCircle className="size-4 sm:size-5 text-green-500 shrink-0" />
+                      <CheckCircle className="size-4 sm:size-5 text-success shrink-0" />
                       <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         {t('card.features.no_expiration')}
                       </span>
@@ -135,14 +135,14 @@ export const PricingSection = async () => {
 
                   <Show when="signed-in">
                     <Link href="/templates/made-by-you">
-                      <Button className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
+                      <Button className="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
                   </Show>
                   <Show when="signed-out">
                     <Link href="/sign-in">
-                      <Button className="w-full bg-linear-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
+                      <Button className="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-2.5 sm:py-3 text-sm sm:text-base">
                         {t('card.button')}
                       </Button>
                     </Link>
@@ -206,10 +206,8 @@ export const PricingSection = async () => {
           </h3>
           <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-3">
             <div className="text-center">
-              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-                <span className="text-base sm:text-lg font-bold text-purple-600 dark:text-purple-300">
-                  1
-                </span>
+              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-primary-soft">
+                <span className="text-base sm:text-lg font-bold text-primary-ink">1</span>
               </div>
               <h4 className="mb-2 text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                 {t('how_it_works.step1.title')}
@@ -219,10 +217,8 @@ export const PricingSection = async () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
-                <span className="text-base sm:text-lg font-bold text-blue-600 dark:text-blue-300">
-                  2
-                </span>
+              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-primary-soft">
+                <span className="text-base sm:text-lg font-bold text-primary-ink">2</span>
               </div>
               <h4 className="mb-2 text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                 {t('how_it_works.step2.title')}
@@ -232,10 +228,8 @@ export const PricingSection = async () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
-                <span className="text-base sm:text-lg font-bold text-green-600 dark:text-green-300">
-                  3
-                </span>
+              <div className="mx-auto mb-3 sm:mb-4 flex size-10 sm:size-12 items-center justify-center rounded-full bg-primary-soft">
+                <span className="text-base sm:text-lg font-bold text-primary-ink">3</span>
               </div>
               <h4 className="mb-2 text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                 {t('how_it_works.step3.title')}

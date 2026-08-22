@@ -36,7 +36,7 @@ export const HeroInteractive = ({
   const primaryCta = (
     <Button
       size="lg"
-      className="group relative h-12 overflow-hidden rounded-full bg-gradient-primary px-8 text-base font-semibold text-white shadow-sm transition-all hover:shadow-glow"
+      className="group relative h-12 overflow-hidden rounded-full bg-primary px-8 text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
     >
       <span className="relative z-10 flex items-center gap-2">
         {startBuildingText}
@@ -47,7 +47,7 @@ export const HeroInteractive = ({
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-hero pb-20 pt-12 md:pb-28 md:pt-16 dark:bg-none dark:bg-background"
+      className="relative overflow-hidden bg-primary-soft pb-20 pt-12 md:pb-28 md:pt-16 dark:bg-none dark:bg-background"
       id="hero"
     >
       <div className="container relative z-10 mx-auto px-4 sm:px-6">

@@ -90,7 +90,7 @@ function StringListInput({
               type="button"
               aria-label={`Remove ${item}`}
               onClick={() => removeItem(index)}
-              className="text-red-500"
+              className="text-destructive"
             >
               <X size={12} />
             </button>
@@ -141,7 +141,7 @@ function CertificationInput({
           <button
             type="button"
             onClick={() => removeCertification(index)}
-            className="absolute right-2 top-2 text-red-500"
+            className="absolute right-2 top-2 text-destructive"
           >
             <X size={16} />
           </button>

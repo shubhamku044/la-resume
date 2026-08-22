@@ -167,7 +167,7 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
             placeholder="Marks (e.g., 85% or 9.0 CGPA)"
           />
 
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

@@ -55,22 +55,20 @@ export const TestimonialsCarousel = () => {
         {testimonials.map((testimonial, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
             <div className="h-full">
-              <Card className="h-full overflow-hidden border border-purple-100/80 bg-linear-to-br from-white to-purple-50/50 dark:border-purple-900/20 dark:from-gray-800 dark:to-purple-900/10">
-                <div className="absolute -right-10 -top-10 size-40 rounded-full bg-purple-100/50 opacity-30 dark:bg-purple-900/20" />
+              <Card className="h-full overflow-hidden border border-border-default bg-surface-raised">
+                <div className="absolute -right-10 -top-10 size-40 rounded-full bg-primary/10 opacity-30" />
                 <CardContent className="relative p-6">
-                  <div className="mb-4 text-4xl text-purple-400">&apos;</div>
+                  <div className="mb-4 text-4xl text-primary/50">&apos;</div>
                   <p className="mb-6 text-gray-700 dark:text-gray-300">{testimonial.quote}</p>
                   <div className="mt-auto flex items-center">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/50">
-                      <Users className="size-5 text-purple-500 dark:text-purple-300" />
+                    <div className="flex size-10 items-center justify-center rounded-full bg-primary-soft">
+                      <Users className="size-5 text-primary" />
                     </div>
                     <div className="ml-3">
                       <p className="font-medium text-gray-900 dark:text-white">
                         {testimonial.author}
                       </p>
-                      <p className="text-sm text-purple-600 dark:text-purple-300">
-                        {testimonial.role}
-                      </p>
+                      <p className="text-sm text-primary-ink">{testimonial.role}</p>
                     </div>
                   </div>
                 </CardContent>

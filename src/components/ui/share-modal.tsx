@@ -117,7 +117,7 @@ export const ShareModal = ({
                 This will generate a public link to your resume that can be shared with anyone.
               </p>
               {error && (
-                <div className="bg-red-50 text-red-800 p-3 rounded-md text-sm border border-red-200">
+                <div className="bg-destructive/10 text-destructive p-3 rounded-md text-sm border border-destructive/30">
                   {error}
                 </div>
               )}

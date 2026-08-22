@@ -194,7 +194,7 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                       href={entry.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-primary hover:underline"
                     >
                       View Project
                     </Link>
@@ -311,7 +311,10 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                   }
                 }}
               />
-              <Button onClick={handleAddTool} className="bg-green-500 text-white">
+              <Button
+                onClick={handleAddTool}
+                className="bg-primary text-white hover:bg-primary-hover"
+              >
                 Add
               </Button>
             </div>
@@ -354,13 +357,16 @@ const ProjectsSection = ({ data, setTempData, setIsChangesSaved }: ProjectsProps
                   }
                 }}
               />
-              <Button onClick={handleAddHighlight} className="bg-green-500 text-white">
+              <Button
+                onClick={handleAddHighlight}
+                className="bg-primary text-white hover:bg-primary-hover"
+              >
                 Add
               </Button>
             </div>
           </div>
 
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

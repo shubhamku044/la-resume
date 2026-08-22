@@ -227,7 +227,7 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                           href={entry.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-blue-600 hover:underline"
+                          className="text-sm text-primary hover:underline"
                         >
                           {entry.urlLabel || 'No URL Label'}
                         </Link>
@@ -357,13 +357,16 @@ const ProjectsSection = ({ data, setIsChangesSaved, setTempData }: ProjectsProps
                   }
                 }}
               />
-              <Button onClick={handleAddAccomplishment} className="bg-green-500 text-white">
+              <Button
+                onClick={handleAddAccomplishment}
+                className="bg-primary text-white hover:bg-primary-hover"
+              >
                 Add
               </Button>
             </div>
           </div>
 
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             {t('common.save')}
           </Button>
         </DialogContent>

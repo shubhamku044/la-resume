@@ -11,7 +11,7 @@ export const FooterSection = async () => {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4 flex items-center gap-2">
-              <FileText className="size-6 text-purple-500" />
+              <FileText className="size-6 text-primary" />
               <span className="text-xl font-bold text-gray-900 dark:text-white">
                 {t('footer.brand')}
               </span>
@@ -26,23 +26,20 @@ export const FooterSection = async () => {
               <li>
                 <Link
                   href="/resume-templates"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   Resume Templates
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/about"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
-                >
+                <Link href="/about" className="text-gray-600 hover:text-primary dark:text-gray-300">
                   {t('footer.aboutUs')}
                 </Link>
               </li>
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   {t('footer.privacyPolicy')}
                 </Link>
@@ -50,7 +47,7 @@ export const FooterSection = async () => {
               <li>
                 <Link
                   href="/terms-and-conditions"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   {t('footer.termsOfService')}
                 </Link>
@@ -58,7 +55,7 @@ export const FooterSection = async () => {
               <li>
                 <Link
                   href="/refund-and-cancellation"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   {t('footer.refunds')}
                 </Link>
@@ -73,7 +70,7 @@ export const FooterSection = async () => {
               <li>
                 <Link
                   href="/contact-us"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   {t('footer.helpCenter')}
                 </Link>
@@ -81,16 +78,13 @@ export const FooterSection = async () => {
               <li>
                 <Link
                   href="/contact-us"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  className="text-gray-600 hover:text-primary dark:text-gray-300"
                 >
                   {t('footer.contactUs')}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/faq"
-                  className="text-gray-600 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
-                >
+                <Link href="/faq" className="text-gray-600 hover:text-primary dark:text-gray-300">
                   {t('footer.faqs')}
                 </Link>
               </li>

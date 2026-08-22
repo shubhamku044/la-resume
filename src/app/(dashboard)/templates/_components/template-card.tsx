@@ -42,7 +42,7 @@ export function TemplateCard({
             <div className="flex h-full w-full items-center justify-center">
               <div className="h-5/6 w-3/4 rounded bg-card p-4 shadow-card">
                 <div className="space-y-3">
-                  <div className="h-3 rounded bg-gradient-primary opacity-30"></div>
+                  <div className="h-3 rounded bg-primary opacity-30"></div>
                   <div className="h-2 w-3/4 rounded bg-muted"></div>
                   <div className="h-2 w-1/2 rounded bg-muted"></div>
                   <div className="mt-6 space-y-1">

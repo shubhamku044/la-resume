@@ -100,7 +100,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           }}
         >
           <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-white shadow-sm">
               <FileText className="size-5" />
             </span>
             <span className="text-xl font-bold tracking-tight">La Resume</span>
@@ -272,7 +272,7 @@ function CollapsibleSection({
           {icon}
           {!isCollapsed && <span className="ml-2 text-nowrap">{title}</span>}
           {items[0].url === '/tracker/boards' && !isCollapsed && (
-            <span className="flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 lg:py-1 text-xs font-medium text-blue-700">
+            <span className="flex items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 lg:py-1 text-xs font-medium text-primary-ink">
               <Beaker className="size-4" />
               Beta
             </span>

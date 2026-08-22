@@ -103,9 +103,9 @@ export default function FeedbackPage() {
             {...register('name')}
             placeholder={t('HomePage.contact.form.name_placeholder')}
             aria-invalid={!!errors.name}
-            className={errors.name ? 'border-red-500' : ''}
+            className={errors.name ? 'border-destructive' : ''}
           />
-          {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+          {errors.name && <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>}
         </div>
 
         <div>
@@ -117,10 +117,10 @@ export default function FeedbackPage() {
             type="email"
             placeholder={t('HomePage.contact.form.email_placeholder')}
             aria-invalid={!!errors.email}
-            className={errors.email ? 'border-red-500' : ''}
+            className={errors.email ? 'border-destructive' : ''}
             disabled // Make the email field disabled
           />
-          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
+          {errors.email && <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -131,9 +131,11 @@ export default function FeedbackPage() {
             {...register('subject')}
             placeholder={t('HomePage.contact.form.subject_placeholder')}
             aria-invalid={!!errors.subject}
-            className={errors.subject ? 'border-red-500' : ''}
+            className={errors.subject ? 'border-destructive' : ''}
           />
-          {errors.subject && <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>}
+          {errors.subject && (
+            <p className="mt-1 text-sm text-destructive">{errors.subject.message}</p>
+          )}
         </div>
 
         <div>
@@ -145,10 +147,10 @@ export default function FeedbackPage() {
             placeholder={t('HomePage.contact.form.message_placeholder')}
             rows={5}
             aria-invalid={!!errors.feedback}
-            className={errors.feedback ? 'border-red-500' : ''}
+            className={errors.feedback ? 'border-destructive' : ''}
           />
           {errors.feedback && (
-            <p className="mt-1 text-sm text-red-500">
+            <p className="mt-1 text-sm text-destructive">
               {errors.feedback.message}
               {errors.feedback.type === 'too_small' && ' (Minimum 100 characters required)'}
               {errors.feedback.type === 'too_big' && ' (Maximum 2000 characters allowed)'}
@@ -156,7 +158,7 @@ export default function FeedbackPage() {
           )}
         </div>
 
-        {errors.root && <p className="text-sm text-red-500">{errors.root.message}</p>}
+        {errors.root && <p className="text-sm text-destructive">{errors.root.message}</p>}
 
         <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? t('contact.form.submitting') : t('HomePage.contact.form.button')}

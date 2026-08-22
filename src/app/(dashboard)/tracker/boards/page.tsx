@@ -76,7 +76,7 @@ export default function BoardsPage() {
   if (isLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <div className="size-12 animate-spin rounded-full border-y-2 border-indigo-600"></div>
+        <div className="size-12 animate-spin rounded-full border-y-2 border-primary"></div>
       </div>
     );
   }
@@ -84,11 +84,11 @@ export default function BoardsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <header className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-indigo-600">My Job Boards</h1>
+        <h1 className="text-3xl font-bold text-primary">My Job Boards</h1>
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
+          className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary-hover"
         >
           <span>
             <Image src={getAssetUrl('/plus.svg')} alt="plus" width={20} height={20} />
@@ -107,7 +107,7 @@ export default function BoardsPage() {
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
+              className="rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary-hover"
             >
               Create Board
             </button>
@@ -121,7 +121,7 @@ export default function BoardsPage() {
               className="group relative rounded-lg border border-border bg-card p-6 shadow-xs transition-shadow hover:shadow-md"
             >
               <Link href={`/tracker/boards/${board.id}`} className="block">
-                <h3 className="mb-2 text-xl font-semibold text-indigo-600">{board.name}</h3>
+                <h3 className="mb-2 text-xl font-semibold text-primary">{board.name}</h3>
                 <p className="mb-4 text-gray-600 dark:text-gray-300">{board.description}</p>
                 <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                   <span>
@@ -142,7 +142,7 @@ export default function BoardsPage() {
                   e.preventDefault();
                   openDeleteDialog(board.id);
                 }}
-                className="absolute right-4 top-4 rounded-full p-2 text-red-600 opacity-0 transition-opacity hover:bg-red-100 group-hover:opacity-100"
+                className="absolute right-4 top-4 rounded-full p-2 text-destructive opacity-0 transition-opacity hover:bg-destructive/10 group-hover:opacity-100"
                 disabled={isDeleting}
                 title="Delete board"
               >
@@ -189,7 +189,7 @@ export default function BoardsPage() {
             onClick={() => setIsModalOpen(true)}
             className="flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted p-6 transition-colors hover:bg-accent"
           >
-            <span className="mb-2 text-3xl text-indigo-600">+</span>
+            <span className="mb-2 text-3xl text-primary">+</span>
             <span className="text-gray-600 dark:text-gray-300">Create New Board</span>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function BoardsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs   ">
           <div className="mx-4 w-full max-w-md rounded-lg bg-white dark:bg-gray-900 p-6 ">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-indigo-600">Create New Board</h2>
+              <h2 className="text-xl font-bold text-primary">Create New Board</h2>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
@@ -223,7 +223,7 @@ export default function BoardsPage() {
                   id="boardName"
                   name="boardName"
                   required
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="e.g., UX Designer Applications"
                   disabled={isSubmitting}
                 />
@@ -240,7 +240,7 @@ export default function BoardsPage() {
                   id="boardDescription"
                   name="boardDescription"
                   rows={3}
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="What's this board for?"
                   disabled={isSubmitting}
                 />
@@ -256,7 +256,7 @@ export default function BoardsPage() {
                 <select
                   id="boardTemplate"
                   name="boardTemplate"
-                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md dark:bg-gray-700 border border-gray-300 dark:border-gray-600  px-3 py-2 focus:outline-hidden focus:ring-2 focus:ring-primary"
                   disabled={isSubmitting}
                 >
                   <option value="">Blank Board</option>
@@ -277,7 +277,7 @@ export default function BoardsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="flex min-w-[120px] items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700"
+                  className="flex min-w-[120px] items-center justify-center rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-primary-hover"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -332,7 +332,7 @@ export default function BoardsPage() {
             <AlertDialogAction
               onClick={() => boardToDelete && handleDeleteBoard(boardToDelete)}
               disabled={isDeleting}
-              className="bg-red-600 hover:bg-red-700 focus:ring-red-600"
+              className="bg-destructive hover:bg-destructive/90 focus:ring-destructive"
             >
               {isDeleting ? 'Deleting...' : 'Delete Board'}
             </AlertDialogAction>

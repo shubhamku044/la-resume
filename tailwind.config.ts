@@ -90,17 +90,10 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(292 84% 61%) 100%)',
-        'gradient-secondary': 'linear-gradient(160deg, hsl(270 40% 98%) 0%, hsl(240 20% 96%) 100%)',
-        'gradient-hero':
-          'radial-gradient(60% 60% at 50% 0%, hsl(270 90% 96%) 0%, transparent 100%)',
-        'gradient-accent': 'linear-gradient(135deg, hsl(262 83% 96%) 0%, hsl(292 84% 96%) 100%)',
-      },
       boxShadow: {
         card: '0 1px 2px 0 rgb(16 24 40 / 0.04), 0 1px 3px 0 rgb(16 24 40 / 0.06)',
-        elegant: '0 12px 32px -12px rgb(91 33 182 / 0.22), 0 4px 12px -6px rgb(16 24 40 / 0.08)',
-        glow: '0 0 0 1px hsl(262 83% 58% / 0.12), 0 8px 28px -8px hsl(262 83% 58% / 0.45)',
+        elegant: '0 12px 32px -12px rgb(5 150 105 / 0.22), 0 4px 12px -6px rgb(15 23 42 / 0.08)',
+        glow: '0 0 0 1px hsl(161 94% 30% / 0.12), 0 8px 28px -8px hsl(161 94% 30% / 0.45)',
       },
       keyframes: {
         'fade-in': {

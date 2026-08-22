@@ -151,9 +151,7 @@ export default function ResumeTemplatesPage() {
               {templates.length} professional templates
             </span>
             <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Professional, ATS-Friendly Resume Templates
-              </span>
+              <span className="text-primary">Professional, ATS-Friendly Resume Templates</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Choose from recruiter-approved, ATS-friendly resume templates powered by LaTeX.
@@ -163,7 +161,7 @@ export default function ResumeTemplatesPage() {
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href={BUILDER_URL}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-3 text-base font-semibold text-white shadow-elegant transition-shadow hover:shadow-glow"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-elegant transition-all hover:bg-primary-hover hover:shadow-glow"
               >
                 Start building your resume
                 <ArrowRight className="size-4" />
@@ -214,7 +212,7 @@ export default function ResumeTemplatesPage() {
                   </p>
                   <Link
                     href={BUILDER_URL}
-                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-shadow hover:shadow-glow"
+                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
                   >
                     Use this template
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -275,7 +273,7 @@ export default function ResumeTemplatesPage() {
         {/* Closing CTA */}
         <section className="container mx-auto px-4 pb-20 pt-4 sm:px-6">
           <div className="mx-auto max-w-3xl rounded-3xl border border-border/70 bg-card p-10 text-center shadow-elegant">
-            <span className="inline-flex size-12 items-center justify-center rounded-xl bg-gradient-primary text-white shadow-sm">
+            <span className="inline-flex size-12 items-center justify-center rounded-xl bg-primary text-white shadow-sm">
               <FileText className="size-6" />
             </span>
             <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
@@ -287,7 +285,7 @@ export default function ResumeTemplatesPage() {
             </p>
             <Link
               href={BUILDER_URL}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-shadow hover:shadow-glow"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-all hover:bg-primary-hover hover:shadow-glow"
             >
               Use a template now
               <ArrowRight className="size-4" />

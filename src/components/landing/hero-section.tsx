@@ -11,7 +11,7 @@ export const HeroSection = async () => {
   return (
     <HeroInteractive
       title={t.rich('hero.title', {
-        highlight: (chunks) => <span className="animated-text-gradient">{chunks}</span>,
+        highlight: (chunks) => <span className="text-primary">{chunks}</span>,
       })}
       description={t('hero.description')}
       startBuildingText={t('hero.startBuilding')}

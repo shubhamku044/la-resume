@@ -283,7 +283,7 @@ const ResumePreview = ({
                 <Button
                   className={`${
                     paymentStatus
-                      ? 'bg-linear-to-tr from-pink-500 to-yellow-500'
+                      ? 'bg-primary hover:bg-primary-hover'
                       : 'bg-slate-300 text-slate-700 hover:bg-slate-400 dark:bg-slate-700 dark:text-white'
                   } shadow-xs flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
                   onClick={() => {
@@ -317,7 +317,7 @@ const ResumePreview = ({
                 <Button
                   className={`${
                     paymentStatus
-                      ? 'bg-linear-to-bl from-blue-500 to-indigo-600 text-white shadow-xs'
+                      ? 'bg-primary hover:bg-primary-hover text-white shadow-xs'
                       : 'bg-slate-300 text-slate-700 hover:bg-slate-400 dark:bg-slate-700 dark:text-white'
                   } shadow-xs flex items-center gap-2 ${isOverlay ? 'flex-1 justify-center text-sm px-3 py-2' : ''}`}
                   disabled={isSharing}

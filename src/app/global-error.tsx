@@ -21,7 +21,10 @@ const primaryButtonStyle: CSSProperties = {
   fontSize: '0.875rem',
   fontWeight: 600,
   color: '#fff',
-  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+  /* Solid emerald-600 — mirrors --color-primary. Raw values only: this file
+     replaces the root layout on global errors, so globals.css tokens are not
+     available and inline literals are required. */
+  background: '#059669',
   border: 'none',
   borderRadius: '0.5rem',
   cursor: 'pointer',

@@ -89,7 +89,7 @@ export const ContactSection = () => {
     <section className="bg-gray-50 py-20 dark:bg-gray-900 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+          <div className="mb-4 inline-block rounded-full bg-primary-soft px-4 py-2 text-sm font-medium text-primary-ink">
             {t('badge')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
@@ -104,7 +104,7 @@ export const ContactSection = () => {
           <Card className="overflow-hidden border-0 shadow-lg">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-5">
-                <div className="bg-linear-to-br from-purple-600 to-pink-600 p-8 text-white md:col-span-2">
+                <div className="bg-primary p-8 text-white md:col-span-2">
                   <h3 className="mb-6 text-2xl font-bold">{t('contact_info_title')}</h3>
                   <div className="space-y-4">
                     <p className="flex items-center gap-3">
@@ -133,12 +133,12 @@ export const ContactSection = () => {
                         <Input
                           id="name"
                           placeholder={t('form.name_placeholder')}
-                          className={`bg-gray-50 dark:bg-gray-700 ${errors.name ? 'border-red-500' : ''}`}
+                          className={`bg-gray-50 dark:bg-gray-700 ${errors.name ? 'border-destructive' : ''}`}
                           {...register('name')}
                           aria-invalid={!!errors.name}
                         />
                         {errors.name && (
-                          <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+                          <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>
                         )}
                       </div>
                       <div>
@@ -152,12 +152,12 @@ export const ContactSection = () => {
                           id="email"
                           type="email"
                           placeholder={t('form.email_placeholder')}
-                          className={`bg-gray-50 dark:bg-gray-700 ${errors.email ? 'border-red-500' : ''}`}
+                          className={`bg-gray-50 dark:bg-gray-700 ${errors.email ? 'border-destructive' : ''}`}
                           {...register('email')}
                           aria-invalid={!!errors.email}
                         />
                         {errors.email && (
-                          <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                          <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
                         )}
                       </div>
                     </div>
@@ -172,12 +172,12 @@ export const ContactSection = () => {
                       <Input
                         id="subject"
                         placeholder={t('form.subject_placeholder')}
-                        className={`bg-gray-50 dark:bg-gray-700 ${errors.subject ? 'border-red-500' : ''}`}
+                        className={`bg-gray-50 dark:bg-gray-700 ${errors.subject ? 'border-destructive' : ''}`}
                         {...register('subject')}
                         aria-invalid={!!errors.subject}
                       />
                       {errors.subject && (
-                        <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
+                        <p className="mt-1 text-sm text-destructive">{errors.subject.message}</p>
                       )}
                     </div>
 
@@ -191,20 +191,22 @@ export const ContactSection = () => {
                       <Textarea
                         id="message"
                         placeholder={t('form.message_placeholder')}
-                        className={`h-32 bg-gray-50 dark:bg-gray-700 ${errors.feedback ? 'border-red-500' : ''}`}
+                        className={`h-32 bg-gray-50 dark:bg-gray-700 ${errors.feedback ? 'border-destructive' : ''}`}
                         {...register('feedback')}
                         aria-invalid={!!errors.feedback}
                       />
                       {errors.feedback && (
-                        <p className="mt-1 text-sm text-red-500">{errors.feedback.message}</p>
+                        <p className="mt-1 text-sm text-destructive">{errors.feedback.message}</p>
                       )}
                     </div>
 
-                    {errors.root && <p className="text-sm text-red-500">{errors.root.message}</p>}
+                    {errors.root && (
+                      <p className="text-sm text-destructive">{errors.root.message}</p>
+                    )}
 
                     <Button
                       type="submit"
-                      className="w-full lg:text-lg  rounded-full bg-purple-600 hover:bg-purple-700 "
+                      className="w-full lg:text-lg  rounded-full bg-primary hover:bg-primary-hover "
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? t_contact('submitting') : t('form.button')}

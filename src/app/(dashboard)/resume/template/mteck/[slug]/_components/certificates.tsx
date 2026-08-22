@@ -126,7 +126,7 @@ const CertificatesSection = ({ data, setTempData, setIsChangesSaved }: Certifica
             onChange={(e) => setTempCertificate(e.target.value)}
             placeholder="Certificate Name"
           />
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>
