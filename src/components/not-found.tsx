@@ -53,7 +53,7 @@ export default function NotFound() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               onClick={() => router.back()}
-              className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-primary-hover hover:shadow-xl sm:w-auto"
+              className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-xl sm:w-auto"
             >
               Go Back
             </Button>
@@ -61,7 +61,7 @@ export default function NotFound() {
             <Link href="/" legacyBehavior passHref>
               <Button
                 variant="secondary"
-                className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-primary-hover hover:shadow-xl sm:w-auto"
+                className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-xl sm:w-auto"
               >
                 Return Home
               </Button>

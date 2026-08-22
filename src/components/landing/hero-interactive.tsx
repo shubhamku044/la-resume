@@ -36,7 +36,7 @@ export const HeroInteractive = ({
   const primaryCta = (
     <Button
       size="lg"
-      className="group relative h-12 overflow-hidden rounded-full bg-primary px-8 text-base font-semibold text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
+      className="group relative h-12 overflow-hidden rounded-full bg-primary px-8 text-base font-semibold text-white shadow-sm transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
     >
       <span className="relative z-10 flex items-center gap-2">
         {startBuildingText}

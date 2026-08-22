@@ -186,7 +186,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
 
               <Link
                 href={BUILDER_URL}
-                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-all hover:bg-primary-hover hover:shadow-glow"
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
               >
                 Use this template
                 <ArrowRight className="size-4" />

@@ -161,7 +161,7 @@ export default function ResumeTemplatesPage() {
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href={BUILDER_URL}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-elegant transition-all hover:bg-primary-hover hover:shadow-glow"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-elegant transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
               >
                 Start building your resume
                 <ArrowRight className="size-4" />
@@ -212,7 +212,7 @@ export default function ResumeTemplatesPage() {
                   </p>
                   <Link
                     href={BUILDER_URL}
-                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
+                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
                   >
                     Use this template
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
@@ -285,7 +285,7 @@ export default function ResumeTemplatesPage() {
             </p>
             <Link
               href={BUILDER_URL}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-all hover:bg-primary-hover hover:shadow-glow"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
             >
               Use a template now
               <ArrowRight className="size-4" />

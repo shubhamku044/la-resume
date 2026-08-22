@@ -78,7 +78,7 @@ export function Header() {
                 router.push('/templates');
               }}
               size="default"
-              className="rounded-full bg-primary text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow"
+              className="rounded-full bg-primary text-white shadow-sm transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
             >
               Go to app
             </Button>
@@ -88,7 +88,7 @@ export function Header() {
             <Link href="/sign-in">
               <Button
                 size="default"
-                className="hidden rounded-full bg-primary text-white shadow-sm transition-all hover:bg-primary-hover hover:shadow-glow md:flex"
+                className="hidden rounded-full bg-primary text-white shadow-sm transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow md:flex"
               >
                 Get Started
               </Button>
