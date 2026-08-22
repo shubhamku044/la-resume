@@ -46,12 +46,7 @@ jobs:
   react-doctor:
     runs-on: ubuntu-latest
     steps:
-      # fetch-depth: 0 gives React Doctor the full history it needs to diff
-      # against the base branch — without it, the scan can't find the merge
-      # base and reports every issue in changed files as if the PR introduced it.
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
       - uses: millionco/react-doctor@v2
         # Common configuration knobs — uncomment any to override the default.

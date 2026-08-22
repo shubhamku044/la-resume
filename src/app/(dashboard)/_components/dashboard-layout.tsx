@@ -26,16 +26,18 @@ import { useEffect, useRef, useState } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024;
-    }
-    return true;
-  });
+  // Server-safe initial value; the real viewport-based value is applied in an
+  // effect below — reading `window` during the first render would render a
+  // different branch than the SSR HTML and break hydration.
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
   const langaugeDropdownRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setIsCollapsed(window.innerWidth < 1024);
+  }, []);
 
   // Auto-close sidebar when navigating to resume template or made-by-you pages
   useEffect(() => {
@@ -156,9 +158,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             'flex flex-col border-r bg-background overflow-x-hidden transition-all duration-300 z-50',
             'lg:relative lg:translate-x-0',
             'fixed left-0 h-[calc(100dvh-4rem)]',
-            isCollapsed
-              ? 'w-0 lg:w-[70px] -translate-x-full lg:translate-x-0'
-              : 'w-64 translate-x-0'
+            isCollapsed ? 'w-0 lg:w-17.5 -translate-x-full lg:translate-x-0' : 'w-64 translate-x-0'
           )}
         >
           <div className="flex-1 justify-between overflow-x-hidden overflow-y-auto p-2">
