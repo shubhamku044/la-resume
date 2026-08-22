@@ -28,7 +28,7 @@ export function JobColumn({
           ref={provided.innerRef}
           className={cn(
             'w-72 shrink-0 rounded-xl border border-border bg-muted shadow-xs transition-colors',
-            snapshot.isDraggingOver && 'border-blue-200 bg-blue-50'
+            snapshot.isDraggingOver && 'border-primary/40 bg-primary-soft'
           )}
         >
           <div className="rounded-t-xl border-b border-border bg-card p-2 sm:p-3">
@@ -51,7 +51,7 @@ export function JobColumn({
             {/* Add Job Button */}
             <Button
               variant="ghost"
-              className="mt-2 w-full border border-dashed border-border text-sm text-muted-foreground hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 sm:text-base"
+              className="mt-2 w-full border border-dashed border-border text-sm text-muted-foreground hover:border-primary/50 hover:bg-primary-soft hover:text-primary-ink sm:text-base"
               onClick={() => {
                 setActiveColumn(column.id);
                 setNewJob({ title: '', company: '' });

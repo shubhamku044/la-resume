@@ -290,13 +290,16 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                   }
                 }}
               />
-              <Button onClick={handleAddAchievement} className="bg-green-500 text-white">
+              <Button
+                onClick={handleAddAchievement}
+                className="bg-primary text-white hover:bg-primary-hover"
+              >
                 Add
               </Button>
             </div>
           </div>
 
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

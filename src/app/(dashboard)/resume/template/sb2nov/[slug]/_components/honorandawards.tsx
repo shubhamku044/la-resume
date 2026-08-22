@@ -197,7 +197,7 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
                       href={entry.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-primary hover:underline"
                     >
                       {entry.urlLabel || 'Link'}
                     </Link>
@@ -246,7 +246,10 @@ const HonorsAwardsSection = ({ data, setTempData, setIsChangesSaved }: HonorsAwa
             placeholder="URL Label (optional)"
           />
 
-          <Button onClick={handleSaveEntry} className="bg-green-500 text-white">
+          <Button
+            onClick={handleSaveEntry}
+            className="bg-primary text-white hover:bg-primary-hover"
+          >
             {t('common.save')}
           </Button>
         </DialogContent>

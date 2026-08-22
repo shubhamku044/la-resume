@@ -163,9 +163,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             {/* Details */}
             <div className="lg:sticky lg:top-24">
               <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-                <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  {template.name}
-                </span>
+                <span className="text-primary">{template.name}</span>
               </h1>
               <p className="mt-3 text-lg text-muted-foreground">{detail.tagline}</p>
               <p className="mt-5 leading-relaxed text-muted-foreground">{detail.intro}</p>
@@ -188,7 +186,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
 
               <Link
                 href={BUILDER_URL}
-                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-shadow hover:shadow-glow"
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-base font-semibold text-white shadow-elegant transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-glow"
               >
                 Use this template
                 <ArrowRight className="size-4" />

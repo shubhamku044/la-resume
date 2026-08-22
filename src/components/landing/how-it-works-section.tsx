@@ -26,7 +26,7 @@ export const HowItWorksSection = async () => {
     <section id="how-it-works" className="bg-gray-50 py-20 dark:bg-gray-900 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-block rounded-full bg-purple-50 px-4 py-2 text-sm font-medium text-purple-600 dark:bg-purple-900/30 dark:text-purple-300">
+          <div className="mb-4 inline-block rounded-full bg-primary-soft px-4 py-2 text-sm font-medium text-primary-ink">
             {t('use.badge')}
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
@@ -41,7 +41,7 @@ export const HowItWorksSection = async () => {
           {steps.map((step, index) => (
             <div key={index} className="group relative">
               <div className="feature-card relative p-8">
-                <div className="mb-6 text-5xl font-bold text-purple-500/20">{step.number}</div>
+                <div className="mb-6 text-5xl font-bold text-primary/20">{step.number}</div>
                 <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
                   {step.title}
                 </h3>

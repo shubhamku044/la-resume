@@ -9,7 +9,7 @@ export default function NotFound() {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-surface px-4">
       <div className="w-full max-w-2xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export default function NotFound() {
         >
           <div className="mb-8 flex justify-center">
             <svg
-              className="size-48 text-blue-600"
+              className="size-48 text-primary"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ export default function NotFound() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               onClick={() => router.back()}
-              className="w-full bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl sm:w-auto"
+              className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-xl sm:w-auto"
             >
               Go Back
             </Button>
@@ -61,7 +61,7 @@ export default function NotFound() {
             <Link href="/" legacyBehavior passHref>
               <Button
                 variant="secondary"
-                className="w-full bg-linear-to-r from-purple-600 to-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:from-purple-700 hover:to-blue-700 hover:shadow-xl sm:w-auto"
+                className="w-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-[background-color,box-shadow] hover:bg-primary-hover hover:shadow-xl sm:w-auto"
               >
                 Return Home
               </Button>
@@ -77,7 +77,7 @@ export default function NotFound() {
             Still lost? Contact us at{' '}
             <Link
               href="mailto:shubhamku044@gmail.com"
-              className="text-blue-600 underline hover:text-blue-700"
+              className="text-primary underline hover:text-primary-hover"
             >
               here
             </Link>

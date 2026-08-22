@@ -106,7 +106,7 @@ const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: Certifi
                       href={entry.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-primary hover:underline"
                     >
                       View Certification
                     </Link>
@@ -192,7 +192,7 @@ const CertificationsSection = ({ data, setTempData, setIsChangesSaved }: Certifi
             onChange={(e) => setTempEntry((prev) => ({ ...prev, date: e.target.value }))}
             placeholder="Date (e.g., Jan 2023)"
           />
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

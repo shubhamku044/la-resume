@@ -72,12 +72,12 @@ export default function SignInPage() {
   }, []);
 
   return (
-    <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-linear-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
+    <div className="h-screen w-screen overflow-y-auto scrollbar-hide bg-surface">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-strong/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative z-10 h-full flex flex-col ">
@@ -86,12 +86,10 @@ export default function SignInPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
               <ChevronLeft className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors lg:hidden" />
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 shadow-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary shadow-lg">
                 <FileText className="h-4 w-4 text-white" />
               </div>
-              <span className="text-lg font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                La Resume
-              </span>
+              <span className="text-lg font-bold text-primary">La Resume</span>
             </Link>
 
             <div className="flex items-center gap-3 mr-2">
@@ -118,9 +116,7 @@ export default function SignInPage() {
                   className="text-center lg:text-left"
                 >
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-                    <span className="bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                      {t('hero.title')}
-                    </span>
+                    <span className="text-primary">{t('hero.title')}</span>
                   </h1>
                   <p className="mt-3 lg:mt-4 text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                     {t('hero.subtitle')}
@@ -143,7 +139,7 @@ export default function SignInPage() {
                       className="text-center p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <div className="flex items-center justify-center mb-2">
-                        <div className="p-2 rounded-lg bg-linear-to-r from-indigo-500 to-purple-500 shadow-lg">
+                        <div className="p-2 rounded-lg bg-primary shadow-lg">
                           <stat.icon className="h-4 w-4 text-white" />
                         </div>
                       </div>
@@ -177,7 +173,7 @@ export default function SignInPage() {
                         className="p-3 lg:p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-white/30 dark:bg-gray-800/70 dark:border-gray-700/30 hover:bg-white/90 dark:hover:bg-gray-800/90 transition-all duration-300 group shadow-lg hover:shadow-xl"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg bg-linear-to-r from-indigo-500 to-purple-500 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          <div className="p-2 rounded-lg bg-primary group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <feature.icon className="h-4 w-4 text-white" />
                           </div>
                           <div>
@@ -210,10 +206,10 @@ export default function SignInPage() {
                       transition={{ duration: 0.5 }}
                       className="absolute inset-0"
                     >
-                      <Card className="border-0 bg-linear-to-r from-white/80 to-indigo-50/80 backdrop-blur-xs shadow-xl dark:from-gray-800/80 dark:to-indigo-900/80 overflow-hidden h-full">
+                      <Card className="border-0 bg-surface-raised/80 backdrop-blur-xs shadow-xl dark:bg-card/80 overflow-hidden h-full">
                         <CardContent className="p-4 lg:p-6 h-full flex flex-col justify-between">
                           <div className="flex items-start gap-3">
-                            <Quote className="h-6 w-6 text-indigo-500 shrink-0 mt-1" />
+                            <Quote className="h-6 w-6 text-primary shrink-0 mt-1" />
                             <div className="space-y-3 flex-1">
                               <p className="text-gray-700 dark:text-gray-300 italic leading-relaxed text-sm lg:text-base">
                                 &quot;{reviews[currentTestimonial].body}&quot;
@@ -262,7 +258,7 @@ export default function SignInPage() {
                         onClick={() => setCurrentTestimonial(index)}
                         className={`h-2 w-2 rounded-full transition-all duration-300 ${
                           index === currentTestimonial
-                            ? 'bg-indigo-500 w-6'
+                            ? 'bg-primary w-6'
                             : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400'
                         }`}
                       />
@@ -305,9 +301,9 @@ export default function SignInPage() {
                   className="w-full max-w-sm lg:max-w-md"
                 >
                   <Card className="border-0 bg-white/95 backdrop-blur-lg shadow-2xl dark:bg-gray-800/95 overflow-hidden">
-                    <CardHeader className="text-center space-y-3 bg-linear-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 px-4 py-6">
+                    <CardHeader className="text-center space-y-3 bg-primary-soft px-4 py-6">
                       <div className="flex items-center justify-center">
-                        <div className="p-2.5 rounded-xl bg-linear-to-r from-indigo-500 to-purple-500 shadow-lg">
+                        <div className="p-2.5 rounded-xl bg-primary shadow-lg">
                           <FileText className="h-5 w-5 text-white" />
                         </div>
                       </div>
@@ -336,25 +332,25 @@ export default function SignInPage() {
                               socialButtonsBlockButton:
                                 'bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-200 rounded-xl font-medium shadow-xs hover:shadow-md text-base py-3',
                               formButtonPrimary:
-                                'bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 rounded-xl font-semibold text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02] py-2',
+                                'bg-primary hover:bg-primary-hover transition-all duration-200 rounded-xl font-semibold text-primary-foreground border-0 shadow-lg hover:shadow-xl transform hover:scale-[1.02] py-2',
                               footerActionLink:
-                                'text-indigo-600 hover:text-indigo-700 transition-colors duration-200 font-medium',
+                                'text-primary hover:text-primary-hover transition-colors duration-200 font-medium',
                               formFieldInput:
-                                ' rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 transition-all duration-200 text-sm ',
+                                ' rounded-xl border-gray-200 focus:border-primary focus:ring-primary transition-all duration-200 text-sm ',
                               formFieldLabel:
                                 'text-gray-700 dark:text-gray-300 font-medium text-sm',
                               dividerLine: 'bg-gray-200 dark:bg-gray-700',
                               dividerText: 'text-gray-500 font-medium text-sm',
                               formFieldAction:
-                                'text-indigo-600 hover:text-indigo-700 font-medium text-sm',
+                                'text-primary hover:text-primary-hover font-medium text-sm',
                             },
                             variables: {
-                              colorPrimary: '#4f46e5',
-                              colorForeground: '#374151',
-                              colorMutedForeground: '#6b7280',
-                              colorBackground: '#ffffff',
-                              colorInput: '#ffffff',
-                              colorInputForeground: '#374151',
+                              colorPrimary: 'hsl(var(--primary))',
+                              colorForeground: 'hsl(var(--foreground))',
+                              colorMutedForeground: 'hsl(var(--muted-foreground))',
+                              colorBackground: 'hsl(var(--card))',
+                              colorInput: 'hsl(var(--card))',
+                              colorInputForeground: 'hsl(var(--foreground))',
                               borderRadius: '0.75rem',
                               fontSize: '0.875rem',
                             },
@@ -365,15 +361,15 @@ export default function SignInPage() {
                       {/* Additional Features */}
                       <div className="space-y-2 pt-3 border-t border-gray-100 dark:border-gray-700">
                         <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
-                          <CheckCircle className="size-3 lg:size-5 text-green-500 shrink-0" />
+                          <CheckCircle className="size-3 lg:size-5 text-success shrink-0" />
                           <span>{t('features.freeToStart')}</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
-                          <Clock className="size-3 lg:size-5 text-blue-500 shrink-0" />
+                          <Clock className="size-3 lg:size-5 text-primary shrink-0" />
                           <span>{t('features.quickCreation')}</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
-                          <Shield className="size-3 lg:size-5 text-indigo-500 shrink-0" />
+                          <Shield className="size-3 lg:size-5 text-primary shrink-0" />
                           <span>{t('features.secureData')}</span>
                         </div>
                       </div>
@@ -383,14 +379,14 @@ export default function SignInPage() {
                           {t('legal.agreementText')}{' '}
                           <Link
                             href="/terms-and-conditions"
-                            className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
+                            className="text-primary hover:text-primary-hover transition-colors duration-200 underline"
                           >
                             {t('legal.termsOfService')}
                           </Link>{' '}
                           {t('legal.and')}{' '}
                           <Link
                             href="/privacy-policy"
-                            className="text-indigo-600 hover:text-indigo-700 transition-colors duration-200 underline"
+                            className="text-primary hover:text-primary-hover transition-colors duration-200 underline"
                           >
                             {t('legal.privacyPolicy')}
                           </Link>

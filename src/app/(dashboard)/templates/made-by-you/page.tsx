@@ -172,7 +172,7 @@ export default function MadeByYouPage() {
         </div>
       ) : (
         <div className="flex flex-col items-center rounded-2xl border border-dashed border-border bg-secondary/40 px-6 py-20 text-center">
-          <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-gradient-primary text-white shadow-glow">
+          <div className="mb-5 flex size-16 items-center justify-center rounded-2xl bg-primary text-white shadow-glow">
             <FileText className="size-8" />
           </div>
           <h3 className="text-xl font-semibold">No resumes yet</h3>
@@ -221,7 +221,7 @@ const DeleteConfirmationDialog = ({
             </Button>
           </AlertDialogCancel>
           <AlertDialogAction asChild>
-            <Button variant="destructive" className="bg-red-700" onClick={onConfirm}>
+            <Button variant="destructive" onClick={onConfirm}>
               {t('common.delete')}
             </Button>
           </AlertDialogAction>

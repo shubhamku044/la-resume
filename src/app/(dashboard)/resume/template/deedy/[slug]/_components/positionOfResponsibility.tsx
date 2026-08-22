@@ -173,7 +173,7 @@ const PositionsOfResponsibilitySection = ({
             onChange={(e) => setTempEntry((prev) => ({ ...prev, duration: e.target.value }))}
             placeholder="Duration (e.g., Jan 2020 - Dec 2022)"
           />
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

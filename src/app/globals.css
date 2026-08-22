@@ -3,6 +3,26 @@
 @config '../../tailwind.config.ts';
 
 /*
+  Emerald Professional semantic tokens — the single source of truth for UI colors.
+  Use these instead of raw hex or palette classes; overriding the --color-* values
+  in the .dark block re-themes dark mode. `accent` stays a soft hover tint (shadcn),
+  the saturated teal accent is `accent-strong`.
+*/
+@theme {
+  --color-primary: #059669; /* emerald-600 — buttons, links, active states */
+  --color-primary-hover: #047857; /* emerald-700 — hover state, AA text on soft bg */
+  --color-primary-soft: #ecfdf5; /* emerald-50 — subtle backgrounds, badges */
+  --color-primary-ink: #047857; /* emerald-700 — emerald text on soft backgrounds */
+  --color-accent-strong: #14b8a6; /* teal-500 — saturated accent, icons, highlights */
+  --color-surface: #f8fafc; /* slate-50 — page background */
+  --color-surface-raised: #ffffff; /* cards */
+  --color-content: #1e293b; /* slate-800 — main text */
+  --color-content-muted: #64748b; /* slate-500 — secondary text */
+  --color-border-default: #e2e8f0; /* slate-200 */
+  --color-danger: #ef4444; /* red-500 */
+}
+
+/*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
@@ -40,11 +60,6 @@
   }
 }
 
-@utility animated-text-gradient {
-  @apply bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-size-[200%_auto] bg-clip-text text-transparent;
-  animation: gradient-shift 3s linear infinite;
-}
-
 @utility rotating-border {
   &::before {
     content: '';
@@ -53,7 +68,12 @@
     left: -2px;
     width: calc(100% + 4px);
     height: calc(100% + 4px);
-    background: linear-gradient(45deg, #d946ef, #8b5cf6, #d946ef);
+    background: linear-gradient(
+      45deg,
+      var(--color-primary-hover),
+      var(--color-primary),
+      var(--color-primary-hover)
+    );
     background-size: 200% 200%;
     animation: rotate 3s linear infinite;
     border-radius: inherit;
@@ -76,29 +96,29 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 210 40% 98%; /* slate-50 */
+    --foreground: 217 33% 17%; /* slate-800 */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 217 33% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 262 83% 58%;
+    --popover-foreground: 217 33% 17%;
+    --primary: 161 94% 30%; /* emerald-600 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 20% 96%;
-    --secondary-foreground: 222 47% 11.2%;
-    --muted: 240 20% 96.5%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 264 60% 96.5%;
-    --accent-foreground: 263 55% 32%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --warning: 38 92% 50%;
+    --secondary: 210 40% 96%; /* slate-100 */
+    --secondary-foreground: 217 33% 17%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%; /* slate-500 */
+    --accent: 160 84% 94%; /* soft emerald tint — hover surfaces */
+    --accent-foreground: 163 88% 20%; /* emerald-800 */
+    --destructive: 0 84% 60%; /* red-500 */
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%; /* amber-500 */
     --warning-foreground: 26 83% 14%;
-    --success: 142 71% 42%;
+    --success: 160 84% 39%; /* emerald-500 */
     --success-foreground: 0 0% 100%;
-    --border: 240 16% 90%;
-    --input: 240 16% 90%;
-    --ring: 262 83% 58%;
+    --border: 214 32% 91%; /* slate-200 */
+    --input: 214 32% 91%;
+    --ring: 161 94% 30%;
     --radius: 0.75rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -107,41 +127,54 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 161 94% 30%;
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 222 47% 11%; /* slate-900 */
     --foreground: 210 40% 98%;
     --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 263 86% 64%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 160 84% 39%; /* emerald-500 */
+    --primary-foreground: 222 47% 6%; /* slate-950 ink — 6.6:1 on emerald-500 */
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 263 40% 22%;
-    --accent-foreground: 263 80% 88%;
+    --accent: 163 45% 15%; /* deep emerald tint — hover surfaces */
+    --accent-foreground: 156 72% 67%; /* emerald-300 */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --warning: 38 92% 55%;
     --warning-foreground: 26 83% 12%;
-    --success: 142 64% 48%;
-    --success-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 222 47% 6%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 263 86% 64%;
+    --ring: 160 84% 39%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 160 84% 39%;
+
+    /* Dark overrides for the @theme semantic tokens above */
+    --color-primary: #10b981; /* emerald-500 */
+    --color-primary-hover: #34d399; /* emerald-400 */
+    --color-primary-soft: #022c22; /* emerald-950 */
+    --color-primary-ink: #6ee7b7; /* emerald-300 */
+    --color-accent-strong: #2dd4bf; /* teal-400 */
+    --color-surface: #0f172a; /* slate-900 */
+    --color-surface-raised: #1e293b; /* slate-800 */
+    --color-content: #f1f5f9; /* slate-100 */
+    --color-content-muted: #94a3b8; /* slate-400 */
+    --color-border-default: #1e293b; /* slate-800 */
+    --color-danger: #f87171; /* red-400 */
   }
 }
 
@@ -157,18 +190,6 @@
 }
 
 @layer components {
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
   @keyframes rotate {
     0% {
       background-position: 0% 50%;

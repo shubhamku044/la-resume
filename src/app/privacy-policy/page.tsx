@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
       <p className="mb-4 text-muted-foreground">
         If you have additional questions or require more information about our Privacy Policy, do
         not hesitate to contact us at{' '}
-        <Link href="mailto:priyabrata8558@gmail.com" className="text-blue-600">
+        <Link href="mailto:priyabrata8558@gmail.com" className="text-primary">
           priyabrata8558@gmail.com
         </Link>
         .
@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
       <p className="mb-4 text-muted-foreground">
         This Privacy Policy applies only to our online activities and is valid for visitors to our
         website with regards to the information that they shared and/or collected on{' '}
-        <Link href="https://la-resume.com/" className="text-blue-600">
+        <Link href="https://la-resume.com/" className="text-primary">
           https://la-resume.com/
         </Link>
         . This policy is not applicable to any information collected offline or via channels other

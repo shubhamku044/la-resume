@@ -22,16 +22,22 @@ import {
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LuGithub } from 'react-icons/lu';
 
+// Server snapshot keeps the first render matching SSR; the no-op subscription reads the viewport once (no live resize updates).
+const subscribeNoop = () => () => {};
+const getViewportCollapsed = () => window.innerWidth < 1024;
+const getServerCollapsed = () => true;
+
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024;
-    }
-    return true;
-  });
+  const [userCollapsed, setUserCollapsed] = useState<boolean | null>(null);
+  const viewportCollapsed = useSyncExternalStore(
+    subscribeNoop,
+    getViewportCollapsed,
+    getServerCollapsed
+  );
+  const isCollapsed = userCollapsed ?? viewportCollapsed;
   const pathname = usePathname();
   const stars = useGitHubStars();
   const t = useTranslations('sidebar');
@@ -42,7 +48,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     const isTemplateRoute =
       pathname.includes('/resume/template/') || pathname.includes('/templates/made-by-you');
     if (isTemplateRoute) {
-      setIsCollapsed(true);
+      setUserCollapsed(true);
     }
   }, [pathname]);
 
@@ -100,7 +106,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           }}
         >
           <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-white shadow-sm">
               <FileText className="size-5" />
             </span>
             <span className="text-xl font-bold tracking-tight">La Resume</span>
@@ -108,7 +114,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </Link>
         <button
           type="button"
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={() => setUserCollapsed(!isCollapsed)}
           className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           aria-label="Toggle sidebar"
         >
@@ -147,7 +153,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         {!isCollapsed && (
           <div
             className="fixed top-16 inset-0 bg-black/50 z-40 lg:hidden"
-            onClick={() => setIsCollapsed(true)}
+            onClick={() => setUserCollapsed(true)}
           />
         )}
 
@@ -156,9 +162,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             'flex flex-col border-r bg-background overflow-x-hidden transition-all duration-300 z-50',
             'lg:relative lg:translate-x-0',
             'fixed left-0 h-[calc(100dvh-4rem)]',
-            isCollapsed
-              ? 'w-0 lg:w-[70px] -translate-x-full lg:translate-x-0'
-              : 'w-64 translate-x-0'
+            isCollapsed ? 'w-0 lg:w-17.5 -translate-x-full lg:translate-x-0' : 'w-64 translate-x-0'
           )}
         >
           <div className="flex-1 justify-between overflow-x-hidden overflow-y-auto p-2">
@@ -272,7 +276,7 @@ function CollapsibleSection({
           {icon}
           {!isCollapsed && <span className="ml-2 text-nowrap">{title}</span>}
           {items[0].url === '/tracker/boards' && !isCollapsed && (
-            <span className="flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 lg:py-1 text-xs font-medium text-blue-700">
+            <span className="flex items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 lg:py-1 text-xs font-medium text-primary-ink">
               <Beaker className="size-4" />
               Beta
             </span>

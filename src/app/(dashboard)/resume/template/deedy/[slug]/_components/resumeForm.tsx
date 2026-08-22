@@ -150,7 +150,7 @@ const ResumeForm = ({
       if (!response.ok) {
         toast.error('Error generating resume preview', {
           style: {
-            color: '#ff0034',
+            color: 'hsl(var(--destructive))',
           },
         });
         onPreviewPagesUpdate?.([]);

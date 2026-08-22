@@ -113,9 +113,11 @@ const ContactPageClient = () => {
                   {...register('name')}
                   placeholder={t('form.namePlaceholder')}
                   aria-invalid={!!errors.name}
-                  className={errors.name ? 'border-red-500' : ''}
+                  className={errors.name ? 'border-destructive' : ''}
                 />
-                {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-sm text-destructive">{errors.name.message}</p>
+                )}
               </div>
 
               <div>
@@ -125,10 +127,10 @@ const ContactPageClient = () => {
                   type="email"
                   placeholder={t('form.emailPlaceholder')}
                   aria-invalid={!!errors.email}
-                  className={errors.email ? 'border-red-500' : ''}
+                  className={errors.email ? 'border-destructive' : ''}
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                  <p className="mt-1 text-sm text-destructive">{errors.email.message}</p>
                 )}
               </div>
 
@@ -139,14 +141,14 @@ const ContactPageClient = () => {
                   placeholder={t('form.messagePlaceholder')}
                   rows={5}
                   aria-invalid={!!errors.feedback}
-                  className={errors.feedback ? 'border-red-500' : ''}
+                  className={errors.feedback ? 'border-destructive' : ''}
                 />
                 {errors.feedback && (
-                  <p className="mt-1 text-sm text-red-500">{errors.feedback.message}</p>
+                  <p className="mt-1 text-sm text-destructive">{errors.feedback.message}</p>
                 )}
               </div>
 
-              {errors.root && <p className="text-sm text-red-500">{errors.root.message}</p>}
+              {errors.root && <p className="text-sm text-destructive">{errors.root.message}</p>}
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? t('form.submitting') : t('form.submit')}

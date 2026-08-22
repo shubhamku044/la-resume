@@ -21,7 +21,8 @@ const primaryButtonStyle: CSSProperties = {
   fontSize: '0.875rem',
   fontWeight: 600,
   color: '#fff',
-  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+  // Mirrors --color-primary; this file renders without globals.css, so literals are required.
+  background: '#059669',
   border: 'none',
   borderRadius: '0.5rem',
   cursor: 'pointer',

@@ -59,7 +59,7 @@ export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardPr
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-500 hover:text-blue-700"
+                className="text-sm text-primary hover:text-primary-hover"
               >
                 Project Link
               </Link>

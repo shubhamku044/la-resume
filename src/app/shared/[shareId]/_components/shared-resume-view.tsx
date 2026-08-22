@@ -50,7 +50,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
               href={data.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-12 w-12 flex items-center justify-center bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+              className="h-12 w-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg hover:bg-primary-hover transition-colors"
             >
               <Maximize size={20} />
             </Link>
@@ -107,7 +107,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
                     <Link
                       href={data.pdfUrl}
                       download
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                      className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors flex items-center gap-2"
                     >
                       <Download size={isMobile ? 16 : 18} />
                       <span>Download PDF</span>
@@ -126,7 +126,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
                       <Link
                         href={data.pdfUrl}
                         download
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                        className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors flex items-center gap-2"
                       >
                         <Download size={16} />
                         <span>Download PDF</span>
@@ -141,7 +141,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
                 <p className="text-xs sm:text-sm text-gray-600">
                   Shared using{' '}
-                  <Link href="/" className="font-medium text-blue-600 hover:underline">
+                  <Link href="/" className="font-medium text-primary hover:underline">
                     LaResume
                   </Link>
                 </p>
@@ -151,7 +151,7 @@ export default function SharedResumeView({ data, isOwner }: Props) {
                     href={data.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                    className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors flex items-center gap-2"
                   >
                     <Maximize size={16} />
                     <span>Open in new tab</span>

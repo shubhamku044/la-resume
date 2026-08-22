@@ -54,7 +54,7 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary sm:p-2.5"
               placeholder="e.g. Frontend Developer"
             />
           </div>
@@ -73,7 +73,7 @@ export function JobCreationModal({
                   ...(prev?.notes !== undefined && { notes: prev.notes }),
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary sm:p-2.5"
               placeholder="e.g. Acme Inc."
             />
           </div>
@@ -91,7 +91,7 @@ export function JobCreationModal({
                   notes: e.target.value,
                 }))
               }
-              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 sm:p-2.5"
+              className="w-full rounded-lg border border-border p-2 text-sm transition-colors focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary sm:p-2.5"
               placeholder="Any additional information..."
               rows={3}
             />

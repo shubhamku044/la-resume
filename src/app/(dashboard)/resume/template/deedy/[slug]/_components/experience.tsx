@@ -158,7 +158,7 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                       href={entry.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-blue-600 hover:underline"
+                      className="text-sm text-primary hover:underline"
                     >
                       View Website
                     </Link>
@@ -294,13 +294,16 @@ const ExperienceSection = ({ data, setTempData, setIsChangesSaved }: ExperienceP
                   }
                 }}
               />
-              <Button onClick={handleAddAchievement} className="bg-green-500 text-white">
+              <Button
+                onClick={handleAddAchievement}
+                className="bg-primary text-white hover:bg-primary-hover"
+              >
                 Add
               </Button>
             </div>
           </div>
 
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>

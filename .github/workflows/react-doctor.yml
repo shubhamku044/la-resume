@@ -46,7 +46,10 @@ jobs:
   react-doctor:
     runs-on: ubuntu-latest
     steps:
+      # Full history so React Doctor can diff against the base branch.
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: millionco/react-doctor@v2
         # Common configuration knobs — uncomment any to override the default.

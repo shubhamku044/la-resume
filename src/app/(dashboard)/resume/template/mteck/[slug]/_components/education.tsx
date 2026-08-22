@@ -146,7 +146,7 @@ const EducationSection = ({ data, setTempData, setIsChangesSaved }: EducationPro
             onChange={(e) => setTempEntry((prev) => ({ ...prev, degree: e.target.value }))}
             placeholder="Degree"
           />
-          <Button onClick={handleSave} className="bg-green-500 text-white">
+          <Button onClick={handleSave} className="bg-primary text-white hover:bg-primary-hover">
             Save
           </Button>
         </DialogContent>
